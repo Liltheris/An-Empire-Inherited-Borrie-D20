@@ -1027,7 +1027,7 @@ public:
 			BorrieRPG::BroadcastMessage(creature, creature->getFirstName() + " moved " + String::valueOf(distance) + " meters from their last position.");
 		// Remove the waypoint after move.
 			ghost->removeWaypoint(waypoint->getObjectID(), true, false);
-			newwaypoint = waypoint.get();
+			waypoint = waypoint.get();
 		}
 		
 	}
