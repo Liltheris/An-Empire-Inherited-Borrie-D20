@@ -41,6 +41,6 @@
 --this exception also makes it possible to release a modified version 
 
 
-object_building_sulon_dark_tower_s01 = object_building_sulon_shared_dark_tower_s01:new {}
+object_building_restuss_restuss_bank = object_building_restuss_shared_restuss_bank:new {}
 
-ObjectTemplates:addTemplate(object_building_sulon_dark_tower_s01, "object/building/sulon/dark_tower_s01.iff")
+ObjectTemplates:addTemplate(object_building_restuss_restuss_bank, "object/building/restuss/restuss_bank.iff")
