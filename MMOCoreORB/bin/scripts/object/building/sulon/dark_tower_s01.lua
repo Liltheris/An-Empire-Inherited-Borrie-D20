@@ -41,29 +41,6 @@
 --this exception also makes it possible to release a modified version 
 
 
+object_building_sulon_dark_tower_s01 = object_building_sulon_dark_tower_s01:new {}
 
---Children folder includes
-includeFile("building/base/serverobjects.lua")
-includeFile("building/corellia/serverobjects.lua")
-includeFile("building/sulon/serverobjects.lua")
-includeFile("building/dathomir/serverobjects.lua")
-includeFile("building/endor/serverobjects.lua")
-includeFile("building/faction_perk/serverobjects.lua")
-includeFile("building/general/serverobjects.lua")
-includeFile("building/lok/serverobjects.lua")
-includeFile("building/military/serverobjects.lua")
-includeFile("building/naboo/serverobjects.lua")
-includeFile("building/player/serverobjects.lua")
-includeFile("building/poi/serverobjects.lua")
-includeFile("building/tatooine/serverobjects.lua")
-includeFile("building/yavin/serverobjects.lua")
-
-includeFile("building/heroic/serverobjects.lua")
-includeFile("building/mustafar/serverobjects.lua")
-includeFile("building/kashyyyk/serverobjects.lua")
-includeFile("building/ship/serverobjects.lua")
-includeFile("building/content/serverobjects.lua")
--- Server Objects
-
-includeFile("building/player_sp/serverobjects.lua")
-includeFile("building/player_sp/city/serverobjects.lua")
+ObjectTemplates:addTemplate(object_building_sulon_dark_tower_s01, "object/building/sulon/dark_tower_s01.iff")
