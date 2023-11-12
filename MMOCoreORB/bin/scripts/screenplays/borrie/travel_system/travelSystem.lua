@@ -40,7 +40,7 @@ function travelSystemScreenplay:handleSuiSelectPlanet(pPlayer, pSui, eventIndex,
 			table.insert(options, {travel_destinations[planet].destinations[i][1], 0})
 		else
 			--Get the player's current faction and compare it with the LZ.
-			if (SceneObject(pPlayer):getStoredString("faction_current") == destFaction)
+			if (SceneObject(pPlayer):getStoredString("faction_current") == destFaction) then
 				--Add the destination.
 				table.insert(options, {travel_destinations[planet].destinations[i][1], 0})
 			else
