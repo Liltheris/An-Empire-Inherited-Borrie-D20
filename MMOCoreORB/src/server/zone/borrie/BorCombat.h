@@ -83,7 +83,7 @@ public:
         }
 
         //Always Miss on a nat 1.
-        if(toHitRoll = 1) {
+        if(toHitRoll == 1) {
             BorrieRPG::BroadcastMessage(attacker, attacker->getFirstName() + " "+attackVerb+ " and missed!  \\#DBDBDB" + GenerateOutputSpam(toHitRoll, skillCheck, toHitDC) + "\\#FFFFFF");
             BorEffect::PerformReactiveAnimation(defender, attacker, "miss", GetSlotHitlocation(bodyPartTarget), true);
             return;
