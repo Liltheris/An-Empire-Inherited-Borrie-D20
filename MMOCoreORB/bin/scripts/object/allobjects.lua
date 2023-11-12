@@ -1368,3 +1368,5 @@ includeFile("draft_schematic/roleplay/weapon/lightsaber/objects.lua")
 includeFile("draft_schematic/roleplay/weapon/lightsaber_pole/objects.lua")
 
 includeFile("tangible/borrp/world/objects.lua")
+
+includeFile("building/sulon/objects.lua")
