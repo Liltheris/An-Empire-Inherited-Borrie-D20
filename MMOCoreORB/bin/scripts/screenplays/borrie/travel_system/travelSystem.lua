@@ -56,7 +56,7 @@ function travelSystemScreenplay:handleSuiSelectPlanet(pPlayer, pSui, eventIndex,
 	
 	if(#options > 0) then
 		suiManager:sendListBox(pNpc, pPlayer, "Instant Travel System", "Select a location you'd like to land at.", 2, "@cancel", "", "@ok", "travelSystemScreenplay", "travelToPoint", 32, options)
-	else if (factionBlocked = 0)
+	else if (factionBlocked = 0) then
 		CreatureObject(pPlayer):sendSystemMessage("You are not allowed to travel to any destinations on this planet.")
 	else
 		CreatureObject(pPlayer):sendSystemMessage("Unfortunately, no travel destinations could be found for this planet. Please inform administration.")
