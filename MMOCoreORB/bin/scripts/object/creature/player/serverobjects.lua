@@ -105,6 +105,8 @@ includeFile("creature/player/togorian_male.lua") --Togorian male
 includeFile("creature/player/chadra_fan_male.lua") --Chadra Fan male
 includeFile("creature/player/chadra_fan_female.lua") --Chadra Fan male
 
+includeFile("creature/player/jawa_male.lua")
+
 includeFile("creature/player/miraluka_female.lua")
 includeFile("creature/player/miraluka_male.lua")
 includeFile("creature/player/mirialan_female.lua")
