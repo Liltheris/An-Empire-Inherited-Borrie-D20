@@ -75,7 +75,7 @@ public:
 	static void PromptForceQuestion(CreatureObject* creature) {
 		int hasDecided = creature->getStoredInt("fs_chosen");
 
-		if(creature.hasSkill("species_miraluka" || "always_force_sensitive")) {
+		if (creature->hasSkill("species_miraluka") || creature->hasSkill("always_force_sensitive")) {
 			//Miraluka are always Force Sensitive.
 			hasDecided = 1;
 
@@ -989,13 +989,13 @@ public:
 			byte posture = creature->getPosture();
 
 			switch(posture) {
-				case CREATUREPOSTURE::CROUCHED:{
+				case CreaturePosture::CROUCHED: {
 					//Two-thirds movement speed when crouched.
 					maxDistance = maxDistance*0.666;
 					BorrieRPG::BroadcastMessage(creature, creature->getFirstName() + " has begun to move while crouched. Their range is " + String::valueOf(maxDistance) + "m. ");
 					break;
 				}
-				case CREATUREPOSTURE::PRONE:{
+				case CreaturePosture::PRONE: {
 					//One-Fifth movement speed when prone.
 					maxDistance = maxDistance*0.2;
 					BorrieRPG::BroadcastMessage(creature, creature->getFirstName() + " has begun to move while prone. Their range is " + String::valueOf(maxDistance) + "m. ");
@@ -1027,7 +1027,7 @@ public:
 			BorrieRPG::BroadcastMessage(creature, creature->getFirstName() + " moved " + String::valueOf(distance) + " meters from their last position.");
 		// Remove the waypoint after move.
 			ghost->removeWaypoint(waypoint->getObjectID(), true, false);
-			newwaypoint = waypoint.get();
+			waypoint = waypoint.get();
 		}
 		
 	}

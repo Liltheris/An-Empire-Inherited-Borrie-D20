@@ -83,7 +83,7 @@ public:
         }
 
         //Always Miss on a nat 1.
-        if(toHitRoll = 1) {
+        if(toHitRoll == 1) {
             BorrieRPG::BroadcastMessage(attacker, attacker->getFirstName() + " "+attackVerb+ " and missed!  \\#DBDBDB" + GenerateOutputSpam(toHitRoll, skillCheck, toHitDC) + "\\#FFFFFF");
             BorEffect::PerformReactiveAnimation(defender, attacker, "miss", GetSlotHitlocation(bodyPartTarget), true);
             return;
@@ -870,7 +870,7 @@ public:
         
         if(distance < minRange) {
             //We're outside of the minimum range!
-            distanceModifier = getPointBlankAccuracy(); //PointBlankAccuracy is the too close DC mod
+			distanceModifier = attackerWeapon->getPointBlankAccuracy(); // PointBlankAccuracy is the too close DC mod
             tooClose = true;
 
         } else if(distance <= prefRange) {
@@ -879,7 +879,7 @@ public:
 
         } else if(distance <= maxRange) {
             //We're too far!
-            distanceModifier = getIdealAccuracy(); //idealAccuracy is the too far DC mod
+			distanceModifier = attackerWeapon->getIdealAccuracy(); // idealAccuracy is the too far DC mod
 
         } else {
             //We're out of range!

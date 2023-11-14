@@ -11,10 +11,12 @@ function travelSystemScreenplay:handleSuiSelectPlanet(pPlayer, pSui, eventIndex,
 
 	if (pPlayer == nil) then
 		return
+		CreatureObject(pPlayer):sendSystemMessage("You're not a player???")
 	end
 
 	if (cancelPressed) then
 		return
+		CreatureObject(pPlayer):sendSystemMessage("Cancelled.")
 	end
 	
 	local planet = arg0 + 1
@@ -25,13 +27,15 @@ function travelSystemScreenplay:handleSuiSelectPlanet(pPlayer, pSui, eventIndex,
 	
 	if(planet == nil) then
 		return
+		CreatureObject(pPlayer):sendSystemMessage("Faled to get selected planet.")
 	end
 	
 	local options = {}
 	local factionBlocked = 0
 	
 	for i = 1, #travel_destinations[planet].destinations, 1 do
-	
+		CreatureObject(pPlayer):sendSystemMessage("Looping.")
+
 		--Get landing zone faction control.
 		local destFaction = travel_destinations[planet].destinations[i][7]
 		
@@ -40,28 +44,31 @@ function travelSystemScreenplay:handleSuiSelectPlanet(pPlayer, pSui, eventIndex,
 			table.insert(options, {travel_destinations[planet].destinations[i][1], 0})
 		else
 			--Get the player's current faction and compare it with the LZ.
-			if (SceneObject(pPlayer):getStoredString("faction_current") == destFaction)
+			if (SceneObject(pPlayer):getStoredString("faction_current") == destFaction) then
 				--Add the destination.
 				table.insert(options, {travel_destinations[planet].destinations[i][1], 0})
 			else
 				--Make note that a destination was filtered out.
 				factionBlocked = 1
 			end
-			
 		end
+		CreatureObject(pPlayer):sendSystemMessage("Iteration complete.")
 	end
-	
+	CreatureObject(pPlayer):sendSystemMessage("Loop finished.")
+
 	local listBox = LuaSuiListBox(pSui)
 	local pNpc = listBox:getUsingObject()
-	
+
+	CreatureObject(pPlayer):sendSystemMessage("Created new box.")
+
 	if(#options > 0) then
 		suiManager:sendListBox(pNpc, pPlayer, "Instant Travel System", "Select a location you'd like to land at.", 2, "@cancel", "", "@ok", "travelSystemScreenplay", "travelToPoint", 32, options)
-	else if (factionBlocked = 0)
+	else if (factionBlocked == 1) then
 		CreatureObject(pPlayer):sendSystemMessage("You are not allowed to travel to any destinations on this planet.")
 	else
 		CreatureObject(pPlayer):sendSystemMessage("Unfortunately, no travel destinations could be found for this planet. Please inform administration.")
 	end
-
+	CreatureObject(pPlayer):sendSystemMessage("Finished.")
 end
 
 function travelSystemScreenplay:travelToPoint(pPlayer, pSui, eventIndex, arg0) 
