@@ -676,8 +676,8 @@ object_weapon_ranged_carbine_shared_carbine_elite = SharedWeaponObjectTemplate:n
 ObjectTemplates:addClientTemplate(object_weapon_ranged_carbine_shared_carbine_elite, "object/weapon/ranged/carbine/shared_carbine_elite.iff")
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-object_weapon_ranged_carbine_shared_advanced_carbine_elite = SharedWeaponObjectTemplate:new {clientTemplateFileName = "object/weapon/ranged/carbine/shared_advanced_carbine_elite.iff"}
-ObjectTemplates:addClientTemplate(object_weapon_ranged_carbine_shared_advanced_carbine_elite, "object/weapon/ranged/carbine/shared_advanced_carbine_elite.iff")
+object_weapon_ranged_carbine_shared_advanced_carbine_elite = SharedWeaponObjectTemplate:new {clientTemplateFileName = "object/weapon/ranged/carbine/shared_carbine_elite_combined.iff"}
+ObjectTemplates:addClientTemplate(object_weapon_ranged_carbine_shared_advanced_carbine_elite, "object/weapon/ranged/carbine/shared_carbine_elite_combined.iff")
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 object_weapon_ranged_carbine_shared_carbine_laser = SharedWeaponObjectTemplate:new {
