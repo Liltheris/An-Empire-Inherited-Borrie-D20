@@ -1,3 +1,7 @@
+includeFile("weapon/roleplay/melee/onehanded/serverobjects.lua")
+includeFile("weapon/roleplay/melee/polearm/serverobjects.lua")
+includeFile("weapon/roleplay/melee/twohanded/serverobjects.lua")
+includeFile("weapon/roleplay/melee/unarmed/serverobjects.lua")
 includeFile("weapon/roleplay/thrown/grenade/serverobjects.lua")
 includeFile("weapon/roleplay/ranged/serverobjects.lua")
 
