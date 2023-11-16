@@ -21,9 +21,6 @@ function SulonBaronsHedScreenPlay:start()
 end
 
 function SulonBaronsHedScreenPlay:spawnCivilians() 
-<<<<<<< Updated upstream
-	local waypointList = {}
-=======
 	local waypointList = {
 		--Customs
 		{-4.2422, 0.184067, -5.0962, 210, 610028016,{"social"}},
@@ -84,7 +81,6 @@ function SulonBaronsHedScreenPlay:spawnCivilians()
 		{-6507.36, 10, 1809.67, 303, 0,{"social"}},
 		{-6508.83, 10, 1810.67, 136, 0,{"social"}},
 	}
->>>>>>> Stashed changes
 	
 	CivillianGenerator:spawnCivillians(self.screenplayName, "rp_sulon", waypointList, self.walkpointList, "sulon", "sulon")
 end
