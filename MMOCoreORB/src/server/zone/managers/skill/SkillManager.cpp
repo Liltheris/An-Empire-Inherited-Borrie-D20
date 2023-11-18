@@ -923,6 +923,7 @@ int SkillManager::getTrainingSkillCount(CreatureObject* creature) {
 	return trainingSkillCount;
 }
 
+// DEV NOTE: This entire function isn't really functional anymore and needs to be reworked.
 int SkillManager::getTrainingSkillRank(CreatureObject* creature, const String& skillPrefix) {
 	//const SkillList* skills =  creature->getSkillList();
 
