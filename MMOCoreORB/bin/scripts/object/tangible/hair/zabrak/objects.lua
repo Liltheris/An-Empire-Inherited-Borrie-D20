@@ -2400,3 +2400,84 @@ object_tangible_hair_zabrak_shared_hair_zabrak_male_s20 = SharedTangibleObjectTe
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_male_s20, "object/tangible/hair/zabrak/shared_hair_zabrak_male_s20.iff")
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+object_tangible_hair_zabrak_shared_hair_zabrak_female_s21 = SharedTangibleObjectTemplate:new { clientTemplateFileName = "object/tangible/hair/zabrak/shared_hair_zabrak_female_s21.iff"}
+
+ObjectTemplates:addClientTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_female_s21, "object/tangible/hair/zabrak/shared_hair_zabrak_female_s21.iff")
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+object_tangible_hair_zabrak_shared_hair_zabrak_female_s22 = SharedTangibleObjectTemplate:new { clientTemplateFileName = "object/tangible/hair/zabrak/shared_hair_zabrak_female_s22.iff"}
+
+ObjectTemplates:addClientTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_female_s22, "object/tangible/hair/zabrak/shared_hair_zabrak_female_s22.iff")
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+object_tangible_hair_zabrak_shared_hair_zabrak_female_s23 = SharedTangibleObjectTemplate:new { clientTemplateFileName = "object/tangible/hair/zabrak/shared_hair_zabrak_female_s23.iff"}
+
+ObjectTemplates:addClientTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_female_s23, "object/tangible/hair/zabrak/shared_hair_zabrak_female_s23.iff")
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+object_tangible_hair_zabrak_shared_hair_zabrak_female_s24 = SharedTangibleObjectTemplate:new { clientTemplateFileName = "object/tangible/hair/zabrak/shared_hair_zabrak_female_s24.iff"}
+
+ObjectTemplates:addClientTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_female_s24, "object/tangible/hair/zabrak/shared_hair_zabrak_female_s24.iff")
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+object_tangible_hair_zabrak_shared_hair_zabrak_female_s25 = SharedTangibleObjectTemplate:new { clientTemplateFileName = "object/tangible/hair/zabrak/shared_hair_zabrak_female_s25.iff"}
+
+ObjectTemplates:addClientTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_female_s25, "object/tangible/hair/zabrak/shared_hair_zabrak_female_s25.iff")
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+object_tangible_hair_zabrak_shared_hair_zabrak_female_s40 = SharedTangibleObjectTemplate:new { clientTemplateFileName = "object/tangible/hair/zabrak/shared_hair_zabrak_female_s40.iff"}
+
+ObjectTemplates:addClientTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_female_s40, "object/tangible/hair/zabrak/shared_hair_zabrak_female_s40.iff")
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+object_tangible_hair_zabrak_shared_hair_zabrak_female_s41 = SharedTangibleObjectTemplate:new { clientTemplateFileName = "object/tangible/hair/zabrak/shared_hair_zabrak_female_s41.iff"}
+
+ObjectTemplates:addClientTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_female_s41, "object/tangible/hair/zabrak/shared_hair_zabrak_female_s41.iff")
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+object_tangible_hair_zabrak_shared_hair_zabrak_female_s42 = SharedTangibleObjectTemplate:new { clientTemplateFileName = "object/tangible/hair/zabrak/shared_hair_zabrak_female_s42.iff"}
+
+ObjectTemplates:addClientTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_female_s42, "object/tangible/hair/zabrak/shared_hair_zabrak_female_s42.iff")
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+object_tangible_hair_zabrak_shared_hair_zabrak_female_s43 = SharedTangibleObjectTemplate:new { clientTemplateFileName = "object/tangible/hair/zabrak/shared_hair_zabrak_female_s43.iff"}
+
+ObjectTemplates:addClientTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_female_s43, "object/tangible/hair/zabrak/shared_hair_zabrak_female_s43.iff")
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+object_tangible_hair_zabrak_shared_hair_zabrak_female_s44 = SharedTangibleObjectTemplate:new { clientTemplateFileName = "object/tangible/hair/zabrak/shared_hair_zabrak_female_s44.iff"}
+
+ObjectTemplates:addClientTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_female_s44, "object/tangible/hair/zabrak/shared_hair_zabrak_female_s44.iff")
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+object_tangible_hair_zabrak_shared_hair_zabrak_female_s45 = SharedTangibleObjectTemplate:new { clientTemplateFileName = "object/tangible/hair/zabrak/shared_hair_zabrak_female_s45.iff"}
+
+ObjectTemplates:addClientTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_female_s45, "object/tangible/hair/zabrak/shared_hair_zabrak_female_s45.iff")
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+object_tangible_hair_zabrak_shared_hair_zabrak_female_s47 = SharedTangibleObjectTemplate:new { clientTemplateFileName = "object/tangible/hair/zabrak/shared_hair_zabrak_female_s47.iff"}
+
+ObjectTemplates:addClientTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_female_s47, "object/tangible/hair/zabrak/shared_hair_zabrak_female_s47.iff")
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+object_tangible_hair_zabrak_shared_hair_zabrak_female_s48 = SharedTangibleObjectTemplate:new { clientTemplateFileName = "object/tangible/hair/zabrak/shared_hair_zabrak_female_s48.iff"}
+
+ObjectTemplates:addClientTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_female_s48, "object/tangible/hair/zabrak/shared_hair_zabrak_female_s48.iff")
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+object_tangible_hair_zabrak_shared_hair_zabrak_female_s49 = SharedTangibleObjectTemplate:new { clientTemplateFileName = "object/tangible/hair/zabrak/shared_hair_zabrak_female_s49.iff"}
+
+ObjectTemplates:addClientTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_female_s49, "object/tangible/hair/zabrak/shared_hair_zabrak_female_s49.iff")
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+object_tangible_hair_zabrak_shared_hair_zabrak_female_s50 = SharedTangibleObjectTemplate:new { clientTemplateFileName = "object/tangible/hair/zabrak/shared_hair_zabrak_female_s50.iff"}
+
+ObjectTemplates:addClientTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_female_s50, "object/tangible/hair/zabrak/shared_hair_zabrak_female_s50.iff")
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+object_tangible_hair_zabrak_shared_hair_zabrak_female_s51 = SharedTangibleObjectTemplate:new { clientTemplateFileName = "object/tangible/hair/zabrak/shared_hair_zabrak_female_s51.iff"}
+
+ObjectTemplates:addClientTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_female_s51, "object/tangible/hair/zabrak/shared_hair_zabrak_female_s51.iff")
+

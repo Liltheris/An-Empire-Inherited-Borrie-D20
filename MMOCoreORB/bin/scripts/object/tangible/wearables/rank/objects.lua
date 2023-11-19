@@ -98,5 +98,12 @@ object_tangible_wearables_rank_shared_rank_reb_major = SharedTangibleObjectTempl
 ObjectTemplates:addClientTemplate(object_tangible_wearables_rank_shared_rank_reb_major, "object/tangible/wearables/rank/shared_rank_reb_major.iff")
 --------------------------------------------------------------------------------------------------------------------------
 
+object_tangible_wearables_rank_shared_rank_imp_grandadmiral = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/rank/shared_rank_imp_grandadmiral.iff"
+}
+
+ObjectTemplates:addClientTemplate(object_tangible_wearables_rank_shared_rank_imp_grandadmiral, "object/tangible/wearables/rank/shared_rank_imp_grandadmiral.iff")
+--------------------------------------------------------------------------------------------------------------------------
+
 ----[End Batch: 'rank']----------------------------------
 

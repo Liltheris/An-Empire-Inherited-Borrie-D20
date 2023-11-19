@@ -71,6 +71,7 @@ public:
 					text << "/tool spoutrpmob [path] - Development purposes" << endl;
 					text << "/tool spoutciv [path] - Development purposes" << endl;
 					text << "/tool spoutcivwithdummy [path] - Development purposes" << endl;
+					text << "/tool spoutbase [path] - Development purposes" << endl;
 					text << "/tool spoutpatrolpoint [path] - Development purposes" << endl;
 					text << "/tool spoutobj [path] - Development purposes" << endl;
 					text << "/tool togglepublic [path] - Development purposes" << endl;
@@ -242,6 +243,20 @@ public:
 							String civTag;
 							args.getStringToken(civTag);
 							BorUtil::ScreenplaySpoutCivPoint(creature, object, civTag, fileName);
+						} else {
+							creature->sendSystemMessage("ERROR: To use Spout Civ, you need to target a creature and specify a file name and a tag.");
+						}
+					} else {
+						creature->sendSystemMessage("ERROR: To use Spout Civ, you need to target a creature and specify a file name and a tag.");
+					}
+				} else if (command == "spoutbase" && adminLevelCheck > 0) {
+					if (args.hasMoreTokens()) {
+						String fileName;
+						args.getStringToken(fileName);
+						if (args.hasMoreTokens()) {
+							String baseTag;
+							args.getStringToken(baseTag);
+							BorUtil::ScreenplaySpoutBasePoint(creature, object, baseTag, fileName);
 						} else {
 							creature->sendSystemMessage("ERROR: To use Spout Civ, you need to target a creature and specify a file name and a tag.");
 						}

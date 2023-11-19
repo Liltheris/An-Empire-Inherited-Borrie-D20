@@ -1313,6 +1313,58 @@ public:
 		creature->sendSystemMessage("Data written to bin/custom_scripts/spout/" + fileName + ".lua!");
     }
 
+    static void ScreenplaySpoutBasePoint(CreatureObject* creature, SceneObject* target, String tag, String fileName) {
+		int angle = target->getDirectionAngle();
+
+		if (target->isCreatureObject()) {
+			if (!target->asCreatureObject()->isAiAgent())
+				return;
+		} else
+			return;
+
+		CreatureObject* mob = target->asCreatureObject();
+		const CreatureTemplate* creatureTemplate = mob->asAiAgent()->getCreatureTemplate();
+		String mobileName = creatureTemplate->getTemplateName();
+
+		StringBuffer text;
+		String planetName = object->getZone()->getZoneName();
+
+		text << "{\"" << tag << "\",";
+
+        text <<  "\"" << planetName << "\", "
+
+		if (mob->getParent() != nullptr && mob->getParent().get()->isCellObject()) {
+			// Inside
+			ManagedReference<CellObject*> cell = cast<CellObject*>(mob->getParent().get().get());
+			Vector3 cellPosition = mob->getPosition();
+
+			text << cellPosition.getX() << ", " << cellPosition.getZ() << ", " << cellPosition.getY() << ", " << angle << ", " << cell->getObjectID() << ",";
+		} else {
+			// Outside
+			Vector3 worldPosition = mob->getWorldPosition();
+
+			text << worldPosition.getX() << ", " << worldPosition.getZ() << ", " << worldPosition.getY() << ", " << angle << ", "
+				 << "0"
+				 << ",";
+		}
+
+		text << "},";
+
+		if (fileName.isEmpty())
+			return;
+
+		File* file = new File("custom_scripts/spout/" + fileName + ".lua");
+		FileWriter* writer = new FileWriter(file, true); // true for appending new lines
+
+		writer->writeLine(text.toString());
+
+		writer->close();
+		delete file;
+		delete writer;
+
+		creature->sendSystemMessage("Data written to bin/custom_scripts/spout/" + fileName + ".lua!");
+	}
+
     static void ScreenplaySpoutCivPointWithMarker(CreatureObject* creature, String tag, String fileName) {
         CreatureObject* target = CreateRoleplayNPC(creature, "object/mobile/rp_human_male.iff", "default", "default", "default");
         if(target == nullptr){

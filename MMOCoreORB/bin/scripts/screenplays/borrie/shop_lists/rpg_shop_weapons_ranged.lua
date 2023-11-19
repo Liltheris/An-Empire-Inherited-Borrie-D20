@@ -15,22 +15,6 @@ shop_weapons_ranged = {
 			}
 		},
 		{
-			name = "Rifles",
-			minItems = 1,
-			items = {
-				{template = "object/weapon/roleplay/ranged/rifle/ion_rifle.iff", cost = 300, max = 10, chance = 100 },
-				{template = "object/weapon/roleplay/ranged/rifle/tusken_elite_rifle.iff", cost = 400, max = 10, chance = 100 },
-				{template = "object/weapon/roleplay/ranged/rifle/sg82b_stun_rifle.iff", cost = 700, max = 10, chance = 100 },
-				{template = "object/weapon/roleplay/ranged/rifle/dp23_rifle.iff", cost = 1800, max = 10, chance = 100 },
-				{template = "object/weapon/roleplay/ranged/rifle/laser_rifle.iff", cost = 2000, max = 10, chance = 100 },
-				{template = "object/weapon/roleplay/ranged/rifle/berserker_rifle.iff", cost = 2000, max = 10, chance = 100 },
-				{template = "object/weapon/roleplay/ranged/rifle/bowcaster.iff", cost = 2000, max = 10, chance = 100 },
-				{template = "object/weapon/roleplay/ranged/rifle/cm_sniper_rifle.iff", cost = 2000, max = 10, chance = 100 },
-				{template = "object/weapon/roleplay/ranged/rifle/czerka_adventurer.iff", cost = 2000, max = 10, chance = 100 },
-				{template = "object/weapon/roleplay/ranged/rifle/dawnsorrow_rifle.iff", cost = 2000, max = 10, chance = 100 },
-			}
-		},
-		{
 			name = "Carbines",
 			minItems = 1,
 			items = {
@@ -46,7 +30,35 @@ shop_weapons_ranged = {
 				{template = "object/weapon/roleplay/ranged/carbine/wookiee_carbine.iff", cost = 1500, max = 10, chance = 100 },
 			}
 		},
-		
+		{
+			name = "Scatterguns",
+			minItems = 1,
+			items = {
+				{template = "object/weapon/roleplay/ranged/rifle/dp23_rifle.iff", cost = 1800, max = 10, chance = 100 },
+			}
+		},
+		{
+			name = "Rifles",
+			minItems = 1,
+			items = {
+				{template = "object/weapon/roleplay/ranged/rifle/ion_rifle.iff", cost = 300, max = 10, chance = 100 },
+				{template = "object/weapon/roleplay/ranged/rifle/tusken_rifle.iff", cost = 400, max = 10, chance = 100 },
+				{template = "object/weapon/roleplay/ranged/rifle/sg82b_stun_rifle.iff", cost = 700, max = 10, chance = 100 },
+				{template = "object/weapon/roleplay/ranged/rifle/laser_rifle.iff", cost = 2000, max = 10, chance = 100 },
+				{template = "object/weapon/roleplay/ranged/rifle/berserker_rifle.iff", cost = 2000, max = 10, chance = 100 },
+				{template = "object/weapon/roleplay/ranged/rifle/bowcaster.iff", cost = 2000, max = 10, chance = 100 },
+				{template = "object/weapon/roleplay/ranged/rifle/czerka_adventurer.iff", cost = 2000, max = 10, chance = 100 },
+				{template = "object/weapon/roleplay/ranged/rifle/dawnsorrow_rifle.iff", cost = 2000, max = 10, chance = 100 },
+			}
+		},
+		{
+			name = "Sniper Rifles",
+			minItems = 1,
+			items = {
+				{template = "object/weapon/roleplay/ranged/rifle/tusken_elite_rifle.iff", cost = 400, max = 10, chance = 100 },
+				{template = "object/weapon/roleplay/ranged/rifle/cm_sniper_rifle.iff", cost = 2000, max = 10, chance = 100 },
+			}
+		},
 		{
 			name = "Grenades",
 			minItems = 1,

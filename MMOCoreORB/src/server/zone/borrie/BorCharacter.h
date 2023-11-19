@@ -333,7 +333,8 @@ public:
 
 		ModPool(creature, "health", creature->getSkillMod("rp_health") / 2);
 		FillPool(creature, "action", true);
-		FillPool(creature, "force", true);
+		//Short Rests don't fill the Force pool.
+		//FillPool(creature, "force", true);
 		ModPool(creature, "will", -2);
 	}
 
@@ -537,6 +538,8 @@ public:
 
 		int trainingSkillCount = skillManager->getTrainingSkillCount(target);
 
+		//NOTE: This part is not functional as it stands, it will need to be reworked to match the new system eventually.
+
 		if(trainingSkillCount > 0) {
 			infoText << "\\#FF7000[TRAINING]\\#." << endl;
 			int count = 1;
@@ -655,25 +658,27 @@ public:
 	}
 
 	static bool GetSkillIsTrainable(String skill) {
-		if(skill.contains("admin_"))
+		if (skill.contains("admin_"))
 			return false;
-		else if(skill.contains("rp_force_prog")) 
+		else if (skill.contians("rp_char"))
 			return false;
-		else if(skill == "rp_training_jedi_rank_08")
+		else if (skill.contains("rp_force_prog")) 
 			return false;
-		else if(skill == "rp_training_jedi_rank_09")
+		else if (skill == "rp_training_jedi_rank_08")
 			return false;
-		else if(skill == "rp_training_jedi_rank_10")
+		else if (skill == "rp_training_jedi_rank_09")
 			return false;
-		else if(skill == "rp_training_jedi_rank_master")
+		else if (skill == "rp_training_jedi_rank_10")
 			return false;
-		else if(skill == "rp_training_sith_rank_08")
+		else if (skill == "rp_training_jedi_rank_master")
 			return false;
-		else if(skill == "rp_training_sith_rank_09")
+		else if (skill == "rp_training_sith_rank_08")
 			return false;
-		else if(skill == "rp_training_sith_rank_10")
+		else if (skill == "rp_training_sith_rank_09")
 			return false;
-		else if(skill == "rp_training_sith_rank_master")
+		else if (skill == "rp_training_sith_rank_10")
+			return false;
+		else if (skill == "rp_training_sith_rank_master")
 			return false;
 		else
 			return true;		

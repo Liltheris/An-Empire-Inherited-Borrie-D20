@@ -81,4 +81,13 @@ travel_destinations = {
 			{"Mos Eisley Garrison", "rp_tatooine", 597, 0.0, 5, 0, "faction"},
 		}	
 	},
+	
+	--Mandalore
+	{ 
+		name = "Mandalore",
+		zone = "rp_mandalore",
+		destinations = {
+			{"Keldabe", "rp_mandalore", -3860.0, 0.0, -2550.0, 0, "public"},
+		}	
+	},
 }

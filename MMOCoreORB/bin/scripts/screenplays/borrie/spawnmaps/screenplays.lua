@@ -24,3 +24,6 @@ includeFile("borrie/spawnmaps/space_tansarii_point_station.lua")
 
 --Rori
 includeFile("borrie/spawnmaps/rori_new_restuss.lua")
+
+--Mandalore
+includeFile("borrie/spawnmaps/mandalore_keldabe.lua")
