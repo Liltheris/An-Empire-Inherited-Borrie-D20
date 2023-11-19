@@ -112,92 +112,105 @@ end
 
 function SulonBaronsHedScreenPlay:spawnSceneObjects() 
 	--Travel Terminals
+	spawnSceneObject("rp_mandalore", "object/tangible/terminal/terminal_travel_rp.iff", -13.0021, 0.639421, 51.1865, 610029859, 1, 0, 0.332372, 0)
+	spawnSceneObject("rp_mandalore", "object/tangible/terminal/terminal_travel_rp.iff", -2.7419, 0.639421, 48.1677, 610029859, 1, 0, 0, 0)
+	spawnSceneObject("rp_mandalore", "object/tangible/terminal/terminal_travel_rp.iff", 2.54505, 0.639421, 48.1693, 610029859, 1, 0, 0, 0)
+	spawnSceneObject("rp_mandalore", "object/tangible/terminal/terminal_travel_rp.iff", 12.6536, 0.639421, 51.1838, 610029859, 0.909306, 0, -0.416129, 0)
 	
+	spawnSceneObject("rp_mandalore", "object/tangible/terminal/terminal_travel_rp.iff", -13.0021, 0.639421, 51.1865, 610029873, 1, 0, 0.332372, 0)
+	spawnSceneObject("rp_mandalore", "object/tangible/terminal/terminal_travel_rp.iff", -2.7419, 0.639421, 48.1677, 610029873, 1, 0, 0, 0)
+	spawnSceneObject("rp_mandalore", "object/tangible/terminal/terminal_travel_rp.iff", 2.54505, 0.639421, 48.1693, 610029873, 1, 0, 0, 0)
+	spawnSceneObject("rp_mandalore", "object/tangible/terminal/terminal_travel_rp.iff", 12.6536, 0.639421, 51.1838, 610029873, 0.909306, 0, -0.416129, 0)
+	
+	spawnSceneObject("rp_mandalore", "object/tangible/terminal/terminal_travel_rp.iff", -13.0021, 0.639421, 51.1865, 610029907, 1, 0, 0.332372, 0)
+	spawnSceneObject("rp_mandalore", "object/tangible/terminal/terminal_travel_rp.iff", -2.7419, 0.639421, 48.1677, 610029907, 1, 0, 0, 0)
+	spawnSceneObject("rp_mandalore", "object/tangible/terminal/terminal_travel_rp.iff", 2.54505, 0.639421, 48.1693, 610029907, 1, 0, 0, 0)
+	spawnSceneObject("rp_mandalore", "object/tangible/terminal/terminal_travel_rp.iff", 12.6536, 0.639421, 51.1838, 610029907, 0.909306, 0, -0.416129, 0)
 	--Signs
 	
 	--TAILOR--
-	sObj = spawnSceneObject("rp_sulon", "object/tangible/furniture/plain/plain_cabinet_s01.iff", 1.34424, 0.625, 0.176758, 610028089, 1, 0, 0, 0) --Shirts
+	sObj = spawnSceneObject("rp_sulon", "object/tangible/furniture/plain/plain_cabinet_s01.iff", 1.34424, 0.625, 0.176758, 610028090, 1, 0, 0, 0) --Shirts
 	SceneObject(sObj):setCustomObjectName("Shirts")
 	SceneObject(sObj):setPublicContainer(true)
 	SceneObject(sObj):setDispenserContainer(true)
 	SceneObject(sObj):populateInventoryFromContentList("tailor_shirts")
-	sObj = spawnSceneObject("rp_sulon", "object/tangible/furniture/plain/plain_cabinet_s01.iff", -0.208496, 0.625, 0.176758, 610028089, 1, 0, 0, 0) --Pants
+	sObj = spawnSceneObject("rp_sulon", "object/tangible/furniture/plain/plain_cabinet_s01.iff", -0.208496, 0.625, 0.176758, 610028090, 1, 0, 0, 0) --Pants
 	SceneObject(sObj):setCustomObjectName("Pants")
 	SceneObject(sObj):setPublicContainer(true)
 	SceneObject(sObj):setDispenserContainer(true)
 	SceneObject(sObj):populateInventoryFromContentList("tailor_pants")
-	sObj = spawnSceneObject("rp_sulon", "object/tangible/furniture/plain/plain_cabinet_s01.iff", -1.77686, 0.625, 0.176758, 610028089, 1, 0, 0, 0) --Footwear
+	sObj = spawnSceneObject("rp_sulon", "object/tangible/furniture/plain/plain_cabinet_s01.iff", -1.77686, 0.625, 0.176758, 610028090, 1, 0, 0, 0) --Footwear
 	SceneObject(sObj):setCustomObjectName("Footwear")
 	SceneObject(sObj):setPublicContainer(true)
 	SceneObject(sObj):setDispenserContainer(true)
 	SceneObject(sObj):populateInventoryFromContentList("tailor_footwear")
-	sObj = spawnSceneObject("rp_sulon", "object/tangible/furniture/plain/plain_cabinet_s01.iff", -3.37451, 0.625, 0.176758, 610028089, 1, 0, 0, 0)--Jacket
+	sObj = spawnSceneObject("rp_sulon", "object/tangible/furniture/plain/plain_cabinet_s01.iff", -3.37451, 0.625, 0.176758, 610028090, 1, 0, 0, 0)--Jacket
 	SceneObject(sObj):setCustomObjectName("Jacket")
 	SceneObject(sObj):setPublicContainer(true)
 	SceneObject(sObj):setDispenserContainer(true)
 	SceneObject(sObj):populateInventoryFromContentList("tailor_jackets")
-	sObj = spawnSceneObject("rp_sulon", "object/tangible/furniture/plain/plain_chest_s01.iff", -3.33594, 2.69809, -0.0209961, 610028089, 1, 0, 0, 0) --Vest
+	sObj = spawnSceneObject("rp_sulon", "object/tangible/furniture/plain/plain_chest_s01.iff", -3.33594, 2.69809, -0.0209961, 610028090, 1, 0, 0, 0) --Vest
 	SceneObject(sObj):setCustomObjectName("Vest")
 	SceneObject(sObj):setPublicContainer(true)
 	SceneObject(sObj):setDispenserContainer(true)
 	SceneObject(sObj):populateInventoryFromContentList("tailor_vests")
-	sObj = spawnSceneObject("rp_sulon", "object/tangible/furniture/plain/plain_chest_s01.iff", -1.73633, 2.69809, -0.0209961, 610028089, 1, 0, 0, 0) --Robes
+	sObj = spawnSceneObject("rp_sulon", "object/tangible/furniture/plain/plain_chest_s01.iff", -1.73633, 2.69809, -0.0209961, 610028090, 1, 0, 0, 0) --Robes
 	SceneObject(sObj):setCustomObjectName("Robes")
 	SceneObject(sObj):setPublicContainer(true)
 	SceneObject(sObj):setDispenserContainer(true)
 	SceneObject(sObj):populateInventoryFromContentList("tailor_robes")
-	sObj = spawnSceneObject("rp_sulon", "object/tangible/furniture/plain/plain_chest_s01.iff", -0.185059, 2.69809, -0.0209961, 610028089, 1, 0, 0, 0) --Bodysuits
+	sObj = spawnSceneObject("rp_sulon", "object/tangible/furniture/plain/plain_chest_s01.iff", -0.185059, 2.69809, -0.0209961, 610028090, 1, 0, 0, 0) --Bodysuits
 	SceneObject(sObj):setCustomObjectName("Bodysuits")
 	SceneObject(sObj):setPublicContainer(true)
 	SceneObject(sObj):setDispenserContainer(true)
 	SceneObject(sObj):populateInventoryFromContentList("tailor_bodysuits")
-	sObj = spawnSceneObject("rp_sulon", "object/tangible/furniture/plain/plain_chest_s01.iff", 1.40088, 2.69809, -0.0209961, 610028089, 1, 0, 0, 0) --Skirts
+	sObj = spawnSceneObject("rp_sulon", "object/tangible/furniture/plain/plain_chest_s01.iff", 1.40088, 2.69809, -0.0209961, 610028090, 1, 0, 0, 0) --Skirts
 	SceneObject(sObj):setCustomObjectName("Skirts")
 	SceneObject(sObj):setPublicContainer(true)
 	SceneObject(sObj):setDispenserContainer(true)
 	SceneObject(sObj):populateInventoryFromContentList("tailor_skirts")
-	sObj = spawnSceneObject("rp_sulon", "object/tangible/furniture/plain/plain_chest_s01.iff", -0.898438, 1.625, 6.69434, 610028089, 0, 0, 1, 0) --Women
+	sObj = spawnSceneObject("rp_sulon", "object/tangible/furniture/plain/plain_chest_s01.iff", -0.898438, 1.625, 6.69434, 610028090, 0, 0, 1, 0) --Women
 	SceneObject(sObj):setCustomObjectName("Women's Wear")
 	SceneObject(sObj):setPublicContainer(true)
 	SceneObject(sObj):setDispenserContainer(true)
 	SceneObject(sObj):populateInventoryFromContentList("tailor_women")
-	sObj = spawnSceneObject("rp_sulon", "object/tangible/furniture/plain/plain_chest_s01.iff", 0.101562, 1.625, 6.69434, 610028089, 0, 0, 1, 0) --Heaad & Goggle
+	sObj = spawnSceneObject("rp_sulon", "object/tangible/furniture/plain/plain_chest_s01.iff", 0.101562, 1.625, 6.69434, 610028090, 0, 0, 1, 0) --Heaad & Goggle
 	SceneObject(sObj):setCustomObjectName("Headwear & Goggles")
 	SceneObject(sObj):setPublicContainer(true)
 	SceneObject(sObj):setDispenserContainer(true)
 	SceneObject(sObj):populateInventoryFromContentList("tailor_headwear")
 	SceneObject(sObj):populateInventoryFromContentList("tailor_goggles")
-	sObj = spawnSceneObject("rp_sulon", "object/tangible/furniture/plain/plain_chest_s01.iff", 1.10156, 1.625, 6.69434, 610028089, 0, 0, 1, 0) --Handwear
+	sObj = spawnSceneObject("rp_sulon", "object/tangible/furniture/plain/plain_chest_s01.iff", 1.10156, 1.625, 6.69434, 610028090, 0, 0, 1, 0) --Handwear
 	SceneObject(sObj):setCustomObjectName("Handwear")
 	SceneObject(sObj):setPublicContainer(true)
 	SceneObject(sObj):setDispenserContainer(true)
 	SceneObject(sObj):populateInventoryFromContentList("tailor_handwear")
-	sObj = spawnSceneObject("rp_sulon", "object/tangible/furniture/plain/plain_chest_s01.iff", 2.10156, 1.625, 6.69434, 610028089, 0, 0, 1, 0) --Jewelry
+	sObj = spawnSceneObject("rp_sulon", "object/tangible/furniture/plain/plain_chest_s01.iff", 2.10156, 1.625, 6.69434, 610028090, 0, 0, 1, 0) --Jewelry
 	SceneObject(sObj):setCustomObjectName("Jewelry")
 	SceneObject(sObj):setPublicContainer(true)
 	SceneObject(sObj):setDispenserContainer(true)
 	SceneObject(sObj):populateInventoryFromContentList("tailor_jewelry")
-	sObj = spawnSceneObject("rp_sulon", "object/tangible/furniture/plain/plain_chest_s01.iff", -1.39844, 0.625, 6.69434, 610028089, 0, 0, 1, 0) --Misc/Belts
+	sObj = spawnSceneObject("rp_sulon", "object/tangible/furniture/plain/plain_chest_s01.iff", -1.39844, 0.625, 6.69434, 610028090, 0, 0, 1, 0) --Misc/Belts
 	SceneObject(sObj):setCustomObjectName("Belts, Bandoliers & Aprons")
 	SceneObject(sObj):setPublicContainer(true)
 	SceneObject(sObj):setDispenserContainer(true)
 	SceneObject(sObj):populateInventoryFromContentList("tailor_misc")
-	sObj = spawnSceneObject("rp_sulon", "object/tangible/furniture/plain/plain_chest_s01.iff", -0.398438, 0.625, 6.69434, 610028089, 0, 0, 1, 0) --Aliens
+	sObj = spawnSceneObject("rp_sulon", "object/tangible/furniture/plain/plain_chest_s01.iff", -0.398438, 0.625, 6.69434, 610028090, 0, 0, 1, 0) --Aliens
 	SceneObject(sObj):setCustomObjectName("Alienwear")
 	SceneObject(sObj):setPublicContainer(true)
 	SceneObject(sObj):setDispenserContainer(true)
 	SceneObject(sObj):populateInventoryFromContentList("tailor_alien")
-	sObj = spawnSceneObject("rp_sulon", "object/tangible/furniture/plain/plain_chest_s01.iff", 0.601562, 0.625, 6.69434, 610028089, 0, 0, 1, 0) --Wookiee
+	sObj = spawnSceneObject("rp_sulon", "object/tangible/furniture/plain/plain_chest_s01.iff", 0.601562, 0.625, 6.69434, 610028090, 0, 0, 1, 0) --Wookiee
 	SceneObject(sObj):setCustomObjectName("Wookiee Wear")
 	SceneObject(sObj):setPublicContainer(true)
 	SceneObject(sObj):setDispenserContainer(true)
 	SceneObject(sObj):populateInventoryFromContentList("tailor_wookiee")
-	sObj = spawnSceneObject("rp_sulon", "object/tangible/furniture/plain/plain_chest_s01.iff", 1.60156, 0.625, 6.69434, 610028089, 0, 0, 1, 0) --Ithorian 1
+	sObj = spawnSceneObject("rp_sulon", "object/tangible/furniture/plain/plain_chest_s01.iff", 1.60156, 0.625, 6.69434, 610028090, 0, 0, 1, 0) --Ithorian 1
 	SceneObject(sObj):setCustomObjectName("Ithorian Wear I")
 	SceneObject(sObj):setPublicContainer(true)
 	SceneObject(sObj):setDispenserContainer(true)
 	SceneObject(sObj):populateInventoryFromContentList("tailor_ithorian1")
-	sObj = spawnSceneObject("rp_sulon", "object/tangible/furniture/plain/plain_chest_s01.iff", 2.60156, 0.625, 6.69434, 610028089, 0, 0, 1, 0) --Ithorian 2
+	sObj = spawnSceneObject("rp_sulon", "object/tangible/furniture/plain/plain_chest_s01.iff", 2.60156, 0.625, 6.69434, 610028090, 0, 0, 1, 0) --Ithorian 2
 	SceneObject(sObj):setCustomObjectName("Ithorian Wear II")
 	SceneObject(sObj):setPublicContainer(true)
 	SceneObject(sObj):setDispenserContainer(true)
