@@ -1327,11 +1327,11 @@ public:
 		String mobileName = creatureTemplate->getTemplateName();
 
 		StringBuffer text;
-		String planetName = object->getZone()->getZoneName();
+		String planetName = CreatureObject->getZone()->getZoneName();
 
 		text << "{\"" << tag << "\",";
 
-        text <<  "\"" << planetName << "\", "
+        text << "\"" << planetName << "\", ";
 
 		if (mob->getParent() != nullptr && mob->getParent().get()->isCellObject()) {
 			// Inside

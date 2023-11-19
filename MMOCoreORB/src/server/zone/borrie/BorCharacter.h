@@ -660,7 +660,7 @@ public:
 	static bool GetSkillIsTrainable(String skill) {
 		if (skill.contains("admin_"))
 			return false;
-		else if (skill.contians("rp_char"))
+		else if (skill.contains("rp_char"))
 			return false;
 		else if (skill.contains("rp_force_prog")) 
 			return false;
