@@ -926,6 +926,11 @@ rp_mustafar = {
 	gcwEnabled = 0,
 }
 
+rp_mandalore = {
+	weatherEnabled = 1,
+	gcwEnabled = 0,
+}
+
 rp_naboo = {
 	weatherEnabled = 1,
 	gcwEnabled = 0,
