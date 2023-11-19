@@ -5,3 +5,11 @@ headline = {
 	galaxyDate = "28.11.6 AE",
 }
 BorNewsnet:addHeadline(headline)
+
+headline = {
+	planet = "rp_tatooine",
+	title = "Lockdown Lifted!",
+	content = "After almost two weeks of lockdown, Imperial forces have lifted all travel restrictions to and from the city. No official reason has been stated for why the lockdown was placed, nor why it was lifted. While there is a clear air of relief felt over the entire city, questions on the Empire's conduct are being asked, and the overall climate of the city can be best described as 'on edge.'",
+	galaxyDate = "28.11.19 AE",
+}
+BorNewsnet:addHeadline(headline)

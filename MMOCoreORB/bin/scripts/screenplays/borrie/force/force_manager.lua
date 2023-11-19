@@ -48,11 +48,11 @@ BorForce = {
 	caves = {
 		--Zone, Type, Building ID
 		--{"rp_tatooine", "cave", 610009720},
-		{"rp_carida", "cave", 610019244},
-		{"rp_dantooine", "cave", 610019275},
-		{"rp_dathomir", "cave", 610019299},
-		{"rp_yavin4", "cave", 610019324},
-		{"rp_sulon", "cave", 610019336},
+		--{"rp_carida", "cave", 610019244},
+		--{"rp_dantooine", "cave", 610019275},
+		--{"rp_dathomir", "cave", 610019299},
+		--{"rp_yavin4", "cave", 610019324},
+		--{"rp_sulon", "cave", 610019336},
 	},
 	
 	crystal_templates = {
