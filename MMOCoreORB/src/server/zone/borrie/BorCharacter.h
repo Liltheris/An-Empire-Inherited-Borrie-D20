@@ -989,7 +989,10 @@ public:
 			maxDistance = piloting + 22;
 			BorrieRPG::BroadcastMessage(creature, creature->getFirstName() + " has begun to move on their mount. Their enhanced range is " + String::valueOf(maxDistance) + "m. ");
 		} else {
-			maxDistance = maneuverability + athletics + 6;
+			//Minimum movement distance of 10m, max of 25m
+			maxDistance = maneuverability + athletics + 10;
+			if (maxDistance > 25)
+				maxDistance = 25;
 
 			byte posture = creature->getPosture();
 
