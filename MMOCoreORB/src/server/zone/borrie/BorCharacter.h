@@ -709,7 +709,7 @@ public:
 				styledBranch = "kandosii";
 			} else if (target->hasSkill("rp_training_mando_goran_01")) {
 				branch = "goran";
-				styledBranch = "beskar'goran"
+				styledBranch = "beskar'goran";
 			}
 
 			if (target->hasSkill("rp_training_mando_master")) {
