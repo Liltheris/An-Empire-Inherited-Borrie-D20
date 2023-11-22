@@ -88,7 +88,7 @@ public:
 
 			skillManager->awardSkill("rp_force_prog_novice", creature, true, true, true);
 
-			player->setStoredInt("fs_chosen", 1);
+			targetGhost->setStoredInt("fs_chosen", 1);
 		}
 
 		if(hasDecided != 1) {
