@@ -79,10 +79,16 @@ public:
 			//Miraluka are always Force Sensitive.
 			hasDecided = 1;
 
+			SkillManager* skillManager = SkillManager::instance();
+
 			ManagedReference<PlayerObject*> targetGhost = creature->getPlayerObject();
 			if(targetGhost == nullptr)
 				return;
-			targetGhost->setJediState(2);
+			targetGhost->setJediState(1);
+
+			skillManager->awardSkill("rp_force_prog_novice", player, true, true, true);
+
+			player->setStoredInt("fs_chosen", 1);
 		}
 
 		if(hasDecided != 1) {
@@ -712,6 +718,7 @@ public:
 				output << BorrieRPG::Capitalize(styledBranch) << " " << getTrainingBranchRank(target, branch) << ")";
 			}
 		}
+		return "";
 	}
 
 	static String getTrainingBranchRank(CreatureObject* target, String trainingBranch) {
