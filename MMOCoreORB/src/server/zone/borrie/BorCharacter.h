@@ -86,7 +86,7 @@ public:
 				return;
 			targetGhost->setJediState(1);
 
-			skillManager->awardSkill("rp_force_prog_novice", targetGhost, true, true, true);
+			skillManager->awardSkill("rp_force_prog_novice", creature, true, true, true);
 
 			player->setStoredInt("fs_chosen", 1);
 		}
