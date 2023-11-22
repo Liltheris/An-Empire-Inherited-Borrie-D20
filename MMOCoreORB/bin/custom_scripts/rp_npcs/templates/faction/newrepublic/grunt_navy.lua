@@ -15,31 +15,11 @@ npc_template = {
 	equipmentTemplates = {
 		{"rp_human_male", {"faction/newrepublic/grunt_navy"}},
 		{"rp_human_female", {"faction/newrepublic/grunt_navy"}},
-		{"rp_sullustan_male", {"faction/newrepublic/grunt_navy"}},
-		{"rp_sullustan_female", {"faction/newrepublic/grunt_navy"}},
-		{"rp_zabrak_male", {"faction/newrepublic/grunt_navy"}},
-		{"rp_zabrak_female", {"faction/newrepublic/grunt_navy"}},
-		{"rp_mirialan_male", {"faction/newrepublic/grunt_navy"}},
-		{"rp_mirialan_female", {"faction/newrepublic/grunt_navy"}},
-		{"rp_moncal_male", {"faction/newrepublic/grunt_navy"}},
-		{"rp_moncal_female", {"faction/newrepublic/grunt_navy"}},
-		{"rp_twilek_male", {"faction/newrepublic/grunt_navy"}},
-		{"rp_twilek_female", {"faction/newrepublic/grunt_navy"}},
 	},	
 	
 	customizationTemplates = {
 		{"rp_human_male", {"random"}},
 		{"rp_human_female", {"random"}},
-		{"rp_sullustan_male", {"random"}},
-		{"rp_sullustan_female", {"random"}},
-		{"rp_zabrak_male", {"random"}},
-		{"rp_zabrak_female", {"random"}},
-		{"rp_mirialan_male", {"random"}},
-		{"rp_mirialan_female", {"random"}},
-		{"rp_moncal_male", {"random"}},
-		{"rp_moncal_female", {"random"}},
-		{"rp_twilek_male", {"random"}},
-		{"rp_twilek_female", {"random"}},
 	},	
 	
 	customVarOverrides = {

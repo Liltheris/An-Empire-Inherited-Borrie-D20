@@ -8,12 +8,10 @@ npc_template = {
 	
 	equipmentTemplates = {
 		{"rp_human_male", {"faction/newrepublic/grunt_army_snow"}},
-		{"rp_human_female", {"faction/newrepublic/grunt_army_snow"}},
 	},	
 	
 	customizationTemplates = {
 		{"rp_human_male", {"random"}},
-		{"rp_human_female", {"random"}},
 	},	
 	
 	customVarOverrides = {

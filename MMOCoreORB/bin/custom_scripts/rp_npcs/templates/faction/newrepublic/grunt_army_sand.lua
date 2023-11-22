@@ -23,23 +23,12 @@ npc_template = {
 		{"rp_mirialan_female", {"faction/newrepublic/grunt_army_sand"}},
 		{"rp_moncal_male", {"faction/newrepublic/grunt_army_sand"}},
 		{"rp_moncal_female", {"faction/newrepublic/grunt_army_sand"}},
-		{"rp_twilek_male", {"faction/newrepublic/grunt_army_sand_twi"}},
-		{"rp_twilek_female", {"faction/newrepublic/grunt_army_sand_twi"}},
+		{"rp_twilek_male", {"faction/newrepublic/grunt_army_sand"}},
+		{"rp_twilek_female", {"faction/newrepublic/grunt_army_sand"}},
 	},	
 	
 	customizationTemplates = {
 		{"rp_human_male", {"random"}},
-		{"rp_human_female", {"random"}},
-		{"rp_sullustan_male", {"random"}},
-		{"rp_sullustan_female", {"random"}},
-		{"rp_zabrak_male", {"random"}},
-		{"rp_zabrak_female", {"random"}},
-		{"rp_mirialan_male", {"random"}},
-		{"rp_mirialan_female", {"random"}},
-		{"rp_moncal_male", {"random"}},
-		{"rp_moncal_female", {"random"}},
-		{"rp_twilek_male", {"random"}},
-		{"rp_twilek_female", {"random"}},
 	},	
 	
 	customVarOverrides = {
