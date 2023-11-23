@@ -82,7 +82,7 @@ public:
 			ManagedReference<PlayerObject*> targetGhost = creature->getPlayerObject();
 			if(targetGhost == nullptr)
 				return;
-			targetGhost->setJediState(2);
+			targetGhost->setJediState(1);
 		}
 
 		if(hasDecided != 1) {
