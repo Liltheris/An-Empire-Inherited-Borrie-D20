@@ -751,6 +751,11 @@ rp_abregado_rae = {
 	gcwEnabled = 0,
 }
 
+rp_alpheridies = {
+	weatherEnabled = 1,
+	gcwEnabled = 0,
+}
+
 rp_aeten2 = {
 	weatherEnabled = 1,
 	gcwEnabled = 0,
