@@ -21,7 +21,7 @@ shop_weapons_ranged = {
 
 				{template = "object/weapon/roleplay/ranged/carbine/ee3_carbine.iff", cost = 600, max = 10, chance = 100 },
 				{template = "object/weapon/roleplay/ranged/carbine/laser_carbine.iff", cost = 700, max = 10, chance = 100 },
-				{template = "object/weapon/roleplay/ranged/carbine/elite_carbine.iff", cost = 1500, max = 10, chance = 100 },
+				{template = "object/weapon/roleplay/ranged/carbine/advanced_elite_carbine.iff", cost = 1500, max = 10, chance = 100 },
 				{template = "object/weapon/roleplay/ranged/carbine/charric_carbine.iff", cost = 1500, max = 10, chance = 100 },
 				{template = "object/weapon/roleplay/ranged/carbine/corestrike_rancor_carbine.iff", cost = 1500, max = 10, chance = 100 },
 				{template = "object/weapon/roleplay/ranged/carbine/firestar_10k.iff", cost = 1500, max = 10, chance = 100 },

@@ -59,7 +59,7 @@ object_creature_player_smc_female = object_creature_player_shared_smc_female:new
 	},
 	defaultLanguage = 1,
 	startingItems = { },
-	startingSkills = { "species_smc", "social_language_basic_comprehend", "social_language_basic_speak" }
+	startingSkills = { "species_smc", "social_language_basic_comprehend", "social_language_basic_speak", "always_force_sensitive" }
 }
 
 ObjectTemplates:addTemplate(object_creature_player_smc_female, "object/creature/player/smc_female.iff")

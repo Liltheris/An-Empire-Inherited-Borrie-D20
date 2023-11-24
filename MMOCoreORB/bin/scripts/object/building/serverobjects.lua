@@ -66,3 +66,6 @@ includeFile("building/content/serverobjects.lua")
 
 includeFile("building/player_sp/serverobjects.lua")
 includeFile("building/player_sp/city/serverobjects.lua")
+
+includeFile("building/sulon/serverobjects.lua")
+includeFile("building/restuss/serverobjects.lua")

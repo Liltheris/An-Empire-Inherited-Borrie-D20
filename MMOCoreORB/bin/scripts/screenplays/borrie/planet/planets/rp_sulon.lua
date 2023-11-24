@@ -2,9 +2,9 @@ planet = {
 	name = "Sulon",
 	zone = "rp_sulon",
 	startingFaction = "empire",
-	startingFactionControl = 25,
+	startingFactionControl = 55,
 	bases = {
-
+		"barons_hed_customs",
 	},
 	
 	landing_points = {

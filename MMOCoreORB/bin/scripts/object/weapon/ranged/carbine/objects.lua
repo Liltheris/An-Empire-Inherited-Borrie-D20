@@ -671,69 +671,15 @@ object_weapon_ranged_carbine_shared_carbine_ee3 = SharedWeaponObjectTemplate:new
 
 ObjectTemplates:addClientTemplate(object_weapon_ranged_carbine_shared_carbine_ee3, "object/weapon/ranged/carbine/shared_carbine_ee3.iff")
 
-object_weapon_ranged_carbine_shared_carbine_elite = SharedWeaponObjectTemplate:new {
-	clientTemplateFileName = "object/weapon/ranged/carbine/shared_carbine_elite.iff"
-	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
---[[
-	appearanceFilename = "appearance/wp_carbine_elite.apt",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
-	attackType = 1,
-
-	certificationsRequired = {},
-	clearFloraRadius = 0,
-	clientDataFile = "",
-	clientGameObjectType = 131083,
-	collisionActionBlockFlags = 0,
-	collisionActionFlags = 51,
-	collisionActionPassFlags = 1,
-	collisionMaterialBlockFlags = 0,
-	collisionMaterialFlags = 1,
-	collisionMaterialPassFlags = 0,
-	containerType = 1,
-	containerVolumeLimit = 0,
-	customizationVariableMapping = {},
-
-	detailedDescription = "@weapon_detail:carbine_elite",
-
-	gameObjectType = 131083,
-
-	locationReservationRadius = 0,
-	lookAtText = "@weapon_lookat:carbine_elite",
-
-	noBuildRadius = 0,
-
-	objectName = "@weapon_name:carbine_elite",
-	onlyVisibleInTools = 0,
-
-	paletteColorCustomizationVariables = {},
-	portalLayoutFilename = "",
-
-	rangedIntCustomizationVariables = {},
-
-	scale = 1,
-	scaleThresholdBeforeExtentTest = 0.5,
-	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
-	snapToTerrain = 1,
-	socketDestinations = {},
-	structureFootprintFileName = "",
-	surfaceType = 0,
-
-	targetable = 1,
-	totalCellNumber = 0,
-
-	useStructureFootprintOutline = 0,
-
-	weaponEffect = "bolt",
-	weaponEffectIndex = 5,
-
-	clientObjectCRC = 971375722,
-	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/ranged/base/shared_base_ranged_weapon.iff", "object/weapon/ranged/carbine/base/shared_carbine_base.iff"}
-]]
-}
-
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+object_weapon_ranged_carbine_shared_carbine_elite = SharedWeaponObjectTemplate:new {clientTemplateFileName = "object/weapon/ranged/carbine/shared_carbine_elite.iff"}
 ObjectTemplates:addClientTemplate(object_weapon_ranged_carbine_shared_carbine_elite, "object/weapon/ranged/carbine/shared_carbine_elite.iff")
 
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+object_weapon_ranged_carbine_shared_advanced_carbine_elite = SharedWeaponObjectTemplate:new {clientTemplateFileName = "object/weapon/ranged/carbine/shared_carbine_elite_combined.iff"}
+ObjectTemplates:addClientTemplate(object_weapon_ranged_carbine_shared_advanced_carbine_elite, "object/weapon/ranged/carbine/shared_carbine_elite_combined.iff")
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 object_weapon_ranged_carbine_shared_carbine_laser = SharedWeaponObjectTemplate:new {
 	clientTemplateFileName = "object/weapon/ranged/carbine/shared_carbine_laser.iff"
 	--Data below here is deprecated and loaded from the tres, keeping for easy lookups

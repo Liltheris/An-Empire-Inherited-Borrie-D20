@@ -330,6 +330,31 @@ object_weapon_roleplay_ranged_carbine_elite_carbine = object_weapon_ranged_carbi
 	maxRangeAccuracy = _maxRangeAccuracy,
 }
 
+--Advanced Elite Carbine
+object_weapon_roleplay_ranged_carbine_advanced_elite_carbine = object_weapon_ranged_carbine_shared_advanced_carbine_elite:new {
+
+	--[Info]
+	customName = "Advanced Elite Carbine",
+
+	--[Stats]
+	damageType = ENERGY,
+	armorPiercing = NONE,
+
+	--Damage (minDamage[d]maxDamage) i.e. (2d20)
+	minDamage = 1, --Amount of Die used in Damage
+	maxDamage = 4, --Type of Die used in Damage
+	bonusDamage = 4,
+
+	--[Stats]
+	attackType = _attackType,
+	pointBlankRange = _pointBlankRange,
+	pointBlankAccuracy = _pointBlankAccuracy,
+	idealRange = _idealRange,
+	idealAccuracy = _idealAccuracy,
+	maxRange = _maxRange,
+	maxRangeAccuracy = _maxRangeAccuracy,
+}
+
 --Firestar 10-K
 object_weapon_roleplay_ranged_carbine_firestar_10k = object_weapon_ranged_carbine_shared_ep3_loot_firestar:new {
 
@@ -526,6 +551,7 @@ ObjectTemplates:addTemplate(object_weapon_roleplay_ranged_carbine_e5_carbine, "o
 ObjectTemplates:addTemplate(object_weapon_roleplay_ranged_carbine_e11_carbine, "object/weapon/roleplay/ranged/carbine/e11_carbine.iff")
 ObjectTemplates:addTemplate(object_weapon_roleplay_ranged_carbine_ee3_carbine, "object/weapon/roleplay/ranged/carbine/ee3_carbine.iff")
 ObjectTemplates:addTemplate(object_weapon_roleplay_ranged_carbine_elite_carbine, "object/weapon/roleplay/ranged/carbine/elite_carbine.iff")
+ObjectTemplates:addTemplate(object_weapon_roleplay_ranged_carbine_advanced_elite_carbine, "object/weapon/roleplay/ranged/carbine/advanced_elite_carbine.iff")
 ObjectTemplates:addTemplate(object_weapon_roleplay_ranged_carbine_firestar_10k, "object/weapon/roleplay/ranged/carbine/firestar_10k.iff")
 ObjectTemplates:addTemplate(object_weapon_roleplay_ranged_carbine_geoniasian_carbine, "object/weapon/roleplay/ranged/carbine/geoniasian_carbine.iff")
 ObjectTemplates:addTemplate(object_weapon_roleplay_ranged_carbine_laser_carbine, "object/weapon/roleplay/ranged/carbine/laser_carbine.iff")

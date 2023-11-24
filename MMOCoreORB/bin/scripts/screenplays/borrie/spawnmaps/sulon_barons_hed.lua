@@ -112,20 +112,20 @@ end
 
 function SulonBaronsHedScreenPlay:spawnSceneObjects() 
 	--Travel Terminals
-	spawnSceneObject("rp_mandalore", "object/tangible/terminal/terminal_travel_rp.iff", -13.0021, 0.639421, 51.1865, 610029859, 1, 0, 0.332372, 0)
-	spawnSceneObject("rp_mandalore", "object/tangible/terminal/terminal_travel_rp.iff", -2.7419, 0.639421, 48.1677, 610029859, 1, 0, 0, 0)
-	spawnSceneObject("rp_mandalore", "object/tangible/terminal/terminal_travel_rp.iff", 2.54505, 0.639421, 48.1693, 610029859, 1, 0, 0, 0)
-	spawnSceneObject("rp_mandalore", "object/tangible/terminal/terminal_travel_rp.iff", 12.6536, 0.639421, 51.1838, 610029859, 0.909306, 0, -0.416129, 0)
+	spawnSceneObject("rp_sulon", "object/tangible/terminal/terminal_travel_rp.iff", -13.0021, 0.639421, 51.1865, 610029859, 1, 0, 0.332372, 0)
+	spawnSceneObject("rp_sulon", "object/tangible/terminal/terminal_travel_rp.iff", -2.7419, 0.639421, 48.1677, 610029859, 1, 0, 0, 0)
+	spawnSceneObject("rp_sulon", "object/tangible/terminal/terminal_travel_rp.iff", 2.54505, 0.639421, 48.1693, 610029859, 1, 0, 0, 0)
+	spawnSceneObject("rp_sulon", "object/tangible/terminal/terminal_travel_rp.iff", 12.6536, 0.639421, 51.1838, 610029859, 0.909306, 0, -0.416129, 0)
 	
-	spawnSceneObject("rp_mandalore", "object/tangible/terminal/terminal_travel_rp.iff", -13.0021, 0.639421, 51.1865, 610029873, 1, 0, 0.332372, 0)
-	spawnSceneObject("rp_mandalore", "object/tangible/terminal/terminal_travel_rp.iff", -2.7419, 0.639421, 48.1677, 610029873, 1, 0, 0, 0)
-	spawnSceneObject("rp_mandalore", "object/tangible/terminal/terminal_travel_rp.iff", 2.54505, 0.639421, 48.1693, 610029873, 1, 0, 0, 0)
-	spawnSceneObject("rp_mandalore", "object/tangible/terminal/terminal_travel_rp.iff", 12.6536, 0.639421, 51.1838, 610029873, 0.909306, 0, -0.416129, 0)
+	spawnSceneObject("rp_sulon", "object/tangible/terminal/terminal_travel_rp.iff", -13.0021, 0.639421, 51.1865, 610029873, 1, 0, 0.332372, 0)
+	spawnSceneObject("rp_sulon", "object/tangible/terminal/terminal_travel_rp.iff", -2.7419, 0.639421, 48.1677, 610029873, 1, 0, 0, 0)
+	spawnSceneObject("rp_sulon", "object/tangible/terminal/terminal_travel_rp.iff", 2.54505, 0.639421, 48.1693, 610029873, 1, 0, 0, 0)
+	spawnSceneObject("rp_sulon", "object/tangible/terminal/terminal_travel_rp.iff", 12.6536, 0.639421, 51.1838, 610029873, 0.909306, 0, -0.416129, 0)
 	
-	spawnSceneObject("rp_mandalore", "object/tangible/terminal/terminal_travel_rp.iff", -13.0021, 0.639421, 51.1865, 610029907, 1, 0, 0.332372, 0)
-	spawnSceneObject("rp_mandalore", "object/tangible/terminal/terminal_travel_rp.iff", -2.7419, 0.639421, 48.1677, 610029907, 1, 0, 0, 0)
-	spawnSceneObject("rp_mandalore", "object/tangible/terminal/terminal_travel_rp.iff", 2.54505, 0.639421, 48.1693, 610029907, 1, 0, 0, 0)
-	spawnSceneObject("rp_mandalore", "object/tangible/terminal/terminal_travel_rp.iff", 12.6536, 0.639421, 51.1838, 610029907, 0.909306, 0, -0.416129, 0)
+	spawnSceneObject("rp_sulon", "object/tangible/terminal/terminal_travel_rp.iff", -13.0021, 0.639421, 51.1865, 610029907, 1, 0, 0.332372, 0)
+	spawnSceneObject("rp_sulon", "object/tangible/terminal/terminal_travel_rp.iff", -2.7419, 0.639421, 48.1677, 610029907, 1, 0, 0, 0)
+	spawnSceneObject("rp_sulon", "object/tangible/terminal/terminal_travel_rp.iff", 2.54505, 0.639421, 48.1693, 610029907, 1, 0, 0, 0)
+	spawnSceneObject("rp_sulon", "object/tangible/terminal/terminal_travel_rp.iff", 12.6536, 0.639421, 51.1838, 610029907, 0.909306, 0, -0.416129, 0)
 	--Signs
 	
 	--TAILOR--

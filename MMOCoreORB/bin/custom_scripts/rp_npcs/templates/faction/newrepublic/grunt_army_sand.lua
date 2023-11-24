@@ -14,6 +14,17 @@ npc_template = {
 	
 	equipmentTemplates = {
 		{"rp_human_male", {"faction/newrepublic/grunt_army_sand"}},
+		{"rp_human_female", {"faction/newrepublic/grunt_army_sand"}},
+		{"rp_sullustan_male", {"faction/newrepublic/grunt_army_sand"}},
+		{"rp_sullustan_female", {"faction/newrepublic/grunt_army_sand"}},
+		{"rp_zabrak_male", {"faction/newrepublic/grunt_army_sand"}},
+		{"rp_zabrak_female", {"faction/newrepublic/grunt_army_sand"}},
+		{"rp_mirialan_male", {"faction/newrepublic/grunt_army_sand"}},
+		{"rp_mirialan_female", {"faction/newrepublic/grunt_army_sand"}},
+		{"rp_moncal_male", {"faction/newrepublic/grunt_army_sand"}},
+		{"rp_moncal_female", {"faction/newrepublic/grunt_army_sand"}},
+		{"rp_twilek_male", {"faction/newrepublic/grunt_army_sand"}},
+		{"rp_twilek_female", {"faction/newrepublic/grunt_army_sand"}},
 	},	
 	
 	customizationTemplates = {

@@ -79,10 +79,16 @@ public:
 			//Miraluka are always Force Sensitive.
 			hasDecided = 1;
 
+			SkillManager* skillManager = SkillManager::instance();
+
 			ManagedReference<PlayerObject*> targetGhost = creature->getPlayerObject();
 			if(targetGhost == nullptr)
 				return;
 			targetGhost->setJediState(1);
+
+			skillManager->awardSkill("rp_force_prog_novice", creature, true, true, true);
+
+			targetGhost->setStoredInt("fs_chosen", 1);
 		}
 
 		if(hasDecided != 1) {
@@ -617,6 +623,118 @@ public:
 		dm->sendMessage(suiBox->generateMessage());
 	}
 
+	static String getTrainingString(CreatureObject* target, String tree) {
+		
+		StringBuffer output;
+		String branch = "";
+
+		// Jedi Training
+		if (tree == "jedi") {
+			output << "Jedi (";
+
+			if (target->hasSkill("rp_training_jedi_guardian_01"))
+				branch = "guardian";
+
+			else if (target->hasSkill("rp_training_jedi_consular_01")) 
+				branch = "consular";
+
+			else if (target->hasSkill("rp_training_jedi_sentinel_01")) 
+				branch = "sentinel";
+
+			if (target->hasSkill("rp_training_jedi_master")) {
+				output << "Knight, " << BorrieRPG::Capitalize(branch) << ")";
+			} 
+			else {
+				output << BorrieRPG::Capitalize(branch) << " " << getTrainingBranchRank(target, branch) << ")";
+			}
+		}
+		//Sith Training
+		if (tree == "sith") {
+			output << "Sith (";
+
+			if (target->hasSkill("rp_training_sith_sorcerer_01"))
+				branch = "sorcerer";
+
+			else if (target->hasSkill("rp_training_sith_warrior_01"))
+				branch = "warrior";
+
+			if (target->hasSkill("rp_training_sith_master")) {
+				output << "Lord, " << BorrieRPG::Capitalize(branch) << ")";
+			} else {
+				output << BorrieRPG::Capitalize(branch) << " " << getTrainingBranchRank(target, branch) << ")";
+			}
+		}
+		//Military Training
+		if (tree == "military") {
+			output << "Military (";
+
+			if (target->hasSkill("rp_training_military_officer_01"))
+				branch = "officer";
+
+			else if (target->hasSkill("rp_training_military_trooper_01"))
+				branch = "trooper";
+
+			if (target->hasSkill("rp_training_trooper_master")) {
+				output << "Veteran " << branch << ")";
+			} else {
+				output << BorrieRPG::Capitalize(branch) << " " << getTrainingBranchRank(target, branch) << ")";
+			}
+		}
+		//Spy Training
+		if (tree == "spy") {
+			output << "Espionage (";
+
+			if (target->hasSkill("rp_training_spy_spy_01"))
+				branch = "spy";
+
+			else if (target->hasSkill("rp_training_spy_assassin_01"))
+				branch = "assassin";
+
+			else if (target->hasSkill("rp_training_spy_saboteur_01"))
+				branch = "saboteur";
+
+			if (target->hasSkill("rp_training_spy_master")) {
+				output << "Master " << branch << ")";
+			} else {
+				output << BorrieRPG::Capitalize(branch) << " " << getTrainingBranchRank(target, branch) << ")";
+			}
+		}
+		//Mandalorian
+		if (tree == "mando") {
+			String styledBranch = "";
+			output << "Espionage (";
+
+			if (target->hasSkill("rp_training_mando_kandosii_01")) {
+				branch = "kandosii";
+				styledBranch = "kandosii";
+			} else if (target->hasSkill("rp_training_mando_goran_01")) {
+				branch = "goran";
+				styledBranch = "beskar'goran";
+			}
+
+			if (target->hasSkill("rp_training_mando_master")) {
+				output << "Mando'ad " << styledBranch << ")";
+			} else {
+				output << BorrieRPG::Capitalize(styledBranch) << " " << getTrainingBranchRank(target, branch) << ")";
+			}
+		}
+		return "";
+	}
+
+	static String getTrainingBranchRank(CreatureObject* target, String trainingBranch) {
+
+		if (target->hasSkill(trainingBranch + "_04"))
+			return "IV";
+		else if (target->hasSkill(trainingBranch + "_03"))
+			return "III";
+		else if (target->hasSkill(trainingBranch + "_02"))
+			return "II";
+		else if (target->hasSkill(trainingBranch + "_01"))
+			return "I";
+		else
+			return "";
+	}
+
 	static void ShowSkillCounts(CreatureObject* creature, CreatureObject* target) {
 		
 
@@ -664,21 +782,11 @@ public:
 			return false;
 		else if (skill.contains("rp_force_prog")) 
 			return false;
-		else if (skill == "rp_training_jedi_rank_08")
-			return false;
-		else if (skill == "rp_training_jedi_rank_09")
-			return false;
-		else if (skill == "rp_training_jedi_rank_10")
-			return false;
 		else if (skill == "rp_training_jedi_rank_master")
 			return false;
-		else if (skill == "rp_training_sith_rank_08")
-			return false;
-		else if (skill == "rp_training_sith_rank_09")
-			return false;
-		else if (skill == "rp_training_sith_rank_10")
-			return false;
 		else if (skill == "rp_training_sith_rank_master")
+			return false;
+		else if (skill.contains("rp_training_mastery"))
 			return false;
 		else
 			return true;		
@@ -989,7 +1097,10 @@ public:
 			maxDistance = piloting + 22;
 			BorrieRPG::BroadcastMessage(creature, creature->getFirstName() + " has begun to move on their mount. Their enhanced range is " + String::valueOf(maxDistance) + "m. ");
 		} else {
-			maxDistance = maneuverability + athletics + 6;
+			//Minimum movement distance of 10m, max of 25m
+			maxDistance = maneuverability + athletics + 10;
+			if (maxDistance > 25)
+				maxDistance = 25;
 
 			byte posture = creature->getPosture();
 

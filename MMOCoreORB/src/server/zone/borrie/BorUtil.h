@@ -1327,7 +1327,7 @@ public:
 		String mobileName = creatureTemplate->getTemplateName();
 
 		StringBuffer text;
-		String planetName = CreatureObject->getZone()->getZoneName();
+		String planetName = mob->getZone()->getZoneName();
 
 		text << "{\"" << tag << "\",";
 
