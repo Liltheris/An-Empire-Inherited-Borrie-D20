@@ -1,0 +1,4 @@
+object_tangible_wearables_hood_hood_sithcloak_h00 = object_tangible_wearables_hood_shared_sithcloak_h00:new {
+
+}
+ObjectTemplates:addTemplate(object_tangible_wearables_hood_hood_sithcloak_h00, "object/tangible/wearables/hood/sithcloak_h00.iff")
