@@ -1,4 +1,4 @@
-object_tangible_wearables_hood_sithcloak_h00 = object_tangible_wearables_necklace_shared_scabbard_sword:new {
+object_tangible_wearables_necklace_scabbard_sword = object_tangible_wearables_necklace_shared_scabbard_sword:new {
 
 }
 ObjectTemplates:addTemplate(object_tangible_wearables_necklace_scabbard_sword, "object/tangible/wearables/hood/scabbard_sword.iff")

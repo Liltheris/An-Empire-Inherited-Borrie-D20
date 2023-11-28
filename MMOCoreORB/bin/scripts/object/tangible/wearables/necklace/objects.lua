@@ -2515,9 +2515,9 @@ object_tangible_wearables_necklace_shared_necklace_wampum = SharedTangibleObject
 	clientObjectCRC = 3192072783,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_neck.iff", "object/tangible/wearables/necklace/shared_necklace_base.iff"}
 ]]
-}
 
 
+ObjectTemplates:addClientTemplate(object_tangible_wearables_necklace_shared_necklace_wampum, "object/tangible/wearables/necklace/shared_necklace_wampum.iff")
 
 object_tangible_wearables_necklace_shared_scabbard_saber = SharedTangibleObjectTemplate:new {
 	clientTemplateFileName = "object/tangible/wearables/necklace/shared_scabbard_saber.iff"

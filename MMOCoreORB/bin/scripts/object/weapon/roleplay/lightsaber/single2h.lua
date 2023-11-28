@@ -2122,4 +2122,4 @@ ObjectTemplates:addTemplate(object_weapon_roleplay_lightsaber_single_2h_2h_sword
 ObjectTemplates:addTemplate(object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_youngling2, "object/weapon/roleplay/lightsaber/single/2h/2h_sword_saber_youngling2.iff")
 ObjectTemplates:addTemplate(object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_yun, "object/weapon/roleplay/lightsaber/single/2h/2h_sword_saber_yun.iff")
 ObjectTemplates:addTemplate(object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_zatt, "object/weapon/roleplay/lightsaber/single/2h/2h_sword_saber_zatt.iff")
-ObjectTemplates:addTemplate(object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_zatt, "object/weapon/roleplay/lightsaber/single/2h/2h_saber_katana.iff")
+ObjectTemplates:addTemplate(object_weapon_roleplay_lightsaber_single_2h_2h_saber_katana, "object/weapon/roleplay/lightsaber/single/2h/2h_saber_katana.iff")
