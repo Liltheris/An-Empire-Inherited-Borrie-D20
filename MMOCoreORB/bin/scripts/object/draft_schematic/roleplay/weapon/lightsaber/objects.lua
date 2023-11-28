@@ -536,5 +536,10 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_roleplay_weapon_lightsa
 object_draft_schematic_roleplay_weapon_lightsaber_shared_sword_saber_zatt = SharedDraftSchematicObjectTemplate:new {
 	clientTemplateFileName = "object/draft_schematic/roleplay/weapon/lightsaber/shared_sword_saber_zatt.iff"
 }
-ObjectTemplates:addClientTemplate(object_draft_schematic_roleplay_weapon_lightsaber_shared_sword_saber_zatt, "object/draft_schematic/roleplay/weapon/lightsaber/shared_sword_saber_zatt.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_roleplay_weapon_lightsaber_shared_sword_saber_zatt, "object/draft_schematic/roleplay/weapon/lightsaber/shared_2h_saber_katana.iff")
+--********************************************************************************************************************************
+object_draft_schematic_roleplay_weapon_lightsaber_shared_2h_saber_katana = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/roleplay/weapon/lightsaber/shared_2h_saber_katana.iff"
+}
+ObjectTemplates:addClientTemplate(object_draft_schematic_roleplay_weapon_lightsaber_shared_2h_saber_katana, "object/draft_schematic/roleplay/weapon/lightsaber/shared_2h_saber_katana.iff")
 --********************************************************************************************************************************

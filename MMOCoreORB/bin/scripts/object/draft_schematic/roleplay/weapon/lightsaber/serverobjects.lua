@@ -106,3 +106,4 @@ includeFile("draft_schematic/roleplay/weapon/lightsaber/sword_saber_youngling.lu
 includeFile("draft_schematic/roleplay/weapon/lightsaber/sword_saber_youngling2.lua")
 includeFile("draft_schematic/roleplay/weapon/lightsaber/sword_saber_yun.lua")
 includeFile("draft_schematic/roleplay/weapon/lightsaber/sword_saber_zatt.lua")
+includeFile("draft_schematic/roleplay/weapon/lightsaber/saber_katana.lua")
