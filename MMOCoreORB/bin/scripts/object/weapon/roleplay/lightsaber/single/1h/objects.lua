@@ -538,3 +538,8 @@ object_weapon_roleplay_lightsaber_single_1h_sword_saber_zatt = SharedWeaponObjec
 }
 ObjectTemplates:addClientTemplate(object_weapon_roleplay_lightsaber_single_1h_sword_saber_zatt, "object/weapon/roleplay/lightsaber/single/1h/sword_saber_zatt.iff")
 --********************************************************************************************************************************
+object_weapon_roleplay_lightsaber_single_1h_saber_katana = SharedWeaponObjectTemplate:new {
+	clientTemplateFileName = "object/weapon/roleplay/lightsaber/single/1h/saber_katana.iff"
+}
+ObjectTemplates:addClientTemplate(object_weapon_roleplay_lightsaber_single_1h_saber_katana, "object/weapon/roleplay/lightsaber/single/1h/saber_katana.iff")
+--********************************************************************************************************************************
