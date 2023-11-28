@@ -1278,7 +1278,7 @@ includeFile("tangible/wearables/armor/roleplay/stormtrooper/objects.lua")
 includeFile("tangible/wearables/armor/roleplay/tantel/objects.lua")
 includeFile("tangible/wearables/armor/roleplay/ubese/objects.lua")
 includeFile("tangible/wearables/armor/roleplay/zam/objects.lua")
-
+includeFile("tangible/wearables/armor/roleplay/imp_army/objects.lua")
 
 includeFile("tangible/terminal/teleport/objects.lua")
 
