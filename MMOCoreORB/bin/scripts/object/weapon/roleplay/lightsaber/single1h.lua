@@ -1995,24 +1995,6 @@ object_weapon_roleplay_lightsaber_single_1h_sword_saber_zatt = object_weapon_mel
 	childObjects = _childObjects
 }
 
-object_weapon_roleplay_lightsaber_single_1h_saber_katana = object_weapon_melee_plasma_saber_sword_shared_saber_katana:new {
-	alternateGrip = "object/weapon/roleplay/lightsaber/single/2h/2h_saber_katana.iff",
-
-	attackType = _attackType,
-	minDamage = _minDamage,
-	maxDamage = _maxDamage,
-	attackType = _attackType,
-	damageType = _damageType,
-	armorPiercing = _armorPiercing,
-	pointBlankRange = _pointBlankRange,
-	pointBlankAccuracy = _pointBlankAccuracy,
-	idealRange = _idealRange,
-	idealAccuracy = _idealAccuracy,
-	maxRange = _maxRange,
-	maxRangeAccuracy = _maxRangeAccuracy,
-	childObjects = _childObjects
-}
-
 ObjectTemplates:addTemplate(object_weapon_roleplay_lightsaber_single_1h_sword_saber_aayla, "object/weapon/roleplay/lightsaber/single/1h/sword_saber_aayla.iff")
 ObjectTemplates:addTemplate(object_weapon_roleplay_lightsaber_single_1h_sword_saber_abjudicator, "object/weapon/roleplay/lightsaber/single/1h/sword_saber_abjudicator.iff")
 ObjectTemplates:addTemplate(object_weapon_roleplay_lightsaber_single_1h_sword_saber_adept, "object/weapon/roleplay/lightsaber/single/1h/sword_saber_adept.iff")
@@ -2121,4 +2103,3 @@ ObjectTemplates:addTemplate(object_weapon_roleplay_lightsaber_single_1h_sword_sa
 ObjectTemplates:addTemplate(object_weapon_roleplay_lightsaber_single_1h_sword_saber_youngling2, "object/weapon/roleplay/lightsaber/single/1h/sword_saber_youngling2.iff")
 ObjectTemplates:addTemplate(object_weapon_roleplay_lightsaber_single_1h_sword_saber_yun, "object/weapon/roleplay/lightsaber/single/1h/sword_saber_yun.iff")
 ObjectTemplates:addTemplate(object_weapon_roleplay_lightsaber_single_1h_sword_saber_zatt, "object/weapon/roleplay/lightsaber/single/1h/sword_saber_zatt.iff")
-ObjectTemplates:addTemplate(object_weapon_roleplay_lightsaber_single_1h_saber_katana, "object/weapon/roleplay/lightsaber/single/1h/saber_katana.iff")
