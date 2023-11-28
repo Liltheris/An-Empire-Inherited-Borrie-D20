@@ -319,10 +319,12 @@ function BorFactionManager:reportIn(pPlayer)
 	
 	local amount = factionData.basePay * factionRank
 	
-	CreatureObject(pPlayer):addCashCredits(amount, true)
-	CreatureObject(pPlayer):sendSystemMessageWithDI("@theme_park/messages:theme_park_credits_pp", amount)
+	--Removed faction XP and credits.
+	
+	--CreatureObject(pPlayer):addCashCredits(amount, true)
+	--CreatureObject(pPlayer):sendSystemMessageWithDI("@theme_park/messages:theme_park_credits_pp", amount)
 	CreatureObject(pPlayer):sendSystemMessage("You've successfully reported in for today. You can do so again in 8 hours.")
-	CreatureObject(pPlayer):awardExperience("rp_general", 250 * factionRank, true)
+	--CreatureObject(pPlayer):awardExperience("rp_general", 250 * factionRank, true)
 	
 	--Convert Food to Drink
 	local pGhost = CreatureObject(pPlayer):getPlayerObject()
