@@ -1,4 +1,4 @@
-object_draft_schematic_roleplay_weapon_lightsaber_sword_saber_ahsoka3 = object_draft_schematic_roleplay_weapon_lightsaber_shared_sword_saber_ahsoka3:new {
+object_draft_schematic_roleplay_weapon_lightsaber_2h_saber_katana = object_draft_schematic_roleplay_weapon_lightsaber_shared_2h_saber_katana:new {
 
 	templateType = DRAFTSCHEMATIC,
 
