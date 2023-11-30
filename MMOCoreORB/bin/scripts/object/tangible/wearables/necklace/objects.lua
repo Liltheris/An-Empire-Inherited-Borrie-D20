@@ -2515,6 +2515,26 @@ object_tangible_wearables_necklace_shared_necklace_wampum = SharedTangibleObject
 	clientObjectCRC = 3192072783,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_neck.iff", "object/tangible/wearables/necklace/shared_necklace_base.iff"}
 ]]
-}
+
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_necklace_shared_necklace_wampum, "object/tangible/wearables/necklace/shared_necklace_wampum.iff")
+
+object_tangible_wearables_necklace_shared_scabbard_saber = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/necklace/shared_scabbard_saber.iff"
+}
+ObjectTemplates:addClientTemplate(object_tangible_wearables_necklace_shared_scabbard_saber, "object/tangible/wearables/necklace/shared_scabbard_saber.iff")
+--******************************************************************************************************************************************
+
+
+object_tangible_wearables_necklace_shared_scabbard_sword = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/necklace/shared_scabbard_sword.iff"
+}
+ObjectTemplates:addClientTemplate(object_tangible_wearables_necklace_shared_scabbard_sword, "object/tangible/wearables/necklace/shared_scabbard_sword.iff")
+--******************************************************************************************************************************************
+
+
+object_tangible_wearables_necklace_shared_scabbard_blank = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/necklace/shared_scabbard_blank.iff"
+}
+ObjectTemplates:addClientTemplate(object_tangible_wearables_necklace_shared_scabbard_blank, "object/tangible/wearables/necklace/shared_scabbard_blank.iff")
+--******************************************************************************************************************************************

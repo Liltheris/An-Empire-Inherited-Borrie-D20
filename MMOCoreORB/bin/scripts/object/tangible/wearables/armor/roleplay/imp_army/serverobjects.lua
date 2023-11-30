@@ -1,0 +1,1 @@
+includeFile("tangible/wearables/armor/roleplay/snow_trooper/armor_imp_army_chest_plate.lua")
