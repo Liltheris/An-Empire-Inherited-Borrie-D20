@@ -94,7 +94,7 @@ rpg_shop_general = {
 			items = {
 				{template = "object/weapon/roleplay/ranged/carbine/alliance_needler_carbine.iff", cost = 1, max = 10, chance = 100 },
 				{template = "object/weapon/roleplay/ranged/rifle/a280_blaster_rifle.iff", cost = 1, max = 10, chance = 100 },
-				{template = "object/weapon/roleplay/ranged/pistol/alliance_disruptor.iff", cost = 1, max = 10, chance = 100 },
+				--{template = "object/weapon/roleplay/ranged/pistol/alliance_disruptor.iff", cost = 1, max = 10, chance = 100 }, no
 				{template = "object/weapon/roleplay/ranged/pistol/dh18a_blaster_pistol.iff", cost = 1, max = 10, chance = 100 },
 				{template = "object/weapon/roleplay/ranged/pistol/cm_dead_bolt_pistol.iff", cost = 1, max = 10, chance = 100 },
 				{template = "object/weapon/roleplay/ranged/pistol/crimson_nova_pistol.iff", cost = 1, max = 10, chance = 100 },
@@ -107,12 +107,12 @@ rpg_shop_general = {
 			name = "Ships",
 			minItems = 1,
 			items = {
-				{template = "object/tangible/deed/rp_ship_deed/rp_z95_deed.iff", cost = 1500, max = 10, chance = 100, overridePrice = true },
-				{template = "object/tangible/deed/rp_ship_deed/rp_ywing_deed.iff", cost = 33750, max = 10, chance = 100, overridePrice = true },
-				{template = "object/tangible/deed/rp_ship_deed/rp_xwing_deed.iff", cost = 37500, max = 10, chance = 100, overridePrice = true },
-				{template = "object/tangible/deed/rp_ship_deed/rp_ykl37r_deed.iff", cost = 37500, max = 10, chance = 100, overridePrice = true },	
-				{template = "object/tangible/deed/rp_ship_deed/rp_awing_deed.iff", cost = 43750, max = 10, chance = 100, overridePrice = true},
-				{template = "object/tangible/deed/rp_ship_deed/rp_bwing_deed.iff", cost = 55000, max = 10, chance = 100, overridePrice = true },							
+				{template = "object/tangible/deed/rp_ship_deed/rp_z95_deed.iff", cost = 2000, max = 10, chance = 100, overridePrice = true },
+				--{template = "object/tangible/deed/rp_ship_deed/rp_ywing_deed.iff", cost = 33750, max = 10, chance = 100, overridePrice = true },
+				--{template = "object/tangible/deed/rp_ship_deed/rp_xwing_deed.iff", cost = 37500, max = 10, chance = 100, overridePrice = true },
+				--{template = "object/tangible/deed/rp_ship_deed/rp_ykl37r_deed.iff", cost = 37500, max = 10, chance = 100, overridePrice = true },	
+				--{template = "object/tangible/deed/rp_ship_deed/rp_awing_deed.iff", cost = 43750, max = 10, chance = 100, overridePrice = true},
+				--{template = "object/tangible/deed/rp_ship_deed/rp_bwing_deed.iff", cost = 55000, max = 10, chance = 100, overridePrice = true },							
 			}
 		},
 		

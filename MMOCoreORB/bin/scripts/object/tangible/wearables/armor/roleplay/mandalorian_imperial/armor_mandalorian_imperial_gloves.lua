@@ -30,7 +30,7 @@ object_tangible_wearables_armor_roleplay_mandalorian_imperial_armor_mandalorian_
 	heat = 0,
 	cold = -2,
 	acid = 0,
-	lightsaber = -1,
+	lightsaber = 1,
 	
 	rarity = "Legendary",
 

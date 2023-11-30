@@ -30,7 +30,7 @@ object_tangible_wearables_armor_roleplay_ris_armor_ris_leggings = object_tangibl
 	heat = 0,
 	cold = 2,
 	acid = 2,
-	lightsaber = 1,
+	lightsaber = -1,
 
 
 }

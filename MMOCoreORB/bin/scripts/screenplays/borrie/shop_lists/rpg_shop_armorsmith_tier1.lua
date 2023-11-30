@@ -47,6 +47,70 @@ rpg_shop = {
 		},
 		
 		{
+			name = "Tantel Armor",
+			minItems = 2,
+			items = {
+				{template = "object/tangible/wearables/armor/roleplay/tantel/armor_tantel_skreej_bicep_l.iff", cost = 1, max = 10, chance = 100 },
+				{template = "object/tangible/wearables/armor/roleplay/tantel/armor_tantel_skreej_bicep_r.iff", cost = 1, max = 10, chance = 100 },
+				{template = "object/tangible/wearables/armor/roleplay/tantel/armor_tantel_skreej_boots.iff", cost = 1, max = 10, chance = 100 },
+				{template = "object/tangible/wearables/armor/roleplay/tantel/armor_tantel_skreej_bracer_l.iff", cost = 1, max = 10, chance = 100 },
+				{template = "object/tangible/wearables/armor/roleplay/tantel/armor_tantel_skreej_bracer_r.iff", cost = 1, max = 10, chance = 100 },
+				{template = "object/tangible/wearables/armor/roleplay/tantel/armor_tantel_skreej_chest_plate.iff", cost = 1, max = 10, chance = 100 },
+				{template = "object/tangible/wearables/armor/roleplay/tantel/armor_tantel_skreej_gloves.iff", cost = 1, max = 10, chance = 100 },
+				{template = "object/tangible/wearables/armor/roleplay/tantel/armor_tantel_skreej_helmet.iff", cost = 1, max = 10, chance = 100 },
+				{template = "object/tangible/wearables/armor/roleplay/tantel/armor_tantel_skreej_leggings.iff", cost = 1, max = 10, chance = 100 },
+			}
+		},
+
+		{
+			name = "Marauder Armor(A)",
+			minItems = 2,
+			items = {
+				{template = "object/tangible/wearables/armor/roleplay/marauder/armor_marauder_s01_bicep_l.iff", cost = 1, max = 10, chance = 100 },
+				{template = "object/tangible/wearables/armor/roleplay/marauder/armor_marauder_s01_bicep_r.iff", cost = 1, max = 10, chance = 100 },
+				{template = "object/tangible/wearables/armor/roleplay/marauder/armor_marauder_s01_boots.iff", cost = 1, max = 10, chance = 100 },
+				{template = "object/tangible/wearables/armor/roleplay/marauder/armor_marauder_s01_bracer_l.iff", cost = 1, max = 10, chance = 100 },
+				{template = "object/tangible/wearables/armor/roleplay/marauder/armor_marauder_s01_bracer_r.iff", cost = 1, max = 10, chance = 100 },
+				{template = "object/tangible/wearables/armor/roleplay/marauder/armor_marauder_s01_chest_plate.iff", cost = 1, max = 10, chance = 100 },
+				{template = "object/tangible/wearables/armor/roleplay/marauder/armor_marauder_s01_gloves.iff", cost = 1, max = 10, chance = 100 },
+				{template = "object/tangible/wearables/armor/roleplay/marauder/armor_marauder_s01_helmet.iff", cost = 1, max = 10, chance = 100 },
+				{template = "object/tangible/wearables/armor/roleplay/marauder/armor_marauder_s01_leggings.iff", cost = 1, max = 10, chance = 100 },
+			}
+		},
+
+		{
+			name = "Marauder Armor(B)",
+			minItems = 2,
+			items = {
+				{template = "object/tangible/wearables/armor/roleplay/marauder/armor_marauder_s02_bicep_l.iff", cost = 1, max = 10, chance = 100 },
+				{template = "object/tangible/wearables/armor/roleplay/marauder/armor_marauder_s02_bicep_r.iff", cost = 1, max = 10, chance = 100 },
+				{template = "object/tangible/wearables/armor/roleplay/marauder/armor_marauder_s02_boots.iff", cost = 1, max = 10, chance = 100 },
+				{template = "object/tangible/wearables/armor/roleplay/marauder/armor_marauder_s02_bracer_l.iff", cost = 1, max = 10, chance = 100 },
+				{template = "object/tangible/wearables/armor/roleplay/marauder/armor_marauder_s02_bracer_r.iff", cost = 1, max = 10, chance = 100 },
+				{template = "object/tangible/wearables/armor/roleplay/marauder/armor_marauder_s02_chest_plate.iff", cost = 1, max = 10, chance = 100 },
+				{template = "object/tangible/wearables/armor/roleplay/marauder/armor_marauder_s02_gloves.iff", cost = 1, max = 10, chance = 100 },
+				{template = "object/tangible/wearables/armor/roleplay/marauder/armor_marauder_s02_helmet.iff", cost = 1, max = 10, chance = 100 },
+				{template = "object/tangible/wearables/armor/roleplay/marauder/armor_marauder_s02_leggings.iff", cost = 1, max = 10, chance = 100 },
+			}
+		},
+
+		{
+			name = "Marauder Armor(C)",
+			minItems = 2,
+			items = {
+				{template = "object/tangible/wearables/armor/roleplay/marauder/armor_marauder_s03_bicep_l.iff", cost = 1, max = 10, chance = 100 },
+				{template = "object/tangible/wearables/armor/roleplay/marauder/armor_marauder_s03_bicep_r.iff", cost = 1, max = 10, chance = 100 },
+				{template = "object/tangible/wearables/armor/roleplay/marauder/armor_marauder_s03_boots.iff", cost = 1, max = 10, chance = 100 },
+				{template = "object/tangible/wearables/armor/roleplay/marauder/armor_marauder_s03_bracer_l.iff", cost = 1, max = 10, chance = 100 },
+				{template = "object/tangible/wearables/armor/roleplay/marauder/armor_marauder_s03_bracer_r.iff", cost = 1, max = 10, chance = 100 },
+				{template = "object/tangible/wearables/armor/roleplay/marauder/armor_marauder_s03_chest_plate.iff", cost = 1, max = 10, chance = 100 },
+				{template = "object/tangible/wearables/armor/roleplay/marauder/armor_marauder_s03_gloves.iff", cost = 1, max = 10, chance = 100 },
+				{template = "object/tangible/wearables/armor/roleplay/marauder/armor_marauder_s03_helmet.iff", cost = 1, max = 10, chance = 100 },
+				{template = "object/tangible/wearables/armor/roleplay/marauder/armor_marauder_s03_leggings.iff", cost = 1, max = 10, chance = 100 },
+			}
+		},
+
+		{
 			name = "Padded Armor",
 			minItems = 2,
 			items = {
