@@ -21,6 +21,7 @@ object_tangible_wearables_armor_roleplay_ithorian_sentinel_ith_armor_s03_bicep_l
 	rating = LIGHT,
 	rpskill = 4,
 
+	price = 1200,
 
 	kinetic = 4,
 	energy = 4,

@@ -21,6 +21,7 @@ object_tangible_wearables_armor_roleplay_clone_trooper_armor_clone_trooper_neutr
 	rating = LIGHT,
 	rpskill = 4,
 
+	price = 1000,
 
 	kinetic = 4,
 	energy = 4,

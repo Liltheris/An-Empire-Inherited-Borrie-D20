@@ -21,6 +21,7 @@ object_tangible_wearables_armor_roleplay_zam_armor_zam_wesell_helmet = object_ta
 	rating = NONE,
 	rpskill = 0,
 
+	price = 350,
 
 	kinetic = 0,
 	energy = 4,

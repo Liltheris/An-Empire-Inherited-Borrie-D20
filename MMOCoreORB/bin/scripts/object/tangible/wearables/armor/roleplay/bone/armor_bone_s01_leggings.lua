@@ -20,7 +20,8 @@ object_tangible_wearables_armor_roleplay_bone_armor_bone_s01_leggings = object_t
 
 	rating = NONE,
 	rpskill = 0,
-
+	
+	price = 100,
 
 	kinetic = 2,
 	energy = 2,

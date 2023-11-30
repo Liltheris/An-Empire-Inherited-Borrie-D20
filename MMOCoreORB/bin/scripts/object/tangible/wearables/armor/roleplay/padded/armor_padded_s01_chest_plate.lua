@@ -21,6 +21,7 @@ object_tangible_wearables_armor_roleplay_padded_armor_padded_s01_chest_plate = o
 	rating = NONE,
 	rpskill = 0,
 
+	price = 800,
 
 	kinetic = 4,
 	energy = 2,

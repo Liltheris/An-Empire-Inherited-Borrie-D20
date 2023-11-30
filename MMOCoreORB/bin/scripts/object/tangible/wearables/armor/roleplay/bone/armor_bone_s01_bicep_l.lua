@@ -21,6 +21,7 @@ object_tangible_wearables_armor_roleplay_bone_armor_bone_s01_bicep_l = object_ta
 	rating = NONE,
 	rpskill = 0,
 
+	price = 100,
 
 	kinetic = 2,
 	energy = 2,

@@ -21,6 +21,7 @@ object_tangible_wearables_armor_roleplay_composite_armor_composite_leggings = ob
 	rating = MEDIUM,
 	rpskill = 8,
 
+	price = 2000,
 
 	kinetic = 4,
 	energy = 4,

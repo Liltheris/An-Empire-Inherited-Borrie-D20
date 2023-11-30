@@ -21,6 +21,7 @@ object_tangible_wearables_armor_roleplay_ris_armor_ris_chest_plate = object_tang
 	rating = MEDIUM,
 	rpskill = 10,
 
+	price = 4000,
 
 	kinetic = 8,
 	energy = 6,

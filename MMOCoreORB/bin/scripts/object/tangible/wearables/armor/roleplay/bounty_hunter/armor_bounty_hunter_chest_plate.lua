@@ -21,6 +21,7 @@ object_tangible_wearables_armor_roleplay_bounty_hunter_armor_bounty_hunter_chest
 	rating = LIGHT,
 	rpskill = 6,
 
+	price = 2800,
 
 	kinetic = 2,
 	energy = 6,

@@ -21,15 +21,16 @@ object_tangible_wearables_armor_roleplay_marauder_a_armor_marauder_s01_leggings 
 	rating = LIGHT,
 	rpskill = 4,
 
+	price = 350,
 
-	kinetic = 6,
-	energy = 0,
-	electricity = 0,
+	kinetic = 4,
+	energy = 2,
+	electricity = 2,
 	stun = 2,
-	blast = -4,
+	blast = -2,
 	heat = 0,
 	cold = 0,
-	acid = -2,
+	acid = -4,
 	lightsaber = -1,
 	
 	rarity = "Uncommon",

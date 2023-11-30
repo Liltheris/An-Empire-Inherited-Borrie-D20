@@ -21,6 +21,7 @@ object_tangible_wearables_armor_roleplay_ithorian_defender_ith_armor_s01_bicep_r
 	rating = MEDIUM,
 	rpskill = 10,
 
+	price = 2000,
 
 	kinetic = 6,
 	energy = 6,

@@ -21,6 +21,7 @@ object_tangible_wearables_armor_roleplay_assault_trooper_armor_assault_trooper_c
 	rating = MEDIUM,
 	rpskill = 8,
 
+	price = 2400,
 
 	kinetic = 8,
 	energy = 6,

@@ -21,6 +21,7 @@ object_tangible_wearables_armor_roleplay_chitin_armor_chitin_s01_boots = object_
 	rating = LIGHT,
 	rpskill = 0,
 
+	price = 400,
 
 	kinetic = 6,
 	energy = 2,

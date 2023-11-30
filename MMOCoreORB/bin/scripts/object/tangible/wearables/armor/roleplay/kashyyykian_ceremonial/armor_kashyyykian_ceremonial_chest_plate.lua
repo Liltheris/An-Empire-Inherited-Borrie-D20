@@ -21,6 +21,7 @@ object_tangible_wearables_armor_roleplay_kashyyykian_ceremonial_armor_kashyyykia
 	rating = NONE,
 	rpskill = 0,
 
+	price = 215,
 
 	kinetic = 2,
 	energy = 2,

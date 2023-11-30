@@ -21,6 +21,7 @@ object_tangible_wearables_armor_roleplay_padded_armor_padded_s01_bicep_l = objec
 	rating = NONE,
 	rpskill = 0,
 
+	price = 400,
 
 	kinetic = 4,
 	energy = 2,

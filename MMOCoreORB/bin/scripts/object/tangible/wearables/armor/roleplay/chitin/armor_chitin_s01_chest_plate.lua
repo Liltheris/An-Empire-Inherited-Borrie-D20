@@ -21,6 +21,7 @@ object_tangible_wearables_armor_roleplay_chitin_armor_chitin_s01_chest_plate = o
 	rating = LIGHT,
 	rpskill = 0,
 
+	price = 800,
 
 	kinetic = 6,
 	energy = 2,

@@ -21,6 +21,7 @@ object_tangible_wearables_armor_roleplay_ithorian_guardian_ith_armor_s02_bracer_
 	rating = NONE,
 	rpskill = 0,
 
+	price = 150,
 
 	kinetic = 2,
 	energy = 2,

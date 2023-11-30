@@ -21,6 +21,7 @@ object_tangible_wearables_armor_roleplay_marauder_b_armor_marauder_s02_bicep_l =
 	rating = NONE,
 	rpskill = 2,
 
+	price = 350,
 
 	kinetic = 4,
 	energy = 2,

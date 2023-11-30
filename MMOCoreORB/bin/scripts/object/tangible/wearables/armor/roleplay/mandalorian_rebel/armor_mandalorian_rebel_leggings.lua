@@ -21,6 +21,7 @@ object_tangible_wearables_armor_roleplay_mandalorian_rebel_armor_mandalorian_reb
 	rating = LIGHT,
 	rpskill = 7,
 
+	price = 10000,
 
 	kinetic = 6,
 	energy = 8,

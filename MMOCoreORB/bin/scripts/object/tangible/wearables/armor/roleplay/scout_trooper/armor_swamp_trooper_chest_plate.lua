@@ -21,6 +21,7 @@ object_tangible_wearables_armor_roleplay_scout_trooper_armor_swamp_trooper_chest
 	rating = NONE,
 	rpskill = 3,
 
+	price = 400,
 
 	kinetic = 2,
 	energy = 2,

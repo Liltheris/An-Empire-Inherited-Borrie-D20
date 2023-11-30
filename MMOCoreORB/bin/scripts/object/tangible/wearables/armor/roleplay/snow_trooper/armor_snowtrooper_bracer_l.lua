@@ -21,6 +21,7 @@ object_tangible_wearables_armor_roleplay_snow_trooper_armor_snowtrooper_bracer_l
 	rating = LIGHT,
 	rpskill = 5,
 
+	price = 500,
 
 	kinetic = 4,
 	energy = 4,

@@ -21,6 +21,7 @@ object_tangible_wearables_armor_roleplay_rebel_assault_armor_rebel_assault_leggi
 	rating = MEDIUM,
 	rpskill = 8,
 
+	price = 1200,
 
 	kinetic = 2,
 	energy = 6,

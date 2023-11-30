@@ -21,6 +21,7 @@ object_tangible_wearables_armor_roleplay_tantel_armor_tantel_skreej_chest_plate 
 	rating = NONE,
 	rpskill = 2,
 
+	price = 700,
 
 	kinetic = 6,
 	energy = 2,

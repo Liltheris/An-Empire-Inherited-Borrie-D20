@@ -21,6 +21,7 @@ object_tangible_wearables_armor_roleplay_snow_trooper_armor_snowtrooper_chest_pl
 	rating = LIGHT,
 	rpskill = 5,
 
+	price = 1000,
 
 	kinetic = 4,
 	energy = 4,

@@ -21,6 +21,7 @@ object_tangible_wearables_armor_roleplay_marine_armor_marine_chest_plate_rebel =
 	rating = NONE,
 	rpskill = 4,
 
+	price = 800,
 
 	kinetic = 3,
 	energy = 3,

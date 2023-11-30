@@ -21,6 +21,7 @@ object_tangible_wearables_armor_roleplay_ithorian_guardian_ith_armor_s02_chest_p
 	rating = NONE,
 	rpskill = 0,
 
+	price = 300,
 
 	kinetic = 2,
 	energy = 2,

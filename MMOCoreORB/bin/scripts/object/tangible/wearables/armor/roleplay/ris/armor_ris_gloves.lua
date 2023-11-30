@@ -21,6 +21,7 @@ object_tangible_wearables_armor_roleplay_ris_armor_ris_gloves = object_tangible_
 	rating = MEDIUM,
 	rpskill = 10,
 
+	price = 2000,
 
 	kinetic = 8,
 	energy = 6,

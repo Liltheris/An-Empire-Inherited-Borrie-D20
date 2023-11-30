@@ -21,6 +21,7 @@ object_tangible_wearables_armor_roleplay_marine_armor_marine_boots_gcw = object_
 	rating = NONE,
 	rpskill = 4,
 
+	price = 400,
 
 	kinetic = 3,
 	energy = 3,

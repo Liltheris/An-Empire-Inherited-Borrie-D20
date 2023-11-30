@@ -21,6 +21,7 @@ object_tangible_wearables_armor_roleplay_ubese_armor_ubese_helmet = object_tangi
 	rating = NONE,
 	rpskill = 6,
 
+	price = 2000,
 
 	kinetic = 2,
 	energy = 2,

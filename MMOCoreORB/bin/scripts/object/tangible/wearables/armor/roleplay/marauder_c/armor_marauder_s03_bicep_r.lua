@@ -21,15 +21,16 @@ object_tangible_wearables_armor_roleplay_marauder_c_armor_marauder_s03_bicep_r =
 	rating = LIGHT,
 	rpskill = 4,
 
+	price = 350,
 
-	kinetic = 6,
+	kinetic = 4,
 	energy = 2,
-	electricity = 0,
-	stun = 0,
-	blast = -4,
+	electricity = 2,
+	stun = 2,
+	blast = -2,
 	heat = 0,
 	cold = 0,
-	acid = 0,
+	acid = -4,
 	lightsaber = -1,
 
 	rarity = "Uncommon",

@@ -21,6 +21,7 @@ object_tangible_wearables_armor_roleplay_ithorian_sentinel_ith_armor_s03_chest_p
 	rating = LIGHT,
 	rpskill = 4,
 
+	price = 2400,
 
 	kinetic = 4,
 	energy = 4,

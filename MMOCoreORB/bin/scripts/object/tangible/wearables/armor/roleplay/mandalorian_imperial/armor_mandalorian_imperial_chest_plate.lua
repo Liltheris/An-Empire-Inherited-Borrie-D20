@@ -21,6 +21,7 @@ object_tangible_wearables_armor_roleplay_mandalorian_imperial_armor_mandalorian_
 	rating = LIGHT,
 	rpskill = 8,
 
+	price = 20000,
 
 	kinetic = 6,
 	energy = 8,

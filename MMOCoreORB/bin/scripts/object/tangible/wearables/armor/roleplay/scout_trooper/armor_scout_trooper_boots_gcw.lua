@@ -21,6 +21,7 @@ object_tangible_wearables_armor_roleplay_scout_trooper_armor_scout_trooper_boots
 	rating = NONE,
 	rpskill = 3,
 
+	price = 200,
 
 	kinetic = 2,
 	energy = 2,

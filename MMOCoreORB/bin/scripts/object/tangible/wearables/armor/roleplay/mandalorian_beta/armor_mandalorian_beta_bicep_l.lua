@@ -21,6 +21,7 @@ object_tangible_wearables_armor_roleplay_mandalorian_beta_armor_mandalorian_beta
 	rating = MEDIUM,
 	rpskill = 10,
 
+	price = 10000,
 
 	kinetic = 6,
 	energy = 8,

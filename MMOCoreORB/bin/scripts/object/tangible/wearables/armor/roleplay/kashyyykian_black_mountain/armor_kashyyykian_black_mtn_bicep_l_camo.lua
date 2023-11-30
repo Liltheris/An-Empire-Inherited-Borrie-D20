@@ -21,7 +21,7 @@ object_tangible_wearables_armor_roleplay_kashyyykian_black_mountain_armor_kashyy
 	rating = MEDIUM,
 	rpskill = 10,
 
-
+	price = 3340,
 	kinetic = 6,
 	energy = 6,
 	electricity = 4,

@@ -21,6 +21,7 @@ object_tangible_wearables_armor_roleplay_kashyyykian_hunting_armor_kashyyykian_h
 	rating = LIGHT,
 	rpskill = 4,
 
+	price = 1715,
 
 	kinetic = 4,
 	energy = 4,

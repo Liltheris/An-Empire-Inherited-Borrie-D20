@@ -21,6 +21,7 @@ object_tangible_wearables_armor_roleplay_stormtrooper_armor_stormtrooper_boots =
 	rating = LIGHT,
 	rpskill = 4,
 
+	price = 500,
 
 	kinetic = 4,
 	energy = 4,

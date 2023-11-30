@@ -21,6 +21,7 @@ object_tangible_wearables_armor_roleplay_rebel_snow_armor_rebel_snow_gloves = ob
 	rating = NONE,
 	rpskill = 3,
 
+	price = 200,
 
 	kinetic = 1,
 	energy = 1,

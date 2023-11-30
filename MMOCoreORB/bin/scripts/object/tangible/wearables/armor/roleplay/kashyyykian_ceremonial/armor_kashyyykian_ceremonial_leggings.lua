@@ -17,6 +17,7 @@ object_tangible_wearables_armor_roleplay_kashyyykian_ceremonial_armor_kashyyykia
 
 	maxCondition = 200,
 
+	price = 215,
 
 	rating = NONE,
 	rpskill = 0,

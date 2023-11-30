@@ -21,6 +21,7 @@ object_tangible_wearables_armor_roleplay_tantel_armor_tantel_skreej_helmet = obj
 	rating = NONE,
 	rpskill = 2,
 
+	price = 350,
 
 	kinetic = 6,
 	energy = 2,

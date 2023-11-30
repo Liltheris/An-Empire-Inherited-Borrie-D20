@@ -21,6 +21,7 @@ object_tangible_wearables_armor_roleplay_galactic_marine_armor_galactic_marine_l
 	rating = LIGHT,
 	rpskill = 6,
 
+	price = 500,
 
 	kinetic = 4,
 	energy = 4,

@@ -21,6 +21,7 @@ object_tangible_wearables_armor_roleplay_rebel_battle_armor_rebel_battle_legging
 	rating = LIGHT,
 	rpskill = 4,
 
+	price = 500,
 
 	kinetic = 4,
 	energy = 4,

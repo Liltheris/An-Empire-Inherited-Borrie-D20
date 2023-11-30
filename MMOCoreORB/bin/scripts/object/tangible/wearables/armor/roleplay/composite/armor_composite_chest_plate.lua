@@ -21,6 +21,7 @@ object_tangible_wearables_armor_roleplay_composite_armor_composite_chest_plate =
 	rating = MEDIUM,
 	rpskill = 8,
 
+	price = 4000,
 
 	kinetic = 4,
 	energy = 4,

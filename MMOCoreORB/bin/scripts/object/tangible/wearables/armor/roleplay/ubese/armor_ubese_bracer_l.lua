@@ -21,6 +21,7 @@ object_tangible_wearables_armor_roleplay_ubese_armor_ubese_bracer_l = object_tan
 	rating = NONE,
 	rpskill = 6,
 
+	price = 1000,
 
 	kinetic = 2,
 	energy = 2,
