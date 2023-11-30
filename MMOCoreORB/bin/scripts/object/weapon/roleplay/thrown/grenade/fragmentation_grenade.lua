@@ -25,7 +25,7 @@ object_weapon_roleplay_thrown_grenade_fragmentation_grenade = object_weapon_rang
 
 	idealRange = 24,
 	idealAccuracy = 10,
-
+	price = 100,
 	maxRange = 48,
 	maxRangeAccuracy = 99,
 	

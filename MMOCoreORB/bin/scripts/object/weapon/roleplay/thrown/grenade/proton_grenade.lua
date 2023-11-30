@@ -22,7 +22,7 @@ object_weapon_roleplay_thrown_grenade_proton_grenade = object_weapon_ranged_gren
 
 	pointBlankRange = 4,
 	pointBlankAccuracy = 5,
-
+	price = 100,
 	idealRange = 24,
 	idealAccuracy = 10,
 

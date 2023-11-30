@@ -198,13 +198,6 @@ object_weapon_roleplay_ranged_rifle_czerka_adventurer = object_weapon_ranged_rif
 
 
 
-
-
-
-
-
-
-
 -------------------------------------------
 -- Templates
 -------------------------------------------

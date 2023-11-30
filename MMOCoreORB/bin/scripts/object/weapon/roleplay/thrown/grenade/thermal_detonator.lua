@@ -22,7 +22,7 @@ object_weapon_roleplay_thrown_grenade_thermal_detonator = object_weapon_ranged_g
 
 	pointBlankRange = 4,
 	pointBlankAccuracy = 5,
-
+	price = 850,
 	idealRange = 24,
 	idealAccuracy = 10,
 
