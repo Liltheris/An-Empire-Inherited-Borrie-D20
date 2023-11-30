@@ -68,6 +68,7 @@ object_weapon_roleplay_melee_twohanded_axe = object_weapon_melee_axe_shared_axe_
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 80,
 }
 
 object_weapon_roleplay_melee_twohanded_ceremonial_scythe = object_weapon_melee_2h_sword_shared_2h_sword_wod_scyth:new {
@@ -95,6 +96,7 @@ object_weapon_roleplay_melee_twohanded_ceremonial_scythe = object_weapon_melee_2
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 130,
 }
 
 object_weapon_roleplay_melee_twohanded_cleaver = object_weapon_melee_2h_sword_shared_2h_sword_cleaver:new {
@@ -121,6 +123,7 @@ object_weapon_roleplay_melee_twohanded_cleaver = object_weapon_melee_2h_sword_sh
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 110,
 }
 
 object_weapon_roleplay_melee_twohanded_executioners_axe = object_weapon_melee_2h_sword_shared_2h_sword_blacksun_hack:new {
@@ -148,6 +151,7 @@ object_weapon_roleplay_melee_twohanded_executioners_axe = object_weapon_melee_2h
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 160,
 }
 
 object_weapon_roleplay_melee_twohanded_fierce_cleaver = object_weapon_melee_2h_sword_shared_2h_sword_pvp_bf_01:new {
@@ -175,6 +179,7 @@ object_weapon_roleplay_melee_twohanded_fierce_cleaver = object_weapon_melee_2h_s
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 140,
 }
 
 object_weapon_roleplay_melee_twohanded_gamorean_axe = object_weapon_melee_2h_sword_shared_2h_sword_battleaxe:new {
@@ -201,6 +206,7 @@ object_weapon_roleplay_melee_twohanded_gamorean_axe = object_weapon_melee_2h_swo
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 100,
 }
 
 object_weapon_roleplay_melee_twohanded_katana = object_weapon_melee_2h_sword_shared_2h_sword_katana:new {
@@ -227,6 +233,7 @@ object_weapon_roleplay_melee_twohanded_katana = object_weapon_melee_2h_sword_sha
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 120,
 }
 
 object_weapon_roleplay_melee_twohanded_massassi_great_sword = object_weapon_melee_2h_sword_shared_2h_sword_kun_massassi:new {
@@ -254,6 +261,7 @@ object_weapon_roleplay_melee_twohanded_massassi_great_sword = object_weapon_mele
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 180,
 }
 
 object_weapon_roleplay_melee_twohanded_obsidian_great_sword = object_weapon_melee_2h_sword_shared_som_2h_sword_obsidian:new {
@@ -281,6 +289,7 @@ object_weapon_roleplay_melee_twohanded_obsidian_great_sword = object_weapon_mele
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 150,
 }
 
 object_weapon_roleplay_melee_twohanded_power_hammer = object_weapon_melee_2h_sword_shared_2h_sword_maul:new {
@@ -309,6 +318,7 @@ object_weapon_roleplay_melee_twohanded_power_hammer = object_weapon_melee_2h_swo
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 180,
 }
 
 object_weapon_roleplay_melee_twohanded_scythe_blade = object_weapon_melee_2h_sword_shared_2h_sword_scythe:new {
@@ -336,6 +346,7 @@ object_weapon_roleplay_melee_twohanded_scythe_blade = object_weapon_melee_2h_swo
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 160,
 }
 
 object_weapon_roleplay_melee_twohanded_sith_great_sword = object_weapon_melee_2h_sword_shared_2h_sword_sith:new {
@@ -363,6 +374,7 @@ object_weapon_roleplay_melee_twohanded_sith_great_sword = object_weapon_melee_2h
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 150,
 }
 
 object_weapon_roleplay_melee_twohanded_tulrus_sword = object_weapon_melee_2h_sword_shared_som_2h_sword_tulrus:new {
@@ -390,6 +402,7 @@ object_weapon_roleplay_melee_twohanded_tulrus_sword = object_weapon_melee_2h_swo
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 130,
 }
 
 object_weapon_roleplay_melee_twohanded_vibroaxe = object_weapon_melee_axe_shared_axe_vibroaxe:new {
@@ -416,6 +429,7 @@ object_weapon_roleplay_melee_twohanded_vibroaxe = object_weapon_melee_axe_shared
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 100,
 }
 
 object_weapon_roleplay_melee_twohanded_wookiee_broadsword = object_weapon_melee_2h_sword_shared_2h_sword_kashyyk:new {
@@ -443,6 +457,7 @@ object_weapon_roleplay_melee_twohanded_wookiee_broadsword = object_weapon_melee_
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 140,
 }
 
 ObjectTemplates:addTemplate(object_weapon_roleplay_melee_twohanded_axe, "object/weapon/roleplay/melee/twohanded/axe.iff")

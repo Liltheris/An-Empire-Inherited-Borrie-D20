@@ -66,6 +66,7 @@ object_weapon_roleplay_melee_unarmed_black_sun_razor = object_weapon_melee_speci
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 60,
 }
 
 object_weapon_roleplay_melee_unarmed_blaster_fist = object_weapon_melee_special_shared_blasterfist:new {
@@ -90,6 +91,7 @@ object_weapon_roleplay_melee_unarmed_blaster_fist = object_weapon_melee_special_
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 60,
 }
 
 object_weapon_roleplay_melee_unarmed_ceremonial_knuckler = object_weapon_melee_special_shared_pvp_bf_knuckler:new {
@@ -114,6 +116,7 @@ object_weapon_roleplay_melee_unarmed_ceremonial_knuckler = object_weapon_melee_s
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 80,
 }
 
 object_weapon_roleplay_melee_unarmed_massassi_knuckler = object_weapon_melee_special_shared_massassiknuckler:new {
@@ -138,6 +141,7 @@ object_weapon_roleplay_melee_unarmed_massassi_knuckler = object_weapon_melee_spe
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 75,
 }
 
 object_weapon_roleplay_melee_unarmed_metal_fan = object_weapon_melee_special_shared_fan_metal:new {
@@ -162,6 +166,7 @@ object_weapon_roleplay_melee_unarmed_metal_fan = object_weapon_melee_special_sha
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 70,
 }
 
 object_weapon_roleplay_melee_unarmed_punch_dagger = object_weapon_melee_special_shared_punch_dagger:new {
@@ -186,6 +191,7 @@ object_weapon_roleplay_melee_unarmed_punch_dagger = object_weapon_melee_special_
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 65,
 }
 
 object_weapon_roleplay_melee_unarmed_vibroknuckler = object_weapon_melee_special_shared_vibroknuckler:new {
@@ -210,6 +216,7 @@ object_weapon_roleplay_melee_unarmed_vibroknuckler = object_weapon_melee_special
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 50,
 }
 
 object_weapon_roleplay_melee_unarmed_wookiee_knuckler = object_weapon_melee_special_shared_vibroknuckler:new {
@@ -234,6 +241,7 @@ object_weapon_roleplay_melee_unarmed_wookiee_knuckler = object_weapon_melee_spec
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 50,
 }
 
 ObjectTemplates:addTemplate(object_weapon_roleplay_melee_unarmed_black_sun_razor, "object/weapon/roleplay/melee/unarmed/black_sun_razor.iff")

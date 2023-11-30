@@ -67,6 +67,7 @@ object_weapon_roleplay_ranged_rifle_dp23_rifle = object_weapon_ranged_rifle_shar
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 700,
 }
 
 --Scatter Pistol
@@ -94,6 +95,7 @@ object_weapon_roleplay_ranged_pistol_scatter_pistol = object_weapon_ranged_pisto
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 700,
 }
 
 

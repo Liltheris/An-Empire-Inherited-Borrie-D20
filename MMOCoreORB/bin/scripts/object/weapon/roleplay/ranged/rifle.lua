@@ -68,6 +68,7 @@ object_weapon_roleplay_ranged_rifle_a280_blaster_rifle = object_weapon_ranged_ri
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 550,
 }
 
 --Berserker Rifle
@@ -93,6 +94,7 @@ object_weapon_roleplay_ranged_rifle_berserker_rifle = object_weapon_ranged_rifle
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 800,
 }
 
 --Bowcaster
@@ -123,6 +125,7 @@ object_weapon_roleplay_ranged_rifle_bowcaster = object_weapon_ranged_rifle_share
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 600,
 }
 
 --Crusader M-XIV rifle
@@ -150,34 +153,10 @@ object_weapon_roleplay_ranged_rifle_crusader_mxiv_rifle = object_weapon_ranged_r
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 800,
 }
 
---Czerka Adventurer
-object_weapon_roleplay_ranged_rifle_czerka_adventurer = object_weapon_ranged_rifle_shared_rifle_adventurer:new {
 
-	--[Info]
-	customName = "Czerka Adventurer",
-
-	--[Stats]
-	damageType = KINETIC,
-	armorPiercing = NONE,
-
-	--Damage (minDamage[d]maxDamage) i.e. (2d20)
-	minDamage = 2, --Amount of Die used in Damage
-	maxDamage = 4, --Type of Die used in Damage
-	bonusDamage = 4,
-	
-	primaryAttributeOnly = true,
-
-	--[Stats]
-	attackType = _attackType,
-	pointBlankRange = _pointBlankRange,
-	pointBlankAccuracy = _pointBlankAccuracy,
-	idealRange = _idealRange,
-	idealAccuracy = _idealAccuracy,
-	maxRange = _maxRange,
-	maxRangeAccuracy = _maxRangeAccuracy,
-}
 
 object_weapon_roleplay_ranged_rifle_dawnsorrow_rifle = object_weapon_ranged_rifle_shared_ep3_loot_dawnsorrow:new {
 
@@ -205,6 +184,7 @@ object_weapon_roleplay_ranged_rifle_dawnsorrow_rifle = object_weapon_ranged_rifl
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 1000,
 }
 
 --DC-15A Rifle
@@ -233,6 +213,7 @@ object_weapon_roleplay_ranged_rifle_dc15a_rifle = object_weapon_ranged_rifle_ep3
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 800,
 }
 
 --Disrupter Rifle
@@ -261,6 +242,7 @@ object_weapon_roleplay_ranged_rifle_disruptor_rifle = object_weapon_ranged_rifle
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 1000000,
 }
 
 --DLT-19 Heavy Blaster Rifle
@@ -289,6 +271,7 @@ object_weapon_roleplay_ranged_rifle_dlt19_heavy_blaster_rifle = object_weapon_ra
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 1500,
 }
 
 --Ion Rifle
@@ -316,6 +299,7 @@ object_weapon_roleplay_ranged_rifle_ion_rifle = object_weapon_ranged_rifle_share
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 500,
 }
 
 --J-1
@@ -343,6 +327,7 @@ object_weapon_roleplay_ranged_rifle_j1_rifle = object_weapon_ranged_rifle_shared
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 500,
 }
 
 --Laser Rifle
@@ -373,6 +358,7 @@ object_weapon_roleplay_ranged_rifle_laser_rifle = object_weapon_ranged_rifle_sha
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 600,
 }
 
 --Proton Rifle
@@ -402,6 +388,7 @@ object_weapon_roleplay_ranged_rifle_proton_rifle = object_weapon_ranged_rifle_sh
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 1000,
 }
 
 --SG-82B Stun Rifle
@@ -429,6 +416,7 @@ object_weapon_roleplay_ranged_rifle_sg82b_stun_rifle = object_weapon_ranged_rifl
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 450,
 }
 
 --T-21 Light Repeating Rifle
@@ -458,6 +446,7 @@ object_weapon_roleplay_ranged_rifle_t21_light_repeating_rifle = object_weapon_ra
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 1800,
 }
 
 --Tenloss DXR6 Disruptor Rifle
@@ -487,6 +476,7 @@ object_weapon_roleplay_ranged_rifle_tenloss_dxr6_disruptor_rifle = object_weapon
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 100000,
 }
 
 --Trandoshan Hunting Rifle
@@ -515,6 +505,7 @@ object_weapon_roleplay_ranged_rifle_trandoshan_hunting_rifle = object_weapon_ran
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 950,
 }
 
 --Tusken Rifle
@@ -543,6 +534,7 @@ object_weapon_roleplay_ranged_rifle_tusken_rifle = object_weapon_ranged_rifle_sh
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 600,
 }
 
 --Vortex Rifle
@@ -571,6 +563,7 @@ object_weapon_roleplay_ranged_rifle_vortex_rifle = object_weapon_ranged_rifle_sh
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 1000,
 }
 
 --WESTAR-M5 Blaster Rifle
@@ -598,6 +591,7 @@ object_weapon_roleplay_ranged_rifle_westarm5_blaster_rifle = object_weapon_range
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 600,
 }
 
 -------------------------------------------
@@ -608,7 +602,7 @@ ObjectTemplates:addTemplate(object_weapon_roleplay_ranged_rifle_a280_blaster_rif
 ObjectTemplates:addTemplate(object_weapon_roleplay_ranged_rifle_berserker_rifle, "object/weapon/roleplay/ranged/rifle/berserker_rifle.iff")
 ObjectTemplates:addTemplate(object_weapon_roleplay_ranged_rifle_bowcaster, "object/weapon/roleplay/ranged/rifle/bowcaster.iff")
 ObjectTemplates:addTemplate(object_weapon_roleplay_ranged_rifle_crusader_mxiv_rifle, "object/weapon/roleplay/ranged/rifle/crusader_mxiv_rifle.iff")
-ObjectTemplates:addTemplate(object_weapon_roleplay_ranged_rifle_czerka_adventurer, "object/weapon/roleplay/ranged/rifle/czerka_adventurer.iff")
+
 ObjectTemplates:addTemplate(object_weapon_roleplay_ranged_rifle_dawnsorrow_rifle, "object/weapon/roleplay/ranged/rifle/dawnsorrow_rifle.iff")
 ObjectTemplates:addTemplate(object_weapon_roleplay_ranged_rifle_dc15a_rifle, "object/weapon/roleplay/ranged/rifle/dc15a_rifle.iff")
 ObjectTemplates:addTemplate(object_weapon_roleplay_ranged_rifle_disruptor_rifle, "object/weapon/roleplay/ranged/rifle/disruptor_rifle.iff")

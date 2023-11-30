@@ -66,6 +66,7 @@ object_weapon_roleplay_melee_onehanded_acid_sword = object_weapon_melee_sword_sh
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 80,
 }
 
 object_weapon_roleplay_melee_onehanded_bandit_sword = object_weapon_melee_sword_shared_som_sword_mustafar_bandit:new {
@@ -90,6 +91,7 @@ object_weapon_roleplay_melee_onehanded_bandit_sword = object_weapon_melee_sword_
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 80,
 }
 
 object_weapon_roleplay_melee_onehanded_ceremonial_cutlass = object_weapon_melee_sword_shared_sword_rebel:new {
@@ -114,6 +116,7 @@ object_weapon_roleplay_melee_onehanded_ceremonial_cutlass = object_weapon_melee_
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 80,
 }
 
 object_weapon_roleplay_melee_onehanded_crusader_templar_sword = object_weapon_melee_sword_shared_sword_mandalorian:new {
@@ -138,6 +141,7 @@ object_weapon_roleplay_melee_onehanded_crusader_templar_sword = object_weapon_me
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 120,
 }
 
 object_weapon_roleplay_melee_onehanded_dagger = object_weapon_melee_knife_shared_knife_dagger:new {
@@ -162,6 +166,7 @@ object_weapon_roleplay_melee_onehanded_dagger = object_weapon_melee_knife_shared
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 50,
 }
 
 object_weapon_roleplay_melee_onehanded_elite_gaderiffi_stick = object_weapon_melee_baton_shared_baton_gaderiffi_elite:new {
@@ -186,6 +191,7 @@ object_weapon_roleplay_melee_onehanded_elite_gaderiffi_stick = object_weapon_mel
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 80,
 }
 
 object_weapon_roleplay_melee_onehanded_gaderiffi_stick = object_weapon_melee_baton_shared_baton_gaderiffi:new {
@@ -210,6 +216,7 @@ object_weapon_roleplay_melee_onehanded_gaderiffi_stick = object_weapon_melee_bat
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 70,
 }
 
 object_weapon_roleplay_melee_onehanded_lightfoil_01_blue = object_weapon_melee_sword_shared_lightfoil_01:new {
@@ -236,6 +243,7 @@ object_weapon_roleplay_melee_onehanded_lightfoil_01_blue = object_weapon_melee_s
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 100000,
 }
 
 object_weapon_roleplay_melee_onehanded_lightfoil_01_red = object_weapon_melee_sword_shared_lightfoil_01:new {
@@ -262,6 +270,7 @@ object_weapon_roleplay_melee_onehanded_lightfoil_01_red = object_weapon_melee_sw
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 100000,
 }
 
 object_weapon_roleplay_melee_onehanded_lightfoil_01_silver = object_weapon_melee_sword_shared_lightfoil_01:new {
@@ -288,6 +297,7 @@ object_weapon_roleplay_melee_onehanded_lightfoil_01_silver = object_weapon_melee
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 100000,
 }
 
 object_weapon_roleplay_melee_onehanded_mace = object_weapon_melee_sword_shared_sword_mace_junti_generic:new {
@@ -312,6 +322,7 @@ object_weapon_roleplay_melee_onehanded_mace = object_weapon_melee_sword_shared_s
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 70,
 }
 
 object_weapon_roleplay_melee_onehanded_marauder_sword = object_weapon_melee_sword_shared_sword_marauder:new {
@@ -338,6 +349,7 @@ object_weapon_roleplay_melee_onehanded_marauder_sword = object_weapon_melee_swor
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 90,
 }
 
 object_weapon_roleplay_melee_onehanded_naktra_crystal_knife = object_weapon_melee_knife_ep3_shared_knife_naktra_crystal:new {
@@ -362,6 +374,7 @@ object_weapon_roleplay_melee_onehanded_naktra_crystal_knife = object_weapon_mele
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 75,
 }
 
 object_weapon_roleplay_melee_onehanded_obsidian_sword = object_weapon_melee_sword_shared_som_sword_obsidian:new {
@@ -386,6 +399,7 @@ object_weapon_roleplay_melee_onehanded_obsidian_sword = object_weapon_melee_swor
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 85,
 }
 
 object_weapon_roleplay_melee_onehanded_rantok = object_weapon_melee_sword_shared_sword_rantok:new {
@@ -410,6 +424,7 @@ object_weapon_roleplay_melee_onehanded_rantok = object_weapon_melee_sword_shared
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 80,
 }
 
 object_weapon_roleplay_melee_onehanded_rsf_sword = object_weapon_melee_sword_shared_sword_rsf:new {
@@ -434,6 +449,7 @@ object_weapon_roleplay_melee_onehanded_rsf_sword = object_weapon_melee_sword_sha
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 80,
 }
 
 object_weapon_roleplay_melee_onehanded_ryyk_blade = object_weapon_melee_sword_shared_sword_blade_ryyk:new {
@@ -460,6 +476,7 @@ object_weapon_roleplay_melee_onehanded_ryyk_blade = object_weapon_melee_sword_sh
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 75,
 }
 
 object_weapon_roleplay_melee_onehanded_stone_knife = object_weapon_melee_knife_shared_knife_stone:new {
@@ -484,6 +501,7 @@ object_weapon_roleplay_melee_onehanded_stone_knife = object_weapon_melee_knife_s
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 20,
 }
 
 object_weapon_roleplay_melee_onehanded_stun_baton = object_weapon_melee_baton_shared_baton_stun:new {
@@ -508,6 +526,7 @@ object_weapon_roleplay_melee_onehanded_stun_baton = object_weapon_melee_baton_sh
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 70,
 }
 
 object_weapon_roleplay_melee_onehanded_survival_knife = object_weapon_melee_knife_shared_knife_survival:new {
@@ -532,6 +551,7 @@ object_weapon_roleplay_melee_onehanded_survival_knife = object_weapon_melee_knif
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 55,
 }
 
 object_weapon_roleplay_melee_onehanded_sword = object_weapon_melee_sword_shared_sword_01:new {
@@ -556,6 +576,7 @@ object_weapon_roleplay_melee_onehanded_sword = object_weapon_melee_sword_shared_
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 70,
 }
 
 object_weapon_roleplay_melee_onehanded_trandoshan_skinner = object_weapon_melee_knife_ep3_shared_knife_trando_skinner:new {
@@ -580,6 +601,7 @@ object_weapon_roleplay_melee_onehanded_trandoshan_skinner = object_weapon_melee_
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 70,
 }
 
 object_weapon_roleplay_melee_onehanded_vibroblade = object_weapon_melee_knife_shared_knife_vibroblade:new {
@@ -604,6 +626,7 @@ object_weapon_roleplay_melee_onehanded_vibroblade = object_weapon_melee_knife_sh
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 75,
 }
 
 object_weapon_roleplay_melee_onehanded_vibrosword = object_weapon_melee_sword_shared_sword_02:new {
@@ -628,6 +651,7 @@ object_weapon_roleplay_melee_onehanded_vibrosword = object_weapon_melee_sword_sh
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 75,
 }
 
 object_weapon_roleplay_melee_onehanded_vicious_ryyk_blade = object_weapon_melee_sword_shared_sword_pvp_bf_01:new {
@@ -654,6 +678,7 @@ object_weapon_roleplay_melee_onehanded_vicious_ryyk_blade = object_weapon_melee_
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 100,
 }
 
 object_weapon_roleplay_melee_onehanded_wookiee_scythe = object_weapon_melee_sword_shared_sword_wod_scyth:new {
@@ -680,6 +705,7 @@ object_weapon_roleplay_melee_onehanded_wookiee_scythe = object_weapon_melee_swor
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 95,
 }
 
 ObjectTemplates:addTemplate(object_weapon_roleplay_melee_onehanded_acid_sword, "object/weapon/roleplay/melee/onehanded/acid_sword.iff")

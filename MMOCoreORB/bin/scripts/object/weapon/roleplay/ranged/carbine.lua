@@ -66,6 +66,7 @@ object_weapon_roleplay_ranged_carbine_advanced_laser_carbine = object_weapon_ran
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 600,
 }
 
 --Alliance Needler Carbine
@@ -90,6 +91,7 @@ object_weapon_roleplay_ranged_carbine_alliance_needler_carbine = object_weapon_r
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 400,
 }
 
 --Bothan Bola Carbine
@@ -124,6 +126,7 @@ object_weapon_roleplay_ranged_carbine_bothan_bola_carbine = object_weapon_ranged
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 325,
 }
 
 --Charric Carbine
@@ -151,6 +154,7 @@ object_weapon_roleplay_ranged_carbine_charric_carbine = object_weapon_ranged_car
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 750,
 }
 
 --Corestrike Rancor Carbine
@@ -178,6 +182,7 @@ object_weapon_roleplay_ranged_carbine_corestrike_rancor_carbine = object_weapon_
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 450,
 }
 
 --Crusader M-XIII Carbine
@@ -203,6 +208,7 @@ object_weapon_roleplay_ranged_carbine_crusader_mxiii_carbine = object_weapon_ran
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 750,
 }
 
 --DC-15S
@@ -228,6 +234,7 @@ object_weapon_roleplay_ranged_carbine_dc15s_carbine = object_weapon_ranged_carbi
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 375,
 }
 
 --E-5
@@ -253,6 +260,7 @@ object_weapon_roleplay_ranged_carbine_e5_carbine = object_weapon_ranged_carbine_
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 350,
 }
 
 --E-11
@@ -278,6 +286,7 @@ object_weapon_roleplay_ranged_carbine_e11_carbine = object_weapon_ranged_carbine
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 400,
 }
 
 --EE-3
@@ -303,6 +312,7 @@ object_weapon_roleplay_ranged_carbine_ee3_carbine = object_weapon_ranged_carbine
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 450,
 }
 
 --Elite Carbine
@@ -328,6 +338,7 @@ object_weapon_roleplay_ranged_carbine_elite_carbine = object_weapon_ranged_carbi
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 500,
 }
 
 --Advanced Elite Carbine
@@ -353,6 +364,7 @@ object_weapon_roleplay_ranged_carbine_advanced_elite_carbine = object_weapon_ran
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 550,
 }
 
 --Firestar 10-K
@@ -378,6 +390,7 @@ object_weapon_roleplay_ranged_carbine_firestar_10k = object_weapon_ranged_carbin
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 600,
 }
 
 --Geoniasian Carbine
@@ -405,6 +418,7 @@ object_weapon_roleplay_ranged_carbine_geoniasian_carbine = object_weapon_ranged_
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 325,
 }
 
 --Laser Carbine
@@ -430,6 +444,7 @@ object_weapon_roleplay_ranged_carbine_laser_carbine = object_weapon_ranged_carbi
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 450,
 }
 
 --N'Gant-Zarvel 9118 Carbine
@@ -457,6 +472,7 @@ object_weapon_roleplay_ranged_carbine_ngantzarvel_9118_carbine = object_weapon_r
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 600,
 }
 
 --Proton Carbine
@@ -484,6 +500,7 @@ object_weapon_roleplay_ranged_carbine_proton_carbine = object_weapon_ranged_carb
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 700,
 }
 
 --SFOR Republic Carbine
@@ -509,6 +526,7 @@ object_weapon_roleplay_ranged_carbine_sfor_republic_carbine = object_weapon_rang
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 450,
 }
 
 --Wookiee Carbine
@@ -534,6 +552,7 @@ object_weapon_roleplay_ranged_carbine_wookiee_carbine = object_weapon_ranged_car
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 450,
 }
 
 -------------------------------------------

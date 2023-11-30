@@ -66,6 +66,7 @@ object_weapon_roleplay_melee_polearm_electric_polearm = object_weapon_melee_pole
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 75,
 }
 
 object_weapon_roleplay_melee_polearm_force_pike = object_weapon_melee_polearm_shared_lance_controllerfp:new {
@@ -90,6 +91,7 @@ object_weapon_roleplay_melee_polearm_force_pike = object_weapon_melee_polearm_sh
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 130,
 }
 
 object_weapon_roleplay_melee_polearm_gand_shockprod_staff = object_weapon_melee_polearm_shared_lance_gcw_gand_shockprod:new {
@@ -114,6 +116,7 @@ object_weapon_roleplay_melee_polearm_gand_shockprod_staff = object_weapon_melee_
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 100,
 }
 
 object_weapon_roleplay_melee_polearm_heavy_vibrolance = object_weapon_melee_polearm_shared_polearm_heroic_sd:new {
@@ -138,6 +141,7 @@ object_weapon_roleplay_melee_polearm_heavy_vibrolance = object_weapon_melee_pole
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 80,
 }
 
 object_weapon_roleplay_melee_polearm_kaminoan_lance = object_weapon_melee_polearm_shared_lance_kaminoan:new {
@@ -162,6 +166,7 @@ object_weapon_roleplay_melee_polearm_kaminoan_lance = object_weapon_melee_polear
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 75,
 }
 
 object_weapon_roleplay_melee_polearm_kashyyyk_lance = object_weapon_melee_polearm_shared_lance_kashyyk:new {
@@ -186,6 +191,7 @@ object_weapon_roleplay_melee_polearm_kashyyyk_lance = object_weapon_melee_polear
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 80,
 }
 
 object_weapon_roleplay_melee_polearm_metal_staff = object_weapon_melee_polearm_shared_lance_staff_metal:new {
@@ -210,6 +216,7 @@ object_weapon_roleplay_melee_polearm_metal_staff = object_weapon_melee_polearm_s
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 60,
 }
 
 object_weapon_roleplay_melee_polearm_nightsister_lance = object_weapon_melee_polearm_shared_lance_nightsister:new {
@@ -234,6 +241,7 @@ object_weapon_roleplay_melee_polearm_nightsister_lance = object_weapon_melee_pol
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 90,
 }
 
 object_weapon_roleplay_melee_polearm_obsidian_lance = object_weapon_melee_polearm_shared_som_lance_obsidian:new {
@@ -258,6 +266,7 @@ object_weapon_roleplay_melee_polearm_obsidian_lance = object_weapon_melee_polear
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 90,
 }
 
 object_weapon_roleplay_melee_polearm_pestilence = object_weapon_melee_polearm_shared_ep3_loot_pestilence:new {
@@ -282,6 +291,7 @@ object_weapon_roleplay_melee_polearm_pestilence = object_weapon_melee_polearm_sh
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 90,
 }
 
 object_weapon_roleplay_melee_polearm_phrik_electrostaff = object_weapon_melee_polearm_shared_lance_staff_magna_guard:new {
@@ -306,6 +316,7 @@ object_weapon_roleplay_melee_polearm_phrik_electrostaff = object_weapon_melee_po
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 75,
 }
 
 object_weapon_roleplay_melee_polearm_poison_pike = object_weapon_melee_polearm_shared_ep3_loot_poisonspike:new {
@@ -330,6 +341,7 @@ object_weapon_roleplay_melee_polearm_poison_pike = object_weapon_melee_polearm_s
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 100,
 }
 
 object_weapon_roleplay_melee_polearm_reinforced_staff = object_weapon_melee_polearm_shared_lance_staff_wood_s2:new {
@@ -354,6 +366,7 @@ object_weapon_roleplay_melee_polearm_reinforced_staff = object_weapon_melee_pole
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 70,
 }
 
 object_weapon_roleplay_melee_polearm_shock_lance = object_weapon_melee_polearm_shared_lance_shock:new {
@@ -378,6 +391,7 @@ object_weapon_roleplay_melee_polearm_shock_lance = object_weapon_melee_polearm_s
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 100,
 }
 
 object_weapon_roleplay_melee_polearm_strike_assault_lance = object_weapon_melee_polearm_shared_ep3_loot_strike:new {
@@ -405,6 +419,7 @@ object_weapon_roleplay_melee_polearm_strike_assault_lance = object_weapon_melee_
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 80,
 }
 
 object_weapon_roleplay_melee_polearm_vibro_longaxe = object_weapon_melee_polearm_shared_polearm_vibro_axe:new {
@@ -429,6 +444,7 @@ object_weapon_roleplay_melee_polearm_vibro_longaxe = object_weapon_melee_polearm
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 70,
 }
 
 object_weapon_roleplay_melee_polearm_vibrolance = object_weapon_melee_polearm_shared_lance_vibrolance:new {
@@ -453,6 +469,7 @@ object_weapon_roleplay_melee_polearm_vibrolance = object_weapon_melee_polearm_sh
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 75,
 }
 
 object_weapon_roleplay_melee_polearm_wood_staff = object_weapon_melee_polearm_shared_lance_staff_wood_s1:new {
@@ -477,6 +494,7 @@ object_weapon_roleplay_melee_polearm_wood_staff = object_weapon_melee_polearm_sh
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 50,
 }
 
 object_weapon_roleplay_melee_polearm_xandank_lance = object_weapon_melee_polearm_shared_som_lance_xandank:new {
@@ -504,6 +522,7 @@ object_weapon_roleplay_melee_polearm_xandank_lance = object_weapon_melee_polearm
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 130,
 }
 
 ObjectTemplates:addTemplate(object_weapon_roleplay_melee_polearm_electric_polearm, "object/weapon/roleplay/melee/polearm/electric_polearm.iff")

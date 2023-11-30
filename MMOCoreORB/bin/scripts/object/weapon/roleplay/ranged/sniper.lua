@@ -70,6 +70,7 @@ object_weapon_roleplay_ranged_rifle_cm_sniper_rifle = object_weapon_ranged_rifle
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 1800,
 }
 
 --DLT-20A Sniper Rifle
@@ -98,6 +99,7 @@ object_weapon_roleplay_ranged_rifle_dlt20a_heavy_blaster_rifle = object_weapon_r
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 1800,
 }
 
 --LD-1 Target Blaster Rifle
@@ -126,6 +128,7 @@ object_weapon_roleplay_ranged_rifle_ld1_target_blaster_rifle = object_weapon_ran
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 2000,
 }
 
 --Tusken Elite Rifle"
@@ -154,9 +157,37 @@ object_weapon_roleplay_ranged_rifle_tusken_elite_rifle = object_weapon_ranged_ri
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 1000,
 }
 
+--Czerka Adventurer
+object_weapon_roleplay_ranged_rifle_czerka_adventurer = object_weapon_ranged_rifle_shared_rifle_adventurer:new {
 
+	--[Info]
+	customName = "Czerka Adventurer",
+
+	--[Stats]
+	damageType = KINETIC,
+	armorPiercing = NONE,
+
+	--Damage (minDamage[d]maxDamage) i.e. (2d20)
+	minDamage = 2, --Amount of Die used in Damage
+	maxDamage = 4, --Type of Die used in Damage
+	bonusDamage = 4,
+	
+	primaryAttributeOnly = true,
+
+	--[Stats]
+	attackType = _attackType,
+	pointBlankRange = _pointBlankRange,
+	pointBlankAccuracy = _pointBlankAccuracy,
+	idealRange = _idealRange,
+	idealAccuracy = _idealAccuracy,
+	maxRange = _maxRange,
+	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 1000,
+	
+}
 
 
 
@@ -181,6 +212,7 @@ ObjectTemplates:addTemplate(object_weapon_roleplay_ranged_rifle_cm_sniper_rifle,
 ObjectTemplates:addTemplate(object_weapon_roleplay_ranged_rifle_dlt20a_heavy_blaster_rifle, "object/weapon/roleplay/ranged/rifle/dlt20a_heavy_blaster_rifle.iff")
 ObjectTemplates:addTemplate(object_weapon_roleplay_ranged_rifle_ld1_target_blaster_rifle, "object/weapon/roleplay/ranged/rifle/ld1_target_blaster_rifle.iff")
 ObjectTemplates:addTemplate(object_weapon_roleplay_ranged_rifle_tusken_elite_rifle, "object/weapon/roleplay/ranged/rifle/tusken_elite_rifle.iff")
+ObjectTemplates:addTemplate(object_weapon_roleplay_ranged_rifle_czerka_adventurer, "object/weapon/roleplay/ranged/rifle/czerka_adventurer.iff")
 
 
 

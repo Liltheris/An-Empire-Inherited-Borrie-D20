@@ -71,6 +71,7 @@ object_weapon_roleplay_ranged_pistol_alliance_disruptor = object_weapon_ranged_p
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 10000,
 }
 
 --Anti-Riot Tangle Gun 7
@@ -98,6 +99,7 @@ object_weapon_roleplay_ranged_pistol_antiriot_tangle_gun_7 = object_weapon_range
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 120,
 }
 
 --C-M Dead Bolt Pistol
@@ -127,6 +129,7 @@ object_weapon_roleplay_ranged_pistol_cm_dead_bolt_pistol = object_weapon_ranged_
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 400,
 }
 
 --Crimson Nova Pistol
@@ -154,6 +157,7 @@ object_weapon_roleplay_ranged_pistol_crimson_nova_pistol = object_weapon_ranged_
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 500,
 }
 
 --Crusader M-XII Pistol
@@ -181,6 +185,7 @@ object_weapon_roleplay_ranged_pistol_crusader_mxii_pistol = object_weapon_ranged
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 500,
 }
 
 --D-18 Pistol
@@ -208,6 +213,7 @@ object_weapon_roleplay_ranged_pistol_d18_pistol = object_weapon_ranged_pistol_sh
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 200,
 }
 
 --DD6 Pistol
@@ -235,6 +241,7 @@ object_weapon_roleplay_ranged_pistol_dd6_pistol = object_weapon_ranged_pistol_sh
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 400,
 }
 
 --DE-10 Blaster Pistol
@@ -262,6 +269,7 @@ object_weapon_roleplay_ranged_pistol_de10_blaster_pistol = object_weapon_ranged_
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 1200,
 }
 
 --DH-18A Blaster Pistol
@@ -289,6 +297,7 @@ object_weapon_roleplay_ranged_pistol_dh18a_blaster_pistol = object_weapon_ranged
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 500,
 }
 
 --Disruptor Pistol
@@ -318,6 +327,7 @@ object_weapon_roleplay_ranged_pistol_disruptor_pistol = object_weapon_ranged_pis
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 50000,
 }
 
 --DL-18 Pistol
@@ -345,6 +355,7 @@ object_weapon_roleplay_ranged_pistol_dl18_pistol = object_weapon_ranged_pistol_s
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 200,
 }
 
 --DL-44 Blaster Pistol
@@ -372,6 +383,7 @@ object_weapon_roleplay_ranged_pistol_dl44_blaster_pistol = object_weapon_ranged_
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 400,
 }
 
 --DL-44 Metal Blaster Pistol
@@ -399,6 +411,7 @@ object_weapon_roleplay_ranged_pistol_dl44_metal_blaster_pistol = object_weapon_r
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 400,
 }
 
 --DX-2 Disruptor Pistol
@@ -428,6 +441,7 @@ object_weapon_roleplay_ranged_pistol_dx2_disruptor_pistol = object_weapon_ranged
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 500000,
 }
 
 --Flare Gun
@@ -455,6 +469,7 @@ object_weapon_roleplay_ranged_pistol_flare_gun = object_weapon_ranged_pistol_sha
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 100,
 }
 
 --Flechette Pistol
@@ -484,6 +499,7 @@ object_weapon_roleplay_ranged_pistol_flechette_pistol = object_weapon_ranged_pis
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 400,
 }
 
 --FWG-5 Flechette Smart Pistol
@@ -513,6 +529,7 @@ object_weapon_roleplay_ranged_pistol_fwg5_flechette_smart_pistol = object_weapon
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 500,
 }
 
 --Ion Pistol
@@ -540,6 +557,7 @@ object_weapon_roleplay_ranged_pistol_ion_pistol = object_weapon_ranged_pistol_sh
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 240,
 }
 
 --Ion Relic Pistol
@@ -569,6 +587,7 @@ object_weapon_roleplay_ranged_pistol_ion_relic_pistol = object_weapon_ranged_pis
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 450,
 }
 
 --Ion Stunner Pistol
@@ -596,6 +615,7 @@ object_weapon_roleplay_ranged_pistol_ion_stunner_pistol = object_weapon_ranged_p
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 100,
 }
 
 --IR-5 Intimidator Pistol
@@ -623,6 +643,7 @@ object_weapon_roleplay_ranged_pistol_ir5_intimidator_pistol = object_weapon_rang
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 400,
 }
 
 --KYD-21 Blaster Pistol
@@ -650,6 +671,7 @@ object_weapon_roleplay_ranged_pistol_kyd21_blaster_pistol = object_weapon_ranged
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 260,
 }
 
 --Model 434 Heavy Blaster Pistol
@@ -677,6 +699,7 @@ object_weapon_roleplay_ranged_pistol_model_434_heavy_blaster_pistol = object_wea
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 220,
 }
 
 --Model Q2 Hold-out Blaster Pistol
@@ -704,6 +727,7 @@ object_weapon_roleplay_ranged_pistol_model_q2_holdout_blaster_pistol = object_we
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 180,
 }
 
 
@@ -731,6 +755,7 @@ object_weapon_roleplay_ranged_pistol_power_5_heavy_blaster_pistol = object_weapo
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 300,
 }
 
 --Renegade Heavy Blaster Pistol
@@ -760,6 +785,7 @@ object_weapon_roleplay_ranged_pistol_renegade_heavy_blaster_pistol = object_weap
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 450,
 }
 
 --Scout Blaster Pistol
@@ -787,6 +813,7 @@ object_weapon_roleplay_ranged_pistol_scout_blaster_pistol = object_weapon_ranged
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 100,
 }
 
 --SE-14 Blaster Pistol
@@ -814,6 +841,7 @@ object_weapon_roleplay_ranged_pistol_se14_blaster_pistol = object_weapon_ranged_
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 200,
 }
 
 --Striker Projectile Pistol
@@ -843,6 +871,7 @@ object_weapon_roleplay_ranged_pistol_striker_projectile_pistol = object_weapon_r
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 220,
 }
 
 --Trandoshan Suppressor Pistol
@@ -870,6 +899,7 @@ object_weapon_roleplay_ranged_pistol_trandoshan_suppressor_pistol = object_weapo
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 450,
 }
 
 --WESTAR-34 Blaster Pistol
@@ -897,6 +927,7 @@ object_weapon_roleplay_ranged_pistol_westar34_blaster_pistol = object_weapon_ran
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 1000,
 }
 
 --Wookiee Pistol
@@ -926,6 +957,7 @@ object_weapon_roleplay_ranged_pistol_wookiee_pistol = object_weapon_ranged_pisto
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 450,
 }
 
 
