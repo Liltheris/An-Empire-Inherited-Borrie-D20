@@ -538,6 +538,8 @@ public:
 	}
 
 	int getPrice() {
+		return price;
+		/*
 		if(customCostValue)
 			return baseCost;
 		else {
@@ -573,7 +575,9 @@ public:
 
 			return ceil(mathResult);
 		}
+	*/
 	}
+	
 
 };
 

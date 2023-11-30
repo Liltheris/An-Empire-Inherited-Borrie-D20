@@ -274,12 +274,12 @@ public:
 	}
 
 	int getPrice() {
-		if(customCostValue) {
-			return baseCost;
-		} else {
+		//if(customCostValue) {
+			return price;
+		//} else {
 			//return (getMaxCondition() + (getArmorProtectionValue() * 2)) * getNonZeroSkillLevel() * getProtectionsValue();
-			return (getMaxCondition() * 10 ) * ((getProtectionsValue()) + (getNonZeroSkillLevel()) / 2);
-		}
+			//return (getMaxCondition() * 10 ) * ((getProtectionsValue()) + (getNonZeroSkillLevel()) / 2);
+		//}
 	}
 };
 
