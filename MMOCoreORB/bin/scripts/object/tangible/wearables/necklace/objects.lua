@@ -2517,7 +2517,7 @@ object_tangible_wearables_necklace_shared_necklace_wampum = SharedTangibleObject
 ]]
 
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_necklace_shared_necklace_wampum, "object/tangible/wearables/necklace/shared_necklace_wampum.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_necklace_shared_necklace_wampum, "object/tangible/wearables/necklace/shared_necklace_wampum.iff")}
 
 object_tangible_wearables_necklace_shared_scabbard_saber = SharedTangibleObjectTemplate:new {
 	clientTemplateFileName = "object/tangible/wearables/necklace/shared_scabbard_saber.iff"
