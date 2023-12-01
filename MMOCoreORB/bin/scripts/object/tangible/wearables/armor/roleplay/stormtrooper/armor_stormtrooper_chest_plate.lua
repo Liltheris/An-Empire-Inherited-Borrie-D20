@@ -21,7 +21,7 @@ object_tangible_wearables_armor_roleplay_stormtrooper_armor_stormtrooper_chest_p
 	rating = LIGHT,
 	rpskill = 4,
 
-
+	price = 1000
 	kinetic = 4,
 	energy = 4,
 	electricity = 0,
