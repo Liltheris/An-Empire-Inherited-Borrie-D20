@@ -123,7 +123,6 @@ rpg_shop = {
 				{template = "object/tangible/wearables/armor/roleplay/padded/armor_padded_s01_gloves.iff", cost = 1, max = 10, chance = 100 },
 				{template = "object/tangible/wearables/armor/roleplay/padded/armor_padded_s01_helmet.iff", cost = 1, max = 10, chance = 100 },
 				{template = "object/tangible/wearables/armor/roleplay/padded/armor_padded_s01_leggings.iff", cost = 1, max = 10, chance = 100 },
-				{template = "object/tangible/wearables/armor/roleplay/padded/armor_padded_s02_chest_plate.iff", cost = 1, max = 10, chance = 100 },
 			}
 		},
 		
