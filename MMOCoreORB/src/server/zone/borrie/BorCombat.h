@@ -62,7 +62,7 @@ public:
 
             //Remove ammo, emptying the ammo if power attacking, or removing 1 if normal attacking.
             if (powerAttack)
-                weapon->setStoredInt("ammo_used", maxAmmo());
+                weapon->setStoredInt("ammo_used", maxAmmo);
             else weapon->setStoredInt("ammo_used", ammoUsed - 1);
         }
 
@@ -198,9 +198,7 @@ public:
             }
 
             //Remove ammo, emptying the ammo if power attacking, or removing 1 if normal attacking.
-            if (powerAttack)
-                weapon->setStoredInt("ammo_used", weapon->maxAmmo());
-            else weapon->setStoredInt("ammo_used", ammoUsed - 3);
+            weapon->setStoredInt("ammo_used", ammoUsed - 3);
         }
 
         //Dark Rebellion Rulebook Edition I, on Flurry Attack
