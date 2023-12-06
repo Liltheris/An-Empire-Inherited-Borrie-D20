@@ -1087,9 +1087,9 @@ public:
             return;
         
         //Player handling
-        if (creature) {
+        //if (creature) {
             
-        }
+        //}
     }
 
 };
