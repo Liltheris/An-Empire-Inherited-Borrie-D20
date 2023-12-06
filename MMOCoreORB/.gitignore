@@ -49,3 +49,6 @@ build.out
 build.out.prev
 bin/screenlog*
 compile_commands.json
+.vscode
+Debug
+out
