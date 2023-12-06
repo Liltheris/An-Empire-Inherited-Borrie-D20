@@ -40,6 +40,8 @@ protected:
 
 	int rpSkillLevel;
 
+	int maxAmmo;
+
 	float woundsRatio;
 
 	int area;
@@ -52,6 +54,8 @@ protected:
 	String animationType;
 
 	String alternateGrip;
+
+	String ammoPack;
 
 	bool primaryAttributeOnly;
 	bool dexOnlyWeapon;
@@ -170,9 +174,13 @@ public:
 
 		rpSkillLevel = 1;
 
+		maxAmmo = -1;
+
 		bladeColor = -1;
 
 		alternateGrip = "";
+
+		ammoPack = "";
 
 		primaryAttributeOnly = false;
 		dexOnlyWeapon = false;
@@ -363,6 +371,10 @@ public:
 		return rpSkillLevel;
 	}
 
+	inline int getMaxAmmo() const {
+		return maxAmmo;
+	}
+
 	inline int getBlastRadius() const {
 		return blastRadius;
 	}
@@ -511,6 +523,10 @@ public:
 
 	void setAlternateGrip(String alternateGrip) {
 		this->alternateGrip = alternateGrip;
+	}
+
+	const String& getAmmoPack() const {
+		return ammoPack;
 	}
 
 	void setWeaponEffectIndex(int weaponEffectIndex) {

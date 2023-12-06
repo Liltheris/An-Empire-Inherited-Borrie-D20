@@ -641,11 +641,13 @@ public:
 			else if (target->hasSkill("rp_training_jedi_sentinel_01")) 
 				branch = "sentinel";
 
+			else branch = "novice";
+
 			if (target->hasSkill("rp_training_jedi_master")) {
 				output << "Knight, " << BorrieRPG::Capitalize(branch) << ")";
 			} 
 			else {
-				output << BorrieRPG::Capitalize(branch) << " " << getTrainingBranchRank(target, branch) << ")";
+				output << BorrieRPG::Capitalize(branch) << getTrainingBranchRank(target, "rp_training_jedi_" + branch) << ")";
 			}
 		}
 		//Sith Training
@@ -658,10 +660,12 @@ public:
 			else if (target->hasSkill("rp_training_sith_warrior_01"))
 				branch = "warrior";
 
+			else branch = "novice";
+
 			if (target->hasSkill("rp_training_sith_master")) {
 				output << "Lord, " << BorrieRPG::Capitalize(branch) << ")";
 			} else {
-				output << BorrieRPG::Capitalize(branch) << " " << getTrainingBranchRank(target, branch) << ")";
+				output << BorrieRPG::Capitalize(branch) << getTrainingBranchRank(target, "rp_training_sith_" + branch) << ")";
 			}
 		}
 		//Military Training
@@ -674,10 +678,12 @@ public:
 			else if (target->hasSkill("rp_training_military_trooper_01"))
 				branch = "trooper";
 
+			else branch = "novice";
+
 			if (target->hasSkill("rp_training_trooper_master")) {
 				output << "Veteran " << branch << ")";
 			} else {
-				output << BorrieRPG::Capitalize(branch) << " " << getTrainingBranchRank(target, branch) << ")";
+				output << BorrieRPG::Capitalize(branch) << getTrainingBranchRank(target, "rp_training_military_" + branch) << ")";
 			}
 		}
 		//Spy Training
@@ -693,44 +699,127 @@ public:
 			else if (target->hasSkill("rp_training_spy_saboteur_01"))
 				branch = "saboteur";
 
+			else branch = "novice";
+
 			if (target->hasSkill("rp_training_spy_master")) {
 				output << "Master " << branch << ")";
 			} else {
-				output << BorrieRPG::Capitalize(branch) << " " << getTrainingBranchRank(target, branch) << ")";
+				output << BorrieRPG::Capitalize(branch) << getTrainingBranchRank(target, "rp_training_spy_" + branch) << ")";
 			}
 		}
 		//Mandalorian
 		if (tree == "mando") {
 			String styledBranch = "";
-			output << "Espionage (";
+			output << "Mandalorian (";
 
 			if (target->hasSkill("rp_training_mando_kandosii_01")) {
 				branch = "kandosii";
 				styledBranch = "kandosii";
+
 			} else if (target->hasSkill("rp_training_mando_goran_01")) {
 				branch = "goran";
 				styledBranch = "beskar'goran";
 			}
 
+			else {
+				branch = "novice";
+			}
+
 			if (target->hasSkill("rp_training_mando_master")) {
 				output << "Mando'ad " << styledBranch << ")";
 			} else {
-				output << BorrieRPG::Capitalize(styledBranch) << " " << getTrainingBranchRank(target, branch) << ")";
+				output << BorrieRPG::Capitalize(styledBranch) << getTrainingBranchRank(target, "rp_training_mando_" + branch) << ")";
 			}
 		}
-		return "";
+		//Engineer Training
+		if (tree == "engineer") {
+			String styledBranch = "";
+			output << "Engineering (";
+
+			if (target->hasSkill("rp_training_engineer_ship_01"))
+			{
+				branch = "ship";
+				styledBranch = "starships";
+
+			} else if (target->hasSkill("rp_training_engineer_weapon_01"))
+			{
+				branch = "weapon";
+				styledBranch = "weapons";
+
+			}
+			else if (target->hasSkill("rp_training_engineer_cybernetics_01"))
+			{
+				branch = "cybernetics";
+				styledBranch = "cybernetics";
+
+			}
+			else if (target->hasSkill("rp_training_engineer_droid_01"))
+			{
+				branch = "droid";
+				styledBranch = "droids";
+
+			}
+			if (target->hasSkill("rp_training_engineer_master")) {
+				output << "Master " << styledBranch << ")";
+			} else {
+				output << BorrieRPG::Capitalize(styledBranch) << getTrainingBranchRank(target, "rp_training_engineer_" + branch) << ")";
+			}
+		}
+		//Criminal Training
+		if (tree == "criminal") {
+			output << "Criminal (";
+
+			if (target->hasSkill("rp_training_criminal_thief_01"))
+				branch = "thief";
+
+			else if (target->hasSkill("rp_training_criminal_smuggler_01"))
+				branch = "smuggler";
+
+			else if (target->hasSkill("rp_training_criminal_conartist_01"))
+				branch = "conartist";
+
+			else if (target->hasSkill("rp_training_criminal_enforcer_01"))
+				branch = "enforcer";
+
+			if (target->hasSkill("rp_training_criminal_master")) {
+				output << "Master " << branch << ")";
+			} else {
+				output << BorrieRPG::Capitalize(branch) << getTrainingBranchRank(target, "rp_training_criminal_" + branch) << ")";
+			}
+		}
+		//Medical
+		if (tree == "medical") {
+			output << "Medical (";
+
+			if (target->hasSkill("rp_training_medical_medic_01"))
+				branch = "medic";
+
+			else if (target->hasSkill("rp_training_medical_surgeon_01"))
+				branch = "surgeon";
+
+			else if (target->hasSkill("rp_training_medical_researcher_01"))
+				branch = "researcher";
+
+			if (target->hasSkill("rp_training_medical_master")) {
+				output << "Master " << branch << ")";
+			} else {
+				output << BorrieRPG::Capitalize(branch) << getTrainingBranchRank(target, "rp_training_medical_" + branch) << ")";
+			}
+		}
+
+		return output.toString();
 	}
 
 	static String getTrainingBranchRank(CreatureObject* target, String trainingBranch) {
 
 		if (target->hasSkill(trainingBranch + "_04"))
-			return "IV";
+			return " IV";
 		else if (target->hasSkill(trainingBranch + "_03"))
-			return "III";
+			return " III";
 		else if (target->hasSkill(trainingBranch + "_02"))
-			return "II";
+			return " II";
 		else if (target->hasSkill(trainingBranch + "_01"))
-			return "I";
+			return " I";
 		else
 			return "";
 	}

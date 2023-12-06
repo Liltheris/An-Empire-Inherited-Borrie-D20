@@ -50,6 +50,22 @@ public:
 
         int toHitRoll = BorDice::Roll(1, 20);
 
+        //Dealing with ammo
+        if (weapon->getMaxAmmo() != -1) {
+            int ammoUsed = weapon->getStoredInt("ammo_used");
+            int maxAmmo = weapon->getMaxAmmo();
+            //Check if we're out of ammo, or if we're power attacking that we have at least half the power pack left.
+            if(ammoUsed >= maxAmmo || (powerAttack && ammoUsed >= maxAmmo/2)) {
+                commander->sendSystemMessage("Your weapon does not have enough ammo! You will have to reload before attacking.");
+                return;
+            }
+
+            //Remove ammo, emptying the ammo if power attacking, or removing 1 if normal attacking.
+            if (powerAttack)
+                weapon->setStoredInt("ammo_used", maxAmmo());
+            else weapon->setStoredInt("ammo_used", ammoUsed - 1);
+        }
+
         //Lightsaber Hurt self check.
         if(weapon->isJediWeapon()) {
             //Modify toHitDC if its our lightsaber.
@@ -171,6 +187,21 @@ public:
             }
         }
         
+        //Dealing with ammo
+        if (weapon->getMaxAmmo() != -1) {
+            int ammoUsed = weapon->getStoredInt("ammo_used");
+            int maxAmmo = weapon->getMaxAmmo();
+            //Check if we're out of ammo, or if we're power attacking that we have at least half the power pack left.
+            if(ammoUsed + 2 >= maxAmmo) {
+                commander->sendSystemMessage("Your does not have enough ammo! You will have to reload before flurry attacking!");
+                return;
+            }
+
+            //Remove ammo, emptying the ammo if power attacking, or removing 1 if normal attacking.
+            if (powerAttack)
+                weapon->setStoredInt("ammo_used", weapon->maxAmmo());
+            else weapon->setStoredInt("ammo_used", ammoUsed - 3);
+        }
 
         //Dark Rebellion Rulebook Edition I, on Flurry Attack
         /* Instead of simply one attack, you’ll roll three to-hit to determine three different attacks, each providing half damage if they succeed. 
@@ -1050,6 +1081,17 @@ public:
 
         BorrieRPG::BroadcastMessage(victim, message);
     }
+
+    static void ReloadWeapon(CreatureObject* creature, CreatureObject* commander, WeaponObject* weapon) {
+        if (creature == nullptr || commander == nullptr || weapon == nullptr)
+            return;
+        
+        //Player handling
+        if (creature) {
+            
+        }
+    }
+
 };
 
 #endif /*BORCOMBAT_H_*/

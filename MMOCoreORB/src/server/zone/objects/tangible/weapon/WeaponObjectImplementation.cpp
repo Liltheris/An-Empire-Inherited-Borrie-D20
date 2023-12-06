@@ -100,6 +100,8 @@ void WeaponObjectImplementation::loadTemplateData(SharedObjectTemplate* template
 
 		rpSkillLevel = weaponTemplate->getRpSkillLevel();
 
+		maxAmmo = weaponTemplate->getMaxAmmo();
+
 		float templateAttackSpeed = weaponTemplate->getAttackSpeed();
 
 		if (templateAttackSpeed > 1)
@@ -115,6 +117,8 @@ void WeaponObjectImplementation::loadTemplateData(SharedObjectTemplate* template
 	}
 
 	alternateGrip = weaponTemplate->getAlternateGrip();
+
+	ammoPack = weaponTemplate->getAmmoPack();
 
 	int bladeColor = weaponTemplate->getBladeColor();
 	if(bladeColor != -1) {
@@ -396,27 +400,27 @@ void WeaponObjectImplementation::fillAttributeList(AttributeListMessage* alm, Cr
 
 	//alm->insertAttribute("damage.wpn_wound_chance", woundsratio);
 
+	// Too close (DC15): 0m - min range
+	// Ideal range (DC10): min range - ideal range
+	// Too far (DC20): ideal range - max range
+	// Out of range (DC99): max range+
+
 	//Accuracy Modifiers
 	StringBuffer pblank;
-	if (getPointBlankAccuracy() >= 0)
-		pblank << "+";
-
-	pblank << getPointBlankAccuracy() << " @ " << getPointBlankRange() << "m";
+	pblank << " 0m - " << getPointBlankRange() << "m";
 	alm->insertAttribute("cat_wpn_rangemods.wpn_range_zero", pblank);
 
 	StringBuffer ideal;
-	if (getIdealAccuracy() >= 0)
-		ideal << "+";
-
-	ideal << getIdealAccuracy() << " @ " << getIdealRange() << "m";
+	ideal << getPointBlankRange() << "m - " << getIdealRange() << "m";
 	alm->insertAttribute("cat_wpn_rangemods.wpn_range_mid", ideal);
 
 	StringBuffer maxrange;
-	if (getMaxRangeAccuracy() >= 0)
-		maxrange << "+";
-
-	maxrange << getMaxRangeAccuracy() << " @ " << getMaxRange() << "m";
+	maxrange << getIdealRange() << "m - " << getMaxRange() << "m";
 	alm->insertAttribute("cat_wpn_rangemods.wpn_range_max", maxrange);
+
+	StringBuffer outofrange;
+	outofrange << getMaxRange() << "m+";
+	alm->insertAttribute("cat_wpn_rangemods.wpn_range_outofrange", outofrange);
 
 	//Special Attack Costs
 	//alm->insertAttribute("cat_wpn_attack_cost.health", getHealthAttackCost());

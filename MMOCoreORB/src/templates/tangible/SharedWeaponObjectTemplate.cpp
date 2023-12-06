@@ -245,9 +245,13 @@ void SharedWeaponObjectTemplate::readObject(LuaObject* templateData) {
 	animationType = templateData->getStringField("animationType");
 	alternateGrip = templateData->getStringField("alternateGrip");
 
+	ammoPack = templateData->getStringField("ammoPack");
+
 	bladeColor = templateData->getIntField("bladeColor");
 
 	rpSkillLevel = templateData->getIntField("rpSkillLevel");
+
+	maxAmmo = templateData->getIntField("maxAmmo");
 
 	primaryAttributeOnly	= templateData->getBooleanField("primaryAttributeOnly");
 	dexOnlyWeapon			= templateData->getBooleanField("dexOnlyWeapon");
