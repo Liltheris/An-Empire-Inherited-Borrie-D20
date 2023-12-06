@@ -576,7 +576,7 @@ function BorForce:promptAwakenOther(pPlayer)
 		return
 	end 
 	
-	if(CreatureObject(pPlayer):hasSkill("rp_force_prog_rank_02") == false) then
+	if(CreatureObject(pPlayer):hasSkill("rp_force_prog_rank_04") == false) then
 		CreatureObject(pPlayer):sendSystemMessage("You don't have the capability to awaken another to their Force sensitivity.")
 		return
 	end
@@ -676,53 +676,9 @@ function BorForce:promptAwakenSelf(pPlayer)
 	if (pPlayer == nil) then
 		return
 	end
-	
-	local pGhost = CreatureObject(pPlayer):getPlayerObject()
 
-	if (pGhost == nil) then
-		return
-	end
-	
-	if(CreatureObject(pPlayer):hasSkill("rp_force_prog_rank_01")) then
-		CreatureObject(pPlayer):sendSystemMessage("You are already well aware of your connection to the Force. Go forth and seek training on how to use it.")
-		return
-	end
-	
-	--See if in range of force Rich Location
-	local playerX = SceneObject(pPlayer):getWorldPositionX()
-	local playerY = SceneObject(pPlayer):getWorldPositionY()
-	local zoneName = SceneObject(pPlayer):getZoneName()
-	
-	local inRange = false
-	
-	for i,v in ipairs(self.forceRichLocations) do
-		if(zoneName == v[1]) then
-			local distance = math.sqrt((v[2] - playerX) ^ 2 + (v[3] - playerY) ^ 2)
-			if(distance <= v[4]) then
-				inRange = true
-			end
-		end
-	end
-	
-	if(inRange) then
-		--See if I have the exp to do it
-		local xpAmount = PlayerObject(pGhost):getExperience("rp_general")
-		if(xpAmount >= 24000) then
-			--If all is true, prompt to accept
-			local sui = SuiMessageBox.new("BorForce", "setForceAwareByLocationCallback")
-			sui.setTargetNetworkId(SceneObject(pGhost):getObjectID())
-			sui.setTitle("Communing with the Force")
-			sui.setPrompt("As you reach out, and quiet your mind, you hear the whispers of something powerful. You are on the precipice. Do you go forward? (Cost: 24,000 Roleplay Experience)")
-			sui.setOkButtonText("Yes")
-			sui.setCancelButtonText("No")
-			local pageId = sui.sendTo(pPlayer)
-		else 
-			CreatureObject(pPlayer):sendSystemMessage("You don't have enough experience to become aware of the Force in this manner. Without a tool to assist, it requires 24,000 experience.")
-		end
-	else 
-		CreatureObject(pPlayer):sendSystemMessage("You don't quite feel anything truly special here. Perhaps somewhere more steeped in the Force?")
-	end
-	
+	CreatureObject(pPlayer):sendSystemMessage("No matter how much you reach, you feel nothing.")
+
 end
 
 function BorForce:awakenViaHolocron(pPlayer, pObject)

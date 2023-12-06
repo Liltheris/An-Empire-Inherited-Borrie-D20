@@ -52,3 +52,6 @@ compile_commands.json
 .vscode
 Debug
 out
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
