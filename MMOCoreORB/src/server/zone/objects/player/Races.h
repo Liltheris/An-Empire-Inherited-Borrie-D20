@@ -753,7 +753,7 @@ public:
 
 	inline static const char* getCompleteRace(uint32 sharedRaceCRC) {
 		int race = -1;
-		for (int i = 0; i < 47; ++i) {
+		for (int i = 0; i < 85; ++i) {
 			if (SharedRace[i] == sharedRaceCRC) {
 				race = i;
 				break;
