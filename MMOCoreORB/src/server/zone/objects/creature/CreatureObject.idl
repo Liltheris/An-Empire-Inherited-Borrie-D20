@@ -221,7 +221,36 @@ class CreatureObject extends TangibleObject {
 	public static final int ZABRAK = 7;
 	public static final int ITHORIAN = 0x21;
 	public static final int SULLUSTAN = 0x31;
-	public static final int CHISS = 0x41;
+
+	public static final int AQUALISH = 9;
+	public static final int ARCONA = 0X0a;
+	public static final int BITH = 0x0c;
+	public static final int CHADRA_FAN = 0x0e;
+	public static final int CHISS = 0xe6;
+	public static final int DEVARONIAN = 0x11;
+	public static final int DUG = 0x13;
+	public static final int GEONOSIAN = 0xe4;
+	public static final int GOTAL = 0x1b;
+	public static final int GRAN = 0x1c;
+	public static final int HUTT = 0x1f;
+	public static final int IKTOTCHI = 0xe7;
+	public static final int ISHI_TIB = 0x20;
+	public static final int KEL_DOR = 0xe8;
+	public static final int KUBAZ = 0x27;
+	public static final int NAUTOLAN = 0xe9;
+	public static final int DATHOMIRI = 0xea;
+	public static final int NIKTO = 0x2a;
+	public static final int QUARREN = 0x2e;
+	public static final int TALZ = 0x32;
+	public static final int TOYDARIAN = 0x35;
+	public static final int WEEQUAY = 0x37;
+
+	public static final int JAWA = 0x22;
+	public static final int MIRALUKA = 0xeb;
+	public static final int MIRIALAN = 0xec;
+	public static final int ZELTRON = 0xed;
+	public static final int TOGRUTA = 0xee;
+	public static final int RATTATAKI = 0xef;
 
 	public static final int MALE = 0;
 	public static final int FEMALE = 1;
