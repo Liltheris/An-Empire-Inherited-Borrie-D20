@@ -389,7 +389,7 @@ static uint32 SharedRace[] = { //race CRC
 	0xF9504963, // male chadra fan
 	0x614A1B68, // chiss female
 	0x02F60EAC, // chiss male
-	0x00000000, // devaronian female
+	0x4A2817DA, // devaronian female
 	0x68731058, // devaronian male
 	0x696718D6, // male dug
 	0x0D506AEA, // male geonosian
@@ -401,7 +401,7 @@ static uint32 SharedRace[] = { //race CRC
 	0x809EF398, // ishi tib male
     0x66DCE6EE, // Kel Dor Male
 	0x6BB072FA, // male kubaz
-	0x00000000, // nautolan female
+	0xA754E13A, // nautolan female
 	0xAB03ACB1, // nautolan male
 	0xC56D9790, // nightsister female
 	0x59ECB38B, // nikto male
@@ -412,17 +412,17 @@ static uint32 SharedRace[] = { //race CRC
 	0x4F0718B5, // weequay male
 
 	//AEI species
-	0x00000000, // jawa male
+	0x8E3E2AE4, // jawa male
 	0x7D1266D2, // miraluka female
 	0x07BE9747, // miraluka male
-	0x00000000, // mirialan female
-	0x00000000, // mirialan male
+	0xE9CC7F2D, // mirialan female
+	0xD7349684, // mirialan male
     0x5B779FE7, // Zeltron Female
 	0xE8975526, // Zeltron Male
 	0x3D953B50, // togruta female
-	0x00000000, // togruta male
-	0xB8B4F101, //female rattataki
-	0x1CD4393C, //male rattataki
+	0x4963D94E, // togruta male
+	0xB8B4F101, // female rattataki
+	0x1CD4393C, // male rattataki
 };
 
 const static char* MoodStr[][2]= {
