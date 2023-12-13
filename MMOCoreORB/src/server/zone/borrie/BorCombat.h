@@ -36,8 +36,16 @@ public:
         //To Hit
         int toHitDC = GetToHitModifier(attacker, defender, weapon) + 10;
         int aimMod = 0;
+        bool aimed = false;
         if(bodyPartTarget != -1) { //A Body Part was specified.
-            aimMod = bodyPartTarget;
+            // Modify the to Hit DC depending on the part being aimed at.
+            // Chest is +2, Head and hands are +10, all other body parts are +5.
+            if (bodyPartTarget == 10 || bodyPartTarget == 9)
+                toHitDC += 10;
+            else if (bodyPartTarget == 1)
+                toHitDC += 2;
+            else toHitDC += 5;
+            aimed = true;
             DrainActionOrWill(attacker, 1);
         }
 
@@ -117,19 +125,9 @@ public:
             } 
         }
 
-        if(toHitRoll + skillCheck >= toHitDC || toHitRoll == 20) {
-            if(bodyPartTarget != -1) {
-                //If we specified a target, we need to see if we can hit it.
-                if(toHitRoll + skillCheck + aimMod < toHitDC || toHitRoll == 20) {
-                    //We failed to hit the target, so get a new target that isn't the one we specified.
-                    int newTarget = BorDice::Roll(1, 10);
-                    while(bodyPartTarget == newTarget) {
-                        newTarget = BorDice::Roll(1, 10);
-                    }
-                    bodyPartTarget = newTarget;
-                } 
-            } else {
-                //Randomly getting a body part.
+        if(toHitRoll + skillCheck >= toHitDC || (toHitRoll == 20 && !(weapon->isMeleeWeapon() || weapon->isJediWeapon()))) {
+            if(bodyPartTarget == -1) {
+                //Get a random body part.
                 bodyPartTarget = BorDice::Roll(1, 10);
             }
         } else {
@@ -156,6 +154,12 @@ public:
 
         int totalDamage = GetDamageRoll(damageDieType, damageDieCount, bonusDamage);
 
+        bool criticalHit = false;
+
+        if (bodyPartTarget == 10) {
+            totalDamage =  totalDamage * 1.5;
+            criticalHit = true;
+        }
         //Calculate the Reaction
 
         String reactionResult = HandleCombatReaction(attacker, defender, totalDamage, toHitRoll + skillCheck, bodyPartTarget, powerAttack, false);
@@ -163,7 +167,14 @@ public:
         //Apply Followup as per the reaction.
         String toHitString = "\\#DBDBDB" + GenerateOutputSpam(toHitRoll, skillCheck, toHitDC) + "\\#FFFFFF";
 
-        String combatSpam = attacker->getFirstName() + " "+attackVerb+ " and hit!";
+        String combatSpam = "";
+
+        if (criticalHit){
+            combatSpam = attacker->getFirstName() + " "+attackVerb+ " and critically hit!";
+        } else {
+            combatSpam = attacker->getFirstName() + " "+attackVerb+ " and hit!";
+        }
+        
         
         if(ignoreLOS) {
             BorrieRPG::BroadcastMessage(attacker, combatSpam + " " + toHitString +  reactionResult + " (Line of Sight Ignored)");
