@@ -12,6 +12,8 @@
 
 class BorCombat : public Logger {
 public:
+    static int GetCharacterArmourClass(CreatureObject* creature);
+
 	static void AttackTarget(CreatureObject* attacker, CreatureObject* defender, CreatureObject* commander, int bodyPartTarget, bool powerAttack, bool ignoreLOS = false) {
         ManagedReference<WeaponObject*> weapon = attacker->getWeapon();
         if(weapon->isBroken()) {
@@ -419,24 +421,26 @@ public:
                 int maneuverabilitySkill = defender->getSkillMod("rp_maneuverability");
                 int dodgeRoll = BorDice::Roll(1, 20);
                 
+                int dodgeCost = 1 + GetCharacterArmourClass(defender);
+
                 if(dodgeRoll + maneuverabilitySkill >= toHit) { //Successful Dodge
                     reactionSpam += ", but " + defender->getFirstName() + " dodges out of the way! (1d20 = " + String::valueOf(dodgeRoll) + " + " + String::valueOf(maneuverabilitySkill) + ") ";
                     BorEffect::PerformReactiveAnimation(defender, attacker, "dodge", GetSlotHitlocation(slot), true);
-                    DrainActionOrWill(defender, 2 * actionPointMod);
+                    DrainActionOrWill(defender, dodgeCost * actionPointMod);
                 } else if(dodgeRoll + maneuverabilitySkill >= toHit / 2 ) { //Partial Dodge
                     reactionSpam += ", " + defender->getFirstName() + " struggles to dodge out of the way! (1d20 = " + String::valueOf(dodgeRoll) + " + " + String::valueOf(maneuverabilitySkill) + ") ";
                     reactionSpam += defender->getFirstName() + " stumbles, but only takes \\#FF9999" + String::valueOf(incomingDamage / 2) + "\\#FFFFFF damage.";
                     //BorCharacter::ModPool(defender, "health", (incomingDamage / 2) * -1);
                     ApplyAdjustedHealthDamage(defender, attackerWeapon, incomingDamage / 2, slot);
                     BorEffect::PerformReactiveAnimation(defender, attacker, "dodge", GetSlotHitlocation(slot), true);
-                    DrainActionOrWill(defender, 1 * actionPointMod);
+                    DrainActionOrWill(defender, dodgeCost * actionPointMod);
                 } else { //full fail
                     reactionSpam += ", " + defender->getFirstName() + " tries to dodge out of the way and fails! (1d20 = " + String::valueOf(dodgeRoll) + " + " + String::valueOf(maneuverabilitySkill) + ") ";
                     reactionSpam += defender->getFirstName() +" takes \\#FF9999" + String::valueOf(incomingDamage) + "\\#FFFFFF damage.";
                     //BorCharacter::ModPool(defender, "health", incomingDamage * -1, true);
                     ApplyAdjustedHealthDamage(defender, attackerWeapon, incomingDamage, slot);
                     BorEffect::PerformReactiveAnimation(defender, attacker, "dodge", GetSlotHitlocation(slot), false);
-                    DrainActionOrWill(defender, 1 * actionPointMod);
+                    DrainActionOrWill(defender, dodgeCost * actionPointMod);
                 }
                 return reactionSpam;
             } else if(defenderReactionType == 4) { //Lightsaber Deflect
@@ -612,7 +616,7 @@ public:
         return ", doing (" + GetWeaponDamageString(attackerWeapon) + ") = \\#FF9999" + String::valueOf(incomingDamage) + "\\#FFFFFF damage.";
     }
 
-    static void ApplyAdjustedHealthDamage(CreatureObject* creature, WeaponObject* attackerWeapon, int damage, int slot) {
+    static void ApplyAdjustedHealthDamage(CreatureObject* creature, WeaponObject* attackerWeapon, int damage, int slot); /*{
         if(creature->isPlayerCreature()) { //Use their equipped armor
             ManagedReference<ArmorObject*> armor = BorCharacter::GetArmorAtSlot(creature, GetSlotName(slot));
             if(armor != nullptr) {
@@ -626,24 +630,6 @@ public:
                             BorCharacter::ModPool(creature, "health", damage * -1, true);
                         }
                     } else {
-                        //Get Defense
-
-                        
-                        /* //Original system that takes into account armor penetration.
-                        int weaponArmorPiercing = attackerWeapon->getArmorPiercing();
-                        int armorRating = armor->getRating();
-                        int damageDivider = GetWeaponPenetrationDivisionModifier(weaponArmorPiercing, armorRating);
-                        if(damageDivider != 0) {
-                            int adjustedDamage = damage / damageDivider;
-                            int armorProtection = GetArmorProtection(armor, GetDamageType(attackerWeapon));
-                            int finalDamage = adjustedDamage - armorProtection;
-                            if(finalDamage < 1) finalDamage = 1;
-                            armor->setConditionDamage(armor->getConditionDamage() + armorProtection);
-                            BorCharacter::ModPool(creature, "health", finalDamage * -1, true);
-                        } else { //Take Full Damage
-                            BorCharacter::ModPool(creature, "health", damage * -1, true);
-                        }  */
-
                         //Armor handling (without penetration)
                         int armorProtection = GetArmorProtection(armor, GetDamageType(attackerWeapon));
                         int finalDamage = damage - armorProtection;
@@ -688,6 +674,7 @@ public:
             }            
         }
     }
+    */
 
     static int GetArmorProtection(ArmorObject* armor, String damageType) {
         if(damageType == "Kinetic")             return (int)armor->getKinetic();
@@ -829,7 +816,7 @@ public:
         //Parry
         else if(reactionType == 2 && defenderWeapon->isMeleeWeapon() && attackerWeapon->isMeleeWeapon() && defenderAction > 1 && GetWeaponCondition(defenderWeapon) >= incomingDamage && !defenderWeapon->getParryIsRestricted()) return true;
         //Dodge
-        else if(reactionType == 3 && defender->isStanding() && defenderAction > 0 && !defenderWeapon->getDodgeIsRestricted()) return true;
+        else if(reactionType == 3 && defender->isStanding() && defenderAction > 0 && !defenderWeapon->getDodgeIsRestricted() && !BorCharacter::IsWearingArmourUnskilled(defender) && GetCharacterArmourClass(defender) < 3) return true;
         //Special Force
         else if(reactionType == 4 || reactionType == 5 || reactionType == 6 ) {
             int defenderForce = GetAvailableForcePoints(defender);
