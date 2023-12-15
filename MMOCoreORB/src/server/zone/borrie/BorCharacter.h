@@ -36,6 +36,10 @@ public:
 			return false;
 	}
 
+	static bool HasRequiredArmourSkill(CreatureObject* creature, String slot);
+
+	static bool IsWearingArmourUnskilled(CreatureObject* creature);
+
 	static ManagedReference<ArmorObject*> GetArmorAtSlot(CreatureObject* creature, String slot) {
 		return creature->getWearablesDeltaVector()->getArmorAtSlot(slot);
 	}
@@ -1190,6 +1194,12 @@ public:
 			maxDistance = maneuverability + athletics + 10;
 			if (maxDistance > 25)
 				maxDistance = 25;
+
+			// Reduce movement distance if the character has armour equipped that they are not qualified for.
+			if (IsWearingArmourUnskilled(creature)) {
+				maxDistance = maxDistance * 0.75;
+				creature->sendSystemMessage("Due to wearing armour you are unskilled for, your maximum movement distance was reduced by 25%!");
+			}
 
 			byte posture = creature->getPosture();
 
