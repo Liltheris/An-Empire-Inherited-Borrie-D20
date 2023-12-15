@@ -475,8 +475,10 @@ public:
 						creature->sendSystemMessage("You need to input a name!");
 					}						
 				} else if (command == "toggleai") {
-					if (object->isCreatureObject()) {
-						BorDev::ToggleAlwaysOnAI(object->asCreatureObject(), creature);
+					if (object != nullptr) {
+						if (object->isCreatureObject()) {
+							BorDev::ToggleAlwaysOnAI(object->asCreatureObject(), creature);
+						}
 					}
 				} else if(command == "areaanimimmune") {
 					BorEffect::ToggleAreaAnimImmunity(creature);
