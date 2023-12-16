@@ -81,7 +81,7 @@ function travelSystemScreenplay:travelToPoint(pPlayer, pSui, eventIndex, arg0)
 		return
 	end
 	--Check destination faction.
-	if(dest[7] == nil or dest[7] == "public" or dest[7] == SceneObject(pPlayer):getStoredString("faction_current"))
+	if(dest[7] == nil or dest[7] == "public" or dest[7] == SceneObject(pPlayer):getStoredString("faction_current") or PlayerObject(pPlayer):isPrivileged()) then
 		--------------------------------ZONE--------X------Z------Y-------CELL---
 		SceneObject(pPlayer):switchZone(dest[2], dest[3],dest[4],dest[5], dest[6]) 
 		return
