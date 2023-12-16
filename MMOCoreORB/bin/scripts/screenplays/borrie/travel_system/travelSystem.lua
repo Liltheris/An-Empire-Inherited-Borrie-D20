@@ -40,7 +40,7 @@ function travelSystemScreenplay:handleSuiSelectPlanet(pPlayer, pSui, eventIndex,
 			table.insert(options, {travel_destinations[planet].destinations[i][1], 0})
 			
 		--Get the player's current faction and compare it with the LZ.
-		elseif (SceneObject(pPlayer):getStoredString("faction_current") == destFaction or PlayerObject(pPlayer):isPrivileged()) then
+		elseif (SceneObject(pPlayer):getStoredString("faction_current") == destFaction) then
 			
 			--Add the destination.
 			table.insert(options, {travel_destinations[planet].destinations[i][1], 0})
@@ -81,7 +81,7 @@ function travelSystemScreenplay:travelToPoint(pPlayer, pSui, eventIndex, arg0)
 		return
 	end
 	--Check destination faction.
-	if(dest[7] == nil or dest[7] == "public" or dest[7] == SceneObject(pPlayer):getStoredString("faction_current") or PlayerObject(pPlayer):isPrivileged()) then
+	if(dest[7] == nil or dest[7] == "public" or dest[7] == SceneObject(pPlayer):getStoredString("faction_current")) then
 		--------------------------------ZONE--------X------Z------Y-------CELL---
 		SceneObject(pPlayer):switchZone(dest[2], dest[3],dest[4],dest[5], dest[6]) 
 		return
