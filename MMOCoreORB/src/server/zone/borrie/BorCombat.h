@@ -1162,14 +1162,53 @@ public:
         BorrieRPG::BroadcastMessage(victim, message);
     }
 
-    static void ReloadWeapon(CreatureObject* creature, CreatureObject* commander, WeaponObject* weapon) {
-        if (creature == nullptr || commander == nullptr || weapon == nullptr)
+    static void reloadWeapon(CreatureObject* creature, CreatureObject* commander, WeaponObject* weapon) {
+        if (creature == nullptr || commander == nullptr)
             return;
         
+        if (weapon == nullptr){
+            creature->sendSystemMessage("You must have a weapon equipped in order to reload your weapon!");
+            return;
+        }
+
+        // Get the ammo type of the weapon
+        String ammo = weapon->getAmmoPack();
+        if (ammo == ""){
+            creature->sendSystemMessage("Your currently equipped weapon does not use ammo, and therefore cannot be reloaded!");
+            return;
+        }
+
         //Player handling
-        //if (creature) {
+        if (creature->isPlayerCreature()) {
+            // Get the player inventory
+            SceneObject* inventory = creature->getSlottedObject("inventory");
+            if (inventory == nullptr)
+                return;
             
-        //}
+            // Loop over the inventory to find ammo of the appropriate type
+            SceneObject* item = nullptr;
+            for (int i = 0; i < inventory->getContainerObjectsSize(); ++i) {
+			    item = inventory->getContainerObject(i);
+                if (item->getObjectTemplate()->getTemplateFileName() == ammo){
+                    ManagedReference<TangibleObject*> ammoItem = item->asTangibleObject();
+                    if (ammoItem == nullptr)
+                        return;
+                    //Reload our weapon with the found ammo!
+                    weapon->setStoredInt("ammo_used", 0);
+                    ammoItem->decreaseUseCount();
+
+                    //Spam the players that the reload took place
+                    BorrieRPG::BroadcastMessage(creature, creature->getFirstName() + " has reloaded their weapon!");
+                    return;
+                }
+            }
+        }
+        else {
+            // NPCs don't have an inventory of ammo to manage, so simply reload the weapon.
+            weapon->setStoredInt("ammo_used", 0);
+            BorrieRPG::BroadcastMessage(creature, creature->getFirstName() + " has reloaded their weapon!");
+            return;
+        }
     }
 
 };
