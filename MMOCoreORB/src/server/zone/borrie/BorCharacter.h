@@ -36,9 +36,35 @@ public:
 			return false;
 	}
 
-	static bool HasRequiredArmourSkill(CreatureObject* creature, String slot);
+	static bool HasRequiredArmourSkill(CreatureObject* creature, String slot){
+		ManagedReference<ArmorObject*> armour = GetArmorAtSlot(creature, slot);
+		if(armour == nullptr)
+			return true;
+		return creature->getSkillMod("rp_armor") >= armour->getRpSkillLevel();
+	}
 
-	static bool IsWearingArmourUnskilled(CreatureObject* creature);
+	static bool IsWearingArmourUnskilled(CreatureObject* creature){
+		if(!HasRequiredArmourSkill(creature, "shoes"))
+			return true;
+		if(!HasRequiredArmourSkill(creature, "pants1"))
+			return true;
+		if(!HasRequiredArmourSkill(creature, "bicep_r"))
+			return true;
+		if(!HasRequiredArmourSkill(creature, "bicep_l"))
+			return true;
+		if(!HasRequiredArmourSkill(creature, "bracer_upper_r"))
+			return true;
+		if(!HasRequiredArmourSkill(creature, "bracer_upper_l"))
+			return true;
+		if(!HasRequiredArmourSkill(creature, "gloves"))
+			return true;
+		if(!HasRequiredArmourSkill(creature, "hat"))
+			return true;
+		if(!HasRequiredArmourSkill(creature, "chest"))
+			return true;
+		// All slots check out!
+		return false;
+	}
 
 	static ManagedReference<ArmorObject*> GetArmorAtSlot(CreatureObject* creature, String slot) {
 		return creature->getWearablesDeltaVector()->getArmorAtSlot(slot);
