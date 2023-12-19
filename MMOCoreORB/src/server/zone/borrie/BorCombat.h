@@ -86,7 +86,7 @@ public:
             //Remove ammo, emptying the ammo if power attacking, or removing 1 if normal attacking.
             if (powerAttack)
                 weapon->setStoredInt("ammo_used", maxAmmo);
-            else weapon->setStoredInt("ammo_used", ammoUsed - 1);
+            else weapon->setStoredInt("ammo_used", ammoUsed + 1);
         }
 
         //Lightsaber Hurt self check.
@@ -224,7 +224,7 @@ public:
             }
 
             //Remove ammo, emptying the ammo if power attacking, or removing 1 if normal attacking.
-            weapon->setStoredInt("ammo_used", ammoUsed - 3);
+            weapon->setStoredInt("ammo_used", ammoUsed + 3);
         }
 
         //Dark Rebellion Rulebook Edition I, on Flurry Attack
@@ -1167,14 +1167,14 @@ public:
             return;
         
         if (weapon == nullptr){
-            creature->sendSystemMessage("You must have a weapon equipped in order to reload your weapon!");
+            commander->sendSystemMessage("You must have a weapon equipped in order to reload your weapon!");
             return;
         }
 
         // Get the ammo type of the weapon
         String ammo = weapon->getAmmoPack();
         if (ammo == ""){
-            creature->sendSystemMessage("Your currently equipped weapon does not use ammo, and therefore cannot be reloaded!");
+            commander->sendSystemMessage("Your currently equipped weapon does not use ammo, and therefore cannot be reloaded!");
             return;
         }
 
@@ -1202,6 +1202,9 @@ public:
                     return;
                 }
             }
+            // Couldn't find any compatible ammo!
+            commander->sendSystemMessage("You do not have any fitting ammo to reload with!");
+            return;
         }
         else {
             // NPCs don't have an inventory of ammo to manage, so simply reload the weapon.

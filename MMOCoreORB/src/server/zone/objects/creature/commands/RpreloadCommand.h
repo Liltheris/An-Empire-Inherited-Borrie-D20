@@ -45,7 +45,7 @@ public:
 				return SUCCESS;
 			}
 			// Reload the weapon.
-			BorCombat::reloadWeapon(targetCreature, creature, creature->getWeapon());
+			BorCombat::reloadWeapon(targetCreature, creature, targetCreature->getWeapon());
 			return SUCCESS;
 
 		} else {
