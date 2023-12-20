@@ -1178,7 +1178,7 @@ public:
             commander->sendSystemMessage("Your currently equipped weapon does not use ammo, and therefore cannot be reloaded!");
             return;
         }
-
+        creature->sendSystemMessage(ammo);
         //Player handling
         if (creature->isPlayerCreature()) {
             // Get the player inventory
@@ -1190,8 +1190,7 @@ public:
             SceneObject* item = nullptr;
             for (int i = 0; i < inventory->getContainerObjectsSize(); ++i) {
 			    item = inventory->getContainerObject(i);
-                //Reee
-                creature->sendSystemMessage(item->getObjectTemplate()->getTemplateFileName());
+                
                 if (item->getObjectTemplate()->getTemplateFileName() == ammo){
                     ManagedReference<TangibleObject*> ammoItem = item->asTangibleObject();
                     if (ammoItem == nullptr)
