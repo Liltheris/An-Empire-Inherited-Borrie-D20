@@ -673,10 +673,11 @@ public:
                             if (healthDamage < 1) 
                                 healthDamage = 1;
                         }
+                        armourDamage = armourDamage * 2;
                     }
 
                     //Apply damage to creature and armour.
-                    armour->setConditionDamage(armour->getConditionDamage() - armourProtection);
+                    armour->setConditionDamage(armour->getConditionDamage() + armourDamage);
                     BorCharacter::ModPool(creature, "health", -damage, true);
 
                     // Output spam.
@@ -1189,6 +1190,8 @@ public:
             SceneObject* item = nullptr;
             for (int i = 0; i < inventory->getContainerObjectsSize(); ++i) {
 			    item = inventory->getContainerObject(i);
+                //Reee
+                creature->sendSystemMessage(item->getObjectTemplate()->getTemplateFileName());
                 if (item->getObjectTemplate()->getTemplateFileName() == ammo){
                     ManagedReference<TangibleObject*> ammoItem = item->asTangibleObject();
                     if (ammoItem == nullptr)
