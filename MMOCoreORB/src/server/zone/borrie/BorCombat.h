@@ -74,7 +74,7 @@ public:
         int toHitRoll = BorDice::Roll(1, 20);
 
         //Dealing with ammo
-        if (weapon->getMaxAmmo() != -1) {
+        if (weapon->getAmmoPack() != "") {
             int ammoUsed = weapon->getStoredInt("ammo_used");
             int maxAmmo = weapon->getMaxAmmo();
             //Check if we're out of ammo, or if we're power attacking that we have at least half the power pack left.
@@ -214,7 +214,7 @@ public:
         }
         
         //Dealing with ammo
-        if (weapon->getMaxAmmo() != -1) {
+        if (weapon->getAmmoPack() != "") {
             int ammoUsed = weapon->getStoredInt("ammo_used");
             int maxAmmo = weapon->getMaxAmmo();
             //Check if we're out of ammo, or if we're power attacking that we have at least half the power pack left.

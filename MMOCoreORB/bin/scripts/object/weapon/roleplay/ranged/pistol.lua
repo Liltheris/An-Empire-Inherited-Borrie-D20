@@ -15,7 +15,7 @@ _pointBlankAccuracy = 5	--DC under point blank range
 _idealAccuracy = 10		--DC within ideal range
 _maxRangeAccuracy = 99	--DC before max range
 
-_ammoPack = "object/tangible/borrp/ammo/ammo_powerpack_small"
+_ammoPack = "ammo_powerpack_small"
 _maxAmmo = 10
 
 --Unused junk data
