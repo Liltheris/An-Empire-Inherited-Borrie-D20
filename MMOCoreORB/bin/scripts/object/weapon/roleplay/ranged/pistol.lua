@@ -130,7 +130,7 @@ object_weapon_roleplay_ranged_pistol_cm_dead_bolt_pistol = object_weapon_ranged_
 	
 	rarity="Rare",
 
-	ammoPack = _ammoPack,
+	ammoPack = "ammo_kinetic",
 	maxAmmo = _maxAmmo,
 	
 	--[Stats]
@@ -539,7 +539,7 @@ object_weapon_roleplay_ranged_pistol_flechette_pistol = object_weapon_ranged_pis
 	
 	rarity="Rare",
 
-	ammoPack = _ammoPack,
+	ammoPack = "ammo_kinetic",
 	maxAmmo = _maxAmmo,
 	
 	--[Stats]
@@ -572,7 +572,7 @@ object_weapon_roleplay_ranged_pistol_fwg5_flechette_smart_pistol = object_weapon
 	
 	rarity = "Epic",
 
-	ammoPack = _ammoPack,
+	ammoPack = "ammo_kinetic",
 	maxAmmo = _maxAmmo,
 	
 	--[Stats]
@@ -950,7 +950,7 @@ object_weapon_roleplay_ranged_pistol_striker_projectile_pistol = object_weapon_r
 	
 	rarity="Common",
 
-	ammoPack = _ammoPack,
+	ammoPack = "ammo_kinetic",
 	maxAmmo = _maxAmmo,
 	
 	--[Stats]
@@ -1045,7 +1045,7 @@ object_weapon_roleplay_ranged_pistol_wookiee_pistol = object_weapon_ranged_pisto
 	
 	rarity="Uncommon",
 
-	ammoPack = _ammoPack,
+	ammoPack = "ammo_kinetic",
 	maxAmmo = _maxAmmo,
 	
 	--[Stats]

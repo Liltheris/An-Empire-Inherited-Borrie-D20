@@ -15,6 +15,8 @@ _pointBlankAccuracy = 5	--DC under point blank range
 _idealAccuracy = 10		--DC within ideal range
 _maxRangeAccuracy = 99	--DC before max range
 
+_ammoPack = "ammo_powerpack_large"
+_maxAmmo = 20
 
 --Unused junk data
 _xpType = "combat_general"
@@ -60,6 +62,11 @@ object_weapon_roleplay_ranged_rifle_a280_blaster_rifle = object_weapon_ranged_ri
 	maxDamage = 8, --Type of Die used in Damage
 	bonusDamage = 2,
 
+	rarity="Uncommon",
+
+	ammoPack = _ammoPack,
+	maxAmmo = _maxAmmo,
+	
 	--[Stats]
 	attackType = _attackType,
 	pointBlankRange = _pointBlankRange,
@@ -85,6 +92,11 @@ object_weapon_roleplay_ranged_rifle_berserker_rifle = object_weapon_ranged_rifle
 	minDamage = 1, --Amount of Die used in Damage
 	maxDamage = 8, --Type of Die used in Damage
 	bonusDamage = 6,
+	
+	rarity="Epic",
+
+	ammoPack = "ammo_kinetic",
+	maxAmmo = _maxAmmo,
 	
 	--[Stats]
 	attackType = _attackType,
@@ -117,6 +129,11 @@ object_weapon_roleplay_ranged_rifle_bowcaster = object_weapon_ranged_rifle_share
 	
 	noDodgeReaction = true,
 
+	rarity="Common",
+
+	ammoPack = "ammo_kinetic",
+	maxAmmo = _maxAmmo,
+	
 	--[Stats]
 	attackType = _attackType,
 	pointBlankRange = _pointBlankRange,
@@ -145,6 +162,11 @@ object_weapon_roleplay_ranged_rifle_crusader_mxiv_rifle = object_weapon_ranged_r
 
 	primaryAttributeOnly = true,
 
+	rarity="Epic",
+
+	ammoPack = _ammoPack,
+	maxAmmo = _maxAmmo,
+	
 	--[Stats]
 	attackType = _attackType,
 	pointBlankRange = _pointBlankRange,
@@ -176,6 +198,11 @@ object_weapon_roleplay_ranged_rifle_dawnsorrow_rifle = object_weapon_ranged_rifl
 	noDodgeReaction = true,	
 	primaryAttributeOnly = true,
 
+	rarity="Epic",
+
+	ammoPack = "ammo_kinetic",
+	maxAmmo = _maxAmmo,
+	
 	--[Stats]
 	attackType = _attackType,
 	pointBlankRange = _pointBlankRange,
@@ -205,6 +232,11 @@ object_weapon_roleplay_ranged_rifle_dc15a_rifle = object_weapon_ranged_rifle_ep3
 	noDodgeReaction = true,	
 	primaryAttributeOnly = true,
 
+	rarity="Uncommon",
+
+	ammoPack = _ammoPack,
+	maxAmmo = _maxAmmo,
+	
 	--[Stats]
 	attackType = _attackType,
 	pointBlankRange = _pointBlankRange,
@@ -234,6 +266,11 @@ object_weapon_roleplay_ranged_rifle_disruptor_rifle = object_weapon_ranged_rifle
 	noPowerAttack = true,	
 	primaryAttributeOnly = true,
 
+	rarity="Legendary",
+
+	ammoPack = _ammoPack,
+	maxAmmo = _maxAmmo,
+	
 	--[Stats]
 	attackType = _attackType,
 	pointBlankRange = _pointBlankRange,
@@ -263,6 +300,11 @@ object_weapon_roleplay_ranged_rifle_dlt19_heavy_blaster_rifle = object_weapon_ra
 	noDodgeReaction = true,
 	primaryAttributeOnly = true,
 
+	rarity="Uncommon",
+
+	ammoPack = _ammoPack,
+	maxAmmo = _maxAmmo,
+	
 	--[Stats]
 	attackType = _attackType,
 	pointBlankRange = _pointBlankRange,
@@ -291,6 +333,11 @@ object_weapon_roleplay_ranged_rifle_ion_rifle = object_weapon_ranged_rifle_share
 	
 	primaryAttributeOnly = true,
 
+	rarity="Common",
+
+	ammoPack = _ammoPack,
+	maxAmmo = _maxAmmo,
+	
 	--[Stats]
 	attackType = _attackType,
 	pointBlankRange = _pointBlankRange,
@@ -319,6 +366,11 @@ object_weapon_roleplay_ranged_rifle_j1_rifle = object_weapon_ranged_rifle_shared
 	
 	primaryAttributeOnly = true,
 
+	rarity="Uncommon",
+
+	ammoPack = "ammo_kinetic",
+	maxAmmo = _maxAmmo,
+	
 	--[Stats]
 	attackType = _attackType,
 	pointBlankRange = _pointBlankRange,
@@ -350,6 +402,11 @@ object_weapon_roleplay_ranged_rifle_laser_rifle = object_weapon_ranged_rifle_sha
 	
 	primaryAttributeOnly = true,
 
+	rarity="Uncommon",
+
+	ammoPack = _ammoPack,
+	maxAmmo = _maxAmmo,
+	
 	--[Stats]
 	attackType = _attackType,
 	pointBlankRange = _pointBlankRange,
@@ -380,6 +437,11 @@ object_weapon_roleplay_ranged_rifle_proton_rifle = object_weapon_ranged_rifle_sh
 	noDodgeReaction = true,
 	primaryAttributeOnly = true,
 
+	rarity="Legendary",
+
+	ammoPack = _ammoPack,
+	maxAmmo = _maxAmmo,
+	
 	--[Stats]
 	attackType = _attackType,
 	pointBlankRange = _pointBlankRange,
@@ -408,6 +470,11 @@ object_weapon_roleplay_ranged_rifle_sg82b_stun_rifle = object_weapon_ranged_rifl
 	
 	primaryAttributeOnly = true,
 
+	rarity="Uncommon",
+
+	ammoPack = _ammoPack,
+	maxAmmo = _maxAmmo,
+	
 	--[Stats]
 	attackType = _attackType,
 	pointBlankRange = _pointBlankRange,
@@ -438,6 +505,11 @@ object_weapon_roleplay_ranged_rifle_t21_light_repeating_rifle = object_weapon_ra
 	noDodgeReaction = true,
 	primaryAttributeOnly = true,
 
+	rarity="Rare",
+
+	ammoPack = _ammoPack,
+	maxAmmo = _maxAmmo,
+	
 	--[Stats]
 	attackType = _attackType,
 	pointBlankRange = _pointBlankRange,
@@ -468,6 +540,11 @@ object_weapon_roleplay_ranged_rifle_tenloss_dxr6_disruptor_rifle = object_weapon
 	noDodgeReaction = true,	
 	primaryAttributeOnly = true,
 
+	rarity="Legendary",
+
+	ammoPack = _ammoPack,
+	maxAmmo = _maxAmmo,
+	
 	--[Stats]
 	attackType = _attackType,
 	pointBlankRange = _pointBlankRange,
@@ -497,6 +574,11 @@ object_weapon_roleplay_ranged_rifle_trandoshan_hunting_rifle = object_weapon_ran
 	noPowerAttack = true,
 	primaryAttributeOnly = true,
 
+	rarity="Epic",
+
+	ammoPack = _ammoPack,
+	maxAmmo = _maxAmmo,
+	
 	--[Stats]
 	attackType = _attackType,
 	pointBlankRange = _pointBlankRange,
@@ -526,6 +608,11 @@ object_weapon_roleplay_ranged_rifle_tusken_rifle = object_weapon_ranged_rifle_sh
 	noPowerAttack = true,	
 	primaryAttributeOnly = true,
 
+	rarity="Common",
+
+	ammoPack = "ammo_kinetic",
+	maxAmmo = 1,
+	
 	--[Stats]
 	attackType = _attackType,
 	pointBlankRange = _pointBlankRange,
@@ -555,6 +642,11 @@ object_weapon_roleplay_ranged_rifle_vortex_rifle = object_weapon_ranged_rifle_sh
 	noPowerAttack = true,	
 	primaryAttributeOnly = true,
 
+	rarity="Legendary",
+
+	ammoPack = _ammoPack,
+	maxAmmo = _maxAmmo,
+	
 	--[Stats]
 	attackType = _attackType,
 	pointBlankRange = _pointBlankRange,
@@ -583,6 +675,11 @@ object_weapon_roleplay_ranged_rifle_westarm5_blaster_rifle = object_weapon_range
 	
 	primaryAttributeOnly = true,
 
+	rarity="Epic",
+
+	ammoPack = _ammoPack,
+	maxAmmo = _maxAmmo,
+	
 	--[Stats]
 	attackType = _attackType,
 	pointBlankRange = _pointBlankRange,

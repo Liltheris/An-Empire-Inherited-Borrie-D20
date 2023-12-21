@@ -15,6 +15,9 @@ _pointBlankAccuracy = 5	--DC under point blank range
 _idealAccuracy = 10		--DC within ideal range
 _maxRangeAccuracy = 99	--DC before max range
 
+_ammoPack = "ammo_powerpack_medium"
+_maxAmmo = 30
+
 --Unused junk data
 _xpType = "combat_general"
 _certificationsRequired = {}
@@ -58,6 +61,11 @@ object_weapon_roleplay_ranged_carbine_advanced_laser_carbine = object_weapon_ran
 	maxDamage = 6, --Type of Die used in Damage
 	bonusDamage = 2,
 	
+	rarity="Uncommon",
+
+	ammoPack = _ammoPack,
+	maxAmmo = _maxAmmo,
+	
 	--[Stats]
 	attackType = _attackType,
 	pointBlankRange = _pointBlankRange,
@@ -83,6 +91,11 @@ object_weapon_roleplay_ranged_carbine_alliance_needler_carbine = object_weapon_r
 	maxDamage = 4, --Type of Die used in Damage
 	bonusDamage = 2,
 
+	rarity="Common",
+
+	ammoPack = _ammoPack,
+	maxAmmo = _maxAmmo,
+	
 	--[Stats]
 	attackType = _attackType,
 	pointBlankRange = _pointBlankRange,
@@ -109,14 +122,10 @@ object_weapon_roleplay_ranged_carbine_bothan_bola_carbine = object_weapon_ranged
 	maxDamage = 4, --Type of Die used in Damage
 	bonusDamage = 1,
 
-	pointBlankRange = 4,
-	pointBlankAccuracy = 5,
+	rarity="Uncommon",
 
-	idealRange = 32,
-	idealAccuracy = 10,
-
-	maxRange = 132,
-	maxRangeAccuracy = 99,
+	ammoPack = _ammoPack,
+	maxAmmo = _maxAmmo,
 
 	--[Stats]
 	attackType = _attackType,
@@ -146,6 +155,11 @@ object_weapon_roleplay_ranged_carbine_charric_carbine = object_weapon_ranged_car
 	
 	noPowerAttack = true,
 
+	rarity="Legendary",
+
+	ammoPack = _ammoPack,
+	maxAmmo = _maxAmmo,
+	
 	--[Stats]
 	attackType = _attackType,
 	pointBlankRange = _pointBlankRange,
@@ -174,6 +188,11 @@ object_weapon_roleplay_ranged_carbine_corestrike_rancor_carbine = object_weapon_
 	
 	noPowerAttack = true,
 
+	rarity="Uncommon",
+
+	ammoPack = _ammoPack,
+	maxAmmo = _maxAmmo,
+	
 	--[Stats]
 	attackType = _attackType,
 	pointBlankRange = _pointBlankRange,
@@ -200,6 +219,11 @@ object_weapon_roleplay_ranged_carbine_crusader_mxiii_carbine = object_weapon_ran
 	maxDamage = 2, --Type of Die used in Damage
 	bonusDamage = 6,
 
+	rarity="Epic",
+
+	ammoPack = _ammoPack,
+	maxAmmo = _maxAmmo,
+	
 	--[Stats]
 	attackType = _attackType,
 	pointBlankRange = _pointBlankRange,
@@ -226,6 +250,11 @@ object_weapon_roleplay_ranged_carbine_dc15s_carbine = object_weapon_ranged_carbi
 	maxDamage = 5, --Type of Die used in Damage
 	bonusDamage = 1,
 
+	rarity="Common",
+
+	ammoPack = _ammoPack,
+	maxAmmo = _maxAmmo,
+	
 	--[Stats]
 	attackType = _attackType,
 	pointBlankRange = _pointBlankRange,
@@ -252,6 +281,11 @@ object_weapon_roleplay_ranged_carbine_e5_carbine = object_weapon_ranged_carbine_
 	maxDamage = 5, --Type of Die used in Damage
 	bonusDamage = 1,
 
+	rarity="Common",
+
+	ammoPack = _ammoPack,
+	maxAmmo = _maxAmmo,
+	
 	--[Stats]
 	attackType = _attackType,
 	pointBlankRange = _pointBlankRange,
@@ -277,6 +311,11 @@ object_weapon_roleplay_ranged_carbine_e11_carbine = object_weapon_ranged_carbine
 	minDamage = 1, --Amount of Die used in Damage
 	maxDamage = 4, --Type of Die used in Damage
 	bonusDamage = 2,
+	
+	rarity="Uncommon",
+
+	ammoPack = _ammoPack,
+	maxAmmo = _maxAmmo,
 	
 	--[Stats]
 	attackType = _attackType,
@@ -304,6 +343,11 @@ object_weapon_roleplay_ranged_carbine_ee3_carbine = object_weapon_ranged_carbine
 	maxDamage = 3, --Type of Die used in Damage
 	bonusDamage = 3,
 
+	rarity="Rare",
+
+	ammoPack = _ammoPack,
+	maxAmmo = _maxAmmo,
+	
 	--[Stats]
 	attackType = _attackType,
 	pointBlankRange = _pointBlankRange,
@@ -330,6 +374,11 @@ object_weapon_roleplay_ranged_carbine_elite_carbine = object_weapon_ranged_carbi
 	maxDamage = 7, --Type of Die used in Damage
 	bonusDamage = 1,
 
+	rarity="Uncommon",
+
+	ammoPack = _ammoPack,
+	maxAmmo = _maxAmmo,
+	
 	--[Stats]
 	attackType = _attackType,
 	pointBlankRange = _pointBlankRange,
@@ -356,6 +405,11 @@ object_weapon_roleplay_ranged_carbine_advanced_elite_carbine = object_weapon_ran
 	maxDamage = 4, --Type of Die used in Damage
 	bonusDamage = 4,
 
+	rarity="Uncommon",
+
+	ammoPack = _ammoPack,
+	maxAmmo = _maxAmmo,
+	
 	--[Stats]
 	attackType = _attackType,
 	pointBlankRange = _pointBlankRange,
@@ -382,6 +436,11 @@ object_weapon_roleplay_ranged_carbine_firestar_10k = object_weapon_ranged_carbin
 	maxDamage = 6, --Type of Die used in Damage
 	bonusDamage = 2,
 
+	rarity="Rare",
+
+	ammoPack = _ammoPack,
+	maxAmmo = _maxAmmo,
+	
 	--[Stats]
 	attackType = _attackType,
 	pointBlankRange = _pointBlankRange,
@@ -410,6 +469,11 @@ object_weapon_roleplay_ranged_carbine_geoniasian_carbine = object_weapon_ranged_
 
 	noPowerAttack = true,
 
+	rarity="Uncommon",
+
+	ammoPack = _ammoPack,
+	maxAmmo = _maxAmmo,
+	
 	--[Stats]
 	attackType = _attackType,
 	pointBlankRange = _pointBlankRange,
@@ -436,6 +500,11 @@ object_weapon_roleplay_ranged_carbine_laser_carbine = object_weapon_ranged_carbi
 	maxDamage = 5, --Type of Die used in Damage
 	bonusDamage = 2,
 
+	rarity="Common",
+
+	ammoPack = _ammoPack,
+	maxAmmo = _maxAmmo,
+	
 	--[Stats]
 	attackType = _attackType,
 	pointBlankRange = _pointBlankRange,
@@ -464,6 +533,11 @@ object_weapon_roleplay_ranged_carbine_ngantzarvel_9118_carbine = object_weapon_r
 	
 	noPowerAttack = true,
 
+	rarity="Uncommon",
+
+	ammoPack = _ammoPack,
+	maxAmmo = _maxAmmo,
+	
 	--[Stats]
 	attackType = _attackType,
 	pointBlankRange = _pointBlankRange,
@@ -492,6 +566,11 @@ object_weapon_roleplay_ranged_carbine_proton_carbine = object_weapon_ranged_carb
 	
 	noPowerAttack = true,
 
+	rarity="Rare",
+
+	ammoPack = _ammoPack,
+	maxAmmo = _maxAmmo,
+	
 	--[Stats]
 	attackType = _attackType,
 	pointBlankRange = _pointBlankRange,
@@ -518,6 +597,11 @@ object_weapon_roleplay_ranged_carbine_sfor_republic_carbine = object_weapon_rang
 	maxDamage = 6, --Type of Die used in Damage
 	bonusDamage = 2,
 
+	rarity="Epic",
+
+	ammoPack = _ammoPack,
+	maxAmmo = _maxAmmo,
+	
 	--[Stats]
 	attackType = _attackType,
 	pointBlankRange = _pointBlankRange,
@@ -544,6 +628,11 @@ object_weapon_roleplay_ranged_carbine_wookiee_carbine = object_weapon_ranged_car
 	maxDamage = 6, --Type of Die used in Damage
 	bonusDamage = 2,
 
+	rarity="Uncommon",
+
+	ammoPack = _ammoPack,
+	maxAmmo = _maxAmmo,
+	
 	--[Stats]
 	attackType = _attackType,
 	pointBlankRange = _pointBlankRange,
