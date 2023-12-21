@@ -617,7 +617,7 @@ public:
         }
 
         //Dark Rebellion Rulebook Edition I, on Flurry Attack
-        /* Instead of simply one attack, you’ll roll three to-hit to determine three different attacks, each providing half damage if they succeed. 
+        Instead of simply one attack, you’ll roll three to-hit to determine three different attacks, each providing half damage if they succeed. 
         If the target is using a combat stance that uses action points, they’ll have to spend twice as many action points to counter your attack, 
         though they’ll only need to defeat your highest to-hit roll in order to counter all three attacks. 
 
