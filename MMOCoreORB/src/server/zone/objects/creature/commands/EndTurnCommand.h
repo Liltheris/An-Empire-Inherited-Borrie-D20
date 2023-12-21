@@ -123,6 +123,18 @@ public:
 		//Reset Deflection
 		targetCreature->setStoredInt("deflection_count", 0);
 
+		//Handle other effects.
+		int vulnerability = targetCreature->getStoredInt("is_vulnerable");
+
+		//Reduce vulnerability by 1 after every endturn.
+		if(vulnerability != 0){
+			if (vulnerability > 0){
+				vulnerability -= 1;
+			} else vulnerability = 0;
+		}
+
+		targetCreature->setStoredInt("is_vulnerable", vulnerability);
+
 		BorrieRPG::BroadcastMessage(targetCreature, "[[" + targetCreature->getFirstName() + " has ended their turn!]]");
 		BorCharacter::ApplyEndTurnStateDamages(targetCreature);
 

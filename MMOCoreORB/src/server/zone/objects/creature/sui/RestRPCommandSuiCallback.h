@@ -58,6 +58,7 @@ public:
 		}
 
 		targetCreature->setStoredInt("power_attack_count", 0);
+		targetCreature->setStoredInt("is_vulnerable", 0);
 	}
 };
 

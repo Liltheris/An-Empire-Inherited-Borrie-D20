@@ -27,6 +27,216 @@ public:
         return output;
     }
 
+
+
+    static void AttackTarget(CreatureObject* attacker, CreatureObject* defender, CreatureObject* commander, int bodyPartTarget, bool powerAttack, bool ignoreLOS = false) {
+        ManagedReference<WeaponObject*> weapon = attacker->getWeapon();
+
+        if(weapon->isBroken()) {
+            commander->sendSystemMessage("Your weapon is broken, and you can't attack with a broken weapon.");
+            return;
+        }
+
+        if(!ignoreLOS) {
+            if (!CollisionManager::checkLineOfSight(attacker, defender)) {
+                commander->sendSystemMessage("You don't have a direct line of sight of your target.");
+                return;
+            }
+        }
+
+        // Determine the to hit DC.
+        int toHitDC = GetToHitModifier(attacker, defender, weapon) + 10;
+        int aimMod = 0;
+        bool aimed = false;
+
+        // Aimed attack DC modifier.
+        if(bodyPartTarget != -1) {
+            // Modify the to Hit DC depending on the part being aimed at.
+            // Chest is +2, Head and hands are +10, all other body parts are +5.
+            if (bodyPartTarget == 10 || bodyPartTarget == 9)
+                toHitDC += 10;
+            else if (bodyPartTarget == 1)
+                toHitDC += 2;
+            else toHitDC += 5;
+            aimed = true;
+        }
+
+        // Increase the DC by 5 if the attacker is power attacking with a melee weapon.
+        if(powerAttack && (weapon->isMeleeWeapon() || weapon->isJediWeapon())){
+            toHitDC += 5;
+        }
+
+        // Reduce the DC by 5 if the target is currently vulnerable.
+        if(defender->getStoredInt("is_vulnerable") != 0){
+            toHitDC -= 5;
+        }
+
+        // Reduce the DC by 2 if the weapon is our own lightsaber.
+        // NOTE: In the future this will be replaced for a check for an attuned crystal instead.
+        if(weapon->isJediWeapon() && weapon->getCraftersName() == attacker->getFirstName()){
+            toHitDC -= 2;
+        }
+
+        // Determine and apply the action cost of the attack, if any!
+        // Power attack costs 3 action, aimed attack costs 1.
+        if(powerAttack){
+            DrainActionOrWill(attacker, 3);
+        } else if (bodyPartTarget != -1){
+            DrainActionOrWill(attacker, 1);
+        }
+
+        // Determine the attacker's roll.
+        int skillCheck = 0;
+
+        if(weapon->isJediWeapon()) skillCheck = attacker->getSkillMod("rp_lightsaber");
+        else if(weapon->isUnarmedWeapon()) skillCheck = attacker->getSkillMod("rp_unarmed");
+        else if(weapon->isMeleeWeapon()) skillCheck = attacker->getSkillMod("rp_melee");
+        else if(weapon->isRangedWeapon()) skillCheck = attacker->getSkillMod("rp_ranged");
+
+        int toHitRoll = BorDice::Roll(1, 20);
+
+        int result = toHitRoll + skillCheck;
+
+        // We hit if the roll result is greater than the DC or we nat 20. If we nat 1, we miss regardless. Melee weapons are excluded from the nat 20 hit.
+        bool hasHit = (result >= toHitDC || (toHitRoll == 20 && weapon->isRangedWeapon())) && toHitRoll != 1;
+
+        // Handling ammo.
+        if (weapon->getAmmoPack() != "") {
+            int ammoUsed = weapon->getStoredInt("ammo_used");
+            int maxAmmo = weapon->getMaxAmmo();
+            //Check if we're out of ammo, or if we're power attacking that we have at least half the power pack left.
+            if(ammoUsed >= maxAmmo || (powerAttack && ammoUsed >= maxAmmo/2)) {
+                commander->sendSystemMessage("Your weapon does not have enough ammo! You will have to reload before attacking.");
+                return;
+            }
+
+            //Remove ammo, emptying the ammo if power attacking, or removing 1 if normal attacking.
+            if (powerAttack)
+                weapon->setStoredInt("ammo_used", maxAmmo);
+            else weapon->setStoredInt("ammo_used", ammoUsed + 1);
+        }
+
+        // Lightsaber self-hurt checks.
+        if(weapon->isJediWeapon()){
+            int lightsaberSkill = attacker->getSkillMod("rp_lightsaber");
+            // Must beat a DC of 18 if we're unskilled with a lightsaber!
+            if(lightsaberSkill == 0 && result < 18){
+                defender = attacker;
+                hasHit = true;
+            }
+            // Must beat a DC of 2 if we're below lightsaber III!
+            if(lightsaberSkill < 3 && result < 2){
+                defender = attacker;
+                hasHit = true;
+            }
+        }
+
+        // Generate part of the output spam, based on the kind of attack performed
+        String attackVerb = powerAttack ? "power attacked" : "attacked";
+        if(bodyPartTarget != -1) 
+            attackVerb = "aimed at "+defender->getFirstName()+"'s "+GetSlotDisplayName(bodyPartTarget);
+        else
+            attackVerb += " " + defender->getFirstName();
+
+        // Determine the bodypart we're hitting, if it was not already provided.
+        if(bodyPartTarget == -1){
+            bodyPartTarget = BorDice::Roll(1, 10);
+        }
+
+        // Set the attacker vulnerable if they're power attacking with a non-ranged weapon.
+        if(powerAttack && !weapon->isRangedWeapon()){
+            // 2 stacks, since we will reduce it by 1 on every endturn.
+            attacker->setStoredInt("is_vulnerable", 2);
+        }
+
+        // Determine damage dealt.
+        // We need to do this even if we miss, as ranged weapons reduce condition based on it if power attacking.
+        int damageDieCount = weapon->getMinDamage();
+        int damageDieType = weapon->getMaxDamage();
+
+        if(powerAttack)
+            damageDieCount++;
+
+        int bonusDamage = weapon->getBonusDamage();
+
+        if(weapon->isJediWeapon()) {
+            bonusDamage += attacker->getSkillMod("rp_lightsaber");
+        }
+
+        int totalDamage = GetDamageRoll(damageDieType, damageDieCount, bonusDamage);
+
+        // Handle missing!
+        if(!hasHit){
+            BorrieRPG::BroadcastMessage(attacker, attacker->getFirstName() + " "+attackVerb+ " and missed!  \\#DBDBDB" + GenerateOutputSpam(toHitRoll, skillCheck, toHitDC) + "\\#FFFFFF");
+            BorEffect::PerformReactiveAnimation(defender, attacker, "miss", GetSlotHitlocation(bodyPartTarget), true);
+
+            // Ranged weapons are damaged even if we miss!
+            if(weapon->isRangedWeapon()){
+                int conditionDamage = 1;
+                if(powerAttack)
+                    conditionDamage = totalDamage;
+                
+                weapon->setConditionDamage(weapon->getConditionDamage() + conditionDamage);
+            }
+            return;
+        }
+
+        // Special self-hit handling.
+        if (attacker == defender && weapon->isJediWeapon()){
+            BorEffect::PerformReactiveAnimation(attacker, attacker, "hit", GetSlotHitlocation(BorDice::Roll(1, 10)), true);
+            BorrieRPG::BroadcastMessage(attacker, attacker->getFirstName() + " accidently hurts themselves with the lightsaber, doing "+String::valueOf(totalDamage)+" damage!");
+            BorCharacter::ModPool(attacker, "health", totalDamage * -1, true);
+            return;
+        }
+
+        // Handle hitting!
+        bool criticalHit = false;
+
+        if (bodyPartTarget == 10) {
+            totalDamage =  totalDamage * 1.5;
+            criticalHit = true;
+        }
+
+        //Calculate the Reaction
+        String reactionResult = HandleCombatReaction(attacker, defender, totalDamage, toHitRoll + skillCheck, bodyPartTarget, powerAttack, false);
+
+        String toHitString = "\\#DBDBDB" + GenerateOutputSpam(toHitRoll, skillCheck, toHitDC) + "\\#FFFFFF";
+        String combatSpam = "";
+
+        if (criticalHit){
+            combatSpam = attacker->getFirstName() + " "+attackVerb+ " and critically hit!";
+        } else {
+            combatSpam = attacker->getFirstName() + " "+attackVerb+ " and hit!";
+        }
+
+        if(ignoreLOS) {
+            BorrieRPG::BroadcastMessage(attacker, combatSpam + " " + toHitString +  reactionResult + " (Line of Sight Ignored)");
+        } else {
+            BorrieRPG::BroadcastMessage(attacker, combatSpam + " " + toHitString +  reactionResult);
+        }
+
+        //Finally, determine damage done to the used weapon.
+        //Ranged weapons take 1 condition damage per attack, or the total attack damage if power attacking.
+        int conditionDamage = 1;
+
+        if(weapon->isRangedWeapon() && powerAttack)
+        {
+            conditionDamage = totalDamage;
+        // Melee weapons take the damage as condition damage, 2x if power attacking
+        } else if(weapon->isMeleeWeapon() || weapon->isUnarmedWeapon()){
+            conditionDamage = totalDamage;
+
+            if(powerAttack)
+                conditionDamage = conditionDamage * 2;
+        }
+        // Apply the damage.
+        weapon->setConditionDamage(weapon->getConditionDamage() + conditionDamage);
+    }
+
+    /*
+    /////////////////////////////////////////////////////////////////
+    // Old Implementation
+    /////////////////////////////////////////////////////////////////
 	static void AttackTarget(CreatureObject* attacker, CreatureObject* defender, CreatureObject* commander, int bodyPartTarget, bool powerAttack, bool ignoreLOS = false) {
         ManagedReference<WeaponObject*> weapon = attacker->getWeapon();
         if(weapon->isBroken()) {
@@ -129,6 +339,7 @@ public:
         }
 
         if(powerAttack) {
+            //Power attacks no longer have scaling action costs.
             int powerAttackCost = attacker->getStoredInt("power_attack_count");
             attacker->setStoredInt("power_attack_count", powerAttackCost + 1);
             DrainActionOrWill(attacker, 3 + powerAttackCost); //Changed to 3 from 1 as per rebalancing, 3/8/2023
@@ -197,8 +408,186 @@ public:
             BorrieRPG::BroadcastMessage(attacker, combatSpam + " " + toHitString +  reactionResult);
         }
         
-	}
+	}*/
 
+    //TO DO: When full refactor is done, this either needs to be folded into the main attack command, or sections of the attack command need to be compartmentalised into functions, to be reused here.
+    static void FlurryAttackTarget(CreatureObject* attacker, CreatureObject* defender, CreatureObject* commander, bool ignoreLOS = false) {
+        ManagedReference<WeaponObject*> weapon = attacker->getWeapon();
+        if(weapon->isBroken()) {
+            commander->sendSystemMessage("Your weapon is broken, and you can't attack with a broken weapon.");
+            return;
+        }
+
+        if(!ignoreLOS) {
+            if (!CollisionManager::checkLineOfSight(attacker, defender)) {
+                commander->sendSystemMessage("You don't have a direct line of sight of your target.");
+                return;
+            }
+        }
+
+        // Apply the action cost.
+        DrainActionOrWill(attacker, 1);
+
+        // Determine the to hit DC.
+        int toHitDC = GetToHitModifier(attacker, defender, weapon) + 10;
+        int aimMod = 0;
+        bool aimed = false;
+
+        // Reduce the DC by 5 if the target is currently vulnerable.
+        if(defender->getStoredInt("is_vulnerable") != 0){
+            toHitDC -= 5;
+        }
+
+        // Reduce the DC by 2 if the weapon is our own lightsaber.
+        // NOTE: In the future this will be replaced for a check for an attuned crystal instead.
+        if(weapon->isJediWeapon() && weapon->getCraftersName() == attacker->getFirstName()){
+            toHitDC -= 2;
+        }
+
+        // Determine the attacker's rolls.
+        int skillCheck = 0;
+
+        if(weapon->isJediWeapon()) skillCheck = attacker->getSkillMod("rp_lightsaber");
+        else if(weapon->isUnarmedWeapon()) skillCheck = attacker->getSkillMod("rp_unarmed");
+        else if(weapon->isMeleeWeapon()) skillCheck = attacker->getSkillMod("rp_melee");
+        else if(weapon->isRangedWeapon()) skillCheck = attacker->getSkillMod("rp_ranged");
+
+        int roll1 = BorDice::Roll(1, 20);
+        int roll2 = BorDice::Roll(1, 20);
+        int roll3 = BorDice::Roll(1, 20);
+
+        int result1 = roll1 + skillCheck;
+        int result2 = roll2 + skillCheck;
+        int result3 = roll3 + skillCheck;
+
+        // We hit if the roll result is greater than the DC or we nat 20. If we nat 1, we miss regardless. Melee weapons are excluded from the nat 20 hit.
+        bool hit1 = (result1 >= toHitDC || (roll1 == 20 && weapon->isRangedWeapon())) && roll1 != 1;
+        bool hit2 = (result2 >= toHitDC +5 || (roll2 == 20 && weapon->isRangedWeapon())) && roll2 != 1;
+        bool hit3 = (result3 >= toHitDC +10 || (roll3 == 20 && weapon->isRangedWeapon())) && roll3 != 1;
+
+        int lowestResult = std::min(std::min(result1, result2), result3);
+
+        // Handling ammo
+        if (weapon->getAmmoPack() != "") {
+            int ammoUsed = weapon->getStoredInt("ammo_used");
+            int maxAmmo = weapon->getMaxAmmo();
+            //Check if we're out of ammo, or if we're power attacking that we have at least half the power pack left.
+            if(ammoUsed + 2 >= maxAmmo) {
+                commander->sendSystemMessage("Your does not have enough ammo! You will have to reload before flurry attacking!");
+                return;
+            }
+
+            //Remove ammo, emptying the ammo if power attacking, or removing 1 if normal attacking.
+            weapon->setStoredInt("ammo_used", ammoUsed + 3);
+        }
+
+        // Lightsaber self-hurt checks.
+        bool hasSelfHit = false;
+
+        if(weapon->isJediWeapon()){
+            int lightsaberSkill = attacker->getSkillMod("rp_lightsaber");
+            // Must beat a DC of 18 if we're unskilled with a lightsaber!
+            if(lightsaberSkill == 0 && lowestResult < 18){
+                defender = attacker;
+                hasSelfHit = true;
+            }
+            // Must beat a DC of 2 if we're below lightsaber III!
+            if(lightsaberSkill < 3 && lowestResult < 2){
+                defender = attacker;
+                hasSelfHit = true;
+            }
+        }
+
+        //Absolute Miss
+        if(!hit1 && !hit2 && !hit3) {
+            BorrieRPG::BroadcastMessage(attacker, attacker->getFirstName() + " flurry attacked " +  defender->getFirstName() + " and missed! \\#DBDBDB" + GenerateFlurryOutputSpam(roll1, roll2, roll3, skillCheck, toHitDC) + "\\#FFFFFF");
+            BorEffect::PerformReactiveAnimation(defender, attacker, "miss", GetSlotHitlocation(BorDice::Roll(1, 10)), true);
+            BorEffect::PerformReactiveAnimation(defender, attacker, "miss", GetSlotHitlocation(BorDice::Roll(1, 10)), true);
+            BorEffect::PerformReactiveAnimation(defender, attacker, "miss", GetSlotHitlocation(BorDice::Roll(1, 10)), true);
+
+            //Ranged weapons take damage even if missing.
+            if(weapon->isRangedWeapon()){
+                weapon->setConditionDamage(weapon->getConditionDamage() + 3);
+            }
+            return;
+        }
+        
+        int damageDieCount = weapon->getMinDamage();
+        int damageDieType = weapon->getMaxDamage();
+        int bonusDamage = weapon->getBonusDamage();
+
+        if(weapon->isJediWeapon()) {
+            bonusDamage += attacker->getSkillMod("rp_lightsaber");
+        }
+
+        int damage1 = GetDamageRoll(damageDieType, damageDieCount, bonusDamage) / 2;
+        int damage2 = GetDamageRoll(damageDieType, damageDieCount, bonusDamage) / 2;
+        int damage3 = GetDamageRoll(damageDieType, damageDieCount, bonusDamage) / 2;
+
+        int totalDamage = 0;
+        if(hit1) totalDamage += damage1;
+        if(hit2) totalDamage += damage2;
+        if(hit3) totalDamage += damage3;
+
+        if(totalDamage < 1) totalDamage = 1;
+
+        int hitCount = 0;
+        if(hit1) hitCount++;
+        if(hit2) hitCount++;
+        if(hit3) hitCount++;
+
+        int highestRoll = roll1;
+        if(roll2 > highestRoll) highestRoll = roll2;
+        if(roll3 > highestRoll) highestRoll = roll3; 
+
+        String reactionResult = HandleCombatReaction(attacker, defender, totalDamage, highestRoll + skillCheck, BorDice::Roll(1, 10), false, true);
+
+        //Apply Followup as per the reaction.
+        String toHitString = "\\#DBDBDB" + GenerateFlurryOutputSpam(roll1, roll2, roll3, skillCheck, toHitDC) + "\\#FFFFFF";
+
+        String combatSpam = attacker->getFirstName() + " flurry attacked " +  defender->getFirstName();
+        
+        if(hitCount == 1) {
+            combatSpam += " and hit once!";
+        } else {
+            combatSpam += " and hit " + String::valueOf(hitCount) + " times!";
+        }
+
+
+        if(ignoreLOS) {
+            BorrieRPG::BroadcastMessage(attacker, combatSpam + " " + toHitString +  reactionResult + " (Line of Sight Ignored)");
+        } else {
+            BorrieRPG::BroadcastMessage(attacker, combatSpam + " " + toHitString +  reactionResult);
+        }
+        
+        //Condition stuff.
+        doFlurryConditionChange(attacker, damage1, hit1);
+        doFlurryConditionChange(attacker, damage2, hit2);
+        doFlurryConditionChange(attacker, damage3, hit3);
+    }
+
+    static void doFlurryConditionChange(CreatureObject* attacker, int damage, bool hasHit){
+        ManagedReference<WeaponObject*> weapon = attacker->getWeapon();
+
+        if(hasHit){
+            // Handle weapon condition.
+            if(weapon->isRangedWeapon()){
+                // Ranged weapons take 1 condition damage per attack.
+                weapon->setConditionDamage(weapon->getConditionDamage() + 1);
+            } else {
+                // Melee weapons take weapon damage as condition damage.
+                weapon->setConditionDamage(weapon->getConditionDamage() + damage);
+            }
+        } else {
+            if(weapon->isRangedWeapon()){
+                weapon->setConditionDamage(weapon->getConditionDamage() + 1);
+            }
+        }
+    }
+    /*
+    /////////////////////////////////////////////////////////////////
+    // Old Implementation
+    /////////////////////////////////////////////////////////////////
     static void FlurryAttackTarget(CreatureObject* attacker, CreatureObject* defender, CreatureObject* commander, bool ignoreLOS = false) {
         ManagedReference<WeaponObject*> weapon = attacker->getWeapon();
         if(weapon->isBroken()) {
@@ -230,7 +619,7 @@ public:
         //Dark Rebellion Rulebook Edition I, on Flurry Attack
         /* Instead of simply one attack, you’ll roll three to-hit to determine three different attacks, each providing half damage if they succeed. 
         If the target is using a combat stance that uses action points, they’ll have to spend twice as many action points to counter your attack, 
-        though they’ll only need to defeat your highest to-hit roll in order to counter all three attacks. */
+        though they’ll only need to defeat your highest to-hit roll in order to counter all three attacks. 
 
         int toHitDC = GetToHitModifier(attacker, defender, weapon) + 10;
         int roll1 = BorDice::Roll(1, 20); 
@@ -341,7 +730,7 @@ public:
             BorrieRPG::BroadcastMessage(attacker, combatSpam + " " + toHitString +  reactionResult);
         }
         
-    }
+    }*/
 
     static int GetDamageRoll(int dieType, int dieCount, int bonusDamage) {
         int totalDamage = bonusDamage;
@@ -1178,7 +1567,7 @@ public:
             commander->sendSystemMessage("Your currently equipped weapon does not use ammo, and therefore cannot be reloaded!");
             return;
         }
-        creature->sendSystemMessage(ammo);
+
         //Player handling
         if (creature->isPlayerCreature()) {
             // Get the player inventory
