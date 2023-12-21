@@ -67,8 +67,9 @@ public:
         }
 
         // Reduce the DC by 5 if the target is currently vulnerable.
-        if(defender->getStoredInt("is_vulnerable") != 0){
+        if(defender->getStoredInt("is_vulnerable") > 0){
             toHitDC -= 5;
+            defender->setStoredInt("is_vulnerable", 0);
         }
 
         // Reduce the DC by 2 if the weapon is our own lightsaber.
@@ -434,8 +435,9 @@ public:
         bool aimed = false;
 
         // Reduce the DC by 5 if the target is currently vulnerable.
-        if(defender->getStoredInt("is_vulnerable") != 0){
+        if(defender->getStoredInt("is_vulnerable") > 0){
             toHitDC -= 5;
+            defender->setStoredInt("is_vulnerable", 0);
         }
 
         // Reduce the DC by 2 if the weapon is our own lightsaber.
@@ -559,7 +561,7 @@ public:
         } else {
             BorrieRPG::BroadcastMessage(attacker, combatSpam + " " + toHitString +  reactionResult);
         }
-        
+
         //Condition stuff.
         doFlurryConditionChange(attacker, damage1, hit1);
         doFlurryConditionChange(attacker, damage2, hit2);
