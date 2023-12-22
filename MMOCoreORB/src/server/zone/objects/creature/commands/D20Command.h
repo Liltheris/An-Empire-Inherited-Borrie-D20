@@ -44,6 +44,13 @@ public:
 			ManagedReference<SceneObject*> object;			  // The Target Object
 			ManagedReference<CreatureObject*> targetCreature; // The Target Object as a Creature
 
+			// Initialise the block_target_rolling value based on the character's admin level.
+			if(creature->getStoredInt("block_target_rolling" < 0)){
+				if(adminLevelCheck > 0)
+					creature->setStoredInt("block_target_rolling", 0);
+				else creature->setStoredInt("block_target_rolling", 1);
+			}
+
 			if(creature->getStoredInt("block_target_rolling") != 1) {
 				if (target != 0) {
 					object = server->getZoneServer()->getObject(target, false);
