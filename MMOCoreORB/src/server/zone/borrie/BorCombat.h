@@ -478,12 +478,12 @@ public:
             // Initialise ammo for new weapons.
 			if(weapon->getStoredInt("ammo_used") < 0)
 				weapon->setStoredInt("ammo_used", 0);
-                
+
             int ammoUsed = weapon->getStoredInt("ammo_used");
             int maxAmmo = weapon->getMaxAmmo();
             //Check if we're out of ammo, or if we're power attacking that we have at least half the power pack left.
             if(ammoUsed + 2 >= maxAmmo) {
-                commander->sendSystemMessage("Your does not have enough ammo! You will have to reload before flurry attacking!");
+                commander->sendSystemMessage("Your weapon does not have enough ammo! You will have to reload before flurry attacking!");
                 return;
             }
 

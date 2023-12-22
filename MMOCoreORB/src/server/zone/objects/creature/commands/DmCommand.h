@@ -678,6 +678,58 @@ public:
 					}
 				} else if (command == "togglecopy") {
 					BorrieRPG::setCopyable(creature, object);
+				} else if (command == "setstoredint") {
+					if(object != nullptr) {
+						if (object->isCreatureObject() && !object->isPlayerCreature()) {
+							// Get our arguments from the command, or display help if missing inputs
+							String name;
+							int value = 0;
+							if ((args.hasMoreTokens())) {
+								args.getStringToken(name);
+							} else {
+								creature->sendSystemMessage("Incorrect usage. /dm setstoredint [name] [value]");
+								return SUCCESS;
+							}
+							if ((args.hasMoreTokens())) {
+								value = args.getIntToken();
+							} else {
+								creature->sendSystemMessage("Incorrect usage. /dm setstoredint [name] [value]");
+								return SUCCESS;
+							}
+							// Set the into onto the named field.
+							object->setStoredInt(name, value);
+						} else {
+							creature->sendSystemMessage("Invalid Target");
+						}
+					} else {
+						creature->sendSystemMessage("Invalid Target");
+					}	
+				} else if (command == "setstoredstring") {
+					if(object != nullptr) {
+						if (object->isCreatureObject() && !object->isPlayerCreature()) {
+							// Get our arguments from the command, or display help if missing inputs
+							String name;
+							String value;
+							if ((args.hasMoreTokens())) {
+								args.getStringToken(name);
+							} else {
+								creature->sendSystemMessage("Incorrect usage. /dm setstoredstring [name] [value]");
+								return SUCCESS;
+							}
+							if ((args.hasMoreTokens())) {
+								args.getStringToken(value);
+							} else {
+								creature->sendSystemMessage("Incorrect usage. /dm setstoredstring [name] [value]");
+								return SUCCESS;
+							}
+							// Set the into onto the named field.
+							object->setStoredString(name, value);
+						} else {
+							creature->sendSystemMessage("Invalid Target");
+						}
+					} else {
+						creature->sendSystemMessage("Invalid Target");
+					}	
 				}
 			}
 		} catch (Exception& e) {
@@ -731,6 +783,8 @@ public:
 		text << "/dm setnpcpool [pool] [value] - Sets an NPC's pool to the given value" << endl;
 		text << "/dm addcorruptionpoint/removecorruptionpoint [value] - Adds or removes darkside corruption points" << endl;
 		text << "/dm learnlanguages - Learn all languages" << endl;
+		text << "/dm setstoredint [name] [value] - Sets the value of the provided stored int" << endl;
+		text << "/dm setstoredstring [name] [value] - Sets the value of the provided stored string" << endl;
 
 		ManagedReference<SuiMessageBox*> box = new SuiMessageBox(creature, SuiWindowType::NONE);
 		box->setPromptTitle("DM COMMAND HELP");
