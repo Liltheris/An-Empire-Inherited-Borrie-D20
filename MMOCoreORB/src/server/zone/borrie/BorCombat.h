@@ -11,7 +11,6 @@
 #include "server/zone/borrie/BorEffect.h"
 
 enum RpReactionStance {
-    NONE = 0,
     DEFEND = 1,
     PARRY = 2,
     DODGE = 3,
