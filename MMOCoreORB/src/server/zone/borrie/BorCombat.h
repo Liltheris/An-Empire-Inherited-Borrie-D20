@@ -1127,20 +1127,20 @@ public:
             actionPointMod = 2;
 
         if(CanPerformReaction(defender, defenderReactionType, incomingDamage, attackerWeapon, defenderWeapon)) {
-            if(defenderReactionType == RpReactionStance::DEFEND) {
-                DoDefendReaction(attacker, defender, incomingDamage, toHit, slot, actionPointMod);
-            } else if(defenderReactionType == RpReactionStance::PARRY) {
-                DoParryReaction(attacker, defender, incomingDamage, toHit, slot, actionPointMod);
-            } else if(defenderReactionType == RpReactionStance::DODGE) {
-                DoDodgeReaction(attacker, defender, incomingDamage, toHit, slot, actionPointMod);
-            } else if(defenderReactionType == RpReactionStance::LIGHTSABERDEFLECT) {
-                DoLightsaberDeflectReaction(attacker, defender, incomingDamage, toHit, slot, actionPointMod);
-            } else if(defenderReactionType == RpReactionStance::FORCEDEFLECT) {
-                DoForceDeflectReaction(attacker, defender, incomingDamage, toHit, slot, actionPointMod);
-            } else if(defenderReactionType == RpReactionStance::FORCEABSORB) {
-                DoForceAbsorbReaction(attacker, defender, incomingDamage, toHit, slot, actionPointMod);
+            switch(defenderReactionType) {
+                case RpReactionStance::DEFEND:
+                    return DoDefendReaction(attacker, defender, incomingDamage, toHit, slot, actionPointMod);
+                case RpReactionStance::PARRY:
+                    return DoParryReaction(attacker, defender, incomingDamage, toHit, slot, actionPointMod);
+                case RpReactionStance::DODGE:
+                    return DoDodgeReaction(attacker, defender, incomingDamage, toHit, slot, actionPointMod);
+                case RpReactionStance::LIGHTSABERDEFLECT:
+                    return DoLightsaberDeflectReaction(attacker, defender, incomingDamage, toHit, slot, actionPointMod);
+                case RpReactionStance::FORCEDEFLECT:
+                    return DoForceDeflectReaction(attacker, defender, incomingDamage, toHit, slot, actionPointMod);
+                case RpReactionStance::FORCEABSORB:
+                    return DoForceAbsorbReaction(attacker, defender, incomingDamage, toHit, slot, actionPointMod);
             }
-            return reactionSpam;
         } 
         
         //Simply accept the damage. 
