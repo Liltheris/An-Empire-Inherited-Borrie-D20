@@ -13,6 +13,17 @@ function travelSystemScreenplay:handleSuiSelectPlanet(pPlayer, pSui, eventIndex,
 		return
 	end
 
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
+	local isDM = false;
+	
+	if (pGhost == nil) then
+		return
+	end
+	
+	if(PlayerObject(pGhost):isPrivileged()) then
+		isDm = true;
+	end
+	
 	if (cancelPressed) then
 		return
 	end
@@ -36,7 +47,7 @@ function travelSystemScreenplay:handleSuiSelectPlanet(pPlayer, pSui, eventIndex,
 		local destFaction = travel_destinations[planet].destinations[i][7]
 		
 		--Check the landing zone's faction control. If the faction isn't defined, assume it's public.
-		if (destFaction == nil or destFaction == "public") then
+		if (destFaction == nil or destFaction == "public" or isDM) then
 			table.insert(options, {travel_destinations[planet].destinations[i][1], 0})
 			
 		--Get the player's current faction and compare it with the LZ.
@@ -71,6 +82,17 @@ function travelSystemScreenplay:travelToPoint(pPlayer, pSui, eventIndex, arg0)
 		return
 	end
 
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
+	local isDM = false;
+	
+	if (pGhost == nil) then
+		return
+	end
+	
+	if(PlayerObject(pGhost):isPrivileged()) then
+		isDm = true;
+	end
+	
 	if (cancelPressed) then
 		return
 	end
@@ -81,7 +103,7 @@ function travelSystemScreenplay:travelToPoint(pPlayer, pSui, eventIndex, arg0)
 		return
 	end
 	--Check destination faction.
-	if(dest[7] == nil or dest[7] == "public" or dest[7] == SceneObject(pPlayer):getStoredString("faction_current")) then
+	if(dest[7] == nil or dest[7] == "public" or dest[7] == SceneObject(pPlayer):getStoredString("faction_current") or isDM) then
 		--------------------------------ZONE--------X------Z------Y-------CELL---
 		SceneObject(pPlayer):switchZone(dest[2], dest[3],dest[4],dest[5], dest[6]) 
 		return
