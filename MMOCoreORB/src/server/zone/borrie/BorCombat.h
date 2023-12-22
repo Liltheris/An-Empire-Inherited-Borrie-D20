@@ -810,21 +810,20 @@ public:
             } else if (defenderWeapon->isJediWeapon() && !attackerWeapon->isJediWeapon()) {
                 // We've successfully defended!
                 reactionSpam += ", destroying "+ attacker->getFirstName() +"'s weapon in the process!";
-                attackerWeapon->setConditionDamage(attackerWeapon->getConditionDamage());
+                attackerWeapon->setConditionDamage(attackerWeapon->getMaxDamage());
 
                 BorEffect::PerformReactiveAnimation(defender, attacker, "defend", GetSlotHitlocation(9), true);
             
             } else if (!defenderWeapon->isJediWeapon() && attackerWeapon->isJediWeapon()) {
                 // We've defended successfully, but there's not much we can do against a lightsaber.
                 reactionSpam += ", destroying "+ defender->getFirstName() +"'s weapon in the process!";
-                defenderWeapon->setConditionDamage(attackerWeapon->getConditionDamage());
+                defenderWeapon->setConditionDamage(defenderWeapon->getMaxDamage());
                 BorEffect::PerformReactiveAnimation(defender, attacker, "defend", GetSlotHitlocation(9), true);
                 
             } else {
                 // We've successfully defended, and nobody's weapon was destroyed in the process!
                 if (defenderWeapon->isJediWeapon()){
                     BorEffect::PerformReactiveAnimation(defender, attacker, "defend", GetSlotHitlocation(slot), true);
-                    defenderWeapon->setConditionDamage(defenderWeapon->getConditionDamage() + incomingDamage);
                 } else {
                     // Damage our weapon!
                     reactionSpam += ", absorbing "+ damageNumber(incomingDamage) +" damage into their weapon.";
@@ -925,9 +924,12 @@ public:
         String reactionSpam = "";
 
         // Check that the defender has the necessary lightsaber skill, and actually has a lightsaber equipped.
-        if(!attacker->hasSkill("rp_lightsaber_novice") || !attackerWeapon->isJediWeapon()){
-            attacker->sendSystemMessage("You must have a lightsaber equipped to use Lightsaber Deflect as your reaction stance!");
-            return "";
+        if(!defender->hasSkill("rp_lightsaber_novice") || !defenderWeapon->isJediWeapon()){
+            defender->sendSystemMessage("You must have a lightsaber equipped to use Lightsaber Deflect as your reaction stance!");
+
+            ApplyAdjustedHealthDamage(defender, attackerWeapon, incomingDamage, slot);
+            BorEffect::PerformReactiveAnimation(defender, attacker, "hit", GetSlotHitlocation(slot), true);
+            return ", doing (" + GetWeaponDamageString(attackerWeapon) + ") = "+ damageNumber(incomingDamage) +" damage.";
         }
 
         // Check if the defender is becoming overwhelmed.
@@ -1101,7 +1103,7 @@ public:
                 reactionSpam += defender->getFirstName() + " absorbs the attack with their hand ("+ rollSpam(absorbRoll, absorbSkill, toHit) + ")";
             } else {
                 reactionSpam += defender->getFirstName() + " tries to absorb the attack ("+ rollSpam(absorbRoll, absorbSkill, toHit) + ")";
-                reactionSpam += ", recieving "+ damageNumber(incomingDamage) +" damage!";
+                reactionSpam += ", but fails, recieving "+ damageNumber(incomingDamage) +" damage!";
                 ApplyAdjustedHealthDamage(defender, attackerWeapon, incomingDamage, slot);   
             }
         } else {
