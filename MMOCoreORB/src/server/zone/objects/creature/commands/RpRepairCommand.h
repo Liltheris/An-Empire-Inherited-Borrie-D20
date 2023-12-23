@@ -59,7 +59,7 @@ public:
             return GENERALERROR;
 		
 		// Initilising our callback object.
-		ManagedReference<RpRepairCommandSuiCallback*> callback = new RpRepairCommandSuiCallback(creature->getZoneServer(), target);
+		RpRepairCommandSuiCallback* callback = new RpRepairCommandSuiCallback(creature->getZoneServer(), target);
 
 		TangibleObject* item = nullptr;
 		std::vector<int> foundObjects = {};
