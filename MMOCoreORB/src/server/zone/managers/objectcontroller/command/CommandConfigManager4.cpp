@@ -187,6 +187,7 @@
 #include "server/zone/objects/creature/commands/AttackNpcCommand.h"
 #include "server/zone/objects/creature/commands/AttackRpCommand.h"
 #include "server/zone/objects/creature/commands/RpreloadCommand.h"
+#include "server/zone/objects/creature/commands/RpRepairCommand.h"
 #include "server/zone/objects/creature/commands/D20Command.h"
 #include "server/zone/objects/creature/commands/DmCommand.h"
 #include "server/zone/objects/creature/commands/EndTurnCommand.h"
@@ -408,6 +409,7 @@ void CommandConfigManager::registerCommands4() {
 	commandFactory.registerCommand<AttackNpcCommand>(String("attacknpc").toLowerCase());
 	commandFactory.registerCommand<AttackRpCommand>(String("attackrp").toLowerCase());
 	commandFactory.registerCommand<RpreloadCommand>(String("rpreload").toLowerCase());
+	commandFactory.registerCommand<RpreloadCommand>(String("rprepair").toLowerCase());
 	commandFactory.registerCommand<D20Command>(String("d20").toLowerCase());
 	commandFactory.registerCommand<DmCommand>(String("dm").toLowerCase());
 	commandFactory.registerCommand<EndTurnCommand>(String("endturn").toLowerCase());
