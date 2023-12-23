@@ -810,14 +810,14 @@ public:
             } else if (defenderWeapon->isJediWeapon() && !attackerWeapon->isJediWeapon()) {
                 // We've successfully defended!
                 reactionSpam += ", destroying "+ attacker->getFirstName() +"'s weapon in the process!";
-                attackerWeapon->setConditionDamage(attackerWeapon->getMaxDamage());
+                attackerWeapon->setConditionDamage(attackerWeapon->getMaxCondition());
 
                 BorEffect::PerformReactiveAnimation(defender, attacker, "defend", GetSlotHitlocation(9), true);
             
             } else if (!defenderWeapon->isJediWeapon() && attackerWeapon->isJediWeapon()) {
                 // We've defended successfully, but there's not much we can do against a lightsaber.
                 reactionSpam += ", destroying "+ defender->getFirstName() +"'s weapon in the process!";
-                defenderWeapon->setConditionDamage(defenderWeapon->getMaxDamage());
+                defenderWeapon->setConditionDamage(defenderWeapon->getMaxCondition());
                 BorEffect::PerformReactiveAnimation(defender, attacker, "defend", GetSlotHitlocation(9), true);
                 
             } else {
