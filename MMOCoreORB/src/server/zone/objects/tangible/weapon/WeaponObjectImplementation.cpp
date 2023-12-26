@@ -312,11 +312,31 @@ void WeaponObjectImplementation::fillAttributeList(AttributeListMessage* alm, Cr
 		break;
 	}
 
-	alm->insertAttribute("wpn_armor_pierce_rating", ap);
+	//alm->insertAttribute("wpn_armor_pierce_rating", ap);
 
 	//alm->insertAttribute("wpn_attack_speed", Math::getPrecision(getAttackSpeed(), 1));
 
-	
+	String ammoType = "";
+	StringBuffer ammoCount;
+
+	if (ammoPack != ""){
+
+		if (ammoPack == "ammo_powerpack_small")
+			ammoType = "Powerpack, small";
+		else if (ammoPack == "ammo_powerpack_medium")
+			ammoType = "Powerpack, medium";
+		else if (ammoPack == "ammo_powerpack_large")
+			ammoType = "Powerpack, large";
+		else if (ammoPack == "ammo_kinetic")
+			ammoType = "Kinetic Slugs";
+		else if (ammoPack == "ammo_missile")
+			ammoType = "Missiles";
+
+		ammoCount << maxAmmo - getStoredInt("ammo_used") << "/" << maxAmmo;
+
+		alm->insertAttribute("wpn_ammo_count", ammoCount);
+		alm->insertAttribute("wpn_ammo_type", ammoType);
+	}
 
 	//Damage Information
 	StringBuffer dmgtxt;
