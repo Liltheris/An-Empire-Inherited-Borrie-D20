@@ -2704,3 +2704,6 @@ includeFile("mobile/rp_miraluka_female.lua")
 includeFile("mobile/rp_miraluka_male.lua")
 includeFile("mobile/rp_zeltron_female.lua")
 includeFile("mobile/rp_zeltron_male.lua")
+
+includeFile("mobile/tx130_imp.lua")
+includeFile("mobile/tx130_rep.lua")
