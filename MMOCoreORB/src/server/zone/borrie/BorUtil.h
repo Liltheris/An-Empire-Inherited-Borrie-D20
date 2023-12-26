@@ -199,6 +199,28 @@ public:
         }        
     }
 
+    static String getRandomBaseTemplate(Vector<String>* baseTemplate, Vector<int> baseTemplateWeight){
+        int weightSum = 0;
+
+        // Determine the sum of our weights.
+        for (int i = 0; i <= baseTemplateWeight.size(); i++){
+            weightSum += baseTemplateWeight.get(i);
+        }
+
+        int roll = System::random(weightSum);
+        int checkWeight = 0;
+
+        // run through the weights to determine our winner!
+        for (int i = 0; i <= baseTemplateWeight.size(); i++){
+            checkWeight += baseTemplateWeight.get(i);
+            if (checkWeight < roll) {
+                return baseTemplate->get(i);
+            }
+        }
+        // Somehow, we failed to find a template, just return the first one.
+        return baseTemplate->get(0);
+    }
+
     static CreatureObject* CreateTemplatedRoleplayNPC(CreatureObject* creature, String rtemplate, String conversationTemplate = "") {
         float posX = creature->getPositionX(), posY = creature->getPositionY(), posZ = creature->getPositionZ();
 		uint64 parID = creature->getParentID();
@@ -227,6 +249,9 @@ public:
             //Variables to set
             Vector<String>* baseTemplate = new Vector<String>();
             Vector<String>* skillTemplate = new Vector<String>();
+
+            Vector<int> baseTemplateWeight; 
+
             VectorMap<String, Vector<String>*> equipmentTemplate;
             VectorMap<String, Vector<String>*> customizationTemplate;
 
@@ -266,8 +291,9 @@ public:
                         randomName = Lua::getStringParameter(state);
                     } else if(varName == "baseTemplates") {
                         LuaObject baseTemplatesList(state);
-                        for (int x = 1; x <= baseTemplatesList.getTableSize(); ++x) {
+                        for (int x = 1; x <= baseTemplatesList.getTableSize(); x += 2) {
 		    	            baseTemplate->add(baseTemplatesList.getStringAt(x));
+                            baseTemplateWeight.add(baseTemplatesList.getIntAt(x+1));
 		                }
 		                baseTemplatesList.pop();
                     } else if(varName == "skillTemplates") {
@@ -345,9 +371,7 @@ public:
             //Create NPC
             if(baseTemplate != nullptr) {
                 if(baseTemplate->size() > 0) {
-                    roll = System::random(baseTemplate->size() - 1);
-                    if(baseTemplate->size() > roll)
-                        finalBaseTemplate = baseTemplate->get(roll);
+                    finalBaseTemplate = getRandomBaseTemplate(baseTemplate, baseTemplateWeight);
                 }
             }
 

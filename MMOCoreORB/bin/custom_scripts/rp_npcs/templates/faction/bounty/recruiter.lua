@@ -2,7 +2,10 @@ npc_template = {
 
 	title = "a Bounty Hunter Guild Recruiter",
 	randomName = "human",
-	baseTemplates = {"rp_human_male", "rp_human_female"},
+	baseTemplates = {
+		"rp_human_male", 10,
+		"rp_human_female", 10
+	},
 	skillTemplates = {"factional/common/officer"},
 	
 	equipmentTemplates = {

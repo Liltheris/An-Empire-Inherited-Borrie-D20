@@ -3,12 +3,13 @@ npc_template = {
 	randomName = "human",
 	
 	baseTemplates = {
-	"rp_human_male", "rp_human_female",
-	"rp_sullustan_male", "rp_sullustan_female",
-	"rp_zabrak_male", "rp_zabrak_female",
-	"rp_mirialan_male", "rp_mirialan_female",
-	"rp_moncal_male", "rp_moncal_female",
-	"rp_twilek_male", "rp_twilek_female"},
+		"rp_human_male", 50, "rp_human_female", 30,
+		"rp_sullustan_male", 5, "rp_sullustan_female", 2,
+		"rp_zabrak_male", 15, "rp_zabrak_female", 15,
+		"rp_mirialan_male", 10, "rp_mirialan_female", 10,
+		"rp_moncal_male", 5, "rp_moncal_female", 2,
+		"rp_twilek_male", 15, "rp_twilek_female", 10,
+	},
 	
 	skillTemplates = {"factional/common/grunt_navy"},
 	
