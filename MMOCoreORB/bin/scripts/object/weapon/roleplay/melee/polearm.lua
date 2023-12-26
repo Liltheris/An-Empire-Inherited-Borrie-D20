@@ -428,8 +428,6 @@ object_weapon_roleplay_melee_polearm_strike_assault_lance = object_weapon_melee_
 	customName = "Strike Assault Lance",
 
 	--[Stats]
-	attackType = MELEEATTACK,
-
 	damageType = BLAST,
 
 	armorPiercing = NONE,
@@ -539,8 +537,6 @@ object_weapon_roleplay_melee_polearm_xandank_lance = object_weapon_melee_polearm
 	customName = "Xandank Lance",
 
 	--[Stats]
-	attackType = MELEEATTACK,
-
 	damageType = KINETIC,
 
 	armorPiercing = NONE,

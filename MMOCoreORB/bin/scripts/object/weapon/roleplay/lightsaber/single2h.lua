@@ -56,7 +56,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_aayla = object_weapon
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -76,7 +75,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_abjudicator = object_
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -96,7 +94,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_adept = object_weapon
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -116,7 +113,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_ady = object_weapon_m
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -136,7 +132,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_ahsoka = object_weapo
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -156,7 +151,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_ahsoka2 = object_weap
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -176,7 +170,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_ahsoka3 = object_weap
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -196,7 +189,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_ahsoka4 = object_weap
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -216,7 +208,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_anakin = object_weapo
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -236,7 +227,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_anakin_solo = object_
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -256,7 +246,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_anakin2 = object_weap
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -276,7 +265,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_arbiter = object_weap
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -296,7 +284,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_bane = object_weapon_
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -316,7 +303,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_barriss = object_weap
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -336,7 +322,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_boc = object_weapon_m
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -356,7 +341,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_byph = object_weapon_
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -376,7 +360,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_cin = object_weapon_m
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -396,7 +379,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_consul = object_weapo
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -416,7 +398,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_dan = object_weapon_m
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -436,7 +417,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_defender = object_wea
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -456,7 +436,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_desann = object_weapo
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -476,7 +455,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_dooku = object_weapon
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -496,7 +474,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_even = object_weapon_
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -516,7 +493,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_ezra = object_weapon_
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -536,7 +512,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_ezra2 = object_weapon
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -556,7 +531,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_firebrand = object_we
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -576,7 +550,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_ganodi = object_weapo
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -596,7 +569,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_gungi = object_weapon
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -616,7 +588,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_imperial = object_wea
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -636,7 +607,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_jacen = object_weapon
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -656,7 +626,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_jaina = object_weapon
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -676,7 +645,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_jerec = object_weapon
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -696,7 +664,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_jocasta = object_weap
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -716,7 +683,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_jolee = object_weapon
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -736,7 +702,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_juhani = object_weapo
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -756,7 +721,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_kanan = object_weapon
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -776,7 +740,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_katooni = object_weap
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -796,7 +759,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_ki_adi = object_weapo
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -816,7 +778,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_kouru = object_weapon
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -836,7 +797,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_kyle = object_weapon_
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -856,7 +816,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_luke = object_weapon_
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -876,7 +835,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_luke2 = object_weapon
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -896,7 +854,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_luke3 = object_weapon
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -916,7 +873,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_luke4 = object_weapon
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -936,7 +892,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_luke5 = object_weapon
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -956,7 +911,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_luke6 = object_weapon
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -976,7 +930,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_luminara = object_wea
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -996,7 +949,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_mace = object_weapon_
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -1016,7 +968,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_malak = object_weapon
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -1036,7 +987,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_mara = object_weapon_
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -1056,7 +1006,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_marauder = object_wea
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -1076,7 +1025,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_marek = object_weapon
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -1096,7 +1044,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_marek2 = object_weapo
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -1116,7 +1063,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_marek3 = object_weapo
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -1136,7 +1082,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_maul_broke = object_w
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -1156,7 +1101,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_maw = object_weapon_m
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -1176,7 +1120,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_nari = object_weapon_
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -1196,7 +1139,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_nihilus = object_weap
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -1216,7 +1158,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_obi_wan = object_weap
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -1236,7 +1177,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_obi_wan2 = object_wea
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -1256,7 +1196,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_obi_wan3 = object_wea
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -1276,7 +1215,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_obi_wan4 = object_wea
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -1296,7 +1234,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_obi_wan5 = object_wea
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -1316,7 +1253,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_oppo = object_weapon_
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -1336,7 +1272,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_petro = object_weapon
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -1356,7 +1291,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_pic_gorc = object_wea
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -1376,7 +1310,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_plo = object_weapon_m
 	
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -1396,7 +1329,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_plo2 = object_weapon_
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -1416,7 +1348,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_praetor = object_weap
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -1436,7 +1367,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_qu_rahn = object_weap
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -1456,7 +1386,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_qui_gon = object_weap
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -1476,7 +1405,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_quinlan = object_weap
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -1496,7 +1424,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_rahm = object_weapon_
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -1516,7 +1443,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_reborn = object_weapo
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -1536,7 +1462,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_retaliator = object_w
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -1556,7 +1481,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_revan = object_weapon
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -1576,7 +1500,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_rey = object_weapon_m
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -1596,7 +1519,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_rey2 = object_weapon_
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -1616,7 +1538,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_rey3 = object_weapon_
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -1636,7 +1557,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_rey4 = object_weapon_
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -1656,7 +1576,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_rey5 = object_weapon_
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -1676,7 +1595,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_rig = object_weapon_m
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -1696,7 +1614,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_sariss = object_weapo
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -1716,7 +1633,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_scardont = object_wea
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -1736,7 +1652,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_sentinel = object_wea
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -1756,7 +1671,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_shaak_ti = object_wea
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -1776,7 +1690,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_sharad = object_weapo
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -1796,7 +1709,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_sidious = object_weap
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -1816,7 +1728,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_sidious2 = object_wea
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -1836,7 +1747,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_sion = object_weapon_
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -1856,7 +1766,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_solo = object_weapon_
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -1876,7 +1785,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_starcruiser = object_
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -1896,7 +1804,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_tajin = object_weapon
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -1916,7 +1823,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_temple_guard2_single 
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -1936,7 +1842,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_the_ren = object_weap
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -1956,7 +1861,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_tiin = object_weapon_
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -1976,7 +1880,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_vader = object_weapon
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -1996,7 +1899,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_vader2 = object_weapo
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -2016,7 +1918,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_vader3 = object_weapo
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -2036,7 +1937,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_vader4 = object_weapo
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -2056,7 +1956,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_visas = object_weapon
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -2076,7 +1975,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_yaddle = object_weapo
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -2096,7 +1994,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_yarael = object_weapo
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -2116,7 +2013,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_yoda = object_weapon_
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -2136,7 +2032,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_youngling = object_we
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -2156,7 +2051,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_youngling2 = object_w
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -2176,7 +2070,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_yun = object_weapon_m
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -2196,7 +2089,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_zatt = object_weapon_
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -2215,7 +2107,6 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_katana = object_weapo
 
 
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,

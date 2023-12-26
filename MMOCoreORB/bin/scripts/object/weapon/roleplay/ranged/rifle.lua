@@ -116,8 +116,6 @@ object_weapon_roleplay_ranged_rifle_bowcaster = object_weapon_ranged_rifle_share
 	customName = "Bowcaster",
 
 	--[Stats]
-	attackType = RANGEDATTACK,
-
 	damageType = KINETIC,
 
 	armorPiercing = NONE,
@@ -389,8 +387,6 @@ object_weapon_roleplay_ranged_rifle_laser_rifle = object_weapon_ranged_rifle_sha
 	customName = "Laser Rifle",
 
 	--[Stats]
-	attackType = RANGEDATTACK,
-
 	damageType = ENERGY,
 
 	armorPiercing = NONE,
