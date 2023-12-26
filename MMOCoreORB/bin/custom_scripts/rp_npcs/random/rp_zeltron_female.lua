@@ -27,7 +27,7 @@ random_ranges = {
 	{"/shared_owner/blend_chinsize_1", 0, 255},
 	{"/shared_owner/blend_chinsize_0", 0, 255},
 	{"/private/index_style_eyebrow", 0, 255},
-	{"/private/index_color_facial_hair", 176, 239},
+	{"/private/index_color_facial_hair", 176, 183},
 	{"/shared_owner/blend_eyeshape_1", 0, 255},
 	{"/shared_owner/blend_eyeshape_0", 0, 255},
 	{"/private/index_age", 0, 255},
@@ -37,5 +37,5 @@ random_ranges = {
 	{"/private/index_style_eyeshadow", 0, 255},
 	{"/private/index_color_lips", 0, 255},
 	{"height", 0.83, 1.08},
-	{"hair", "object/tangible/hair/human/shared_hair_human_female", 1, 42, "/private/index_color_1", 176, 239},
+	{"hair", "object/tangible/hair/human/shared_hair_human_female", 1, 42, "/private/index_color_1", 176, 183},
 }
