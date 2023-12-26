@@ -74,24 +74,22 @@ public:
         for (int i = 0; i < inventory->getContainerObjectsSize(); ++i) {
 			item = inventory->getContainerObject(i)->asTangibleObject();
 
-			if (item == nullptr){
-				continue;
-			}
+			if (item != nullptr){
+				// We only want to list items that we can actually repair, and are damaged.
+				if ((item->isArmorObject() || item->isWeaponObject()) && item->getConditionDamage() != 0 && canRepairItem(creature, item))
+				{
+					// Found an item we can repair.
+					foundObjects.push_back(i);
+					String displayName = "";
 
-			// We only want to list items that we can actually repair, and are damaged.
-			if ((item->isArmorObject() || item->isWeaponObject()) && item->getConditionDamage() != 0 && canRepairItem(creature, item))
-			{
-				// Found an item we can repair.
-				foundObjects.push_back(i);
-				String displayName = "";
+					// Get the item's custom name, or the template name.
+					if(item->getCustomObjectName() != "")
+						displayName = item->getCustomObjectName().toString();
+					else displayName = item->getObjectTemplate()->getObjectName();
 
-				// Get the item's custom name, or the template name.
-				if(item->getCustomObjectName() != "")
-					displayName = item->getCustomObjectName().toString();
-				else displayName = item->getObjectTemplate()->getObjectName();
-
-				// Finally add our item to the box.
-				box->addMenuItem(displayName);
+					// Finally add our item to the box.
+					box->addMenuItem(displayName);
+				}
 			}
 		}
 		callback->setItems(foundObjects);

@@ -17,9 +17,7 @@ social_language_wookiee_speak = {
 	missionsRequired = {},
 	apprenticeshipsRequired = 0,
 	statsRequired = {},
-	speciesRequired = {
-		"wookiee"
-	},
+	speciesRequired = {},
 	jediStateRequired = 0,
 	skillAbility = {},
 	commands = {
