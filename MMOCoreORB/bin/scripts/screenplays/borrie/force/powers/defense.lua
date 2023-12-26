@@ -8,7 +8,7 @@ function BorForce_Defense:showHelp(pPlayer)
 end
 
 function BorForce_Defense:execute(pPlayer)
-	local hasPower = CreatureObject(pPlayer):hasSkill("rp_inward_b01")
+	local hasPower = CreatureObject(pPlayer):hasSkill("rp_ability_forcedefense")
 	
 	if(hasPower == false) then
 		BorForceUtility:reportPowerNotKnown(pPlayer)
@@ -58,7 +58,20 @@ function BorForce_Defense:performAbility(pPlayer, fpi)
 	end
 	
 	--Execute Force Code
+	local skillValue = math.floor(CreatureObject(pPlayer):getSkillMod("rp_inward"))
+	local roll = math.floor(math.random(1,20))
 	
+	local message = CreatureObject(pPlayer):getFirstName() .. " used " .. self.name .. "!"
+	
+	if(roll + skillValue >= 5 + fpi / 2)
+		SceneObject(pPlayer):setStoredInt("force_defense", fpi)
+		message = message .. " The Force surrounds them, protecting them from up to " .. fpi .. " damage on the next attack against them."
+	else
+		SceneObject(pPlayer):setStoredInt("force_defense", 0)
+		message = message .. " They attempt to protect themself against incoming attacks, but fail!"
+	end
+	message = message .. " (1d20 = " .. roll .. " + " .. skillValue .. " = " .. roll + skillValue .. " vs DC: " .. 5 + fpi / 2 .. ")"
+	broadcastMessageWithName(pPlayer, message)
 	
 	--Drain Force Pool
 	PlayerObject(pGhost):setForcePower(forcePower - fpi)	

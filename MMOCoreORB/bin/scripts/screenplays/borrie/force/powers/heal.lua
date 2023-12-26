@@ -4,12 +4,12 @@ BorForce_Heal = {
 
 function BorForce_Heal:showHelp(pPlayer)
 	local helpMessage = self.name .. ": "
-	helpMessage =  helpMessage .. "Roll against DC:10 Check (Alter Roll + 1d20) to heal your health pool for <ForcePointInput> * 2."
+	helpMessage =  helpMessage .. "Roll Alter against DC:10 + Dark side points / 2 to heal your health pool for <ForcePointInput>."
 	CreatureObject(pPlayer):sendSystemMessage(helpMessage)
 end
 
 function BorForce_Heal:execute(pPlayer)
-	local hasPower = CreatureObject(pPlayer):hasSkill("rp_alter_a01")
+	local hasPower = CreatureObject(pPlayer):hasSkill("rp_ability_healself") or CreatureObject(pPlayer):hasSkill("rp_training_jedi_guardian_04")
 	
 	if(hasPower == false) then
 		BorForceUtility:reportPowerNotKnown(pPlayer)
@@ -62,14 +62,15 @@ function BorForce_Heal:performAbility(pPlayer, fpi)
 	
 	local skillValue = math.floor(CreatureObject(pPlayer):getSkillMod("rp_alter"))
 	local roll = math.floor(math.random(1,20))	
-		
+	local darkSidePoints = CreatureObject(pPlayer):getShockWounds()
+	
 	local message = CreatureObject(pPlayer):getFirstName() .. " used " .. self.name .. "!"
-	if(skillValue + roll >= 10) then
-		message = message .. " They heal themselves for ".. fpi * 2 .." health points! (1d20 = " .. roll .. " + " .. skillValue .. " = " .. roll + skillValue .. " vs DC: 10)"
+	if(skillValue + roll >= 10 + darkSidePoints/2) then
+		message = message .. " They heal themselves for ".. fpi .." health points! (1d20 = " .. roll .. " + " .. skillValue .. " = " .. roll + skillValue .. " vs DC: " .. 10 + darkSidePoints/2 .. ")"
 		CreatureObject(pPlayer):playEffect(clientEffect, "")	
 		CreatureObject(pPlayer):setHAM(0, math.min(CreatureObject(pPlayer):getHAM(0) + fpi * 2, CreatureObject(pPlayer):getMaxHAM(0)))
 	else 
-		message = message .. " Unfortunately, their focus is broken, and they fail to heal themselves. (1d20 = " .. roll .. " + " .. skillValue .. " = " .. roll + skillValue .. " vs DC: 10)"
+		message = message .. " Unfortunately, their focus is broken, and they fail to heal themselves. (1d20 = " .. roll .. " + " .. skillValue .. " = " .. roll + skillValue .. " vs DC: " .. 10 + darkSidePoints/2 .. ")"
 	end
 	
 	broadcastMessageWithName(pPlayer, message)

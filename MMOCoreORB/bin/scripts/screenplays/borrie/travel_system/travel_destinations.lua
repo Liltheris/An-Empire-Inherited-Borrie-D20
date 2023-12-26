@@ -56,6 +56,7 @@ travel_destinations = {
 		zone = "rp_rori",
 		destinations = {
 			{"New Restuss", "rp_rori", -775, 83, 1554, 0, "public"},
+			{"Fort Zephyr", "rp_rori", -3688, 96, -6403, 0, "newrepublic"},
 		}
 	
 	},
@@ -78,7 +79,7 @@ travel_destinations = {
 		destinations = {
 			{"Anchorhead", "rp_tatooine", -560, 0.0, -1770, 0, "public"},
 			{"Mos Eisley", "rp_tatooine", 1150, 0.0, 100, 0, "public"},
-			{"Mos Eisley Garrison", "rp_tatooine", 597, 0.0, 5, 0, "faction"},
+			{"Mos Eisley Garrison", "rp_tatooine", 597, 0.0, 5, 0, "empire"},
 		}	
 	},
 	

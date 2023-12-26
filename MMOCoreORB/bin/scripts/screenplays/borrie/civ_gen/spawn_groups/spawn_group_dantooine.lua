@@ -27,6 +27,10 @@ spawn_group = {
 		{"rp_twilek_male", 6},
 		{"rp_zabrak_female", 25},
 		{"rp_zabrak_male", 25},
+		{"rp_zeltron_female", 1},
+		{"rp_zeltron_male", 1},
+		{"rp_mirialan_female", 15},
+		{"rp_mirialan_male", 15},
 	},
 	droid = {
 		{"r5", 10},

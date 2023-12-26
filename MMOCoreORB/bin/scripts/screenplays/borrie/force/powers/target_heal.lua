@@ -5,12 +5,12 @@ BorForce_TargetHeal = {
 
 function BorForce_TargetHeal:showHelp(pPlayer)
 	local helpMessage = self.name .. ": "
-	helpMessage =  helpMessage .. "Heal target within 8 meters range with DC:15 (Alter Roll + 1d20) to heal their health pool for <ForcePointInput> * 2."
+	helpMessage =  helpMessage .. "Heal target within 8 meters range with Alter against DC:15 + dark side points / 2 to heal their health pool for <ForcePointInput>."
 	CreatureObject(pPlayer):sendSystemMessage(helpMessage)
 end
 
 function BorForce_TargetHeal:execute(pPlayer)
-	local hasPower = CreatureObject(pPlayer):hasSkill("rp_alter_a04")
+	local hasPower = CreatureObject(pPlayer):hasSkill("rp_ability_healother") or CreatureObject(pPlayer):hasSkill("rp_training_jedi_consular_01")
 	
 	if(hasPower == false) then
 		BorForceUtility:reportPowerNotKnown(pPlayer)
@@ -97,15 +97,16 @@ function BorForce_TargetHeal:performAbility(pPlayer, fpi)
 	
 	local skillValue = math.floor(CreatureObject(pPlayer):getSkillMod("rp_alter"))
 	local roll = math.floor(math.random(1,20))	
+	local darkSidePoints = CreatureObject(pPlayer):getShockWounds()
 	
 	local message = CreatureObject(pPlayer):getFirstName() .. " used " .. self.name .. "!"
 	local targetName = CreatureObject(pTarget):getFirstName() 
-	if(skillValue + roll >= 15) then
-		message = message .. " They heal ".. targetName .." for ".. fpi * 2 .." health points! (1d20 = " .. roll .. " + " .. skillValue .. " = " .. roll + skillValue .. " vs DC: 15)"
+	if(skillValue + roll >= 15 + darkSidePoints/2) then
+		message = message .. " They heal ".. targetName .." for ".. fpi * 2 .." health points! (1d20 = " .. roll .. " + " .. skillValue .. " = " .. roll + skillValue .. " vs DC: " .. 15 + darkSidePoints/2 ")"
 		CreatureObject(pPlayer):doCombatAnimation(pPlayer, pTarget, "force_healing_1")
 		CreatureObject(pTarget):setHAM(0, math.min(CreatureObject(pTarget):getHAM(0) + fpi * 2, CreatureObject(pTarget):getMaxHAM(0)))
 	else 
-		message = message .. " Unfortunately, their focus is broken, and they fail to heal ".. targetName ..". (1d20 = " .. roll .. " + " .. skillValue .. " = " .. roll + skillValue .. " vs DC: 15)"
+		message = message .. " Unfortunately, their focus is broken, and they fail to heal ".. targetName ..". (1d20 = " .. roll .. " + " .. skillValue .. " = " .. roll + skillValue .. " vs DC: " .. 15 + darkSidePoints/2 ")"
 	end
 	
 	broadcastMessageWithName(pPlayer, message)

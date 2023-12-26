@@ -4,12 +4,12 @@ BorForce_Body = {
 
 function BorForce_Body:showHelp(pPlayer)
 	local helpMessage = self.name .. ": "
-	helpMessage =  helpMessage .. "Roll against DC:10 Check (Inward Roll + 1d20) to heal your action pool for <ForcePointInput> * 2."
+	helpMessage =  helpMessage .. "Roll Inward against DC:10 Check to heal your action pool for <ForcePointInput>."
 	CreatureObject(pPlayer):sendSystemMessage(helpMessage)
 end
 
 function BorForce_Body:execute(pPlayer)
-	local hasPower = CreatureObject(pPlayer):hasSkill("rp_inward_a01")
+	local hasPower = CreatureObject(pPlayer):hasSkill("rp_ability_forcebody") or CreatureObject(pPlayer):hasSkill("rp_training_jedi_guardian_01")
 	
 	if(hasPower == false) then
 		BorForceUtility:reportPowerNotKnown(pPlayer)
@@ -67,7 +67,7 @@ function BorForce_Body:performAbility(pPlayer, fpi)
 	if(skillValue + roll >= 10) then
 		message = message .. " They rejuvinate themselves for ".. fpi * 2 .." action points! (1d20 = " .. roll .. " + " .. skillValue .. " = " .. roll + skillValue .. " vs DC: 10)"
 		CreatureObject(pPlayer):playEffect(clientEffect, "")	
-		CreatureObject(pPlayer):setHAM(3, math.min(CreatureObject(pPlayer):getHAM(3) + fpi * 2, CreatureObject(pPlayer):getMaxHAM(3)))
+		CreatureObject(pPlayer):setHAM(3, math.min(CreatureObject(pPlayer):getHAM(3) + fpi, CreatureObject(pPlayer):getMaxHAM(3)))
 	else 
 		message = message .. " Unfortunately, their focus is broken, and they fail to rejuvinate themselves. (1d20 = " .. roll .. " + " .. skillValue .. " = " .. roll + skillValue .. " vs DC: 10)"
 	end

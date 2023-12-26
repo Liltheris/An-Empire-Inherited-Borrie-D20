@@ -1,0 +1,7 @@
+npc_template = {
+
+	name = "B2 Battle Droid",
+	baseTemplates = {"super_battle_droid"},
+	skillTemplates = {"factional/common/elite"},
+	
+}
