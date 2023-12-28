@@ -409,7 +409,7 @@ void CommandConfigManager::registerCommands4() {
 	commandFactory.registerCommand<AttackNpcCommand>(String("attacknpc").toLowerCase());
 	commandFactory.registerCommand<AttackRpCommand>(String("attackrp").toLowerCase());
 	commandFactory.registerCommand<RpreloadCommand>(String("rpreload").toLowerCase());
-	commandFactory.registerCommand<RprepairCommand>(String("rprepair").toLowerCase());
+	commandFactory.registerCommand<RpRepairCommand>(String("rprepair").toLowerCase());
 	commandFactory.registerCommand<D20Command>(String("d20").toLowerCase());
 	commandFactory.registerCommand<DmCommand>(String("dm").toLowerCase());
 	commandFactory.registerCommand<EndTurnCommand>(String("endturn").toLowerCase());
