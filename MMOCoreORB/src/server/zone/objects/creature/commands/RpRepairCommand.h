@@ -51,11 +51,6 @@ public:
 			return GENERALERROR;
 		}
 
-		if (!creature->isPlayerObject()){
-			creature->sendSystemMessage("NOT A PLAYER.");
-			return GENERALERROR;
-		}
-
 		SceneObject* inventory = creature->getSlottedObject("inventory");
         if (inventory == nullptr) {
 			creature->sendSystemMessage("MISSING INVENTORY");
