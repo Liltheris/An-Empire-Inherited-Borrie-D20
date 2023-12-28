@@ -254,6 +254,8 @@
 #include "server/zone/objects/creature/commands/RpfsightCommand.h"
 #include "server/zone/objects/creature/commands/RpfprecogCommand.h"
 
+#include "server/zone/objects/creature/commands/CommCommand.h"
+
 #include "server/zone/objects/creature/commands/RpsetstanceCommand.h"
 #include "server/zone/objects/creature/commands/RpmoveCommand.h"
 
@@ -432,6 +434,7 @@ void CommandConfigManager::registerCommands4() {
 	commandFactory.registerCommand<ToggleBioCommand>(String("togglebio").toLowerCase());
 	commandFactory.registerCommand<RSCommand>(String("rs").toLowerCase());
 	commandFactory.registerCommand<DSCommand>(String("ds").toLowerCase());
+	commandFactory.registerCommand<CommCommand>(String("comm").toLowerCase());
 
 	commandFactory.registerCommand<AimedattackCommand>(String("aimedattack").toLowerCase());
 	commandFactory.registerCommand<PowerattackCommand>(String("powerattack").toLowerCase());
