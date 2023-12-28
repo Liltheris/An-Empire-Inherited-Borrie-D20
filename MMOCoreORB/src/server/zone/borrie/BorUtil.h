@@ -208,12 +208,13 @@ public:
         }
 
         int roll = System::random(weightSum);
+
         int checkWeight = 0;
 
         // run through the weights to determine our winner!
         for (int i = 0; i < baseTemplateWeight.size(); i++){
             checkWeight += baseTemplateWeight.get(i);
-            if (checkWeight < roll) {
+            if (roll <= checkWeight) {
                 return baseTemplate->get(i);
             }
         }
