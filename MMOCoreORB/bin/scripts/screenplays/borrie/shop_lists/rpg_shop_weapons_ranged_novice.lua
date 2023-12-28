@@ -54,6 +54,19 @@ rpg_shop_weapons_ranged_novice = {
 				{template = "object/weapon/roleplay/thrown/grenade/glop_grenade.iff", cost = 700, max = 10, chance = 100 },
 			}
 		},
+
+		{
+			name = "Ammunition",
+			minItems = 1,
+			items = {
+				{template = "object/tangible/borrp/ammo/ammo_powerpack_small.iff", cost = 15, max = 10, chance = 100},
+				{template = "object/tangible/borrp/ammo/ammo_powerpack_medium.iff", cost = 25, max = 10, chance = 100},
+				{template = "object/tangible/borrp/ammo/ammo_powerpack_large.iff", cost = 50, max = 5, chance = 100},
+			}
+
+
+
+		},
 	}	
 }
 
