@@ -203,7 +203,7 @@ public:
         int weightSum = 0;
 
         // Determine the sum of our weights.
-        for (int i = 0; i <= baseTemplateWeight.size(); i++){
+        for (int i = 0; i < baseTemplateWeight.size(); i++){
             weightSum += baseTemplateWeight.get(i);
         }
 
@@ -211,7 +211,7 @@ public:
         int checkWeight = 0;
 
         // run through the weights to determine our winner!
-        for (int i = 0; i <= baseTemplateWeight.size(); i++){
+        for (int i = 0; i < baseTemplateWeight.size(); i++){
             checkWeight += baseTemplateWeight.get(i);
             if (checkWeight < roll) {
                 return baseTemplate->get(i);
