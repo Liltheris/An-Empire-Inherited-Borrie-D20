@@ -119,6 +119,9 @@ void TangibleObjectImplementation::notifyLoadFromDatabase() {
 			}
 		}
 	}
+	
+	// Update object stats from template.
+	loadTemplateData(getObjectTemplate());
 }
 
 void TangibleObjectImplementation::destroyObjectFromDatabase(bool destroyContainedObjects) {
