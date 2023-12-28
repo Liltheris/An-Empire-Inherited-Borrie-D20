@@ -1,7 +1,7 @@
 npc_template = {
 
 	name = "Probe Droid",
-	baseTemplates = {"probot"},
+	baseTemplates = {"probot", 1},
 	skillTemplates = {"factional/common/scout"},
 	
 }

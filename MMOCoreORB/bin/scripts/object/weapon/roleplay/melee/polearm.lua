@@ -57,6 +57,8 @@ object_weapon_roleplay_melee_polearm_electric_polearm = object_weapon_melee_pole
 	minDamage = 1, --Amount of Die used in Damage
 	maxDamage = 9, --Type of Die used in Damage
 	bonusDamage = 1,
+	
+	rarity="Rare",
 
 	--[Stats]
 	attackType = _attackType,
@@ -82,6 +84,8 @@ object_weapon_roleplay_melee_polearm_force_pike = object_weapon_melee_polearm_sh
 	minDamage = 1, --Amount of Die used in Damage
 	maxDamage = 8, --Type of Die used in Damage
 	bonusDamage = 4,
+	
+	rarity="Rare",
 
 	--[Stats]
 	attackType = _attackType,
@@ -107,6 +111,8 @@ object_weapon_roleplay_melee_polearm_gand_shockprod_staff = object_weapon_melee_
 	minDamage = 1, --Amount of Die used in Damage
 	maxDamage = 8, --Type of Die used in Damage
 	bonusDamage = 2,
+	
+	rarity="Rare",
 
 	--[Stats]
 	attackType = _attackType,
@@ -132,6 +138,8 @@ object_weapon_roleplay_melee_polearm_heavy_vibrolance = object_weapon_melee_pole
 	minDamage = 1, --Amount of Die used in Damage
 	maxDamage = 5, --Type of Die used in Damage
 	bonusDamage = 3,
+	
+	rarity="Uncommon",
 
 	--[Stats]
 	attackType = _attackType,
@@ -157,6 +165,8 @@ object_weapon_roleplay_melee_polearm_kaminoan_lance = object_weapon_melee_polear
 	minDamage = 1, --Amount of Die used in Damage
 	maxDamage = 9, --Type of Die used in Damage
 	bonusDamage = 1,
+	
+	rarity="Epic",
 
 	--[Stats]
 	attackType = _attackType,
@@ -182,6 +192,8 @@ object_weapon_roleplay_melee_polearm_kashyyyk_lance = object_weapon_melee_polear
 	minDamage = 1, --Amount of Die used in Damage
 	maxDamage = 5, --Type of Die used in Damage
 	bonusDamage = 3,
+	
+	rarity="Rare",
 
 	--[Stats]
 	attackType = _attackType,
@@ -207,6 +219,8 @@ object_weapon_roleplay_melee_polearm_metal_staff = object_weapon_melee_polearm_s
 	minDamage = 1, --Amount of Die used in Damage
 	maxDamage = 5, --Type of Die used in Damage
 	bonusDamage = 1,
+	
+	rarity="Common",
 
 	--[Stats]
 	attackType = _attackType,
@@ -232,6 +246,8 @@ object_weapon_roleplay_melee_polearm_nightsister_lance = object_weapon_melee_pol
 	minDamage = 1, --Amount of Die used in Damage
 	maxDamage = 8, --Type of Die used in Damage
 	bonusDamage = 2,
+	
+	rarity="Epic",
 
 	--[Stats]
 	attackType = _attackType,
@@ -257,6 +273,8 @@ object_weapon_roleplay_melee_polearm_obsidian_lance = object_weapon_melee_polear
 	minDamage = 1, --Amount of Die used in Damage
 	maxDamage = 9, --Type of Die used in Damage
 	bonusDamage = 1,
+	
+	rarity="Epic",
 
 	--[Stats]
 	attackType = _attackType,
@@ -282,6 +300,8 @@ object_weapon_roleplay_melee_polearm_pestilence = object_weapon_melee_polearm_sh
 	minDamage = 1, --Amount of Die used in Damage
 	maxDamage = 7, --Type of Die used in Damage
 	bonusDamage = 3,
+	
+	rarity="Legendary",
 
 	--[Stats]
 	attackType = _attackType,
@@ -307,6 +327,8 @@ object_weapon_roleplay_melee_polearm_phrik_electrostaff = object_weapon_melee_po
 	minDamage = 1, --Amount of Die used in Damage
 	maxDamage = 7, --Type of Die used in Damage
 	bonusDamage = 1,
+	
+	rarity="Legendary",
 
 	--[Stats]
 	attackType = _attackType,
@@ -332,6 +354,8 @@ object_weapon_roleplay_melee_polearm_poison_pike = object_weapon_melee_polearm_s
 	minDamage = 1, --Amount of Die used in Damage
 	maxDamage = 8, --Type of Die used in Damage
 	bonusDamage = 2,
+	
+	rarity="Rare",
 
 	--[Stats]
 	attackType = _attackType,
@@ -357,6 +381,8 @@ object_weapon_roleplay_melee_polearm_reinforced_staff = object_weapon_melee_pole
 	minDamage = 1, --Amount of Die used in Damage
 	maxDamage = 6, --Type of Die used in Damage
 	bonusDamage = 1,
+	
+	rarity="Common",
 
 	--[Stats]
 	attackType = _attackType,
@@ -382,6 +408,8 @@ object_weapon_roleplay_melee_polearm_shock_lance = object_weapon_melee_polearm_s
 	minDamage = 1, --Amount of Die used in Damage
 	maxDamage = 8, --Type of Die used in Damage
 	bonusDamage = 2,
+	
+	rarity="Uncommon",
 
 	--[Stats]
 	attackType = _attackType,
@@ -400,8 +428,6 @@ object_weapon_roleplay_melee_polearm_strike_assault_lance = object_weapon_melee_
 	customName = "Strike Assault Lance",
 
 	--[Stats]
-	attackType = MELEEATTACK,
-
 	damageType = BLAST,
 
 	armorPiercing = NONE,
@@ -410,6 +436,8 @@ object_weapon_roleplay_melee_polearm_strike_assault_lance = object_weapon_melee_
 	minDamage = 1, --Amount of Die used in Damage
 	maxDamage = 6, --Type of Die used in Damage
 	bonusDamage = 2,
+	
+	rarity="Epic",
 
 	--[Stats]
 	attackType = _attackType,
@@ -435,6 +463,8 @@ object_weapon_roleplay_melee_polearm_vibro_longaxe = object_weapon_melee_polearm
 	minDamage = 1, --Amount of Die used in Damage
 	maxDamage = 6, --Type of Die used in Damage
 	bonusDamage = 1,
+	
+	rarity="Common",
 
 	--[Stats]
 	attackType = _attackType,
@@ -460,6 +490,8 @@ object_weapon_roleplay_melee_polearm_vibrolance = object_weapon_melee_polearm_sh
 	minDamage = 1, --Amount of Die used in Damage
 	maxDamage = 6, --Type of Die used in Damage
 	bonusDamage = 2,
+	
+	rarity="Common",
 
 	--[Stats]
 	attackType = _attackType,
@@ -485,6 +517,8 @@ object_weapon_roleplay_melee_polearm_wood_staff = object_weapon_melee_polearm_sh
 	minDamage = 1, --Amount of Die used in Damage
 	maxDamage = 4, --Type of Die used in Damage
 	bonusDamage = 1,
+	
+	rarity="Common",
 
 	--[Stats]
 	attackType = _attackType,
@@ -503,8 +537,6 @@ object_weapon_roleplay_melee_polearm_xandank_lance = object_weapon_melee_polearm
 	customName = "Xandank Lance",
 
 	--[Stats]
-	attackType = MELEEATTACK,
-
 	damageType = KINETIC,
 
 	armorPiercing = NONE,
@@ -513,6 +545,8 @@ object_weapon_roleplay_melee_polearm_xandank_lance = object_weapon_melee_polearm
 	minDamage = 1, --Amount of Die used in Damage
 	maxDamage = 8, --Type of Die used in Damage
 	bonusDamage = 4,
+	
+	rarity="Legendary",
 
 	--[Stats]
 	attackType = _attackType,

@@ -57,6 +57,8 @@ object_weapon_roleplay_melee_unarmed_black_sun_razor = object_weapon_melee_speci
 	minDamage = 1, --Amount of Die used in Damage
 	maxDamage = 3, --Type of Die used in Damage
 	bonusDamage = 3,
+	
+	rarity="Epic",
 
 	--[Stats]
 	attackType = _attackType,
@@ -82,6 +84,8 @@ object_weapon_roleplay_melee_unarmed_blaster_fist = object_weapon_melee_special_
 	minDamage = 1, --Amount of Die used in Damage
 	maxDamage = 3, --Type of Die used in Damage
 	bonusDamage = 3,
+	
+	rarity="Rare",
 
 	--[Stats]
 	attackType = _attackType,
@@ -107,6 +111,8 @@ object_weapon_roleplay_melee_unarmed_ceremonial_knuckler = object_weapon_melee_s
 	minDamage = 1, --Amount of Die used in Damage
 	maxDamage = 6, --Type of Die used in Damage
 	bonusDamage = 2,
+	
+	rarity="Uncommon",
 
 	--[Stats]
 	attackType = _attackType,
@@ -132,6 +138,8 @@ object_weapon_roleplay_melee_unarmed_massassi_knuckler = object_weapon_melee_spe
 	minDamage = 1, --Amount of Die used in Damage
 	maxDamage = 3, --Type of Die used in Damage
 	bonusDamage = 3,
+	
+	rarity="Legendary",
 
 	--[Stats]
 	attackType = _attackType,
@@ -157,6 +165,8 @@ object_weapon_roleplay_melee_unarmed_metal_fan = object_weapon_melee_special_sha
 	minDamage = 1, --Amount of Die used in Damage
 	maxDamage = 3, --Type of Die used in Damage
 	bonusDamage = 2,
+	
+	rarity="Common",
 
 	--[Stats]
 	attackType = _attackType,
@@ -182,6 +192,8 @@ object_weapon_roleplay_melee_unarmed_punch_dagger = object_weapon_melee_special_
 	minDamage = 1, --Amount of Die used in Damage
 	maxDamage = 4, --Type of Die used in Damage
 	bonusDamage = 1,
+	
+	rarity="Common",
 
 	--[Stats]
 	attackType = _attackType,
@@ -207,6 +219,8 @@ object_weapon_roleplay_melee_unarmed_vibroknuckler = object_weapon_melee_special
 	minDamage = 1, --Amount of Die used in Damage
 	maxDamage = 5, --Type of Die used in Damage
 	bonusDamage = 1,
+	
+	rarity="Common",
 
 	--[Stats]
 	attackType = _attackType,
@@ -232,6 +246,8 @@ object_weapon_roleplay_melee_unarmed_wookiee_knuckler = object_weapon_melee_spec
 	minDamage = 1, --Amount of Die used in Damage
 	maxDamage = 4, --Type of Die used in Damage
 	bonusDamage = 2,
+	
+	rarity="Uncommon",
 
 	--[Stats]
 	attackType = _attackType,

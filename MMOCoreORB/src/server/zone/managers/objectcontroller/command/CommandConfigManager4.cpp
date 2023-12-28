@@ -186,6 +186,8 @@
 #include "server/zone/objects/creature/commands/AnimCommand.h"
 #include "server/zone/objects/creature/commands/AttackNpcCommand.h"
 #include "server/zone/objects/creature/commands/AttackRpCommand.h"
+#include "server/zone/objects/creature/commands/RpreloadCommand.h"
+#include "server/zone/objects/creature/commands/RpRepairCommand.h"
 #include "server/zone/objects/creature/commands/D20Command.h"
 #include "server/zone/objects/creature/commands/DmCommand.h"
 #include "server/zone/objects/creature/commands/EndTurnCommand.h"
@@ -251,6 +253,8 @@
 #include "server/zone/objects/creature/commands/RpftargethealCommand.h"
 #include "server/zone/objects/creature/commands/RpfsightCommand.h"
 #include "server/zone/objects/creature/commands/RpfprecogCommand.h"
+
+#include "server/zone/objects/creature/commands/CommCommand.h"
 
 #include "server/zone/objects/creature/commands/RpsetstanceCommand.h"
 #include "server/zone/objects/creature/commands/RpmoveCommand.h"
@@ -406,6 +410,8 @@ void CommandConfigManager::registerCommands4() {
 	commandFactory.registerCommand<AnimCommand>(String("anim").toLowerCase());
 	commandFactory.registerCommand<AttackNpcCommand>(String("attacknpc").toLowerCase());
 	commandFactory.registerCommand<AttackRpCommand>(String("attackrp").toLowerCase());
+	commandFactory.registerCommand<RpreloadCommand>(String("rpreload").toLowerCase());
+	commandFactory.registerCommand<RpRepairCommand>(String("rprepair").toLowerCase());
 	commandFactory.registerCommand<D20Command>(String("d20").toLowerCase());
 	commandFactory.registerCommand<DmCommand>(String("dm").toLowerCase());
 	commandFactory.registerCommand<EndTurnCommand>(String("endturn").toLowerCase());
@@ -428,6 +434,7 @@ void CommandConfigManager::registerCommands4() {
 	commandFactory.registerCommand<ToggleBioCommand>(String("togglebio").toLowerCase());
 	commandFactory.registerCommand<RSCommand>(String("rs").toLowerCase());
 	commandFactory.registerCommand<DSCommand>(String("ds").toLowerCase());
+	commandFactory.registerCommand<CommCommand>(String("comm").toLowerCase());
 
 	commandFactory.registerCommand<AimedattackCommand>(String("aimedattack").toLowerCase());
 	commandFactory.registerCommand<PowerattackCommand>(String("powerattack").toLowerCase());

@@ -67,6 +67,7 @@ public:
 				}
 
 				targetCreature->setStoredInt("power_attack_count", 0);
+				targetCreature->setStoredInt("is_vulnerable", 0);
 		} else {
 			//Open SUI Menu
 			//Pop up a Menu

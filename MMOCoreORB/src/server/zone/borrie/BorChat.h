@@ -64,7 +64,7 @@ public:
 
     static void PrintSpatialChatToDMs(CreatureObject* target, const UnicodeString& message) {
         ChatManager* chatManager = target->getZoneServer()->getChatManager();
-        ChatRoom* obsvRoom = chatManager->getChatRoomByFullPath("SWG.Dark Rebellion.Chat.observer");
+        ChatRoom* obsvRoom = chatManager->getChatRoomByFullPath("SWG.An Empire Inherited.Chat.observer");
 	    if(obsvRoom != nullptr) {
 		    obsvRoom->broadcastMessage(new ChatRoomMessage(target->getFirstName(), target->getZoneServer()->getGalaxyName(), message, obsvRoom->getRoomID()));
 	    }	
@@ -72,7 +72,7 @@ public:
 
     static void PrintSpatialChatToDiscord(CreatureObject* target, const UnicodeString& message, String spatialChatType, short range) {
         ChatManager* chatManager = target->getZoneServer()->getChatManager();
-        ChatRoom* obsvRoom = chatManager->getChatRoomByFullPath("SWG.Dark Rebellion.Chat.global");
+        ChatRoom* obsvRoom = chatManager->getChatRoomByFullPath("SWG.An Empire Inherited.Chat.global");
 
         bool anonymous = false;
         if(target->isPlayerCreature()) {
@@ -92,7 +92,7 @@ public:
 
     static void PrintDMMessageToDiscord(CreatureObject* target, const UnicodeString& message) {
         ChatManager* chatManager = target->getZoneServer()->getChatManager();
-        ChatRoom* obsvRoom = chatManager->getChatRoomByFullPath("SWG.Dark Rebellion.Chat.global");
+        ChatRoom* obsvRoom = chatManager->getChatRoomByFullPath("SWG.An Empire Inherited.Chat.global");
 
         obsvRoom->broadcastMessage(new ChatRoomMessage("DM " + target->getFirstName(), target->getZoneServer()->getGalaxyName(), "DM|" + message, obsvRoom->getRoomID(), false));
     }

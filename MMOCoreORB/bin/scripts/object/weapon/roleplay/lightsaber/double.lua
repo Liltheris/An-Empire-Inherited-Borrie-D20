@@ -53,12 +53,11 @@ _childObjects = {
 
 object_weapon_roleplay_lightsaber_double_lance_saber_avenger = object_weapon_melee_plasma_saber_polearm_shared_lance_saber_avenger:new {
 
-	price = 250000,
+
 	
 	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
-	attackType = _attackType,
 	damageType = _damageType,
 	armorPiercing = _armorPiercing,
 	pointBlankRange = _pointBlankRange,
@@ -72,12 +71,11 @@ object_weapon_roleplay_lightsaber_double_lance_saber_avenger = object_weapon_mel
 
 object_weapon_roleplay_lightsaber_double_lance_saber_bastila = object_weapon_melee_plasma_saber_polearm_shared_lance_saber_bastila:new {
 
-	price = 250000,
+
 	
 	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
-	attackType = _attackType,
 	damageType = _damageType,
 	armorPiercing = _armorPiercing,
 	pointBlankRange = _pointBlankRange,
@@ -91,12 +89,11 @@ object_weapon_roleplay_lightsaber_double_lance_saber_bastila = object_weapon_mel
 
 object_weapon_roleplay_lightsaber_double_lance_saber_cal_staff = object_weapon_melee_plasma_saber_polearm_shared_lance_saber_cal_staff:new {
 
-	price = 250000,
+
 	
 	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
-	attackType = _attackType,
 	damageType = _damageType,
 	armorPiercing = _armorPiercing,
 	pointBlankRange = _pointBlankRange,
@@ -110,12 +107,11 @@ object_weapon_roleplay_lightsaber_double_lance_saber_cal_staff = object_weapon_m
 
 object_weapon_roleplay_lightsaber_double_lance_saber_champion = object_weapon_melee_plasma_saber_polearm_shared_lance_saber_champion:new {
 
-	price = 250000,
+
 	
 	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
-	attackType = _attackType,
 	damageType = _damageType,
 	armorPiercing = _armorPiercing,
 	pointBlankRange = _pointBlankRange,
@@ -129,12 +125,11 @@ object_weapon_roleplay_lightsaber_double_lance_saber_champion = object_weapon_me
 
 object_weapon_roleplay_lightsaber_double_lance_saber_guardian = object_weapon_melee_plasma_saber_polearm_shared_lance_saber_guardian:new {
 
-	price = 250000,
+
 	
 	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
-	attackType = _attackType,
 	damageType = _damageType,
 	armorPiercing = _armorPiercing,
 	pointBlankRange = _pointBlankRange,
@@ -148,12 +143,11 @@ object_weapon_roleplay_lightsaber_double_lance_saber_guardian = object_weapon_me
 
 object_weapon_roleplay_lightsaber_double_lance_saber_pike = object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_pike_s1:new {
 
-	price = 250000,
+
 	
 	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
-	attackType = _attackType,
 	damageType = _damageType,
 	armorPiercing = _armorPiercing,
 	pointBlankRange = _pointBlankRange,
@@ -167,12 +161,11 @@ object_weapon_roleplay_lightsaber_double_lance_saber_pike = object_weapon_melee_
 
 object_weapon_roleplay_lightsaber_double_lance_saber_pong = object_weapon_melee_plasma_saber_polearm_shared_lance_saber_pong:new {
 
-	price = 250000,
+
 	
 	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
-	attackType = _attackType,
 	damageType = _damageType,
 	armorPiercing = _armorPiercing,
 	pointBlankRange = _pointBlankRange,
@@ -186,12 +179,11 @@ object_weapon_roleplay_lightsaber_double_lance_saber_pong = object_weapon_melee_
 
 object_weapon_roleplay_lightsaber_double_lance_saber_rey3_staff = object_weapon_melee_plasma_saber_polearm_shared_lance_saber_rey3_staff:new {
 
-	price = 250000,
+
 	
 	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
-	attackType = _attackType,
 	damageType = _damageType,
 	armorPiercing = _armorPiercing,
 	pointBlankRange = _pointBlankRange,
@@ -205,12 +197,11 @@ object_weapon_roleplay_lightsaber_double_lance_saber_rey3_staff = object_weapon_
 
 object_weapon_roleplay_lightsaber_double_lance_saber_vanquisher = object_weapon_melee_plasma_saber_polearm_shared_lance_saber_vanquisher:new {
 
-	price = 250000,
+
 	
 	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
-	attackType = _attackType,
 	damageType = _damageType,
 	armorPiercing = _armorPiercing,
 	pointBlankRange = _pointBlankRange,

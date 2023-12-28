@@ -230,4 +230,16 @@ aiSpeciesData = {
 	{ 227, "atat", false, false }, -- atat
 	{ 228, "geonosian", false, false }, -- geonosian
 	{ 229, "varactyl", false, false }, -- veractyle
+	
+	--DR added species
+	{ 230, "human", false, false }, -- chiss
+	{ 231, "human", false, false }, -- nautolan
+	{ 232, "human", false, false }, -- dathomiri
+	
+	--AEI added species
+	{ 233, "human", false, false }, -- miraluka
+	{ 234, "human", false, false }, -- mirialan
+	{ 235, "human", false, false }, -- zeltron
+	{ 236, "human", false, false }, -- togruta
+	{ 237, "human", false, false }, -- rattataki
 }

@@ -1,7 +1,10 @@
 npc_template = {
 
 	name = "AT-AT",
-	baseTemplates = {"atat", "atat_grunge", "atat_grunge"},
+	baseTemplates = {
+		"atat", 30,
+		"atat_grunge", 70
+	},
 	skillTemplates = {"vehicle/atat"},
 	
 	armourTemplates = {"atat"},

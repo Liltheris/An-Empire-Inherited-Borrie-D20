@@ -2,16 +2,21 @@ npc_template = {
 
 	randomName = "human",
 	
-	baseTemplates = {"rp_human_male", "rp_human_female"},
+	baseTemplates = {
+		"rp_human_male", 60,
+		 "rp_human_female", 40
+	},
 	
 	skillTemplates = {"factional/common/grunt_army"},
 	
 	equipmentTemplates = {
 		{"rp_human_male", {"faction/newrepublic/grunt_army_snow"}},
+		{"rp_human_female", {"faction/newrepublic/grunt_army_snow"}},
 	},	
 	
 	customizationTemplates = {
 		{"rp_human_male", {"random"}},
+		{"rp_human_female", {"random"}},
 	},	
 	
 	customVarOverrides = {

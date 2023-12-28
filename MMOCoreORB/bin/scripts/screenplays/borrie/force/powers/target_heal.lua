@@ -102,11 +102,11 @@ function BorForce_TargetHeal:performAbility(pPlayer, fpi)
 	local message = CreatureObject(pPlayer):getFirstName() .. " used " .. self.name .. "!"
 	local targetName = CreatureObject(pTarget):getFirstName() 
 	if(skillValue + roll >= 15 + darkSidePoints/2) then
-		message = message .. " They heal ".. targetName .." for ".. fpi * 2 .." health points! (1d20 = " .. roll .. " + " .. skillValue .. " = " .. roll + skillValue .. " vs DC: " .. 15 + darkSidePoints/2 ")"
+		message = message .. " They heal ".. targetName .." for ".. fpi * 2 .." health points! (1d20 = " .. roll .. " + " .. skillValue .. " = " .. roll + skillValue .. " vs DC: " .. 15 + darkSidePoints/2 .. ")"
 		CreatureObject(pPlayer):doCombatAnimation(pPlayer, pTarget, "force_healing_1")
 		CreatureObject(pTarget):setHAM(0, math.min(CreatureObject(pTarget):getHAM(0) + fpi * 2, CreatureObject(pTarget):getMaxHAM(0)))
 	else 
-		message = message .. " Unfortunately, their focus is broken, and they fail to heal ".. targetName ..". (1d20 = " .. roll .. " + " .. skillValue .. " = " .. roll + skillValue .. " vs DC: " .. 15 + darkSidePoints/2 ")"
+		message = message .. " Unfortunately, their focus is broken, and they fail to heal ".. targetName ..". (1d20 = " .. roll .. " + " .. skillValue .. " = " .. roll + skillValue .. " vs DC: " .. 15 + darkSidePoints/2 .. ")"
 	end
 	
 	broadcastMessageWithName(pPlayer, message)

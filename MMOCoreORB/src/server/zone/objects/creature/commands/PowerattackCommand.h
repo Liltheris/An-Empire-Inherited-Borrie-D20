@@ -42,12 +42,6 @@ public:
 			args.getStringToken(command);
 		}
 
-		if(command == "check") {
-			int powerAttackCount = creature->getStoredInt("power_attack_count");
-			creature->sendSystemMessage("Your next power attack will cost " + String::valueOf(powerAttackCount + 3) + " action points.");
-			return SUCCESS;
-		}
-
 		if(creature->getWeapon()->getPowerAttackIsRestricted()) {
 			creature->sendSystemMessage("You can't use power attack with this weapon.");
 			return SUCCESS;

@@ -1,7 +1,7 @@
 npc_template = {
 
 	name = "a Jawa",
-	baseTemplates = {"jawa"},
+	baseTemplates = {"jawa", 1},
 	skillTemplates = {"factional/common/tech"},
 	
 }

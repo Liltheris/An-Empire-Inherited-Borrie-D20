@@ -55,19 +55,7 @@ public:
 					BorUtil::CallScreenplayFunction(creature, "BorForce", "promptForceDMMenu");
 				} else {
 					creature->sendSystemMessage("You don't have permission to do that.");
-				}
-			} else if(command == "awaken") {
-				if(forceLevel > 2) { //Initiated and beyond
-					if(target != 0) {
-						BorUtil::CallScreenplayFunction(creature, "BorForce", "promptAwakenOther");
-					} else {
-						creature->sendSystemMessage("You can awaken another at the expense of some experience.");
-					}
-				} else if(forceLevel > 0) {
-					BorUtil::CallScreenplayFunction(creature, "BorForce", "promptAwakenSelf");
-				} else {
-					creature->sendSystemMessage("You reach out, trying to grasp at anything beyond your own mind and body, but all you feel is a light breeze.");
-				}				
+				}			
 			} else if(command == "togglesaberschems") {
 				if(forceLevel > 0) {
 					BorUtil::CallScreenplayFunction(creature, "BorForce", "toggleLightsaberSchematics");

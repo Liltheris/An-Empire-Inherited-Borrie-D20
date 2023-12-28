@@ -25,6 +25,8 @@ class WeaponObject extends TangibleObject {
 
 	protected string alternateGrip;
 
+	protected string ammoPack;
+
 	protected boolean certified;
 
 	protected int armorPiercing;
@@ -51,6 +53,9 @@ class WeaponObject extends TangibleObject {
 	protected float woundsRatio;
 
 	protected int rpSkillLevel;
+
+	protected int maxAmmo;
+	protected int currentAmmo;
 
 	protected int healthAttackCost;
 	protected int actionAttackCost;
@@ -322,6 +327,11 @@ class WeaponObject extends TangibleObject {
 	}
 
 	@read
+	public int getMaxAmmo() {
+		return maxAmmo;
+	}
+
+	@read
 	public native int getMaxRangeAccuracy(boolean withPup = true);
 
 	public void setMaxRangeAccuracy(int value) {
@@ -429,6 +439,11 @@ class WeaponObject extends TangibleObject {
 	@read
 	public string getAlternateGrip() {
 		return alternateGrip;
+	}
+
+	@read
+	public string getAmmoPack() {
+		return ammoPack;
 	}
 
 	@read

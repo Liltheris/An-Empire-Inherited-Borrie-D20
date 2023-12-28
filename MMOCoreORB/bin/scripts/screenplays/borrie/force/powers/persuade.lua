@@ -104,7 +104,7 @@ function BorForce_Persuade:performAbility(pPlayer, fpi)
 	local targetSkillValue = math.floor(CreatureObject(pTarget):getSkillMod("rp_mindfulness"))
 	local targetRoll = math.floor(math.random(1,20))
 	
-	if(CreatureObject(pTarget):hasSkill("rp_force_prog_novice"))
+	if(CreatureObject(pTarget):hasSkill("rp_force_prog_novice")) then
 		targetSkillValue = targetSkillValue * 2
 	end
 	
