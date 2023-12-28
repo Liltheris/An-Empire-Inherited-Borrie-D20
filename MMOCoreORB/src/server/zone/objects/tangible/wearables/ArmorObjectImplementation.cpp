@@ -27,13 +27,13 @@ void ArmorObjectImplementation::loadTemplateData(SharedObjectTemplate* templateD
 	bool wasModified = getStoredString("dm_last_modified") != "";
 
 	if(!wasModified) {
-	//	vulnerabilites = armorTemplate->getVulnerabilites();
+		vulnerabilites = armorTemplate->getVulnerabilites();
 	
-	//	specialResists = armorTemplate->getSpecialResists();
+		specialResists = armorTemplate->getSpecialResists();
 	
-	//	healthEncumbrance = armorTemplate->getHealthEncumbrance();
-	//	actionEncumbrance = armorTemplate->getActionEncumbrance();
-	//	mindEncumbrance = armorTemplate->getMindEncumbrance();
+		healthEncumbrance = armorTemplate->getHealthEncumbrance();
+		actionEncumbrance = armorTemplate->getActionEncumbrance();
+		mindEncumbrance = armorTemplate->getMindEncumbrance();
 	
 		rating = armorTemplate->getRating();
 	
@@ -78,6 +78,9 @@ void ArmorObjectImplementation::notifyLoadFromDatabase() {
 	ArmorObjectTemplate* armorTemplate = cast<ArmorObjectTemplate*>(getObjectTemplate());
 
 	bool wasModified = getStoredString("dm_last_modified") != "";
+
+	if (armorTemplate == nullptr)
+		return;
 
 	if(!wasModified) {
 		vulnerabilites = armorTemplate->getVulnerabilites();
