@@ -15,6 +15,9 @@ _pointBlankAccuracy = 5	--DC under point blank range
 _idealAccuracy = 10		--DC within ideal range
 _maxRangeAccuracy = 99	--DC before max range
 
+_ammoPack = "ammo_powerpack_large"
+_maxAmmo = 5
+
 --Unused junk data
 _xpType = "combat_general"
 _certificationsRequired = {}
@@ -62,6 +65,11 @@ object_weapon_roleplay_ranged_rifle_cm_sniper_rifle = object_weapon_ranged_rifle
 	noDodgeReaction = true,
 	primaryAttributeOnly = true,
 
+	rarity="Legendary",
+
+	ammoPack = _ammoPack,
+	maxAmmo = _maxAmmo,
+	
 	--[Stats]
 	attackType = _attackType,
 	pointBlankRange = _pointBlankRange,
@@ -91,6 +99,11 @@ object_weapon_roleplay_ranged_rifle_dlt20a_heavy_blaster_rifle = object_weapon_r
 	noDodgeReaction = true,
 	primaryAttributeOnly = true,
 
+	rarity="Common",
+
+	ammoPack = _ammoPack,
+	maxAmmo = _maxAmmo,
+	
 	--[Stats]
 	attackType = _attackType,
 	pointBlankRange = _pointBlankRange,
@@ -120,6 +133,11 @@ object_weapon_roleplay_ranged_rifle_ld1_target_blaster_rifle = object_weapon_ran
 	noDodgeReaction = true,	
 	primaryAttributeOnly = true,
 
+	rarity="Rare",
+
+	ammoPack = _ammoPack,
+	maxAmmo = _maxAmmo,
+	
 	--[Stats]
 	attackType = _attackType,
 	pointBlankRange = _pointBlankRange,
@@ -149,6 +167,11 @@ object_weapon_roleplay_ranged_rifle_tusken_elite_rifle = object_weapon_ranged_ri
 	noPowerAttack = true,
 	primaryAttributeOnly = true,
 
+	rarity="Common",
+
+	ammoPack = "ammo_kinetic",
+	maxAmmo = 1,
+	
 	--[Stats]
 	attackType = _attackType,
 	pointBlankRange = _pointBlankRange,
@@ -177,6 +200,11 @@ object_weapon_roleplay_ranged_rifle_czerka_adventurer = object_weapon_ranged_rif
 	
 	primaryAttributeOnly = true,
 
+	rarity="Common",
+
+	ammoPack = "ammo_kinetic",
+	maxAmmo = _maxAmmo,
+	
 	--[Stats]
 	attackType = _attackType,
 	pointBlankRange = _pointBlankRange,

@@ -1072,6 +1072,14 @@ public:
 								  ")");
 	}
 
+	static String getNiceName(CreatureObject* creature){
+		String result = creature->getFirstName();
+
+		if (result == "a" || result == "an" || result == "the"){
+			result = creature->getDisplayedName();
+		}
+		return result;
+	}
 	
 	static String GetPosNegSymbol(int Num) {
 		if (Num > -1)

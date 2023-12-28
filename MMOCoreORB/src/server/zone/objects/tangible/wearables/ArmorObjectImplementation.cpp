@@ -50,8 +50,6 @@ void ArmorObjectImplementation::loadTemplateData(SharedObjectTemplate* templateD
 		rpSkillLevel = armorTemplate->getRpSkillLevel();
 	}
 
-	
-
 	hitLocation = armorTemplate->getHitLocation();
 	if (hitLocation == ArmorObjectTemplate::NOLOCATION) {
 		if (hasArrangementDescriptor("chest2"))
@@ -75,6 +73,32 @@ void ArmorObjectImplementation::notifyLoadFromDatabase() {
 
 	if (rating != LIGHT && templateObject->getClientTemplateFileName().contains("armor_bounty_hunter_"))
 		rating = LIGHT;
+
+	// Update object stats from template.
+	ArmorObjectTemplate* armorTemplate = cast<ArmorObjectTemplate*>(getObjectTemplate());
+
+	bool wasModified = getStoredString("dm_last_modified") != "";
+
+	if(!wasModified) {
+		vulnerabilites = armorTemplate->getVulnerabilites();
+		specialResists = armorTemplate->getSpecialResists();
+		healthEncumbrance = armorTemplate->getHealthEncumbrance();
+		actionEncumbrance = armorTemplate->getActionEncumbrance();
+		mindEncumbrance = armorTemplate->getMindEncumbrance();
+		rating = armorTemplate->getRating();
+		kinetic = armorTemplate->getKinetic();
+		energy = armorTemplate->getEnergy();
+		electricity = armorTemplate->getElectricity();
+		stun = armorTemplate->getStun();
+		blast = armorTemplate->getBlast();
+		heat = armorTemplate->getHeat();
+		cold = armorTemplate->getCold();
+		acid = armorTemplate->getAcid();
+		lightSaber = armorTemplate->getLightSaber();
+		rpSkillLevel = armorTemplate->getRpSkillLevel();
+	}
+
+	rarity = armorTemplate->getRarity();
 }
 
 void ArmorObjectImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {

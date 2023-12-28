@@ -15,6 +15,9 @@ _pointBlankAccuracy = 5	--DC under point blank range
 _idealAccuracy = 10		--DC within ideal range
 _maxRangeAccuracy = 99	--DC before max range
 
+_ammoPack = "ammo_powerpack_small"
+_maxAmmo = 10
+
 --Unused junk data
 _xpType = "combat_general"
 _certificationsRequired = {}
@@ -63,6 +66,9 @@ object_weapon_roleplay_ranged_pistol_alliance_disruptor = object_weapon_ranged_p
 	
 	rarity="Epic",
 
+	ammoPack = _ammoPack,
+	maxAmmo = _maxAmmo,
+	
 	--[Stats]
 	attackType = _attackType,
 	pointBlankRange = _pointBlankRange,
@@ -91,6 +97,9 @@ object_weapon_roleplay_ranged_pistol_antiriot_tangle_gun_7 = object_weapon_range
 	
 	rarity="Uncommon",
 
+	ammoPack = _ammoPack,
+	maxAmmo = _maxAmmo,
+	
 	--[Stats]
 	attackType = _attackType,
 	pointBlankRange = _pointBlankRange,
@@ -121,6 +130,9 @@ object_weapon_roleplay_ranged_pistol_cm_dead_bolt_pistol = object_weapon_ranged_
 	
 	rarity="Rare",
 
+	ammoPack = "ammo_kinetic",
+	maxAmmo = _maxAmmo,
+	
 	--[Stats]
 	attackType = _attackType,
 	pointBlankRange = _pointBlankRange,
@@ -149,6 +161,9 @@ object_weapon_roleplay_ranged_pistol_crimson_nova_pistol = object_weapon_ranged_
 	
 	rarity="Epic",
 
+	ammoPack = _ammoPack,
+	maxAmmo = _maxAmmo,
+	
 	--[Stats]
 	attackType = _attackType,
 	pointBlankRange = _pointBlankRange,
@@ -177,6 +192,9 @@ object_weapon_roleplay_ranged_pistol_crusader_mxii_pistol = object_weapon_ranged
 
 	rarity="Epic",
 
+	ammoPack = _ammoPack,
+	maxAmmo = _maxAmmo,
+	
 	--[Stats]
 	attackType = _attackType,
 	pointBlankRange = _pointBlankRange,
@@ -205,6 +223,9 @@ object_weapon_roleplay_ranged_pistol_d18_pistol = object_weapon_ranged_pistol_sh
 	
 	rarity="Common",
 
+	ammoPack = _ammoPack,
+	maxAmmo = _maxAmmo,
+	
 	--[Stats]
 	attackType = _attackType,
 	pointBlankRange = _pointBlankRange,
@@ -233,6 +254,9 @@ object_weapon_roleplay_ranged_pistol_dd6_pistol = object_weapon_ranged_pistol_sh
 	
 	rarity="Rare",
 
+	ammoPack = _ammoPack,
+	maxAmmo = _maxAmmo,
+	
 	--[Stats]
 	attackType = _attackType,
 	pointBlankRange = _pointBlankRange,
@@ -261,6 +285,9 @@ object_weapon_roleplay_ranged_pistol_de10_blaster_pistol = object_weapon_ranged_
 	
 	rarity="Legendary",
 
+	ammoPack = _ammoPack,
+	maxAmmo = _maxAmmo,
+	
 	--[Stats]
 	attackType = _attackType,
 	pointBlankRange = _pointBlankRange,
@@ -289,6 +316,9 @@ object_weapon_roleplay_ranged_pistol_dh18a_blaster_pistol = object_weapon_ranged
 	
 	rarity = "Rare",
 
+	ammoPack = _ammoPack,
+	maxAmmo = _maxAmmo,
+	
 	--[Stats]
 	attackType = _attackType,
 	pointBlankRange = _pointBlankRange,
@@ -319,6 +349,9 @@ object_weapon_roleplay_ranged_pistol_disruptor_pistol = object_weapon_ranged_pis
 	
 	rarity="Legendary",
 
+	ammoPack = _ammoPack,
+	maxAmmo = _maxAmmo,
+	
 	--[Stats]
 	attackType = _attackType,
 	pointBlankRange = _pointBlankRange,
@@ -347,6 +380,9 @@ object_weapon_roleplay_ranged_pistol_dl18_pistol = object_weapon_ranged_pistol_s
 	
 	rarity="Common",
 
+	ammoPack = _ammoPack,
+	maxAmmo = _maxAmmo,
+	
 	--[Stats]
 	attackType = _attackType,
 	pointBlankRange = _pointBlankRange,
@@ -371,10 +407,13 @@ object_weapon_roleplay_ranged_pistol_dl44_blaster_pistol = object_weapon_ranged_
 	--Damage (minDamage[d]maxDamage) i.e. (2d20)
 	minDamage = 1, --Amount of Die used in Damage
 	maxDamage = 4, --Type of Die used in Damage
-	bonusDamage = 0,
+	bonusDamage = 2,
 	
 	rarity="Common",
 
+	ammoPack = _ammoPack,
+	maxAmmo = _maxAmmo,
+	
 	--[Stats]
 	attackType = _attackType,
 	pointBlankRange = _pointBlankRange,
@@ -403,6 +442,9 @@ object_weapon_roleplay_ranged_pistol_dl44_metal_blaster_pistol = object_weapon_r
 	
 	rarity="Uncommon",
 
+	ammoPack = _ammoPack,
+	maxAmmo = _maxAmmo,
+	
 	--[Stats]
 	attackType = _attackType,
 	pointBlankRange = _pointBlankRange,
@@ -432,7 +474,10 @@ object_weapon_roleplay_ranged_pistol_dx2_disruptor_pistol = object_weapon_ranged
 	noPowerAttack = true,
 	
 	rarity="Epic",
-
+	
+	ammoPack = _ammoPack,
+	maxAmmo = _maxAmmo,
+	
 	--[Stats]
 	attackType = _attackType,
 	pointBlankRange = _pointBlankRange,
@@ -461,6 +506,9 @@ object_weapon_roleplay_ranged_pistol_flare_gun = object_weapon_ranged_pistol_sha
 	
 	rarity="Uncommon",
 
+	ammoPack = _ammoPack,
+	maxAmmo = _maxAmmo,
+	
 	--[Stats]
 	attackType = _attackType,
 	pointBlankRange = _pointBlankRange,
@@ -491,6 +539,9 @@ object_weapon_roleplay_ranged_pistol_flechette_pistol = object_weapon_ranged_pis
 	
 	rarity="Rare",
 
+	ammoPack = "ammo_kinetic",
+	maxAmmo = _maxAmmo,
+	
 	--[Stats]
 	attackType = _attackType,
 	pointBlankRange = _pointBlankRange,
@@ -521,6 +572,9 @@ object_weapon_roleplay_ranged_pistol_fwg5_flechette_smart_pistol = object_weapon
 	
 	rarity = "Epic",
 
+	ammoPack = "ammo_kinetic",
+	maxAmmo = _maxAmmo,
+	
 	--[Stats]
 	attackType = _attackType,
 	pointBlankRange = _pointBlankRange,
@@ -549,6 +603,9 @@ object_weapon_roleplay_ranged_pistol_ion_pistol = object_weapon_ranged_pistol_sh
 	
 	rarity="Common",
 
+	ammoPack = _ammoPack,
+	maxAmmo = _maxAmmo,
+	
 	--[Stats]
 	attackType = _attackType,
 	pointBlankRange = _pointBlankRange,
@@ -579,6 +636,9 @@ object_weapon_roleplay_ranged_pistol_ion_relic_pistol = object_weapon_ranged_pis
 	
 	rarity="Epic",
 
+	ammoPack = _ammoPack,
+	maxAmmo = _maxAmmo,
+	
 	--[Stats]
 	attackType = _attackType,
 	pointBlankRange = _pointBlankRange,
@@ -607,6 +667,9 @@ object_weapon_roleplay_ranged_pistol_ion_stunner_pistol = object_weapon_ranged_p
 	
 	rarity="Common",
 
+	ammoPack = _ammoPack,
+	maxAmmo = _maxAmmo,
+	
 	--[Stats]
 	attackType = _attackType,
 	pointBlankRange = _pointBlankRange,
@@ -635,6 +698,9 @@ object_weapon_roleplay_ranged_pistol_ir5_intimidator_pistol = object_weapon_rang
 	
 	rarity="Rare",
 
+	ammoPack = _ammoPack,
+	maxAmmo = _maxAmmo,
+	
 	--[Stats]
 	attackType = _attackType,
 	pointBlankRange = _pointBlankRange,
@@ -663,6 +729,9 @@ object_weapon_roleplay_ranged_pistol_kyd21_blaster_pistol = object_weapon_ranged
 	
 	rarity="Uncommon",
 
+	ammoPack = _ammoPack,
+	maxAmmo = _maxAmmo,
+	
 	--[Stats]
 	attackType = _attackType,
 	pointBlankRange = _pointBlankRange,
@@ -691,6 +760,9 @@ object_weapon_roleplay_ranged_pistol_model_434_heavy_blaster_pistol = object_wea
 	
 	rarity="Common",
 
+	ammoPack = _ammoPack,
+	maxAmmo = _maxAmmo,
+	
 	--[Stats]
 	attackType = _attackType,
 	pointBlankRange = _pointBlankRange,
@@ -719,6 +791,9 @@ object_weapon_roleplay_ranged_pistol_model_q2_holdout_blaster_pistol = object_we
 	
 	rarity = "Uncommon",
 
+	ammoPack = _ammoPack,
+	maxAmmo = _maxAmmo,
+	
 	--[Stats]
 	attackType = _attackType,
 	pointBlankRange = _pointBlankRange,
@@ -747,6 +822,9 @@ object_weapon_roleplay_ranged_pistol_power_5_heavy_blaster_pistol = object_weapo
 	
 	rarity="Uncommon",
 
+	ammoPack = _ammoPack,
+	maxAmmo = _maxAmmo,
+	
 	--[Stats]
 	attackType = _attackType,
 	pointBlankRange = _pointBlankRange,
@@ -777,6 +855,9 @@ object_weapon_roleplay_ranged_pistol_renegade_heavy_blaster_pistol = object_weap
 	
 	rarity="Rare",
 
+	ammoPack = _ammoPack,
+	maxAmmo = _maxAmmo,
+	
 	--[Stats]
 	attackType = _attackType,
 	pointBlankRange = _pointBlankRange,
@@ -805,6 +886,9 @@ object_weapon_roleplay_ranged_pistol_scout_blaster_pistol = object_weapon_ranged
 	
 	rarity="Common",
 
+	ammoPack = _ammoPack,
+	maxAmmo = _maxAmmo,
+	
 	--[Stats]
 	attackType = _attackType,
 	pointBlankRange = _pointBlankRange,
@@ -833,6 +917,9 @@ object_weapon_roleplay_ranged_pistol_se14_blaster_pistol = object_weapon_ranged_
 	
 	rarity="Common",
 
+	ammoPack = _ammoPack,
+	maxAmmo = _maxAmmo,
+	
 	--[Stats]
 	attackType = _attackType,
 	pointBlankRange = _pointBlankRange,
@@ -863,6 +950,9 @@ object_weapon_roleplay_ranged_pistol_striker_projectile_pistol = object_weapon_r
 	
 	rarity="Common",
 
+	ammoPack = "ammo_kinetic",
+	maxAmmo = _maxAmmo,
+	
 	--[Stats]
 	attackType = _attackType,
 	pointBlankRange = _pointBlankRange,
@@ -891,6 +981,9 @@ object_weapon_roleplay_ranged_pistol_trandoshan_suppressor_pistol = object_weapo
 	
 	rarity="Rare",
 
+	ammoPack = _ammoPack,
+	maxAmmo = _maxAmmo,
+	
 	--[Stats]
 	attackType = _attackType,
 	pointBlankRange = _pointBlankRange,
@@ -919,6 +1012,9 @@ object_weapon_roleplay_ranged_pistol_westar34_blaster_pistol = object_weapon_ran
 	
 	rarity = "Legendary",
 
+	ammoPack = _ammoPack,
+	maxAmmo = _maxAmmo,
+	
 	--[Stats]
 	attackType = _attackType,
 	pointBlankRange = _pointBlankRange,
@@ -949,6 +1045,9 @@ object_weapon_roleplay_ranged_pistol_wookiee_pistol = object_weapon_ranged_pisto
 	
 	rarity="Uncommon",
 
+	ammoPack = "ammo_kinetic",
+	maxAmmo = _maxAmmo,
+	
 	--[Stats]
 	attackType = _attackType,
 	pointBlankRange = _pointBlankRange,

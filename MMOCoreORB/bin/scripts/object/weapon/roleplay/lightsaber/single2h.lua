@@ -54,9 +54,8 @@ _childObjects = {
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_aayla = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_aayla:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_aayla.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -74,9 +73,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_aayla = object_weapon
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_abjudicator = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_abjudicator:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_abjudicator.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -94,9 +92,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_abjudicator = object_
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_adept = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_adept:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_adept.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -114,9 +111,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_adept = object_weapon
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_ady = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_ady:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_ady.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -134,9 +130,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_ady = object_weapon_m
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_ahsoka = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_ahsoka:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_ahsoka.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -154,9 +149,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_ahsoka = object_weapo
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_ahsoka2 = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_ahsoka2:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_ahsoka2.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -174,9 +168,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_ahsoka2 = object_weap
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_ahsoka3 = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_ahsoka3:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_ahsoka3.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -194,9 +187,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_ahsoka3 = object_weap
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_ahsoka4 = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_ahsoka4:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_ahsoka4.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -214,9 +206,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_ahsoka4 = object_weap
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_anakin = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_anakin:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_anakin.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -234,9 +225,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_anakin = object_weapo
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_anakin_solo = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_anakin_solo:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_anakin_solo.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -254,9 +244,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_anakin_solo = object_
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_anakin2 = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_anakin2:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_anakin2.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -274,9 +263,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_anakin2 = object_weap
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_arbiter = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_arbiter:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_arbiter.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -294,9 +282,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_arbiter = object_weap
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_bane = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_bane:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_bane.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -314,9 +301,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_bane = object_weapon_
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_barriss = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_barriss:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_barriss.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -334,9 +320,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_barriss = object_weap
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_boc = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_boc:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_boc.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -354,9 +339,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_boc = object_weapon_m
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_byph = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_byph:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_byph.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -374,9 +358,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_byph = object_weapon_
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_cin = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_cin:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_cin.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -394,9 +377,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_cin = object_weapon_m
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_consul = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_consul:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_consul.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -414,9 +396,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_consul = object_weapo
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_dan = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_dan:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_dan.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -434,9 +415,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_dan = object_weapon_m
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_defender = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_defender:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_defender.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -454,9 +434,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_defender = object_wea
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_desann = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_desann:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_desann.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -474,9 +453,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_desann = object_weapo
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_dooku = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_dooku:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_dooku.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -494,9 +472,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_dooku = object_weapon
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_even = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_even:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_even.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -514,9 +491,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_even = object_weapon_
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_ezra = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_ezra:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_ezra.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -534,9 +510,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_ezra = object_weapon_
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_ezra2 = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_ezra2:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_ezra2.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -554,9 +529,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_ezra2 = object_weapon
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_firebrand = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_firebrand:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_firebrand.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -574,9 +548,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_firebrand = object_we
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_ganodi = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_ganodi:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_ganodi.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -594,9 +567,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_ganodi = object_weapo
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_gungi = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_gungi:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_gungi.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -614,9 +586,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_gungi = object_weapon
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_imperial = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_imperial:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_imperial.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -634,9 +605,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_imperial = object_wea
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_jacen = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_jacen:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_jacen.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -654,9 +624,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_jacen = object_weapon
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_jaina = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_jaina:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_jaina.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -674,9 +643,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_jaina = object_weapon
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_jerec = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_jerec:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_jerec.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -694,9 +662,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_jerec = object_weapon
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_jocasta = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_jocasta:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_jocasta.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -714,9 +681,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_jocasta = object_weap
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_jolee = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_jolee:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_jolee.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -734,9 +700,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_jolee = object_weapon
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_juhani = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_juhani:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_juhani.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -754,9 +719,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_juhani = object_weapo
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_kanan = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_kanan:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_kanan.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -774,9 +738,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_kanan = object_weapon
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_katooni = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_katooni:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_katooni.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -794,9 +757,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_katooni = object_weap
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_ki_adi = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_ki_adi:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_ki_adi.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -814,9 +776,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_ki_adi = object_weapo
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_kouru = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_kouru:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_kouru.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -834,9 +795,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_kouru = object_weapon
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_kyle = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_kyle:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_kyle.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -854,9 +814,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_kyle = object_weapon_
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_luke = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_luke:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_luke.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -874,9 +833,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_luke = object_weapon_
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_luke2 = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_luke2:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_luke2.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -894,9 +852,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_luke2 = object_weapon
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_luke3 = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_luke3:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_luke3.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -914,9 +871,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_luke3 = object_weapon
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_luke4 = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_luke4:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_luke4.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -934,9 +890,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_luke4 = object_weapon
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_luke5 = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_luke5:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_luke5.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -954,9 +909,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_luke5 = object_weapon
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_luke6 = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_luke6:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_luke6.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -974,9 +928,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_luke6 = object_weapon
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_luminara = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_luminara:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_luminara.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -994,9 +947,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_luminara = object_wea
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_mace = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_mace:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_mace.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -1014,9 +966,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_mace = object_weapon_
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_malak = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_malak:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_malak.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -1034,9 +985,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_malak = object_weapon
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_mara = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_mara:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_mara.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -1054,9 +1004,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_mara = object_weapon_
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_marauder = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_marauder:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_marauder.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -1074,9 +1023,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_marauder = object_wea
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_marek = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_marek:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_marek.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -1094,9 +1042,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_marek = object_weapon
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_marek2 = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_marek2:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_marek2.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -1114,9 +1061,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_marek2 = object_weapo
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_marek3 = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_marek3:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_marek3.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -1134,9 +1080,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_marek3 = object_weapo
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_maul_broke = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_maul_broke:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_maul_broke.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -1154,9 +1099,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_maul_broke = object_w
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_maw = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_maw:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_maw.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -1174,9 +1118,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_maw = object_weapon_m
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_nari = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_nari:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_nari.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -1194,9 +1137,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_nari = object_weapon_
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_nihilus = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_nihilus:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_nihilus.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -1214,9 +1156,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_nihilus = object_weap
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_obi_wan = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_obi_wan:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_obi_wan.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -1234,9 +1175,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_obi_wan = object_weap
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_obi_wan2 = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_obi_wan2:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_obi_wan2.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -1254,9 +1194,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_obi_wan2 = object_wea
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_obi_wan3 = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_obi_wan3:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_obi_wan3.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -1274,9 +1213,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_obi_wan3 = object_wea
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_obi_wan4 = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_obi_wan4:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_obi_wan4.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -1294,9 +1232,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_obi_wan4 = object_wea
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_obi_wan5 = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_obi_wan5:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_obi_wan5.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -1314,9 +1251,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_obi_wan5 = object_wea
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_oppo = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_oppo:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_oppo.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -1334,9 +1270,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_oppo = object_weapon_
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_petro = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_petro:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_petro.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -1354,9 +1289,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_petro = object_weapon
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_pic_gorc = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_pic_gorc:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_pic_gorc.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -1374,9 +1308,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_pic_gorc = object_wea
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_plo = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_plo:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_plo.iff",
 	
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -1394,9 +1327,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_plo = object_weapon_m
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_plo2 = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_plo2:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_plo2.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -1414,9 +1346,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_plo2 = object_weapon_
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_praetor = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_praetor:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_praetor.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -1434,9 +1365,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_praetor = object_weap
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_qu_rahn = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_qu_rahn:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_qu_rahn.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -1454,9 +1384,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_qu_rahn = object_weap
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_qui_gon = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_qui_gon:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_qui_gon.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -1474,9 +1403,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_qui_gon = object_weap
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_quinlan = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_quinlan:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_quinlan.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -1494,9 +1422,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_quinlan = object_weap
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_rahm = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_rahm:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_rahm.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -1514,9 +1441,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_rahm = object_weapon_
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_reborn = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_reborn:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_reborn.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -1534,9 +1460,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_reborn = object_weapo
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_retaliator = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_retaliator:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_retaliator.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -1554,9 +1479,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_retaliator = object_w
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_revan = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_revan:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_revan.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -1574,9 +1498,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_revan = object_weapon
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_rey = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_rey:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_rey.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -1594,9 +1517,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_rey = object_weapon_m
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_rey2 = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_rey2:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_rey2.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -1614,9 +1536,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_rey2 = object_weapon_
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_rey3 = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_rey3:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_rey3.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -1634,9 +1555,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_rey3 = object_weapon_
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_rey4 = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_rey4:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_rey4.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -1654,9 +1574,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_rey4 = object_weapon_
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_rey5 = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_rey5:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_rey5.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -1674,9 +1593,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_rey5 = object_weapon_
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_rig = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_rig:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_rig.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -1694,9 +1612,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_rig = object_weapon_m
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_sariss = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_sariss:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_sariss.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -1714,9 +1631,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_sariss = object_weapo
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_scardont = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_scardont:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_scardont.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -1734,9 +1650,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_scardont = object_wea
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_sentinel = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_sentinel:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_sentinel.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -1754,9 +1669,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_sentinel = object_wea
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_shaak_ti = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_shaak_ti:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_shaak_ti.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -1774,9 +1688,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_shaak_ti = object_wea
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_sharad = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_sharad:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_sharad.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -1794,9 +1707,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_sharad = object_weapo
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_sidious = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_sidious:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_sidious.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -1814,9 +1726,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_sidious = object_weap
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_sidious2 = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_sidious2:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_sidious2.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -1834,9 +1745,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_sidious2 = object_wea
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_sion = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_sion:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_sion.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -1854,9 +1764,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_sion = object_weapon_
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_solo = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_solo:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_solo.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -1874,9 +1783,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_solo = object_weapon_
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_starcruiser = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_starcruiser:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_starcruiser.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -1894,9 +1802,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_starcruiser = object_
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_tajin = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_tajin:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_tajin.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -1914,9 +1821,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_tajin = object_weapon
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_temple_guard2_single = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_temple_guard2_single:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_temple_guard2_single.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -1934,9 +1840,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_temple_guard2_single 
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_the_ren = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_the_ren:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_the_ren.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -1954,9 +1859,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_the_ren = object_weap
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_tiin = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_tiin:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_tiin.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -1974,9 +1878,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_tiin = object_weapon_
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_vader = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_vader:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_vader.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -1994,9 +1897,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_vader = object_weapon
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_vader2 = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_vader2:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_vader2.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -2014,9 +1916,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_vader2 = object_weapo
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_vader3 = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_vader3:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_vader3.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -2034,9 +1935,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_vader3 = object_weapo
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_vader4 = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_vader4:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_vader4.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -2054,9 +1954,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_vader4 = object_weapo
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_visas = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_visas:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_visas.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -2074,9 +1973,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_visas = object_weapon
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_yaddle = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_yaddle:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_yaddle.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -2094,9 +1992,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_yaddle = object_weapo
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_yarael = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_yarael:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_yarael.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -2114,9 +2011,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_yarael = object_weapo
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_yoda = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_yoda:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_yoda.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -2134,9 +2030,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_yoda = object_weapon_
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_youngling = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_youngling:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_youngling.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -2154,9 +2049,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_youngling = object_we
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_youngling2 = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_youngling2:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_youngling2.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -2174,9 +2068,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_youngling2 = object_w
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_yun = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_yun:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_yun.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -2194,9 +2087,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_yun = object_weapon_m
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_zatt = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_zatt:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_zatt.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,
@@ -2213,9 +2105,8 @@ object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_zatt = object_weapon_
 object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_katana = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_katana:new {
 	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_katana.iff",
 
-	price = 250000,
+
 	
-	attackType = _attackType,
 	minDamage = _minDamage,
 	maxDamage = _maxDamage,
 	attackType = _attackType,

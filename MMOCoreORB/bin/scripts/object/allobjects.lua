@@ -1299,6 +1299,7 @@ includeFile("building/player_sp/city/objects.lua")
 
 includeFile("tangible/borrp/effects/objects.lua")
 includeFile("tangible/borrp/utility/objects.lua")
+includeFile("tangible/borrp/ammo/objects.lua")
 
 includeFile("tangible/medicine/roleplay/objects.lua")
 

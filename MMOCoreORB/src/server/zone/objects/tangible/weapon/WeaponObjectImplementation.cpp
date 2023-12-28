@@ -50,6 +50,44 @@ void WeaponObjectImplementation::notifyLoadFromDatabase() {
 		saberForceCost = forceCost;
 		forceCost = 0;
 	}
+	// Update object stats from template.
+	weaponTemplate = dynamic_cast<SharedWeaponObjectTemplate*>(getObjectTemplate());
+
+	bool wasModified = getStoredString("dm_last_modified") != "";
+
+	if(!wasModified) {
+		attackType = weaponTemplate->getAttackType();
+		weaponEffect =  weaponTemplate->getWeaponEffect();
+		weaponEffectIndex = weaponTemplate->getWeaponEffectIndex();
+		damageType = weaponTemplate->getDamageType();
+		armorPiercing = weaponTemplate->getArmorPiercing();
+		healthAttackCost = weaponTemplate->getHealthAttackCost();
+		actionAttackCost = weaponTemplate->getActionAttackCost();
+		mindAttackCost = weaponTemplate->getMindAttackCost();
+		saberForceCost = weaponTemplate->getForceCost();
+		pointBlankAccuracy = weaponTemplate->getPointBlankAccuracy();
+		pointBlankRange = weaponTemplate->getPointBlankRange();
+		idealRange = weaponTemplate->getIdealRange();
+		idealAccuracy = weaponTemplate->getIdealAccuracy();
+		int templateMaxRange = weaponTemplate->getMaxRange();
+
+		if (templateMaxRange > 5 )
+			maxRange = templateMaxRange;
+
+		maxRangeAccuracy = weaponTemplate->getMaxRangeAccuracy();
+		minDamage = weaponTemplate->getMinDamage();
+		maxDamage = weaponTemplate->getMaxDamage();
+		bonusDamage = weaponTemplate->getBonusDamage();
+		woundsRatio = weaponTemplate->getWoundsRatio();
+		damageRadius = weaponTemplate->getArea();
+		rpSkillLevel = weaponTemplate->getRpSkillLevel();
+		maxAmmo = weaponTemplate->getMaxAmmo();
+
+		float templateAttackSpeed = weaponTemplate->getAttackSpeed();
+	}
+	rarity = weaponTemplate->getRarity();
+	alternateGrip = weaponTemplate->getAlternateGrip();
+	ammoPack = weaponTemplate->getAmmoPack();
 
 	TangibleObjectImplementation::notifyLoadFromDatabase();
 }
@@ -312,11 +350,35 @@ void WeaponObjectImplementation::fillAttributeList(AttributeListMessage* alm, Cr
 		break;
 	}
 
-	alm->insertAttribute("wpn_armor_pierce_rating", ap);
+	//alm->insertAttribute("wpn_armor_pierce_rating", ap);
 
 	//alm->insertAttribute("wpn_attack_speed", Math::getPrecision(getAttackSpeed(), 1));
 
-	
+	String ammoType = "";
+	StringBuffer ammoCount;
+
+	if (ammoPack != ""){
+
+		if (ammoPack == "ammo_powerpack_small")
+			ammoType = "Powerpack, small";
+		else if (ammoPack == "ammo_powerpack_medium")
+			ammoType = "Powerpack, medium";
+		else if (ammoPack == "ammo_powerpack_large")
+			ammoType = "Powerpack, large";
+		else if (ammoPack == "ammo_kinetic")
+			ammoType = "Kinetic Slugs";
+		else if (ammoPack == "ammo_missile")
+			ammoType = "Missiles";
+
+		// Initialise data if not already set.
+		if (getStoredInt("ammo_used") < 0)
+			setStoredInt("ammo_used", 0);
+
+		ammoCount << maxAmmo - getStoredInt("ammo_used") << "/" << maxAmmo;
+
+		alm->insertAttribute("wpn_ammo_count", ammoCount);
+		alm->insertAttribute("wpn_ammo_type", ammoType);
+	}
 
 	//Damage Information
 	StringBuffer dmgtxt;

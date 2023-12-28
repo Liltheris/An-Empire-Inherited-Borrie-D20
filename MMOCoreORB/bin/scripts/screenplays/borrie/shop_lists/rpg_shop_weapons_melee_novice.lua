@@ -15,7 +15,7 @@ rpg_shop_weapons_melee_novice = {
 			name = "One Handed Melee",
 			minItems = 1,
 			items = {
-				{template = "object/weapon/roleplay/ranged/onehanded/dagger.iff", cost = 50, max = 10, chance = 100 },
+				{template = "object/weapon/roleplay/melee/onehanded/dagger.iff", cost = 50, max = 10, chance = 100 },
 				{template = "object/weapon/roleplay/melee/onehanded/sword.iff", cost = 55, max = 10, chance = 100 },
 				{template = "object/weapon/roleplay/melee/onehanded/mace.iff", cost = 500, max = 10, chance = 100 },
 				{template = "object/weapon/roleplay/melee/onehanded/stun_baton.iff", cost = 800, max = 10, chance = 100 },

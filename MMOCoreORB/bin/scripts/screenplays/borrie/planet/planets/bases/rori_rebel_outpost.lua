@@ -1,7 +1,7 @@
 base = {
 	tag = "rori_rebel_outpost",
 	name = "Fort Zephyr",
-	defaultOwner = "firestar",
+	defaultOwner = "newrepublic",
 	
 	flags = {
 	

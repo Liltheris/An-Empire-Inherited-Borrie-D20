@@ -94,13 +94,21 @@ public:
 					}
 				}
 			} else if(command == "weapon") {
-				if(creature->getWeapon() != nullptr) {
-					int wepDmg = creature->getWeapon()->getMaxCondition() - creature->getWeapon()->getConditionDamage();
-					creature->sendSystemMessage("Current Weapon Condition: " + String::valueOf(wepDmg) + "/" + creature->getWeapon()->getMaxCondition());
+				ManagedReference<WeaponObject*> weapon = creature->getWeapon();
+				if(weapon != nullptr) {
+					int wepDmg = weapon->getMaxCondition() - weapon->getConditionDamage();
+					
+					creature->sendSystemMessage("Current Weapon Condition: " + String::valueOf(wepDmg) + "/" + weapon->getMaxCondition());
+					if(weapon->getAmmoPack() != ""){
+						// Set to 0 if uninitialised.
+						if(weapon->getStoredInt("ammo_used") < 0)
+							weapon->setStoredInt("ammo_used", 0);
+						creature->sendSystemMessage("Weapon Ammo: " +String::valueOf(weapon->getMaxAmmo() - weapon->getStoredInt("ammo_used")) + "/" + weapon->getMaxAmmo());
+					}
 					if(creature->getWeapon()->isJediWeapon()) {
 						creature->sendSystemMessage("Your weapon is considered a Force User's weapon.");
 					}
-				}				
+				}
 			} else if (command == "target") {
 				BorrieRPG::SaveTarget(creature, object);
 			} else if(command == "meditate") {

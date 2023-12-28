@@ -3,21 +3,44 @@ npc_template = {
 	randomName = "human",
 	
 	baseTemplates = {
-	"rp_human_male", "rp_human_female",
-	"rp_sullustan_male", "rp_sullustan_female",
-	"rp_zabrak_male", "rp_zabrak_female",
-	"rp_mirialan_male", "rp_mirialan_female",
-	"rp_moncal_male", "rp_moncal_female",
-	"rp_twilek_male", "rp_twilek_female"},
+		"rp_human_male", 50, "rp_human_female", 30,
+		"rp_sullustan_male", 5, "rp_sullustan_female", 2,
+		"rp_zabrak_male", 15, "rp_zabrak_female", 15,
+		"rp_mirialan_male", 10, "rp_mirialan_female", 10,
+		"rp_moncal_male", 5, "rp_moncal_female", 2,
+		"rp_twilek_male", 15, "rp_twilek_female", 10,
+	},
 	
 	skillTemplates = {"factional/common/grunt_army"},
 	
 	equipmentTemplates = {
 		{"rp_human_male", {"faction/newrepublic/grunt_army_green"}},
+		{"rp_human_female", {"faction/newrepublic/grunt_army_green"}},
+		{"rp_sullustan_male", {"faction/newrepublic/grunt_army_green"}},
+		{"rp_sullustan_female", {"faction/newrepublic/grunt_army_green"}},
+		{"rp_zabrak_male", {"faction/newrepublic/grunt_army_green"}},
+		{"rp_zabrak_female", {"faction/newrepublic/grunt_army_green"}},
+		{"rp_mirialan_male", {"faction/newrepublic/grunt_army_green"}},
+		{"rp_mirialan_female", {"faction/newrepublic/grunt_army_green"}},
+		{"rp_moncal_male", {"faction/newrepublic/grunt_army_green"}},
+		{"rp_moncal_female", {"faction/newrepublic/grunt_army_green"}},
+		{"rp_twilek_male", {"faction/newrepublic/grunt_army_green_twi"}},
+		{"rp_twilek_female", {"faction/newrepublic/grunt_army_green_twi"}},
 	},	
 	
 	customizationTemplates = {
 		{"rp_human_male", {"random"}},
+		{"rp_human_female", {"random"}},
+		{"rp_sullustan_male", {"random"}},
+		{"rp_sullustan_female", {"random"}},
+		{"rp_zabrak_male", {"random"}},
+		{"rp_zabrak_female", {"random"}},
+		{"rp_mirialan_male", {"random"}},
+		{"rp_mirialan_female", {"random"}},
+		{"rp_moncal_male", {"random"}},
+		{"rp_moncal_female", {"random"}},
+		{"rp_twilek_male", {"random"}},
+		{"rp_twilek_female", {"random"}},
 	},	
 	
 	customVarOverrides = {

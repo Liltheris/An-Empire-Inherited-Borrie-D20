@@ -29,5 +29,5 @@ random_ranges = {
 	{"/shared_owner/blend_flat_chest", 0, 255},
 	{"/private/index_color_lips", 0, 255},
 	{"height", 0.83, 1.08},
-	{"hair", "object/tangible/hair/human/shared_hair_miraluka_female", 1, 42, "/private/index_color_1", 0, 19},
+	{"hair", "object/tangible/hair/human/shared_hair_human_female", 1, 42, "/private/index_color_1", 0, 19},
 }

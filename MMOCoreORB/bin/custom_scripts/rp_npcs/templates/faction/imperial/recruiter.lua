@@ -2,7 +2,10 @@ npc_template = {
 
 	title = "an Imperial Recruiter",
 	randomName = "human",
-	baseTemplates = {"rp_human_male", "rp_human_female"},
+	baseTemplates = {
+		"rp_human_male", 70,
+		"rp_human_female", 30
+	},
 	skillTemplates = {"stormtrooper"},
 	
 	equipmentTemplates = {

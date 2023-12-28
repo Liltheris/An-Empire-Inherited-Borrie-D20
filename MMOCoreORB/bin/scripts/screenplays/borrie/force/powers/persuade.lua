@@ -5,15 +5,14 @@ BorForce_Persuade = {
 
 function BorForce_Persuade:showHelp(pPlayer)
 	local helpMessage = self.name .. ": "
-	helpMessage =  helpMessage .. "Gain a <ForcePointInput> (Max 20) bonus to persuasion, bluff, or intimidation checks. "
-	helpMessage =  helpMessage .. "Rolls a 1d20 DC check with the Control skill against the target’s Resolve skill. "
-	helpMessage =  helpMessage .. "Upon success, your next persuasion, bluff, or intimidation check will have the given Force Point Input as a bonus. "
-	helpMessage =  helpMessage .. "Does not work on other Force Sensitives."
+	helpMessage =  helpMessage .. "Gain an automatic success for persuasion, bluff, or intimidation checks. "
+	helpMessage =  helpMessage .. "Rolls with the Control skill + fpi against the target’s Mindfulness. "
+	helpMessage =  helpMessage .. "Upon success, your next persuasion, bluff, or intimidation check will be considered an automatic success. "
 	CreatureObject(pPlayer):sendSystemMessage(helpMessage)
 end
 
 function BorForce_Persuade:execute(pPlayer)
-	local hasPower = CreatureObject(pPlayer):hasSkill("rp_control_novice")
+	local hasPower = CreatureObject(pPlayer):hasSkill("rp_ability_persuade")
 	
 	if(hasPower == false) then
 		BorForceUtility:reportPowerNotKnown(pPlayer)
@@ -100,19 +99,24 @@ function BorForce_Persuade:performAbility(pPlayer, fpi)
 	
 	local skillValue = math.floor(CreatureObject(pPlayer):getSkillMod("rp_control"))
 	local roll = math.floor(math.random(1,20))
-	local yourTotal = skillValue + roll
+	local yourTotal = skillValue + roll + fpi
 	
-	local targetSkillValue = math.floor(CreatureObject(pTarget):getSkillMod("rp_resolve"))
+	local targetSkillValue = math.floor(CreatureObject(pTarget):getSkillMod("rp_mindfulness"))
 	local targetRoll = math.floor(math.random(1,20))
+	
+	if(CreatureObject(pTarget):hasSkill("rp_force_prog_novice")) then
+		targetSkillValue = targetSkillValue * 2
+	end
+	
 	local theirTotal = targetSkillValue + targetRoll
 	
 	local message = CreatureObject(pPlayer):getFirstName() .. " used " .. self.name .. "!"
 	local targetName = CreatureObject(pTarget):getFirstName() 
 	
-	local rollString = " (1d20 = " .. roll .. " + " .. skillValue .. " = " .. yourTotal .. " vs 1d20 = " .. targetRoll .. " + " .. targetSkillValue .. " = " .. theirTotal .. ")" 
+	local rollString = " (1d20 = " .. roll .. " + " .. skillValue .. " + " .. fpi .. " = " .. yourTotal .. " vs 1d20 = " .. targetRoll .. " + " .. targetSkillValue .. " = " .. theirTotal .. ")" 
 	
 	if(yourTotal > theirTotal) then
-		message = message .. " Their influence is felt, allowing them to add a " .. fpi .. " point bonus modifier to their next persuasion, intimidation, or bluff roll against " .. targetName .. "!"
+		message = message .. " Their influence is felt, allowing them to automatically suceed with their next persuasion, intimidation, or bluff roll against " .. targetName .. "!"
 	else 
 		message = message .. " However, " .. targetName .. " is unaffected by " .. CreatureObject(pPlayer):getFirstName() .. "'s empowered influence."
 	end

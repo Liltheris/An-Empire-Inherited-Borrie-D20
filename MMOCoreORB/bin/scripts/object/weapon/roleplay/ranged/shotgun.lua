@@ -15,6 +15,9 @@ _pointBlankAccuracy = 5	--DC under point blank range
 _idealAccuracy = 10		--DC within ideal range
 _maxRangeAccuracy = 99	--DC before max range
 
+_ammoPack = "ammo_powerpack_large"
+_maxAmmo = 10
+
 --Unused junk data
 _xpType = "combat_general"
 _certificationsRequired = {}
@@ -58,7 +61,12 @@ object_weapon_roleplay_ranged_rifle_dp23_rifle = object_weapon_ranged_rifle_shar
 	minDamage = 1, --Amount of Die used in Damage
 	maxDamage = 7, --Type of Die used in Damage
 	bonusDamage = 5,
+	
+	rarity="Common",
 
+	ammoPack = _ammoPack,
+	maxAmmo = _maxAmmo,
+	
 	--[Stats]
 	attackType = _attackType,
 	pointBlankRange = _pointBlankRange,
@@ -86,6 +94,10 @@ object_weapon_roleplay_ranged_pistol_scatter_pistol = object_weapon_ranged_pisto
 	bonusDamage = 3,
 	
 	rarity="Epic",
+
+	ammoPack = _ammoPack,
+	maxAmmo = _maxAmmo,
+	
 
 	--[Stats]
 	attackType = _attackType,

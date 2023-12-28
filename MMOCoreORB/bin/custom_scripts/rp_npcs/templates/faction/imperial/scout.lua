@@ -1,7 +1,10 @@
 npc_template = {
 
 	randomName = "scouttrooper",
-	baseTemplates = {"rp_human_male", "rp_human_female"},
+	baseTemplates = {
+		"rp_human_male", 65,
+		"rp_human_female", 35
+	},
 	skillTemplates = {"factional/common/scout"},
 	
 	equipmentTemplates = {

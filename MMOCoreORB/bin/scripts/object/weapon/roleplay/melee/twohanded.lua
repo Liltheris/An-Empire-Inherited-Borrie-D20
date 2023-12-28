@@ -59,6 +59,8 @@ object_weapon_roleplay_melee_twohanded_axe = object_weapon_melee_axe_shared_axe_
 	bonusDamage = 1,
 
 	primaryAttributeOnly = true,
+	
+	rarity="Common",
 
 	--[Stats]
 	attackType = _attackType,
@@ -87,6 +89,8 @@ object_weapon_roleplay_melee_twohanded_ceremonial_scythe = object_weapon_melee_2
 	
 	noDodgeReaction = true,
 	primaryAttributeOnly = true,
+	
+	rarity="Epic",
 
 	--[Stats]
 	attackType = _attackType,
@@ -114,6 +118,8 @@ object_weapon_roleplay_melee_twohanded_cleaver = object_weapon_melee_2h_sword_sh
 	bonusDamage = 2,
 	
 	primaryAttributeOnly = true,
+	
+	rarity="Uncommon",
 
 	--[Stats]
 	attackType = _attackType,
@@ -142,6 +148,8 @@ object_weapon_roleplay_melee_twohanded_executioners_axe = object_weapon_melee_2h
 	
 	noDodgeReaction = true,
 	primaryAttributeOnly = true,
+	
+	rarity="Epic",
 
 	--[Stats]
 	attackType = _attackType,
@@ -170,6 +178,8 @@ object_weapon_roleplay_melee_twohanded_fierce_cleaver = object_weapon_melee_2h_s
 	
 	noDodgeReaction = true,
 	primaryAttributeOnly = true,
+	
+	rarity="Rare",
 
 	--[Stats]
 	attackType = _attackType,
@@ -197,6 +207,8 @@ object_weapon_roleplay_melee_twohanded_gamorean_axe = object_weapon_melee_2h_swo
 	bonusDamage = 1,
 
 	primaryAttributeOnly = true,
+	
+	rarity="Uncommon",
 
 	--[Stats]
 	attackType = _attackType,
@@ -224,6 +236,8 @@ object_weapon_roleplay_melee_twohanded_katana = object_weapon_melee_2h_sword_sha
 	bonusDamage = 2,
 
 	primaryAttributeOnly = true,
+	
+	rarity="Common",
 
 	--[Stats]
 	attackType = _attackType,
@@ -252,6 +266,8 @@ object_weapon_roleplay_melee_twohanded_massassi_great_sword = object_weapon_mele
 	
 	noDodgeReaction = true,
 	primaryAttributeOnly = true,
+	
+	rarity="Legendary",
 
 	--[Stats]
 	attackType = _attackType,
@@ -280,6 +296,8 @@ object_weapon_roleplay_melee_twohanded_obsidian_great_sword = object_weapon_mele
 	
 	noDodgeReaction = true,
 	primaryAttributeOnly = true,
+	
+	rarity="Epic",
 
 	--[Stats]
 	attackType = _attackType,
@@ -309,6 +327,8 @@ object_weapon_roleplay_melee_twohanded_power_hammer = object_weapon_melee_2h_swo
 	noPowerAttack = true,
 	noDodgeReaction = true,
 	primaryAttributeOnly = true,
+	
+	rarity="Rare",
 
 	--[Stats]
 	attackType = _attackType,
@@ -337,6 +357,8 @@ object_weapon_roleplay_melee_twohanded_scythe_blade = object_weapon_melee_2h_swo
 	
 	noDodgeReaction = true,
 	primaryAttributeOnly = true,
+	
+	rarity="Rare",
 
 	--[Stats]
 	attackType = _attackType,
@@ -365,6 +387,8 @@ object_weapon_roleplay_melee_twohanded_sith_great_sword = object_weapon_melee_2h
 	
 	noDodgeReaction = true,
 	primaryAttributeOnly = true,
+	
+	rarity="Legendary",
 
 	--[Stats]
 	attackType = _attackType,
@@ -393,6 +417,8 @@ object_weapon_roleplay_melee_twohanded_tulrus_sword = object_weapon_melee_2h_swo
 	
 	noDodgeReaction = true,
 	primaryAttributeOnly = true,
+	
+	rarity="Epic",
 
 	--[Stats]
 	attackType = _attackType,
@@ -420,6 +446,8 @@ object_weapon_roleplay_melee_twohanded_vibroaxe = object_weapon_melee_axe_shared
 	bonusDamage = 1,
 	
 	primaryAttributeOnly = true,
+	
+	rarity="Common",
 
 	--[Stats]
 	attackType = _attackType,
@@ -448,6 +476,8 @@ object_weapon_roleplay_melee_twohanded_wookiee_broadsword = object_weapon_melee_
 	
 	noDodgeReaction = true,
 	primaryAttributeOnly = true,
+	
+	rarity="Rare",
 
 	--[Stats]
 	attackType = _attackType,

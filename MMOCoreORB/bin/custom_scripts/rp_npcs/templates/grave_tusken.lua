@@ -1,7 +1,7 @@
 npc_template = {
 
 	randomName = "moncal",
-	baseTemplates = {"rp_human_male"},
+	baseTemplates = {"rp_human_male", 10},
 	skillTemplates = {"grave_tusken"},
 	title = "a Grave Tusken",
 	
