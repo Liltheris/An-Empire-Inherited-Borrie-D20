@@ -15,7 +15,6 @@ public:
 	static bool canRepairItem(CreatureObject* creature, TangibleObject* item){
 		if (item == nullptr){
 			return false;
-			creature->sendSystemMessage("FOUND ITEM WAS NULL");
 		}
 
 		// Repair difficulty is determined by object rarity, modification and damage.
@@ -53,7 +52,6 @@ public:
 
 		SceneObject* inventory = creature->getSlottedObject("inventory");
         if (inventory == nullptr) {
-			creature->sendSystemMessage("MISSING INVENTORY");
             return GENERALERROR;
 		}
 		// Initilising our callback object.
@@ -76,7 +74,6 @@ public:
 				// We only want to list items that we can actually repair, and are damaged.
 				if ((item->isArmorObject() || item->isWeaponObject()) && item->getConditionDamage() != 0 && canRepairItem(creature, item))
 				{
-					creature->sendSystemMessage("FOUND AN ITEM");
 					// Found an item we can repair.
 					foundObjects.push_back(i);
 					String displayName = "";

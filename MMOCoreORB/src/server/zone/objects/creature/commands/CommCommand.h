@@ -63,7 +63,7 @@ public:
 
 		creature->getZoneServer()->getChatManager()->broadcastChatMessage(creature, "<C> " + message, 0, 0, creature->getMoodID(), ghost->getLanguageID());
 		targetCreature->sendSystemMessage("[Comm, " + creature->getFirstName() +"] " + message);
-		creature->playMusicMessage("sound/ui_incoming_im.snd");
+		targetCreature->playMusicMessage("sound/ui_incoming_im.snd");
 
 		return SUCCESS;
 	}

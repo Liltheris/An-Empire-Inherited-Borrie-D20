@@ -4,6 +4,7 @@
 #include "server/zone/objects/player/sui/SuiCallback.h"
 #include "server/zone/objects/scene/SceneObject.h"
 
+#include "server/zone/borrie/BorrieRPG.h"
 #include "server/zone/borrie/BorCombat.h"
 
 class RpRepairCommandSuiCallback : public SuiCallback {
@@ -102,6 +103,7 @@ public:
 
 			item->setConditionDamage(newCondition);
 		}
+		BorrieRPG::BroadcastMessage(player, repairSpam);
 	}
 };
 
