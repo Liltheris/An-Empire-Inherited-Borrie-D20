@@ -52,7 +52,7 @@ void WeaponObjectImplementation::notifyLoadFromDatabase() {
 	}
 	// Update object stats from template.
 	loadTemplateData(getObjectTemplate());
-	
+
 	TangibleObjectImplementation::notifyLoadFromDatabase();
 }
 
@@ -333,6 +333,10 @@ void WeaponObjectImplementation::fillAttributeList(AttributeListMessage* alm, Cr
 			ammoType = "Kinetic Slugs";
 		else if (ammoPack == "ammo_missile")
 			ammoType = "Missiles";
+
+		// Initialise data if not already set.
+		if (getStoredInt("ammo_used") < 0)
+			setStoredInt("ammo_used", 0);
 
 		ammoCount << maxAmmo - getStoredInt("ammo_used") << "/" << maxAmmo;
 
