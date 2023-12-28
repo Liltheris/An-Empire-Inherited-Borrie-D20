@@ -50,7 +50,9 @@ void WeaponObjectImplementation::notifyLoadFromDatabase() {
 		saberForceCost = forceCost;
 		forceCost = 0;
 	}
-
+	// Update object stats from template.
+	loadTemplateData(getObjectTemplate());
+	
 	TangibleObjectImplementation::notifyLoadFromDatabase();
 }
 
