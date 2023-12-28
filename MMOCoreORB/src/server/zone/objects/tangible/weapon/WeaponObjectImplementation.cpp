@@ -51,7 +51,43 @@ void WeaponObjectImplementation::notifyLoadFromDatabase() {
 		forceCost = 0;
 	}
 	// Update object stats from template.
-	loadTemplateData(getObjectTemplate());
+	weaponTemplate = dynamic_cast<SharedWeaponObjectTemplate*>(getObjectTemplate());
+
+	bool wasModified = getStoredString("dm_last_modified") != "";
+
+	if(!wasModified) {
+		attackType = weaponTemplate->getAttackType();
+		weaponEffect =  weaponTemplate->getWeaponEffect();
+		weaponEffectIndex = weaponTemplate->getWeaponEffectIndex();
+		damageType = weaponTemplate->getDamageType();
+		armorPiercing = weaponTemplate->getArmorPiercing();
+		healthAttackCost = weaponTemplate->getHealthAttackCost();
+		actionAttackCost = weaponTemplate->getActionAttackCost();
+		mindAttackCost = weaponTemplate->getMindAttackCost();
+		saberForceCost = weaponTemplate->getForceCost();
+		pointBlankAccuracy = weaponTemplate->getPointBlankAccuracy();
+		pointBlankRange = weaponTemplate->getPointBlankRange();
+		idealRange = weaponTemplate->getIdealRange();
+		idealAccuracy = weaponTemplate->getIdealAccuracy();
+		int templateMaxRange = weaponTemplate->getMaxRange();
+
+		if (templateMaxRange > 5 )
+			maxRange = templateMaxRange;
+
+		maxRangeAccuracy = weaponTemplate->getMaxRangeAccuracy();
+		minDamage = weaponTemplate->getMinDamage();
+		maxDamage = weaponTemplate->getMaxDamage();
+		bonusDamage = weaponTemplate->getBonusDamage();
+		woundsRatio = weaponTemplate->getWoundsRatio();
+		damageRadius = weaponTemplate->getArea();
+		rpSkillLevel = weaponTemplate->getRpSkillLevel();
+		maxAmmo = weaponTemplate->getMaxAmmo();
+
+		float templateAttackSpeed = weaponTemplate->getAttackSpeed();
+	}
+	rarity = weaponTemplate->getRarity();
+	alternateGrip = weaponTemplate->getAlternateGrip();
+	ammoPack = weaponTemplate->getAmmoPack();
 
 	TangibleObjectImplementation::notifyLoadFromDatabase();
 }
