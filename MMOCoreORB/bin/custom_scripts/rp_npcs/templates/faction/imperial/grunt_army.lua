@@ -9,10 +9,12 @@ npc_template = {
 	
 	equipmentTemplates = {
 		{"rp_human_male", {"faction/imperial/grunt_army"}},
+		{"rp_human_female", {"faction/imperial/grunt_army"}},
 	},	
 	
 	customizationTemplates = {
 		{"rp_human_male", {"random"}},
+		{"rp_human_female", {"random"}},
 	},	
 	
 	customVarOverrides = {
