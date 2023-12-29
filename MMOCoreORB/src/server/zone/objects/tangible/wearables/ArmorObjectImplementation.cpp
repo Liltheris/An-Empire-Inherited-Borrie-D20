@@ -79,6 +79,9 @@ void ArmorObjectImplementation::notifyLoadFromDatabase() {
 
 	bool wasModified = getStoredString("dm_last_modified") != "";
 
+	if (armorTemplate == nullptr)
+		return;
+
 	if(!wasModified) {
 		vulnerabilites = armorTemplate->getVulnerabilites();
 		specialResists = armorTemplate->getSpecialResists();
