@@ -48,6 +48,8 @@ object_tangible_deed_pet_deed_deed_r2_basic = object_tangible_deed_pet_deed_shar
 	controlDeviceObjectTemplate = "object/intangible/pet/r2_crafted.iff",
 	generatedObjectTemplate = "object/mobile/r2_crafted.iff",
 	mobileTemplate = "r2_crafted",
+	skillTemplate = "droid/astromech",
+	
 	species = 204,
 	numberExperimentalProperties = {1, 1, 3, 1, 1, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "OQ", "SR", "UT", "XX", "XX", "OQ", "SR", "UT", "OQ", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX"},
