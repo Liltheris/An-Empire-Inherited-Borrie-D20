@@ -8,24 +8,26 @@
 class BorPets : public Logger {
 public:
 
-    static void ApplySkillTemplateToPet(CreatureObject* target, String skillTemplate) {
+    static void applySkillsToPet(CreatureObject* target, String mobileTemplate) {
         Lua* lua = DirectorManager::instance()->getLuaInstance();
 
-        skillTemplate = skillTemplate.toLowerCase();
+        mobileTemplate = mobileTemplate.toLowerCase();
 
-        lua->runFile("custom_scripts/rp_npcs/skills/" + skillTemplate + ".lua");
+        lua->runFile("custom_scripts/rp_npcs/skills/" + getSkillFromMobileTemplate(mobileTemplate) + ".lua");
 
         LuaObject luaObject = lua->getGlobalObject("skillSet");
 
-        if(luaObject.isValidTable()) {
+        if(luaObject.isValidTable()) {\
+            // Clear our previous mods to prevent doubling up.
+            target->removeAllSkillModsOfType(SkillModManager::PERMANENTMOD);
             for (int i = 1; i <= luaObject.getTableSize(); ++i) {
                 LuaObject objData = luaObject.getObjectAt(i);
                 if (objData.isValidTable()) {
                     String skillKey = objData.getStringAt(1);
                     int minSkill = objData.getIntAt(2);
                     int maxSkill = objData.getIntAt(3);     
-                    //int finalSkill = System::random(maxSkill - minSkill) + 1 + minSkill;
                     int finalSkill = minSkill + System::random(maxSkill - minSkill);
+                    
                     target->addSkillMod(SkillModManager::PERMANENTMOD, skillKey, finalSkill);
                     if(skillKey == "rp_health") {
                         target->setMaxHAM(0, finalSkill);
@@ -46,6 +48,33 @@ public:
         }
         luaObject.pop();
     } 
+
+private:
+    static String getSkillFromMobileTemplate(String mobileTemplate){
+        Lua* lua = DirectorManager::instance()->getLuaInstance();
+
+        lua->runFile("custom_scripts/rp_npcs/pet_definitions.lua");
+
+        LuaObject luaObject = lua->getGlobalObject("petDefinitions");
+
+        if(luaObject.isValidTable()) {
+            //Run over the definitions to find our pet.
+            for (int i = 1; i <= luaObject.getTableSize(); i++) {
+                LuaObject objData = luaObject.getObjectAt(i);
+                if (objData.isValidTable()) {
+                    String petTemplate = objData.getStringAt(1);
+                    
+                    if (petTemplate == mobileTemplate)
+                        return objData.getStringAt(2);
+                }
+                objData.pop();
+            }
+        }
+        luaObject.pop();
+        return "";
+    }
 };
+
+
 
 #endif

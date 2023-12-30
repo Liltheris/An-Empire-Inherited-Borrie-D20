@@ -342,7 +342,7 @@ int DroidDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte
 		droid->createChildObjects();
 		droid->setControlDevice(controlDevice);
 
-		BorPets::ApplySkillTemplateToPet(droid, skillTemplate);
+		BorPets::applySkillsToPet(droid, mobileTemplate);
 
 		// this will change to use stacked modules. we wont care about non droid modules as they aren't needed.
 		ManagedReference<SceneObject*> craftingComponentsSatchel = droid->getCraftedComponentsSatchel();
