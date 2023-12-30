@@ -59,5 +59,7 @@ includeFile("tangible/deed/turret_deed/serverobjects.lua")
 includeFile("tangible/deed/vehicle_deed/serverobjects.lua")
 includeFile("tangible/deed/rp_droid_deed/serverobjects.lua")
 
+includeFile("tangible/deed/rp_pet_deed/serverobjects.lua")
+
 -- Server Objects
 includeFile("tangible/deed/test_deed.lua")
