@@ -266,7 +266,7 @@ int PetMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureO
 	if (owner != player)
 		return 0;
 
-	if (selectedID = 84) {
+	if (selectedID == 84) {
 		// The Sui Box.
 		ZoneServer* server = player->getZoneServer();
 		ManagedReference<SuiInputBox*> ibox = new SuiInputBox(player, SuiWindowType::CITY_RENAME);
