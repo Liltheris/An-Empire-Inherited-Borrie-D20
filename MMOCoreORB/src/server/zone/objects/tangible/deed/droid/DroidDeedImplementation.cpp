@@ -26,6 +26,8 @@
 #include "server/zone/objects/tangible/component/droid/DroidComponent.h"
 #include "server/zone/managers/crafting/labratories/DroidMechanics.h"
 
+#include "server/zone/borrie/pets/BorPets.h"
+
 void DroidDeedImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	DeedImplementation::loadTemplateData(templateData);
 
@@ -340,18 +342,7 @@ int DroidDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte
 		droid->createChildObjects();
 		droid->setControlDevice(controlDevice);
 
-		float maxHam = DroidMechanics::determineHam(overallQuality, species);
-		for (int i = 0; i < 9; ++i) {
-			if (i % 3 == 0) {
-				droid->setBaseHAM(i, maxHam, false);
-				droid->setHAM(i, maxHam, false);
-				droid->setMaxHAM(i, maxHam, false);
-			} else {
-				droid->setBaseHAM(i, maxHam / 10, false);
-				droid->setHAM(i, maxHam / 10, false);
-				droid->setMaxHAM(i, maxHam / 10, false);
-			}
-		}
+		BorPets::ApplySkillTemplateToPet(droid, skillTemplate);
 
 		// this will change to use stacked modules. we wont care about non droid modules as they aren't needed.
 		ManagedReference<SceneObject*> craftingComponentsSatchel = droid->getCraftedComponentsSatchel();
@@ -400,8 +391,8 @@ int DroidDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte
 		s.setStringId(droid->getObjectName()->getFullPath());
 		controlDevice->setObjectName(s, false);
 		controlDevice->setPetType(PetManager::DROIDPET);
-		controlDevice->setMaxVitality(100);
-		controlDevice->setVitality(100);
+//		controlDevice->setMaxVitality(100);
+//		controlDevice->setVitality(100);
 		controlDevice->setControlledObject(droid);
 		controlDevice->setDefaultCommands();
 

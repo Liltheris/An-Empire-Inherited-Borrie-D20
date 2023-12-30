@@ -1047,32 +1047,35 @@ void PetControlDeviceImplementation::setDefaultCommands() {
 	trainedCommands.put(PetManager::STORE, "store");
 
 	ManagedReference<DroidObject*> droid = this->controlledObject.get().castTo<DroidObject*>();
-	if (droid != nullptr) {
-		if (droid->isCombatDroid()) {
-			trainedCommands.put(PetManager::ATTACK, "attack");
-			trainedCommands.put(PetManager::GUARD, "guard");
-		}
-	} else {
-		trainedCommands.put(PetManager::ATTACK, "attack");
-		trainedCommands.put(PetManager::GUARD, "guard");
-	}
+////////////////////////////////////////////////////////////////
+// Default attack commands cause problematic behaviour. 
+////////////////////////////////////////////////////////////////
+//	if (droid != nullptr) {
+//		if (droid->isCombatDroid()) {
+//			trainedCommands.put(PetManager::ATTACK, "attack");
+//			trainedCommands.put(PetManager::GUARD, "guard");
+//		}
+//	} else {
+//		trainedCommands.put(PetManager::ATTACK, "attack");
+//		trainedCommands.put(PetManager::GUARD, "guard");
+//	}
 
 	trainedCommands.put(PetManager::FRIEND, "friend");
 	trainedCommands.put(PetManager::FOLLOWOTHER, "followother");
 	trainedCommands.put(PetManager::PATROL, "patrol");
 	trainedCommands.put(PetManager::GETPATROLPOINT, "getpatrolpoint");
 	trainedCommands.put(PetManager::CLEARPATROLPOINTS, "clearpatrolpoints");
-	trainedCommands.put(PetManager::FORMATION1, "formation1");
-	trainedCommands.put(PetManager::FORMATION2, "formation2");
+//	trainedCommands.put(PetManager::FORMATION1, "formation1");
+//	trainedCommands.put(PetManager::FORMATION2, "formation2");
 
-	if (droid != nullptr) {
-		int species = droid->getSpecies();
-
-		if (droid->isCombatDroid() && (species == DroidObject::PROBOT || species == DroidObject::DZ70))
-			trainedCommands.put(PetManager::RANGED_ATTACK, "ranged attack");
-	} else {
-		trainedCommands.put(PetManager::RANGED_ATTACK, "ranged attack");
-	}
+//	if (droid != nullptr) {
+//		int species = droid->getSpecies();
+//
+//		if (droid->isCombatDroid() && (species == DroidObject::PROBOT || species == DroidObject::DZ70))
+//			trainedCommands.put(PetManager::RANGED_ATTACK, "ranged attack");
+//	} else {
+//		trainedCommands.put(PetManager::RANGED_ATTACK, "ranged attack");
+//	}
 
 	trainedCommands.put(PetManager::GROUP, "group");
 }
