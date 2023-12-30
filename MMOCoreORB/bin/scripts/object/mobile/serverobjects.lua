@@ -2658,6 +2658,7 @@ includeFile("mobile/zabrak_male.lua")
 includeFile("mobile/zucca_boar.lua")
 includeFile("mobile/zucca_boar_hue.lua")
 
+-- RP templates
 includeFile("mobile/rp_aqualish_female.lua")
 includeFile("mobile/rp_aqualish_male.lua")
 includeFile("mobile/rp_bith_female.lua")
@@ -2698,6 +2699,7 @@ includeFile("mobile/rp_wookiee_male.lua")
 includeFile("mobile/rp_zabrak_female.lua")
 includeFile("mobile/rp_zabrak_male.lua")
 
+-- AEI species
 includeFile("mobile/rp_mirialan_female.lua")
 includeFile("mobile/rp_mirialan_male.lua")
 includeFile("mobile/rp_miraluka_female.lua")
@@ -2705,5 +2707,16 @@ includeFile("mobile/rp_miraluka_male.lua")
 includeFile("mobile/rp_zeltron_female.lua")
 includeFile("mobile/rp_zeltron_male.lua")
 
+-- Vehicles
 includeFile("mobile/tx130_imp.lua")
 includeFile("mobile/tx130_rep.lua")
+
+-- Pets
+includeFile("mobile/rp_pet_r2.lua")
+includeFile("mobile/rp_pet_r3.lua")
+includeFile("mobile/rp_pet_r4.lua")
+includeFile("mobile/rp_pet_r5.lua")
+includeFile("mobile/rp_pet_protocol_droid.lua")
+includeFile("mobile/rp_pet_mouse_droid.lua")
+includeFile("mobile/rp_pet_eg6_power_droid.lua")
+includeFile("mobile/rp_pet_cll8_binary_load_lifter.lua")

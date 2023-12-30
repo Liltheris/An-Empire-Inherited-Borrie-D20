@@ -53,4 +53,7 @@ includeFile("intangible/theater/serverobjects.lua")
 includeFile("intangible/vehicle/serverobjects.lua")
 includeFile("intangible/rp_droid/serverobjects.lua")
 
+-- AEI pets
+includeFile("intangible/pet/roleplay/serverobjects.lua")
+
 -- Server Objects
