@@ -109,8 +109,6 @@ protected:
 	int passengerCapacity;
 	String passengerSeatString;
 
-	//RP
-	String skillTemplate;
 
 public:
 	CreatureTemplate();
@@ -472,10 +470,6 @@ public:
 		}
 
 		return false;
-	}
-
-	inline String getSkillTemplate() const {
-		return skillTemplate;
 	}
 };
 

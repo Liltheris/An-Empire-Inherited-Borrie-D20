@@ -2,7 +2,7 @@ npc_template = {
 
 	randomName = "r4",
 	baseTemplates = {"r4", 1},
-	skillTemplates = {"droid/astromech"},
+	skillTemplates = {"droid/atromech"},
 	
 	customizationTemplates = {
 		{"r4", {"random"}},

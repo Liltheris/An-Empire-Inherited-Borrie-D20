@@ -250,8 +250,4 @@ void CreatureTemplate::readObject(LuaObject* templateData) {
 
 	reactionStf = templateData->getStringField("reactionStf");
 	personalityStf = templateData->getStringField("personalityStf");
-
-	// RP things
-	
-	skillTemplate = templateData->getStringField("skillTemplate");
 }
