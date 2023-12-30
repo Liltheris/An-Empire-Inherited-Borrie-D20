@@ -27,6 +27,8 @@
 #include "server/zone/objects/player/FactionStatus.h"
 #include "server/zone/managers/frs/FrsManager.h"
 
+#include "server/zone/borrie/pets/BorPets.h"
+
 void PetControlDeviceImplementation::callObject(CreatureObject* player) {
 	if (player->isInCombat() || player->isDead() || player->isIncapacitated() || player->getPendingTask("tame_pet") != nullptr) {
 		player->sendSystemMessage("@pet/pet_menu:cant_call"); // You cannot call this pet right now.
@@ -443,6 +445,11 @@ void PetControlDeviceImplementation::spawnObject(CreatureObject* player) {
 	// Not training any commands
 	trainingCommand = 0;
 	clearPatrolPoints();
+
+	// Apply RP template to creature.
+	const CreatureTemplate* petTemplate = pet->getCreatureTemplate();
+
+	BorPets::ApplySkillTemplateToPet(pet, petTemplate->getSkillTemplate());
 }
 
 void PetControlDeviceImplementation::cancelSpawnObject(CreatureObject* player) {
