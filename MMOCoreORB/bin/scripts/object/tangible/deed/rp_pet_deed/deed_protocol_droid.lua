@@ -46,7 +46,7 @@ object_tangible_deed_rp_pet_deed_deed_protocol_droid = object_tangible_deed_rp_p
 	templateType = DROIDDEED,
 
 	controlDeviceObjectTemplate = "object/intangible/pet/roleplay/protocol_droid.iff",
-	generatedObjectTemplate = "object/mobile/rp_protocol_droid.iff",
+	generatedObjectTemplate = "object/mobile/rp_pet_protocol_droid.iff",
 	mobileTemplate = "rp_protocol_droid",
 	species = 217,
 }
