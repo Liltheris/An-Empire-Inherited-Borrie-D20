@@ -1,4 +1,4 @@
-object_intangible_pet_roleplay_r4 = object_intangible_pet_shared_roleplay_r4:new {
+object_intangible_pet_roleplay_r4 = object_intangible_pet_roleplay_shared_r4:new {
 
 }
 
