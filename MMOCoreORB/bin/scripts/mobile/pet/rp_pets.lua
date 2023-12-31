@@ -57,7 +57,7 @@ rp_r5 = rp_pet:new {
 	},
 }
 
-c3p0_crafted = rp_pet:new {
+rp_c3p0 = rp_pet:new {
 	objectName = "@droid_name:po_crafted",
 	templates = {
 		"object/creature/npc/droid/crafted/3po_droid.iff"

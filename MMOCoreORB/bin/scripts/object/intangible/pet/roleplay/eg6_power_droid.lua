@@ -41,7 +41,7 @@
 --this exception also makes it possible to release a modified version 
 
 
-object_intangible_pet_roleplay_eg6_power_droid = object_intangible_pet_shared_roleplay_eg6_power_droid:new {
+object_intangible_pet_roleplay_eg6_power_droid = object_intangible_pet_roleplay_shared_eg6_power_droid:new {
 
 }
 
