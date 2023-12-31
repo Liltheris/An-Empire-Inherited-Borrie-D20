@@ -11,6 +11,8 @@
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/chat/ChatManager.h"
 
+#include "server/zone/borrie/BorrieRPG.h"
+
 class CommCommand : public QueueCommand {
 public:
 
@@ -43,7 +45,7 @@ public:
 		if(args.hasMoreTokens()){
 			targetName = args.getStringToken();
 		} else {
-			creature->sendSystemMessage("Incorrect syntax! Example: /comm [PlayerName] [Message].");
+			creature->sendSystemMessage("Incorrect syntax! Example: /comm [PlayerName] [Optional:ChatType] [Message].");
 		}
 
 		ManagedReference<PlayerManager*> playerManager = server->getPlayerManager();
@@ -60,8 +62,24 @@ public:
 		}
 
 		String message = arguments.toString().subString(1 + targetName.length(), arguments.toString().length());
+		int chatType = 0;
 
-		creature->getZoneServer()->getChatManager()->broadcastChatMessage(creature, "<C> " + message, 0, 0, creature->getMoodID(), ghost->getLanguageID());
+		if (args.hasMoreTokens()){
+			String chatTypeString = args.getStringToken();
+
+			if (BorrieRPG::GetChatTypeID(chatTypeString) != -1){
+				//Set our chatType and remove the tag from our command.
+				chatType = BorrieRPG::GetChatTypeID(chatTypeString);
+				message.subString(1+ chatTypeString.length(), message.length());
+
+				//Finally, add our chatType into the comm message.
+				if (chatType != 0){
+					message = "("+ BorrieRPG::Capitalize(chatTypeString) +") " + message;
+				}
+			}
+		}
+
+		creature->getZoneServer()->getChatManager()->broadcastChatMessage(creature, "<C> " + message, 0, chatType, creature->getMoodID(), ghost->getLanguageID());
 		targetCreature->sendSystemMessage("[Comm, " + creature->getFirstName() +"] " + message);
 		targetCreature->playMusicMessage("sound/ui_incoming_im.snd");
 
