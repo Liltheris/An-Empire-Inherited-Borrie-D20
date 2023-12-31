@@ -16,6 +16,16 @@ rpg_shop_general = {
 		},
 		
 		{
+			name = "Droids",
+			minItems = 1,
+			items = {		
+				{template = "object/tangible/deed/rp_pet_deed/deed_r4.iff", cost = 2500, max = 10, chance = 100, overridePrice = true },
+				{template = "object/tangible/deed/rp_pet_deed/deed_r5.iff", cost = 2500, max = 10, chance = 100, overridePrice = true },
+				{template = "object/tangible/deed/rp_pet_deed/deed_protocol.iff", cost = 3000, max = 10, chance = 100, overridePrice = true },
+			}
+		},
+
+		{
 			name = "Lightsaber Kits",
 			requiesSaberTraining = true,
 			minItems = 1,
