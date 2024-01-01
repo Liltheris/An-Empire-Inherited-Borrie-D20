@@ -19,7 +19,7 @@ object_tangible_wearables_armor_roleplay_mandalorian_armor_mandalorian_bicep_r =
 
 
 	rating = MEDIUM,
-	rpskill = 10,
+	rpskill = 8,
 	
 	price = 10000,
 

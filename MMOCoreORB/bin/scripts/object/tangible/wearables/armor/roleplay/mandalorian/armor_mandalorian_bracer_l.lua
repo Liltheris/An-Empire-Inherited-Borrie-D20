@@ -19,7 +19,7 @@ object_tangible_wearables_armor_roleplay_mandalorian_armor_mandalorian_bracer_l 
 
 
 	rating = MEDIUM,
-	rpskill = 10,
+	rpskill = 8,
 	
 	price = 10000,
 
