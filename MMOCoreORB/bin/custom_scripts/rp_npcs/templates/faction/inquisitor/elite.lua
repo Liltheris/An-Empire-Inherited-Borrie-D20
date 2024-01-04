@@ -8,8 +8,8 @@ npc_template = {
 	skillTemplates = {"factional/common/elite"},
 	
 	equipmentTemplates = {
-		{"rp_human_male", {"faction/imperial/elite"}},
-		{"rp_human_female", {"faction/imperial/elite"}},
+		{"rp_human_male", {"faction/inquisitor/elite"}},
+		{"rp_human_female", {"faction/inquisitor/elite"}},
 	},	
 	
 	customizationTemplates = {
