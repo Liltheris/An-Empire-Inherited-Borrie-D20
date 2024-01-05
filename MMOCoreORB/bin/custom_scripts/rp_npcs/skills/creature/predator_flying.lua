@@ -1,16 +1,16 @@
 skillSet = {
     --Stats
-    {"rp_awareness",        5, 5}, --Skillmod, min value, max value
+    {"rp_awareness",        7, 7}, --Skillmod, min value, max value
     {"rp_charisma",         1, 1},
-    {"rp_constitution",     5, 5},
-    {"rp_dexterity",        6, 6},
+    {"rp_constitution",     6, 6},
+    {"rp_dexterity",        10, 10},
     {"rp_intelligence",     3, 3},
     {"rp_mindfulness",      1, 1},
     {"rp_precision",        1, 1},
-	{"rp_strength",        7, 7},
+	{"rp_strength",        5, 5},
     --Skills
     {"rp_armor",            0, 0},
-    {"rp_athletics",        6, 6},
+    {"rp_athletics",        9, 9},
     {"rp_bluff",            0, 0},
     {"rp_composure",        1, 1},
     {"rp_computers",        0, 0},
@@ -20,7 +20,7 @@ skillSet = {
     {"rp_intimidation",     5, 5},
     {"rp_investigation",    3, 3},
     {"rp_larceny",          0, 0},
-    {"rp_maneuverability",  6, 6},
+    {"rp_maneuverability",  9, 9},
     {"rp_mechanics",        0, 0},
     {"rp_medicine",         0, 0},
     {"rp_melee",            0, 0},
@@ -31,9 +31,9 @@ skillSet = {
     {"rp_science",          0, 0},
     {"rp_slicing",          0, 0},
     {"rp_stealth",          5, 5},
-    {"rp_survival",         5, 5},
+    {"rp_survival",         7, 7},
     {"rp_throwing",         0, 0},
-    {"rp_unarmed",          7, 7},
+    {"rp_unarmed",          8, 8},
     --Force
     {"rp_lightsaber",       0, 0},
     {"rp_sense",            0, 0},
@@ -43,7 +43,7 @@ skillSet = {
     {"rp_alter",            0, 0},
     {"rp_inward",           0, 0},
     --Pools
-    {"rp_health",           15, 15},
+    {"rp_health",           20, 20},
     {"rp_action",           12, 12},
     {"rp_will",             5, 5},
     {"rp_force",            0, 0},

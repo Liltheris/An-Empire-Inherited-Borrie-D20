@@ -1,6 +1,5 @@
 npc_template = {
 
-	title = "a Hutt Recruiter",
 	randomName = "zabrak",
 	baseTemplates = {
 		"rp_human_male", 10,
@@ -15,14 +14,14 @@ npc_template = {
 	skillTemplates = {"factional/common/officer"},
 	
 	equipmentTemplates = {
-		{"rp_human_male", {"faction/hutt/recruiter"}},
-		{"rp_human_female", {"faction/hutt/recruiter"}},
-		{"rp_twilek_male", {"faction/hutt/recruiter"}},
-		{"rp_twilek_female", {"faction/hutt/recruiter"}},
-		{"rp_rodian_male", {"faction/hutt/recruiter"}},
-		{"rp_rodian_female", {"faction/hutt/recruiter"}},
-		{"rp_nikto_male", {"faction/hutt/recruiter"}},
-		{"rp_weeqay_male", {"faction/hutt/recruiter"}},
+		{"rp_human_male", {"faction/hutt/officer"}},
+		{"rp_human_female", {"faction/hutt/officer"}},
+		{"rp_twilek_male", {"faction/hutt/officer"}},
+		{"rp_twilek_female", {"faction/hutt/officer"}},
+		{"rp_rodian_male", {"faction/hutt/officer"}},
+		{"rp_rodian_female", {"faction/hutt/officer"}},
+		{"rp_nikto_male", {"faction/hutt/officer"}},
+		{"rp_weeqay_male", {"faction/hutt/officer"}},
 	},	
 	
 	customizationTemplates = {

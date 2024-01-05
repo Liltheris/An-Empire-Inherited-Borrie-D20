@@ -2,12 +2,12 @@ skillSet = {
     --Stats
     {"rp_awareness",        5, 5}, --Skillmod, min value, max value
     {"rp_charisma",         1, 1},
-    {"rp_constitution",     5, 5},
+    {"rp_constitution",     7, 7},
     {"rp_dexterity",        6, 6},
-    {"rp_intelligence",     3, 3},
+    {"rp_intelligence",     4, 4},
     {"rp_mindfulness",      1, 1},
     {"rp_precision",        1, 1},
-	{"rp_strength",        7, 7},
+	{"rp_strength",        8, 8},
     --Skills
     {"rp_armor",            0, 0},
     {"rp_athletics",        6, 6},
@@ -17,7 +17,7 @@ skillSet = {
     {"rp_defending",        0, 0},
     {"rp_demolitions",      0, 0},
     {"rp_engineering",      0, 0},
-    {"rp_intimidation",     5, 5},
+    {"rp_intimidation",     8, 8},
     {"rp_investigation",    3, 3},
     {"rp_larceny",          0, 0},
     {"rp_maneuverability",  6, 6},
@@ -30,10 +30,10 @@ skillSet = {
     {"rp_resolve",          5, 5},
     {"rp_science",          0, 0},
     {"rp_slicing",          0, 0},
-    {"rp_stealth",          5, 5},
+    {"rp_stealth",          6, 6},
     {"rp_survival",         5, 5},
     {"rp_throwing",         0, 0},
-    {"rp_unarmed",          7, 7},
+    {"rp_unarmed",          8, 8},
     --Force
     {"rp_lightsaber",       0, 0},
     {"rp_sense",            0, 0},
@@ -43,8 +43,8 @@ skillSet = {
     {"rp_alter",            0, 0},
     {"rp_inward",           0, 0},
     --Pools
-    {"rp_health",           15, 15},
-    {"rp_action",           12, 12},
+    {"rp_health",           26, 26},
+    {"rp_action",           10, 10},
     {"rp_will",             5, 5},
     {"rp_force",            0, 0},
 }
