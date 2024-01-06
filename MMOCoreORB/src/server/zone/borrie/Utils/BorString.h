@@ -31,6 +31,10 @@ public:
 		}
 		return result;
 	}
+
+    static String getNameTag(CreatureObject* creature, String color = "\\#00FFFF"){
+        return "\\#.[" + color + getNiceName(creature) + "\\#.]";
+    }
 };
 
 #endif

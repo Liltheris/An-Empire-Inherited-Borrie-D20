@@ -1059,7 +1059,36 @@ object_weapon_roleplay_ranged_pistol_wookiee_pistol = object_weapon_ranged_pisto
 	price = 450,
 }
 
+--DE-10 Blaster Pistol
+object_weapon_roleplay_ranged_pistol_westar35_blaster_pistol = object_weapon_ranged_pistol_shared_pistol_westar35:new {
 
+	--[Info]
+	customName = "WESTAR-35 Blaster Pistol",
+
+	--[Stats]
+	damageType = ENERGY,
+	armorPiercing = NONE,
+
+	--Damage (minDamage[d]maxDamage) i.e. (2d20)
+	minDamage = 1, --Amount of Die used in Damage
+	maxDamage = 6, --Type of Die used in Damage
+	bonusDamage = 2,
+	
+	rarity="Rare",
+
+	ammoPack = _ammoPack,
+	maxAmmo = _maxAmmo,
+	
+	--[Stats]
+	attackType = _attackType,
+	pointBlankRange = _pointBlankRange,
+	pointBlankAccuracy = _pointBlankAccuracy,
+	idealRange = _idealRange,
+	idealAccuracy = _idealAccuracy,
+	maxRange = _maxRange,
+	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 1400,
+}
 
 
 
@@ -1103,7 +1132,7 @@ ObjectTemplates:addTemplate(object_weapon_roleplay_ranged_pistol_striker_project
 ObjectTemplates:addTemplate(object_weapon_roleplay_ranged_pistol_trandoshan_suppressor_pistol, "object/weapon/roleplay/ranged/pistol/trandoshan_suppressor_pistol.iff")
 ObjectTemplates:addTemplate(object_weapon_roleplay_ranged_pistol_westar34_blaster_pistol, "object/weapon/roleplay/ranged/pistol/westar34_blaster_pistol.iff")
 ObjectTemplates:addTemplate(object_weapon_roleplay_ranged_pistol_wookiee_pistol, "object/weapon/roleplay/ranged/pistol/wookiee_pistol.iff")
-
+ObjectTemplates:addTemplate(object_weapon_roleplay_ranged_pistol_westar35_blaster_pistol, "object/weapon/roleplay/ranged/pistol/westar35_blaster_pistol.iff")
 
 
 
