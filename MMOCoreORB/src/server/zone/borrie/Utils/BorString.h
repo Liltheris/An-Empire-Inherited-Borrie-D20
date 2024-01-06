@@ -1,6 +1,7 @@
 #ifndef BORSTRING_H_
 #define BORSTRING_H_
 
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "engine/engine.h"
 
 /*Class dealing with the manipulation and formatting of strings for output in system messages and broadcasts.*/
@@ -20,6 +21,16 @@ public:
     static String damageSpam(int count, int type, int bonus, int roll, int result){
         return String::valueOf(count) + "d" + String::valueOf(type) + ": " + String::valueOf(roll) + " + " + String::valueOf(bonus) + " = " + String::valueOf(result) + " damage";
     }
+
+    /*Outputs the creature's first name, or full name if non-standard.*/
+    static String getNiceName(CreatureObject* creature){
+		String result = creature->getFirstName();
+
+		if (result == "a" || result == "an" || result == "the"){
+			result = creature->getDisplayedName();
+		}
+		return result;
+	}
 };
 
 #endif
