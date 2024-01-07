@@ -29,12 +29,10 @@
 
 #include "engine/engine.h"
 
+#include "server/zone/borrie/utils/BorString.h"
+
 class BorrieRPG : public Logger {
 public:
-	static String GetTestString() {
-		return "This string confirms the class works.";
-	}
-
 	static void SetPassiveExpBanStatus(CreatureObject* creature, CreatureObject* dm, bool banned) {
 		creature->setStoredInt("exp_banned", banned ? 1 : 0);
 		if(banned) {
@@ -143,7 +141,7 @@ public:
     }
 
 	static void AlertTurn(CreatureObject* creature) {
-		UnicodeString message1(" --\\#pcontrast1 [ It's " + creature->getFirstName() + "'s turn! ]\\#. --");
+		UnicodeString message1("\\#.-- \\#pcontrast1 [ It's " + BorString::getNiceName(creature) + "'s turn! ]\\#. --");
 		ChatSystemMessage* msg = new ChatSystemMessage(message1, ChatSystemMessage::DISPLAY_CHATANDSCREEN);
 		creature->broadcastMessage(msg, true);
 		creature->playEffect("clienteffect/level_granted.cef");
@@ -151,23 +149,19 @@ public:
 
 	static void AlertTurn(CreatureObject* self, String name) {
 		name = name.subString(10, name.length());
-		UnicodeString message1(" --\\#pcontrast1 [ It's " + name + "'s turn! ]\\#. --");
+		UnicodeString message1("\\#.-- \\#pcontrast1 [ It's " + name + "'s turn! ]\\#. --");
 		ChatSystemMessage* msg = new ChatSystemMessage(message1, ChatSystemMessage::DISPLAY_CHATANDSCREEN);
 		self->broadcastMessage(msg, true);
 	}
 
 	static void BroadcastMessage(CreatureObject* creature, String Message) {
-		String nameToUse = creature->getFirstName();
-		if(nameToUse == "a" || nameToUse == "an" || nameToUse == "The") nameToUse = creature->getDisplayedName(); 
-		UnicodeString message1("[\\#00FFFF" + nameToUse + "\\#.]: " + Message);
+		UnicodeString message1(BorString::getNameTag(creature) + " " + Message);
 		ChatSystemMessage* msg = new ChatSystemMessage(message1, ChatSystemMessage::DISPLAY_CHATANDSCREEN);
 		creature->broadcastMessage(msg, true);
 	}
 
 	static void BroadcastHoloNetMessage(CreatureObject* creature, String Message) {
-		String nameToUse = creature->getFirstName();
-		if(nameToUse == "a" || nameToUse == "an" || nameToUse == "The") nameToUse = creature->getDisplayedName(); 
-		UnicodeString message1("Alert: \\#00FFFFRecieving HoloNet Broadcast From [\\#FFFF00" + nameToUse + "\\#00FFFF]: \\#FFFFFF" + Message + "\\#.");
+		UnicodeString message1("Alert: \\#00FFFFRecieving HoloNet Broadcast From "+ BorString::getNameTag(creature) + ": \\#FFFFFF" + Message + "\\#.");
 		ChatSystemMessage* msg = new ChatSystemMessage(message1, ChatSystemMessage::DISPLAY_CHATANDSCREEN);
 		creature->broadcastMessage(msg, true);
 	}
@@ -183,14 +177,12 @@ public:
 	}
 
 	static void BroadcastRoll(CreatureObject* commander, CreatureObject* creature, String rollMessage) {
-		String nameToUse = creature->getFirstName();
-		if(nameToUse == "a" || nameToUse == "an" || nameToUse == "The") nameToUse = creature->getDisplayedName(); 
 		if(commander != creature) {
-			UnicodeString message1("[\\#00FFFF"+commander->getFirstName()+"\\#.] for [\\#FFFF00" + nameToUse + "\\#.]: " + rollMessage);
+			UnicodeString message1("[\\#00FFFF"+commander->getFirstName()+"\\#.] for [\\#FFFF00" + BorString::getNiceName(creature) + "\\#.]: " + rollMessage);
 			ChatSystemMessage* msg = new ChatSystemMessage(message1, ChatSystemMessage::DISPLAY_CHATANDSCREEN);
 			creature->broadcastMessage(msg, true);
 		} else {
-			UnicodeString message1("[\\#00FFFF" + nameToUse + "\\#.]: " + rollMessage);
+			UnicodeString message1("[\\#00FFFF" + BorString::getNiceName(creature) + "\\#.]: " + rollMessage);
 			ChatSystemMessage* msg = new ChatSystemMessage(message1, ChatSystemMessage::DISPLAY_CHATANDSCREEN);
 			creature->broadcastMessage(msg, true);
 		}		
@@ -1070,15 +1062,6 @@ public:
 		target->setLocalData(var, String::valueOf(defaultValue + mod));
 		modder->sendSystemMessage("Edited " + var + " variable on target to " + String::valueOf(defaultValue + mod) + " (Changing by: " + String::valueOf(mod) +
 								  ")");
-	}
-
-	static String getNiceName(CreatureObject* creature){
-		String result = creature->getFirstName();
-
-		if (result == "a" || result == "an" || result == "the"){
-			result = creature->getDisplayedName();
-		}
-		return result;
 	}
 	
 	static String GetPosNegSymbol(int Num) {

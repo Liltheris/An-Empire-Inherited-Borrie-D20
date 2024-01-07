@@ -41,34 +41,8 @@
 --this exception also makes it possible to release a modified version 
 
 
+object_tangible_hair_human_hair_human_female_s78 = object_tangible_hair_human_shared_hair_human_female_s78:new {
 
---Children folder includes
-includeFile("weapon/ranged/pistol/base/serverobjects.lua")
+}
 
--- Server Objects
-includeFile("weapon/ranged/pistol/pistol_cdef.lua")
-includeFile("weapon/ranged/pistol/pistol_cdef_corsec.lua")
-includeFile("weapon/ranged/pistol/pistol_cdef_noob.lua")
-includeFile("weapon/ranged/pistol/pistol_d18.lua")
-includeFile("weapon/ranged/pistol/pistol_de_10.lua")
-includeFile("weapon/ranged/pistol/pistol_dh17.lua")
-includeFile("weapon/ranged/pistol/pistol_dl44.lua")
-includeFile("weapon/ranged/pistol/pistol_dl44_metal.lua")
-includeFile("weapon/ranged/pistol/pistol_dx2.lua")
-includeFile("weapon/ranged/pistol/pistol_fwg5.lua")
-includeFile("weapon/ranged/pistol/pistol_fwg5_quest.lua")
-includeFile("weapon/ranged/pistol/pistol_geonosian_sonic_blaster_loot.lua")
-includeFile("weapon/ranged/pistol/pistol_launcher.lua")
-includeFile("weapon/ranged/pistol/pistol_power5.lua")
-includeFile("weapon/ranged/pistol/pistol_republic_blaster.lua")
-includeFile("weapon/ranged/pistol/pistol_republic_blaster_quest.lua")
-includeFile("weapon/ranged/pistol/pistol_scatter.lua")
-includeFile("weapon/ranged/pistol/pistol_scout_blaster.lua")
-includeFile("weapon/ranged/pistol/pistol_scout_blaster_ammo_test_2.lua")
-includeFile("weapon/ranged/pistol/pistol_scout_blaster_corsec.lua")
-includeFile("weapon/ranged/pistol/pistol_srcombat.lua")
-includeFile("weapon/ranged/pistol/pistol_striker.lua")
-includeFile("weapon/ranged/pistol/pistol_striker_noob.lua")
-includeFile("weapon/ranged/pistol/pistol_tangle.lua")
-
-includeFile("weapon/ranged/pistol/pistol_westar35.lua")
+ObjectTemplates:addTemplate(object_tangible_hair_human_hair_human_female_s78, "object/tangible/hair/human/hair_human_female_s78.iff")

@@ -2283,6 +2283,18 @@ object_tangible_hair_human_shared_hair_human_female_s42 = SharedTangibleObjectTe
 
 ObjectTemplates:addClientTemplate(object_tangible_hair_human_shared_hair_human_female_s42, "object/tangible/hair/human/shared_hair_human_female_s42.iff")
 
+object_tangible_hair_human_shared_hair_human_female_s78 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/hair/human/shared_hair_human_female_s78.iff"
+}
+
+ObjectTemplates:addClientTemplate(object_tangible_hair_human_shared_hair_human_female_s78, "object/tangible/hair/human/shared_hair_human_female_s78.iff")
+
+object_tangible_hair_human_shared_hair_human_female_s79 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/hair/human/shared_hair_human_female_s79.iff"
+}
+
+ObjectTemplates:addClientTemplate(object_tangible_hair_human_shared_hair_human_female_s79, "object/tangible/hair/human/shared_hair_human_female_s79.iff")
+
 object_tangible_hair_human_shared_hair_human_male_s01 = SharedTangibleObjectTemplate:new {
 	clientTemplateFileName = "object/tangible/hair/human/shared_hair_human_male_s01.iff"
 	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
