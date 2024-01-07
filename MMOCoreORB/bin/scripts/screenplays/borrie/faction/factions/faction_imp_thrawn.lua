@@ -21,7 +21,7 @@ faction = {
             name = "Stormtrooper Corps",
             ranks = {"Private", "Lance Corporal", "Corporal", "Sergeant", "Master Sergeant", "Lieutenant"},
 
-            uniform = "faction/empire/uniform/stromtrooper",
+            uniform = "faction/empire/uniform/stormtrooper",
 
             roles = {
                 -- role, loadout, munitions
