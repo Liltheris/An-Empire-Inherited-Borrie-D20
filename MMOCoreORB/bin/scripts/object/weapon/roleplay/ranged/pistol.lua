@@ -1059,7 +1059,7 @@ object_weapon_roleplay_ranged_pistol_wookiee_pistol = object_weapon_ranged_pisto
 	price = 450,
 }
 
---DE-10 Blaster Pistol
+--WESTAR-35 Blaster Pistol
 object_weapon_roleplay_ranged_pistol_westar35_blaster_pistol = object_weapon_ranged_pistol_shared_pistol_westar35:new {
 
 	--[Info]
