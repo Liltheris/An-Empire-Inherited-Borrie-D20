@@ -1375,3 +1375,5 @@ includeFile("building/restuss/objects.lua")
 
 includeFile("intangible/pet/roleplay/objects.lua")
 includeFile("tangible/deed/rp_pet_deed/objects.lua")
+
+includeFile("tangible/wearables/armor/imp_army/objects.lua")
