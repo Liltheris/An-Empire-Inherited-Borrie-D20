@@ -1,7 +1,7 @@
 --Armor template file for Borrie BoBaka's SWGEmu RPG System--
 
 
-object_tangible_wearables_armor_roleplay_imp_army_armor_imp_army_chest_plate = object_tangible_wearables_armor_roleplay_imp_army_shared_armor_imp_army_chest_plate:new {
+object_tangible_wearables_armor_roleplay_imp_army_armor_imp_army_chest_plate = object_tangible_wearables_armor_imp_army_shared_armor_imp_army_chest_plate:new {
 
 
 	templateType = ARMOROBJECT,
