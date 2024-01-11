@@ -653,3 +653,8 @@ object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_katana = SharedW
 }
 ObjectTemplates:addClientTemplate(object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_katana, "object/weapon/melee/plasma_saber/2h_sword/shared_2h_sword_saber_katana.iff")
 --************************************************************************************************************************************************************************************
+object_weapon_melee_plasma_saber_2h_sword_shared_lance_saber_bastila_single = SharedWeaponObjectTemplate:new {
+	clientTemplateFileName = "object/weapon/melee/plasma_saber/2h_sword/shared_lance_saber_bastila_single.iff"
+}
+ObjectTemplates:addClientTemplate(object_weapon_melee_plasma_saber_2h_sword_shared_lance_saber_bastila_single, "object/weapon/melee/plasma_saber/2h_sword/shared_lance_saber_bastila_single.iff")
+--************************************************************************************************************************************************************************************

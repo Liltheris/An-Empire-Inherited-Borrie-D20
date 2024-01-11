@@ -129,3 +129,5 @@ includeFile("weapon/melee/plasma_saber/2h_sword/2h_sword_saber_youngling2.lua")
 includeFile("weapon/melee/plasma_saber/2h_sword/2h_sword_saber_yun.lua")
 includeFile("weapon/melee/plasma_saber/2h_sword/2h_sword_saber_zatt.lua")
 includeFile("weapon/melee/plasma_saber/2h_sword/2h_sword_saber_katana.lua")
+includeFile("weapon/melee/plasma_saber/2h_sword/lance_saber_bastila_single.lua")
+

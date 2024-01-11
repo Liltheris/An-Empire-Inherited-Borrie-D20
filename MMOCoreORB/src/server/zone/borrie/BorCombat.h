@@ -1723,6 +1723,9 @@ public:
 
                     //Spam the players that the reload took place
                     BorrieRPG::BroadcastMessage(creature, creature->getFirstName() + " has reloaded their weapon!");
+                    //Play anim!
+                    BorEffect::PlayAnim(creature, creature, false, "reload");
+                    BorEffect::PlayCEF(creature, creature, false, "weapon_reload");
                     return;
                 }
             }
@@ -1734,6 +1737,9 @@ public:
             // NPCs don't have an inventory of ammo to manage, so simply reload the weapon.
             weapon->setStoredInt("ammo_used", 0);
             BorrieRPG::BroadcastMessage(creature, creature->getFirstName() + " has reloaded their weapon!");
+            //Play anim!
+            BorEffect::PlayAnim(creature, creature, false, "reload");
+            BorEffect::PlayCEF(creature, creature, false, "weapon_reload");
             return;
         }
     }
