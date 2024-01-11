@@ -1,0 +1,4 @@
+object_weapon_melee_plasma_saber_2h_sword_lance_saber_bastila_single = object_weapon_melee_plasma_saber_2h_sword_lance_saber_bastila_single:new {
+
+}
+ObjectTemplates:addTemplate(object_weapon_melee_plasma_saber_2h_sword_lance_saber_bastila_single, "object/weapon/melee/plasma_saber/2h_sword/lance_saber_bastila_single.iff")
