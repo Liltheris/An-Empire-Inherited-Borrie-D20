@@ -70,7 +70,7 @@ object_weapon_roleplay_lightsaber_double_lance_saber_avenger = object_weapon_mel
 }
 
 object_weapon_roleplay_lightsaber_double_lance_saber_bastila = object_weapon_melee_plasma_saber_polearm_shared_lance_saber_bastila:new {
-
+	alternateGrip = "object/weapon/roleplay/lightsaber/single/2h/lance_saber_bastila_single.iff",
 
 	
 	attackType = _attackType,
