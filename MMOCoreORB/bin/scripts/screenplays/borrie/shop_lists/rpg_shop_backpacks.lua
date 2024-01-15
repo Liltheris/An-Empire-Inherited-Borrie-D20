@@ -35,13 +35,7 @@ rpg_shop_general = {
 			}
 		},
 		
-		{
-			name = "Containers",
-			minItems = 1,
-			items = {
-				{template = "object/tangible/component/clothing/cargo_pocket.iff", cost = 250, max = 10, chance = 100, overridePrice = true },
-			}
-		},
+
 	}	
 }
 
