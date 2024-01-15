@@ -6,7 +6,7 @@ rpg_shop_mount_naboo = {
 			name = "Mounts",
 			minItems = 1,
 			items = {
-				{template = "object/tangible/deed/pet_deed/kaadu_deed.iff", cost = 1000, max = 10, chance = 100, overridePrice = true, isMount = true},
+				{template = "object/tangible/deed/pet_deed/kaadu_deed.iff", cost = 500, max = 10, chance = 100, overridePrice = true, isMount = true},
 			}
 		},
 	}	
