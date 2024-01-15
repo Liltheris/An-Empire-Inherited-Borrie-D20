@@ -1,7 +1,7 @@
 planet = {
 	name = "Dantooine",
 	zone = "rp_dantooine",
-	startingFaction = "firestar",
+	startingFaction = "newrepublic",
 	startingFactionControl = 60,
 	bases = {
 		"dant_fort_evir",
