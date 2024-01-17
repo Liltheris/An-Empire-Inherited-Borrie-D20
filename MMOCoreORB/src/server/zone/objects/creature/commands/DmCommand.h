@@ -731,6 +731,33 @@ public:
 						creature->sendSystemMessage("Invalid Target");
 					}	
 				}
+				} else if (command == "resetcooldown") {
+					if(object != nullptr) {
+						if (object->isCreatureObject() && !object->isPlayerCreature()) {
+							// Get our arguments from the command, or display help if missing inputs
+							String name;
+							String value;
+							if ((args.hasMoreTokens())) {
+								args.getStringToken(name);
+							} else {
+								creature->sendSystemMessage("Incorrect usage. /dm resetcooldown [name]");
+								return SUCCESS;
+							}
+							// Set the into onto the named field.
+							CreatureObject* targetCreature = object->asCreatureObject();
+							if (targetCreature == nullptr){
+								creature->sendSystemMessage("Target needs to be a creature!");
+								return SUCCESS;
+							}
+							targetCreature->updateCooldownTimer(name, 0);
+							creature->sendSystemMessage("Cooldown timer: " + name + " has been reset for target!");
+						} else {
+							creature->sendSystemMessage("Invalid Target");
+						}
+					} else {
+						creature->sendSystemMessage("Invalid Target");
+					}	
+				}
 			}
 		} catch (Exception& e) {
 			creature->sendSystemMessage("Invalid arguments for DM command. Help: /dm help");
