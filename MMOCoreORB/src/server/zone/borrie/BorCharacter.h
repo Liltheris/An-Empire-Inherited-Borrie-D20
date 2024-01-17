@@ -334,6 +334,11 @@ public:
 		FillPool(creature, "force", true);
 
 		String report = creature->getFirstName() + " has fully rested, filling all of their pools.";
+
+		//Send the message without the pool counts for players to see.
+		if (!suppressMessage)
+			BorrieRPG::BroadcastMessage(creature, report);
+		
 		report += " (Was H:" + String::valueOf(lastHealth);
 		report += ", A:" + String::valueOf(lastAction);
 		report += ", W:" + String::valueOf(lastWill);
@@ -348,8 +353,9 @@ public:
 			report += ")";
 		}		
 
+		//Send the pool counts to all DMs.
 		if (!suppressMessage)
-			BorrieRPG::BroadcastMessage(creature, report);
+			BorrieRPG::BroadcastAmongAdmins(creature, report);
 	}
 
 	static void PerformShortRest(CreatureObject* creature) {
@@ -1330,6 +1336,32 @@ public:
 			}
 		}
 		
+	}
+
+	static void doLongRest(CreatureObject* creature) {
+		//Check if they are still on rest cooldown.
+		if(!creature->checkCooldownRecovery("long_rest")){
+			BorrieRPG::BroadcastMessage(creature, BorString::getNiceName(creature) + " was unable to rest, as they have rested too recently.");
+			return;
+		}
+
+		//Check if they are in a safe location.
+		if(creature->getActiveRegion() == nullptr){
+			String zoneName = creature->getZone()->getZoneName();
+
+			if (zoneName != "rp_space" || zoneName != "rp_ship_a"){
+				creature->sendSystemMessage("You must be in a safe location to rest.");
+				return;
+			}
+		}
+
+		//Execute the long rest!
+		FillAllPools(creature);
+		creature->setStoredInt("power_attack_count", 0);
+		creature->setStoredInt("is_vulnerable", 0);
+
+		//18 hour cooldown.
+		creature->updateCooldownTimer("long_rest", 18 * 60 * 60 * 1000); 
 	}
 };
 

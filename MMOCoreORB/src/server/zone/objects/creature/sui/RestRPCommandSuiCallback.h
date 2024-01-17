@@ -53,12 +53,8 @@ public:
 		if(index == 0) {
 			BorCharacter::PerformShortRest(targetCreature);
 		} else if(index == 1) {
-			BorCharacter::FillAllPools(targetCreature);
-			BorCharacter::HandleDarksideFading(targetCreature);
+			BorCharacter::doLongRest(targetCreature);
 		}
-
-		targetCreature->setStoredInt("power_attack_count", 0);
-		targetCreature->setStoredInt("is_vulnerable", 0);
 	}
 };
 
