@@ -730,7 +730,6 @@ public:
 					} else {
 						creature->sendSystemMessage("Invalid Target");
 					}	
-				}
 				} else if (command == "resetcooldown") {
 					if(object != nullptr) {
 						if (object->isCreatureObject() && !object->isPlayerCreature()) {
@@ -812,6 +811,7 @@ public:
 		text << "/dm learnlanguages - Learn all languages" << endl;
 		text << "/dm setstoredint [name] [value] - Sets the value of the provided stored int" << endl;
 		text << "/dm setstoredstring [name] [value] - Sets the value of the provided stored string" << endl;
+		text << "/dm resetcooldown [name] - Sets the provided cooldown timer to 0." << endl;
 
 		ManagedReference<SuiMessageBox*> box = new SuiMessageBox(creature, SuiWindowType::NONE);
 		box->setPromptTitle("DM COMMAND HELP");
