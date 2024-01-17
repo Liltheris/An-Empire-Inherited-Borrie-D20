@@ -16,6 +16,7 @@
 #include "server/zone/objects/creature/sui/ForceSensitivePromptSuiCallback.h"
 
 #include "server/zone/objects/tangible/pharmaceutical/StimPack.h"
+#include "server/zone/objects/area/CampSiteActiveArea.h"
 
 #include "templates/params/creature/CreatureAttribute.h"
 #include "templates/params/creature/CreaturePosture.h"
@@ -1341,15 +1342,27 @@ public:
 	static void doLongRest(CreatureObject* creature) {
 		//Check if they are still on rest cooldown.
 		if(!creature->checkCooldownRecovery("long_rest")){
+			const Time* timeremaining = creature->getCooldownTime("long_rest");
 			BorrieRPG::BroadcastMessage(creature, BorString::getNiceName(creature) + " was unable to rest, as they have rested too recently.");
+			creature->sendSystemMessage("You can rest again in " +String::valueOf(ceil(timeremaining->miliDifference() / -3600000.f))+ " hours.");
 			return;
+		}
+
+		bool isCamping = false;
+		// Check if we are within 20m of a camp.
+		if(creature->getCurrentCamp() != nullptr){
+			// Make sure our camp is in the same zone before testing for distance.
+			if (creature->getCurrentCamp()->getZone() == creature->getZone()){
+				int distance = creature->getDistanceTo(creature->getCurrentCamp()->getCamp());
+				isCamping = distance < 20;
+			}
 		}
 
 		//Check if they are in a safe location.
 		if(creature->getActiveRegion() == nullptr){
 			String zoneName = creature->getZone()->getZoneName();
 
-			if (zoneName != "rp_space" && zoneName != "rp_ship_a"){
+			if (zoneName != "rp_space" && zoneName != "rp_ship_a" && !isCamping){
 				creature->sendSystemMessage("You must be in a safe location to rest.");
 				return;
 			}
