@@ -40,6 +40,10 @@ public:
 
 		ManagedReference<CreatureObject*> targetCreature;
 
+		if (adminLevelCheck <= 0){
+			return GENERALERROR;
+		}
+
 		if (adminLevelCheck > 0) {
 			if (object != nullptr) {
 				if (object->isCreatureObject()) {

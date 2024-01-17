@@ -864,10 +864,9 @@ public:
 
         if(rollResult >= toHit) {
             //Successful Parry
-            int returnDamage = incomingDamage / 2;
-            ApplyAdjustedHealthDamage(attacker, defenderWeapon, returnDamage, slot);
+            attacker->setStoredInt("is_vulnerable", 2);
             BorEffect::PerformReactiveAnimation(defender, attacker, "parry", GetSlotHitlocation(slot), true);
-            reactionSpam += ", but " + BorString::getNiceName(defender)+" parries the attack (" + rollSpam(meleeRoll, meleeSkill, toHit) +"), striking back for "+ damageNumber(returnDamage) +" damage!";
+            reactionSpam += ", but " + BorString::getNiceName(defender)+" parries the attack (" + rollSpam(meleeRoll, meleeSkill, toHit) +"), avoiding damage and opening " +BorString::getNiceName(defender)+ " up for a counter attack!";
         } else {
             //Unsuccessful Parry
             ApplyAdjustedHealthDamage(defender, attackerWeapon, incomingDamage, slot);
