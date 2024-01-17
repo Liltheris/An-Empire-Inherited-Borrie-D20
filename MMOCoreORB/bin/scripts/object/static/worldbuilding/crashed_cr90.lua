@@ -1,0 +1,14 @@
+object_static_worldbuilding_crashed_cr90_front = object_static_worldbuilding_shared_crashed_cr90_front:new {
+
+}
+ObjectTemplates:addTemplate(object_static_worldbuilding_crashed_cr90_front, "object/static/worldbuilding/crashed_cr90_front.iff")
+
+object_static_worldbuilding_crashed_cr90_mid = object_static_worldbuilding_shared_crashed_cr90_mid:new {
+
+}
+ObjectTemplates:addTemplate(object_static_worldbuilding_crashed_cr90_mid, "object/static/worldbuilding/crashed_cr90_mid.iff")
+
+object_static_worldbuilding_crashed_cr90_rear = object_static_worldbuilding_shared_crashed_cr90_rear:new {
+
+}
+ObjectTemplates:addTemplate(object_static_worldbuilding_crashed_cr90_rear, "object/static/worldbuilding/crashed_cr90_rear.iff")

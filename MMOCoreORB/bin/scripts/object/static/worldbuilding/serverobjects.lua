@@ -43,25 +43,6 @@
 
 
 --Children folder includes
-includeFile("static/base/serverobjects.lua")
-includeFile("static/creature/serverobjects.lua")
-includeFile("static/dathomir/serverobjects.lua")
-includeFile("static/destructible/serverobjects.lua")
-includeFile("static/firework/serverobjects.lua")
-includeFile("static/flora/serverobjects.lua")
-includeFile("static/installation/serverobjects.lua")
-includeFile("static/item/serverobjects.lua")
-includeFile("static/naboo/serverobjects.lua")
-includeFile("static/particle/serverobjects.lua")
-includeFile("static/space/serverobjects.lua")
-includeFile("static/structure/serverobjects.lua")
-includeFile("static/terrain/serverobjects.lua")
-includeFile("static/test/serverobjects.lua")
-includeFile("static/vehicle/serverobjects.lua")
-includeFile("static/borrie/tatooine/serverobjects.lua")
-includeFile("static/borrie/structure/tatooine/serverobjects.lua")
-includeFile("static/borrie/misc/serverobjects.lua")
-
-includeFile("static/worldbuilding/serverobjects.lua")
 
 -- Server Objects
+includeFile("static/worldbuilding/crashed_cr90.lua")

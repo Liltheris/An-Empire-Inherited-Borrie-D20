@@ -1373,6 +1373,8 @@ includeFile("tangible/borrp/world/objects.lua")
 includeFile("building/sulon/objects.lua")
 includeFile("building/restuss/objects.lua")
 
+includeFile("static/worldbuilding/objects.lua")
+
 includeFile("intangible/pet/roleplay/objects.lua")
 includeFile("tangible/deed/rp_pet_deed/objects.lua")
 
