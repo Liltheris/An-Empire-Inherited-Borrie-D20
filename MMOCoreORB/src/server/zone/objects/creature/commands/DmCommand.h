@@ -680,7 +680,7 @@ public:
 					BorrieRPG::setCopyable(creature, object);
 				} else if (command == "setstoredint") {
 					if(object != nullptr) {
-						if (object->isCreatureObject() && !object->isPlayerCreature()) {
+						if (object->isCreatureObject() && object->isPlayerCreature()) {
 							// Get our arguments from the command, or display help if missing inputs
 							String name;
 							int value = 0;
@@ -706,7 +706,7 @@ public:
 					}	
 				} else if (command == "setstoredstring") {
 					if(object != nullptr) {
-						if (object->isCreatureObject() && !object->isPlayerCreature()) {
+						if (object->isCreatureObject() && object->isPlayerCreature()) {
 							// Get our arguments from the command, or display help if missing inputs
 							String name;
 							String value;
@@ -732,29 +732,28 @@ public:
 					}	
 				} else if (command == "resetcooldown") {
 					if(object != nullptr) {
-						if (object->isCreatureObject() && !object->isPlayerCreature()) {
+						if (object->isCreatureObject() && object->isPlayerCreature()) {
 							// Get our arguments from the command, or display help if missing inputs
 							String name;
-							String value;
 							if ((args.hasMoreTokens())) {
 								args.getStringToken(name);
 							} else {
 								creature->sendSystemMessage("Incorrect usage. /dm resetcooldown [name]");
 								return SUCCESS;
 							}
-							// Set the into onto the named field.
-							CreatureObject* targetCreature = object->asCreatureObject();
-							if (targetCreature == nullptr){
+							if (object->isCreatureObject()) {
+								creo = object->asCreatureObject();
+								creo->updateCooldownTimer(name, 0);
+								creature->sendSystemMessage("Cooldown timer: " + name + " has been reset for target!");
+							} else {
 								creature->sendSystemMessage("Target needs to be a creature!");
 								return SUCCESS;
 							}
-							targetCreature->updateCooldownTimer(name, 0);
-							creature->sendSystemMessage("Cooldown timer: " + name + " has been reset for target!");
 						} else {
-							creature->sendSystemMessage("Invalid Target");
+							creature->sendSystemMessage("Invalid Target.");
 						}
 					} else {
-						creature->sendSystemMessage("Invalid Target");
+						creature->sendSystemMessage("Invalid Target.");
 					}	
 				}
 			}
