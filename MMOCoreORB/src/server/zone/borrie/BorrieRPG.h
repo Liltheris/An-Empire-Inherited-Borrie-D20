@@ -213,7 +213,7 @@ public:
 				playerCreature->sendSystemMessage(pName + msg);
 			}
 			if(playerCreature->getFirstName() == "Discord") {
-				playerCreature->sendSystemMessage("lw:" + pName + ":DM Call:" + msg);
+				playerCreature->sendSystemMessage("lw:" + creature->getFirstName() + ":DM Call - " + msg);
 			}
 		}
 	}
