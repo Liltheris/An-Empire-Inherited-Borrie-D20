@@ -66,9 +66,9 @@ public:
 		String chatTypeString = "";
 
 		if (args.hasMoreTokens()){
-			chatTypeString = args.getStringToken();
+			chatTypeString = args.getStringToken().toLowerCase();
 
-			if (BorrieRPG::GetChatTypeID(chatTypeString.toLowerCase()) != -1 && BorrieRPG::GetChatTypeID(chatTypeString) != 38){
+			if (BorrieRPG::GetChatTypeID(chatTypeString) != -1 && BorrieRPG::GetChatTypeID(chatTypeString) != 38){
 				//Set our chatType and remove the tag from our command.
 				chatType = BorrieRPG::GetChatTypeID(chatTypeString);
 				message = message.subString(1+ chatTypeString.length(), message.length());
