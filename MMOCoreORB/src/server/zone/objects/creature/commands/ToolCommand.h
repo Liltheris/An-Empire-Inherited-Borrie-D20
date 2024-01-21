@@ -236,6 +236,10 @@ public:
 						creature->sendSystemMessage("ERROR: To use Spout Rp Mob, you need to target a creature and specify a file name.");
 					}
 				} else if(command == "spoutciv" && adminLevelCheck > 0) {
+					if(object == nullptr){
+						creature->sendSystemMessage("ERROR: To use Spout Civ, you need to target a creature and specify a file name and a tag.");
+						return SUCCESS;
+					}
 					if(args.hasMoreTokens()) {
 							String fileName;
 							args.getStringToken(fileName);
@@ -250,6 +254,10 @@ public:
 						creature->sendSystemMessage("ERROR: To use Spout Civ, you need to target a creature and specify a file name and a tag.");
 					}
 				} else if (command == "spoutbase" && adminLevelCheck > 0) {
+					if(object == nullptr){
+						creature->sendSystemMessage("ERROR: To use Spout Civ, you need to target a creature and specify a file name and a tag.");
+						return SUCCESS;
+					}
 					if (args.hasMoreTokens()) {
 						String fileName;
 						args.getStringToken(fileName);
