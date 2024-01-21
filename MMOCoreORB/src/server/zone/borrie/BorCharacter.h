@@ -340,13 +340,13 @@ public:
 		if (!suppressMessage)
 			BorrieRPG::BroadcastMessage(creature, report);
 		
-		report += " (Was H:" + String::valueOf(lastHealth);
-		report += ", A:" + String::valueOf(lastAction);
-		report += ", W:" + String::valueOf(lastWill);
+		report += " (Was H=" + String::valueOf(lastHealth);
+		report += ", A=" + String::valueOf(lastAction);
+		report += ", W=" + String::valueOf(lastWill);
 
 		if (creature->isPlayerCreature()) {
 			if (creature->getPlayerObject()->getForcePowerMax() > 0) {
-				report += ", F:" + String::valueOf(lastForce) + ")";
+				report += ", F=" + String::valueOf(lastForce) + ")";
 			} else {
 				report += ")";
 			}
