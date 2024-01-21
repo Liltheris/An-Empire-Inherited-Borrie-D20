@@ -29,51 +29,83 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		if (creature->isInCombat()) {
-			creature->sendSystemMessage("You cannot holster a weapon in combat!");
+		if (!creature->isPlayerCreature())
+			return GENERALERROR;
+
+		ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
+
+		if (ghost == nullptr)
+			return GENERALERROR;
+
+		int adminLevelCheck = ghost->getAdminLevel();
+
+		ManagedReference<SceneObject*> object;
+		if (target != 0) {
+			object = server->getZoneServer()->getObject(target, false);
+		}
+
+		ManagedReference<CreatureObject*> targetCreature;
+
+
+		if (adminLevelCheck > 0) {
+			if (object != nullptr) {
+				if (object->isCreatureObject()) {
+					targetCreature = object->asCreatureObject();
+				} else {
+					targetCreature = creature;
+				}
+			} else {
+				targetCreature = creature;
+			}			
+		} else {
+			targetCreature = creature;
+		}
+
+		if (targetCreature->isInCombat()) {
+			targetCreature->sendSystemMessage("You cannot holster a weapon in combat!");
 			return GENERALERROR;
 		}
 		
-		Reference<Task*> pendingTask = creature->getPendingTask("holster");
+		Reference<Task*> pendingTask = targetCreature->getPendingTask("holster");
 		if (pendingTask != nullptr)
 			return SUCCESS;
 
-		pendingTask = creature->getPendingTask("unholster");
+		pendingTask = targetCreature->getPendingTask("unholster");
 		if (pendingTask != nullptr)
 			return SUCCESS;
 		
-		pendingTask = creature->getPendingTask("stow");
+		pendingTask = targetCreature->getPendingTask("stow");
 		if (pendingTask != nullptr)
 			return SUCCESS;
 
-		pendingTask = creature->getPendingTask("unstow");
+		pendingTask = targetCreature->getPendingTask("unstow");
 		if (pendingTask != nullptr)
 			return SUCCESS;
 		
-		pendingTask = creature->getPendingTask("shoulder");
+		pendingTask = targetCreature->getPendingTask("shoulder");
 		if (pendingTask != nullptr)
 			return SUCCESS;
 
-		pendingTask = creature->getPendingTask("unshoulder");
+		pendingTask = targetCreature->getPendingTask("unshoulder");
 		if (pendingTask != nullptr)
 			return SUCCESS;
 
-		ManagedReference<WeaponObject*> heldWeapon = creature->getSlottedObject("hold_r").castTo<WeaponObject*>();
-		ManagedReference<WeaponObject*> holsteredWeapon = creature->getHolsteredWeapon("holster");
+		ManagedReference<WeaponObject*> heldWeapon = targetCreature->getSlottedObject("hold_r").castTo<WeaponObject*>();
+		ManagedReference<WeaponObject*> holsteredWeapon = targetCreature->getHolsteredWeapon("holster");
 		if (holsteredWeapon != nullptr) {
 			for (int j = 0; j < holsteredWeapon->getArrangementDescriptorSize(); ++j) {
 				const Vector<String>* descriptors = holsteredWeapon->getArrangementDescriptor(j);
 				for (int k = 0; k < descriptors->size(); ++k) {
 					const String& descriptorName = descriptors->get(k);
 					if (descriptorName == "hip_holster_melee" || descriptorName == "hip_holster_gun" || descriptorName == "hip_holster_melee_reverse") {
-						creature->doAnimation("draw_holster");
-						Reference<Task*> task = new HolsterTask(creature, holsteredWeapon);
-						creature->addPendingTask("unholster", task, 100);
+						targetCreature->doAnimation("draw_holster");
+						Reference<Task*> task = new HolsterTask(targetCreature, holsteredWeapon);
+						targetCreature->addPendingTask("unholster", task, 100);
 					}
 					if (descriptorName == "back_holster_melee" || descriptorName == "back_holster_gun" || descriptorName == "back_holster_melee_alt" || descriptorName == "back_holster_gun_alt") {
-						creature->doAnimation("draw_pack");
-						Reference<Task*> task = new HolsterTask(creature, holsteredWeapon);
-						creature->addPendingTask("unholster", task, 500);
+						targetCreature->doAnimation("draw_pack");
+						Reference<Task*> task = new HolsterTask(targetCreature, holsteredWeapon);
+						targetCreature->addPendingTask("unholster", task, 500);
 					}
 				}
 			}
@@ -83,14 +115,14 @@ public:
 				for (int k = 0; k < descriptors->size(); ++k) {
 					const String& descriptorName = descriptors->get(k);
 					if (descriptorName == "hip_holster_melee" || descriptorName == "hip_holster_gun" || descriptorName == "hip_holster_melee_reverse") {
-						creature->doAnimation("stow_holster");
-						Reference<Task*> task = new HolsterTask(creature, heldWeapon);
-						creature->addPendingTask("holster", task, 500);
+						targetCreature->doAnimation("stow_holster");
+						Reference<Task*> task = new HolsterTask(targetCreature, heldWeapon);
+						targetCreature->addPendingTask("holster", task, 500);
 					}
 					if (descriptorName == "back_holster_melee" || descriptorName == "back_holster_gun" || descriptorName == "back_holster_melee_alt" || descriptorName == "back_holster_gun_alt") {
-						creature->doAnimation("stow_pack");
-						Reference<Task*> task = new HolsterTask(creature, heldWeapon);
-						creature->addPendingTask("holster", task, 500);
+						targetCreature->doAnimation("stow_pack");
+						Reference<Task*> task = new HolsterTask(targetCreature, heldWeapon);
+						targetCreature->addPendingTask("holster", task, 500);
 					}
 				}
 			}
