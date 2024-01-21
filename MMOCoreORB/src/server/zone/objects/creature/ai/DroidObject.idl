@@ -190,11 +190,7 @@ class DroidObject extends AiAgent {
 	 */
 	@preLocked
 	public void usePower( int amount ){
-		power = power - amount;
-		if( power <= 0 ){
-			power = 0;
-			handleLowPower();
-		}
+		power = MAX_POWER;
 	}
 
 	@dirty

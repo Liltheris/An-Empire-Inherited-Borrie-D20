@@ -189,17 +189,17 @@ void DroidObjectImplementation::rechargeOtherDroid(DroidObject* otherDroid) {
 
 void DroidObjectImplementation::handleLowPower() {
 	// Send fly text
-	showFlyText("npc_reaction/flytext","low_power", 204, 0, 0);  // "*Low Power*"
-	doAnimation("power_down");
+	//showFlyText("npc_reaction/flytext","low_power", 204, 0, 0);  // "*Low Power*"
+	//doAnimation("power_down");
 
 	// Stop following
-	setOblivious();
+	//setOblivious();
 
 	// Deactivate all modules
-	for (int i = 0; i < modules.size(); i++) {
-		auto& module = modules.get(i);
-		module->deactivate();
-	}
+	//for (int i = 0; i < modules.size(); i++) {
+	//	auto& module = modules.get(i);
+	//	module->deactivate();
+	//}
 
 	return;
 }
