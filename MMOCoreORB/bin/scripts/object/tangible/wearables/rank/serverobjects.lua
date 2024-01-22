@@ -13,4 +13,4 @@ includeFile("custom_content/tangible/wearables/rank/rank_reb_general.lua")
 includeFile("custom_content/tangible/wearables/rank/rank_reb_lieutenant.lua")
 includeFile("custom_content/tangible/wearables/rank/rank_reb_major.lua")
 
-includeFile("custom_content/tangible/wearables/rank/rank_imp_grandadmiral.lua")
+includeFile("tangible/wearables/rank/rank_imp_grandadmiral.lua")
