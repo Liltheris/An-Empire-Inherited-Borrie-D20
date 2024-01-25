@@ -11,6 +11,6 @@ equipment = {
 	{"object/tangible/wearables/armor/mandalorian/armor_mandalorian_gloves.iff", "/private/index_color_1", 87, },
 	{"object/tangible/wearables/armor/mandalorian/armor_mandalorian_leggings.iff", "/private/index_color_2", 112, "/private/index_color_1", 226, },
 	{"object/tangible/wearables/armor/mandalorian/armor_mandalorian_helmet_s02.iff", "/private/index_color_2", 104, "/private/index_color_1", 226, },
-	{"object/tangible/wearables/backpack/backpack_jetpack_s01.iff", "/private/index_color_2", 104, "/private/index_color_1", 226, },
+	{"object/tangible/wearables/backpack/backpack_jetpack_s01.iff", "/private/index_color_2", 79, "/private/index_color_1", 226, },
 	{"object/tangible/wearables/cape/cape_mandalorian_s01.iff", "/private/index_color_1", 116, },
 }
