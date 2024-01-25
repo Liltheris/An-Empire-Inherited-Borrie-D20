@@ -65,7 +65,7 @@ object_weapon_roleplay_ranged_rifle_cm_sniper_rifle = object_weapon_ranged_rifle
 	noDodgeReaction = true,
 	primaryAttributeOnly = true,
 
-	rarity="Legendary",
+	rarity="Rare",
 
 	ammoPack = _ammoPack,
 	maxAmmo = _maxAmmo,
@@ -93,7 +93,7 @@ object_weapon_roleplay_ranged_rifle_dlt20a_heavy_blaster_rifle = object_weapon_r
 
 	--Damage (minDamage[d]maxDamage) i.e. (2d20)
 	minDamage = 1, --Amount of Die used in Damage
-	maxDamage = 6, --Type of Die used in Damage
+	maxDamage = 8, --Type of Die used in Damage
 	bonusDamage = 4,
 	
 	noDodgeReaction = true,
@@ -133,7 +133,7 @@ object_weapon_roleplay_ranged_rifle_ld1_target_blaster_rifle = object_weapon_ran
 	noDodgeReaction = true,	
 	primaryAttributeOnly = true,
 
-	rarity="Rare",
+	rarity="Legendary",
 
 	ammoPack = _ammoPack,
 	maxAmmo = _maxAmmo,
