@@ -205,7 +205,7 @@ function RpMandaloreKeldabeScreenPlay:spawnMobiles()
 	setRandomCreatureName(pNpc, "eg6")
 	
 	--Vendors
-	pNpc = spawnRoleplayMobile("rp_mandalore", "rp_base_npc", 1, 21.3145, 1.29931, 6.98357, 259, 50663, "rp_human_female", "faction/mando/halli", "unique/halli_akul", "faction/mando/halli_akul") --Equip, Skill, Customization
+	pNpc = spawnRoleplayMobile("rp_mandalore", "rp_convo_npc", 1, 21.3145, 1.29931, 6.98357, 259, 50663, "rp_human_female", "faction/mando/halli", "unique/halli_akul", "faction/mando/halli_akul") --Equip, Skill, Customization
 	SceneObject(pNpc):setCustomObjectName("Halli Akul (a Mandalorian Vendor)")
 	SceneObject(pNpc):setStoredString("vendor:theme", "halli")
 	SceneObject(pNpc):setStoredString("vendor:shopList", "shop_mando")
