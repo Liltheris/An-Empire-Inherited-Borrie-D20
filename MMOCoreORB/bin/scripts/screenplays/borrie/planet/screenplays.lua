@@ -33,6 +33,8 @@ includeFile("borrie/planet/planets/rp_sulon.lua")
 includeFile("borrie/planet/planets/rp_tatooine.lua")
 includeFile("borrie/planet/planets/rp_yavin4.lua")
 
+includeFile("borrie/planet/planets/rp_mandalore.lua")
+
 
 
 
