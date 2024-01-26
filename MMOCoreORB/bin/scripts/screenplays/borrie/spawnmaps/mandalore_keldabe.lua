@@ -173,6 +173,97 @@ function RpMandaloreKeldabeScreenPlay:spawnCivilians()
 		{-3761.79, 35, -2705.98, 104, 0,{"sit"}},
 		{-3761.26, 35, -2705.13, 147, 0,{"sit"}},
 		{-3760.04, 35, -2707.04, 315, 0,{"social"}},
+		--Cantina
+		{9.98121, -0.894992, 16.371, 240, 50610,{"sittable"}},
+		{6.53136, -0.894992, 14.3807, 58, 50610,{"sitchair"}},
+		{-3.08687, -0.899392, 11.5999, 101, 50606,{"sitchair"}},
+		{1.17941, -0.894991, 11.5953, 272, 50606,{"sitchair"}},
+		{-0.823798, -0.894991, 9.25737, 348, 50606,{"sitchair"}},
+		{-2.08681, -0.894992, 17.8404, 270, 50612,{"sittable"}},
+		{-3.54817, -0.894993, 16.082, 1, 50612,{"sittable"}},
+		{-4.86426, -0.894997, 19.5419, 143, 50612,{"sitchair"}},
+		{-5.55994, -0.894997, 17.485, 76, 50612,{"sitchair"}},
+		{-4.68007, -0.894995, 16.6852, 34, 50612,{"drinker"}},
+		{-9.74527, -0.894991, 5.66256, 181, 50606,{"drinker"}},
+		{-9.09484, -0.894992, 5.66256, 180, 50606,{"drinker"}},
+		{-5.00249, -0.894992, 5.66256, 180, 50606,{"drinker"}},
+		{-4.12651, -0.894992, 5.66256, 180, 50606,{"social"}},
+		{-3.28962, -0.894992, 5.66256, 175, 50606,{"none"}},
+		{0.738543, -0.894992, 5.66256, 53, 50606,{"social"}},
+		{1.8259, -0.894992, 5.66256, 269, 50606,{"drinker"}},
+		{1.35765, -0.894992, 6.6192, 194, 50606,{"none"}},
+		{27.0816, -0.894996, 5.6266, 242, 50606,{"drinker"}},
+		{25.7587, -0.894995, 5.41513, 83, 50606,{"social"}},
+		{9.8244, -0.894992, -2.54613, 307, 50606,{"drinker"}},
+		{8.67364, -0.894992, -3.81267, 22, 50606,{"social"}},
+		{12.8691, -0.894992, 18.5397, 131, 50608,{"sitchair"}},
+		{12.7015, -0.894992, 16.1431, 56, 50608,{"sitchair"}},
+		{14.8911, -0.894992, 15.9068, 314, 50608,{"social"}},
+		{22.7738, -0.894992, 15.7724, 269, 50608,{"sittable"}},
+		{22.3504, -0.894992, 17.4237, 165, 50608,{"social"}},
+		{21.5658, -0.894992, 16.8731, 133, 50608,{"social"}},
+		{3.70618, -0.894992, -4.768, 354, 50606,{"drinker"}},
+		{2.70692, -0.894992, -4.768, 27, 50606,{"drinker"}},
+		{0.645039, -0.894992, -4.768, 309, 50606,{"drinker"}},
+		{-0.500067, -0.894992, -4.768, 63, 50606,{"social"}},
+		{-13.691, -0.894869, -16.7256, 141, 50611,{"sittable"}},
+		{-13.5499, -0.894962, -19.5835, 26, 50611,{"sitchair"}},
+		{-11.0607, -0.89484, -16.763, 235, 50611,{"sitchair"}},
+		{-15.8097, -0.894944, -14.9912, 60, 50606,{"social"}},
+		{-14.2915, -0.894955, -14.7139, 234, 50606,{"social"}},
+		{-24.0912, -0.894991, -10.9992, 172, 50617,{"sit"}},
+		{-24.7817, -0.894991, -11.842, 38, 50617,{"social"}},
+		{-33.7812, 0.10501, -24.6766, 186, 50617,{"tech"}},
+		{-47.7539, 0.105009, -22.9471, 33, 50618,{"sitchair"}},
+		{-45.6216, 0.105009, -23.9173, 345, 50618,{"sitchair"}},
+		{-45.9728, 0.105009, -22.2402, 212, 50618,{"social"}},
+		{-31.9132, 0.105011, -9.68884, 7, 50617,{"tech"}},
+		{23.3568, -0.894992, -8.93039, 52, 50606,{"sitchair"}},
+		{26.2323, -0.894994, -8.79485, 317, 50606,{"sitchair"}},
+		{26.3565, -0.894994, -5.4293, 226, 50606,{"sitchair"}},
+		{23.624, -0.894994, -5.78509, 139, 50606,{"sitchair"}},
+		{22.893, -0.894993, -7.05691, 100, 50606,{"drinker"}},
+		{25.8795, -0.894998, -14.0919, 236, 50607,{"sitchair"}},
+		{25.7358, -0.894997, -16.4901, 310, 50607,{"sitchair"}},
+		{22.6429, -0.894997, -14.1233, 120, 50607,{"sitchair"}},
+		{17.0236, -0.894992, 4.38893, 317, 50606,{"sitchair"}},
+		{17.1562, -0.894992, 7.75229, 226, 50606,{"sitchair"}},
+		{14.4153, -0.894991, 7.39879, 139, 50606,{"sitchair"}},
+		{14.148, -0.894991, 4.25337, 52, 50606,{"sitchair"}},
+		{22.1732, -0.894994, 5.96099, 359, 50606,{"drinker"}},
+		{21.7201, -0.894993, 7.56839, 157, 50606,{"drinker"}},
+		{22.8495, -0.894994, 7.06762, 242, 50606,{"social"}},
+		{21.0163, -0.894993, 6.78855, 104, 50606,{"social"}},
+		{9.18412, -0.894992, 4.17786, 220, 50606,{"drinker"}},
+		{13.8726, -0.894992, -10.6489, 283, 50606,{"sittable"}},
+		{38.2375, 0.105, -9.55362, 350, 50604,{"sit"}},
+		{38.9173, 0.105, -8.65283, 212, 50604,{"social"}},
+		{35.4184, 0.105, 0.0377059, 333, 50605,{"social"}},
+		{36.1345, 0.105, 0.899458, 250, 50605,{"social"}},
+		{35.3246, 0.105, 1.51783, 173, 50605,{"none"}},
+		{31.8961, 0.105, 4.76302, 169, 50605,{"sit"}},
+		--Vornsk's Tail
+		{-6.79956, -0.745953, -11.4409, 73, 50716,{"sittable"}},
+		{-6.38184, -0.745953, -10.2764, 136, 50716,{"sitchair"}},
+		{-3.53985, 0.249991, 3.98267, 50, 50716,{"drinker"}},
+		{-2.92088, 0.24999, 3.3637, 47, 50716,{"drinker"}},
+		{7.89468, 0.249874, -3.78694, 220, 50716,{"drinker"}},
+		{7.212, 0.249874, -3.30397, 164, 50716,{"social"}},
+		{-9.45862, 0.249992, 1.69251, 116, 50716,{"none"}},
+		{4.13369, 1.25, 8.49982, 260, 50715,{"social"}},
+		{3.22645, 1.25, 8.77048, 106, 50715,{"social"}},
+		{-3627.29, 35, -2995.11, 152, 0,{"sit"}},
+		{-3626.7, 35, -2995.14, 176, 0,{"sit"}},
+		{-3645.47, 36.1699, -2991.81, 176, 0,{"sit"}},
+		{-3645.74, 36.1699, -2992.86, 13, 0,{"social"}},
+		--Backstreet
+		{-3682.43, 35, -2981.42, 217, 0,{"tech"}},
+		{-3671.69, 35, -2970.05, 272, 0,{"sit"}},
+		{-3671.69, 35, -2968.96, 194, 0,{"social"}},
+		{-3681.37, 35, -2951.29, 353, 0,{"social"}},
+		{-3681.4, 35, -2949.59, 160, 0,{"social"}},
+		{-3665.31, 35, -2956.67, 323, 0,{"sit"}},
+		{-3664.14, 35, -2954.88, 214, 0,{"sit"}},
 	}
 	
 	CivillianGenerator:spawnCivillians(self.screenplayName, "rp_mandalore", waypointList, self.walkpointList, "mandalore", "mandalore")
@@ -190,22 +281,37 @@ function RpMandaloreKeldabeScreenPlay:spawnSceneObjects()
 	spawnSceneObject("rp_mandalore", "object/tangible/terminal/terminal_travel_rp.iff", 2.54505, 0.639421, 48.1693, 50535, 1, 0, 0, 0)
 	spawnSceneObject("rp_mandalore", "object/tangible/terminal/terminal_travel_rp.iff", 12.6536, 0.639421, 51.1838, 50535, 0.909306, 0, -0.416129, 0)
 
+	--Cantina
+	spawnSceneObject("rp_mandalore", "object/tangible/terminal/terminal_jukebox.iff", 27.0829, -0.894995, 8.68511, 50606, -0.707107, 0, 0.707107, 0)
+
+	--Signs
+	local sObj = spawnSceneObject("rp_mandalore", "object/tangible/sign/all_sign_city_s03.iff", -3637.4, 41.1699, -2991.81, 0, 0.5, -0.5, -0.5, 0.5)
+	SceneObject(sObj):setCustomObjectName("Vornsk's Tail")
+	sObj = spawnSceneObject("rp_mandalore", "object/tangible/sign/all_sign_city_s03.iff", -4026.19, 35, -2795.35, 0, 0.92388, 0, 0.382683, 0)
+	SceneObject(sObj):setCustomObjectName("House Keima")
+	sObj = spawnSceneObject("rp_mandalore", "object/tangible/sign/all_sign_city_s03.iff", -3984.68, 35, -2750.19, 0, 0.927184, 0, 0.374607, 0)
+	SceneObject(sObj):setCustomObjectName("House Deomer")
+
 end
 
 function RpMandaloreKeldabeScreenPlay:spawnMobiles()
 	--Species, Equipment, Skills, Customization
 	--Spaceport
-	pNpc = spawnRoleplayMobile("rp_mandalore", "rp_base_npc", 1, -3752.22, 35, -2583.75, 81, 0, "r5", "default", "default", "default") --Equip, Skill, Customization
+	pNpc = spawnRoleplayMobile("rp_mandalore", "rp_base_npc", 1, -3752.22, 35, -2583.75, 81, 0, "r5", "default", "default", "random") --Equip, Skill, Customization
 	setRandomCreatureName(pNpc, "r5")
-	pNpc = spawnRoleplayMobile("rp_mandalore", "rp_base_npc", 1, -3756.98, 35, -2600.78, 271, 0, "r2", "default", "default", "default") --Equip, Skill, Customization
+	pNpc = spawnRoleplayMobile("rp_mandalore", "rp_base_npc", 1, -3756.98, 35, -2600.78, 271, 0, "r2", "default", "default", "random") --Equip, Skill, Customization
 	setRandomCreatureName(pNpc, "r2")
 	pNpc = spawnRoleplayMobile("rp_mandalore", "rp_base_npc", 1, -3807.04, 35, -2620, 60, 0, "cll8_binary_load_lifter", "default", "default", "default") --Equip, Skill, Customization
 	SceneObject(pNpc):setCustomObjectName("a Binary Load Lifter")
 	pNpc = spawnRoleplayMobile("rp_mandalore", "rp_base_npc", 1, -3778.67, 35, -2622.53, 244, 0, "eg6_power_droid", "default", "default", "default") --Equip, Skill, Customization
 	setRandomCreatureName(pNpc, "eg6")
+
+	--Cantina
+	pNpc = spawnRoleplayMobile("rp_mandalore", "rp_base_npc", 1, 8.62285, -0.894992, 0.447493, 89, 50606, "rp_human_male", "unique/scrubber", "factional/common/elite", "unique/clone") --Equip, Skill, Customization
+	SceneObject(pNpc):setCustomObjectName("Scrubber")
 	
 	--Vendors
-	pNpc = spawnRoleplayMobile("rp_mandalore", "rp_convo_npc", 1, 21.3145, 1.29931, 6.98357, 259, 50663, "rp_human_female", "faction/mando/halli", "unique/halli_akul", "faction/mando/halli_akul") --Equip, Skill, Customization
+	pNpc = spawnRoleplayMobile("rp_mandalore", "rp_convo_npc", 1, 21.3145, 1.29931, 6.98357, 259, 50663, "rp_human_female", "faction/mando/halli", "unique/halli_akul", "faction/mando/halli_akul", "rpg_shopkeeper") --Equip, Skill, Customization
 	SceneObject(pNpc):setCustomObjectName("Halli Akul (a Mandalorian Vendor)")
 	SceneObject(pNpc):setStoredString("vendor:theme", "halli")
 	SceneObject(pNpc):setStoredString("vendor:shopList", "shop_mando")
