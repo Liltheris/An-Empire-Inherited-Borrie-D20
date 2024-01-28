@@ -1,7 +1,7 @@
 planet = {
 	name = "Mandalore",
 	zone = "rp_mandalore",
-	startingFaction = "empire",
+	startingFaction = "mando",
 	startingFactionControl = 70,
 	bases = {
 		"keldabe",

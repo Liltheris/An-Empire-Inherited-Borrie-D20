@@ -19,3 +19,8 @@ object_tangible_wearables_hood_shared_sithcloak_h01 = SharedTangibleObjectTempla
 }
 ObjectTemplates:addClientTemplate(object_tangible_wearables_hood_shared_sithcloak_h01, "object/tangible/wearables/hood/shared_sithcloak_h01.iff")
 --****************************************************************************************************************************************************
+object_tangible_wearables_hood_shared_hood_helmet_s01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/hood/shared_hood_helmet_s01.iff"
+}
+ObjectTemplates:addClientTemplate(object_tangible_wearables_hood_shared_hood_helmet_s01, "object/tangible/wearables/hood/shared_hood_helmet_s01.iff")
+--**************************************************************************************************************************************************
