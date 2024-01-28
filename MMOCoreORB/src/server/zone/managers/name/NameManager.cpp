@@ -539,14 +539,17 @@ String NameManager::generateResourceName(const String& randomNameClass) const {
 String NameManager::generateRandomName(const NameData* nameData) const {
 	String result = "";
 	auto lastNameRules = nameData->getLastNameRules();
-
-	result += generateSingleName(nameData, nameData->getFirstNameRules());
-
 	int lastNameChance = lastNameRules->getNameChance();
 
-	if (System::random(100) < lastNameChance)
-		result = result + " " + generateSingleName(nameData, lastNameRules);
+	do {
+		result = "";
+		result += generateSingleName(nameData, nameData->getFirstNameRules());
 
+		if (System::random(100) < lastNameChance)
+			result = result + " " + generateSingleName(nameData, lastNameRules);
+	
+	} while (isProfane(result));
+	
 	return capitalizeName(result);
 }
 
