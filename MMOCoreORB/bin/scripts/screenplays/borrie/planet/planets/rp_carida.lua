@@ -4,8 +4,6 @@ planet = {
 	startingFaction = "empire",
 	startingFactionControl = 100,
 	bases = {
-		"carida_academy_embassy",
-		"carida_academy_intel_hq",
 		"carida_academy_main",
 	},
 	
