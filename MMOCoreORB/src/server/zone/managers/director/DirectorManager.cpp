@@ -4016,6 +4016,23 @@ int DirectorManager::getItemTemplateInformation(lua_State* L) {
 		result << "Preferred Range: " << weaponTemplate->getIdealRange() << "Mod: " << weaponTemplate->getIdealAccuracy() << endl;
 		//Max Range
 		result << "Max Range: " << weaponTemplate->getMaxRange() << "Mod: " << weaponTemplate->getMaxRangeAccuracy() << endl;
+		//Ammo Type
+		String ammoPack = weaponTemplate->getAmmoPack() != "";
+		if (weaponTemplate->getAmmoPack() != ""){
+			String ammoType = "";
+			if (ammoPack == "ammo_powerpack_small")
+				ammoType = "Powerpack, small";
+			else if (ammoPack == "ammo_powerpack_medium")
+				ammoType = "Powerpack, medium";
+			else if (ammoPack == "ammo_powerpack_large")
+				ammoType = "Powerpack, large";
+			else if (ammoPack == "ammo_kinetic")
+				ammoType = "Kinetic Slugs";
+			else if (ammoPack == "ammo_missile")
+				ammoType = "Missiles";
+			result << "Ammo type: " << ammoType << endl;
+		}
+			
 	} else if (soTemplate->isArmorObjectTemplate()) { //Armor
 		ArmorObjectTemplate* armorTemplate = dynamic_cast<ArmorObjectTemplate*>(soTemplate);
 		//Name
@@ -4029,6 +4046,8 @@ int DirectorManager::getItemTemplateInformation(lua_State* L) {
 		result << "Condition: " << armorTemplate->getMaxCondition() << endl;
 		//Armor Level
 		result << "Armor Rating: " << armorTemplate->getRatingString() << endl;
+		if (armorTemplate->getRpSkillLevel() > 0)
+			result << "Level Requirement: " << armorTemplate->getRpSkillLevel() << endl;
 		//Protections
 		result << "Protections" << endl;
 		if (armorTemplate->getKinetic() > 0)
