@@ -1390,6 +1390,17 @@ public:
 		creature->sendSystemMessage("Data written to bin/custom_scripts/spout/" + fileName + ".lua!");
 	}
 
+    static void ScreenplaySpoutBasePointWithMarker(CreatureObject* creature, String tag, String fileName) {
+        CreatureObject* target = CreateTemplatedRoleplayNPC(creature, "faction/imperial/"+ tag);
+        if(target == nullptr){
+            creature->sendSystemMessage("Internal error. Could not find template for some reason");
+            return;
+        }
+        target->updateDirection(Math::deg2rad(creature->getDirectionAngle()));
+        target->setCustomObjectName("Base Stand-in (" + tag + ")", true);
+        ScreenplaySpoutCivPoint(creature, target, tag, fileName);        
+    }
+
     static void ScreenplaySpoutCivPointWithMarker(CreatureObject* creature, String tag, String fileName) {
         CreatureObject* target = CreateRoleplayNPC(creature, "object/mobile/rp_human_male.iff", "default", "default", "default");
         if(target == nullptr){

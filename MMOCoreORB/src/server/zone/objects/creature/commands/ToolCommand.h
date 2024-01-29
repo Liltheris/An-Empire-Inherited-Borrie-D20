@@ -72,6 +72,7 @@ public:
 					text << "/tool spoutciv [path] - Development purposes" << endl;
 					text << "/tool spoutcivwithdummy [path] - Development purposes" << endl;
 					text << "/tool spoutbase [path] - Development purposes" << endl;
+					text << "/tool spoutbasewithdummy [path] - Development purposes" << endl;
 					text << "/tool spoutpatrolpoint [path] - Development purposes" << endl;
 					text << "/tool spoutobj [path] - Development purposes" << endl;
 					text << "/tool togglepublic [path] - Development purposes" << endl;
@@ -270,6 +271,20 @@ public:
 						}
 					} else {
 						creature->sendSystemMessage("ERROR: To use Spout Civ, you need to target a creature and specify a file name and a tag.");
+					}
+				} else if(command == "spoutbasewithdummy" && adminLevelCheck > 0) {
+					if(args.hasMoreTokens()) {
+						String fileName;
+						args.getStringToken(fileName);
+						if(args.hasMoreTokens()) {
+							String civTag;
+							args.getStringToken(civTag);
+							BorUtil::ScreenplaySpoutBasePointWithMarker(creature, civTag, fileName);
+						} else {
+							creature->sendSystemMessage("ERROR: To use Spout Base With Dummy, you need to specify a file name and a tag.");
+						}
+					} else {
+						creature->sendSystemMessage("ERROR: To use Spout Civ With Dummy, you need to specify a file name and a tag.");
 					}
 				} else if(command == "spoutcivwithdummy" && adminLevelCheck > 0) {
 					if(args.hasMoreTokens()) {
