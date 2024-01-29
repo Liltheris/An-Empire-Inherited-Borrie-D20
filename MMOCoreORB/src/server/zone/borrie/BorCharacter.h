@@ -1362,7 +1362,7 @@ public:
 		if(creature->getActiveRegion() == nullptr){
 			String zoneName = creature->getZone()->getZoneName();
 
-			if (zoneName != "rp_space" && zoneName != "rp_ship_a" && !isCamping){
+			if (zoneName != "tutorial" && zoneName != "rp_space" && zoneName != "rp_ship_a" && !isCamping){
 				creature->sendSystemMessage("You must be in a safe location to rest.");
 				return;
 			}
