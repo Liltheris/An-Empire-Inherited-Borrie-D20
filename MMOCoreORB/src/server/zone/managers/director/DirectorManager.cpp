@@ -4017,7 +4017,7 @@ int DirectorManager::getItemTemplateInformation(lua_State* L) {
 		//Max Range
 		result << "Max Range: " << weaponTemplate->getMaxRange() << "Mod: " << weaponTemplate->getMaxRangeAccuracy() << endl;
 		//Ammo Type
-		String ammoPack = weaponTemplate->getAmmoPack() != "";
+		String ammoPack = weaponTemplate->getAmmoPack();
 		if (weaponTemplate->getAmmoPack() != ""){
 			String ammoType = "";
 			if (ammoPack == "ammo_powerpack_small")
