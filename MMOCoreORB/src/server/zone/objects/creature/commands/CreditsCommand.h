@@ -111,7 +111,7 @@ public:
 				else 
 					msg += "subracted from ";
 				creature->sendSystemMessage(msg + player->getFirstName()+"'s "+location+".");
-				player->sendSystemMessage("your "+location+".");
+				player->sendSystemMessage(msg+"your "+location+".");
 			} else
 				creature->sendSystemMessage("invalid arguments for credits command:  /credits <firstname> <add/subtract> <amount> <bank/cash>");
 
