@@ -7,9 +7,9 @@ npc_template = {
 		"rp_twilek_male", 5,
 		"rp_twilek_female", 5,
 		"rp_rodian_male", 5,
-		"rp_rodial_female", 5,
+		"rp_rodian_female", 5,
 		"rp_nikto_male", 40,
-		"rp_weeqay_male", 20,
+		"rp_weequay_male", 20,
 	},
 	skillTemplates = {"factional/common/tech_medic"},
 	
