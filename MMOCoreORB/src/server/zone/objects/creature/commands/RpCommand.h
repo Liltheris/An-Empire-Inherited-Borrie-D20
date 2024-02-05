@@ -131,7 +131,29 @@ public:
 					BorUtil::SaveStructureContents(creature, saveName, "custom_scripts/buildings/" + accountName + "/");
 				} else {
 					creature->sendSystemMessage("You need to specify a name before saving this structure.");
-				}				
+				}
+			}else if (command == "disguise") {
+				if(args.hasMoreTokens()) {
+					// Check if we have already stored the player's original name, and store it if we don't.
+					if (creature->getStoredString("original_name") == ""){
+						creature->setStoredString("original_name", creature->getDisplayedName());
+						creature->setStoredString("original_first_name", creature->getFirstName());
+					}
+					String disguiseName = args.getRemainingString();
+
+					// Return our original name if the play
+					if (disguiseName == "clear"){
+						creature->setCustomObjectName(creature->getStoredString("original_name"), true);
+						creature->sendSystemMessage("Your name has been reset!");
+					// Set our new disguise name!
+					} else {
+						disguiseName = disguiseName + " ("+creature->getStoredString("original_first_name")+")";
+						creature->setCustomObjectName(disguiseName, true);
+						creature->sendSystemMessage("Your name now shows as '"+disguiseName+"'!");
+					}
+				} else {
+					creature->sendSystemMessage("You must provide a name to disguise yourself with!");
+				}
 			}else if (BorrieRPG::GetChatTypeID(command) != -1) {
 				if (args.hasMoreTokens()) {
 					String speech = arguments.toString().subString(1 + command.length(), arguments.toString().length());
@@ -170,6 +192,7 @@ public:
 		text << "/rp weapon - Prints information on your current weapon." << endl;
 		text << "/rp switchgrip - Changes your weapon grip, if your weapon has an alternate grip." << endl;
 		text << "/rp inspect - Inspect yourself and information available to DMs." << endl;
+		text << "/rp disguise [name]- Changes your displayed name to the provided name. Using '/rp disguise clear' removes the disguise name." << endl;
 
 		ManagedReference<SuiMessageBox*> box = new SuiMessageBox(creature, SuiWindowType::NONE);
 		box->setPromptTitle("RP COMMAND HELP");

@@ -88,6 +88,10 @@ public:
 						if (profession.contains("admin") && !ghost->hasGodMode())
 							continue;
 
+						// Prevent searching for any of the RP skills
+						if (profession.contains("rp_") && !ghost->hasGodMode())
+							continue;
+
 						// Dont show invisible admins
 						if (playerCreature->isInvisible())
 							continue;

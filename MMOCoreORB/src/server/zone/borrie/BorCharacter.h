@@ -340,13 +340,13 @@ public:
 		if (!suppressMessage)
 			BorrieRPG::BroadcastMessage(creature, report);
 		
-		report += " (Was H:" + String::valueOf(lastHealth);
-		report += ", A:" + String::valueOf(lastAction);
-		report += ", W:" + String::valueOf(lastWill);
+		report += " (Was H=" + String::valueOf(lastHealth);
+		report += ", A=" + String::valueOf(lastAction);
+		report += ", W=" + String::valueOf(lastWill);
 
 		if (creature->isPlayerCreature()) {
 			if (creature->getPlayerObject()->getForcePowerMax() > 0) {
-				report += ", F:" + String::valueOf(lastForce) + ")";
+				report += ", F=" + String::valueOf(lastForce) + ")";
 			} else {
 				report += ")";
 			}
@@ -1362,7 +1362,7 @@ public:
 		if(creature->getActiveRegion() == nullptr){
 			String zoneName = creature->getZone()->getZoneName();
 
-			if (zoneName != "rp_space" && zoneName != "rp_ship_a" && !isCamping){
+			if (zoneName != "tutorial" && zoneName != "rp_space" && zoneName != "rp_ship_a" && !isCamping){
 				creature->sendSystemMessage("You must be in a safe location to rest.");
 				return;
 			}
