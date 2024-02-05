@@ -53,9 +53,10 @@ public:
 				isDM = true;
 			} else {
 				if (targetCreature->isPlayerCreature()) {
-					if (targetCreature->getPlayerObject()->getAccountID() == ghost->getAccountID()) {
-						hasOwnership = true;
-					}
+					// Player characters are not AI agents!
+					creature->sendSystemMessage("Invalid target. Target cannot be a player character.");
+					return INVALIDTARGET;
+
 				} else if (targetCreature->isPet()) {
 					ManagedReference<CreatureObject*> owner = targetCreature->getLinkedCreature().get();
 					if (creature->getObjectID() == owner->getObjectID()) {
