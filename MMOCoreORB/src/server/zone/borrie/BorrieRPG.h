@@ -532,11 +532,15 @@ public:
 
 	static int GetChatTypeID(String chatType) {
 		ChatManager* chatManager = ServerCore::getZoneServer()->getChatManager();
-
+		
 		int chatID = chatManager->getSpatialChatType(chatType);
-		if (chatID == 0 && !(chatType == "say" || chatType == "."))
+		if (chatID == 0 && !(chatType == "say" || chatType == "." || chatType == ":"))
 			return -1;
-		else return chatID;
+		// Special handling for the ":" chatType
+		if (chatType == ":")
+			return 37;
+		
+		return chatID;
 	}
 
 	static void copyTarget(CreatureObject* creature, SceneObject* target, bool overrideFlag = false) {
