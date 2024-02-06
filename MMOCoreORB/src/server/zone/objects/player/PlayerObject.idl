@@ -943,6 +943,11 @@ class PlayerObject extends IntangibleObject {
 	 */
 	public native void unloadSpawnedChildren();
 
+	/**
+	 * Revokes the provided badge from the player
+	 */
+	public native void revokeBadge(int badgeID);
+
 	public void addToConsentList(final string name) {
 		consentList.put(name);
 	}
