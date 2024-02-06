@@ -22,7 +22,7 @@ npc_template = {
 		{"rp_rodian_male", {"faction/hutt/recruiter"}},
 		{"rp_rodian_female", {"faction/hutt/recruiter"}},
 		{"rp_nikto_male", {"faction/hutt/recruiter"}},
-		{"rp_weeqay_male", {"faction/hutt/recruiter"}},
+		{"rp_weequay_male", {"faction/hutt/recruiter"}},
 	},	
 	
 	customizationTemplates = {
@@ -33,7 +33,7 @@ npc_template = {
 		{"rp_rodian_male", {"random"}},
 		{"rp_rodian_female", {"random"}},
 		{"rp_nikto_male", {"random"}},
-		{"rp_weeqay_male", {"random"}},
+		{"rp_weequay_male", {"random"}},
 	},	
 
 	customVarOverrides = {

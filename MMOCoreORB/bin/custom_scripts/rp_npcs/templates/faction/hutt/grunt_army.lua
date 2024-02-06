@@ -21,7 +21,7 @@ npc_template = {
 		{"rp_rodian_male", {"faction/hutt/grunt_army"}},
 		{"rp_rodian_female", {"faction/hutt/grunt_army"}},
 		{"rp_nikto_male", {"faction/hutt/grunt_army"}},
-		{"rp_weeqay_male", {"faction/hutt/grunt_army"}},
+		{"rp_weequay_male", {"faction/hutt/grunt_army"}},
 	},	
 	
 	customizationTemplates = {
@@ -32,7 +32,7 @@ npc_template = {
 		{"rp_rodian_male", {"random"}},
 		{"rp_rodian_female", {"random"}},
 		{"rp_nikto_male", {"random"}},
-		{"rp_weeqay_male", {"random"}},
+		{"rp_weequay_male", {"random"}},
 	},	
 
 	customVarOverrides = {
