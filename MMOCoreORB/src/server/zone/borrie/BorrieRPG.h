@@ -538,7 +538,7 @@ public:
 			return -1;
 		// Special handling for the ":" chatType
 		if (chatType == ":")
-			return 37;
+			return 38;
 		
 		return chatID;
 	}
