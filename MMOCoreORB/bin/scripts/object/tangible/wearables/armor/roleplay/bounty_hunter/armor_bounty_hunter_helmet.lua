@@ -18,7 +18,7 @@ object_tangible_wearables_armor_roleplay_bounty_hunter_armor_bounty_hunter_helme
 	maxCondition = 200,
 
 
-	rating = LIGHT,
+	rating = HEAVY,
 	rpskill = 6,
 
 	price = 1400,

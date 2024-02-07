@@ -18,7 +18,7 @@ object_tangible_wearables_armor_roleplay_marine_armor_marine_chest_plate_rebel_g
 	maxCondition = 100,
 
 
-	rating = NONE,
+	rating = LIGHT,
 	rpskill = 4,
 
 	price = 400,

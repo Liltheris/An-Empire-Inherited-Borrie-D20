@@ -18,7 +18,7 @@ object_tangible_wearables_armor_roleplay_rebel_spec_force_armor_rebel_spec_force
 	maxCondition = 250,
 
 
-	rating = NONE,
+	rating = LIGHT,
 	rpskill = 5,
 
 	price = 1400,

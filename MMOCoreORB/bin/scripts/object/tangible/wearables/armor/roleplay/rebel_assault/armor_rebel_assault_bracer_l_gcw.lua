@@ -18,7 +18,7 @@ object_tangible_wearables_armor_roleplay_rebel_assault_armor_rebel_assault_brace
 	maxCondition = 200,
 
 
-	rating = MEDIUM,
+	rating = HEAVY,
 	rpskill = 8,
 
 	price = 1200,

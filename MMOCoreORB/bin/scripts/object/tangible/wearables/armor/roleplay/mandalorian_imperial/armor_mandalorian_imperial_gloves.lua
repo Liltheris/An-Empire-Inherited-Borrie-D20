@@ -18,7 +18,7 @@ object_tangible_wearables_armor_roleplay_mandalorian_imperial_armor_mandalorian_
 	maxCondition = 400,
 
 
-	rating = LIGHT,
+	rating = MEDIUM,
 	rpskill = 8,
 
 	price = 10000,

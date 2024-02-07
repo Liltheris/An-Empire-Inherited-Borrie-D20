@@ -18,7 +18,7 @@ object_tangible_wearables_armor_roleplay_bone_armor_bone_s01_bracer_l = object_t
 	maxCondition = 20,
 
 
-	rating = NONE,
+	rating = HEAVY,
 	rpskill = 0,
 
 	price = 100,

@@ -18,7 +18,7 @@ object_tangible_wearables_armor_roleplay_stormtrooper_armor_stormtrooper_chest_p
 	maxCondition = 200,
 
 
-	rating = LIGHT,
+	rating = MEDIUM,
 	rpskill = 4,
 
 	price = 1000,

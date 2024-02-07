@@ -18,7 +18,7 @@ object_tangible_wearables_armor_roleplay_snow_trooper_armor_snowtrooper_chest_pl
 	maxCondition = 150,
 
 
-	rating = LIGHT,
+	rating = MEDIUM,
 	rpskill = 5,
 
 	price = 1000,

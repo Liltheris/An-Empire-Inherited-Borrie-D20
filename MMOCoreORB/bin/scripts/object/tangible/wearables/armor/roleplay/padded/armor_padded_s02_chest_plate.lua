@@ -18,7 +18,7 @@ object_tangible_wearables_armor_roleplay_padded_armor_padded_s02_chest_plate = o
 	maxCondition = 80,
 
 
-	rating = NONE,
+	rating = MEDIUM,
 	rpskill = 0,
 
 	price = 800,

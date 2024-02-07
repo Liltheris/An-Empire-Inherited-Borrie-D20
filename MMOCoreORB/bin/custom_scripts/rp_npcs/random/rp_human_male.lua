@@ -34,6 +34,6 @@ random_ranges = {
 	{"/private/index_style_beard", 0, 255},
 	{"/private/index_age", 0, 255},
 	{"/private/index_style_freckles", 0, 255},
-	{"height", 0.89, 1.11},
+	{"height", 0.94, 1.11},
 	{"hair", "object/tangible/hair/human/shared_hair_human_male", 1, 41, "/private/index_color_1", 0, 19},
 }

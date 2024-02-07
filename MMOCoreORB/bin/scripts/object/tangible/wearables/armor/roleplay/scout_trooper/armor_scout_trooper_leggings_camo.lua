@@ -18,7 +18,7 @@ object_tangible_wearables_armor_roleplay_scout_trooper_armor_scout_trooper_leggi
 	maxCondition = 100,
 
 
-	rating = NONE,
+	rating = LIGHT,
 	rpskill = 3,
 
 	price = 200,

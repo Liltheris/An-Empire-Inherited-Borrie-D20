@@ -18,7 +18,7 @@ object_tangible_wearables_armor_roleplay_infiltrator_armor_infiltrator_s02_bicep
 	maxCondition = 100,
 
 
-	rating = NONE,
+	rating = LIGHT,
 	rpskill = 5,
 
 

@@ -28,6 +28,6 @@ random_ranges = {
 	{"/private/index_style_freckles", 0, 255},
 	{"/shared_owner/blend_flat_chest", 0, 255},
 	{"/private/index_color_lips", 0, 255},
-	{"height", 0.83, 1.08},
+	{"height", 0.88, 1.06},
 	{"hair", "object/tangible/hair/human/shared_hair_human_female", 1, 42, "/private/index_color_1", 0, 19},
 }
