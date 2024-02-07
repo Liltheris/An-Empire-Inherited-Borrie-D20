@@ -712,14 +712,17 @@ public:
 
         // Determine the cost to dodge, based on the armour class.
         int dodgeCost = 1 + GetCharacterArmourClass(defender);
+        int armourPenalty = 0;
+        if (GetCharacterArmourClass(defender) > 1)
+            armourPenalty = 5;
         DrainActionOrWill(defender, dodgeCost * actionPointMod);
 
-        if(rollResult >= toHit) {
+        if(rollResult >= toHit + armourPenalty) {
             // The defender has successfully dodged!
             reactionSpam += ", but " + BorString::getNiceName(defender) + " dodges out of the way! (" + rollSpam(dodgeRoll, maneuverabilitySkill, toHit) + ") ";
             BorEffect::PerformReactiveAnimation(defender, attacker, "dodge", GetSlotHitlocation(slot), true);
             
-        } else if(dodgeRoll + maneuverabilitySkill >= toHit / 2 ) {
+        } else if(dodgeRoll + maneuverabilitySkill >= (toHit / 2) + armourPenalty) {
             // Partial success, defender stumbles to crouching, and takes half damage.
             reactionSpam += ", " + BorString::getNiceName(defender) + " struggles to dodge out of the way! (" + rollSpam(dodgeRoll, maneuverabilitySkill, toHit) + ") ";
             reactionSpam += BorString::getNiceName(defender) + " stumbles, but only takes "+ damageNumber(incomingDamage / 2) +" damage.";
