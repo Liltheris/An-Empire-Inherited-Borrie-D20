@@ -1368,6 +1368,141 @@ public:
         return distanceModifier + postureModifier;
     }
 
+    static void throwGrenade(CreatureObject* attacker, CreatureObject* defender, CreatureObject* commander, WeaponObject* grenade) {
+        //Get our basic roll information
+
+        int toHitDC = GetToHitModifier(attacker, defender, grenade) + 10;
+
+        int demoSkill = attacker->getSkillMod("rp_demolitions");
+        int throwSkill = attacker->getSkillMod("rp_throwing");
+
+        int demoRoll = BorDice::Roll(1, 20);
+        int throwRoll = BorDice::Roll(1, 20);
+
+        SharedObjectTemplate* templateData = TemplateManager::instance()->getTemplate(grenade->getServerObjectCRC());
+
+		if (templateData == nullptr) {
+            commander->sendSystemMessage("ERROR: Unable to find grenade template data!");
+			return;
+        }
+
+		SharedWeaponObjectTemplate* grenadeData = cast<SharedWeaponObjectTemplate*>(templateData);
+
+		if (grenadeData == nullptr) {
+            commander->sendSystemMessage("ERROR: Unable to cast grenade template data!");
+            return;
+        }
+
+        int skillLevel = grenadeData->getRpSkillLevel();
+        int radius = grenade->getDamageRadius();
+
+        int damageRoll = BorDice::Roll(grenadeData->getMinDamage(), grenadeData->getMaxDamage());
+        int damage = damageRoll + grenadeData->getBonusDamage();
+
+        SortedVector<SceneObject*> closeObjects = getCreaturesInRange(defender, radius);
+        CreatureObject* primaryTarget = defender;
+
+        String spam = BorString::getNiceName(attacker)+" attempts to throw a "+grenade->getDisplayedName()+" at "+BorString::getNiceName(defender)+" "+BorString::skillSpam(throwSkill, throwRoll, throwSkill+throwRoll);
+
+        // Check if we blow ourselves up!
+        if (demoSkill < skillLevel && demoRoll == 1) {
+            // oof
+            primaryTarget = attacker;
+            closeObjects = getCreaturesInRange(primaryTarget, radius);
+
+            spam += ". However, they fail to arm the grenade properly, causing it to explode on top of them!";
+        } else {
+            // Check if we hit our target properly
+            if (throwRoll + throwSkill >= toHitDC) {
+                spam += " and hits!";
+            } else if (throwRoll + throwSkill >= toHitDC / 2 ) {
+                // retarget the grenade to a random person in range of the grenade!
+                primaryTarget = static_cast<CreatureObject*>(closeObjects.get(System::random(closeObjects.size())));
+                closeObjects = getCreaturesInRange(primaryTarget, radius);
+
+                spam += " and misses, hitting "+BorString::getNiceName(primaryTarget)+" instead!";
+            } else {
+                // We hit nobody, womp womp.
+                spam += "and goes wide, hitting nobody!";
+                return;
+            }
+            // Check return to sender!
+            if (primaryTarget->getStoredInt("reaction_stance") == RpReactionStance::FORCEDEFLECT && CanPerformReaction(primaryTarget, RpReactionStance::FORCEDEFLECT, damage, grenade, primaryTarget->getWeapon())) {
+                int teleRoll = BorDice::Roll(1, 20);
+                int teleSkill = primaryTarget->getSkillMod("rp_telekinesis");
+
+                int forceCost = 11-teleSkill;
+                if (forceCost < 1)
+                    forceCost = 1; 
+
+                BorCharacter::ModPool(primaryTarget, "force", -forceCost, true);
+
+                if (teleRoll + teleSkill > demoRoll + demoSkill) {
+                    // We've beaten the roll, returning to sender!
+                    spam += " However, "+BorString::getNiceName(primaryTarget)+" raises their hand, and the "+grenade->getDisplayedName()+" is returned to sender!";
+                    primaryTarget = attacker;
+                    closeObjects = getCreaturesInRange(attacker, radius);
+                } else {
+                    // At least we tried...
+                    spam += BorString::getNiceName(primaryTarget)+" raises their hand at it, but nothing happens!";
+                }
+            }
+        }
+
+        spam += " The following explosion deals "+BorString::damageSpam(grenadeData->getMinDamage(), grenadeData->getMaxDamage(), grenadeData->getBonusDamage(), damageRoll, damage)+", and effects "+String::valueOf(closeObjects.size() + 1)+" targets!";
+        //Output the spam before the reaction spam!
+        BorrieRPG::BroadcastMessage(attacker, spam);
+
+        handleGrenadeReaction(primaryTarget, grenade, demoRoll+demoSkill, damage);
+        for (int i = 0; i < closeObjects.size(); i++){
+            CreatureObject* targetCreature = static_cast<CreatureObject*>(closeObjects.get(i));
+            handleGrenadeReaction(targetCreature, grenade, demoRoll+demoSkill, damage);
+        }
+    }
+
+    static void handleGrenadeReaction(CreatureObject* creature, WeaponObject* grenade, int dodgeDC, int damageRoll){
+        String spam = "";
+        spam +=BorString::getNiceName(creature);" is caught in the blast!";
+        // Attempt to dodge the grenade!
+        if (creature->getStoredInt("reaction_stance") == RpReactionStance::DODGE && CanPerformReaction(creature, RpReactionStance::DODGE, damageRoll, grenade, creature->getWeapon())){
+            int dodgeSkill = creature->getSkillMod("rp_maneuverability");
+            int dodgeRoll = BorDice::Roll(1, 20);
+
+            int dodgeCost = 1 + GetCharacterArmourClass(creature);
+            int armourPenalty = 0;
+            if (GetCharacterArmourClass(creature) > 1)
+                armourPenalty = 5;
+            DrainActionOrWill(creature, dodgeCost * 2);
+            dodgeDC = dodgeDC + armourPenalty;
+
+            if (dodgeRoll + dodgeSkill > dodgeDC){
+                //We've dodged the blast entirely!
+                spam += " They hit the floor in time "+rollSpam(dodgeRoll, dodgeSkill, dodgeDC)+", and avoid taking damage!";
+                creature->setPosture(CreaturePosture::PRONE, true, true);
+                return;
+
+            } else if (dodgeRoll + dodgeSkill > dodgeDC / 2){
+                //We were late to dodge, but still mitigated some damage!
+                damageRoll = damageRoll / 2;
+                creature->setPosture(CreaturePosture::PRONE, true, true);
+
+                spam += " They hit the floor late "+rollSpam(dodgeRoll, dodgeSkill, dodgeDC)+", and still take";
+            } else {
+                //We failed to dodge entirely, womp womp.
+                spam += " They attempt to hit the floor "+rollSpam(dodgeRoll, dodgeSkill, dodgeDC)+", but fail, taking";
+            }
+        } else {
+            spam += " They take";
+        }
+        //Apply the damage taken!
+        int hitLocation = BorDice::Roll(1, 10);
+        ApplyAdjustedHealthDamage(creature, grenade, damageRoll, hitLocation);
+        spam += " "+damageNumber(damageRoll)+" damage!";
+
+        //Finally, output the spam!
+        BorrieRPG::BroadcastMessage(creature, spam);
+    }
+
     static void ThrowRoleplayGrenade(CreatureObject* attacker, CreatureObject* defender, CreatureObject* commander, WeaponObject* grenade) {
         int toHitDC = GetToHitModifier(attacker, defender, grenade) + 10;
 
@@ -1508,6 +1643,34 @@ public:
         ApplyAdjustedHealthDamage(victim, grenade, totalDamage, 1);
 
         BorrieRPG::BroadcastMessage(victim, message);
+    }
+
+    static SortedVector<SceneObject*> getCreaturesInRange(CreatureObject* creature, int radius) {
+        ManagedReference<Zone*> zone = creature->getZone();
+
+        SortedVector<QuadTreeEntry*> closeObjects;
+		CloseObjectsVector* actualCloseObjects = (CloseObjectsVector*) creature->getCloseObjects();
+
+        // Turning our close objects vector into something we can work with more easily.
+        if (actualCloseObjects != nullptr) {
+			actualCloseObjects->safeCopyReceiversTo(closeObjects, CloseObjectsVector::CREOTYPE);
+		} else {
+			zone->getInRangeObjects(creature->getWorldPositionX(), creature->getWorldPositionY(), ZoneServer::CLOSEOBJECTRANGE, &closeObjects, true);
+		}
+
+        SortedVector<SceneObject*> result;
+
+        // We need to sort out non-creature objects, and creatures not in range of the radius.
+        for (int i = 0; i < closeObjects.size(); ++i) {
+            SceneObject* targetObject = static_cast<SceneObject*>(closeObjects.get(i));
+
+			if (targetObject->isCreatureObject() && creature->isInRange(targetObject, radius)) {
+                // Add our nearby creature to the result vector.
+				result.add(targetObject);
+			}
+        }
+
+        return result;
     }
 
     static void reloadWeapon(CreatureObject* creature, CreatureObject* commander, WeaponObject* weapon) {

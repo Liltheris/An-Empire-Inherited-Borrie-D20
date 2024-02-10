@@ -90,7 +90,7 @@ public:
 			CombatAction* combatAction = new CombatAction(creature, targetObject, animCRC, 0x01, CombatManager::DEFAULTTRAIL, grenade->getObjectID());
 			creature->broadcastMessage(combatAction,true);
 
-			BorCombat::ThrowRoleplayGrenade(creature, targetCreature, creature, grenade);
+			BorCombat::throwGrenade(creature, targetCreature, creature, grenade);
 
 			// We need to give some time for the combat animation to start playing before destroying the tano
 			// otherwise our character will play the wrong animations

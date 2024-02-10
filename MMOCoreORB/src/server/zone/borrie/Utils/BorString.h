@@ -19,7 +19,7 @@ public:
 
     /*Outputs a damage roll in the following format: [count]d[type]: [roll] + [bonus] = [result] damage*/
     static String damageSpam(int count, int type, int bonus, int roll, int result){
-        return String::valueOf(count) + "d" + String::valueOf(type) + ": " + String::valueOf(roll) + " + " + String::valueOf(bonus) + " = " + String::valueOf(result) + " damage";
+        return String::valueOf(count)+"d"+String::valueOf(type)+": "+String::valueOf(roll)+" + "+String::valueOf(bonus) +" = \\#FF9999"+String::valueOf(result)+"\\#FFFFFF damage";
     }
 
     /*Outputs the creature's first name, or full name if non-standard.*/
