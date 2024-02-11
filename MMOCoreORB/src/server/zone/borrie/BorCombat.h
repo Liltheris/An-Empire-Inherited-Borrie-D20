@@ -91,7 +91,11 @@ public:
         // Determine and apply the action cost of the attack, if any!
         // Power attack costs 3 action, aimed attack costs 1.
         if(powerAttack){
-            DrainActionOrWill(attacker, 3);
+            if (weapon->isRangedWeapon()) {
+                DrainActionOrWill(attacker, 3);
+            } else {
+                DrainActionOrWill(attacker, 1);
+            }
         } else if (bodyPartTarget != -1){
             DrainActionOrWill(attacker, 1);
         }
@@ -207,7 +211,7 @@ public:
         // Handle hitting!
         bool criticalHit = false;
 
-        if (bodyPartTarget == 10) {
+        if (bodyPartTarget == 10 || toHitRoll == 20) {
             totalDamage =  totalDamage * 1.5;
             criticalHit = true;
         }
