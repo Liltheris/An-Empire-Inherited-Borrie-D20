@@ -629,24 +629,6 @@ includeFile("cities/city.lua")
 --includeFile("poi/yavin4_imperial_base.lua")
 --includeFile("poi/yavin4_woolamander_temple.lua")
 
-<<<<<<< HEAD
--- --Static Spawns
-includeFile("static_spawns/corellia_static_spawns.lua")
-includeFile("static_spawns/dantooine_static_spawns.lua")
-includeFile("static_spawns/dathomir_static_spawns_ne.lua")
-includeFile("static_spawns/dathomir_static_spawns_nw.lua")
-includeFile("static_spawns/dathomir_static_spawns_se.lua")
-includeFile("static_spawns/dathomir_static_spawns_sw.lua")
-includeFile("static_spawns/endor_static_spawns.lua")
-includeFile("static_spawns/lok_static_spawns.lua")
-includeFile("static_spawns/naboo_static_spawns_north.lua")
-includeFile("static_spawns/naboo_static_spawns_south.lua")
-includeFile("static_spawns/rori_static_spawns.lua")
-includeFile("static_spawns/talus_static_spawns_north.lua")
-includeFile("static_spawns/talus_static_spawns_south.lua")
-includeFile("static_spawns/tatooine_static_spawns_north.lua")
-includeFile("static_spawns/tatooine_static_spawns_south.lua")
-=======
 --Static Spawns
 --includeFile("static_spawns/corellia_static_spawns.lua")
 --includeFile("static_spawns/dantooine_static_spawns.lua")
@@ -663,7 +645,6 @@ includeFile("static_spawns/tatooine_static_spawns_south.lua")
 --includeFile("static_spawns/talus_static_spawns_south.lua")
 --includeFile("static_spawns/tatooine_static_spawns_north.lua")
 --includeFile("static_spawns/tatooine_static_spawns_south.lua")
->>>>>>> parent of 20b95e8f (what could possibly go wrong commenting out over 100 lines of screenplays)
 
 --Yavin4
 --includeFile("static_spawns/yavin4_static_spawns.lua")
