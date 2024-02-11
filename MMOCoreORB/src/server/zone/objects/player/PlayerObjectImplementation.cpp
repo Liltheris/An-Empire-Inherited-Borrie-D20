@@ -1747,6 +1747,15 @@ void PlayerObjectImplementation::increaseFactionStanding(const String& factionNa
 	}
 }
 
+void PlayerObjectImplementation::revokeBadge(int badgeID) {
+	const Badge* badge = BadgeList::instance()->get(badgeID);
+
+	if (badge == nullptr)
+		return;
+	
+	
+}
+
 uint32 PlayerObjectImplementation::getNewSuiBoxID(uint32 type) {
 	return (++suiBoxNextID << 16) + (uint16)type;
 }

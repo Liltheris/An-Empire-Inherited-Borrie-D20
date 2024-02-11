@@ -308,7 +308,7 @@ end
 function RoriNewRestussScreenPlay:spawnMobiles()
 	--Species, Equipment, Skills, Customization
 	--Vendors
-	local pNPC
+	local pNpc
 	--Vehicle Vendor
 	pNpc = spawnRoleplayMobile("rp_rori", "rp_convo_npc", 1, -836.293, 83, 1550.58, 0, 0,			"rp_moncal_male", "xovros_refugee_male2", "default", "random", "rpg_shopkeeper") --Vehicle
 	SceneObject(pNpc):setCustomObjectName("Mirl Torka (a Speeder Vendor)")
@@ -379,11 +379,6 @@ function RoriNewRestussScreenPlay:spawnMobiles()
 	SceneObject(pNpc):setCustomObjectName("Mel (a Disguise Vendor)")
 	SceneObject(pNpc):setStoredString("vendor:theme", "transmog")
 	SceneObject(pNpc):setStoredString("vendor:shopList", "shop_transmog")
-	--Imperial Vendor
-	pNpc = spawnRoleplayMobile("rp_rori", "rp_convo_npc", 1, -1253.86, 83, 1528.2, 127, 0,			"rp_human_male", "faction/imperial/officer_navy", "default", "random", "rpg_shopkeeper") --Imperial
-	SceneObject(pNpc):setCustomObjectName("Uphinizo Reir (an Imperial Quartermaster)")
-	SceneObject(pNpc):setStoredString("vendor:theme", "imperial")
-	SceneObject(pNpc):setStoredString("vendor:shopList", "shop_imperial")
 	
 	--Special
 	pNpc = spawnRoleplayMobile("rp_rori", "rp_base_npc", 1, 8.09042, 0.749981, 2.36658, 235, 610014332,	"le_repair_droid", "default", "default", "default") --Ignitor

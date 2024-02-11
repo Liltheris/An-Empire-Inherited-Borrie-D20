@@ -1398,7 +1398,7 @@ public:
         }
         target->updateDirection(Math::deg2rad(creature->getDirectionAngle()));
         target->setCustomObjectName("Base Stand-in (" + tag + ")", true);
-        ScreenplaySpoutCivPoint(creature, target, tag, fileName);        
+        ScreenplaySpoutBasePoint(creature, target, tag, fileName);
     }
 
     static void ScreenplaySpoutCivPointWithMarker(CreatureObject* creature, String tag, String fileName) {

@@ -49,7 +49,7 @@ function BorForce_Meditate:performAbility(pPlayer, fpi)
 	CreatureObject(pPlayer):setPosture(POSTURESITTING)
 	CreatureObject(pPlayer):playEffect(clientEffect, "")
 	
-	local forcePowerPoints = math.min(forcePowerMax, forcePower + (forcePowerMax / 2))
+	local forcePowerPoints = math.min(forcePowerMax, forcePower + (forcePowerMax * 1))
 	
 	PlayerObject(pGhost):setForcePower(forcePowerPoints)
 	SceneObject(pPlayer):setStoredInt("force_defense", 0)

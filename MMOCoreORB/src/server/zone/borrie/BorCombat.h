@@ -91,7 +91,11 @@ public:
         // Determine and apply the action cost of the attack, if any!
         // Power attack costs 3 action, aimed attack costs 1.
         if(powerAttack){
-            DrainActionOrWill(attacker, 3);
+            if (weapon->isRangedWeapon()) {
+                DrainActionOrWill(attacker, 3);
+            } else {
+                DrainActionOrWill(attacker, 1);
+            }
         } else if (bodyPartTarget != -1){
             DrainActionOrWill(attacker, 1);
         }
@@ -207,7 +211,7 @@ public:
         // Handle hitting!
         bool criticalHit = false;
 
-        if (bodyPartTarget == 10) {
+        if (bodyPartTarget == 10 || toHitRoll == 20) {
             totalDamage =  totalDamage * 1.5;
             criticalHit = true;
         }
@@ -427,153 +431,6 @@ public:
             }
         }
     }
-    /*
-    /////////////////////////////////////////////////////////////////
-    // Old Implementation
-    /////////////////////////////////////////////////////////////////
-    static void FlurryAttackTarget(CreatureObject* attacker, CreatureObject* defender, CreatureObject* commander, bool ignoreLOS = false) {
-        ManagedReference<WeaponObject*> weapon = attacker->getWeapon();
-        if(weapon->isBroken()) {
-            commander->sendSystemMessage("Your weapon is broken, and you can't attack with a broken weapon.");
-            return;
-        }
-
-        if(!ignoreLOS) {
-            if (!CollisionManager::checkLineOfSight(attacker, defender)) {
-                commander->sendSystemMessage("You don't have a direct line of sight of your target.");
-                return;
-            }
-        }
-        
-        //Dealing with ammo
-        if (weapon->getAmmoPack() != "") {
-            int ammoUsed = weapon->getStoredInt("ammo_used");
-            int maxAmmo = weapon->getMaxAmmo();
-            //Check if we're out of ammo, or if we're power attacking that we have at least half the power pack left.
-            if(ammoUsed + 2 >= maxAmmo) {
-                commander->sendSystemMessage("Your does not have enough ammo! You will have to reload before flurry attacking!");
-                return;
-            }
-
-            //Remove ammo, emptying the ammo if power attacking, or removing 1 if normal attacking.
-            weapon->setStoredInt("ammo_used", ammoUsed + 3);
-        }
-
-        //Dark Rebellion Rulebook Edition I, on Flurry Attack
-        Instead of simply one attack, you’ll roll three to-hit to determine three different attacks, each providing half damage if they succeed. 
-        If the target is using a combat stance that uses action points, they’ll have to spend twice as many action points to counter your attack, 
-        though they’ll only need to defeat your highest to-hit roll in order to counter all three attacks. 
-
-        int toHitDC = GetToHitModifier(attacker, defender, weapon) + 10;
-        int roll1 = BorDice::Roll(1, 20); 
-        int roll2 = BorDice::Roll(1, 20); 
-        int roll3 = BorDice::Roll(1, 20); 
-
-        int lowestRoll = std::min(std::min(roll1, roll2), roll3);
-
-        int skillCheck = 0;
-        if(weapon->isJediWeapon()) skillCheck = attacker->getSkillMod("rp_lightsaber");
-        else if(weapon->isUnarmedWeapon()) skillCheck = attacker->getSkillMod("rp_unarmed");
-        else if(weapon->isMeleeWeapon()) skillCheck = attacker->getSkillMod("rp_melee");
-        else if(weapon->isRangedWeapon()) skillCheck = attacker->getSkillMod("rp_ranged");
-        
-
-        //Lightsaber Hurt self check.
-        if(weapon->isJediWeapon()) {
-            //Modify toHitDC if its our lightsaber.
-            if(weapon->getCraftersName() == attacker->getFirstName()) {
-                toHitDC -= 2;
-                if(toHitDC < 0)
-                    toHitDC = 0;
-            }
-            
-            bool selfHit = false;
-            int saberSkill = attacker->getSkillMod("rp_lightsaber");
-            if(saberSkill == 0) {
-                if(lowestRoll < 18) {
-                    //Ouch
-                    selfHit = true;
-                    
-                } 
-            } else if(saberSkill < 3) {
-                if(lowestRoll == 1) {
-                    selfHit = true;
-                }
-            }
-
-            if(selfHit) {
-                BorEffect::PerformReactiveAnimation(attacker, attacker, "hit", GetSlotHitlocation(BorDice::Roll(1, 10)), true);
-                int totalDamage = GetDamageRoll(weapon->getMaxDamage(), weapon->getMinDamage(), weapon->getBonusDamage());
-                BorrieRPG::BroadcastMessage(attacker, attacker->getFirstName() + " accidently hurts themselves with the lightsaber, doing "+String::valueOf(totalDamage)+" damage!");
-                BorCharacter::ModPool(attacker, "health", totalDamage * -1, true);       
-                return;
-            }
-        }
-
-        bool hit1 = roll1 + skillCheck >= toHitDC;
-        bool hit2 = roll2 + skillCheck >= toHitDC + 5;
-        bool hit3 = roll3 + skillCheck >= toHitDC + 10;
-
-        DrainActionOrWill(attacker, 1);
-
-        //Absolute Miss
-        if(!hit1 && !hit2 && !hit3) {
-            BorrieRPG::BroadcastMessage(attacker, attacker->getFirstName() + " flurry attacked " +  defender->getFirstName() + " and missed! \\#DBDBDB" + GenerateFlurryOutputSpam(roll1, roll2, roll3, skillCheck, toHitDC) + "\\#FFFFFF");
-            BorEffect::PerformReactiveAnimation(defender, attacker, "miss", GetSlotHitlocation(BorDice::Roll(1, 10)), true);
-            BorEffect::PerformReactiveAnimation(defender, attacker, "miss", GetSlotHitlocation(BorDice::Roll(1, 10)), true);
-            BorEffect::PerformReactiveAnimation(defender, attacker, "miss", GetSlotHitlocation(BorDice::Roll(1, 10)), true);
-            return;
-        }
-
-        int damageDieCount = weapon->getMinDamage();
-        int damageDieType = weapon->getMaxDamage();
-        int bonusDamage = weapon->getBonusDamage();
-
-        if(weapon->isJediWeapon()) {
-            bonusDamage += attacker->getSkillMod("rp_lightsaber");
-        }
-
-        int damage1 = GetDamageRoll(damageDieType, damageDieCount, bonusDamage) / 2;
-        int damage2 = GetDamageRoll(damageDieType, damageDieCount, bonusDamage) / 2;
-        int damage3 = GetDamageRoll(damageDieType, damageDieCount, bonusDamage) / 2;
-
-        int totalDamage = 0;
-        if(hit1) totalDamage += damage1;
-        if(hit2) totalDamage += damage2;
-        if(hit3) totalDamage += damage3;
-
-        if(totalDamage < 1) totalDamage = 1;
-
-        int hitCount = 0;
-        if(hit1) hitCount++;
-        if(hit2) hitCount++;
-        if(hit3) hitCount++;
-
-        int highestRoll = roll1;
-        if(roll2 > highestRoll) highestRoll = roll2;
-        if(roll3 > highestRoll) highestRoll = roll3; 
-
-        String reactionResult = HandleCombatReaction(attacker, defender, totalDamage, highestRoll + skillCheck, BorDice::Roll(1, 10), false, true);
-
-        //Apply Followup as per the reaction.
-        String toHitString = "\\#DBDBDB" + GenerateFlurryOutputSpam(roll1, roll2, roll3, skillCheck, toHitDC) + "\\#FFFFFF";
-
-        String combatSpam = attacker->getFirstName() + " flurry attacked " +  defender->getFirstName();
-        
-        if(hitCount == 1) {
-            combatSpam += " and hit once!";
-        } else {
-            combatSpam += " and hit " + String::valueOf(hitCount) + " times!";
-        }
-
-
-        if(ignoreLOS) {
-            BorrieRPG::BroadcastMessage(attacker, combatSpam + " " + toHitString +  reactionResult + " (Line of Sight Ignored)");
-        } else {
-            BorrieRPG::BroadcastMessage(attacker, combatSpam + " " + toHitString +  reactionResult);
-        }
-        
-    }*/
 
     static int GetDamageRoll(int dieType, int dieCount, int bonusDamage) {
         int totalDamage = bonusDamage;
@@ -712,14 +569,17 @@ public:
 
         // Determine the cost to dodge, based on the armour class.
         int dodgeCost = 1 + GetCharacterArmourClass(defender);
+        int armourPenalty = 0;
+        if (GetCharacterArmourClass(defender) > 1)
+            armourPenalty = 5;
         DrainActionOrWill(defender, dodgeCost * actionPointMod);
 
-        if(rollResult >= toHit) {
+        if(rollResult >= toHit + armourPenalty) {
             // The defender has successfully dodged!
             reactionSpam += ", but " + BorString::getNiceName(defender) + " dodges out of the way! (" + rollSpam(dodgeRoll, maneuverabilitySkill, toHit) + ") ";
             BorEffect::PerformReactiveAnimation(defender, attacker, "dodge", GetSlotHitlocation(slot), true);
             
-        } else if(dodgeRoll + maneuverabilitySkill >= toHit / 2 ) {
+        } else if(dodgeRoll + maneuverabilitySkill >= (toHit / 2) + armourPenalty) {
             // Partial success, defender stumbles to crouching, and takes half damage.
             reactionSpam += ", " + BorString::getNiceName(defender) + " struggles to dodge out of the way! (" + rollSpam(dodgeRoll, maneuverabilitySkill, toHit) + ") ";
             reactionSpam += BorString::getNiceName(defender) + " stumbles, but only takes "+ damageNumber(incomingDamage / 2) +" damage.";
@@ -1025,11 +885,18 @@ public:
                     BorCharacter::ModPool(creature, "health", -damage, true);
 
                     // Output spam.
+                    StringIdChatParameter msg;
+                    msg.setStringId("@rp_spam:armour_dmg_report");
+                    
                     String armourName = armour->getCustomObjectName().toString();
                     if(armourName == "") {
-                        armourName = armour->getObjectTemplate()->getObjectName();
+                        msg.setTO(armour->getObjectID());
+                    } else {
+                        msg.setTO(armourName);
                     }
-                    creature->sendSystemMessage("Your " + armourName + " absorbed " + String::valueOf(armourDamage) + " damage.");
+                    
+                    msg.setDI(armourDamage);
+                    creature->sendSystemMessage(msg);
                     return;
                 }
             }
@@ -1041,69 +908,6 @@ public:
             BorCharacter::ModPool(creature, "health", -damage, true);
         }
     }
-    /*
-
-    //THIS IS AN OLD IMPLEMENTATION KEPT FOR REFERENCE ONLY. WILL BE REMOVED AFTER REFACTOR.
-
-    static void ApplyAdjustedHealthDamage(CreatureObject* creature, WeaponObject* attackerWeapon, int damage, int slot){
-        if(creature->isPlayerCreature()) { //Use their equipped armor
-            ManagedReference<ArmorObject*> armor = BorCharacter::GetArmorAtSlot(creature, GetSlotName(slot));
-            if(armor != nullptr) {
-                if(!armor->isBroken()) {
-                    String damageType = GetDamageType(attackerWeapon);
-                    if(damageType == "Lightsaber") { //Special Lightsaber Rules
-                        if(armor->getLightSaber() > 0) { //Can Resist Lightsabers
-                            //Take only 10 percent damage.
-                            BorCharacter::ModPool(creature, "health", (damage / 10) * -1, true);
-                        } else { //Take Full Damage
-                            BorCharacter::ModPool(creature, "health", damage * -1, true);
-                        }
-                    } else {
-                        //Armor handling (without penetration)
-                        int armorProtection = GetArmorProtection(armor, GetDamageType(attackerWeapon));
-                        int finalDamage = damage - armorProtection;
-                        if(finalDamage < 1) finalDamage = 1;
-                        armor->setConditionDamage(armor->getConditionDamage() + armorProtection);
-                        BorCharacter::ModPool(creature, "health", finalDamage * -1, true);    
-                        String armorName = armor->getCustomObjectName().toString();
-                        if(armorName == "") {
-                            armorName = armor->getObjectTemplate()->getObjectName();
-                        }
-                            
-                        creature->sendSystemMessage("Your " + armorName + " absorbed " + String::valueOf(armorProtection) + " damage.");                
-                    }
-                } else { //Take Full Damage
-                    BorCharacter::ModPool(creature, "health", damage * -1, true);
-                }
-            } else { //Take Full Damage
-                BorCharacter::ModPool(creature, "health", damage * -1, true);
-            }
-        } else { //Use their skill mod armor. 
-            String armorSlot = GetSlotName(slot);
-            String damageType = GetDamageType(attackerWeapon);
-            if(damageType == "Lightsaber") {
-                if(creature->getStoredInt("rp_armor_" + armorSlot + "_Lightsaber") > 0) {
-                    //Take only 10 percent damage.
-                    BorCharacter::ModPool(creature, "health", (damage / 10) * -1, true);
-                } else {
-                    BorCharacter::ModPool(creature, "health", damage * -1, true);
-                }
-            } else {
-                int armorRating = creature->getStoredInt("rp_armor_rating_" + armorSlot);
-                int weaponArmorPiercing = attackerWeapon->getArmorPiercing();
-                int damageDivider = GetWeaponPenetrationDivisionModifier(weaponArmorPiercing, armorRating);
-                if(damageDivider != 0) {
-                    int adjustedDamage = damage / damageDivider;
-                    int armorProtection = creature->getStoredInt("rp_armor_" + armorSlot + "_" + GetDamageType(attackerWeapon));
-                    int finalDamage = adjustedDamage - armorProtection;
-                    BorCharacter::ModPool(creature, "health", finalDamage * -1, true);
-                } else { //Take Full Damage
-                    BorCharacter::ModPool(creature, "health", damage * -1, true);
-                }
-            }            
-        }
-    }
-    */
 
     static int GetArmorProtection(ArmorObject* armor, String damageType) {
         if(damageType == "Kinetic")             return (int)armor->getKinetic();
@@ -1365,6 +1169,141 @@ public:
         return distanceModifier + postureModifier;
     }
 
+    static void throwGrenade(CreatureObject* attacker, CreatureObject* defender, CreatureObject* commander, WeaponObject* grenade) {
+        //Get our basic roll information
+
+        int toHitDC = GetToHitModifier(attacker, defender, grenade) + 10;
+
+        int demoSkill = attacker->getSkillMod("rp_demolitions");
+        int throwSkill = attacker->getSkillMod("rp_throwing");
+
+        int demoRoll = BorDice::Roll(1, 20);
+        int throwRoll = BorDice::Roll(1, 20);
+
+        SharedObjectTemplate* templateData = TemplateManager::instance()->getTemplate(grenade->getServerObjectCRC());
+
+		if (templateData == nullptr) {
+            commander->sendSystemMessage("ERROR: Unable to find grenade template data!");
+			return;
+        }
+
+		SharedWeaponObjectTemplate* grenadeData = cast<SharedWeaponObjectTemplate*>(templateData);
+
+		if (grenadeData == nullptr) {
+            commander->sendSystemMessage("ERROR: Unable to cast grenade template data!");
+            return;
+        }
+
+        int skillLevel = grenadeData->getRpSkillLevel();
+        int radius = grenade->getDamageRadius();
+
+        int damageRoll = BorDice::Roll(grenadeData->getMinDamage(), grenadeData->getMaxDamage());
+        int damage = damageRoll + grenadeData->getBonusDamage();
+
+        SortedVector<SceneObject*> closeObjects = getCreaturesInRange(defender, radius);
+        CreatureObject* primaryTarget = defender;
+
+        String spam = BorString::getNiceName(attacker)+" attempts to throw a "+grenade->getDisplayedName()+" at "+BorString::getNiceName(defender)+" "+BorString::skillSpam(throwSkill, throwRoll, throwSkill+throwRoll);
+
+        // Check if we blow ourselves up!
+        if (demoSkill < skillLevel && demoRoll == 1) {
+            // oof
+            primaryTarget = attacker;
+            closeObjects = getCreaturesInRange(primaryTarget, radius);
+
+            spam += ". However, they fail to arm the grenade properly, causing it to explode on top of them!";
+        } else {
+            // Check if we hit our target properly
+            if (throwRoll + throwSkill >= toHitDC) {
+                spam += " and hits!";
+            } else if (throwRoll + throwSkill >= toHitDC / 2 ) {
+                // retarget the grenade to a random person in range of the grenade!
+                primaryTarget = static_cast<CreatureObject*>(closeObjects.get(System::random(closeObjects.size())));
+                closeObjects = getCreaturesInRange(primaryTarget, radius);
+
+                spam += " and misses, hitting "+BorString::getNiceName(primaryTarget)+" instead!";
+            } else {
+                // We hit nobody, womp womp.
+                spam += "and goes wide, hitting nobody!";
+                return;
+            }
+            // Check return to sender!
+            if (primaryTarget->getStoredInt("reaction_stance") == RpReactionStance::FORCEDEFLECT && CanPerformReaction(primaryTarget, RpReactionStance::FORCEDEFLECT, damage, grenade, primaryTarget->getWeapon())) {
+                int teleRoll = BorDice::Roll(1, 20);
+                int teleSkill = primaryTarget->getSkillMod("rp_telekinesis");
+
+                int forceCost = 11-teleSkill;
+                if (forceCost < 1)
+                    forceCost = 1; 
+
+                BorCharacter::ModPool(primaryTarget, "force", -forceCost, true);
+
+                if (teleRoll + teleSkill > demoRoll + demoSkill) {
+                    // We've beaten the roll, returning to sender!
+                    spam += " However, "+BorString::getNiceName(primaryTarget)+" raises their hand, and the "+grenade->getDisplayedName()+" is returned to sender!";
+                    primaryTarget = attacker;
+                    closeObjects = getCreaturesInRange(attacker, radius);
+                } else {
+                    // At least we tried...
+                    spam += BorString::getNiceName(primaryTarget)+" raises their hand at it, but nothing happens!";
+                }
+            }
+        }
+
+        spam += " The following explosion deals "+BorString::damageSpam(grenadeData->getMinDamage(), grenadeData->getMaxDamage(), grenadeData->getBonusDamage(), damageRoll, damage)+", and effects "+String::valueOf(closeObjects.size())+" targets!";
+        //Output the spam before the reaction spam!
+        BorrieRPG::BroadcastMessage(attacker, spam);
+
+        for (int i = 0; i < closeObjects.size(); i++){
+            CreatureObject* targetCreature = static_cast<CreatureObject*>(closeObjects.get(i));
+            handleGrenadeReaction(targetCreature, grenade, demoRoll+demoSkill, damage);
+        }
+    }
+
+    static void handleGrenadeReaction(CreatureObject* creature, WeaponObject* grenade, int dodgeDC, int damageRoll){
+        String spam = "";
+        spam +=BorString::getNiceName(creature)+" is caught in the blast!";
+        // Attempt to dodge the grenade!
+        if (creature->getStoredInt("reaction_stance") == RpReactionStance::DODGE && CanPerformReaction(creature, RpReactionStance::DODGE, damageRoll, grenade, creature->getWeapon())){
+            int dodgeSkill = creature->getSkillMod("rp_maneuverability");
+            int dodgeRoll = BorDice::Roll(1, 20);
+
+            int dodgeCost = 1 + GetCharacterArmourClass(creature);
+            int armourPenalty = 0;
+            if (GetCharacterArmourClass(creature) > 1)
+                armourPenalty = 5;
+            DrainActionOrWill(creature, dodgeCost * 2);
+            dodgeDC = dodgeDC + armourPenalty;
+
+            if (dodgeRoll + dodgeSkill > dodgeDC){
+                //We've dodged the blast entirely!
+                spam += " They hit the floor in time "+rollSpam(dodgeRoll, dodgeSkill, dodgeDC)+", and avoid taking damage!";
+                creature->setPosture(CreaturePosture::PRONE, true, true);
+                BorrieRPG::BroadcastMessage(creature, spam);
+                return;
+
+            } else if (dodgeRoll + dodgeSkill > dodgeDC / 2){
+                //We were late to dodge, but still mitigated some damage!
+                damageRoll = damageRoll / 2;
+                creature->setPosture(CreaturePosture::PRONE, true, true);
+
+                spam += " They hit the floor late "+rollSpam(dodgeRoll, dodgeSkill, dodgeDC)+", and still take";
+            } else {
+                //We failed to dodge entirely, womp womp.
+                spam += " They attempt to hit the floor "+rollSpam(dodgeRoll, dodgeSkill, dodgeDC)+", but fail, taking";
+            }
+        } else {
+            spam += " They take";
+        }
+        //Apply the damage taken!
+        int hitLocation = BorDice::Roll(1, 10);
+        ApplyAdjustedHealthDamage(creature, grenade, damageRoll, hitLocation);
+        spam += " "+damageNumber(damageRoll)+" damage!";
+
+        //Finally, output the spam!
+        BorrieRPG::BroadcastMessage(creature, spam);
+    }
+
     static void ThrowRoleplayGrenade(CreatureObject* attacker, CreatureObject* defender, CreatureObject* commander, WeaponObject* grenade) {
         int toHitDC = GetToHitModifier(attacker, defender, grenade) + 10;
 
@@ -1505,6 +1444,34 @@ public:
         ApplyAdjustedHealthDamage(victim, grenade, totalDamage, 1);
 
         BorrieRPG::BroadcastMessage(victim, message);
+    }
+
+    static SortedVector<SceneObject*> getCreaturesInRange(CreatureObject* creature, int radius) {
+        ManagedReference<Zone*> zone = creature->getZone();
+
+        SortedVector<QuadTreeEntry*> closeObjects;
+		CloseObjectsVector* actualCloseObjects = (CloseObjectsVector*) creature->getCloseObjects();
+
+        // Turning our close objects vector into something we can work with more easily.
+        if (actualCloseObjects != nullptr) {
+			actualCloseObjects->safeCopyReceiversTo(closeObjects, CloseObjectsVector::CREOTYPE);
+		} else {
+			zone->getInRangeObjects(creature->getWorldPositionX(), creature->getWorldPositionY(), ZoneServer::CLOSEOBJECTRANGE, &closeObjects, true);
+		}
+
+        SortedVector<SceneObject*> result;
+
+        // We need to sort out non-creature objects, and creatures not in range of the radius.
+        for (int i = 0; i < closeObjects.size(); ++i) {
+            SceneObject* targetObject = static_cast<SceneObject*>(closeObjects.get(i));
+
+			if (targetObject->isCreatureObject() && creature->isInRange(targetObject, radius)) {
+                // Add our nearby creature to the result vector.
+				result.add(targetObject);
+			}
+        }
+
+        return result;
     }
 
     static void reloadWeapon(CreatureObject* creature, CreatureObject* commander, WeaponObject* weapon) {
