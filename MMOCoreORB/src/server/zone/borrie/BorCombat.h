@@ -1246,11 +1246,10 @@ public:
             }
         }
 
-        spam += " The following explosion deals "+BorString::damageSpam(grenadeData->getMinDamage(), grenadeData->getMaxDamage(), grenadeData->getBonusDamage(), damageRoll, damage)+", and effects "+String::valueOf(closeObjects.size() + 1)+" targets!";
+        spam += " The following explosion deals "+BorString::damageSpam(grenadeData->getMinDamage(), grenadeData->getMaxDamage(), grenadeData->getBonusDamage(), damageRoll, damage)+", and effects "+String::valueOf(closeObjects.size())+" targets!";
         //Output the spam before the reaction spam!
         BorrieRPG::BroadcastMessage(attacker, spam);
 
-        handleGrenadeReaction(primaryTarget, grenade, demoRoll+demoSkill, damage);
         for (int i = 0; i < closeObjects.size(); i++){
             CreatureObject* targetCreature = static_cast<CreatureObject*>(closeObjects.get(i));
             handleGrenadeReaction(targetCreature, grenade, demoRoll+demoSkill, damage);
@@ -1259,7 +1258,7 @@ public:
 
     static void handleGrenadeReaction(CreatureObject* creature, WeaponObject* grenade, int dodgeDC, int damageRoll){
         String spam = "";
-        spam +=BorString::getNiceName(creature);" is caught in the blast!";
+        spam +=BorString::getNiceName(creature)+" is caught in the blast!";
         // Attempt to dodge the grenade!
         if (creature->getStoredInt("reaction_stance") == RpReactionStance::DODGE && CanPerformReaction(creature, RpReactionStance::DODGE, damageRoll, grenade, creature->getWeapon())){
             int dodgeSkill = creature->getSkillMod("rp_maneuverability");
@@ -1276,6 +1275,7 @@ public:
                 //We've dodged the blast entirely!
                 spam += " They hit the floor in time "+rollSpam(dodgeRoll, dodgeSkill, dodgeDC)+", and avoid taking damage!";
                 creature->setPosture(CreaturePosture::PRONE, true, true);
+                BorrieRPG::BroadcastMessage(creature, spam);
                 return;
 
             } else if (dodgeRoll + dodgeSkill > dodgeDC / 2){
