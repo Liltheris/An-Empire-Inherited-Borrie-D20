@@ -98,10 +98,6 @@ end
 function CaridaAcademyScreenPlay:spawnMobiles()
 	--Species, Equipment, Skills, Customization
 	
-	--Imperial Requisition Vendor
-	local pNpc = spawnRoleplayMobile("rp_carida", "rp_convo_npc", 1, 32.6488, 320, 3087.64, 95, 0, "rp_human_male", "faction/imperial/officer_navy", "default", "random", "rpg_shopkeeper")
-	SceneObject(pNpc):setCustomObjectName("Semptimarn Xaxill (an Imperial Quartermaster)")
-	SceneObject(pNpc):setStoredString("vendor:theme", "imperial")
-	SceneObject(pNpc):setStoredString("vendor:shopList", "shop_imperial")
+
 
 end
