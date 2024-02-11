@@ -29,4 +29,5 @@ content = {
 	{"object/tangible/wearables/shirt/shared_singing_mountain_clan_shirt_s02.iff",},
 	{"object/tangible/wearables/shirt/shared_singing_mountain_clan_shirt_s03.iff",},
 	{"object/tangible/wearables/shirt/shirt_underwear_s01.iff",},
+	{"object/tangible/wearables/shirt/shirt_underwear_s02.iff",},
 }
