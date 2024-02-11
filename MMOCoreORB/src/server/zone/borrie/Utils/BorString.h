@@ -7,14 +7,34 @@
 /*Class dealing with the manipulation and formatting of strings for output in system messages and broadcasts.*/
 class BorString : public Logger {
 public:
+    /*Outputs the number coloured for natural min and max rolls, or uncoloured for all other rolls.*/
+    static String rollColour(int result, int dieType){
+        if (result == 1)
+            return "\\#FF0000"+String::valueOf(result)+"\\#.";
+        else if (result == dieType)
+            return "\\#00FF00"+String::valueOf(result)+"\\#.";
+        else 
+            return String::valueOf(result);
+    }
+
     /*Outputs a generic roll in the following format: ([count]d[type]: [result])*/
     static String rollSpam(int dieCount, int dieType, int result){
-        return "(" + String::valueOf(dieCount) + "d" + String::valueOf(dieType) + ": " + String::valueOf(result) + ")";
+        return "("+String::valueOf(dieCount)+"d"+String::valueOf(dieType)+": "+rollColour(result, dieType);
+    }
+
+    /*Outputs a generic roll in the following format: ([count]d[type]: [result] vs DC: [dc])*/
+    static String rollSpam(int dieCount, int dieType, int result, int dc){
+        return "(" + String::valueOf(dieCount) + "d" + String::valueOf(dieType) + ": " + rollColour(result, dieType) + " vs DC: "+String::valueOf(dc)+")";
     }
 
     /*Outputs a skill roll in the following format: (1d20: [roll] + [bonus] = [result])*/
     static String skillSpam(int bonus, int roll, int result){
-        return "(1d20: "+ String::valueOf(roll) + " + "+ String::valueOf(bonus) + " = " + String::valueOf(result) + ")";
+        return "(1d20: "+ rollColour(roll, 20) + " + "+ String::valueOf(bonus) + " = " + String::valueOf(result) + ")";
+    }
+
+    /*Outputs a skill roll in the following format: (1d20: [roll] + [bonus] = [result] vs DC: [dc])*/
+    static String skillSpam(int bonus, int roll, int result, int dc){
+        return "(1d20: "+ rollColour(roll, 20) + " + "+ String::valueOf(bonus) + " = " + String::valueOf(result) + " vs DC: "+String::valueOf(dc)+")";
     }
 
     /*Outputs a damage roll in the following format: [count]d[type]: [roll] + [bonus] = [result] damage*/

@@ -427,153 +427,6 @@ public:
             }
         }
     }
-    /*
-    /////////////////////////////////////////////////////////////////
-    // Old Implementation
-    /////////////////////////////////////////////////////////////////
-    static void FlurryAttackTarget(CreatureObject* attacker, CreatureObject* defender, CreatureObject* commander, bool ignoreLOS = false) {
-        ManagedReference<WeaponObject*> weapon = attacker->getWeapon();
-        if(weapon->isBroken()) {
-            commander->sendSystemMessage("Your weapon is broken, and you can't attack with a broken weapon.");
-            return;
-        }
-
-        if(!ignoreLOS) {
-            if (!CollisionManager::checkLineOfSight(attacker, defender)) {
-                commander->sendSystemMessage("You don't have a direct line of sight of your target.");
-                return;
-            }
-        }
-        
-        //Dealing with ammo
-        if (weapon->getAmmoPack() != "") {
-            int ammoUsed = weapon->getStoredInt("ammo_used");
-            int maxAmmo = weapon->getMaxAmmo();
-            //Check if we're out of ammo, or if we're power attacking that we have at least half the power pack left.
-            if(ammoUsed + 2 >= maxAmmo) {
-                commander->sendSystemMessage("Your does not have enough ammo! You will have to reload before flurry attacking!");
-                return;
-            }
-
-            //Remove ammo, emptying the ammo if power attacking, or removing 1 if normal attacking.
-            weapon->setStoredInt("ammo_used", ammoUsed + 3);
-        }
-
-        //Dark Rebellion Rulebook Edition I, on Flurry Attack
-        Instead of simply one attack, you’ll roll three to-hit to determine three different attacks, each providing half damage if they succeed. 
-        If the target is using a combat stance that uses action points, they’ll have to spend twice as many action points to counter your attack, 
-        though they’ll only need to defeat your highest to-hit roll in order to counter all three attacks. 
-
-        int toHitDC = GetToHitModifier(attacker, defender, weapon) + 10;
-        int roll1 = BorDice::Roll(1, 20); 
-        int roll2 = BorDice::Roll(1, 20); 
-        int roll3 = BorDice::Roll(1, 20); 
-
-        int lowestRoll = std::min(std::min(roll1, roll2), roll3);
-
-        int skillCheck = 0;
-        if(weapon->isJediWeapon()) skillCheck = attacker->getSkillMod("rp_lightsaber");
-        else if(weapon->isUnarmedWeapon()) skillCheck = attacker->getSkillMod("rp_unarmed");
-        else if(weapon->isMeleeWeapon()) skillCheck = attacker->getSkillMod("rp_melee");
-        else if(weapon->isRangedWeapon()) skillCheck = attacker->getSkillMod("rp_ranged");
-        
-
-        //Lightsaber Hurt self check.
-        if(weapon->isJediWeapon()) {
-            //Modify toHitDC if its our lightsaber.
-            if(weapon->getCraftersName() == attacker->getFirstName()) {
-                toHitDC -= 2;
-                if(toHitDC < 0)
-                    toHitDC = 0;
-            }
-            
-            bool selfHit = false;
-            int saberSkill = attacker->getSkillMod("rp_lightsaber");
-            if(saberSkill == 0) {
-                if(lowestRoll < 18) {
-                    //Ouch
-                    selfHit = true;
-                    
-                } 
-            } else if(saberSkill < 3) {
-                if(lowestRoll == 1) {
-                    selfHit = true;
-                }
-            }
-
-            if(selfHit) {
-                BorEffect::PerformReactiveAnimation(attacker, attacker, "hit", GetSlotHitlocation(BorDice::Roll(1, 10)), true);
-                int totalDamage = GetDamageRoll(weapon->getMaxDamage(), weapon->getMinDamage(), weapon->getBonusDamage());
-                BorrieRPG::BroadcastMessage(attacker, attacker->getFirstName() + " accidently hurts themselves with the lightsaber, doing "+String::valueOf(totalDamage)+" damage!");
-                BorCharacter::ModPool(attacker, "health", totalDamage * -1, true);       
-                return;
-            }
-        }
-
-        bool hit1 = roll1 + skillCheck >= toHitDC;
-        bool hit2 = roll2 + skillCheck >= toHitDC + 5;
-        bool hit3 = roll3 + skillCheck >= toHitDC + 10;
-
-        DrainActionOrWill(attacker, 1);
-
-        //Absolute Miss
-        if(!hit1 && !hit2 && !hit3) {
-            BorrieRPG::BroadcastMessage(attacker, attacker->getFirstName() + " flurry attacked " +  defender->getFirstName() + " and missed! \\#DBDBDB" + GenerateFlurryOutputSpam(roll1, roll2, roll3, skillCheck, toHitDC) + "\\#FFFFFF");
-            BorEffect::PerformReactiveAnimation(defender, attacker, "miss", GetSlotHitlocation(BorDice::Roll(1, 10)), true);
-            BorEffect::PerformReactiveAnimation(defender, attacker, "miss", GetSlotHitlocation(BorDice::Roll(1, 10)), true);
-            BorEffect::PerformReactiveAnimation(defender, attacker, "miss", GetSlotHitlocation(BorDice::Roll(1, 10)), true);
-            return;
-        }
-
-        int damageDieCount = weapon->getMinDamage();
-        int damageDieType = weapon->getMaxDamage();
-        int bonusDamage = weapon->getBonusDamage();
-
-        if(weapon->isJediWeapon()) {
-            bonusDamage += attacker->getSkillMod("rp_lightsaber");
-        }
-
-        int damage1 = GetDamageRoll(damageDieType, damageDieCount, bonusDamage) / 2;
-        int damage2 = GetDamageRoll(damageDieType, damageDieCount, bonusDamage) / 2;
-        int damage3 = GetDamageRoll(damageDieType, damageDieCount, bonusDamage) / 2;
-
-        int totalDamage = 0;
-        if(hit1) totalDamage += damage1;
-        if(hit2) totalDamage += damage2;
-        if(hit3) totalDamage += damage3;
-
-        if(totalDamage < 1) totalDamage = 1;
-
-        int hitCount = 0;
-        if(hit1) hitCount++;
-        if(hit2) hitCount++;
-        if(hit3) hitCount++;
-
-        int highestRoll = roll1;
-        if(roll2 > highestRoll) highestRoll = roll2;
-        if(roll3 > highestRoll) highestRoll = roll3; 
-
-        String reactionResult = HandleCombatReaction(attacker, defender, totalDamage, highestRoll + skillCheck, BorDice::Roll(1, 10), false, true);
-
-        //Apply Followup as per the reaction.
-        String toHitString = "\\#DBDBDB" + GenerateFlurryOutputSpam(roll1, roll2, roll3, skillCheck, toHitDC) + "\\#FFFFFF";
-
-        String combatSpam = attacker->getFirstName() + " flurry attacked " +  defender->getFirstName();
-        
-        if(hitCount == 1) {
-            combatSpam += " and hit once!";
-        } else {
-            combatSpam += " and hit " + String::valueOf(hitCount) + " times!";
-        }
-
-
-        if(ignoreLOS) {
-            BorrieRPG::BroadcastMessage(attacker, combatSpam + " " + toHitString +  reactionResult + " (Line of Sight Ignored)");
-        } else {
-            BorrieRPG::BroadcastMessage(attacker, combatSpam + " " + toHitString +  reactionResult);
-        }
-        
-    }*/
 
     static int GetDamageRoll(int dieType, int dieCount, int bonusDamage) {
         int totalDamage = bonusDamage;
@@ -1028,11 +881,18 @@ public:
                     BorCharacter::ModPool(creature, "health", -damage, true);
 
                     // Output spam.
+                    StringIdChatParameter msg;
+                    msg.setStringId("@rp_spam:armour_dmg_report");
+                    
                     String armourName = armour->getCustomObjectName().toString();
                     if(armourName == "") {
-                        armourName = armour->getObjectTemplate()->getObjectName();
+                        msg.setTO(armour->getObjectID());
+                    } else {
+                        msg.setTO(armourName);
                     }
-                    creature->sendSystemMessage("Your " + armourName + " absorbed " + String::valueOf(armourDamage) + " damage.");
+                    
+                    msg.setDI(armourDamage);
+                    creature->sendSystemMessage(msg);
                     return;
                 }
             }
@@ -1044,69 +904,6 @@ public:
             BorCharacter::ModPool(creature, "health", -damage, true);
         }
     }
-    /*
-
-    //THIS IS AN OLD IMPLEMENTATION KEPT FOR REFERENCE ONLY. WILL BE REMOVED AFTER REFACTOR.
-
-    static void ApplyAdjustedHealthDamage(CreatureObject* creature, WeaponObject* attackerWeapon, int damage, int slot){
-        if(creature->isPlayerCreature()) { //Use their equipped armor
-            ManagedReference<ArmorObject*> armor = BorCharacter::GetArmorAtSlot(creature, GetSlotName(slot));
-            if(armor != nullptr) {
-                if(!armor->isBroken()) {
-                    String damageType = GetDamageType(attackerWeapon);
-                    if(damageType == "Lightsaber") { //Special Lightsaber Rules
-                        if(armor->getLightSaber() > 0) { //Can Resist Lightsabers
-                            //Take only 10 percent damage.
-                            BorCharacter::ModPool(creature, "health", (damage / 10) * -1, true);
-                        } else { //Take Full Damage
-                            BorCharacter::ModPool(creature, "health", damage * -1, true);
-                        }
-                    } else {
-                        //Armor handling (without penetration)
-                        int armorProtection = GetArmorProtection(armor, GetDamageType(attackerWeapon));
-                        int finalDamage = damage - armorProtection;
-                        if(finalDamage < 1) finalDamage = 1;
-                        armor->setConditionDamage(armor->getConditionDamage() + armorProtection);
-                        BorCharacter::ModPool(creature, "health", finalDamage * -1, true);    
-                        String armorName = armor->getCustomObjectName().toString();
-                        if(armorName == "") {
-                            armorName = armor->getObjectTemplate()->getObjectName();
-                        }
-                            
-                        creature->sendSystemMessage("Your " + armorName + " absorbed " + String::valueOf(armorProtection) + " damage.");                
-                    }
-                } else { //Take Full Damage
-                    BorCharacter::ModPool(creature, "health", damage * -1, true);
-                }
-            } else { //Take Full Damage
-                BorCharacter::ModPool(creature, "health", damage * -1, true);
-            }
-        } else { //Use their skill mod armor. 
-            String armorSlot = GetSlotName(slot);
-            String damageType = GetDamageType(attackerWeapon);
-            if(damageType == "Lightsaber") {
-                if(creature->getStoredInt("rp_armor_" + armorSlot + "_Lightsaber") > 0) {
-                    //Take only 10 percent damage.
-                    BorCharacter::ModPool(creature, "health", (damage / 10) * -1, true);
-                } else {
-                    BorCharacter::ModPool(creature, "health", damage * -1, true);
-                }
-            } else {
-                int armorRating = creature->getStoredInt("rp_armor_rating_" + armorSlot);
-                int weaponArmorPiercing = attackerWeapon->getArmorPiercing();
-                int damageDivider = GetWeaponPenetrationDivisionModifier(weaponArmorPiercing, armorRating);
-                if(damageDivider != 0) {
-                    int adjustedDamage = damage / damageDivider;
-                    int armorProtection = creature->getStoredInt("rp_armor_" + armorSlot + "_" + GetDamageType(attackerWeapon));
-                    int finalDamage = adjustedDamage - armorProtection;
-                    BorCharacter::ModPool(creature, "health", finalDamage * -1, true);
-                } else { //Take Full Damage
-                    BorCharacter::ModPool(creature, "health", damage * -1, true);
-                }
-            }            
-        }
-    }
-    */
 
     static int GetArmorProtection(ArmorObject* armor, String damageType) {
         if(damageType == "Kinetic")             return (int)armor->getKinetic();
