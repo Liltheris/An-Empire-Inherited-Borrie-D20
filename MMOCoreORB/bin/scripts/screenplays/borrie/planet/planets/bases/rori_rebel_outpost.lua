@@ -10,6 +10,7 @@ base = {
 	spawns = {
 		--Type, Zone, x, z, y, angle, cell
 		{"recruiter","rp_rori", 3685.93, 96, -6456.94, 258, 0,},--{"rori_rebel_outpost"}},
+		{"grunt_army_green","rp_rori", 3671.92, 96, -6497.22, 181, 0,},
 		{"grunt_army_green","rp_rori", 3656.7, 96, -6497.05, 180, 0,},
 		{"scout","rp_rori", 3646.17, 103, -6494.64, 179, 0,},
 		{"scout","rp_rori", 3650.84, 103.002, -6493.98, 127, 0,},

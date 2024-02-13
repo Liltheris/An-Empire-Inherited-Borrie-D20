@@ -11,7 +11,6 @@ base = {
 		--Type, Zone, x, z, y, angle, cell
 		{"recruiter", "rp_dantooine", 1239.19, 6, 4576.62, 87, 0},--{"dant_fort_evir"}},
 		{"grunt_army_green","rp_dantooine", 1281.13, 6, 4591.1, 89, 0,},
-		{"grunt_army_green","rp_dantooine", 1281.27, 6, 4602, 57, 0,},
 		{"grunt_army_green","rp_dantooine", 1281.35, 6, 4601.99, 93, 0,},
 		{"grunt_army_green","rp_dantooine", 1270.43, 11.2012, 4610.57, 50, 0,},
 		{"grunt_army_green","rp_dantooine", 1268.43, 11.2012, 4612.77, 45, 0,},
