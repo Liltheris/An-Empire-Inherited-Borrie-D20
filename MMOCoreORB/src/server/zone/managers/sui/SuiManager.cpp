@@ -722,6 +722,7 @@ void SuiManager::sendInputBox(SceneObject* terminal, SceneObject* player, const 
 		confirmSui->setOtherButton(false, "");
 		confirmSui->setCancelButton(false, "");
 		confirmSui->setForceCloseDistance(32);
+		confirmSui->setMaxInputSize(99999);
 		creature->sendMessage(confirmSui->generateMessage());
 		playerObject->addSuiBox(confirmSui);
 	}
