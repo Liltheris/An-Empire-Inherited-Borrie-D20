@@ -9,6 +9,7 @@
 #include "server/zone/objects/creature/ai/AiAgent.h"
 
 #include "server/zone/borrie/BorCharacter.h"
+#include "server/zone/borrie/BorSkill.h"
 
 #include "server/zone/objects/creature/sui/TrainCommandSuiCallback.h"
 
@@ -32,7 +33,23 @@ public:
 
 		StringTokenizer args(arguments.toString());
 
+		String skill;
 
+		// Check if we have arguments for skill training, and train the attribute / skill if we can.
+		if (args.hasMoreTokens()){
+			args.getStringToken(skill);
+
+			if (BorSkill::GetStringIsSkill(skill)){
+				TrainSkill(creature, skill);
+				return SUCCESS;
+
+			} else if (BorSkill::GetStringIsAttribute(skill)){
+				TrainAttribute(creature, skill);
+				return SUCCESS;
+			}
+		}
+		
+		// Open a SUI box instead.
 		try {
 			int freeSkillPoints = creature->getStoredInt("starter_skill_points");
 			int freeAttrPoints = creature->getStoredInt("starter_attr_points");
@@ -52,7 +69,51 @@ public:
 		} catch (Exception& e) {
 			creature->sendSystemMessage("Error encountered when using train command.");
 		}
+
 		return SUCCESS;
+	}
+
+	void TrainAttribute(CreatureObject* player, String skill) const {
+		int currentRank = BorSkill::GetRealSkillLevel(player, skill);
+		if (BorSkill::CanTrainNextSkill(player, currentRank + 1, skill)) {
+			//Train it
+			SkillManager* skillManager = SkillManager::instance();
+			int freePoints = player->getStoredInt("starter_attr_points");
+			if(freePoints > 0) {
+				player->setStoredInt("starter_attr_points", freePoints - 1);
+				skillManager->awardSkill("rp_" + skill + "_" + BorSkill::GetSkillSuffixFromValue(currentRank + 1), player, true, false, true);
+				player->sendSystemMessage("You've gained a point in " + skill + ". You have " + String::valueOf(freePoints - 1) + " remaining free attribute points.");
+			} else {
+				skillManager->awardSkill("rp_" + skill + "_" + BorSkill::GetSkillSuffixFromValue(currentRank + 1), player, true, false, false);
+				player->sendSystemMessage("You've gained a point in " + skill + ".");
+			}
+		} else {
+			//Something happened
+			player->sendSystemMessage("ERROR: Something happened. You were eligible for the attribute you selected when you selected it, but you are no longer eligible.");
+		}
+	}
+
+	void TrainSkill(CreatureObject* player, String skill) const {
+		String skillParent = BorSkill::GetSkillParent(skill);
+		String skillAltParent = BorSkill::GetSkillAltParent(skill);
+		int currentRank = BorSkill::GetRealSkillLevel(player, skill);
+		if (BorSkill::CanTrainNextSkill(player, currentRank + 1, skill, skillParent, skillAltParent)) {
+			//Train it
+			SkillManager* skillManager = SkillManager::instance();
+			
+			int freePoints = player->getStoredInt("starter_skill_points");
+			if(freePoints > 0) {
+				player->setStoredInt("starter_skill_points", freePoints - 1);
+				skillManager->awardSkill("rp_" + skill + "_" + BorSkill::GetSkillSuffixFromValue(currentRank + 1), player, true, false, true);
+				player->sendSystemMessage("You've gained a point in " + skill + "! You have " + String::valueOf(freePoints - 1) + " remaining free skill points.");
+			} else {
+				skillManager->awardSkill("rp_" + skill + "_" + BorSkill::GetSkillSuffixFromValue(currentRank + 1), player, true, false, false);
+				player->sendSystemMessage("You've gained a point in " + skill + "!");
+			}
+		} else {
+			//Something happened
+			player->sendSystemMessage("ERROR: Something happened. You were eligible for the skill you selected when you selected it, but you are no longer eligible.");
+		}
 	}
 
 };
