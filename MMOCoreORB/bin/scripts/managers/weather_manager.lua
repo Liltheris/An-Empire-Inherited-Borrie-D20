@@ -342,3 +342,15 @@ rp_naboo = {
 
 	weatherStability = 90, -- Range 0 - 100, Higher = Less weather changes, Overall better weather
 }
+
+-----------------
+--    Truska
+-----------------
+rp_truska = {
+
+	defaultWeather = 0, -- Sunny
+
+	averageWeatherDuration = 9000, -- In seconds
+
+	weatherStability = 95, -- Range 0 - 100, Higher = Less weather changes, Overall better weather
+}
