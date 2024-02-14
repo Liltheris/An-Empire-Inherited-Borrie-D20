@@ -414,6 +414,9 @@ public:
 				//See if they have Force Aware at the very least.
 				if(!creature->hasSkill("rp_force_prog_rank_01")) //Force Aware
 					return false;
+				//Check if the Force skill is off cooldown to learn.
+				if(!creature->checkCooldownRecovery(skill))
+					return false;
 			}
 			int desiredLevel = GetSkillLevelFromString(skill);
 			if (desiredLevel == -1)

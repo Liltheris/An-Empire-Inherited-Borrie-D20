@@ -372,8 +372,10 @@ bool SkillManager::awardSkill(const String& skillName, CreatureObject* creature,
 				}  
 			}
 		}
-
-		
+		//Set our cooldown timer to 16 hours if the skill wasn't granted by a DM.
+		if(BorSkill::GetSkillIsForceSkill(skill->getSkillName()) && !dmOverride && !noXpRequired){
+			creature->updateCooldownTimer(BorSkill::GetSkillRealName(skill->getSkillName()), 18 * 60 * 60 * 1000); 
+		}
 
 		MissionManager* missionManager = creature->getZoneServer()->getMissionManager();
 
