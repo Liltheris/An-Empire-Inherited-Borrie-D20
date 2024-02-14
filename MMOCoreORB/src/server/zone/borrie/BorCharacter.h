@@ -1420,6 +1420,7 @@ public:
 		// Check if they have enough Force available to attune the crystal!
 		if (creature->getHAM(GetHAMFromPool("force")) < creature->getMaxHAM(GetHAMFromPool("force"))/2){
 			creature->sendSystemMessage("You attempt to focus the Force within you on the crystal, but your concentration fails. Your connection to the Force is too strained.");
+			return false;
 		}
 
 		// Attune the crystal!
@@ -1427,6 +1428,7 @@ public:
 		crystal->setStoredInt("attuned_id", creature->getObjectID());
 		crystal->setStoredString("attuned_name", creature->getFirstName());
 		crystal->setCustomObjectName(creature->getFirstName()+"'s Crystal", true);
+		creature->sendSystemMessage("You've successfully attuned the crystal!");
 
 		return true;
 	}

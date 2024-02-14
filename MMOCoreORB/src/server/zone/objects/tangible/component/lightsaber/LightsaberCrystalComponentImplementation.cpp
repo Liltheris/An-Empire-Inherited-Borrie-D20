@@ -329,6 +329,14 @@ void LightsaberCrystalComponentImplementation::fillAttributeList(AttributeListMe
 	StringBuffer str3;
 	str3 << "@jedi_spam:saber_color_" << getColor();
 	alm->insertAttribute("color", str3);
+
+	if (getStoredString("attuned_name") == ""){
+		StringBuffer str;
+		str << "\\#pcontrast2 Unattuned";
+		alm->insertAttribute("crystal_owner", str);
+	} else {
+		alm->insertAttribute("crystal_owner", getStoredString("attuned_name"));
+	}
 }
 
 void LightsaberCrystalComponentImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
@@ -343,7 +351,7 @@ void LightsaberCrystalComponentImplementation::fillObjectMenuResponse(ObjectMenu
 int LightsaberCrystalComponentImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	SceneObject* sceneObject = this->asSceneObject();
 
-	if (selectedID == 200 && player->hasSkill("rp_force_prog_rank_01")) {
+	if (selectedID == 200) { //Attune Crystal
 		BorCharacter::attuneForceCrystal(player, sceneObject);
 	}
 
