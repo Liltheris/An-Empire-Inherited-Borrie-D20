@@ -334,6 +334,8 @@ public:
 		FillPool(creature, "will", true);
 		FillPool(creature, "force", true);
 
+		creature->setStoredInt("stim_will_cost", 0);
+
 		String report = creature->getFirstName() + " has fully rested, filling all of their pools.";
 
 		//Send the message without the pool counts for players to see.
@@ -373,6 +375,8 @@ public:
 		if (creature->isPlayerCreature()) {
 			lastForce = creature->getPlayerObject()->getForcePower(); 
 		}
+
+		creature->setStoredInt("stim_will_cost", 0);
 
 		ModPool(creature, "health", creature->getSkillMod("rp_health") / 2);
 		FillPool(creature, "action", true);
@@ -419,6 +423,26 @@ public:
 			BorrieRPG::BroadcastMessage(creature, creature->getFirstName() + " fails to heal " + targetCreature->getFirstName() + " (1d20 Result: " + String::valueOf(roll) + " + " + String::valueOf(medicSkill) + " = " +  String::valueOf(roll + medicSkill) + " vs. DC:" + String::valueOf(medicineDC) + ")");
 			return false;
 		}
+	}
+
+	static bool useActionStim(StimPack* stim, CreatureObject* creature, CreatureObject* targetCreature) {
+		int medicSkill = creature->getSkillMod("rp_medicine");
+		int medicRoll = BorDice::Roll(1, 20);
+
+		int willCost = targetCreature->getStoredInt("stim_will_cost");
+
+		// Determine the will to be deducted from the target.
+		if (willCost < 1){
+			targetCreature->setStoredInt("stim_will_cost", 1);
+			willCost = 1;
+		} else {
+			willCost = willCost + 1;
+			targetCreature->setStoredInt("stim_will_cost", willCost);
+		}
+
+		ModPool(targetCreature, "will", -willCost, true);
+		ModPool(targetCreature, "action", -1, true);
+
 	}
 
 	static bool PerformImprovHeal(CreatureObject* creature, CreatureObject* targetCreature) {
@@ -1375,6 +1399,32 @@ public:
 
 		//18 hour cooldown.
 		creature->updateCooldownTimer("long_rest", 18 * 60 * 60 * 1000); 
+	}
+
+	static bool attuneForceCrystal(CreatureObject* creature, SceneObject* crystal){
+
+		// Check that the person trying to attune the crystal meets the requirements!
+		if (!creature->hasSkill("rp_inward_a02")){
+			creature->sendSystemMessage("You try to focus on the crystal, but cannot reach it. You require more meditation practice!");
+			return false;
+		}
+
+		// Check if we're trying to attune someone else's crystal.
+		if (crystal->getStoredInt("attuned_id") > 0){
+			creature->sendSystemMessage("You can't attune a crystal that is already attuned!");
+			return false;
+		}
+
+		// Check if they have enough Force available to attune the crystal!
+		if (creature->getHAM(GetHAMFromPool("force")) < creature->getMaxHAM(GetHAMFromPool("force"))/2){
+			creature->sendSystemMessage("You attempt to focus the Force within you on the crystal, but your concentration fails. Your connection to the Force is too strained.");
+		}
+
+		// Attune the crystal!
+		ModPool(creature, "force", -creature->getMaxHAM(GetHAMFromPool("force"))/2, true);
+		crystal->setStoredInt("attuned_id", creature->getObjectID());
+		crystal->setStoredString("attuned_name", creature->getFirstName());
+		crystal->setCustomObjectName(creature->getFirstName()+"'s Crystal", true);
 	}
 };
 

@@ -97,6 +97,9 @@ void TangibleObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneObjec
 			if(tano->isWeaponObject()) {
 				menuResponse->addRadialMenuItemToRadialID(91, 102, 3, "Set Damage");
 			}			
+			if(tano->isLightsaberCrystalObject()) {
+				menuResponse->addRadialMenuItemToRadialID(91, 103, 3, "Reset Attunement");
+			}
 		}
 	}
 
@@ -252,7 +255,7 @@ int TangibleObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject
 		ZoneServer* server = player->getZoneServer();
 
 		if (server != nullptr) {
-			sceneObject->asTangibleObject()->setCustomizationVariable("index_texture_1", selectedID - 111, true);
+			tano->setCustomizationVariable("index_texture_1", selectedID - 111, true);
 	}
 
 	if(selectedID == 92) { //Set RP Description
@@ -392,6 +395,14 @@ int TangibleObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject
 		ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
 		ghost->addSuiBox(ibox);
 		player->sendMessage(ibox->generateMessage());
+	}
+
+	if(selectedID == 103) {
+		tano->setStoredInt("attuned_id", 0);
+		tano->setStoredString("attuned_name", "");
+		tano->setCustomObjectName("Crystal", true);
+
+		player->sendSystemMessage("The Crystal has been reset.");
 	}
 	
 	return ObjectMenuComponent::handleObjectMenuSelect(sceneObject, player, selectedID);
