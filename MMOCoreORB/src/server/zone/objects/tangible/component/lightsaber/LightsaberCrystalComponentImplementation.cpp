@@ -332,7 +332,7 @@ void LightsaberCrystalComponentImplementation::fillAttributeList(AttributeListMe
 }
 
 void LightsaberCrystalComponentImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
-	if (player->hasSkill("rp_force_prog_01")){
+	if (player->hasSkill("rp_force_prog_rank_01")){
 		menuResponse->addRadialMenuItem(200, 3, "Attune Crystal");
 	}
 	
@@ -343,7 +343,7 @@ void LightsaberCrystalComponentImplementation::fillObjectMenuResponse(ObjectMenu
 int LightsaberCrystalComponentImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	SceneObject* sceneObject = this->asSceneObject();
 
-	if (selectedID == 200 && player->hasSkill("rp_force_prog_01")) {
+	if (selectedID == 200 && player->hasSkill("rp_force_prog_rank_01")) {
 		BorCharacter::attuneForceCrystal(player, sceneObject);
 	}
 
