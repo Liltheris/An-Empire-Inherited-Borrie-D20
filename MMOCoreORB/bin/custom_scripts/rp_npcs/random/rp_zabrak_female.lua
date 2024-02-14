@@ -38,6 +38,6 @@ random_ranges = {
 	{"/private/index_color_lips", 0, 255},
 	{"/private/index_style_tattoo", 0, 20},
 	{"/private/index_color_tattoo", 0, 64},
-	{"height", 0.89,1.03},
+	{"height", 0.88, 1.06},
 	{"hair", "object/tangible/hair/zabrak/shared_hair_zabrak_female", 1, 20, "/private/index_color_1", 0, 32},
 }

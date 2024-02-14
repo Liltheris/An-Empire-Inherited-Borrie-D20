@@ -18,10 +18,10 @@ object_tangible_wearables_armor_roleplay_zam_armor_zam_wesell_chest_plate = obje
 	maxCondition = 65,
 
 
-	rating = NONE,
+	rating = LIGHT,
 	rpskill = 0,
 
-	price = 2100,
+	price = 700,
 
 	kinetic = 0,
 	energy = 4,

@@ -1,0 +1,4 @@
+object_tangible_borrp_item_id_badge_generic = object_tangible_borrp_item_shared_id_badge_generic:new {
+
+}
+ObjectTemplates:addTemplate(object_tangible_borrp_item_id_badge_generic, "object/tangible/borrp/item/id_badge_generic.iff")

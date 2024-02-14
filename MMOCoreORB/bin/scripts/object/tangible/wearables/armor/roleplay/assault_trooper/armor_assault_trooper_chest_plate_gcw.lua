@@ -18,7 +18,7 @@ object_tangible_wearables_armor_roleplay_assault_trooper_armor_assault_trooper_c
 	maxCondition = 200,
 
 
-	rating = MEDIUM,
+	rating = HEAVY,
 	rpskill = 8,
 
 	price = 2400,

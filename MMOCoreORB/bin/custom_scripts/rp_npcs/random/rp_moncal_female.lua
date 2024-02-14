@@ -31,5 +31,5 @@ random_ranges = {
 	{"/shared_owner/blend_headsize_1", 0, 255},
 	{"/shared_owner/blend_ear_0", 0, 255},
 	{"/shared_owner/blend_ear_1", 0, 255},
-	{"height", 0.81, 0.94},
+	{"height", 0.88, 1.06},
 }

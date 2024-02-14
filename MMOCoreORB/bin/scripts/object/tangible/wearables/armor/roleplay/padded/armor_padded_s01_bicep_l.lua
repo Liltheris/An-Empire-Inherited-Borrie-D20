@@ -18,7 +18,7 @@ object_tangible_wearables_armor_roleplay_padded_armor_padded_s01_bicep_l = objec
 	maxCondition = 80,
 
 
-	rating = NONE,
+	rating = MEDIUM,
 	rpskill = 0,
 
 	price = 400,

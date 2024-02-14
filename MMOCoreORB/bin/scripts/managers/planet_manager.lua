@@ -996,6 +996,11 @@ rp_thyferra = {
 	gcwEnabled = 0,
 }
 
+rp_truska = {
+	weatherEnabled = 1,
+	gcwEnabled = 0,
+}
+
 rp_wayland = {
 	weatherEnabled = 1,
 	gcwEnabled = 0,

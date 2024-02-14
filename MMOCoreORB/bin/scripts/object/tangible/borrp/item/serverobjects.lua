@@ -36,3 +36,5 @@ includeFile("tangible/borrp/item/stun_net.lua")
 includeFile("tangible/borrp/item/tagger.lua")
 includeFile("tangible/borrp/item/torch_kit.lua")
 includeFile("tangible/borrp/item/tripwire.lua")
+
+includeFile("tangible/borrp/item/id_badge_generic.lua")

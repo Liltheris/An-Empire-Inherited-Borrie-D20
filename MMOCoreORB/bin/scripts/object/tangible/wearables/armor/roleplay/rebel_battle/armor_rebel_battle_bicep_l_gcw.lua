@@ -18,7 +18,7 @@ object_tangible_wearables_armor_roleplay_rebel_battle_armor_rebel_battle_bicep_l
 	maxCondition = 150,
 
 
-	rating = LIGHT,
+	rating = MEDIUM,
 	rpskill = 4,
 
 	price = 500,

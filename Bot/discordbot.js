@@ -27,7 +27,7 @@ function discordBot() {
     });
 
     client.on('disconnect', event => {
-        try {notif.send("RoC-Bot disconnected");}catch(ex){}
+        try {notif.send("AEI-Bot disconnected");}catch(ex){}
         client = server = notif = chat = spatial = notifRole = dmchat = null;
         console.log("Discord disconnect: " + JSON.stringify(event,null,2));
         setTimeout(discordBot, 1000);
@@ -78,7 +78,7 @@ SWG.recvSpatialChat = function(message, player) {
 	var spatialMsg = "msg.";
 	
 	if(dataArray[0] == "DM") {
-		spatialMsg = "**- "+player+" -**\n```ini\n[" + messageContent + "]\n```";
+		spatialMsg = "**-"+player+"-**\n```ini\n[" + messageContent + "]\n```";
 	} else if(dataArray[0] == "emote") {
 		spatialMsg = "**" + player + " " + messageContent + "**";
 	} else if(dataArray[0] == "whisper") {
@@ -101,7 +101,7 @@ SWG.recvTell = function(from, message) {
 SWG.recvSystemMsg = function(message) {
 	if(message.startsWith("who")) {
 		const dataArray = message.split(":");
-		var dataString = "DR: Players: " + dataArray[1] + " DMs: " + dataArray[2];
+		var dataString = "AEI: Players: " + dataArray[1] + " DMs: " + dataArray[2];
         //var dataString = "DR: Players: 420 DMs: 69";
 		//notif.send("Players Online: " + dataArray[1] + " | DMs Online: " + dataArray[2]);
 		client.user.setPresence({ status: "online", game: {name: dataString}});

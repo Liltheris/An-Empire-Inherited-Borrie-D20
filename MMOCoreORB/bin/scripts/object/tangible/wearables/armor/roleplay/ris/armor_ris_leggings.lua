@@ -18,7 +18,7 @@ object_tangible_wearables_armor_roleplay_ris_armor_ris_leggings = object_tangibl
 	maxCondition = 500,
 
 
-	rating = MEDIUM,
+	rating = HEAVY,
 	rpskill = 10,
 
 	price = 2000,

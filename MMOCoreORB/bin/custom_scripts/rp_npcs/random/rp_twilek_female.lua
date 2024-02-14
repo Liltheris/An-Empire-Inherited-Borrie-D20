@@ -39,6 +39,6 @@ random_ranges = {
 	{"/shared_owner/index_texture_1", 0,255},
 	{"/shared_owner/index_color_pattern", 0,47},
 	{"/private/index_color_eyebrow", 0,255},
-	{"height", 0.89, 1.08},
+	{"height", 0.88, 1.06},
 	{"hair", "object/tangible/hair/twilek/shared_hair_twilek_female", 1, 8, "/private/index_color_1", 0, 39},
 }

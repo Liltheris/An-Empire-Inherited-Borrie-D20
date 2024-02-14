@@ -18,7 +18,7 @@ object_tangible_wearables_armor_roleplay_chitin_armor_chitin_s01_helmet = object
 	maxCondition = 60,
 
 
-	rating = LIGHT,
+	rating = MEDIUM,
 	rpskill = 0,
 
 	price = 400,

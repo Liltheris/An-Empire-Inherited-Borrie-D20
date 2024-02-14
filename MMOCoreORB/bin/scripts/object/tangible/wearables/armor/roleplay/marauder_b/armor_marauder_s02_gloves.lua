@@ -18,7 +18,7 @@ object_tangible_wearables_armor_roleplay_marauder_b_armor_marauder_s02_gloves = 
 	maxCondition = 30,
 
 
-	rating = NONE,
+	rating = LIGHT,
 	rpskill = 2,
 
 	price = 350,

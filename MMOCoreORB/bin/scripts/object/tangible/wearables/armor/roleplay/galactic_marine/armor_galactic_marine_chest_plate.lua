@@ -18,7 +18,7 @@ object_tangible_wearables_armor_roleplay_galactic_marine_armor_galactic_marine_c
 	maxCondition = 150,
 
 
-	rating = LIGHT,
+	rating = MEDIUM,
 	rpskill = 6,
 
 	price = 1000,

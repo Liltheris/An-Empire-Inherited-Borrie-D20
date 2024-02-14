@@ -1831,3 +1831,8 @@ object_tangible_wearables_shirt_shared_shirt_underwear_s01 = SharedTangibleObjec
 }
 ObjectTemplates:addClientTemplate(object_tangible_wearables_shirt_shared_shirt_underwear_s01, "object/tangible/wearables/shirt/shared_shirt_underwear_s01.iff")
 --****************************************************************************************************************************************************************
+object_tangible_wearables_shirt_shared_shirt_underwear_s02 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/shirt/shared_shirt_underwear_s02.iff"
+}
+ObjectTemplates:addClientTemplate(object_tangible_wearables_shirt_shared_shirt_underwear_s02, "object/tangible/wearables/shirt/shared_shirt_underwear_s02.iff")
+--****************************************************************************************************************************************************************

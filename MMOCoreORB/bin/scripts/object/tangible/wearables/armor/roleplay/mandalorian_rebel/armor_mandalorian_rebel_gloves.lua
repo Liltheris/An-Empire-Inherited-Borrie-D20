@@ -18,7 +18,7 @@ object_tangible_wearables_armor_roleplay_mandalorian_rebel_armor_mandalorian_reb
 	maxCondition = 400,
 
 
-	rating = LIGHT,
+	rating = MEDIUM,
 	rpskill = 8,
 
 

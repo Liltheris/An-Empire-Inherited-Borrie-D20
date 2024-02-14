@@ -18,7 +18,7 @@ object_tangible_wearables_armor_roleplay_marine_armor_marine_chest_plate_firesta
 	maxCondition = 100,
 
 
-	rating = NONE,
+	rating = LIGHT,
 	rpskill = 4,
 
 

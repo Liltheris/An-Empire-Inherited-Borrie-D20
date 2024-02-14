@@ -4,5 +4,5 @@ random_ranges = {
 	{"/shared_owner/blend_fat", 0, 255},
 	{"/shared_owner/index_color_skin", 0, 27},
 	{"/private/index_color_0", 0, 0},
-	{"height", 0.89, 1.11},
+	{"height", 0.94, 1.11},
 }

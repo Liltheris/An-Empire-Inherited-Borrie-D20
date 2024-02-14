@@ -7,9 +7,9 @@ npc_template = {
 		"rp_twilek_male", 5,
 		"rp_twilek_female", 5,
 		"rp_rodian_male", 5,
-		"rp_rodial_female, 5,",
+		"rp_rodian_female", 5,
 		"rp_nikto_male", 40,
-		"rp_weeqay_male", 20
+		"rp_weequay_male", 20,
 	},
 	skillTemplates = {"factional/common/grunt_navy"},
 	
@@ -21,7 +21,7 @@ npc_template = {
 		{"rp_rodian_male", {"faction/hutt/grunt_navy"}},
 		{"rp_rodian_female", {"faction/hutt/grunt_navy"}},
 		{"rp_nikto_male", {"faction/hutt/grunt_navy"}},
-		{"rp_weeqay_male", {"faction/hutt/grunt_navy"}},
+		{"rp_weequay_male", {"faction/hutt/grunt_navy"}},
 	},	
 	
 	customizationTemplates = {
@@ -32,7 +32,7 @@ npc_template = {
 		{"rp_rodian_male", {"random"}},
 		{"rp_rodian_female", {"random"}},
 		{"rp_nikto_male", {"random"}},
-		{"rp_weeqay_male", {"random"}},
+		{"rp_weequay_male", {"random"}},
 	},	
 
 	customVarOverrides = {

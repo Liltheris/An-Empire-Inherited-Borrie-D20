@@ -18,10 +18,10 @@ object_tangible_wearables_armor_roleplay_ubese_armor_ubese_jacket = object_tangi
 	maxCondition = 100,
 
 
-	rating = NONE,
+	rating = LIGHT,
 	rpskill = 6,
 
-	price = 5000,
+	price = 2000,
 
 	kinetic = 2,
 	energy = 2,

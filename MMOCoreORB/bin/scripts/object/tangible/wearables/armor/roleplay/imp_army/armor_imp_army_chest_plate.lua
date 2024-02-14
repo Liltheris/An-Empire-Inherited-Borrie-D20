@@ -18,7 +18,7 @@ object_tangible_wearables_armor_roleplay_imp_army_armor_imp_army_chest_plate = o
 	maxCondition = 150,
 
 
-	rating = LIGHT,
+	rating = MEDIUM,
 	rpskill = 5,
 
 

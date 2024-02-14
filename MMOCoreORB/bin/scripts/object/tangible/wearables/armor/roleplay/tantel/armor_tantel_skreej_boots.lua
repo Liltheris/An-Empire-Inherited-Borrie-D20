@@ -18,7 +18,7 @@ object_tangible_wearables_armor_roleplay_tantel_armor_tantel_skreej_boots = obje
 	maxCondition = 85,
 
 
-	rating = NONE,
+	rating = MEDIUM,
 	rpskill = 2,
 
 	price = 350,

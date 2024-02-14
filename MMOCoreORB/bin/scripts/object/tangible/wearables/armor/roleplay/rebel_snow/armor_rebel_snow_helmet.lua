@@ -18,18 +18,18 @@ object_tangible_wearables_armor_roleplay_rebel_snow_armor_rebel_snow_helmet = ob
 	maxCondition = 100,
 
 
-	rating = NONE,
+	rating = LIGHT,
 	rpskill = 3,
 
 	price = 200,
 
-	kinetic = 1,
-	energy = 1,
+	kinetic = 2,
+	energy = 4,
 	electricity = 0,
 	stun = 4,
 	blast = -4,
 	heat = -2,
-	cold = 8,
+	cold = 0,
 	acid = 0,
 	lightsaber = -1,
 
