@@ -1427,6 +1427,8 @@ public:
 		crystal->setStoredInt("attuned_id", creature->getObjectID());
 		crystal->setStoredString("attuned_name", creature->getFirstName());
 		crystal->setCustomObjectName(creature->getFirstName()+"'s Crystal", true);
+
+		return true;
 	}
 };
 
