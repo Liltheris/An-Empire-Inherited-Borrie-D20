@@ -502,11 +502,18 @@ public:
 						if(object->isCreatureObject()) {
 							if(args.hasMoreTokens()) {
 								String specific;
+								int amount = 1;
 								args.getStringToken(specific);
+								if(args.hasMoreTokens()){
+									amount = args.getIntToken();
+									if (amount < 1){
+										amount = 1;
+									}
+								}
 								if(specific == "attribute") {
-									BorCharacter::ModifyFreePoints(creature, object->asCreatureObject(), "attr", 1);
+									BorCharacter::ModifyFreePoints(creature, object->asCreatureObject(), "attr", amount);
 								} else if(specific == "skill") {
-									BorCharacter::ModifyFreePoints(creature, object->asCreatureObject(), "skill", 1);
+									BorCharacter::ModifyFreePoints(creature, object->asCreatureObject(), "skill", amount);
 								}
 							} else {
 								creature->sendSystemMessage("You need to specify 'attribute' or 'skill' when using '/dm grantpoint' ex: '/dm grantpoint skill'");
@@ -523,10 +530,18 @@ public:
 							if(args.hasMoreTokens()) {
 								String specific;
 								args.getStringToken(specific);
+
+								int amount = 1;
+								if(args.hasMoreTokens()){
+									amount = args.getIntToken();
+									if (amount < 1){
+										amount = 1;
+									}
+								}
 								if(specific == "attribute") {
-									BorCharacter::ModifyFreePoints(creature, object->asCreatureObject(), "attr", -1);
+									BorCharacter::ModifyFreePoints(creature, object->asCreatureObject(), "attr", -amount);
 								} else if(specific == "skill") {
-									BorCharacter::ModifyFreePoints(creature, object->asCreatureObject(), "skill", -1);
+									BorCharacter::ModifyFreePoints(creature, object->asCreatureObject(), "skill", -amount);
 								}
 							} else {
 								creature->sendSystemMessage("You need to specify 'attribute' or 'skill' when using '/dm removepoint' ex: '/dm removepoint skill'");
