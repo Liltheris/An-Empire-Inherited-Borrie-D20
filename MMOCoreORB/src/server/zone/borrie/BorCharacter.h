@@ -443,6 +443,8 @@ public:
 		ModPool(targetCreature, "will", -willCost, true);
 		ModPool(targetCreature, "action", -1, true);
 
+		return true;
+
 	}
 
 	static bool PerformImprovHeal(CreatureObject* creature, CreatureObject* targetCreature) {
