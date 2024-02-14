@@ -256,6 +256,7 @@ int TangibleObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject
 
 		if (server != nullptr) {
 			tano->setCustomizationVariable("index_texture_1", selectedID - 111, true);
+		}
 	}
 
 	if(selectedID == 92) { //Set RP Description
