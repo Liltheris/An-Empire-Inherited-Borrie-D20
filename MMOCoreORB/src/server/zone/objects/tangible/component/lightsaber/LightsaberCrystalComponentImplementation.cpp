@@ -18,6 +18,11 @@
 #include "server/zone/managers/loot/LootManager.h"
 #include "server/zone/ZoneServer.h"
 
+#include "server/zone/objects/player/sui/callbacks/SetDescriptionCallback.h"
+#include "server/zone/objects/player/sui/callbacks/SetNameCallback.h"
+
+#include "server/zone/borrie/BorCharacter.h"
+
 void LightsaberCrystalComponentImplementation::initializeTransientMembers() {
 	ComponentImplementation::initializeTransientMembers();
 
@@ -327,57 +332,93 @@ void LightsaberCrystalComponentImplementation::fillAttributeList(AttributeListMe
 }
 
 void LightsaberCrystalComponentImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
-	/*
-	if (ownerID == 0 && player->hasSkill("force_title_jedi_rank_01") && hasPlayerAsParent(player)) {
-		String text = "@jedi_spam:tune_crystal";
-		menuResponse->addRadialMenuItem(128, 3, text);
+	if (player->hasSkill("rp_force_prog_01")){
+		menuResponse->addRadialMenuItem(200, 3, "Attune Crystal");
 	}
-
-	PlayerObject* ghost = player->getPlayerObject();
-	if (ghost != nullptr && ghost->isPrivileged()) {
-		menuResponse->addRadialMenuItem(129, 3, "Staff Commands");
-
-		if (getColor() == 31)
-			menuResponse->addRadialMenuItemToRadialID(129, 130, 3, "Recalculate Stats");
-
-		if (ownerID != 0)
-			menuResponse->addRadialMenuItemToRadialID(129, 131, 3, "Untune Crystal");
-	}
-
-	*/
+	
 
 	ComponentImplementation::fillObjectMenuResponse(menuResponse, player);
 }
 
 int LightsaberCrystalComponentImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	if (selectedID == 128 && player->hasSkill("force_title_jedi_rank_01") && hasPlayerAsParent(player) && ownerID == 0) {
-		ManagedReference<SuiMessageBox*> suiMessageBox = new SuiMessageBox(player, SuiWindowType::TUNE_CRYSTAL);
+	SceneObject* sceneObject = this->asSceneObject();
 
-		suiMessageBox->setPromptTitle("@jedi_spam:confirm_tune_title");
-		suiMessageBox->setPromptText("@jedi_spam:confirm_tune_prompt");
-		suiMessageBox->setCancelButton(true, "Cancel");
-		suiMessageBox->setUsingObject(_this.getReferenceUnsafeStaticCast());
-		suiMessageBox->setCallback(new LightsaberCrystalTuneSuiCallback(player->getZoneServer()));
-
-		player->getPlayerObject()->addSuiBox(suiMessageBox);
-		player->sendMessage(suiMessageBox->generateMessage());
+	if (selectedID == 200 && player->hasSkill("rp_force_prog_01")) {
+		BorCharacter::attuneForceCrystal(player, sceneObject);
 	}
 
-	PlayerObject* ghost = player->getPlayerObject();
-	if (ghost != nullptr && ghost->isPrivileged()){
-		if (selectedID == 130 && getColor() == 31) {
-			generateCrystalStats();
-		} else if (selectedID == 131 && ownerID != 0) {
-			ownerID = 0;
+	if(selectedID == 92) { //Set RP Description
+		// The Sui Box.
+		ZoneServer* server = player->getZoneServer();
+		ManagedReference<SuiInputBox*> ibox = new SuiInputBox(player, SuiWindowType::CITY_RENAME);
+		ibox->setCallback(new SetDescriptionCallback(server, sceneObject));
+		ibox->setUsingObject(sceneObject);
+		ibox->setMaxInputSize(99999);
+		ibox->setPromptTitle("Set Roleplay Description");
+		ibox->setPromptText("Set the description that players will see when examining this object.");
 
-			String tuneName = StringIdManager::instance()->getStringId(objectName.getFullPath().hashCode()).toString();
-			if (getCustomObjectName().toString().contains("(Exceptional)"))
-				tuneName = tuneName + " (Exceptional)\\#.";
-			else if (getCustomObjectName().toString().contains("(Legendary)"))
-				tuneName = tuneName + " (Legendary)\\#.";
-			else
-				tuneName = tuneName + "\\#.";
+		// Add to player.
+		ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
+		ghost->addSuiBox(ibox);
+		player->sendMessage(ibox->generateMessage());
+	}
+
+	if(selectedID == 93) { //Set Writeable
+
+	} 
+
+	if(selectedID == 94) { //Copy Object
+		BorrieRPG::copyTarget(player, sceneObject, true);
+	} 
+
+	if(selectedID == 95) { //Rename Object
+		// The Sui Box.
+		ZoneServer* server = player->getZoneServer();
+		ManagedReference<SuiInputBox*> ibox = new SuiInputBox(player, SuiWindowType::CITY_RENAME);
+		ibox->setCallback(new SetNameCallback(server, sceneObject));
+		ibox->setUsingObject(sceneObject);
+		ibox->setMaxInputSize(99999);
+		ibox->setPromptTitle("Set New Name");
+		ibox->setPromptText("Set the name you'd like this object to have.");
+
+		// Add to player.
+		ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
+		ghost->addSuiBox(ibox);
+		player->sendMessage(ibox->generateMessage());
+	}
+
+	if(selectedID == 96) { //Give to Target
+		ManagedReference<SceneObject*> playerTarget = player->getZoneServer()->getObject(player->getTargetID());
+		if(playerTarget != nullptr) {
+			if(playerTarget->isCreatureObject()) {
+				CreatureObject* targetCreature = playerTarget->asCreatureObject();
+				ManagedReference<SceneObject*> inventory = playerTarget->getSlottedObject("inventory");
+				if (inventory == nullptr || inventory->isContainerFullRecursive()) {
+					player->sendSystemMessage("Target inventory is full, so the item could not be sent.");
+					return 0;
+				}
+
+				if (inventory->transferObject(sceneObject, -1, true)) {
+					inventory->broadcastObject(sceneObject, true);
+					player->sendSystemMessage("Gave " + targetCreature->getCustomObjectName() + " \"" + sceneObject->getCustomObjectName() + ".\"" );
+					targetCreature->sendSystemMessage("You recieved \"" + sceneObject->getCustomObjectName() + ".\"");
+				} else {
+					player->sendSystemMessage("Error transferring object to target.");
+				}
+			} else {
+				player->sendSystemMessage("Your target needs to be a player.");
+			}
+		} else {
+			player->sendSystemMessage("You need to have a target.");
 		}
+	}
+
+	if(selectedID == 103) {
+		sceneObject->setStoredInt("attuned_id", 0);
+		sceneObject->setStoredString("attuned_name", "");
+		sceneObject->setCustomObjectName("Crystal", true);
+
+		player->sendSystemMessage("The Crystal has been reset.");
 	}
 
 	return 0;
