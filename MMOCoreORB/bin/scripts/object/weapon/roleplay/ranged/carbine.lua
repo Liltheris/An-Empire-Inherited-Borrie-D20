@@ -309,8 +309,8 @@ object_weapon_roleplay_ranged_carbine_e11_carbine = object_weapon_ranged_carbine
 
 	--Damage (minDamage[d]maxDamage) i.e. (2d20)
 	minDamage = 1, --Amount of Die used in Damage
-	maxDamage = 4, --Type of Die used in Damage
-	bonusDamage = 2,
+	maxDamage = 6, --Type of Die used in Damage
+	bonusDamage = 4,
 	
 	rarity="Uncommon",
 
