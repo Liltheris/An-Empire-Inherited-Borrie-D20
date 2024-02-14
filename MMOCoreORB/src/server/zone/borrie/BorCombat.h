@@ -82,10 +82,13 @@ public:
             defender->setStoredInt("is_vulnerable", 0);
         }
 
-        // Reduce the DC by 2 if the weapon is our own lightsaber.
-        // NOTE: In the future this will be replaced for a check for an attuned crystal instead.
-        if(weapon->isJediWeapon() && weapon->getCraftersName() == attacker->getFirstName()){
-            toHitDC -= 2;
+        // Reduce the DC by 2 if the weapon is our own crystal.
+        if(weapon->isJediWeapon()){
+            ManagedReference<SceneObject*> crystal = weapon->getContainerObject(0);
+            if (crystal != nullptr) {
+                if (crystal->getStoredInt("attuned_id") == attacker->getObjectID())
+                    toHitDC -= 2;
+            }  
         }
 
         // Determine and apply the action cost of the attack, if any!
@@ -281,8 +284,7 @@ public:
             defender->setStoredInt("is_vulnerable", 0);
         }
 
-        // Reduce the DC by 2 if the weapon is our own lightsaber.
-        // NOTE: In the future this will be replaced for a check for an attuned crystal instead.
+        // Reduce the DC by 2 if the weapon is our own crystal.
         if(weapon->isJediWeapon()){
             ManagedReference<SceneObject*> crystal = weapon->getContainerObject(0);
             if (crystal != nullptr) {
