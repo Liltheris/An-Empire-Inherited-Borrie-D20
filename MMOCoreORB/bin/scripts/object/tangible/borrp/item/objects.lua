@@ -188,3 +188,8 @@ object_tangible_borrp_item_shared_tripwire = SharedTangibleObjectTemplate:new {
 }
 ObjectTemplates:addClientTemplate(object_tangible_borrp_item_shared_tripwire, "object/tangible/borrp/item/shared_tripwire.iff")
 --********************************************************************************************************************************
+object_tangible_borrp_item_shared_id_badge_generic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/borrp/item/shared_id_badge_generic.iff"
+}
+ObjectTemplates:addClientTemplate(object_tangible_borrp_item_shared_id_badge_generic, "object/tangible/borrp/item/shared_id_badge_generic.iff")
+--****************************************************************************************************************************************
