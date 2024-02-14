@@ -286,7 +286,7 @@ public:
         if(weapon->isJediWeapon()){
             ManagedReference<SceneObject*> crystal = weapon->getContainerObject(0);
             if (crystal != nullptr) {
-                if (crystal->getStoredInt("attuned_id") == attacker->getObjectID());
+                if (crystal->getStoredInt("attuned_id") == attacker->getObjectID())
                     toHitDC -= 2;
             }  
         }
