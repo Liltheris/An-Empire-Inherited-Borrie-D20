@@ -66,6 +66,16 @@ void TangibleObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneObjec
 			menuResponse->addRadialMenuItemToRadialID(81, 82, 3, "Primary");
 			menuResponse->addRadialMenuItemToRadialID(81, 83, 3, "Secondary");
 			menuResponse->addRadialMenuItemToRadialID(81, 84, 3, "Tertiary");
+
+			menuResponse->addRadialMenuItem(110, 3, "Change Style");
+			menuResponse->addRadialMenuItemToRadialID(110, 111, 3, "Style 1");
+			menuResponse->addRadialMenuItemToRadialID(110, 112, 3, "Style 2");
+			menuResponse->addRadialMenuItemToRadialID(110, 113, 3, "Style 3");
+			menuResponse->addRadialMenuItemToRadialID(110, 114, 3, "Style 4");
+			menuResponse->addRadialMenuItemToRadialID(110, 115, 3, "Style 5");
+			menuResponse->addRadialMenuItemToRadialID(110, 116, 3, "Style 6");
+			menuResponse->addRadialMenuItemToRadialID(110, 117, 3, "Style 7");
+			menuResponse->addRadialMenuItemToRadialID(110, 118, 3, "Style 8");
 		}	
 
 		if(player->getPlayerObject()->hasGodMode()) {
@@ -213,6 +223,37 @@ int TangibleObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject
 			player->sendMessage(cbox->generateMessage());
 		}
 	} 
+
+	if (selectedID >= 111 && selectedID <= 118) { //Change Style
+		ManagedReference<SceneObject*> parent = sceneObject->getParent().get();
+
+		if (parent == nullptr)
+			return 0;
+
+		if (parent->isPlayerCreature()) {
+			player->sendSystemMessage("@armor_rehue:equipped");
+			return 0;
+		}
+
+		if (parent->isCellObject()) {
+			ManagedReference<SceneObject*> obj = parent->getParent().get();
+
+			if (obj != nullptr && obj->isBuildingObject()) {
+				ManagedReference<BuildingObject*> buio = cast<BuildingObject*>(obj.get());
+
+				if (!buio->isOnAdminList(player))
+					return 0;
+			}
+		} else {
+			if (!sceneObject->isASubChildOf(player))
+				return 0;
+		}
+
+		ZoneServer* server = player->getZoneServer();
+
+		if (server != nullptr) {
+			sceneObject->asTangibleObject()->setCustomizationVariable("index_texture_1", selectedID - 111, true);
+	}
 
 	if(selectedID == 92) { //Set RP Description
 		// The Sui Box.
