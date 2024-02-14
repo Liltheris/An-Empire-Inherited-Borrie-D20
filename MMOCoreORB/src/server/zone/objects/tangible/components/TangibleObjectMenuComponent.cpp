@@ -77,6 +77,10 @@ void TangibleObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneObjec
 			menuResponse->addRadialMenuItemToRadialID(110, 117, 3, "Style 7");
 			menuResponse->addRadialMenuItemToRadialID(110, 118, 3, "Style 8");
 		}	
+		
+		if (sceneObject->isLightsaberCrystalObject() && player->hasSkill("rp_force_prog_rank_01")){
+			menuResponse->addRadialMenuItem(85, 3, "Attune Crystal");
+	}
 
 		if(player->getPlayerObject()->hasGodMode()) {
 			menuResponse->addRadialMenuItem(91, 3, "DM Options");

@@ -325,11 +325,6 @@ void LightsaberCrystalComponentImplementation::fillAttributeList(AttributeListMe
 	}
 
 	*/
-
-	StringBuffer str3;
-	str3 << "@jedi_spam:saber_color_" << getColor();
-	alm->insertAttribute("color", str3);
-
 	if (getStoredString("attuned_name") == ""){
 		StringBuffer str;
 		str << "\\#pcontrast2 Unattuned";
@@ -337,13 +332,13 @@ void LightsaberCrystalComponentImplementation::fillAttributeList(AttributeListMe
 	} else {
 		alm->insertAttribute("crystal_owner", getStoredString("attuned_name"));
 	}
+
+	StringBuffer str3;
+	str3 << "@jedi_spam:saber_color_" << getColor();
+	alm->insertAttribute("color", str3);
 }
 
 void LightsaberCrystalComponentImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
-	if (player->hasSkill("rp_force_prog_rank_01")){
-		menuResponse->addRadialMenuItem(81, 3, "Attune Crystal");
-	}
-	
 
 	ComponentImplementation::fillObjectMenuResponse(menuResponse, player);
 }
@@ -351,7 +346,7 @@ void LightsaberCrystalComponentImplementation::fillObjectMenuResponse(ObjectMenu
 int LightsaberCrystalComponentImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	SceneObject* sceneObject = this->asSceneObject();
 
-	if (selectedID == 81) { //Attune Crystal
+	if (selectedID == 85) { //Attune Crystal
 		BorCharacter::attuneForceCrystal(player, sceneObject);
 	}
 
