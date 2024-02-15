@@ -1439,7 +1439,7 @@ public:
 		int dc = crystal->getStoredInt("attunement_cost");
 
 		msg = BorString::getNiceName(creature)+" attempts to attune a lightsaber crystal! \\#DBDBDB";
-		msg += BorString::skillSpam(inwardSkill, inwardRoll, inwardSkill + inwardRoll, dc)+"\\#FFFFFF ";
+		msg += BorString::skillSpamDC(inwardSkill, inwardRoll, inwardSkill + inwardRoll, dc)+"\\#FFFFFF ";
 
 		ModPool(creature, "force", -creature->getPlayerObject()->getForcePowerMax(), true);
 		ModPool(creature, "will", -2, true);
