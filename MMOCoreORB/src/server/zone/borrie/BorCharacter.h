@@ -7,6 +7,7 @@
 
 //#include "templates/roleplay/RoleplayManager.h"
 
+#include "server/zone/borrie/Utils/BorString.h"
 #include "server/zone/borrie/BorrieRPG.h"
 #include "server/zone/borrie/BorSkill.h"
 #include "server/zone/borrie/BorDice.h"
