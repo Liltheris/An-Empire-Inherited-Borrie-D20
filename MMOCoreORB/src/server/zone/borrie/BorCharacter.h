@@ -1404,6 +1404,10 @@ public:
 	}
 
 	static bool attuneForceCrystal(CreatureObject* creature, SceneObject* crystal){
+		// No idea how a non-player would ever get here, but better safe than sorry.
+		if(!creature->isPlayerCreature()){
+			return false;
+		}
 
 		// Check that the person trying to attune the crystal meets the requirements!
 		if (!creature->hasSkill("rp_inward_a02")){
@@ -1418,18 +1422,43 @@ public:
 		}
 
 		// Check if they have enough Force available to attune the crystal!
-		if (creature->getHAM(GetHAMFromPool("force")) < creature->getMaxHAM(GetHAMFromPool("force"))/2){
+		if (creature->getPlayerObject()->getForcePower() != creature->getPlayerObject()->getForcePowerMax()){
 			creature->sendSystemMessage("You attempt to focus the Force within you on the crystal, but your concentration fails. Your connection to the Force is too strained.");
 			return false;
 		}
 
-		// Attune the crystal!
-		ModPool(creature, "force", -creature->getMaxHAM(GetHAMFromPool("force"))/2, true);
-		crystal->setStoredInt("attuned_id", creature->getObjectID());
-		crystal->setStoredString("attuned_name", creature->getFirstName());
-		crystal->setCustomObjectName(creature->getFirstName()+"'s Crystal", true);
-		creature->sendSystemMessage("You've successfully attuned the crystal!");
+		int inwardSkill = creature->getSkillMod("rp_inward");
+		int inwardRoll = BorDice::Roll(1, 20);
 
+		if (crystal->getStoredInt("attunement_cost") <= 0){
+			crystal->setStoredInt("attunement_cost", 15); 
+		}
+
+		String msg = "";
+
+		int dc = crystal->getStoredInt("attunement_cost");
+
+		msg = BorString::getNiceName(creature)+" attempts to attune a lightsaber crystal! \\#DBDBDB";
+		msg += BorString::skillSpam(inwardSkill, inwardRoll, inwardSkill + inwardRoll, dc)+"\\#FFFFFF ";
+
+		ModPool(creature, "force", -creature->getPlayerObject()->getForcePowerMax(), true);
+		ModPool(creature, "will", -2, true);
+
+		if (inwardSkill + inwardRoll >= dc && inwardRoll != 1){
+			// Attune the crystal!
+			crystal->setStoredInt("attuned_id", creature->getObjectID());
+			crystal->setStoredString("attuned_name", creature->getFirstName());
+			crystal->setCustomObjectName(creature->getFirstName()+"'s Crystal", true);
+
+			msg += "and succeeds! They pour their presence into the crystal, and it is now attuned to them, and resonates with their presence.";
+			BorrieRPG::BroadcastMessage(creature, msg);
+		} else {
+			// Reduce the DC for next time!
+			crystal->setStoredInt("attunement_cost", dc-2);
+			msg += "and fails. They pour their presence into the crystal, and the crystal resonates briefly, but does not hold on.";
+			BorrieRPG::BroadcastMessage(creature, msg);
+			creature->sendSystemMessage("The DC was reduced by 2!");
+		}
 		return true;
 	}
 };

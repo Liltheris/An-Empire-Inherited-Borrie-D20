@@ -94,7 +94,7 @@ public:
         // Determine and apply the action cost of the attack, if any!
         // Power attack costs 3 action, aimed attack costs 1.
         if(powerAttack){
-            if (weapon->isRangedWeapon()) {
+            if (!weapon->isRangedWeapon()) {
                 DrainActionOrWill(attacker, 3);
             } else {
                 DrainActionOrWill(attacker, 1);
