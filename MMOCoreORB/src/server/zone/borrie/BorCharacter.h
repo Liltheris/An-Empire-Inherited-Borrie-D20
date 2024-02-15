@@ -1430,6 +1430,7 @@ public:
 
 		int inwardSkill = creature->getSkillMod("rp_inward");
 		int inwardRoll = BorDice::Roll(1, 20);
+		int result = inwardSkill + inwardRoll;
 
 		if (crystal->getStoredInt("attunement_cost") <= 0){
 			crystal->setStoredInt("attunement_cost", 15); 
@@ -1440,7 +1441,7 @@ public:
 		int dc = crystal->getStoredInt("attunement_cost");
 
 		msg = BorString::getNiceName(creature)+" attempts to attune a lightsaber crystal! \\#DBDBDB";
-		msg += BorString::skillSpamDC(inwardSkill, inwardRoll, inwardSkill + inwardRoll, dc)+"\\#FFFFFF ";
+		msg += BorString::skillSpam(inwardSkill, inwardRoll, result, dc)+"\\#FFFFFF ";
 
 		ModPool(creature, "force", -creature->getPlayerObject()->getForcePowerMax(), true);
 		ModPool(creature, "will", -2, true);

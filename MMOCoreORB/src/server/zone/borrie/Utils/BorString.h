@@ -23,7 +23,7 @@ public:
     }
 
     /*Outputs a generic roll in the following format: ([count]d[type]: [result] vs DC: [dc])*/
-    static String rollSpamDC(int dieCount, int dieType, int result, int dc){
+    static String rollSpam(int dieCount, int dieType, int result, int dc){
         return "(" + String::valueOf(dieCount) + "d" + String::valueOf(dieType) + ": " + rollColour(result, dieType) + " vs DC: "+String::valueOf(dc)+")";
     }
 
@@ -33,7 +33,7 @@ public:
     }
 
     /*Outputs a skill roll in the following format: (1d20: [roll] + [bonus] = [result] vs DC: [dc])*/
-    static String skillSpamDC(int bonus, int roll, int result, int dc){
+    static String skillSpam(int bonus, int roll, int result, int dc){
         return "(1d20: "+ rollColour(roll, 20) + " + "+ String::valueOf(bonus) + " = " + String::valueOf(result) + " vs DC: "+String::valueOf(dc)+")";
     }
 
