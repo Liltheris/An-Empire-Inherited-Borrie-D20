@@ -29,7 +29,7 @@
 
 #include "engine/engine.h"
 
-#include "server/zone/borrie/utils/BorString.h"
+#include "server/zone/borrie/BorString.h"
 
 class BorrieRPG : public Logger {
 public:

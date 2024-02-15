@@ -6,7 +6,7 @@
 #include "server/zone/packets/chat/ChatSystemMessage.h"
 
 #include "server/zone/borrie/BorrieRPG.h"
-#include "server/zone/borrie/utils/BorString.h"
+#include "server/zone/borrie/BorString.h"
 #include "server/zone/borrie/BorCharacter.h"
 #include "server/zone/borrie/BorDice.h"
 #include "server/zone/borrie/BorEffect.h"
