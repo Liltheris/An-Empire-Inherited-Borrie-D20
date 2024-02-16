@@ -83,12 +83,22 @@ public:
         }
 
         // Reduce the DC by 2 if the weapon is our own crystal.
-        if(weapon->isJediWeapon()){
-            ManagedReference<SceneObject*> crystal = weapon->getSlottedObject("saber_inv")->getContainerObject(0);
-            if (crystal != nullptr) {
-                if (crystal->getStoredInt("attuned_id") == attacker->getObjectID())
-                    toHitDC -= 2;
-            }  
+        if(weapon->isJediWeapon()) {
+            ManagedReference<SceneObject*> saberInv = weapon->getSlottedObject("saber_inv");
+
+            if(saberInv != nullptr) {
+                int containerSize = saberInv->getContainerObjectsSize();
+
+                for (int j = containerSize - 1; j >= 0; --j) {
+		            ManagedReference<SceneObject*> crystal = saberInv->getContainerObject(j);
+
+		            if (crystal != nullptr){
+                        if (crystal->getStoredInt("attuned_id") == attacker->getObjectID())
+                        toHitDC -= 2;
+                        j = 0;
+                    }		            
+		        }
+	        }
         }
 
         // Determine and apply the action cost of the attack, if any!
@@ -206,7 +216,7 @@ public:
         // Special self-hit handling.
         if (attacker == defender && weapon->isJediWeapon()){
             BorEffect::PerformReactiveAnimation(attacker, attacker, "hit", GetSlotHitlocation(BorDice::Roll(1, 10)), true);
-            BorrieRPG::BroadcastMessage(attacker, BorString::getNiceName(attacker) + " accidently hurts themselves with the lightsaber, doing "+String::valueOf(totalDamage)+" damage!");
+            BorrieRPG::BroadcastMessage(attacker, BorString::getNiceName(attacker) + " accidently hurts themselves with the lightsaber, doing "+damageNumber(totalDamage)+" damage!");
             BorCharacter::ModPool(attacker, "health", totalDamage * -1, true);
             return;
         }
@@ -285,12 +295,22 @@ public:
         }
 
         // Reduce the DC by 2 if the weapon is our own crystal.
-        if(weapon->isJediWeapon()){
-            ManagedReference<SceneObject*> crystal = weapon->getSlottedObject("saber_inv")->getContainerObject(0);
-            if (crystal != nullptr) {
-                if (crystal->getStoredInt("attuned_id") == attacker->getObjectID())
-                    toHitDC -= 2;
-            }  
+        if(weapon->isJediWeapon()) {
+            ManagedReference<SceneObject*> saberInv = weapon->getSlottedObject("saber_inv");
+
+            if(saberInv != nullptr) {
+                int containerSize = saberInv->getContainerObjectsSize();
+
+                for (int j = containerSize - 1; j >= 0; --j) {
+		            ManagedReference<SceneObject*> crystal = saberInv->getContainerObject(j);
+
+		            if (crystal != nullptr){
+                        if (crystal->getStoredInt("attuned_id") == attacker->getObjectID())
+                        toHitDC -= 2;
+                        j = 0;
+                    }		            
+		        }
+	        }
         }
 
         // Determine the attacker's rolls.
@@ -446,13 +466,14 @@ public:
 
         return totalDamage;
     }
-
+    /*DEPRECATED USE BORSTRING::SKILLSPAM() INSTEAD*/
     static String rollSpam(int roll, int skillMod) {
-        return "(1d20: " + String::valueOf(roll) + " + " + String::valueOf(skillMod) + ") = " + String::valueOf(roll + skillMod);
+        return BorString::skillSpam(skillMod, roll, skillMod+roll);
     }
 
+    /*DEPRECATED USE BORSTRING::SKILLSPAM() INSTEAD*/
     static String rollSpam(int roll, int skillMod, int diceCheck) {
-        return "(1d20: " + String::valueOf(roll) + " + " + String::valueOf(skillMod) + ") = " + String::valueOf(roll + skillMod) + " vs. DC: " + String::valueOf(diceCheck) + " ";
+        return BorString::skillSpam(skillMod, roll, skillMod+roll, diceCheck);
     }
 
     static String damageNumber(int damage) {

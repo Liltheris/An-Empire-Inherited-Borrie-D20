@@ -8,38 +8,38 @@
 class BorString : public Logger {
 public:
     /*Outputs the number coloured for natural min and max rolls, or uncoloured for all other rolls.*/
-    static String rollColour(int result, int dieType){
+    static String rollColour(int result, int dieType, String colour = "\\#DBDBDB"){
         if (result == 1)
-            return "\\#FF0000"+String::valueOf(result)+"\\#.";
+            return "\\#FF0000"+String::valueOf(result)+colour;
         else if (result == dieType)
-            return "\\#00FF00"+String::valueOf(result)+"\\#.";
+            return "\\#00FF00"+String::valueOf(result)+colour;
         else 
             return String::valueOf(result);
     }
 
     /*Outputs a generic roll in the following format: ([count]d[type]: [result])*/
-    static String rollSpam(int dieCount, int dieType, int result){
-        return "("+String::valueOf(dieCount)+"d"+String::valueOf(dieType)+": "+rollColour(result, dieType);
+    static String rollSpam(int dieCount, int dieType, int result, String colour = "\\#DBDBDB"){
+        return colour+"("+String::valueOf(dieCount)+"d"+String::valueOf(dieType)+": "+rollColour(result, dieType, colour);
     }
 
     /*Outputs a generic roll in the following format: ([count]d[type]: [result] vs DC: [dc])*/
-    static String rollSpam(int dieCount, int dieType, int result, int dc){
-        return "(" + String::valueOf(dieCount) + "d" + String::valueOf(dieType) + ": " + rollColour(result, dieType) + " vs DC: "+String::valueOf(dc)+")";
+    static String rollSpam(int dieCount, int dieType, int result, int dc, String colour = "\\#DBDBDB"){
+        return colour+"(" + String::valueOf(dieCount) + "d" + String::valueOf(dieType) + ": " + rollColour(result, dieType, colour) + " vs DC: "+String::valueOf(dc)+")";
     }
 
     /*Outputs a skill roll in the following format: (1d20: [roll] + [bonus] = [result])*/
-    static String skillSpam(int bonus, int roll, int result){
-        return "(1d20: "+ rollColour(roll, 20) + " + "+ String::valueOf(bonus) + " = " + String::valueOf(result) + ")";
+    static String skillSpam(int bonus, int roll, int result, String colour = "\\#DBDBDB"){
+        return colour+"(1d20: "+ rollColour(roll, 20, colour) + " + "+ String::valueOf(bonus) + " = " + String::valueOf(result) + ")";
     }
 
     /*Outputs a skill roll in the following format: (1d20: [roll] + [bonus] = [result] vs DC: [dc])*/
-    static String skillSpam(int bonus, int roll, int result, int dc){
-        return "(1d20: "+ rollColour(roll, 20) + " + "+ String::valueOf(bonus) + " = " + String::valueOf(result) + " vs DC: "+String::valueOf(dc)+")";
+    static String skillSpam(int bonus, int roll, int result, int dc, String colour = "\\#DBDBDB"){
+        return colour+"(1d20: "+ rollColour(roll, 20, colour) + " + "+ String::valueOf(bonus) + " = " + String::valueOf(result) + " vs DC: "+String::valueOf(dc)+")";
     }
 
     /*Outputs a damage roll in the following format: [count]d[type]: [roll] + [bonus] = [result] damage*/
-    static String damageSpam(int count, int type, int bonus, int roll, int result){
-        return String::valueOf(count)+"d"+String::valueOf(type)+": "+String::valueOf(roll)+" + "+String::valueOf(bonus) +" = \\#FF9999"+String::valueOf(result)+"\\#FFFFFF damage";
+    static String damageSpam(int count, int type, int bonus, int roll, int result, String colour = "\\#FFFFFF"){
+        return String::valueOf(count)+"d"+String::valueOf(type)+": "+String::valueOf(roll)+" + "+String::valueOf(bonus) +" = \\#FF9999"+String::valueOf(result)+colour+" damage";
     }
 
     /*Outputs the creature's first name, or full name if non-standard.*/
@@ -53,7 +53,7 @@ public:
 	}
 
     static String getNameTag(CreatureObject* creature, String color = "\\#00FFFF"){
-        return "\\#.[" + color + getNiceName(creature) + "\\#.]";
+        return "\\#FFFFFF[" + color + getNiceName(creature) + "\\#FFFFFF]";
     }
 };
 
