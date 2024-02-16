@@ -84,7 +84,7 @@ public:
 
         // Reduce the DC by 2 if the weapon is our own crystal.
         if(weapon->isJediWeapon()){
-            ManagedReference<SceneObject*> crystal = weapon->getContainerObject(0);
+            ManagedReference<SceneObject*> crystal = weapon->getSlottedObject("saber_inv")->getContainerObject(0);
             if (crystal != nullptr) {
                 if (crystal->getStoredInt("attuned_id") == attacker->getObjectID())
                     toHitDC -= 2;
@@ -286,7 +286,7 @@ public:
 
         // Reduce the DC by 2 if the weapon is our own crystal.
         if(weapon->isJediWeapon()){
-            ManagedReference<SceneObject*> crystal = weapon->getContainerObject(0);
+            ManagedReference<SceneObject*> crystal = weapon->getSlottedObject("saber_inv")->getContainerObject(0);
             if (crystal != nullptr) {
                 if (crystal->getStoredInt("attuned_id") == attacker->getObjectID())
                     toHitDC -= 2;
