@@ -417,7 +417,7 @@ int LightsaberCrystalComponentImplementation::handleObjectMenuSelect(CreatureObj
 	}
 
 	if(selectedID == 103) {
-		sceneObject->setStoredInt("attuned_id", 0);
+		sceneObject->setStoredString("attuned_id", "");
 		sceneObject->setStoredString("attuned_name", "");
 		sceneObject->setCustomObjectName("Crystal", true);
 

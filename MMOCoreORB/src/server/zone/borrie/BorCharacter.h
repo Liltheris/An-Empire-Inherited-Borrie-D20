@@ -1417,7 +1417,7 @@ public:
 		}
 
 		// Check if we're trying to attune someone else's crystal.
-		if (crystal->getStoredInt("attuned_id") > 0){
+		if (crystal->getStoredString("attuned_id") != ""){
 			creature->sendSystemMessage("You can't attune a crystal that is already attuned!");
 			return false;
 		}
@@ -1448,7 +1448,7 @@ public:
 
 		if (inwardSkill + inwardRoll >= dc && inwardRoll != 1){
 			// Attune the crystal!
-			crystal->setStoredInt("attuned_id", creature->getObjectID());
+			crystal->setStoredString("attuned_id", String::valueOf(creature->getObjectID()));
 			crystal->setStoredString("attuned_name", creature->getFirstName());
 			crystal->setCustomObjectName(creature->getFirstName()+"'s Crystal", true);
 
