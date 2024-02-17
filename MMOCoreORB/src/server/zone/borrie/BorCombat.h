@@ -267,7 +267,9 @@ public:
                 conditionDamage = conditionDamage * 2;
         }
         // Apply the damage.
-        weapon->setConditionDamage(weapon->getConditionDamage() + conditionDamage);
+        if(!weapon->isJediWeapon()){
+            weapon->setConditionDamage(weapon->getConditionDamage() + conditionDamage);
+        }
     }
 
     //TO DO: When full refactor is done, this either needs to be folded into the main attack command, or sections of the attack command need to be compartmentalised into functions, to be reused here.
