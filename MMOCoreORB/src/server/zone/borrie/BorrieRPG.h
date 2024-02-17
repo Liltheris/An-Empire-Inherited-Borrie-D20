@@ -289,7 +289,7 @@ public:
 
 			name += playerObject->getLastName() == "" ? "" : " " + playerObject->getLastName();
 
-			if(playerObject->getStoredString("original_name") != ""){
+			if(playerObject->getStoredString("original_first_name") != playerObject->getFirstName()){
 				originalName = " ("+playerObject->getStoredString("original_name")+") ";
 			}
 
@@ -350,7 +350,7 @@ public:
 
 			name += playerObject->getLastName() == "" ? "" : " " + playerObject->getLastName();
 
-			if(playerObject->getStoredString("original_name") != ""){
+			if(playerObject->getStoredString("original_first_name") != playerObject->getFirstName()){
 				originalName = " ("+playerObject->getStoredString("original_name")+") ";
 			}
 
