@@ -93,17 +93,12 @@ public:
 		            ManagedReference<SceneObject*> crystal = saberInv->getContainerObject(j);
 
 		            if (crystal != nullptr){
-                        attacker->sendSystemMessage(String::valueOf(crystal->getStoredInt("attuned_id"))+" vs "+String::valueOf(attacker->getObjectID()));
-                        if (crystal->getStoredInt("attuned_id") == attacker->getObjectID())
+                        if (crystal->getStoredString("attuned_id") == String::valueOf(attacker->getObjectID()))
                             toHitDC -= 2;
                         j = 0;
-                    } else {
-                        attacker->sendSystemMessage("Item at" + String::valueOf(j)+" is null");
-                    }            
+                    }        
 		        }
-	        } else {
-                attacker->sendSystemMessage("Failed to get saber inventory");
-            }
+	        }
         }
 
         // Determine and apply the action cost of the attack, if any!
@@ -312,10 +307,10 @@ public:
 		            ManagedReference<SceneObject*> crystal = saberInv->getContainerObject(j);
 
 		            if (crystal != nullptr){
-                        if (crystal->getStoredInt("attuned_id") == attacker->getObjectID())
-                        toHitDC -= 2;
+                        if (crystal->getStoredString("attuned_id") == String::valueOf(attacker->getObjectID()))
+                            toHitDC -= 2;
                         j = 0;
-                    }		            
+                    }        
 		        }
 	        }
         }
