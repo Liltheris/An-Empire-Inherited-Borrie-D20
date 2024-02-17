@@ -499,6 +499,9 @@ public:
 		int forceImmersionLevel = GetForceImmersionLevel(target);
 
 		infoText << "\\#FF7000[INFO]\\#." << endl;
+		if (target->getStoredString("original_first_name") != target->getFirstName()){
+			infoText << "Original Name: " << target->getStoredString("original_name") << endl;
+		}
 		infoText << "Account: " << BorrieRPG::GetPlayerAccountName(target) << endl;
 		infoText << "Level: " << GetPlayerLevel(target) << endl;
 
@@ -698,13 +701,10 @@ public:
 
 			if (target->hasSkill("rp_training_jedi_guardian_01"))
 				branch = "guardian";
-
 			else if (target->hasSkill("rp_training_jedi_consular_01")) 
 				branch = "consular";
-
 			else if (target->hasSkill("rp_training_jedi_sentinel_01")) 
 				branch = "sentinel";
-
 			else branch = "novice";
 
 			if (target->hasSkill("rp_training_jedi_master")) {

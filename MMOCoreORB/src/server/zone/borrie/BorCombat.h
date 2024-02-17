@@ -93,12 +93,17 @@ public:
 		            ManagedReference<SceneObject*> crystal = saberInv->getContainerObject(j);
 
 		            if (crystal != nullptr){
+                        attacker->sendSystemMessage(String::valueOf(crystal->getStoredInt("attuned_id"))+" vs "+String::valueOf(attacker->getObjectID()));
                         if (crystal->getStoredInt("attuned_id") == attacker->getObjectID())
-                        toHitDC -= 2;
+                            toHitDC -= 2;
                         j = 0;
-                    }		            
+                    } else {
+                        attacker->sendSystemMessage("Item at" + String::valueOf(j)+" is null");
+                    }            
 		        }
-	        }
+	        } else {
+                attacker->sendSystemMessage("Failed to get saber inventory");
+            }
         }
 
         // Determine and apply the action cost of the attack, if any!
@@ -507,7 +512,7 @@ public:
 
         if(rollResult > toHit) {
             // Success!
-            reactionSpam += BorString::getNiceName(defender) + " successfully defends against the attack ("+ rollSpam(defenseRoll, defenseSkill, toHit) +") ";
+            reactionSpam += BorString::getNiceName(defender) + " successfully defends against the attack "+ rollSpam(defenseRoll, defenseSkill, toHit) +"\\#FFFFFF ";
             if (defenderWeapon->isUnarmedWeapon()){
                 // Oh no.
                 reactionSpam += ", however, they're unarmed, taking " + damageNumber(incomingDamage) + "damage to their hands!";
@@ -541,7 +546,7 @@ public:
             }
         } else {
             // Failure!
-            reactionSpam += BorString::getNiceName(defender) + " tries to defend against the attack, but fails ("+ rollSpam(defenseRoll, defenseSkill, toHit) +") ";
+            reactionSpam += BorString::getNiceName(defender) + " tries to defend against the attack, but fails "+ rollSpam(defenseRoll, defenseSkill, toHit) +"\\#FFFFFF ";
             reactionSpam += ", taking "+ damageNumber(incomingDamage) +" damage.";
             BorEffect::PerformReactiveAnimation(defender, attacker, "defend", GetSlotHitlocation(slot), false);
             ApplyAdjustedHealthDamage(defender, attackerWeapon, incomingDamage, slot);
@@ -573,12 +578,12 @@ public:
             //Successful Parry
             attacker->setStoredInt("is_vulnerable", 2);
             BorEffect::PerformReactiveAnimation(defender, attacker, "parry", GetSlotHitlocation(slot), true);
-            reactionSpam += ", but " + BorString::getNiceName(defender)+" parries the attack (" + rollSpam(meleeRoll, meleeSkill, toHit) +"), avoiding damage and opening " +BorString::getNiceName(defender)+ " up for a counter attack!";
+            reactionSpam += ", but " + BorString::getNiceName(defender)+" parries the attack " + rollSpam(meleeRoll, meleeSkill, toHit) +"\\#FFFFFF, avoiding damage and opening " +BorString::getNiceName(defender)+ " up for a counter attack!";
         } else {
             //Unsuccessful Parry
             ApplyAdjustedHealthDamage(defender, attackerWeapon, incomingDamage, slot);
             BorEffect::PerformReactiveAnimation(defender, attacker, "parry", GetSlotHitlocation(slot), false);
-            reactionSpam += ". " + BorString::getNiceName(defender) + " tries to parry the attack, but fails (" + rollSpam(meleeRoll, meleeSkill, toHit) +"), recieving "+ damageNumber(incomingDamage) +" damage!"; 
+            reactionSpam += ". " + BorString::getNiceName(defender) + " tries to parry the attack, but fails " + rollSpam(meleeRoll, meleeSkill, toHit) +"\\#FFFFFF, recieving "+ damageNumber(incomingDamage) +" damage!"; 
         }
         return reactionSpam;
     }
@@ -603,12 +608,12 @@ public:
 
         if(rollResult >= toHit + armourPenalty) {
             // The defender has successfully dodged!
-            reactionSpam += ", but " + BorString::getNiceName(defender) + " dodges out of the way! (" + rollSpam(dodgeRoll, maneuverabilitySkill, toHit) + ") ";
+            reactionSpam += ", but " + BorString::getNiceName(defender) + " dodges out of the way! " + rollSpam(dodgeRoll, maneuverabilitySkill, toHit) + "\\#FFFFFF ";
             BorEffect::PerformReactiveAnimation(defender, attacker, "dodge", GetSlotHitlocation(slot), true);
             
         } else if(dodgeRoll + maneuverabilitySkill >= (toHit / 2) + armourPenalty) {
             // Partial success, defender stumbles to crouching, and takes half damage.
-            reactionSpam += ", " + BorString::getNiceName(defender) + " struggles to dodge out of the way! (" + rollSpam(dodgeRoll, maneuverabilitySkill, toHit) + ") ";
+            reactionSpam += ", " + BorString::getNiceName(defender) + " struggles to dodge out of the way! " + rollSpam(dodgeRoll, maneuverabilitySkill, toHit) + "\\#FFFFFF ";
             reactionSpam += BorString::getNiceName(defender) + " stumbles, but only takes "+ damageNumber(incomingDamage / 2) +" damage.";
 
             ApplyAdjustedHealthDamage(defender, attackerWeapon, incomingDamage / 2, slot);
@@ -618,7 +623,7 @@ public:
 
         } else {
             // Failed to dodge entirely!
-            reactionSpam += ", " + BorString::getNiceName(defender) + " tries to dodge out of the way and fails! (" + rollSpam(dodgeRoll, maneuverabilitySkill, toHit) + ") ";
+            reactionSpam += ", " + BorString::getNiceName(defender) + " tries to dodge out of the way and fails! " + rollSpam(dodgeRoll, maneuverabilitySkill, toHit) + "\\#FFFFFF ";
             reactionSpam += BorString::getNiceName(defender) +" takes "+ damageNumber(incomingDamage) +" damage.";
 
             ApplyAdjustedHealthDamage(defender, attackerWeapon, incomingDamage, slot);
@@ -772,19 +777,19 @@ public:
 
         if (rollResult >= toHit) {
             // Full deflection!
-            reactionSpam += BorString::getNiceName(defender) + " raises their hand and deflects the attack away ("+ rollSpam(deflectRoll, telekineticSkill, toHit) +")";
+            reactionSpam += BorString::getNiceName(defender) + " raises their hand and deflects the attack away "+ rollSpam(deflectRoll, telekineticSkill, toHit) +"\\#FFFFFF";
             BorEffect::PerformReactiveAnimation(attacker, defender, "parry", GetSlotHitlocation(slot), false);
 
         } else if (rollResult >= toHit / 2) {
             // Partial deflection!
-            reactionSpam += BorString::getNiceName(defender) + " quickly raises their hand, attempting to deflect the attack away ("+ rollSpam(deflectRoll, telekineticSkill, toHit) + ")";
+            reactionSpam += BorString::getNiceName(defender) + " quickly raises their hand, attempting to deflect the attack away "+ rollSpam(deflectRoll, telekineticSkill, toHit) + "\\#FFFFFF";
             reactionSpam += ", however, they are a bit too slow, recieving "+ damageNumber(incomingDamage / 2) +" damage!";
 
             BorEffect::PerformReactiveAnimation(attacker, defender, "parry", GetSlotHitlocation(slot), false);
             ApplyAdjustedHealthDamage(defender, attackerWeapon, incomingDamage/2, slot);
         } else {
             // No deflection!
-            reactionSpam += BorString::getNiceName(defender) + " quickly raises their hand, attempting to deflect the attack away ("+ rollSpam(deflectRoll, telekineticSkill, toHit) + ")";
+            reactionSpam += BorString::getNiceName(defender) + " quickly raises their hand, attempting to deflect the attack away "+ rollSpam(deflectRoll, telekineticSkill, toHit) + "\\#FFFFFF";
             reactionSpam += ", however, they are too slow, recieving "+ damageNumber(incomingDamage) +" damage!";
 
             BorEffect::PerformReactiveAnimation(attacker, defender, "parry", GetSlotHitlocation(slot), false);
@@ -810,9 +815,9 @@ public:
         if(attackerWeapon->isRangedWeapon() || attackerWeapon->isJediWeapon()) {
             DrainForce(defender, forceCost);
             if(passed && attackerWeapon->getDamageType() != SharedWeaponObjectTemplate::KINETIC) {
-                reactionSpam += BorString::getNiceName(defender) + " absorbs the attack with their hand ("+ rollSpam(absorbRoll, absorbSkill, toHit) + ")";
+                reactionSpam += BorString::getNiceName(defender) + " absorbs the attack with their hand "+ rollSpam(absorbRoll, absorbSkill, toHit) + "\\#FFFFFF";
             } else {
-                reactionSpam += BorString::getNiceName(defender) + " tries to absorb the attack ("+ rollSpam(absorbRoll, absorbSkill, toHit) + ")";
+                reactionSpam += BorString::getNiceName(defender) + " tries to absorb the attack "+ rollSpam(absorbRoll, absorbSkill, toHit) + "\\#FFFFFF";
                 reactionSpam += ", but fails, recieving "+ damageNumber(incomingDamage) +" damage!";
                 ApplyAdjustedHealthDamage(defender, attackerWeapon, incomingDamage, slot);   
             }
