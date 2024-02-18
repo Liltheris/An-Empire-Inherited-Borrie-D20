@@ -291,6 +291,8 @@ public:
 
 			if(originalName != playerObject->getFirstName() && originalName != ""){
 				originalName = " ("+playerObject->getStoredString("original_name")+") ";
+			} else {
+				originalName = "";
 			}
 
 			if(showAll) {
@@ -352,6 +354,8 @@ public:
 
 			if(originalName != playerObject->getFirstName() && originalName != ""){
 				originalName = " ("+playerObject->getStoredString("original_name")+") ";
+			} else {
+				originalName = "";
 			}
 
 			result += "\\#FFFF00" + name + originalName + "\\#FFFFFF (" + account->getUsername() +"): ";

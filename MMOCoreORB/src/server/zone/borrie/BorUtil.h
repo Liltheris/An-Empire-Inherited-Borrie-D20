@@ -871,36 +871,39 @@ public:
             return;
         }
 
-        LuaObject luaObject = lua->getGlobalObject("paired_variables");
-
+        LuaObject luaObject = lua->getGlobalObject(customizeTemplate);
+        
         int hairColor = -1;
-
         if (luaObject.isValidTable()){
-            // Apply paired variables
-            for (int i = 1; i <= luaObject.getTableSize(); ++i) {
-                LuaObject objData = luaObject.getObjectAt(i);
-                if (objData.isValidTable()) {
-                    int16 min = objData.getIntAt(3);
-                    int16 max = objData.getIntAt(4);
-                    int result = System::random((max - min)) + min;
-                    if(result < 0){
-                        String varName = objData.getStringAt(1);
-                        target->setCustomizationVariable(varName, abs(result), true);
-                    } else {
-                        String varName = objData.getStringAt(2);
-                        target->setCustomizationVariable(varName, result, true);
+            LuaObject randomTemplate = luaObject.getObjectField("paired_variables");
+            if (randomTemplate.isValidTable()){
+                // Apply paired variables
+                for (int i = 1; i <= randomTemplate.getTableSize(); ++i) {
+                    LuaObject objData = randomTemplate.getObjectAt(i);
+                    if (objData.isValidTable()) {
+                        int16 min = objData.getIntAt(3);
+                        int16 max = objData.getIntAt(4);
+                        int result = System::random((max - min)) + min;
+                        if(result < 0){
+                            String varName = objData.getStringAt(1);
+                            target->setCustomizationVariable(varName, abs(result), true);
+                        } else {
+                            String varName = objData.getStringAt(2);
+                            target->setCustomizationVariable(varName, result, true);
+                        }
                     }
                 }
             }
-            luaObject.pop();
-            luaObject = lua->getGlobalObject("random_variables");
+            randomTemplate.pop();
+            randomTemplate = lua->getGlobalObject("random_variables");
+
             // Apply the singular variables
-            if (luaObject.isValidTable()){
-                for (int i = 1; i <= luaObject.getTableSize(); ++i) {
-                    LuaObject objData = luaObject.getObjectAt(i);
+            if (randomTemplate.isValidTable()){
+                for (int i = 1; i <= randomTemplate.getTableSize(); ++i) {
+                    LuaObject objData = randomTemplate.getObjectAt(i);
                     if (objData.isValidTable()) {
                         String varName = objData.getStringAt(1);
-                        
+                            
                         if(varName == "height") {
                             float min = objData.getFloatAt(2);
                             float max = objData.getFloatAt(3);
@@ -908,7 +911,7 @@ public:
                             float height = ((float)result) / 100.0f;
                             target->setHeight(height, true);
                         } else if(varName == "hair") { 
-                            //auto logger = StackTrace::getLogger();
+                             //auto logger = StackTrace::getLogger();
                             String objectTemplate = objData.getStringAt(2);
                             int min = objData.getIntAt(3);
                             int max = objData.getIntAt(4);
@@ -928,7 +931,7 @@ public:
                                 objectTemplate = objectTemplate + "_s" + String::valueOf(result) + ".iff";
 
                             //logger->info("Hair Object Template: " + objectTemplate, true);
-                                
+                                    
                             Reference<SharedObjectTemplate*> shot = TemplateManager::instance()->getTemplate(objectTemplate.hashCode());
 
                             if(shot == nullptr) {
@@ -972,7 +975,7 @@ public:
                             //Equip
                             target->getZone()->getCreatureManager()->addWearableItem(target, hair);
                         } else {
-                            
+                                
                             int16 min = objData.getIntAt(2);
                             int16 max = objData.getIntAt(3);
                             int result = System::random((max - min)) + min;
@@ -983,15 +986,14 @@ public:
                                     hairColor = result;
                                 else 
                                     result = hairColor;
-                            }
-                            //auto logger = StackTrace::getLogger();
-                            //logger->info("Set Random Value: " + varName + " = " + String::valueOf(result), true);
+                                }
                             target->setCustomizationVariable(varName, result, true);
                         }                   
                     }
                     objData.pop();
                 }
             }
+            randomTemplate.pop();
             luaObject.pop();
             return;
         }
