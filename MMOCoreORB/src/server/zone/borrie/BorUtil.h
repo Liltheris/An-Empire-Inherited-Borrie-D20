@@ -895,7 +895,7 @@ public:
                 }
             }
             randomTemplate.pop();
-            randomTemplate = lua->getGlobalObject("random_variables");
+            randomTemplate = luaObject.getObjectField("random_variables");
 
             // Apply the singular variables
             if (randomTemplate.isValidTable()){

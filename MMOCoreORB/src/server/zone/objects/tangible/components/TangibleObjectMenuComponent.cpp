@@ -232,6 +232,14 @@ int TangibleObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject
 	} 
 
 	if (selectedID >= 111 && selectedID <= 118) { //Change Style
+		String appearanceFilename = sceneObject->getObjectTemplate()->getAppearanceFilename();
+		VectorMap<String, Reference<CustomizationVariable*>> variables;
+		AssetCustomizationManagerTemplate::instance()->getCustomizationVariables(appearanceFilename.hashCode(), variables, false);
+
+		if (!variables.contains("/private/index_texture_1")){
+			return 0;
+		}
+
 		ManagedReference<SceneObject*> parent = sceneObject->getParent().get();
 
 		if (parent == nullptr)
