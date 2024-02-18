@@ -285,11 +285,11 @@ public:
 			Account* account = playerObject->getPlayerObject()->getAccount();
 
 			String name = playerObject->getFirstName();
-			String originalName = "";
+			String originalName = playerObject->getStoredString("original_first_name");
 
 			name += playerObject->getLastName() == "" ? "" : " " + playerObject->getLastName();
 
-			if(playerObject->getStoredString("original_first_name") != playerObject->getFirstName()){
+			if(originalName != playerObject->getFirstName() && originalName != ""){
 				originalName = " ("+playerObject->getStoredString("original_name")+") ";
 			}
 
@@ -346,11 +346,11 @@ public:
 			Account* account = playerObject->getPlayerObject()->getAccount();
 
 			String name = playerObject->getFirstName();
-			String originalName = "";
+			String originalName = playerObject->getStoredString("original_first_name");
 
 			name += playerObject->getLastName() == "" ? "" : " " + playerObject->getLastName();
 
-			if(playerObject->getStoredString("original_first_name") != playerObject->getFirstName()){
+			if(originalName != playerObject->getFirstName() && originalName != ""){
 				originalName = " ("+playerObject->getStoredString("original_name")+") ";
 			}
 

@@ -259,7 +259,7 @@ int TangibleObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject
 		ZoneServer* server = player->getZoneServer();
 
 		if (server != nullptr) {
-			tano->setCustomizationVariable("index_texture_1", selectedID - 111, true);
+			tano->setCustomizationVariable("/private/index_texture_1", selectedID - 111, true);
 		}
 	}
 
