@@ -857,10 +857,10 @@ public:
 
     static void ApplyRandomCustomizationToNPC(CreatureObject* creature, CreatureObject* target) {
         Lua* lua = DirectorManager::instance()->getLuaInstance();
-        String customizeTemplate = creature->getObjectTemplate()->getTemplateFileName();
+        String customizeTemplate = target->getObjectTemplate()->getTemplateFileName();
         
         if(!lua->runFile("custom_scripts/rp_npcs/random/" + customizeTemplate + ".lua")) {
-            creature->sendSystemMessage("The randomisation template for '"+customizeTemplate+"' does not exist!");
+            //creature->sendSystemMessage("The randomisation template for '"+customizeTemplate+"' does not exist!");
             return;
         }
 
@@ -871,7 +871,7 @@ public:
         lua_State* L = randomData.getLuaState();
 
         if (!randomData.isValidTable()){
-            creature->sendSystemMessage("The randomisation template for '"+customizeTemplate+"' is not valid!");
+            //creature->sendSystemMessage("The randomisation template for '"+customizeTemplate+"' is not valid!");
             return;
         }
 
@@ -937,7 +937,7 @@ public:
 
                     ManagedReference<SceneObject*> inventory = target->getSlottedObject("inventory");
                     if (inventory == nullptr) {
-                        creature->sendSystemMessage("Failed to randomise creature due to invalid inventory!");
+                        //creature->sendSystemMessage("Failed to randomise creature due to invalid inventory!");
                         return;
                     }
                                     
@@ -946,7 +946,7 @@ public:
                     if(shot == nullptr) {
                         hairVariables.pop();
                         hairstyleList.pop();
-                        creature->sendSystemMessage("Failed to spawn hair! Path: "+hairPath);
+                        //creature->sendSystemMessage("Failed to spawn hair! Path: "+hairPath);
                         continue;
                     }
 
