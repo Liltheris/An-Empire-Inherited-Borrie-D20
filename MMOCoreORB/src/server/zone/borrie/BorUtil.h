@@ -924,13 +924,13 @@ public:
 
             // Get our list of hairstyles, and pick a random one.
             LuaObject hairstyleList = data.getObjectAt(5);
-            int hairstyle = System::random(hairstyleList.getTableSize()-1)+1;
+            int hairstyle = System::random((hairstyleList.getTableSize()-1))+1;
 
             // Complete our hair path and add our leading zero if needed.
             if (hairstyleList.getIntAt(hairstyle) > 9){
-                path = path + "_s" + String::valueOf(hairstyleList.getIntAt(hairstyle));
+                path = path + "_s" + String::valueOf(hairstyleList.getIntAt(hairstyle))+".ff";
             } else {
-                path = path + "_s0" + String::valueOf(hairstyleList.getIntAt(hairstyle));
+                path = path + "_s0" + String::valueOf(hairstyleList.getIntAt(hairstyle))+".ff";
             }
             path = path.replaceAll("shared_", "");
 
