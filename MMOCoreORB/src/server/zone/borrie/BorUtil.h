@@ -928,9 +928,9 @@ public:
 
             // Complete our hair path and add our leading zero if needed.
             if (hairstyleList.getIntAt(hairstyle) > 9){
-                path = path + "_s" + String::valueOf(hairstyleList.getIntAt(hairstyle))+".ff";
+                path = path + "_s" + String::valueOf(hairstyleList.getIntAt(hairstyle))+".iff";
             } else {
-                path = path + "_s0" + String::valueOf(hairstyleList.getIntAt(hairstyle))+".ff";
+                path = path + "_s0" + String::valueOf(hairstyleList.getIntAt(hairstyle))+".iff";
             }
             path = path.replaceAll("shared_", "");
 
