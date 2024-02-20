@@ -28,12 +28,11 @@ rp_human_male_random = {
 		--Colours
 		{"/shared_owner/index_color_skin", 0, 47},
 		{"/private/index_color_2", 0, 31},
-		{"/private/index_color_3", 0, 0},
 		{"/private/index_color_facial_hair", 0, 19},
 		--Styles
-		{"/private/index_style_eyebrow", 0, 255},
+		{"/private/index_style_eyebrow", 0, 6},
 		{"/private/index_style_freckles", 0, 10},
-		{"/private/index_style_beard", 0, 255},
+		{"/private/index_style_beard", 0, 17},
 	},
 
 	height = {0.94, 1.11},

@@ -934,6 +934,8 @@ public:
             }
             path = path.replaceAll("shared_", "");
 
+            logger->info(true) << "Hair path:" << path;
+
             hairstyleList.pop();
 
             ManagedReference<SceneObject*> inventory = target->getSlottedObject("inventory");
@@ -959,11 +961,20 @@ public:
 
                         if (inventory->transferObject(hair, -1, true)) {
                             inventory->broadcastObject(hair, true);
+
+                            target->getZone()->getCreatureManager()->addWearableItem(target, hair);
                         } else {
                             hair->destroyObjectFromDatabase(true);
+                            logger->info(true) << "Error: Failed to transfer hair into inventory!";
                         }
+                    } else {
+                        logger->info(true) << "Error: Hair object was invalid!";
                     }
+                } else {
+                    logger->info(true) << "Error: Hair template was invalid!";
                 }
+            } else {
+                logger->info(true) << "Error: Inventory was invalid!";
             }
         }
         data.pop();

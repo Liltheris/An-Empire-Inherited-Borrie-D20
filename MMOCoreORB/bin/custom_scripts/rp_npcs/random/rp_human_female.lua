@@ -30,12 +30,12 @@ rp_human_female_random = {
 		{"/shared_owner/index_color_skin", 0, 47},
 		{"/private/index_color_2", 0, 31},
 		{"/private/index_color_facial_hair", 0, 19},
-		{"/private/index_color_eyeshadow", 0, 3},
+		{"/private/index_color_eyeshadow", 0, 255},
 		{"/private/index_color_lips", 0, 255},
 		--Styles
-		{"/private/index_style_eyebrow", 0, 255},
+		{"/private/index_style_eyebrow", 0, 8},
 		{"/private/index_style_freckles", 0, 10},
-		{"/private/index_style_eyeshadow", 0, 4},
+		{"/private/index_style_eyeshadow", 0, 3},
 	},
 
 	height = {0.88, 1.06},
