@@ -178,11 +178,11 @@ public:
 
 	static void BroadcastRoll(CreatureObject* commander, CreatureObject* creature, String rollMessage) {
 		if(commander != creature) {
-			UnicodeString message1("[\\#00FFFF"+commander->getFirstName()+"\\#.] for [\\#FFFF00" + BorString::getNiceName(creature) + "\\#.]: " + rollMessage);
+			UnicodeString message1("[\\#00FFFF"+commander->getFirstName()+"\\#FFFFFF] for [\\#FFFF00" + BorString::getNiceName(creature) + "\\#FFFFFF]: " + rollMessage);
 			ChatSystemMessage* msg = new ChatSystemMessage(message1, ChatSystemMessage::DISPLAY_CHATANDSCREEN);
 			creature->broadcastMessage(msg, true);
 		} else {
-			UnicodeString message1("[\\#00FFFF" + BorString::getNiceName(creature) + "\\#.]: " + rollMessage);
+			UnicodeString message1("[\\#00FFFF" + BorString::getNiceName(creature) + "\\#FFFFFF]: " + rollMessage);
 			ChatSystemMessage* msg = new ChatSystemMessage(message1, ChatSystemMessage::DISPLAY_CHATANDSCREEN);
 			creature->broadcastMessage(msg, true);
 		}		
@@ -200,7 +200,7 @@ public:
 		PlayerMap* playerMap = chatManager->getPlayerMap();
 		playerMap->resetIterator(false);
 
-		String pName = "[\\#FF0000" + creature->getFirstName() + "\\#.] DM CALL: ";
+		String pName = "[\\#FF0000" + creature->getFirstName() + "\\#FFFFFF] DM CALL: ";
 
 		creature->sendSystemMessage("Sent DM Call with message: '" + msg + "'");
 		creature->sendSystemMessage("\\#00FFFFNOTE: Please be sure not to spam the DM call function. If a DM is available, they will respond to you ASAP.");
@@ -233,7 +233,7 @@ public:
 		PlayerMap* playerMap = chatManager->getPlayerMap();
 		playerMap->resetIterator(false);
 
-		String pName = "[DMCHAT][\\#FF6C00" + creature->getFirstName() + "\\#.]: ";
+		String pName = "[DMCHAT][\\#FF6C00" + creature->getFirstName() + "\\#FFFFFF]: ";
 		UnicodeString message1(pName + msg);
 		ChatSystemMessage* csmsg = new ChatSystemMessage(message1, ChatSystemMessage::DISPLAY_CHATONLY);
 
