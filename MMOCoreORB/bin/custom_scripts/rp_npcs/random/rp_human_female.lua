@@ -36,9 +36,9 @@ rp_human_female_random = {
 		{"/private/index_style_eyebrow", 0, 255},
 		{"/private/index_style_freckles", 0, 10},
 		{"/private/index_style_eyeshadow", 0, 4},
-		--Misc
-		{"height", 0.88, 1.06},
 	},
+
+	height = {0.88, 1.06},
 
 	random_lips = true,
 	match_brows = true,

@@ -858,9 +858,17 @@ public:
     static void ApplyRandomCustomizationToNPC(CreatureObject* creature, CreatureObject* target) {
         Lua* lua = DirectorManager::instance()->getLuaInstance();
         String customizeTemplate = target->getObjectTemplate()->getTemplateFileName();
-        
+
+        auto logger = StackTrace::getLogger();
+        lua->runFile("custom_scripts/rp_npcs/random/" + customizeTemplate + ".lua");
+
         if(!lua->runFile("custom_scripts/rp_npcs/random/" + customizeTemplate + ".lua")) {
             //creature->sendSystemMessage("The randomisation template for '"+customizeTemplate+"' does not exist!");
+            return;
+        }
+
+        if (target == nullptr || target->getZone() == nullptr || target->getZone()->getCreatureManager() == nullptr) {
+            logger->info(true) << "Target creature was not the correct type; or the zone it exists in does not exist. " << customizeTemplate;
             return;
         }
 
@@ -958,7 +966,6 @@ public:
                 }
             }
         }
-
         data.pop();
         data = randomData.getObjectField("random_variables");
 
@@ -1001,7 +1008,19 @@ public:
                 random.pop();
             }
         }
+        data.pop();
+        data = randomData.getObjectField("height");
 
+        // Apply random height
+        if (data.isValidTable()){
+            float min = data.getFloatAt(1);
+            float max = data.getFloatAt(2);
+
+            int result = System::random(((max * 100) - (min * 100))) + (min * 100);
+            float height = ((float)result) / 100.0f;
+
+            target->setHeight(height, true);
+        }
         data.pop();
     }
 
