@@ -40,10 +40,6 @@ public:
 
 		ManagedReference<CreatureObject*> targetCreature;
 
-		if (adminLevelCheck <= 0){
-			return GENERALERROR;
-		}
-
 		if (adminLevelCheck > 0) {
 			if (object != nullptr) {
 				if (object->isCreatureObject()) {
@@ -66,21 +62,19 @@ public:
 				if (args.hasMoreTokens()) {
 					args.getStringToken(subCommand);
 					if (BorCharacter::GetStringIsPool(command)) {
-						if (subCommand == "fill" || subCommand == "max") {
+						if ((subCommand == "fill" || subCommand == "max") && adminLevelCheck > 0) {
 							BorCharacter::FillPool(targetCreature, command);
 						} else {
-							BorCharacter::ModPool(targetCreature, command, Integer::valueOf(subCommand));
+							if (adminLevelCheck > 0) {
+								BorCharacter::ModPool(targetCreature, command, Integer::valueOf(subCommand));
+							} else {
+								//Players can only reduce their pools
+								BorCharacter::ModPool(targetCreature, command, -abs(Integer::valueOf(subCommand)));
+							}
 						}
 					} else {
 						creature->sendSystemMessage("Invalid arguments for HP command. Requires value to edit pool with.");
 					}
-				} else {
-					if (command == "max" || command == "fill" || command == "rest" || command == "reset") {
-						BorCharacter::FillAllPools(targetCreature);
-					} else {
-						creature->sendSystemMessage("Invalid arguments for HP command. Requires you to specify a pool you wish to modify, and the value to modify it by, or 'fill' to max out all values.");
-					}
-					
 				}
 
 			} else {
@@ -95,8 +89,9 @@ public:
 				box->setPromptText("Modify your pools with the HP command. Which action would you like to perform?");
 				box->setCancelButton(true, "@cancel");
 				box->addMenuItem("Modify a single pool");
-				box->addMenuItem("Max out and fill a single pool");
-				box->addMenuItem("Max out all pools");
+				if (adminLevelCheck > 0){
+					box->addMenuItem("Max out and fill a single pool");
+				}
 				creature->getPlayerObject()->addSuiBox(box);
 				creature->sendMessage(box->generateMessage());
 			}
