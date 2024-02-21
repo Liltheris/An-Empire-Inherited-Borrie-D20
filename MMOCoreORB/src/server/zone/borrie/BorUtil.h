@@ -574,11 +574,11 @@ public:
             npc->setStoredString("rp_equip_template", equipmentTemplate);
         }
 
-        if(customizeTemplate != "" && customizeTemplate != "random") {
+        if(customizeTemplate != "" && !customizeTemplate.contains("random")) {
             ApplyCustomizationTemplateToNPC(npc, npc, customizeTemplate);
             npc->setStoredString("rp_custom_template", customizeTemplate);
-        } else if(customizeTemplate == "random") {
-            ApplyRandomCustomizationToNPC(npc,npc);
+        } else if(customizeTemplate.contains("random")) {
+            ApplyRandomCustomizationToNPC(npc,npc,customizeTemplate);
             npc->setStoredString("rp_custom_template", "random");
         }
 
@@ -855,7 +855,7 @@ public:
         luaObject.pop();
     } 
 
-    static void ApplyRandomCustomizationToNPC(CreatureObject* creature, CreatureObject* target) {
+    static void ApplyRandomCustomizationToNPC(CreatureObject* creature, CreatureObject* target, String randomType = "random") {
         Lua* lua = DirectorManager::instance()->getLuaInstance();
         String customizeTemplate = target->getObjectTemplate()->getTemplateFileName();
 
@@ -874,7 +874,7 @@ public:
 
         //Read the randomisation data
 
-        LuaObject randomData = lua->getGlobalObject(customizeTemplate+"_random");
+        LuaObject randomData = lua->getGlobalObject(customizeTemplate+"_"+randomType);
 
         if (!randomData.isValidTable()){
             //creature->sendSystemMessage("The randomisation template for '"+customizeTemplate+"' is not valid!");
