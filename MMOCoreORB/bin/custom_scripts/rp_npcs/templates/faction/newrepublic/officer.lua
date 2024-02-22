@@ -29,23 +29,17 @@ npc_template = {
 	},	
 	
 	customizationTemplates = {
-		{"rp_human_male", {"random"}},
-		{"rp_human_female", {"random"}},
-		{"rp_sullustan_male", {"random"}},
-		{"rp_sullustan_female", {"random"}},
-		{"rp_zabrak_male", {"random"}},
-		{"rp_zabrak_female", {"random"}},
-		{"rp_mirialan_male", {"random"}},
-		{"rp_mirialan_female", {"random"}},
-		{"rp_moncal_male", {"random"}},
-		{"rp_moncal_female", {"random"}},
-		{"rp_twilek_male", {"random"}},
-		{"rp_twilek_female", {"random"}},
+		{"rp_human_male", {"random_military"}},
+		{"rp_human_female", {"random_military"}},
+		{"rp_sullustan_male", {"random_military"}},
+		{"rp_sullustan_female", {"random_military"}},
+		{"rp_zabrak_male", {"random_military"}},
+		{"rp_zabrak_female", {"random_military"}},
+		{"rp_mirialan_male", {"random_military"}},
+		{"rp_mirialan_female", {"random_military"}},
+		{"rp_moncal_male", {"random_military"}},
+		{"rp_moncal_female", {"random_military"}},
+		{"rp_twilek_male", {"random_military"}},
+		{"rp_twilek_female", {"random_military"}},
 	},	
-	
-	customVarOverrides = {
-		{"/shared_owner/blend_skinny", 71},
-		{"/shared_owner/blend_muscle", 0},
-		{"/shared_owner/blend_fat", 0},
-	}
 }

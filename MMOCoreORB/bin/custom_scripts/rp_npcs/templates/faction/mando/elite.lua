@@ -13,14 +13,7 @@ npc_template = {
 	},	
 	
 	customizationTemplates = {
-		{"rp_human_male", {"random"}},
-		{"rp_human_female", {"random"}},
+		{"rp_human_male", {"random_military"}},
+		{"rp_human_female", {"random_military"}},
 	},	
-	
-	customVarOverrides = {
-		{"/shared_owner/blend_skinny", 71},
-		{"/shared_owner/blend_muscle", 0},
-		{"/shared_owner/blend_fat", 0},
-		{"height", 1.1},
-	}
 }

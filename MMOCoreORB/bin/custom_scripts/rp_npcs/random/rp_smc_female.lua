@@ -1,6 +1,6 @@
 rp_smc_female_random = {
 	paired_variables = {
-		{"/shared_owner/blend_skinny", "/shared_owner/blend_fat", -255, 255},
+		{"/shared_owner/blend_skinny", "/shared_owner/blend_fat", -255, 0},
 		{"/shared_owner/blend_nosedepth_0", "/shared_owner/blend_nosedepth_1", -255, 255},
 		{"/shared_owner/blend_noselength_0", "/shared_owner/blend_noselength_1", -255, 255},
 		{"/shared_owner/blend_nosewidth_0", "/shared_owner/blend_nosewidth_1", -255, 255},
