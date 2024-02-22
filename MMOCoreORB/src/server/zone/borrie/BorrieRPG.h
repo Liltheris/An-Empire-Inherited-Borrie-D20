@@ -247,7 +247,7 @@ public:
 				continue;
 
 			if(playerCreature->getFirstName() == "Discord") {
-				playerCreature->sendSystemMessage("lw:" + pName + ":" + msg);
+				playerCreature->sendSystemMessage("lw:" + creature->getFirstName() + ":" + msg);
 			}
 
 			if (playerObject->isPrivileged()) { // TODO: Check to see if a character is a secret DM.
