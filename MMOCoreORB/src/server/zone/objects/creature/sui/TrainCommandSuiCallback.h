@@ -140,60 +140,64 @@ public:
 		else if (id == 2)
 			return "bluff";
 		else if (id == 3)
-			return "composure";
+			return "command";
 		else if (id == 4)
-			return "computers";
+			return "composure";
 		else if (id == 5)
-			return "defending";
+			return "computers";
 		else if (id == 6)
-			return "demolitions";
+			return "defending";
 		else if (id == 7)
-			return "engineering";
+			return "demolitions";
 		else if (id == 8)
-			return "intimidation";
+			return "engineering";
 		else if (id == 9)
-			return "investigation";
+			return "intimidation";
 		else if (id == 10)
-			return "larceny";
+			return "investigation";
 		else if (id == 11)
-			return "maneuverability";
+			return "larceny";
 		else if (id == 12)
-			return "mechanics";
+			return "maneuverability";
 		else if (id == 13)
-			return "medicine";
+			return "mechanics";
 		else if (id == 14)
-			return "melee";
+			return "medicine";
 		else if (id == 15)
-			return "persuasion";
+			return "melee";
 		else if (id == 16)
-			return "piloting";
+			return "performance";
 		else if (id == 17)
-			return "ranged";
+			return "persuasion";
 		else if (id == 18)
-			return "resolve";
+			return "piloting";
 		else if (id == 19)
-			return "science";
+			return "ranged";
 		else if (id == 20)
-			return "slicing";
+			return "resolve";
 		else if (id == 21)
-			return "stealth";
+			return "science";
 		else if (id == 22)
-			return "survival";
+			return "slicing";
 		else if (id == 23)
-			return "throwing";
+			return "stealth";
 		else if (id == 24)
-			return "unarmed";
+			return "survival";
 		else if (id == 25)
-			return "sense";
+			return "throwing";
 		else if (id == 26)
-			return "lightning";
+			return "unarmed";
 		else if (id == 27)
-			return "telekinesis";
+			return "sense";
 		else if (id == 28)
-			return "control";
+			return "lightning";
 		else if (id == 29)
-			return "alter";
+			return "telekinesis";
 		else if (id == 30)
+			return "control";
+		else if (id == 31)
+			return "alter";
+		else if (id == 32)
 			return "inward";
 		else
 			return "";
@@ -276,6 +280,7 @@ public:
 		box->addMenuItem("Armor " +				GetSkillNumeral(BorSkill::GetRealSkillLevel(player,"armor")+1));
 		box->addMenuItem("Athletics " +			GetSkillNumeral(BorSkill::GetRealSkillLevel(player,"athletics")+1));
 		box->addMenuItem("Bluff " +				GetSkillNumeral(BorSkill::GetRealSkillLevel(player,"bluff")+1));
+		box->addMenuItem("Command " +			GetSkillNumeral(BorSkill::GetRealSkillLevel(player,"command")+1));
 		box->addMenuItem("Composure " +			GetSkillNumeral(BorSkill::GetRealSkillLevel(player,"composure")+1));
 		box->addMenuItem("Computers " +			GetSkillNumeral(BorSkill::GetRealSkillLevel(player,"computers")+1));
 		box->addMenuItem("Defending " +			GetSkillNumeral(BorSkill::GetRealSkillLevel(player,"defending")+1));
@@ -288,6 +293,7 @@ public:
 		box->addMenuItem("Mechanics " +			GetSkillNumeral(BorSkill::GetRealSkillLevel(player,"mechanics")+1));
 		box->addMenuItem("Medicine " +			GetSkillNumeral(BorSkill::GetRealSkillLevel(player,"medicine")+1));
 		box->addMenuItem("Melee " +				GetSkillNumeral(BorSkill::GetRealSkillLevel(player,"melee")+1));
+		box->addMenuItem("Performance " +		GetSkillNumeral(BorSkill::GetRealSkillLevel(player,"performance")+1));
 		box->addMenuItem("Persuasion " +		GetSkillNumeral(BorSkill::GetRealSkillLevel(player,"persuasion")+1));
 		box->addMenuItem("Piloting " +			GetSkillNumeral(BorSkill::GetRealSkillLevel(player,"piloting")+1));
 		box->addMenuItem("Ranged " +			GetSkillNumeral(BorSkill::GetRealSkillLevel(player,"ranged")+1));
