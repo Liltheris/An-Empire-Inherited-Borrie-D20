@@ -1,0 +1,38 @@
+-- Common Parts
+object_tangible_borrp_crafting_comp_weapon_parts_common = object_tangible_borrp_crafting_shared_comp_weapon_parts_common:new {
+	
+}
+-- Uncommon Parts
+object_tangible_borrp_crafting_comp_weapon_parts_uncommon = object_tangible_borrp_crafting_shared_comp_weapon_parts_uncommon:new {
+	
+}
+
+-- Rare Parts
+object_tangible_borrp_crafting_comp_weapon_parts_rare = object_tangible_borrp_crafting_shared_comp_weapon_parts_rare:new {
+	
+}
+
+-- Epic Parts
+object_tangible_borrp_crafting_comp_weapon_parts_epic = object_tangible_borrp_crafting_shared_comp_weapon_parts_epic:new {
+	
+}
+-- Legendary Parts
+object_tangible_borrp_crafting_comp_weapon_parts_legendary = object_tangible_borrp_crafting_shared_comp_weapon_parts_legendary:new {
+	
+}
+-- Tibana Gas Core
+object_tangible_borrp_crafting_comp_op_system_energy = object_tangible_borrp_crafting_shared_comp_op_system_energy:new {
+	
+}
+-- Furniture
+object_tangible_borrp_crafting_comp_weapon_furniture = object_tangible_borrp_crafting_shared_comp_weapon_furniture:new {
+	
+}
+
+ObjectTemplates:addTemplate(object_tangible_borrp_crafting_comp_weapon_parts_common, "object/tangible/borrp/crafting/comp_weapon_parts_common.iff")
+ObjectTemplates:addTemplate(object_tangible_borrp_crafting_comp_weapon_parts_uncommon, "object/tangible/borrp/crafting/comp_weapon_parts_uncommon.iff")
+ObjectTemplates:addTemplate(object_tangible_borrp_crafting_comp_weapon_parts_rare, "object/tangible/borrp/crafting/comp_weapon_parts_rare.iff")
+ObjectTemplates:addTemplate(object_tangible_borrp_crafting_comp_weapon_parts_epic, "object/tangible/borrp/crafting/comp_weapon_parts_epic.iff")
+ObjectTemplates:addTemplate(object_tangible_borrp_crafting_comp_weapon_parts_legendary, "object/tangible/borrp/crafting/comp_weapon_parts_legendary.iff")
+ObjectTemplates:addTemplate(object_tangible_borrp_crafting_comp_op_system_energy, "object/tangible/borrp/crafting/comp_op_system_energy.iff")
+ObjectTemplates:addTemplate(object_tangible_borrp_crafting_comp_weapon_furniture, "object/tangible/borrp/crafting/comp_weapon_furniture.iff")
