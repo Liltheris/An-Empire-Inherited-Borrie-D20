@@ -107,7 +107,7 @@ SWG.recvSystemMsg = function(message) {
 		client.user.setPresence({ status: "online", game: {name: dataString}});
 	} else if(message.startsWith("lw")) {
         const dataArray = message.split(":");
-        var dmName = dataArray[1].substring(17, dataArray[1].length - 3);
+        var dmName = dataArray[1].substring(17, dataArray[1].length - 8);
         var chatString = "**" + dmName + ":** " + dataArray[3];
 
         if (dmchat) dmchat.send(chatString);
