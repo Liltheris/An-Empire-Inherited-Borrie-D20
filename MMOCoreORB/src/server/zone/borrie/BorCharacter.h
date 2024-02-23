@@ -514,6 +514,11 @@ public:
 			infoText << "Admin Level: " << ghost->getAdminLevel() << endl;
 		}
 
+		if(!target->checkCooldownRecovery("long_rest")){
+			const Time* timeremaining = target->getCooldownTime("long_rest");
+			infoText << "Rest Cooldown: " << ceil(timeremaining->miliDifference() / -3600000.f) << " hours." << endl;
+		}
+
 		if(forceImmersionLevel == 0)
 			infoText << "Not Force Sensitive" << endl;
 		else {
@@ -559,6 +564,7 @@ public:
 		infoText << "Armor: " << target->getSkillMod("rp_armor") << endl; 
 		infoText << "Athletics: " << target->getSkillMod("rp_athletics") << endl; 
 		infoText << "Bluff: " << target->getSkillMod("rp_bluff") << endl; 
+		infoText << "Command: " << target->getSkillMod("rp_command") << endl; 
 		infoText << "Composure: " << target->getSkillMod("rp_composure") << endl; 
 		infoText << "Computers: " << target->getSkillMod("rp_computers") << endl; 
 		infoText << "Defending: " << target->getSkillMod("rp_defending") << endl; 
@@ -571,6 +577,7 @@ public:
 		infoText << "Mechanics: " << target->getSkillMod("rp_mechanics") << endl; 
 		infoText << "Medicine: " << target->getSkillMod("rp_medicine") << endl; 
 		infoText << "Melee: " << target->getSkillMod("rp_melee") << endl; 
+		infoText << "Performance: " << target->getSkillMod("rp_performance") << endl; 
 		infoText << "Persuasion: " << target->getSkillMod("rp_persuasion") << endl; 
 		infoText << "Piloting: " << target->getSkillMod("rp_piloting") << endl; 
 		infoText << "Ranged: " << target->getSkillMod("rp_ranged") << endl; 
@@ -611,79 +618,50 @@ public:
 
 		int trainingSkillCount = skillManager->getTrainingSkillCount(target);
 
-		//NOTE: This part is not functional as it stands, it will need to be reworked to match the new system eventually.
-
 		if(trainingSkillCount > 0) {
 			infoText << "\\#FF7000[TRAINING]\\#." << endl;
 			int count = 1;
 
 			if(target->hasSkill("rp_training_jedi_novice")) {
-				infoText << count << ". Jedi Training (" << skillManager->getTrainingSkillRank(target, "rp_training_jedi") << ")" << endl;
+				infoText << count << ". " << getTrainingString(target, "jedi") << endl;
 				count++;
 			}
 
 			if(target->hasSkill("rp_training_sith_novice")) {
-				infoText << count << ". Sith Training (" << skillManager->getTrainingSkillRank(target, "rp_training_sith") << ")" << endl;
+				infoText << count << ". " << getTrainingString(target, "sith") << endl;
 				count++;
 			}
 
 			if(target->hasSkill("rp_training_military_novice")) {
-				infoText << count << ". Military Training (" << skillManager->getTrainingSkillRank(target, "rp_training_military") << ")" << endl;
+				infoText << count << ". " << getTrainingString(target, "military") << endl;
 				count++;
 			}
 
 			if(target->hasSkill("rp_training_mando_novice")) {
-				infoText << count << ". Mandalorian Training (" << skillManager->getTrainingSkillRank(target, "rp_training_mando") << ")" << endl;
-				count++;
-			}
-
-			if(target->hasSkill("rp_training_tka_novice")) {
-				infoText << count << ". Teras Kasi Training (" << skillManager->getTrainingSkillRank(target, "rp_training_tka") << ")" << endl;
+				infoText << count << ". " << getTrainingString(target, "mando") << endl;
 				count++;
 			}
 
 			if(target->hasSkill("rp_training_medical_novice")) {
-				infoText << count << ". Medical Training (" << skillManager->getTrainingSkillRank(target, "rp_training_medical") << ")" << endl;
+				infoText << count << ". " << getTrainingString(target, "medical") << endl;
 				count++;
 			}
 
 			if(target->hasSkill("rp_training_engineer_novice")) {
-				infoText << count << ". Engineering Training (" << skillManager->getTrainingSkillRank(target, "rp_training_engineer") << ")" << endl;
-				count++;
-			}
-
-			if(target->hasSkill("rp_training_diplomatic_novice")) {
-				infoText << count << ". Diplomacy Training (" << skillManager->getTrainingSkillRank(target, "rp_training_diplomatic") << ")" << endl;
+				infoText << count << ". " << getTrainingString(target, "engineer") << endl;
 				count++;
 			}
 
 			if(target->hasSkill("rp_training_spy_novice")) {
-				infoText << count << ". Espionage Training (" << skillManager->getTrainingSkillRank(target, "rp_training_spy") << ")" << endl;
+				infoText << count << ". " << getTrainingString(target, "spy") << endl;
 				count++;
 			}
 
 			if(target->hasSkill("rp_training_criminal_novice")) {
-				infoText << count << ". Criminal Training (" << skillManager->getTrainingSkillRank(target, "rp_training_criminal") << ")" << endl;
-				count++;
-			}
-
-			if(target->hasSkill("rp_training_took_lt_novice")) {
-				infoText << count << ". Kan'ath Light Training (" << skillManager->getTrainingSkillRank(target, "rp_training_took_lt") << ")" << endl;
-				count++;
-			}
-
-			if(target->hasSkill("rp_training_took_dk_novice")) {
-				infoText << count << ". Kan'ath Dark Training (" << skillManager->getTrainingSkillRank(target, "rp_training_took_dk") << ")" << endl;
-				count++;
-			}
-
-			if(target->hasSkill("rp_training_inq_novice")) {
-				infoText << count << ". Inquisitor Training (" << skillManager->getTrainingSkillRank(target, "rp_training_inq") << ")" << endl;
+				infoText << count << ". " << getTrainingString(target, "criminal") << endl;
 				count++;
 			}
 		}
-
-		
 
 		suiBox->setPromptText(infoText.toString());
 
@@ -697,7 +675,8 @@ public:
 
 		// Jedi Training
 		if (tree == "jedi") {
-			output << "Jedi (";
+			output << "Jedi ";
+			String rank = "";
 
 			if (target->hasSkill("rp_training_jedi_guardian_01"))
 				branch = "guardian";
@@ -705,32 +684,49 @@ public:
 				branch = "consular";
 			else if (target->hasSkill("rp_training_jedi_sentinel_01")) 
 				branch = "sentinel";
-			else branch = "novice";
 
-			if (target->hasSkill("rp_training_jedi_master")) {
-				output << "Knight, " << BorrieRPG::Capitalize(branch) << ")";
-			} 
-			else {
-				output << BorrieRPG::Capitalize(branch) << getTrainingBranchRank(target, "rp_training_jedi_" + branch) << ")";
+			if  (branch != "")
+				rank = BorrieRPG::Capitalize(branch) + getTrainingBranchRank(target, "rp_training_jedi_" + branch);
+
+			if (target->hasSkill("rp_training_mastery_jedi")){
+				output << "Master";
+			} else if (target->hasSkill("rp_training_jedi_master")){
+				output << "Knight";
+			} else {
+				output << "Padawan";
 			}
+
+			if (rank != ""){
+				output << " ("+rank+")";
+			}
+
+			return output.toString();
 		}
 		//Sith Training
 		if (tree == "sith") {
-			output << "Sith (";
+			String rank = "";
 
 			if (target->hasSkill("rp_training_sith_sorcerer_01"))
 				branch = "sorcerer";
-
 			else if (target->hasSkill("rp_training_sith_warrior_01"))
 				branch = "warrior";
 
-			else branch = "novice";
+			if  (branch != "")
+				rank = BorrieRPG::Capitalize(branch) + getTrainingBranchRank(target, "rp_training_sith_" + branch);
 
-			if (target->hasSkill("rp_training_sith_master")) {
-				output << "Lord, " << BorrieRPG::Capitalize(branch) << ")";
+			if (target->hasSkill("rp_training_mastery_sith")){
+				output << "Dark Lord of the Sith";
+			} else if (target->hasSkill("rp_training_sith_master")){
+				output << "Sith Lord";
 			} else {
-				output << BorrieRPG::Capitalize(branch) << getTrainingBranchRank(target, "rp_training_sith_" + branch) << ")";
+				output << "Sith Acolyte";
 			}
+
+			if (rank != ""){
+				output << " ("+rank+")";
+			}
+
+			return output.toString();
 		}
 		//Military Training
 		if (tree == "military") {
@@ -749,6 +745,8 @@ public:
 			} else {
 				output << BorrieRPG::Capitalize(branch) << getTrainingBranchRank(target, "rp_training_military_" + branch) << ")";
 			}
+
+			return output.toString();
 		}
 		//Spy Training
 		if (tree == "spy") {
@@ -770,6 +768,8 @@ public:
 			} else {
 				output << BorrieRPG::Capitalize(branch) << getTrainingBranchRank(target, "rp_training_spy_" + branch) << ")";
 			}
+
+			return output.toString();
 		}
 		//Mandalorian
 		if (tree == "mando") {
@@ -794,6 +794,8 @@ public:
 			} else {
 				output << BorrieRPG::Capitalize(styledBranch) << getTrainingBranchRank(target, "rp_training_mando_" + branch) << ")";
 			}
+
+			return output.toString();
 		}
 		//Engineer Training
 		if (tree == "engineer") {
@@ -828,6 +830,8 @@ public:
 			} else {
 				output << BorrieRPG::Capitalize(styledBranch) << getTrainingBranchRank(target, "rp_training_engineer_" + branch) << ")";
 			}
+
+			return output.toString();
 		}
 		//Criminal Training
 		if (tree == "criminal") {
@@ -850,6 +854,8 @@ public:
 			} else {
 				output << BorrieRPG::Capitalize(branch) << getTrainingBranchRank(target, "rp_training_criminal_" + branch) << ")";
 			}
+
+			return output.toString();
 		}
 		//Medical
 		if (tree == "medical") {
@@ -869,9 +875,11 @@ public:
 			} else {
 				output << BorrieRPG::Capitalize(branch) << getTrainingBranchRank(target, "rp_training_medical_" + branch) << ")";
 			}
+
+			return output.toString();
 		}
 
-		return output.toString();
+		return "";
 	}
 
 	static String getTrainingBranchRank(CreatureObject* target, String trainingBranch) {

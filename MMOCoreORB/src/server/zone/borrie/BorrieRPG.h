@@ -178,11 +178,11 @@ public:
 
 	static void BroadcastRoll(CreatureObject* commander, CreatureObject* creature, String rollMessage) {
 		if(commander != creature) {
-			UnicodeString message1("[\\#00FFFF"+commander->getFirstName()+"\\#.] for [\\#FFFF00" + BorString::getNiceName(creature) + "\\#.]: " + rollMessage);
+			UnicodeString message1("[\\#00FFFF"+commander->getFirstName()+"\\#FFFFFF] for [\\#FFFF00" + BorString::getNiceName(creature) + "\\#FFFFFF]: " + rollMessage);
 			ChatSystemMessage* msg = new ChatSystemMessage(message1, ChatSystemMessage::DISPLAY_CHATANDSCREEN);
 			creature->broadcastMessage(msg, true);
 		} else {
-			UnicodeString message1("[\\#00FFFF" + BorString::getNiceName(creature) + "\\#.]: " + rollMessage);
+			UnicodeString message1("[\\#00FFFF" + BorString::getNiceName(creature) + "\\#FFFFFF]: " + rollMessage);
 			ChatSystemMessage* msg = new ChatSystemMessage(message1, ChatSystemMessage::DISPLAY_CHATANDSCREEN);
 			creature->broadcastMessage(msg, true);
 		}		
@@ -200,7 +200,7 @@ public:
 		PlayerMap* playerMap = chatManager->getPlayerMap();
 		playerMap->resetIterator(false);
 
-		String pName = "[\\#FF0000" + creature->getFirstName() + "\\#.] DM CALL: ";
+		String pName = "[\\#FF0000" + creature->getFirstName() + "\\#FFFFFF] DM CALL: ";
 
 		creature->sendSystemMessage("Sent DM Call with message: '" + msg + "'");
 		creature->sendSystemMessage("\\#00FFFFNOTE: Please be sure not to spam the DM call function. If a DM is available, they will respond to you ASAP.");
@@ -233,7 +233,7 @@ public:
 		PlayerMap* playerMap = chatManager->getPlayerMap();
 		playerMap->resetIterator(false);
 
-		String pName = "[DMCHAT][\\#FF6C00" + creature->getFirstName() + "\\#.]: ";
+		String pName = "[DMCHAT][\\#FF6C00" + creature->getFirstName() + "\\#FFFFFF]: ";
 		UnicodeString message1(pName + msg);
 		ChatSystemMessage* csmsg = new ChatSystemMessage(message1, ChatSystemMessage::DISPLAY_CHATONLY);
 
@@ -247,7 +247,7 @@ public:
 				continue;
 
 			if(playerCreature->getFirstName() == "Discord") {
-				playerCreature->sendSystemMessage("lw:" + pName + ":" + msg);
+				playerCreature->sendSystemMessage("lw:" + creature->getFirstName() + ":" + msg);
 			}
 
 			if (playerObject->isPrivileged()) { // TODO: Check to see if a character is a secret DM.
@@ -285,12 +285,14 @@ public:
 			Account* account = playerObject->getPlayerObject()->getAccount();
 
 			String name = playerObject->getFirstName();
-			String originalName = "";
+			String originalName = playerObject->getStoredString("original_first_name");
 
 			name += playerObject->getLastName() == "" ? "" : " " + playerObject->getLastName();
 
-			if(playerObject->getStoredString("original_first_name") != playerObject->getFirstName()){
+			if(originalName != playerObject->getFirstName() && originalName != ""){
 				originalName = " ("+playerObject->getStoredString("original_name")+") ";
+			} else {
+				originalName = "";
 			}
 
 			if(showAll) {
@@ -346,12 +348,14 @@ public:
 			Account* account = playerObject->getPlayerObject()->getAccount();
 
 			String name = playerObject->getFirstName();
-			String originalName = "";
+			String originalName = playerObject->getStoredString("original_first_name");
 
 			name += playerObject->getLastName() == "" ? "" : " " + playerObject->getLastName();
 
-			if(playerObject->getStoredString("original_first_name") != playerObject->getFirstName()){
+			if(originalName != playerObject->getFirstName() && originalName != ""){
 				originalName = " ("+playerObject->getStoredString("original_name")+") ";
+			} else {
+				originalName = "";
 			}
 
 			result += "\\#FFFF00" + name + originalName + "\\#FFFFFF (" + account->getUsername() +"): ";

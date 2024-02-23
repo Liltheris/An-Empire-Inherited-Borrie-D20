@@ -64,3 +64,7 @@ includeFile("tangible/wearables/belt/belt_s17.lua")
 includeFile("tangible/wearables/belt/belt_s18.lua")
 includeFile("tangible/wearables/belt/belt_s19.lua")
 includeFile("tangible/wearables/belt/belt_s20.lua")
+
+includeFile("tangible/wearables/belt/belt_holster_s01.lua")
+includeFile("tangible/wearables/belt/belt_holster_s02.lua")
+includeFile("tangible/wearables/belt/belt_datapad.lua")

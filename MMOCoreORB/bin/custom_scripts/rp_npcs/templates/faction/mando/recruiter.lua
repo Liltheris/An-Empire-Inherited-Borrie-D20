@@ -14,7 +14,7 @@ npc_template = {
 	},	
 	
 	customizationTemplates = {
-		{"rp_human_male", {"random"}},
-		{"rp_human_female", {"random"}},
+		{"rp_human_male", {"random_military"}},
+		{"rp_human_female", {"random_military"}},
 	},	
 }

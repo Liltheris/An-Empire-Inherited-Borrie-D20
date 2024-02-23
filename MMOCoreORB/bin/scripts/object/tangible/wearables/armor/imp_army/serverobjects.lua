@@ -53,7 +53,8 @@ includeFile("tangible/wearables/armor/imp_army/armor_imp_army_bracer_l.lua")
 includeFile("tangible/wearables/armor/imp_army/armor_imp_army_bracer_r.lua")
 includeFile("tangible/wearables/armor/imp_army/armor_imp_army_chest_plate.lua")
 includeFile("tangible/wearables/armor/imp_army/armor_imp_army_gloves.lua")
-includeFile("tangible/wearables/armor/imp_army/armor_imp_army_helmet.lua")
+includeFile("tangible/wearables/armor/imp_army/armor_imp_army_helmet_s01.lua")
+includeFile("tangible/wearables/armor/imp_army/armor_imp_army_helmet_s02.lua")
 includeFile("tangible/wearables/armor/imp_army/armor_imp_army_leggings.lua")
 
 

@@ -574,11 +574,11 @@ public:
             npc->setStoredString("rp_equip_template", equipmentTemplate);
         }
 
-        if(customizeTemplate != "" && customizeTemplate != "random") {
+        if(customizeTemplate != "" && !customizeTemplate.contains("random")) {
             ApplyCustomizationTemplateToNPC(npc, npc, customizeTemplate);
             npc->setStoredString("rp_custom_template", customizeTemplate);
-        } else if(customizeTemplate == "random") {
-            ApplyRandomCustomizationToNPC(npc,npc);
+        } else if(customizeTemplate.contains("random")) {
+            ApplyRandomCustomizationToNPC(npc,npc,customizeTemplate);
             npc->setStoredString("rp_custom_template", "random");
         }
 
@@ -855,131 +855,175 @@ public:
         luaObject.pop();
     } 
 
-    static void ApplyRandomCustomizationToNPC(CreatureObject* creature, CreatureObject* target) {
+    static void ApplyRandomCustomizationToNPC(CreatureObject* creature, CreatureObject* target, String randomType = "random") {
         Lua* lua = DirectorManager::instance()->getLuaInstance();
-        String customizeTemplate = creature->getObjectTemplate()->getTemplateFileName();
-        lua->runFile("custom_scripts/rp_npcs/random/" + customizeTemplate + ".lua");
+        String customizeTemplate = target->getObjectTemplate()->getTemplateFileName();
+
         auto logger = StackTrace::getLogger();
-        //logger->info(true) << "Loading Customization Template: " << customizeTemplate;
+        lua->runFile("custom_scripts/rp_npcs/random/" + customizeTemplate + ".lua");
+
         if(!lua->runFile("custom_scripts/rp_npcs/random/" + customizeTemplate + ".lua")) {
+            //creature->sendSystemMessage("The randomisation template for '"+customizeTemplate+"' does not exist!");
             return;
         }
-
-        LuaObject luaObject = lua->getGlobalObject("random_ranges");
 
         if (target == nullptr || target->getZone() == nullptr || target->getZone()->getCreatureManager() == nullptr) {
-            creature->sendSystemMessage("Target creature was not the correct type; or the zone it exists in does not exist.");
             logger->info(true) << "Target creature was not the correct type; or the zone it exists in does not exist. " << customizeTemplate;
-            luaObject.pop();
             return;
         }
 
-        int hairColor = -1;
-        if(luaObject.isValidTable()) {
-            for (int i = 1; i <= luaObject.getTableSize(); ++i) {
-                LuaObject objData = luaObject.getObjectAt(i);
-                if (objData.isValidTable()) {
-                    String varName = objData.getStringAt(1);
-                    
-                    if(varName == "height") {
-                        float min = objData.getFloatAt(2);
-                        float max = objData.getFloatAt(3);
-                        int result = System::random(((max * 100) - (min * 100))) + (min * 100);
-                        float height = ((float)result) / 100.0f;
-                        target->setHeight(height, true);
-                    } else if(varName == "hair") { 
-                        //auto logger = StackTrace::getLogger();
-                        String objectTemplate = objData.getStringAt(2);
-                        int min = objData.getIntAt(3);
-                        int max = objData.getIntAt(4);
-                        int result = System::random((max - min)) + min;
-                        //logger->info("Loaded Hair Values", true);
-                        ManagedReference<SceneObject*> inventory = target->getSlottedObject("inventory");
-                        if (inventory == nullptr) {
-                            objData.pop();
-                                continue;
-                        }
+        //Read the randomisation data
 
-                        objectTemplate = objectTemplate.replaceAll("shared_", "");    
+        LuaObject randomData = lua->getGlobalObject(customizeTemplate+"_"+randomType);
 
-                        if(result < 10)
-                            objectTemplate = objectTemplate + "_s0" + String::valueOf(result) + ".iff";
-                        else 
-                            objectTemplate = objectTemplate + "_s" + String::valueOf(result) + ".iff";
+        if (!randomData.isValidTable()){
+            //creature->sendSystemMessage("The randomisation template for '"+customizeTemplate+"' is not valid!");
+            return;
+        }
 
-                        //logger->info("Hair Object Template: " + objectTemplate, true);
-                            
-                        Reference<SharedObjectTemplate*> shot = TemplateManager::instance()->getTemplate(objectTemplate.hashCode());
+        int hairColour = -1;
+        bool randomLips = randomData.getBooleanField("random_lips", true);
+        bool matchBrows = randomData.getBooleanField("match_brows", true);
 
-                        if(shot == nullptr) {
-                            objData.pop();
-                            continue;
-                        }
+        LuaObject data = randomData.getObjectField("paired_variables");
 
-                        TangibleObject* hair = (target->getZoneServer()->createObject(shot->getServerObjectCRC(), 1)).castTo<TangibleObject*>();
+        // Apply paired randomisation
+        //Paired variables, used for blends used for opposite end of sliders
+        if (data.isValidTable()){
+            for (int i = 1; i <= data.getTableSize(); i++){
+                LuaObject pair = data.getObjectAt(i);
 
-                        if (hair == nullptr) {
-                            objData.pop();
-                            continue;
-                        }
+                int16 min = pair.getIntAt(3);
+                int16 max = pair.getIntAt(4);
+                int result = System::random((max-min)) + min;
 
+                // If the result is negative, use the first variable, and the absolute of the result
+                // else use the second variable and the result. Should evenly spread the sliders.
+                if (result < 0){
+                    String variable = pair.getStringAt(1);
+                    target->setCustomizationVariable(variable, abs(result));
+                } else {
+                    String variable = pair.getStringAt(2);
+                    target->setCustomizationVariable(variable, result);
+                }
+                pair.pop();
+            }
+        }
+        data.pop();
+        data = randomData.getObjectField("hair");
+
+        // Apply hair data
+        // Hair is complex enough to warrant it's own implementation May also be useful for species with
+        // highly divergent phenotypes like Aqualish.
+        if (data.isValidTable()){
+            String path = data.getStringAt(1);
+            String colourVar = data.getStringAt(2);
+
+            int colourMin = data.getIntAt(3);
+            int colourMax = data.getIntAt(4);
+
+            // Get our list of hairstyles, and pick a random one.
+            LuaObject hairstyleList = data.getObjectAt(5);
+            int hairstyle = System::random((hairstyleList.getTableSize()-1))+1;
+
+            // Complete our hair path and add our leading zero if needed.
+            if (hairstyleList.getIntAt(hairstyle) > 9){
+                path = path + "_s" + String::valueOf(hairstyleList.getIntAt(hairstyle))+".iff";
+            } else {
+                path = path + "_s0" + String::valueOf(hairstyleList.getIntAt(hairstyle))+".iff";
+            }
+            path = path.replaceAll("shared_", "");
+
+            hairstyleList.pop();
+
+            ManagedReference<SceneObject*> inventory = target->getSlottedObject("inventory");
+
+            if (inventory != nullptr){
+                Reference<SharedObjectTemplate*> shot = TemplateManager::instance()->getTemplate(path.hashCode());
+
+                if(shot != nullptr) {
+                    TangibleObject* hair = (target->getZoneServer()->createObject(shot->getServerObjectCRC(), 1)).castTo<TangibleObject*>();
+
+                    if (hair != nullptr){
                         Locker locker(hair);
                         hair->createChildObjects();
 
-                        String hairColorName = objData.getStringAt(5);
-                        int hairMin = objData.getIntAt(6);
-                        int hairMax = objData.getIntAt(7);
-                        int hairResult = System::random((hairMax - hairMin)) + hairMin;
-                        if(hairResult > 255) hairResult = 255;
-                        else if(hairResult < 0) hairResult = 0;
-                        //logger->info("Loaded custom hair colors", true);
-                        if(hairColor == -1)
-                            hairColor = hairResult;
-                        else 
-                            hairResult = hairColor;
+                        hairColour = System::random((colourMax - colourMin)) + colourMin;
 
-                        hair->setCustomizationVariable(hairColorName, hairResult, true);
+                        if(hairColour > 255)
+                            hairColour = 255;
+                        else if(hairColour < 0)
+                            hairColour = 0;
+                        
+                        hair->setCustomizationVariable(colourVar, hairColour, true);
 
-                        //Transfer
                         if (inventory->transferObject(hair, -1, true)) {
                             inventory->broadcastObject(hair, true);
+
+                            target->getZone()->getCreatureManager()->addWearableItem(target, hair);
                         } else {
                             hair->destroyObjectFromDatabase(true);
-                            objData.pop();
-                            continue;
                         }
-
-                        //Equip
-                        target->getZone()->getCreatureManager()->addWearableItem(target, hair);
-                    } else {
-                        
-                        int16 min = objData.getIntAt(2);
-                        int16 max = objData.getIntAt(3);
-                        int result = System::random((max - min)) + min;
-                        if(result > 255) result = 255;
-                        else if(result < 0) result = 0;
-                        if(varName == "/private/index_color_facial_hair") {
-                            if(hairColor == -1)
-                                hairColor = result;
-                            else 
-                                result = hairColor;
-                        }
-                        //auto logger = StackTrace::getLogger();
-                        //logger->info("Set Random Value: " + varName + " = " + String::valueOf(result), true);
-                        target->setCustomizationVariable(varName, result, true);
-                    }                   
+                    }
                 }
-                objData.pop();
-            }
-        } else {
-            if(creature != target) {
-                creature->sendSystemMessage("Customization Randomization Template  \"" + customizeTemplate + "\" not found.");
-                
-            } else {
-                logger->info(true) << "Could not find customization randomization template: " << customizeTemplate;
             }
         }
-        luaObject.pop();
+        data.pop();
+        data = randomData.getObjectField("random_variables");
+
+        // Apply single value randomisation
+        // used for colours, some sliders, and texture parameters
+        if (data.isValidTable()){
+            int skinColour = -1;
+
+            for (int i = 1; i <= data.getTableSize(); i++){
+                LuaObject random = data.getObjectAt(i);
+
+                int16 min = random.getIntAt(2);
+                int16 max = random.getIntAt(3);
+                int result = System::random((max-min)) + min;
+
+                String variable = random.getStringAt(1);
+                
+                if(variable == "/shared_owner/index_color_skin"){
+                    skinColour = result;
+                }
+
+                // Special handling for matching brows and beards to hair colour
+                if(variable == "/private/index_color_facial_hair" && matchBrows){
+                    if (hairColour >= 0)
+                        target->setCustomizationVariable(variable, hairColour);
+                    else
+                        target->setCustomizationVariable(variable, result);
+
+                // Handling for matching lip colours
+                } else if (variable == "/private/index_color_lips" && !randomLips) {
+                    if (skinColour >= 0)
+                        target->setCustomizationVariable(variable, skinColour);
+                    else
+                        target->setCustomizationVariable(variable, result);
+
+                // Default handling
+                } else {
+                    target->setCustomizationVariable(variable, result);
+                }
+                random.pop();
+            }
+        }
+        data.pop();
+        data = randomData.getObjectField("height");
+
+        // Apply random height
+        if (data.isValidTable()){
+            float min = data.getFloatAt(1);
+            float max = data.getFloatAt(2);
+
+            int result = System::random(((max * 100) - (min * 100))) + (min * 100);
+            float height = ((float)result) / 100.0f;
+
+            target->setHeight(height, true);
+        }
+        data.pop();
     }
 
     static void SaveCustomizationToTemplate(CreatureObject* creature, const uint64& target, String name) {

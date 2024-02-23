@@ -99,6 +99,10 @@ public:
 			return "mindfulness";
 		else if (skill == "inward")
 			return "mindfulness";
+		else if (skill == "performance")
+			return "charisma";
+		else if (skill == "command")
+			return "charisma";
 		else
 			return "";
 	}
@@ -168,6 +172,10 @@ public:
 			return "strength";
 		else if (skill == "inward")
 			return "intelligence";
+		else if (skill == "performance")
+			return "mindfulness";
+		else if (skill == "command")
+			return "intelligence";
 		else
 			return "";
 	}
@@ -236,6 +244,10 @@ public:
 		else if (skill == "alter")
 			return true;
 		else if (skill == "inward")
+			return true;
+		else if (skill == "performance")
+			return true;
+		else if (skill == "command")
 			return true;
 		else
 			return false;

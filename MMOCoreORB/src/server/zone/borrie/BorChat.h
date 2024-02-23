@@ -79,10 +79,29 @@ public:
             anonymous = target->getPlayerObject()->isAnonymous();
         }
 
-        String name = target->getFirstName();
-        String lastName = target->getLastName();
-        if(lastName != "") {
-            name += " " + lastName;
+        StringTokenizer tokens(target->getDisplayedName());
+
+        String name = tokens.getStringToken();
+        bool brackets = false;
+
+        while (tokens.hasMoreTokens()){
+            String token = tokens.getStringToken();
+
+            if (token.contains("(")){
+                if (token.contains(")")){
+                    continue;
+                } else {
+                    brackets = true;
+                    continue;
+                }
+            }
+            if (token.contains(")")){
+                brackets = false;
+                continue;
+            }
+            if (!brackets){
+                name = name+" "+token;
+            }
         }
 
         if(!anonymous) {
