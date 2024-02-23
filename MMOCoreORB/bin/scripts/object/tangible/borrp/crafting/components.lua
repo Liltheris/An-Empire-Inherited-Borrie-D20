@@ -29,6 +29,11 @@ object_tangible_borrp_crafting_comp_weapon_furniture = object_tangible_borrp_cra
 	
 }
 
+-- Pistol Receiver
+object_tangible_borrp_crafting_comp_weapon_receiver_pistol = object_tangible_borrp_crafting_shared_comp_weapon_receiver_pistol:new {
+	
+}
+
 ObjectTemplates:addTemplate(object_tangible_borrp_crafting_comp_weapon_parts_common, "object/tangible/borrp/crafting/comp_weapon_parts_common.iff")
 ObjectTemplates:addTemplate(object_tangible_borrp_crafting_comp_weapon_parts_uncommon, "object/tangible/borrp/crafting/comp_weapon_parts_uncommon.iff")
 ObjectTemplates:addTemplate(object_tangible_borrp_crafting_comp_weapon_parts_rare, "object/tangible/borrp/crafting/comp_weapon_parts_rare.iff")
@@ -36,3 +41,4 @@ ObjectTemplates:addTemplate(object_tangible_borrp_crafting_comp_weapon_parts_epi
 ObjectTemplates:addTemplate(object_tangible_borrp_crafting_comp_weapon_parts_legendary, "object/tangible/borrp/crafting/comp_weapon_parts_legendary.iff")
 ObjectTemplates:addTemplate(object_tangible_borrp_crafting_comp_op_system_energy, "object/tangible/borrp/crafting/comp_op_system_energy.iff")
 ObjectTemplates:addTemplate(object_tangible_borrp_crafting_comp_weapon_furniture, "object/tangible/borrp/crafting/comp_weapon_furniture.iff")
+ObjectTemplates:addTemplate(object_tangible_borrp_crafting_comp_weapon_receiver_pistol, "object/tangible/borrp/crafting/comp_weapon_receiver_pistol.iff")

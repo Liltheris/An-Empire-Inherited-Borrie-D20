@@ -33,3 +33,8 @@ object_tangible_borrp_crafting_shared_comp_op_system_energy = SharedTangibleObje
 }
 ObjectTemplates:addClientTemplate(object_tangible_borrp_crafting_shared_comp_op_system_energy, "object/tangible/borrp/crafting/shared_comp_op_system_energy.iff")
 --********************************************************************************************************************************
+object_tangible_borrp_crafting_shared_comp_weapon_receiver_pistol = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/borrp/crafting/shared_comp_weapon_receiver_pistol.iff"
+}
+ObjectTemplates:addClientTemplate(object_tangible_borrp_crafting_shared_comp_weapon_receiver_pistol, "object/tangible/borrp/crafting/shared_comp_weapon_receiver_pistol.iff")
+--********************************************************************************************************************************
