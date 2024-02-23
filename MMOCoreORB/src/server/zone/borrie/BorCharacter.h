@@ -813,18 +813,18 @@ public:
 				styledBranch = "weapons";
 
 			}
-			else if (target->hasSkill("rp_training_engineer_cybernetics_01"))
+			else if (target->hasSkill("rp_training_engineer_electronics_01"))
 			{
-				branch = "cybernetics";
-				styledBranch = "cybernetics";
+				branch = "electronics";
+				styledBranch = "electronics";
 
 			}
-			else if (target->hasSkill("rp_training_engineer_droid_01"))
-			{
-				branch = "droid";
-				styledBranch = "droids";
+			//else if (target->hasSkill("rp_training_engineer_droid_01"))
+			//{
+			//	branch = "droid";
+			//	styledBranch = "droids";
 
-			}
+			//}
 			if (target->hasSkill("rp_training_engineer_master")) {
 				output << "Master " << styledBranch << ")";
 			} else {
