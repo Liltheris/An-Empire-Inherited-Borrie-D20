@@ -990,3 +990,8 @@ object_tangible_wearables_bodysuit_shared_bodysuit_rodian_hunter = SharedTangibl
 }
 ObjectTemplates:addClientTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_rodian_hunter, "object/tangible/wearables/bodysuit/shared_bodysuit_rodian_hunter.iff")
 --****************************************************************************************************************************************************************************
+object_tangible_wearables_bodysuit_shared_bodysuit_imp = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/bodysuit/shared_bodysuit_imp.iff"
+}
+ObjectTemplates:addClientTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_imp, "object/tangible/wearables/bodysuit/shared_bodysuit_imp.iff")
+--****************************************************************************************************************************************************************************

@@ -63,3 +63,4 @@ includeFile("tangible/wearables/bodysuit/bodysuit_tie_fighter.lua")
 includeFile("tangible/wearables/bodysuit/bodysuit_tie_fighter_quest.lua")
 includeFile("tangible/wearables/bodysuit/bodysuit_rodian_hunter.lua")
 
+includeFile("tangible/wearables/bodysuit/bodysuit_imp.lua")
