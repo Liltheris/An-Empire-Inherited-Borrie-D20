@@ -266,6 +266,8 @@ public:
 			return true;
 		else if (skill == "lightsaber")
 			return true;
+		else if (skill == "sense")
+			return true;
 		else 
 			return false;
 	}
