@@ -8,8 +8,8 @@ npc_template = {
 	skillTemplates = {"factional/common/tech"},
 	
 	equipmentTemplates = {
-		{"rp_human_male", {"faction/imperial/tech_generic"}},
-		{"rp_human_female", {"faction/imperial/tech_generic"}},
+		{"rp_human_male", {"faction/imperial/army/pilot_s01", "faction/imperial/army/pilot_s02"}},
+		{"rp_human_female", {"faction/imperial/army/pilot_s01", "faction/imperial/army/pilot_s02"}},
 	},	
 	
 	customizationTemplates = {

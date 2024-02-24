@@ -1,16 +1,15 @@
 npc_template = {
 
-	title = "an Imperial Recruiter",
 	randomName = "human",
 	baseTemplates = {
 		"rp_human_male", 70,
 		"rp_human_female", 30
 	},
-	skillTemplates = {"stormtrooper"},
+	skillTemplates = {"factional/common/grunt_navy"},
 	
 	equipmentTemplates = {
-		{"rp_human_male", {"faction/imperial/officer_lieutenant"}},
-		{"rp_human_female", {"faction/imperial/officer_lieutenant"}},
+		{"rp_human_male", {"faction/imperial/navy/trooper", "faction/imperial/navy/trooper_s02"}},
+		{"rp_human_female", {"faction/imperial/navy/trooper", "faction/imperial/navy/trooper_s02"}},
 	},	
 	
 	customizationTemplates = {
