@@ -21,6 +21,7 @@ includeFile("borrie/planet/planets/bases/smc_enclave.lua")
 
 includeFile("borrie/planet/planets/bases/barons_hed_customs.lua")
 includeFile("borrie/planet/planets/bases/keldabe.lua")
+includeFile("borrie/planet/planets/bases/space_stardestroyer.lua")
 
 --Planets
 

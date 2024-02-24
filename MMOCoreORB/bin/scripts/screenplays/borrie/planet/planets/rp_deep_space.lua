@@ -5,6 +5,7 @@ planet = {
 	startingFactionControl = 100,
 	bases = {
 		"space_tansarii_main",
+		"space_stardestroyer",
 	},
 	
 	landing_points = {
