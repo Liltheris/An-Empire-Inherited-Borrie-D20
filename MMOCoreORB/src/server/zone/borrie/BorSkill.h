@@ -283,6 +283,8 @@ public:
 			return true;
 		else if(skill.contains("lightsaber"))
 			return true;
+		else if(skill.contains("sense"))
+			return true;
 		else return false;
 	}
 
