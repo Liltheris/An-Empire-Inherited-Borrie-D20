@@ -40,7 +40,10 @@ public:
 			args.getStringToken(skill);
 
 			if (BorSkill::GetStringIsSkill(skill)){
-				TrainSkill(creature, skill);
+				// 
+				if (!BorSkill::GetStringIsForceSkill(skill)){
+					TrainSkill(creature, skill);
+				}
 				return SUCCESS;
 
 			} else if (BorSkill::GetStringIsAttribute(skill)){
