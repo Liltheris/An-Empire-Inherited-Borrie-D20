@@ -162,15 +162,6 @@ public:
 				else (creature->getStoredInt("rp_heropoint") == 0){
 				creature->sendSystemMessage("You have no available hero point to use!");
 				}
-			}
-
-			
-			
-			
-			
-			
-			
-			
 			
 			}else if (BorrieRPG::GetChatTypeID(command) != -1) {
 				if (args.hasMoreTokens()) {
