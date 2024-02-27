@@ -204,6 +204,7 @@ public:
 		text << "/rp switchgrip - Changes your weapon grip, if your weapon has an alternate grip." << endl;
 		text << "/rp inspect - Inspect yourself and information available to DMs." << endl;
 		text << "/rp disguise [name]- Changes your displayed name to the provided name. Using '/rp disguise clear' removes the disguise name." << endl;
+		text << "/rp heropoint - Allows the reroll of your last non combat skill roll, or to stabilise when dying. " << endl;
 
 		ManagedReference<SuiMessageBox*> box = new SuiMessageBox(creature, SuiWindowType::NONE);
 		box->setPromptTitle("RP COMMAND HELP");
