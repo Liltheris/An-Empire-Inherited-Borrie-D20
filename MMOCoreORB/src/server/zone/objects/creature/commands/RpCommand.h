@@ -159,7 +159,7 @@ public:
 					creature->setStoredInt("rp_heropoint", 0)
 					BorrieRPG::BroadcastMessage(creature, BorString::getNiceName(creature) + " has used their hero point and may reroll their last dice!");
 				}
-				else if (creature->getStoredInt("rp_heropoint") == 0){
+				else (creature->getStoredInt("rp_heropoint") == 0){
 				creature->sendSystemMessage("You have no available hero point to use!");
 				}
 			}
