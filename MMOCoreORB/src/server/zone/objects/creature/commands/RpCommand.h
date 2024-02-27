@@ -155,13 +155,15 @@ public:
 					creature->sendSystemMessage("You must provide a name to disguise yourself with!");
 				}
 			}else if (command == "heropoint"){
+				if (creature->getStoredInt("rp_heropoint") == 0){
+				creature->sendSystemMessage("You have no available hero point to use!");
+				}
+
 				if (creature->getStoredInt("rp_heropoint") == 1){
 					creature->setStoredInt("rp_heropoint", 0);
 					BorrieRPG::BroadcastMessage(creature, BorString::getNiceName(creature) + " has used their hero point and may reroll their last dice!");
 				}
-				if (creature->getStoredInt("rp_heropoint") == 0){
-				creature->sendSystemMessage("You have no available hero point to use!");
-				}
+
 			
 			}else if (BorrieRPG::GetChatTypeID(command) != -1) {
 				if (args.hasMoreTokens()) {
