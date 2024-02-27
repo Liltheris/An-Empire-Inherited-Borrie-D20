@@ -156,12 +156,13 @@ public:
 				}
 			}else if (command == "heropoint"){
 				if (creature->getStoredInt("rp_heropoint") == 1){
-					creature->setStoredInt("rp_heropoint", 0)
+					creature->setStoredInt("rp_heropoint", 0);
 					BorrieRPG::BroadcastMessage(creature, BorString::getNiceName(creature) + " has used their hero point and may reroll their last dice!");
 				}
-				else (creature->getStoredInt("rp_heropoint") == 0);{
+				if (creature->getStoredInt("rp_heropoint") == 0);{
 				creature->sendSystemMessage("You have no available hero point to use!");
 				}
+				else {creature->sendSystemMessage("How did this happen? We're smarter than this!");}
 			
 			}else if (BorrieRPG::GetChatTypeID(command) != -1) {
 				if (args.hasMoreTokens()) {
