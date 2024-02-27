@@ -1407,6 +1407,7 @@ public:
 		FillAllPools(creature);
 		creature->setStoredInt("power_attack_count", 0);
 		creature->setStoredInt("is_vulnerable", 0);
+		creature->setStoredInt("rp_heropoint", 1)
 
 		//18 hour cooldown.
 		creature->updateCooldownTimer("long_rest", 18 * 60 * 60 * 1000); 
