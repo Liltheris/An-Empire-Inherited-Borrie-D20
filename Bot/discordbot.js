@@ -108,7 +108,7 @@ SWG.recvSystemMsg = function(message) {
 	} else if(message.startsWith("lw")) {
         const dataArray = message.split(":");
         var dmName = dataArray[1].substring(17, dataArray[1].length - 8);
-        var chatString = "**" + dmName + ":** " + dataArray[3];
+        var chatString = "**" + dmName + ":** " + dataArray[2];
 
         if (dmchat) dmchat.send(chatString);
         else console.log("discord disconnected");
