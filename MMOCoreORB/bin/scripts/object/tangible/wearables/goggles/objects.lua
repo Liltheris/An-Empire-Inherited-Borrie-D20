@@ -476,4 +476,8 @@ object_tangible_wearables_goggles_goggles_eyepatch_r_s01 = SharedTangibleObjectT
 }
 ObjectTemplates:addClientTemplate(object_tangible_wearables_goggles_goggles_eyepatch_r_s01, "object/tangible/wearables/goggles/goggles_eyepatch_r_s01.iff")
 --************************************************************************************************************************************************************
-
+object_tangible_wearables_goggles_shared_glasses_s01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/goggles/shared_glasses_s01.iff"
+}
+ObjectTemplates:addClientTemplate(object_tangible_wearables_goggles_shared_glasses_s01, "object/tangible/wearables/goggles/shared_glasses_s01.iff")
+--************************************************************************************************************************************************************

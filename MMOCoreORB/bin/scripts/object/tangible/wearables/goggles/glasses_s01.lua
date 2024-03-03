@@ -1,0 +1,5 @@
+object_tangible_wearables_goggles_glasses_s01 = object_tangible_wearables_goggles_shared_glasses_s01:new {
+
+}
+
+ObjectTemplates:addTemplate(object_tangible_wearables_goggles_glasses_s01, "object/tangible/wearables/goggles/glasses_s01.iff")

@@ -57,4 +57,6 @@ includeFile("tangible/wearables/goggles/goggles_kubaz_s01.lua")
 includeFile("tangible/wearables/goggles/goggles_eyepatch_l_s01.lua")
 includeFile("tangible/wearables/goggles/goggles_eyepatch_r_s01.lua")
 
+includeFile("tangible/wearables/goggles/glasses_s01.lua")
+
 
