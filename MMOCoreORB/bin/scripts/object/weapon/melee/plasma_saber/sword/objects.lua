@@ -698,3 +698,23 @@ object_weapon_melee_plasma_saber_sword_shared_sword_saber_katana = SharedWeaponO
 }
 ObjectTemplates:addClientTemplate(object_weapon_melee_plasma_saber_sword_shared_sword_saber_katana, "object/weapon/melee/plasma_saber/sword/shared_sword_saber_katana.iff")
 --************************************************************************************************************************************************************************
+object_weapon_melee_plasma_saber_sword_shared_sword_saber_baylan = SharedWeaponObjectTemplate:new {
+	clientTemplateFileName = "object/weapon/melee/plasma_saber/sword/shared_sword_saber_baylan.iff"
+}
+ObjectTemplates:addClientTemplate(object_weapon_melee_plasma_saber_sword_shared_sword_saber_baylan, "object/weapon/melee/plasma_saber/sword/shared_sword_saber_baylan.iff")
+--**************************************************************************************************************************************************************************
+object_weapon_melee_plasma_saber_sword_shared_sword_saber_kol = SharedWeaponObjectTemplate:new {
+	clientTemplateFileName = "object/weapon/melee/plasma_saber/sword/shared_sword_saber_kol.iff"
+}
+ObjectTemplates:addClientTemplate(object_weapon_melee_plasma_saber_sword_shared_sword_saber_kol, "object/weapon/melee/plasma_saber/sword/shared_sword_saber_kol.iff")
+--**************************************************************************************************************************************************************************
+object_weapon_melee_plasma_saber_sword_shared_sword_saber_sabine = SharedWeaponObjectTemplate:new {
+	clientTemplateFileName = "object/weapon/melee/plasma_saber/sword/shared_sword_saber_sabine.iff"
+}
+ObjectTemplates:addClientTemplate(object_weapon_melee_plasma_saber_sword_shared_sword_saber_sabine, "object/weapon/melee/plasma_saber/sword/shared_sword_saber_sabine.iff")
+--**************************************************************************************************************************************************************************
+object_weapon_melee_plasma_saber_sword_shared_sword_saber_shin = SharedWeaponObjectTemplate:new {
+	clientTemplateFileName = "object/weapon/melee/plasma_saber/sword/shared_sword_saber_shin.iff"
+}
+ObjectTemplates:addClientTemplate(object_weapon_melee_plasma_saber_sword_shared_sword_saber_shin, "object/weapon/melee/plasma_saber/sword/shared_sword_saber_shin.iff")
+--**************************************************************************************************************************************************************************

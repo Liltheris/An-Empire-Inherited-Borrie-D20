@@ -106,4 +106,9 @@ includeFile("draft_schematic/roleplay/weapon/lightsaber/sword_saber_youngling.lu
 includeFile("draft_schematic/roleplay/weapon/lightsaber/sword_saber_youngling2.lua")
 includeFile("draft_schematic/roleplay/weapon/lightsaber/sword_saber_yun.lua")
 includeFile("draft_schematic/roleplay/weapon/lightsaber/sword_saber_zatt.lua")
+
 includeFile("draft_schematic/roleplay/weapon/lightsaber/sword_saber_katana.lua")
+includeFile("draft_schematic/roleplay/weapon/lightsaber/sword_saber_baylan.lua")
+includeFile("draft_schematic/roleplay/weapon/lightsaber/sword_saber_kol.lua")
+includeFile("draft_schematic/roleplay/weapon/lightsaber/sword_saber_sabine.lua")
+includeFile("draft_schematic/roleplay/weapon/lightsaber/sword_saber_shin.lua")
