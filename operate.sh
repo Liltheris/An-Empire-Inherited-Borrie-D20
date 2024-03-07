@@ -7,7 +7,7 @@ if [ $? -eq 0 ]; then
 else
   echo "Process is not running. Trying to start the application."
   #start the application
-  cd ~/workspace/rpg/Core3/MMOCoreORB/bin
+  cd ~/workspace/An-Empire-Inherited-Borrie-D20/MMOCoreORB/bin
   ./core3
 
  
@@ -19,7 +19,7 @@ else
   else
     echo "Continuing operation."
     #if not interrupted, restart the application and continue operation
-    cd ~/workspace/rpg/Core3
+    cd  ~/workspace/An-Empire-Inherited-Borrie-D20/
     ./operate.sh
   fi
 fi
