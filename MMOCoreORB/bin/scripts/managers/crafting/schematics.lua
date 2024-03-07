@@ -160,6 +160,37 @@ schematics = {
 	{path="object/draft_schematic/roleplay/weapon/lightsaber_pole/lance_saber_pong.iff"},
 	{path="object/draft_schematic/roleplay/weapon/lightsaber_pole/lance_saber_rey3_staff.iff"},
 	{path="object/draft_schematic/roleplay/weapon/lightsaber_pole/lance_saber_vanquisher.iff"},
+	{path="object/draft_schematic/roleplay/weapon/lightsaber_pole/lance_saber_shin.iff"},
+	{path="object/draft_schematic/roleplay/weapon/lightsaber_pole/lance_saber_sabine.iff"},
+	{path="object/draft_schematic/roleplay/weapon/lightsaber_pole/lance_saber_kol.iff"},
+	{path="object/draft_schematic/roleplay/weapon/lightsaber_pole/lance_saber_Baylan.iff"},
 
 	{path="object/draft_schematic/roleplay/weapon/pistol/pistol_d18.iff"},
+	{path="object/draft_schematic/roleplay/weapon/pistol/pistol_cdef.iff"},
+	{path="object/draft_schematic/roleplay/weapon/pistol/pistol_dd6.iff"},
+	{path="object/draft_schematic/roleplay/weapon/pistol/pistol_dl44_metal.iff"},
+	{path="object/draft_schematic/roleplay/weapon/pistol/pistol_dl44.iff"},
+	{path="object/draft_schematic/roleplay/weapon/pistol/pistol_fwg5.iff"},
+	{path="object/draft_schematic/roleplay/weapon/pistol/pistol_striker.iff"},
+	{path="object/draft_schematic/roleplay/weapon/pistol/pistol_westar34.iff"},
+	{path="object/draft_schematic/roleplay/weapon/pistol/pistol_westar35.iff"},
+
+	{path="object/draft_schematic/roleplay/weapon/carbine/carbine_bothan.iff"},
+	{path="object/draft_schematic/roleplay/weapon/carbine/carbine_charric.iff"},
+	{path="object/draft_schematic/roleplay/weapon/carbine/carbine_ee3.iff"},
+	{path="object/draft_schematic/roleplay/weapon/carbine/carbine_elite.iff"},
+	{path="object/draft_schematic/roleplay/weapon/carbine/carbine_laser.iff"},
+
+	{path="object/draft_schematic/roleplay/weapon/rifle/rifle_alliance_gauss.iff"},
+	{path="object/draft_schematic/roleplay/weapon/rifle/rifle_bowcaster.iff"},
+	{path="object/draft_schematic/roleplay/weapon/rifle/rifle_laser.iff"},
+	{path="object/draft_schematic/roleplay/weapon/rifle/rifle_trando_hunter.iff"},
+	{path="object/draft_schematic/roleplay/weapon/rifle/rifle_tusken.iff"},
+
+	{path="object/draft_schematic/roleplay/weapon/pistol/pistol_scattergun.iff"},
+	{path="object/draft_schematic/roleplay/weapon/shotgun/rifle_dp23.iff"},
+
+	{path="object/draft_schematic/roleplay/weapon/sniper/rifle_adventurer.iff"},
+	{path="object/draft_schematic/roleplay/weapon/sniper/rifle_ld1.iff"},
+	{path="object/draft_schematic/roleplay/weapon/sniper/rifle_tusken_elite.iff"},
 };

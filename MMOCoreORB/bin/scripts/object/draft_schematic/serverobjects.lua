@@ -67,5 +67,9 @@ includeFile("draft_schematic/roleplay/weapon/lightsaber/serverobjects.lua")
 includeFile("draft_schematic/roleplay/weapon/lightsaber_pole/serverobjects.lua")
 
 includeFile("draft_schematic/roleplay/weapon/pistol/serverobjects.lua")
+includeFile("draft_schematic/roleplay/weapon/carbine/serverobjects.lua")
+includeFile("draft_schematic/roleplay/weapon/rifle/serverobjects.lua")
+includeFile("draft_schematic/roleplay/weapon/sniper/serverobjects.lua")
+includeFile("draft_schematic/roleplay/weapon/shotgun/serverobjects.lua")
 -- Server Objects
 
