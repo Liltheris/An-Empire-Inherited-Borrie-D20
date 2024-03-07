@@ -27,7 +27,7 @@ object_draft_schematic_roleplay_weapon_carbine_carbine_charric = object_draft_sc
 	resourceTypes = {"object/tangible/borrp/crafting/shared_comp_weapon_receiver_carbine_rare.iff","object/tangible/borrp/crafting/shared_comp_op_system_base.iff"},
 	resourceQuantities = {1,1},
 	contribution = {100,100},
-	ingredientAppearance = {"", ""},
+
 	targetTemplate = "object/weapon/roleplay/ranged/carbine/charric_carbine.iff",
 
 	additionalTemplates = {}

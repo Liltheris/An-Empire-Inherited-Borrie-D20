@@ -27,7 +27,6 @@ object_draft_schematic_roleplay_weapon_pistol_pistol_d18 = object_draft_schemati
 	resourceTypes = {"object/tangible/borrp/crafting/shared_comp_weapon_receiver_pistol_common.iff","object/tangible/borrp/crafting/shared_comp_op_system_base.iff"},
 	resourceQuantities = {1,1},
 	contribution = {100,100},
-	ingredientAppearance = {"", ""},
 	targetTemplate = "object/weapon/roleplay/ranged/pistol/cdef_pistol.iff",
 
 	additionalTemplates = {}

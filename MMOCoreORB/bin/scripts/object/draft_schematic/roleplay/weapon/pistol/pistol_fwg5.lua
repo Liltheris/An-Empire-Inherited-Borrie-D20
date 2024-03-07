@@ -1,4 +1,4 @@
-object_draft_schematic_roleplay_weapon_pistol_pistol_d18 = object_draft_schematic_roleplay_weapon_pistol_shared_pistol_d18:new {
+object_draft_schematic_roleplay_weapon_pistol_pistol_fwg5 = object_draft_schematic_roleplay_weapon_pistol_shared_pistol_fwg5:new {
 
 	templateType = DRAFTSCHEMATIC,
 
@@ -27,9 +27,8 @@ object_draft_schematic_roleplay_weapon_pistol_pistol_d18 = object_draft_schemati
 	resourceTypes = {"object/tangible/borrp/crafting/shared_comp_weapon_receiver_pistol_rare.iff","object/tangible/borrp/crafting/shared_comp_op_system_base.iff"},
 	resourceQuantities = {1,1},
 	contribution = {100,100},
-	ingredientAppearance = {"", ""},
 	targetTemplate = "object/weapon/roleplay/ranged/pistol/fwg5_pistol.iff",
 
 	additionalTemplates = {}
 
-}ObjectTemplates:addTemplate(object_draft_schematic_roleplay_weapon_pistol_pistol_d18, "object/draft_schematic/roleplay/weapon/pistol/pistol_fwg5.iff")
+}ObjectTemplates:addTemplate(object_draft_schematic_roleplay_weapon_pistol_pistol_fwg5, "object/draft_schematic/roleplay/weapon/pistol/pistol_fwg5.iff")

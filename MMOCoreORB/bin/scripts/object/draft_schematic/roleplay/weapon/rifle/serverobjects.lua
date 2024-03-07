@@ -1,0 +1,5 @@
+includeFile("draft_schematic/roleplay/weapon/rifle/rifle_alliance_gauss.lua")
+includeFile("draft_schematic/roleplay/weapon/rifle/rifle_bowcaster.lua")
+includeFile("draft_schematic/roleplay/weapon/rifle/rifle_laser.lua")
+includeFile("draft_schematic/roleplay/weapon/rifle/rifle_trando_hunter.lua")
+includeFile("draft_schematic/roleplay/weapon/rifle/rifle_tusken.lua")
