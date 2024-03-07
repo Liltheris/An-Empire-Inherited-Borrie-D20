@@ -776,9 +776,28 @@ void CraftingSessionImplementation::initialAssembly(int clientCounter) {
 				///////////////////////////////////////////////////////////////////////
 				// D20 System - Components modify weapon stats
 				///////////////////////////////////////////////////////////////////////
-				if (compTano->getCraftingDamageType() > 0){
-					prototypeWep->setDamageType(compTano->getCraftingDamageType());
-					prototypeWep->setAmmoPack(BorCrafting::getAmmoPackForWeaponType(type, compTano->getCraftingDamageType()));
+				int damageType = compTano->getCraftingDamageType();
+				String ammoType = "ammo_powerpack_medium";
+				if (damageType > 0){
+					prototypeWep->setDamageType(damageType);
+
+					if (damageType == 1){
+						ammoType = "ammo_kinetic";
+					}
+
+					switch (type){
+						case SceneObjectType::PISTOL:
+							ammoType = "ammo_powerpack_small";
+							break;
+						case SceneObjectType::CARBINE:
+							ammoType = "ammo_powerpack_medium";
+							break;
+						case SceneObjectType::RIFLE:
+							ammoType = "ammo_powerpack_large";
+							break;
+					};
+
+					prototypeWep->setAmmoPack(ammoType);
 				}
 
 				if (compTano->getCraftingDamageDieType() > 0){

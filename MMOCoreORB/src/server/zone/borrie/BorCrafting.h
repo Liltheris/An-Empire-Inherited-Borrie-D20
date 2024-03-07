@@ -9,18 +9,7 @@
 class BorCrafting : public Logger {
 public:
     static String getAmmoPackForWeaponType(int objectType, int damageType) {
-        if (damageType == 1){
-            return "ammo_kinetic";
-        }
-
-        switch (objectType){
-            case SceneObjectType::PISTOL:
-                return "ammo_powerpack_small";
-            case SceneObjectType::CARBINE:
-                return "ammo_powerpack_medium";
-            case SceneObjectType::RIFLE:
-                return "ammo_powerpack_large";
-        };
+        
     }
 };
 
