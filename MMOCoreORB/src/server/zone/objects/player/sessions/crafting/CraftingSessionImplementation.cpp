@@ -33,6 +33,7 @@
 #include "server/zone/borrie/BorDice.h"
 #include "server/zone/borrie/BorCrafting.h"
 #include "server/zone/borrie/BorString.h"
+#include "server/zone/borrie/BorCharacter.h"
 
 int CraftingSessionImplementation::initializeSession(CraftingTool* tool, CraftingStation* station) {
 
@@ -70,6 +71,16 @@ int CraftingSessionImplementation::startSession() {
 		cancelSession();
 		return false;
 	}
+	///////////////////////////////////////////////////////////////////
+	// D20 System - Check will
+	///////////////////////////////////////////////////////////////////
+	if (crafter->getHAM(6) == 0){
+		// Cancel crafting due to lacking will!
+		crafter->sendSystemMessage("You do not have enough will to craft right now!");
+		cancelSession();
+		return false;
+	}
+	// End D20 System /////////////////////////////////////////////////
 
 	/// Get current allowed complexity
 	int complexityLevel = craftingTool->getComplexityLevel();
@@ -701,19 +712,22 @@ void CraftingSessionImplementation::initialAssembly(int clientCounter) {
 	if (engineeringRoll == 1){
 		// Automatic failure on a nat 1!
 		assemblyResult = CraftingManager::CRITICALFAILURE;
-		output = "You attempt to craft the item, but crtically fail! " + BorString::skillSpam(engineeringSkill, engineeringRoll, result);
+		output = "You attempt to craft the item, but crtically fail! " + BorString::skillSpam(engineeringSkill, engineeringRoll, result, draftSchematic->getComplexity());
+		BorCharacter::ModPool(crafter, "will", -2, true);
 	} else if (result == 20) {
 		// Amazing success on nat 20!
 		assemblyResult = CraftingManager::AMAZINGSUCCESS;
-		output = "You attempt to craft the item, and succeed! " + BorString::skillSpam(engineeringSkill, engineeringRoll, result);
+		output = "You attempt to craft the item, and succeed! " + BorString::skillSpam(engineeringSkill, engineeringRoll, result, draftSchematic->getComplexity());
 	} else if (result >= draftSchematic->getComplexity()){
 		// Success!
 		assemblyResult = CraftingManager::SUCCESS;
-		output = "You attempt to craft the item, and succeed! " + BorString::skillSpam(engineeringSkill, engineeringRoll, result);
+		output = "You attempt to craft the item, and succeed! " + BorString::skillSpam(engineeringSkill, engineeringRoll, result, draftSchematic->getComplexity());
+		BorCharacter::ModPool(crafter, "will", -1, true);
 	} else {
 		// Failure!
-		assemblyResult = CraftingManager::OK;
-		output = "You attempt to craft the item, but fail! " + BorString::skillSpam(engineeringSkill, engineeringRoll, result);
+		assemblyResult = CraftingManager::CRITICALFAILURE;
+		output = "You attempt to craft the item, but fail! " + BorString::skillSpam(engineeringSkill, engineeringRoll, result, draftSchematic->getComplexity());
+		BorCharacter::ModPool(crafter, "will", -1, true);
 	}
 
 	crafter->sendSystemMessage(output);
