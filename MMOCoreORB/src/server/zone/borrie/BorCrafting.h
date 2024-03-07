@@ -9,7 +9,7 @@
 class BorCrafting : public Logger {
 public:
     static String getAmmoPackForWeaponType(int objectType, int damageType) {
-        
+        return "";
     }
 };
 
