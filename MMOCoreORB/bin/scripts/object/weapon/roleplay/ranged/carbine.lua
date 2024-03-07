@@ -335,11 +335,11 @@ object_weapon_roleplay_ranged_carbine_ee3_carbine = object_weapon_ranged_carbine
 	customName = "EE-3 Carbine",
 
 	--[Stats]
-	damageType = HEAT,
+	damageType = ENERGY,
 	armorPiercing = NONE,
 
 	--Damage (minDamage[d]maxDamage) i.e. (2d20)
-	minDamage = 1, --Amount of Die used in Damage
+	minDamage = 2, --Amount of Die used in Damage
 	maxDamage = 3, --Type of Die used in Damage
 	bonusDamage = 3,
 
