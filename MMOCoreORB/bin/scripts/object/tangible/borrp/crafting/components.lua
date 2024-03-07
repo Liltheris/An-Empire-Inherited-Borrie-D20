@@ -271,6 +271,18 @@ object_tangible_borrp_crafting_comp_weapon_receiver_shotgun_legendary = object_t
     craftingDamageDieType = 7,
     craftingBonusDamage = 5,
 }
+--Scrap Metal
+object_tangible_borrp_crafting_scrap_metal = object_tangible_borrp_crafting_shared_scrap_metal:new {
+
+}
+--Scrap Electronics
+object_tangible_borrp_crafting_scrap_electronics = object_tangible_borrp_crafting_shared_scrap_electronics:new {
+
+}
+--Circuit Board
+object_tangible_borrp_crafting_circuit_board = object_tangible_borrp_crafting_shared_circuit_board:new {
+
+}
 
 ObjectTemplates:addTemplate(object_tangible_borrp_crafting_comp_weapon_parts_common, "object/tangible/borrp/crafting/comp_weapon_parts_common.iff")
 ObjectTemplates:addTemplate(object_tangible_borrp_crafting_comp_weapon_parts_uncommon, "object/tangible/borrp/crafting/comp_weapon_parts_uncommon.iff")
@@ -316,3 +328,7 @@ ObjectTemplates:addTemplate(object_tangible_borrp_crafting_comp_weapon_receiver_
 ObjectTemplates:addTemplate(object_tangible_borrp_crafting_comp_weapon_receiver_shotgun, "object/tangible/borrp/crafting/comp_weapon_receiver_shotgun_rare.iff")
 ObjectTemplates:addTemplate(object_tangible_borrp_crafting_comp_weapon_receiver_shotgun, "object/tangible/borrp/crafting/comp_weapon_receiver_shotgun_epic.iff")
 ObjectTemplates:addTemplate(object_tangible_borrp_crafting_comp_weapon_receiver_shotgun, "object/tangible/borrp/crafting/comp_weapon_receiver_shotgun_legendary.iff")
+
+ObjectTemplates:addTemplate(object_tangible_borrp_crafting_scrap_metal , "object/tangible/borrp/crafting/scrap_metal.iff")
+ObjectTemplates:addTemplate(object_tangible_borrp_crafting_scrap_electronics , "object/tangible/borrp/crafting/scrap_electronics.iff")
+ObjectTemplates:addTemplate(object_tangible_borrp_crafting_circuit_board , "object/tangible/borrp/crafting/circuit_board.iff")
