@@ -136,7 +136,7 @@ shop_weapons_ranged = {
 			items = {
 				{template = "object/tangible/component/weapon/stock.iff", cost = 10, max = 10, chance = 100, overridePrice = true},
 				{template = "object/tangible/component/weapon/weapon_carbine_laser_stock.iff", cost = 10, max = 10, chance = 100, overridePrice = true},
-				{template = "object/tangible/component/weapon/weapon_dlt_20_stock.iff", cost = 10, max = 10, chance = 100, overridePrice = true},
+				{template = "object/tangible/component/weapon/weapon_dlt20_stock.iff", cost = 10, max = 10, chance = 100, overridePrice = true},
 				{template = "object/tangible/component/weapon/weapon_dxr6_stock.iff", cost = 10, max = 10, chance = 100, overridePrice = true},
 				{template = "object/tangible/component/weapon/weapon_ee3_stock.iff", cost = 10, max = 10, chance = 100, overridePrice = true},
 				{template = "object/tangible/component/weapon/weapon_elite_stock.iff", cost = 10, max = 10, chance = 100, overridePrice = true},
