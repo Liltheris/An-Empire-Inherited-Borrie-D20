@@ -1,4 +1,4 @@
-object_draft_schematic_roleplay_component_comp_weapon_receiver_sniper_epic = object_draft_schematic_roleplay_component_shared_comp_weapon_receiver_sniper_epic:new {
+object_draft_schematic_roleplay_component_weapon_receiver_sniper_epic = object_draft_schematic_roleplay_component_shared_weapon_receiver_sniper_epic:new {
 
 	templateType = DRAFTSCHEMATIC,
 
@@ -24,11 +24,11 @@ object_draft_schematic_roleplay_component_comp_weapon_receiver_sniper_epic = obj
 	ingredientTemplateNames = {"craft_weapon_ingredients_n","craft_weapon_ingredients_n"},
 	ingredientTitleNames = {"weapon_parts_rare","weapon_parts_epic"},
 	ingredientSlotType = {1,1},
-	resourceTypes = {"object/draft_schematic/roleplay/component/weapon_parts_rare.iff","object/draft_schematic/roleplay/component/weapon_parts_epic.iff"},
+	resourceTypes = {"object/tangible/borrp/crafting/shared_weapon_parts_rare.iff","object/tangible/borrp/crafting/shared_weapon_parts_epic.iff"},
 	resourceQuantities = {1,1},
 	contribution = {100,100},
 	targetTemplate = "object/tangible/borrp/crafting/shared_comp_weapon_receiver_sniper_epic.iff",
 
 	additionalTemplates = {}
 
-}ObjectTemplates:addTemplate(object_draft_schematic_roleplay_component_comp_weapon_receiver_sniper_epic, "object/draft_schematic/roleplay/component/comp_weapon_receiver_sniper_epic.iff")
+}ObjectTemplates:addTemplate(object_draft_schematic_roleplay_component_weapon_receiver_sniper_epic, "object/draft_schematic/roleplay/component/weapon_receiver_shotgun_epic.iffobject/draft_schematic/roleplay/component/weapon_receiver_shotgun_epic.iff")
