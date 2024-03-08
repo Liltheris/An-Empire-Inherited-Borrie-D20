@@ -205,8 +205,8 @@ schematics = {
 	{path="object/draft_schematic/roleplay/component/comp_op_system_kinetic.iff"},
 	{path="object/draft_schematic/roleplay/component/comp_op_system_stun.iff"},
 
-	{path="object/draft_schematic/roleplay/component/comp_weapon_parts_common.iff"},
-	-- {path="object/draft_schematic/roleplay/component/comp_weapon_parts_uncommon.iff"},
+	-- {path="object/draft_schematic/roleplay/component/comp_weapon_parts_common.iff"},
+	{path="object/draft_schematic/roleplay/component/comp_weapon_parts_uncommon.iff"},
 	-- {path="object/draft_schematic/roleplay/component/comp_weapon_parts_rare.iff"},
 	-- {path="object/draft_schematic/roleplay/component/comp_weapon_parts_epic.iff"},
 	-- {path="object/draft_schematic/roleplay/component/comp_weapon_parts_legenadry.iff"},
