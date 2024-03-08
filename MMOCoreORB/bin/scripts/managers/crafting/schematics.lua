@@ -175,11 +175,11 @@ schematics = {
 	{path="object/draft_schematic/roleplay/weapon/pistol/pistol_westar34.iff"},
 	{path="object/draft_schematic/roleplay/weapon/pistol/pistol_westar35.iff"},
 
-	-- {path="object/draft_schematic/roleplay/weapon/carbine/carbine_bothan.iff"},
-	-- {path="object/draft_schematic/roleplay/weapon/carbine/carbine_charric.iff"},
-	-- {path="object/draft_schematic/roleplay/weapon/carbine/carbine_ee3.iff"},
-	-- {path="object/draft_schematic/roleplay/weapon/carbine/carbine_elite.iff"},
-	-- {path="object/draft_schematic/roleplay/weapon/carbine/carbine_laser.iff"},
+	{path="object/draft_schematic/roleplay/weapon/carbine/carbine_bothan.iff"},
+	{path="object/draft_schematic/roleplay/weapon/carbine/carbine_charric.iff"},
+	{path="object/draft_schematic/roleplay/weapon/carbine/carbine_ee3.iff"},
+	{path="object/draft_schematic/roleplay/weapon/carbine/carbine_elite.iff"},
+	{path="object/draft_schematic/roleplay/weapon/carbine/carbine_laser.iff"},
 
 	-- {path="object/draft_schematic/roleplay/weapon/rifle/rifle_alliance_gauss.iff"},
 	-- {path="object/draft_schematic/roleplay/weapon/rifle/rifle_bowcaster.iff"},
