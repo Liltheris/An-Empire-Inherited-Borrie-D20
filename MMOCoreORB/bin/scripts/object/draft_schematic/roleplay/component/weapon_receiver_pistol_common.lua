@@ -1,4 +1,4 @@
-object_draft_schematic_roleplay_component_weapon_parts_common = object_draft_schematic_roleplay_component_shared_weapon_parts_common:new {
+object_draft_schematic_roleplay_component_weapon_receiver_pistol_common = object_draft_schematic_roleplay_component_shared_weapon_receiver_pistol_common:new {
 
 	templateType = DRAFTSCHEMATIC,
 
@@ -22,13 +22,13 @@ object_draft_schematic_roleplay_component_weapon_parts_common = object_draft_sch
 	customizationDefaults = {},
 
 	ingredientTemplateNames = {"craft_weapon_ingredients_n","craft_weapon_ingredients_n"},
-	ingredientTitleNames = {"scrap_metal","scrap_metal"},
+	ingredientTitleNames = {"scrap_metal","weapon_parts_common"},
 	ingredientSlotType = {1,1},
-	resourceTypes = {"object/tangible/borrp/crafting/shared_scrap_metal.iff","object/tangible/borrp/crafting/shared_scrap_metal.iff"},
+	resourceTypes = {"object/tangible/borrp/crafting/shared_scrap_metal.iff","object/draft_schematic/roleplay/component/weapon_parts_common.iff"},
 	resourceQuantities = {1,1},
 	contribution = {100,100},
-	targetTemplate = "object/tangible/borrp/crafting/shared_comp_weapon_parts_common.iff",
+	targetTemplate = "object/tangible/borrp/crafting/shared_comp_weapon_receiver_pistol_common.iff",
 
 	additionalTemplates = {}
 
-}ObjectTemplates:addTemplate(object_draft_schematic_roleplay_component_weapon_parts_common, "object/draft_schematic/roleplay/component/weapon_parts_common.iff")
+}ObjectTemplates:addTemplate(object_draft_schematic_roleplay_component_weapon_receiver_pistol_common, "object/draft_schematic/roleplay/component/weapon_receiver_pistol_common.iff")
