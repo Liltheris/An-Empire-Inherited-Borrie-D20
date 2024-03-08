@@ -790,6 +790,7 @@ void CraftingSessionImplementation::initialAssembly(int clientCounter) {
 								break;
 						};
 					}
+					prototypeWep->setAmmoPack(ammoType);
 				}
 
 				if (compTano->getCraftingDamageDieType() > 0){
@@ -799,7 +800,6 @@ void CraftingSessionImplementation::initialAssembly(int clientCounter) {
 
 					String rarity = compTano->getRarity();
 
-					prototypeWep->setAmmoPack(ammoType);
 					prototypeWep->setRarity(rarity);
 				}
 				// End D20 System /////////////////////////////////////////////////////

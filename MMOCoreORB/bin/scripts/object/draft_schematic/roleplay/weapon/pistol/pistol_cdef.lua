@@ -1,4 +1,4 @@
-object_draft_schematic_roleplay_weapon_pistol_pistol_d18 = object_draft_schematic_roleplay_weapon_pistol_shared_pistol_d18:new {
+object_draft_schematic_roleplay_weapon_pistol_pistol_cdef = object_draft_schematic_roleplay_weapon_pistol_shared_pistol_cdef:new {
 
 	templateType = DRAFTSCHEMATIC,
 
@@ -31,4 +31,4 @@ object_draft_schematic_roleplay_weapon_pistol_pistol_d18 = object_draft_schemati
 
 	additionalTemplates = {}
 
-}ObjectTemplates:addTemplate(object_draft_schematic_roleplay_weapon_pistol_pistol_d18, "object/draft_schematic/roleplay/weapon/pistol/pistol_cdef.iff")
+}ObjectTemplates:addTemplate(object_draft_schematic_roleplay_weapon_pistol_pistol_cdef, "object/draft_schematic/roleplay/weapon/pistol/pistol_cdef.iff")
