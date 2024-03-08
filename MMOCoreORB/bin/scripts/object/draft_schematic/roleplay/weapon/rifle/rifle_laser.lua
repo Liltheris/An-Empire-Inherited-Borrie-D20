@@ -21,13 +21,13 @@ object_draft_schematic_roleplay_weapon_rifle_rifle_laser = object_draft_schemati
 	customizationStringNames = {},
 	customizationDefaults = {},
 
-	ingredientTemplateNames = {"craft_weapon_ingredients_n","craft_weapon_ingredients_n","craft_weapon_ingredients_n","craft_weapon_ingredients_n"},
-	ingredientTitleNames = {"receiver","operating_system","stock","scope"},
+	ingredientTemplateNames = {"craft_weapon_ingredients_n","craft_weapon_ingredients_n","craft_weapon_ingredients_n"},
+	ingredientTitleNames = {"receiver","operating_system","stock"},
 	ingredientSlotType = {1,1,3,3},
-	resourceTypes = {"object/tangible/borrp/crafting/shared_comp_weapon_receiver_rifle_common.iff","object/tangible/borrp/crafting/shared_comp_op_system_base.iff","object/tangible/component/weapon/shared_stock.iff","object/tangible/component/weapon/shared_scope_weapon.iff"},
-	resourceQuantities = {1,1,1,1},
-	contribution = {100,100,100,100},
-	ingredientAppearance = {"", "", "stock", "scope"},
+	resourceTypes = {"object/tangible/borrp/crafting/shared_comp_weapon_receiver_rifle_common.iff","object/tangible/borrp/crafting/shared_comp_op_system_base.iff","object/tangible/component/weapon/shared_stock.iff"},
+	resourceQuantities = {1,1,1},
+	contribution = {100,100,100},
+	ingredientAppearance = {"", "", "stock"},
 	targetTemplate = "object/weapon/roleplay/ranged/rifle/laser_rifle.iff",
 
 	additionalTemplates = {}
