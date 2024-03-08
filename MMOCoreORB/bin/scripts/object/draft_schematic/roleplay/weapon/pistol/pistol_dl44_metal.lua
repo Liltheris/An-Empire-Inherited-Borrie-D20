@@ -1,4 +1,4 @@
-object_draft_schematic_roleplay_weapon_pistol_pistol_d18 = object_draft_schematic_roleplay_weapon_pistol_shared_pistol_d18:new {
+object_draft_schematic_roleplay_weapon_pistol_pistol_dl44_metal = object_draft_schematic_roleplay_weapon_pistol_shared_pistol_dl44_metal:new {
 
 	templateType = DRAFTSCHEMATIC,
 
@@ -28,9 +28,8 @@ object_draft_schematic_roleplay_weapon_pistol_pistol_d18 = object_draft_schemati
 	resourceQuantities = {1,1,1,1},
 	contribution = {100,100,100,100},
 	ingredientAppearance = {"", "", "muzzle", "scope"},
-
 	targetTemplate = "object/weapon/roleplay/ranged/pistol/dl44_metal_blaster_pistol.iff",
 
 	additionalTemplates = {}
 
-}ObjectTemplates:addTemplate(object_draft_schematic_roleplay_weapon_pistol_pistol_d18, "object/draft_schematic/roleplay/weapon/pistol/pistol_dl44_metal.iff")
+}ObjectTemplates:addTemplate(object_draft_schematic_roleplay_weapon_pistol_pistol_dl44_metal, "object/draft_schematic/roleplay/weapon/pistol/pistol_dl44_metal.iff")
