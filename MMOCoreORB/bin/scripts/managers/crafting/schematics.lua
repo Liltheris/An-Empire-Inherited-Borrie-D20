@@ -181,18 +181,18 @@ schematics = {
 	{path="object/draft_schematic/roleplay/weapon/carbine/carbine_elite.iff"},
 	{path="object/draft_schematic/roleplay/weapon/carbine/carbine_laser.iff"},
 
-	-- {path="object/draft_schematic/roleplay/weapon/rifle/rifle_alliance_gauss.iff"},
-	-- {path="object/draft_schematic/roleplay/weapon/rifle/rifle_bowcaster.iff"},
-	-- {path="object/draft_schematic/roleplay/weapon/rifle/rifle_laser.iff"},
-	-- {path="object/draft_schematic/roleplay/weapon/rifle/rifle_trando_hunter.iff"},
-	-- {path="object/draft_schematic/roleplay/weapon/rifle/rifle_tusken.iff"},
+	{path="object/draft_schematic/roleplay/weapon/rifle/rifle_alliance_gauss.iff"},
+	{path="object/draft_schematic/roleplay/weapon/rifle/rifle_bowcaster.iff"},
+	{path="object/draft_schematic/roleplay/weapon/rifle/rifle_laser.iff"},
+	{path="object/draft_schematic/roleplay/weapon/rifle/rifle_trando_hunter.iff"},
+	{path="object/draft_schematic/roleplay/weapon/rifle/rifle_tusken.iff"},
 
-	-- {path="object/draft_schematic/roleplay/weapon/pistol/pistol_scattergun.iff"},
-	-- {path="object/draft_schematic/roleplay/weapon/shotgun/rifle_dp23.iff"},
+	{path="object/draft_schematic/roleplay/weapon/pistol/pistol_scattergun.iff"},
+	{path="object/draft_schematic/roleplay/weapon/shotgun/rifle_dp23.iff"},
 
-	-- {path="object/draft_schematic/roleplay/weapon/sniper/rifle_adventurer.iff"},
-	-- {path="object/draft_schematic/roleplay/weapon/sniper/rifle_ld1.iff"},
-	-- {path="object/draft_schematic/roleplay/weapon/sniper/rifle_tusken_elite.iff"},
+	{path="object/draft_schematic/roleplay/weapon/sniper/rifle_adventurer.iff"},
+	{path="object/draft_schematic/roleplay/weapon/sniper/rifle_ld1.iff"},
+	{path="object/draft_schematic/roleplay/weapon/sniper/rifle_tusken_elite.iff"},
 
 	-- {path="object/draft_schematic/roleplay/component/circuit_board.iff"},
 
