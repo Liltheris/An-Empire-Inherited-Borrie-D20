@@ -27,8 +27,8 @@ object_draft_schematic_roleplay_component_circuit_board = object_draft_schematic
 	resourceTypes = {"object/tangible/borrp/crafting/shared_scrap_electronics","object/tangible/borrp/crafting/shared_scrap_electronics"},
 	resourceQuantities = {1,1},
 	contribution = {100,100},
-	targetTemplate = "object/tangible/borrp/crafting/shared_scrap_electronics.iff",
+	targetTemplate = "object/tangible/borrp/crafting/shared_circuit_board.iff",
 
 	additionalTemplates = {}
 
-}ObjectTemplates:addTemplate(object_draft_schematic_roleplay_component_circuit_board, "object/tangible/borrp/crafting/shared_scrap_electronics.iff")
+}ObjectTemplates:addTemplate(object_draft_schematic_roleplay_component_circuit_board, "object/tangible/borrp/crafting/shared_circuit_board.iff")
