@@ -43,4 +43,9 @@ object_draft_schematic_roleplay_weapon_pistol_shared_pistol_westar_35 = SharedDr
 }
 ObjectTemplates:addClientTemplate(object_draft_schematic_roleplay_weapon_pistol_shared_pistol_westar_35, "object/draft_schematic/roleplay/weapon/pistol/shared_pistol_westar_35.iff")
 --********************************************************************************************************************************
+object_draft_schematic_roleplay_weapon_pistol_shared_pistol_de10 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/roleplay/weapon/pistol/shared_pistol_de10.iff"
+}
+ObjectTemplates:addClientTemplate(object_draft_schematic_roleplay_weapon_pistol_shared_pistol_de10, "object/draft_schematic/roleplay/weapon/pistol/shared_pistol_de10.iff")
+--********************************************************************************************************************************
 

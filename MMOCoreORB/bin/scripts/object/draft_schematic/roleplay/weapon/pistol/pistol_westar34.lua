@@ -1,4 +1,4 @@
-object_draft_schematic_roleplay_weapon_pistol_pistol_d18 = object_draft_schematic_roleplay_weapon_pistol_shared_pistol_d18:new {
+object_draft_schematic_roleplay_weapon_pistol_pistol_westar_34 = object_draft_schematic_roleplay_weapon_pistol_shared_pistol_westar_34:new {
 
 	templateType = DRAFTSCHEMATIC,
 
