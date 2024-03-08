@@ -791,8 +791,10 @@ void CraftingSessionImplementation::initialAssembly(int clientCounter) {
 							break;
 					};
 
+					String rarity = compTano->getRarity();
+
 					prototypeWep->setAmmoPack(ammoType);
-					prototypeWep->setRarity(compTano->getRarity());
+					prototypeWep->setRarity(rarity);
 				}
 
 				if (compTano->getCraftingDamageDieType() > 0){
