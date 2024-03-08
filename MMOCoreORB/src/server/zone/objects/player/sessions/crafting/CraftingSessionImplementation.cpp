@@ -777,19 +777,19 @@ void CraftingSessionImplementation::initialAssembly(int clientCounter) {
 
 					if (damageType == 1){
 						ammoType = "ammo_kinetic";
+					} else {
+						switch (type){
+							case SceneObjectType::PISTOL:
+								ammoType = "ammo_powerpack_small";
+								break;
+							case SceneObjectType::CARBINE:
+								ammoType = "ammo_powerpack_medium";
+								break;
+							case SceneObjectType::RIFLE:
+								ammoType = "ammo_powerpack_large";
+								break;
+						};
 					}
-
-					switch (type){
-						case SceneObjectType::PISTOL:
-							ammoType = "ammo_powerpack_small";
-							break;
-						case SceneObjectType::CARBINE:
-							ammoType = "ammo_powerpack_medium";
-							break;
-						case SceneObjectType::RIFLE:
-							ammoType = "ammo_powerpack_large";
-							break;
-					};
 				}
 
 				if (compTano->getCraftingDamageDieType() > 0){
