@@ -25,13 +25,11 @@ rpg_shop_general = {
 			}
 		},
 		
-
 		{
 			name = "Toolkits",
-			requiesSaberTraining = true,
 			minItems = 1,
 			items = {
-				{template = "object/tangible/crafting/station/jedi_tool.iff", cost = 1600, max = 10, chance = 100 },
+				{template = "object/tangible/crafting/station/jedi_tool.iff", cost = 1600, max = 10, chance = 100, requiesSaberTraining = true},
 				{template = "object/tangible/crafting/station/weapon_tool.iff", cost = 350, max = 10, chance = 100 },
 			}
 		},
