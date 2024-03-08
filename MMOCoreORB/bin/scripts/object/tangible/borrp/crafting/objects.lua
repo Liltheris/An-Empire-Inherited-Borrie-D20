@@ -188,3 +188,18 @@ object_tangible_borrp_crafting_shared_comp_weapon_receiver_carbine_legendary = S
 }
 ObjectTemplates:addClientTemplate(object_tangible_borrp_crafting_shared_comp_weapon_receiver_carbine_legendary, "object/tangible/borrp/crafting/shared_comp_weapon_receiver_carbine_legendary.iff")
 --********************************************************************************************************************************
+object_tangible_borrp_crafting_shared_scrap_metal = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/borrp/crafting/shared_scrap_metal.iff"
+}
+ObjectTemplates:addClientTemplate(object_tangible_borrp_crafting_shared_scrap_metal, "object/tangible/borrp/crafting/shared_scrap_metal.iff")
+--********************************************************************************************************************************
+object_tangible_borrp_crafting_shared_scrap_electronics = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/borrp/crafting/shared_scrap_electronics.iff"
+}
+ObjectTemplates:addClientTemplate(object_tangible_borrp_crafting_shared_scrap_electronics, "object/tangible/borrp/crafting/shared_scrap_electronics.iff")
+--********************************************************************************************************************************
+object_tangible_borrp_crafting_shared_circuit_board = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/borrp/crafting/shared_circuit_board.iff"
+}
+ObjectTemplates:addClientTemplate(object_tangible_borrp_crafting_shared_circuit_board, "object/tangible/borrp/crafting/shared_circuit_board.iff")
+--********************************************************************************************************************************
