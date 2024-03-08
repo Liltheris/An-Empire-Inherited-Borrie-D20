@@ -27,7 +27,7 @@ object_draft_schematic_roleplay_component_component_saber_lense = object_draft_s
 	resourceTypes = {"object/tangible/borrp/crafting/shared_circuit_board","object/tangible/borrp/crafting/shared_scrap_metal.iff","object/tangible/borrp/crafting/shared_scrap_metal.iff","object/draft_schematic/roleplay/component/comp_weapon_parts_rare.iff"},
 	resourceQuantities = {1,1,1,1},
 	contribution = {100,100,100,100},
-	targetTemplate = "object/tangible/item/roleplay/shared_component_saber_lense.iff",
+	targetTemplate = "object/tangible/item/roleplay/component_saber_lense.iff",
 
 	additionalTemplates = {}
 

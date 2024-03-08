@@ -27,7 +27,7 @@ object_draft_schematic_roleplay_component_comp_weapon_receiver_pistol_common = o
 	resourceTypes = {"object/tangible/borrp/crafting/shared_scrap_metal.iff","object/tangible/borrp/crafting/shared_weapon_parts_common.iff"},
 	resourceQuantities = {1,1},
 	contribution = {100,100},
-	targetTemplate = "object/tangible/borrp/crafting/shared_comp_weapon_receiver_pistol_common.iff",
+	targetTemplate = "object/tangible/borrp/crafting/comp_weapon_receiver_pistol_common.iff",
 
 	additionalTemplates = {}
 

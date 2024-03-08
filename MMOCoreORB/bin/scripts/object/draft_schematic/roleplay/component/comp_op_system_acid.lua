@@ -27,7 +27,7 @@ object_draft_schematic_roleplay_component_comp_op_system_acid = object_draft_sch
 	resourceTypes = {"object/tangible/borrp/crafting/shared_circuit_board","object/tangible/borrp/crafting/shared_comp_weapon_parts_epic.iff"},
 	resourceQuantities = {1,1},
 	contribution = {100,100},
-	targetTemplate = "object/tangible/borrp/crafting/shared_comp_op_system_acid.iff",
+	targetTemplate = "object/tangible/borrp/crafting/comp_op_system_acid.iff",
 
 	additionalTemplates = {}
 

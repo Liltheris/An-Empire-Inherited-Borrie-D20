@@ -27,7 +27,7 @@ object_draft_schematic_roleplay_component_component_saber_casing = object_draft_
 	resourceTypes = {"object/tangible/borrp/crafting/shared_scrap_metal.iff","object/tangible/borrp/crafting/shared_scrap_metal.iff"},
 	resourceQuantities = {1,1},
 	contribution = {100,100},
-	targetTemplate = "object/tangible/item/roleplay/shared_component_saber_casing.iff",
+	targetTemplate = "object/tangible/item/roleplay/component_saber_casing.iff",
 
 	additionalTemplates = {}
 

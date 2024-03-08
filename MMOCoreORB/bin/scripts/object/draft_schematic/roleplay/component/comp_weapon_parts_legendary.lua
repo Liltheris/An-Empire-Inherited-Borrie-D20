@@ -27,7 +27,7 @@ object_draft_schematic_roleplay_component_comp_weapon_parts_legendary = object_d
 	resourceTypes = {"object/tangible/borrp/crafting/shared_scrap_metal.iff","object/tangible/borrp/crafting/shared_comp_weapon_parts_epic.iff"},
 	resourceQuantities = {1,1},
 	contribution = {100,100},
-	targetTemplate = "object/tangible/borrp/crafting/shared_comp_weapon_parts_legendary.iff",
+	targetTemplate = "object/tangible/borrp/crafting/comp_weapon_parts_legendary.iff",
 
 	additionalTemplates = {}
 

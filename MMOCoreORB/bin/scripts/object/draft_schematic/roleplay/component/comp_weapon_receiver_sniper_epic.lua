@@ -27,7 +27,7 @@ object_draft_schematic_roleplay_component_weapon_receiver_sniper_epic = object_d
 	resourceTypes = {"object/tangible/borrp/crafting/shared_weapon_parts_rare.iff","object/tangible/borrp/crafting/shared_weapon_parts_epic.iff"},
 	resourceQuantities = {1,1},
 	contribution = {100,100},
-	targetTemplate = "object/tangible/borrp/crafting/shared_comp_weapon_receiver_sniper_epic.iff",
+	targetTemplate = "object/tangible/borrp/crafting/comp_weapon_receiver_sniper_epic.iff",
 
 	additionalTemplates = {}
 
