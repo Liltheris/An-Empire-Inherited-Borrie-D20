@@ -75,7 +75,12 @@ void TangibleObjectImplementation::loadTemplateData(SharedObjectTemplate* templa
 	junkDealerNeeded = tanoData->getJunkDealerNeeded();
 	junkValue = tanoData->getJunkValue();
 
-	rarity = tanoData->getRarity();
+	bool wasModified = getStoredString("dm_last_modified") != "";
+	bool craftedWeapon = getStoredInt("crafterWeapon") > 0;
+
+	if(!wasModified || !craftedWeapon) {
+		rarity = tanoData->getRarity();
+	}
 
 	threatMap = nullptr;
 
@@ -630,12 +635,12 @@ void TangibleObjectImplementation::fillAttributeList(AttributeListMessage* alm, 
 		alm->insertAttribute("rarity", rarityColor + rarity + "\\#.");
 	}
 
-	if(craftingDamageDieType != 0){
+	if(craftingDamageDieType > 0){
 		StringBuffer dmg;
 		dmg << craftingDamageDieCount << "d" << craftingDamageDieType << " + " << craftingBonusDamage;
 		alm->insertAttribute("damage.dmgdice", dmg);
 
-		String dmgType = "";
+		String dmgType = "ERROR";
 		switch (craftingDamageType){
 		case 1:
 			dmgType = "Kinetic";
@@ -669,7 +674,10 @@ void TangibleObjectImplementation::fillAttributeList(AttributeListMessage* alm, 
 		alm->insertAttribute("damage.wpn_damage_type", dmgType);
 	}
 
+	if (!craftingAmmoType.isEmpty()) {
 		alm->insertAttribute("wpn_ammo_type", craftingAmmoType);
+	}
+	
 
 	if (!objectSerial.isEmpty()) {
 		alm->insertAttribute("serial_number", objectSerial);

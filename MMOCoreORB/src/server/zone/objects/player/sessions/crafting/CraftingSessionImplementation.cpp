@@ -792,6 +792,7 @@ void CraftingSessionImplementation::initialAssembly(int clientCounter) {
 					};
 
 					prototypeWep->setAmmoPack(ammoType);
+					prototypeWep->setRarity(compTano->getRarity());
 				}
 
 				if (compTano->getCraftingDamageDieType() > 0){
@@ -863,6 +864,8 @@ void CraftingSessionImplementation::initialAssembly(int clientCounter) {
 	// addSkillMods();
 
 	// addWeaponDots();
+
+	prototype->setStoredInt("crafterWeapon", 1);
 
 	// Set default customization
 	SharedTangibleObjectTemplate* templateData =

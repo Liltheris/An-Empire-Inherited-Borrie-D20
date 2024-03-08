@@ -36,7 +36,7 @@ void WeaponObjectImplementation::initializeTransientMembers() {
 		speedSlice = 1;
 	}
 
-	bool wasModified = getStoredString("dm_last_modified") != "";
+	bool wasModified = getStoredString("dm_last_modified") != "" || getStoredInt("crafterWeapon") > 0;
 
 	if(!wasModified) {
 		minDamage = weaponTemplate->getMinDamage();
@@ -53,7 +53,7 @@ void WeaponObjectImplementation::notifyLoadFromDatabase() {
 	// Update object stats from template.
 	weaponTemplate = dynamic_cast<SharedWeaponObjectTemplate*>(getObjectTemplate());
 
-	bool wasModified = getStoredString("dm_last_modified") != "";
+	bool wasModified = getStoredString("dm_last_modified") != "" || getStoredInt("crafterWeapon") > 0;
 
 	if(!wasModified) {
 		attackType = weaponTemplate->getAttackType();
@@ -84,8 +84,9 @@ void WeaponObjectImplementation::notifyLoadFromDatabase() {
 		maxAmmo = weaponTemplate->getMaxAmmo();
 
 		float templateAttackSpeed = weaponTemplate->getAttackSpeed();
+		rarity = weaponTemplate->getRarity();
 	}
-	rarity = weaponTemplate->getRarity();
+	
 	alternateGrip = weaponTemplate->getAlternateGrip();
 	ammoPack = weaponTemplate->getAmmoPack();
 
