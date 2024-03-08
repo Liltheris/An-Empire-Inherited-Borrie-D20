@@ -1,8 +1,8 @@
-object_draft_schematic_roleplay_component_comp_op_system_electricty = object_draft_schematic_roleplay_component_shared_comp_op_system_electricty:new {
+object_draft_schematic_roleplay_component_comp_op_system_electricity = object_draft_schematic_roleplay_component_shared_comp_op_system_electricity:new {
 
 	templateType = DRAFTSCHEMATIC,
 
-	customObjectName = "Weapon OS: electricty",
+	customObjectName = "Weapon OS: electricity",
 
 	craftingToolTab = 1, -- (See DraftSchematicObjectTemplate.h)
 	complexity = 12,
@@ -27,8 +27,8 @@ object_draft_schematic_roleplay_component_comp_op_system_electricty = object_dra
 	resourceTypes = {"object/tangible/borrp/crafting/shared_circuit_board","object/tangible/borrp/crafting/shared_comp_weapon_parts_uncommon.iff"},
 	resourceQuantities = {1,1},
 	contribution = {100,100},
-	targetTemplate = "object/tangible/borrp/crafting/shared_comp_op_system_electricty.iff",
+	targetTemplate = "object/tangible/borrp/crafting/shared_comp_op_system_electricity.iff",
 
 	additionalTemplates = {}
 
-}ObjectTemplates:addTemplate(object_draft_schematic_roleplay_component_comp_op_system_electricty, "object/draft_schematic/roleplay/component/comp_op_system_electricty.iff")
+}ObjectTemplates:addTemplate(object_draft_schematic_roleplay_component_comp_op_system_electricity, "object/draft_schematic/roleplay/component/comp_op_system_electricity.iff")
