@@ -27,7 +27,7 @@ object_draft_schematic_roleplay_weapon_rifle_rifle_adventurer = object_draft_sch
 	resourceTypes = {"object/tangible/borrp/crafting/shared_comp_weapon_receiver_sniper_rare.iff","object/tangible/borrp/crafting/shared_comp_op_system_base.iff"},
 	resourceQuantities = {1,1},
 	contribution = {100,100},
-	targetTemplate = "object/weapon/roleplay/ranged/rifle/adventurer_rifle.iff",
+	targetTemplate = "object/weapon/roleplay/ranged/rifle/czerka_adventurer.iff",
 
 	additionalTemplates = {}
 

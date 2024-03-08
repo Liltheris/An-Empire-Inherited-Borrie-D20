@@ -28,7 +28,7 @@ object_draft_schematic_roleplay_weapon_pistol_pistol_d18 = object_draft_schemati
 	resourceQuantities = {1,1,1,1},
 	contribution = {100,100,100,100},
 	ingredientAppearance = {"", "", "muzzle", "scope"},
-	targetTemplate = "object/weapon/roleplay/ranged/pistol/pistol_dl44.iff",
+	targetTemplate = "object/weapon/roleplay/ranged/pistol/dl44_blaster_pistol.iff",
 
 	additionalTemplates = {}
 

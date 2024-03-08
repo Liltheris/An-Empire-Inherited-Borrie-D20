@@ -27,7 +27,7 @@ object_draft_schematic_roleplay_weapon_pistol_pistol_scattergun = object_draft_s
 	resourceTypes = {"object/tangible/borrp/crafting/shared_comp_weapon_receiver_pistol_common.iff","object/tangible/borrp/crafting/shared_comp_op_system_base.iff"},
 	resourceQuantities = {1,1},
 	contribution = {100,100},
-	targetTemplate = "object/weapon/roleplay/ranged/pistol/scattergun_pistol.iff",
+	targetTemplate = "object/weapon/roleplay/ranged/pistol/scatter_pistol.iff",
 
 	additionalTemplates = {}
 

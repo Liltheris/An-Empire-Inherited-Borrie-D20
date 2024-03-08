@@ -27,7 +27,7 @@ object_draft_schematic_roleplay_weapon_rifle_rifle_ld1 = object_draft_schematic_
 	resourceTypes = {"object/tangible/borrp/crafting/shared_comp_weapon_receiver_sniper_legendary.iff","object/tangible/borrp/crafting/shared_comp_op_system_base.iff"},
 	resourceQuantities = {1,1},
 	contribution = {100,100},
-	targetTemplate = "object/weapon/roleplay/ranged/rifle/ld1_rifle.iff",
+	targetTemplate = "object/weapon/roleplay/ranged/rifle/ld1_target_blaster_rifle.iff",
 
 	additionalTemplates = {}
 

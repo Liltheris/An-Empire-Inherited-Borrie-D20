@@ -27,7 +27,7 @@ object_draft_schematic_roleplay_weapon_rifle_rifle_trando_hunter = object_draft_
 	resourceTypes = {"object/tangible/borrp/crafting/shared_comp_weapon_receiver_rifle_rare.iff","object/tangible/borrp/crafting/shared_comp_op_system_base.iff"},
 	resourceQuantities = {1,1},
 	contribution = {100,100},
-	targetTemplate = "object/weapon/roleplay/ranged/rifle/trando_hunter_rifle.iff",
+	targetTemplate = "object/weapon/roleplay/ranged/rifle/trandoshan_hunting_rifle.iff",
 
 	additionalTemplates = {}
 

@@ -28,7 +28,7 @@ object_draft_schematic_roleplay_weapon_carbine_carbine_bothan = object_draft_sch
 	resourceQuantities = {1,1},
 	contribution = {100,100},
 
-	targetTemplate = "object/weapon/roleplay/ranged/carbine/bothan_carbine.iff",
+	targetTemplate = "object/weapon/roleplay/ranged/carbine/bothan_bola_carbine.iff",
 
 	additionalTemplates = {}
 

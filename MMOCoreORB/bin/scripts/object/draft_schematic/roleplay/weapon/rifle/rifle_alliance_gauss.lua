@@ -27,7 +27,7 @@ object_draft_schematic_roleplay_weapon_rifle_rifle_alliance_gauss = object_draft
 	resourceTypes = {"object/tangible/borrp/crafting/shared_comp_weapon_receiver_rifle_rare.iff","object/tangible/borrp/crafting/shared_comp_op_system_base.iff"},
 	resourceQuantities = {1,1},
 	contribution = {100,100},
-	targetTemplate = "object/weapon/roleplay/ranged/rifle/alliance_gauss_rifle.iff",
+	targetTemplate = "object/weapon/roleplay/ranged/rifle/dawnsorrow_rifle.iff",
 
 	additionalTemplates = {}
 

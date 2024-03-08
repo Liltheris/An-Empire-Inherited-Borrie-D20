@@ -28,7 +28,7 @@ object_draft_schematic_roleplay_weapon_rifle_rifle_bowcaster = object_draft_sche
 	resourceQuantities = {1,1,1,1},
 	contribution = {100,100,100,100},
 	ingredientAppearance = {"", "", "muzzle", "scope"},
-	targetTemplate = "object/weapon/roleplay/ranged/rifle/bowcaster_rifle.iff",
+	targetTemplate = "object/weapon/roleplay/ranged/rifle/bowcaster.iff",
 
 	additionalTemplates = {}
 
