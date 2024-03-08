@@ -29,7 +29,7 @@ public:
         for(int i = 1; i > 10; i++){
             ManagedReference<ArmorObject*> armour = BorCharacter::GetArmorAtSlot(creature, GetSlotName(i));
             if(armour == nullptr)
-                break;
+                continue;
             int rating = armour->getRating();
             if(rating > output)
                 output = rating;
