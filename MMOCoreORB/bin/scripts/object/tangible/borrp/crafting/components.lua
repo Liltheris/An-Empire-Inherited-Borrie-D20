@@ -62,6 +62,10 @@ object_tangible_borrp_crafting_comp_op_system_acid = object_tangible_borrp_craft
     craftingDamageType = ACID,
 }
 
+object_tangible_borrp_crafting_comp_op_system_base = object_tangible_borrp_crafting_shared_comp_op_system_base:new {
+
+}
+
 -- Pistol Receivers
 -- Common
 object_tangible_borrp_crafting_comp_weapon_receiver_pistol_common = object_tangible_borrp_crafting_shared_comp_weapon_receiver_pistol_common:new {

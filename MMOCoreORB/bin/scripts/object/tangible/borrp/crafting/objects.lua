@@ -163,6 +163,11 @@ object_tangible_borrp_crafting_shared_comp_op_system_acid = SharedTangibleObject
 }
 ObjectTemplates:addClientTemplate(object_tangible_borrp_crafting_shared_comp_op_system_acid, "object/tangible/borrp/crafting/shared_comp_op_system_acid.iff")
 --********************************************************************************************************************************
+object_tangible_borrp_crafting_shared_comp_op_system_base = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/borrp/crafting/shared_comp_op_system_base.iff"
+}
+ObjectTemplates:addClientTemplate(object_tangible_borrp_crafting_shared_comp_op_system_base, "object/tangible/borrp/crafting/shared_comp_op_system_base.iff")
+--********************************************************************************************************************************
 object_tangible_borrp_crafting_shared_comp_weapon_receiver_carbine_common = SharedTangibleObjectTemplate:new {
 	clientTemplateFileName = "object/tangible/borrp/crafting/shared_comp_weapon_receiver_carbine_common.iff"
 }
