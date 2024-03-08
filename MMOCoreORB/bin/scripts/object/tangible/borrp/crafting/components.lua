@@ -227,7 +227,7 @@ object_tangible_borrp_crafting_comp_weapon_receiver_sniper_epic = object_tangibl
 }
 -- Legendary
 object_tangible_borrp_crafting_comp_weapon_receiver_sniper_legendary = object_tangible_borrp_crafting_shared_comp_weapon_receiver_sniper_legendary:new {
-    rarity = "legendaru",
+    rarity = "legendary",
 
     craftingDamageDieCount = 1,
     craftingDamageDieType = 6,
