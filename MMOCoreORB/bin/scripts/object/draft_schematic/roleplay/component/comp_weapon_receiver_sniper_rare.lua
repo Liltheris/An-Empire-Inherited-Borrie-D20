@@ -1,4 +1,4 @@
-object_draft_schematic_roleplay_component_weapon_receiver_sniper_rare = object_draft_schematic_roleplay_component_shared_weapon_receiver_sniper_rare:new {
+object_draft_schematic_roleplay_component_comp_weapon_receiver_sniper_rare = object_draft_schematic_roleplay_component_shared_comp_weapon_receiver_sniper_rare:new {
 
 	templateType = DRAFTSCHEMATIC,
 
@@ -31,4 +31,4 @@ object_draft_schematic_roleplay_component_weapon_receiver_sniper_rare = object_d
 
 	additionalTemplates = {}
 
-}ObjectTemplates:addTemplate(object_draft_schematic_roleplay_component_weapon_receiver_sniper_rare, "object/draft_schematic/roleplay/component/weapon_receiver_sniper_rare.iff")
+}ObjectTemplates:addTemplate(object_draft_schematic_roleplay_component_comp_weapon_receiver_sniper_rare, "object/draft_schematic/roleplay/component/comp_weapon_receiver_sniper_rare.iff")

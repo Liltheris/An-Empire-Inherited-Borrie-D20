@@ -1,4 +1,4 @@
-object_draft_schematic_roleplay_component_weapon_parts_legendary = object_draft_schematic_roleplay_component_shared_weapon_parts_legendary:new {
+object_draft_schematic_roleplay_component_comp_weapon_parts_legendary = object_draft_schematic_roleplay_component_shared_comp_weapon_parts_legendary:new {
 
 	templateType = DRAFTSCHEMATIC,
 
@@ -22,13 +22,13 @@ object_draft_schematic_roleplay_component_weapon_parts_legendary = object_draft_
 	customizationDefaults = {},
 
 	ingredientTemplateNames = {"craft_weapon_ingredients_n","craft_weapon_ingredients_n"},
-	ingredientTitleNames = {"scrap_metal","weapon_parts_epic"},
+	ingredientTitleNames = {"scrap_metal","comp_weapon_parts_epic"},
 	ingredientSlotType = {1,1},
-	resourceTypes = {"object/tangible/borrp/crafting/shared_scrap_metal.iff","object/draft_schematic/roleplay/component/weapon_parts_epic.iff"},
+	resourceTypes = {"object/tangible/borrp/crafting/shared_scrap_metal.iff","object/draft_schematic/roleplay/component/comp_weapon_parts_epic.iff"},
 	resourceQuantities = {1,1},
 	contribution = {100,100},
 	targetTemplate = "object/tangible/borrp/crafting/shared_comp_weapon_parts_legendary.iff",
 
 	additionalTemplates = {}
 
-}ObjectTemplates:addTemplate(object_draft_schematic_roleplay_component_weapon_parts_legendary, "object/draft_schematic/roleplay/component/weapon_parts_legendary.iff")
+}ObjectTemplates:addTemplate(object_draft_schematic_roleplay_component_comp_weapon_parts_legendary, "object/draft_schematic/roleplay/component/comp_weapon_parts_legendary.iff")

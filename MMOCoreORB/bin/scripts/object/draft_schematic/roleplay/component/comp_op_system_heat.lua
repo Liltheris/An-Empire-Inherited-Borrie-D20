@@ -1,4 +1,4 @@
-object_draft_schematic_roleplay_component_op_system_heat = object_draft_schematic_roleplay_component_shared_op_system_heat:new {
+object_draft_schematic_roleplay_component_comp_op_system_heat = object_draft_schematic_roleplay_component_shared_comp_op_system_heat:new {
 
 	templateType = DRAFTSCHEMATIC,
 
@@ -31,4 +31,4 @@ object_draft_schematic_roleplay_component_op_system_heat = object_draft_schemati
 
 	additionalTemplates = {}
 
-}ObjectTemplates:addTemplate(object_draft_schematic_roleplay_component_op_system_heat, "object/draft_schematic/roleplay/component/op_system_heat.iff")
+}ObjectTemplates:addTemplate(object_draft_schematic_roleplay_component_comp_op_system_heat, "object/draft_schematic/roleplay/component/comp_op_system_heat.iff")

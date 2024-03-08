@@ -1,4 +1,4 @@
-object_draft_schematic_roleplay_component_weapon_parts_rare = object_draft_schematic_roleplay_component_shared_weapon_parts_rare:new {
+object_draft_schematic_roleplay_component_comp_weapon_parts_rare = object_draft_schematic_roleplay_component_shared_comp_weapon_parts_rare:new {
 
 	templateType = DRAFTSCHEMATIC,
 
@@ -22,13 +22,13 @@ object_draft_schematic_roleplay_component_weapon_parts_rare = object_draft_schem
 	customizationDefaults = {},
 
 	ingredientTemplateNames = {"craft_weapon_ingredients_n","craft_weapon_ingredients_n"},
-	ingredientTitleNames = {"scrap_metal","weapon_parts_uncommon"},
+	ingredientTitleNames = {"scrap_metal","comp_weapon_parts_uncommon"},
 	ingredientSlotType = {1,1},
-	resourceTypes = {"object/tangible/borrp/crafting/shared_scrap_metal.iff","object/draft_schematic/roleplay/component/weapon_parts_uncommon.iff"},
+	resourceTypes = {"object/tangible/borrp/crafting/shared_scrap_metal.iff","object/draft_schematic/roleplay/component/comp_weapon_parts_uncommon.iff"},
 	resourceQuantities = {1,1},
 	contribution = {100,100},
 	targetTemplate = "object/tangible/borrp/crafting/shared_comp_weapon_parts_rare.iff",
 
 	additionalTemplates = {}
 
-}ObjectTemplates:addTemplate(object_draft_schematic_roleplay_component_weapon_parts_rare, "object/draft_schematic/roleplay/component/weapon_parts_rare.iff")
+}ObjectTemplates:addTemplate(object_draft_schematic_roleplay_component_comp_weapon_parts_rare, "object/draft_schematic/roleplay/component/comp_weapon_parts_rare.iff")

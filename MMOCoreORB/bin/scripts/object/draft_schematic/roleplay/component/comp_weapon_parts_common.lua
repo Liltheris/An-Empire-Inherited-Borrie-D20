@@ -1,4 +1,4 @@
-object_draft_schematic_roleplay_component_weapon_parts_common = object_draft_schematic_roleplay_component_shared_weapon_parts_common:new {
+object_draft_schematic_roleplay_component_comp_weapon_parts_common = object_draft_schematic_roleplay_component_shared_comp_weapon_parts_common:new {
 
 	templateType = DRAFTSCHEMATIC,
 
@@ -31,4 +31,4 @@ object_draft_schematic_roleplay_component_weapon_parts_common = object_draft_sch
 
 	additionalTemplates = {}
 
-}ObjectTemplates:addTemplate(object_draft_schematic_roleplay_component_weapon_parts_common, "object/draft_schematic/roleplay/component/weapon_parts_common.iff")
+}ObjectTemplates:addTemplate(object_draft_schematic_roleplay_component_comp_weapon_parts_common, "object/draft_schematic/roleplay/component/comp_weapon_parts_common.iff")

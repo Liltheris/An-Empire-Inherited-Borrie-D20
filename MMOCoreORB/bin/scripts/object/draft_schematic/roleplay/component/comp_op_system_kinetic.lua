@@ -1,4 +1,4 @@
-object_draft_schematic_roleplay_component_op_system_kinetic = object_draft_schematic_roleplay_component_shared_op_system_kinetic:new {
+object_draft_schematic_roleplay_component_comp_op_system_kinetic = object_draft_schematic_roleplay_component_shared_comp_op_system_kinetic:new {
 
 	templateType = DRAFTSCHEMATIC,
 
@@ -31,4 +31,4 @@ object_draft_schematic_roleplay_component_op_system_kinetic = object_draft_schem
 
 	additionalTemplates = {}
 
-}ObjectTemplates:addTemplate(object_draft_schematic_roleplay_component_op_system_kinetic, "object/draft_schematic/roleplay/component/op_system_kinetic.iff")
+}ObjectTemplates:addTemplate(object_draft_schematic_roleplay_component_comp_op_system_kinetic, "object/draft_schematic/roleplay/component/comp_op_system_kinetic.iff")

@@ -1,4 +1,4 @@
-object_draft_schematic_roleplay_component_weapon_receiver_pistol_legendary = object_draft_schematic_roleplay_component_shared_weapon_receiver_pistol_legendary:new {
+object_draft_schematic_roleplay_component_comp_weapon_receiver_pistol_legendary = object_draft_schematic_roleplay_component_shared_comp_weapon_receiver_pistol_legendary:new {
 
 	templateType = DRAFTSCHEMATIC,
 
@@ -31,4 +31,4 @@ object_draft_schematic_roleplay_component_weapon_receiver_pistol_legendary = obj
 
 	additionalTemplates = {}
 
-}ObjectTemplates:addTemplate(object_draft_schematic_roleplay_component_weapon_receiver_pistol_legendary, "object/draft_schematic/roleplay/component/weapon_receiver_pistol_legendary.iff")
+}ObjectTemplates:addTemplate(object_draft_schematic_roleplay_component_comp_weapon_receiver_pistol_legendary, "object/draft_schematic/roleplay/component/comp_weapon_receiver_pistol_legendary.iff")
