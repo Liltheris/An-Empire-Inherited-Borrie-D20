@@ -767,12 +767,6 @@ void CraftingSessionImplementation::initialAssembly(int clientCounter) {
 					continue;
 				}
 
-				const auto& ids = ComponentMap::instance()->getVisibleCRC(tanoCRC, slotName.hashCode());
-
-				if (ids.size() == 0) {
-					continue;
-				}
-
 				///////////////////////////////////////////////////////////////////////
 				// D20 System - Components modify weapon stats
 				///////////////////////////////////////////////////////////////////////
@@ -806,6 +800,12 @@ void CraftingSessionImplementation::initialAssembly(int clientCounter) {
 					prototypeWep->setBonusDamage(compTano->getCraftingBonusDamage());
 				}
 				// End D20 System /////////////////////////////////////////////////////
+
+				const auto& ids = ComponentMap::instance()->getVisibleCRC(tanoCRC, slotName.hashCode());
+
+				if (ids.size() == 0) {
+					continue;
+				}
 
 				uint32 compCrc = compTano->getClientObjectCRC();
 
