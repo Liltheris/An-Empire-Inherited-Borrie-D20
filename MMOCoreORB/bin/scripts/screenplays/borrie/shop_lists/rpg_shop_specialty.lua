@@ -29,7 +29,26 @@ rpg_shop_general = {
 				{template = "object/tangible/deed/rp_pet_deed/deed_power.iff", cost = 1500, max = 10, chance = 100, overridePrice = true },
 			}
 		},
-	}	
+
+		{
+			name = "Scrap",
+			minItems = 1,
+			items = {		
+				{template = "object/tangible/borrp/crafting/scrap_metal.iff", cost = 50, max = 10, chance = 100, overridePrice = true },
+				{template = "object/tangible/borrp/crafting/scrap_electronics.iff", cost = 50, max = 10, chance = 100, overridePrice = true },
+		},
+	},
+	{
+		name = "Toolkits",
+		requiesSaberTraining = true,
+		minItems = 1,
+		items = {
+			{template = "object/tangible/crafting/station/jedi_tool.iff", cost = 1600, max = 10, chance = 100 },
+			{template = "object/tangible/crafting/station/weapon_tool.iff", cost = 350, max = 10, chance = 100 },
+		}
+	},
+
+}
 }
 
 RPGVendorShopLists:addShopList(shopListTag, rpg_shop_general)

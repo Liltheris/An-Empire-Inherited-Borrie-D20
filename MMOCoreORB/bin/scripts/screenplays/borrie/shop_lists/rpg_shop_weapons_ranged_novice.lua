@@ -68,6 +68,24 @@ rpg_shop_weapons_ranged_novice = {
 
 
 		},
+
+
+		{
+			name = "Ranged Weapon Components",
+			minItems = 1,
+			items = {
+				{template = "object/tangible/component/weapon/scope_weapon_lg_s01.iff", cost = 10, max = 10, chance = 100, overridePrice = true},
+				{template = "object/tangible/component/weapon/scope_weapon_lg_s03.iff", cost = 10, max = 10, chance = 100, overridePrice = true},
+				{template = "object/tangible/component/weapon/scope_weapon_lg_s02.iff", cost = 10, max = 10, chance = 100, overridePrice = true},
+				{template = "object/tangible/component/weapon/scope_weapon_sm_s01.iff", cost = 10, max = 10, chance = 100, overridePrice = true},			
+				{template = "object/tangible/component/weapon/blaster_pistol_barrel.iff", cost = 10, max = 10, chance = 100, overridePrice = true},
+				{template = "object/tangible/component/weapon/stock.iff", cost = 10, max = 5, chance = 100, overridePrice = true},
+			}
+
+
+
+		},
+
 	}	
 }
 

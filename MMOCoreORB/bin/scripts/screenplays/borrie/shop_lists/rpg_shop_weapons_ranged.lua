@@ -83,6 +83,19 @@ shop_weapons_ranged = {
 
 
 		},
+
+		{
+			name = "Ranged Weapon Components",
+			minItems = 1,
+			items = {
+				{template = "object/tangible/component/weapon/scope_weapon.iff", cost = 10, max = 10, chance = 100, overridePrice = true},
+				{template = "object/tangible/component/weapon/blaster_pistol_barrel.iff", cost = 10, max = 10, chance = 100, overridePrice = true},
+				{template = "object/tangible/component/weapon/stock.iff", cost = 10, max = 5, chance = 100, overridePrice = true},
+			}
+
+
+
+		},
 	}	
 }
 
