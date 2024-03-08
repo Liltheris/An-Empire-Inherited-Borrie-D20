@@ -1,64 +1,64 @@
 -- Common Parts
 object_tangible_borrp_crafting_comp_weapon_parts_common = object_tangible_borrp_crafting_shared_comp_weapon_parts_common:new {
-	rarity = "common",
+	rarity = "Common",
 }
 -- Uncommon Parts
 object_tangible_borrp_crafting_comp_weapon_parts_uncommon = object_tangible_borrp_crafting_shared_comp_weapon_parts_uncommon:new {
-	rarity = "uncommon",
+	rarity = "Uncommon",
 }
 
 -- Rare Parts
 object_tangible_borrp_crafting_comp_weapon_parts_rare = object_tangible_borrp_crafting_shared_comp_weapon_parts_rare:new {
-	rarity = "rare",
+	rarity = "Rare",
 }
 
 -- Epic Parts
 object_tangible_borrp_crafting_comp_weapon_parts_epic = object_tangible_borrp_crafting_shared_comp_weapon_parts_epic:new {
-	rarity = "epic",
+	rarity = "Epic",
 }
 -- Legendary Parts
 object_tangible_borrp_crafting_comp_weapon_parts_legendary = object_tangible_borrp_crafting_shared_comp_weapon_parts_legendary:new {
-	rarity = "legendary",
+	rarity = "Legendary",
 }
 
 -- Tibana Gas Core
 object_tangible_borrp_crafting_comp_op_system_energy = object_tangible_borrp_crafting_shared_comp_op_system_energy:new {
-	rarity = "common",
+	rarity = "Common",
     craftingDamageType = ENERGY,
 }
 -- Mechanical Operating System
 object_tangible_borrp_crafting_comp_op_system_kinetic = object_tangible_borrp_crafting_shared_comp_op_system_kinetic:new {
-	rarity = "common",
+	rarity = "Common",
     craftingDamageType = KINETIC,
 }
 -- Electro Coils
 object_tangible_borrp_crafting_comp_op_system_electricity = object_tangible_borrp_crafting_shared_comp_op_system_electricity:new {
-	rarity = "uncommon",
+	rarity = "Uncommon",
     craftingDamageType = ELECTRICITY,
 }
 -- Blast Core
 object_tangible_borrp_crafting_comp_op_system_blast = object_tangible_borrp_crafting_shared_comp_op_system_blast:new {
-	rarity = "legendary",
+	rarity = "Legendary",
     craftingDamageType = BLAST,
 }
 -- Flamethrower Mechanics
 object_tangible_borrp_crafting_comp_op_system_heat = object_tangible_borrp_crafting_shared_comp_op_system_heat:new {
-	rarity = "epic",
+	rarity = "Epic",
     craftingDamageType = HEAT,
 }
 -- Cryobeam Generator
 object_tangible_borrp_crafting_comp_op_system_cold = object_tangible_borrp_crafting_shared_comp_op_system_cold:new {
-	rarity = "rare",
+	rarity = "Rare",
     craftingDamageType = COLD,
 }
 -- Ion Charge Chamber
 object_tangible_borrp_crafting_comp_op_system_stun = object_tangible_borrp_crafting_shared_comp_op_system_stun:new {
-	rarity = "uncommon",
+	rarity = "Uncommon",
     craftingDamageType = STUN,
 }
 -- Acid Launcher Systems
 object_tangible_borrp_crafting_comp_op_system_acid = object_tangible_borrp_crafting_shared_comp_op_system_acid:new {
-	rarity = "epic",
+	rarity = "Epic",
     craftingDamageType = ACID,
 }
 
@@ -69,7 +69,7 @@ object_tangible_borrp_crafting_comp_op_system_base = object_tangible_borrp_craft
 -- Pistol Receivers
 -- Common
 object_tangible_borrp_crafting_comp_weapon_receiver_pistol_common = object_tangible_borrp_crafting_shared_comp_weapon_receiver_pistol_common:new {
-    rarity = "common",
+    rarity = "Common",
 
     craftingDamageDieCount = 1,
     craftingDamageDieType = 3,
@@ -77,7 +77,7 @@ object_tangible_borrp_crafting_comp_weapon_receiver_pistol_common = object_tangi
 }
 -- Uncommon
 object_tangible_borrp_crafting_comp_weapon_receiver_pistol_uncommon = object_tangible_borrp_crafting_shared_comp_weapon_receiver_pistol_uncommon:new {
-    rarity = "uncommon",
+    rarity = "Uncommon",
 
     craftingDamageDieCount = 2,
     craftingDamageDieType = 2,
@@ -85,7 +85,7 @@ object_tangible_borrp_crafting_comp_weapon_receiver_pistol_uncommon = object_tan
 }
 -- Rare
 object_tangible_borrp_crafting_comp_weapon_receiver_pistol_rare = object_tangible_borrp_crafting_shared_comp_weapon_receiver_pistol_rare:new {
-    rarity = "rare",
+    rarity = "Rare",
 
     craftingDamageDieCount = 2,
     craftingDamageDieType = 3,
@@ -93,7 +93,7 @@ object_tangible_borrp_crafting_comp_weapon_receiver_pistol_rare = object_tangibl
 }
 -- Epic
 object_tangible_borrp_crafting_comp_weapon_receiver_pistol_epic = object_tangible_borrp_crafting_shared_comp_weapon_receiver_pistol_epic:new {
-    rarity = "epic",
+    rarity = "Epic",
 
     craftingDamageDieCount = 1,
     craftingDamageDieType = 6,
@@ -101,7 +101,7 @@ object_tangible_borrp_crafting_comp_weapon_receiver_pistol_epic = object_tangibl
 }
 -- Legendary
 object_tangible_borrp_crafting_comp_weapon_receiver_pistol_legendary = object_tangible_borrp_crafting_shared_comp_weapon_receiver_pistol_legendary:new {
-    rarity = "legendary",
+    rarity = "Legendary",
 
     craftingDamageDieCount = 1,
     craftingDamageDieType = 4,
@@ -111,7 +111,7 @@ object_tangible_borrp_crafting_comp_weapon_receiver_pistol_legendary = object_ta
 -- Carbine Receivers
 -- Common
 object_tangible_borrp_crafting_comp_weapon_receiver_carbine_common = object_tangible_borrp_crafting_shared_comp_weapon_receiver_carbine_common:new {
-    rarity = "common",
+    rarity = "Common",
 
     craftingDamageDieCount = 2,
     craftingDamageDieType = 2,
@@ -119,7 +119,7 @@ object_tangible_borrp_crafting_comp_weapon_receiver_carbine_common = object_tang
 }
 -- Uncommon
 object_tangible_borrp_crafting_comp_weapon_receiver_carbine_uncommon = object_tangible_borrp_crafting_shared_comp_weapon_receiver_carbine_uncommon:new {
-    rarity = "uncommon",
+    rarity = "Uncommon",
 
     craftingDamageDieCount = 2,
     craftingDamageDieType = 3,
@@ -127,7 +127,7 @@ object_tangible_borrp_crafting_comp_weapon_receiver_carbine_uncommon = object_ta
 }
 -- Rare
 object_tangible_borrp_crafting_comp_weapon_receiver_carbine_rare = object_tangible_borrp_crafting_shared_comp_weapon_receiver_carbine_rare:new {
-    rarity = "rare",
+    rarity = "Rare",
 
     craftingDamageDieCount = 2,
     craftingDamageDieType = 3,
@@ -135,7 +135,7 @@ object_tangible_borrp_crafting_comp_weapon_receiver_carbine_rare = object_tangib
 }
 -- Epic
 object_tangible_borrp_crafting_comp_weapon_receiver_carbine_epic = object_tangible_borrp_crafting_shared_comp_weapon_receiver_carbine_epic:new {
-    rarity = "epic",
+    rarity = "Epic",
 
     craftingDamageDieCount = 2,
     craftingDamageDieType = 4,
@@ -143,7 +143,7 @@ object_tangible_borrp_crafting_comp_weapon_receiver_carbine_epic = object_tangib
 }
 -- Legendary
 object_tangible_borrp_crafting_comp_weapon_receiver_carbine_legendary = object_tangible_borrp_crafting_shared_comp_weapon_receiver_carbine_legendary:new {
-    rarity = "legendary",
+    rarity = "Legendary",
 
     craftingDamageDieCount = 2,
     craftingDamageDieType = 4,
@@ -153,7 +153,7 @@ object_tangible_borrp_crafting_comp_weapon_receiver_carbine_legendary = object_t
 -- Rifle Receivers
 -- Common
 object_tangible_borrp_crafting_comp_weapon_receiver_rifle_common = object_tangible_borrp_crafting_shared_comp_weapon_receiver_rifle_common:new {
-    rarity = "common",
+    rarity = "Common",
 
     craftingDamageDieCount = 1,
     craftingDamageDieType = 6,
@@ -161,7 +161,7 @@ object_tangible_borrp_crafting_comp_weapon_receiver_rifle_common = object_tangib
 }
 -- Uncommon
 object_tangible_borrp_crafting_comp_weapon_receiver_rifle_uncommon = object_tangible_borrp_crafting_shared_comp_weapon_receiver_rifle_uncommon:new {
-    rarity = "uncommon",
+    rarity = "Uncommon",
 
     craftingDamageDieCount = 1,
     craftingDamageDieType = 6,
@@ -169,7 +169,7 @@ object_tangible_borrp_crafting_comp_weapon_receiver_rifle_uncommon = object_tang
 }
 -- Rare
 object_tangible_borrp_crafting_comp_weapon_receiver_rifle_rare = object_tangible_borrp_crafting_shared_comp_weapon_receiver_rifle_rare:new {
-    rarity = "rare",
+    rarity = "Rare",
 
     craftingDamageDieCount = 2,
     craftingDamageDieType = 4,
@@ -177,7 +177,7 @@ object_tangible_borrp_crafting_comp_weapon_receiver_rifle_rare = object_tangible
 }
 -- Epic
 object_tangible_borrp_crafting_comp_weapon_receiver_rifle_epic = object_tangible_borrp_crafting_shared_comp_weapon_receiver_rifle_epic:new {
-    rarity = "epic",
+    rarity = "Epic",
 
     craftingDamageDieCount = 2,
     craftingDamageDieType = 4,
@@ -185,7 +185,7 @@ object_tangible_borrp_crafting_comp_weapon_receiver_rifle_epic = object_tangible
 }
 -- Legendary
 object_tangible_borrp_crafting_comp_weapon_receiver_rifle_legendary = object_tangible_borrp_crafting_shared_comp_weapon_receiver_rifle_legendary:new {
-    rarity = "legendary",
+    rarity = "Legendary",
 
     craftingDamageDieCount = 2,
     craftingDamageDieType = 4,
@@ -195,7 +195,7 @@ object_tangible_borrp_crafting_comp_weapon_receiver_rifle_legendary = object_tan
 -- Sniper Receivers
 -- Common
 object_tangible_borrp_crafting_comp_weapon_receiver_sniper_common = object_tangible_borrp_crafting_shared_comp_weapon_receiver_sniper_common:new {
-    rarity = "common",
+    rarity = "Common",
 
     craftingDamageDieCount = 1,
     craftingDamageDieType = 8,
@@ -203,7 +203,7 @@ object_tangible_borrp_crafting_comp_weapon_receiver_sniper_common = object_tangi
 }
 -- Uncommon
 object_tangible_borrp_crafting_comp_weapon_receiver_sniper_uncommon = object_tangible_borrp_crafting_shared_comp_weapon_receiver_sniper_uncommon:new {
-    rarity = "uncommon",
+    rarity = "Uncommon",
 
     craftingDamageDieCount = 1,
     craftingDamageDieType = 8,
@@ -211,7 +211,7 @@ object_tangible_borrp_crafting_comp_weapon_receiver_sniper_uncommon = object_tan
 }
 -- Rare
 object_tangible_borrp_crafting_comp_weapon_receiver_sniper_rare = object_tangible_borrp_crafting_shared_comp_weapon_receiver_sniper_rare:new {
-    rarity = "rare",
+    rarity = "Rare",
 
     craftingDamageDieCount = 1,
     craftingDamageDieType = 10,
@@ -219,7 +219,7 @@ object_tangible_borrp_crafting_comp_weapon_receiver_sniper_rare = object_tangibl
 }
 -- Epic
 object_tangible_borrp_crafting_comp_weapon_receiver_sniper_epic = object_tangible_borrp_crafting_shared_comp_weapon_receiver_sniper_epic:new {
-    rarity = "epic",
+    rarity = "Epic",
 
     craftingDamageDieCount = 1,
     craftingDamageDieType = 8,
@@ -237,7 +237,7 @@ object_tangible_borrp_crafting_comp_weapon_receiver_sniper_legendary = object_ta
 -- Shotgun Receivers
 -- Common
 object_tangible_borrp_crafting_comp_weapon_receiver_shotgun_common = object_tangible_borrp_crafting_shared_comp_weapon_receiver_shotgun_common:new {
-    rarity = "common",
+    rarity = "Common",
 
     craftingDamageDieCount = 4,
     craftingDamageDieType = 2,
@@ -245,7 +245,7 @@ object_tangible_borrp_crafting_comp_weapon_receiver_shotgun_common = object_tang
 }
 -- Uncommon
 object_tangible_borrp_crafting_comp_weapon_receiver_shotgun_uncommon = object_tangible_borrp_crafting_shared_comp_weapon_receiver_shotgun_uncommon:new {
-    rarity = "uncommon",
+    rarity = "Uncommon",
 
     craftingDamageDieCount = 6,
     craftingDamageDieType = 2,
@@ -253,7 +253,7 @@ object_tangible_borrp_crafting_comp_weapon_receiver_shotgun_uncommon = object_ta
 }
 -- Rare
 object_tangible_borrp_crafting_comp_weapon_receiver_shotgun_rare = object_tangible_borrp_crafting_shared_comp_weapon_receiver_shotgun_rare:new {
-    rarity = "rare",
+    rarity = "Rare",
 
     craftingDamageDieCount = 3,
     craftingDamageDieType = 3,
@@ -261,7 +261,7 @@ object_tangible_borrp_crafting_comp_weapon_receiver_shotgun_rare = object_tangib
 }
 -- Epic
 object_tangible_borrp_crafting_comp_weapon_receiver_shotgun_epic = object_tangible_borrp_crafting_shared_comp_weapon_receiver_shotgun_epic:new {
-    rarity = "epic",
+    rarity = "Epic",
 
     craftingDamageDieCount = 2,
     craftingDamageDieType = 4,
@@ -269,7 +269,7 @@ object_tangible_borrp_crafting_comp_weapon_receiver_shotgun_epic = object_tangib
 }
 -- Legendary
 object_tangible_borrp_crafting_comp_weapon_receiver_shotgun_legendary = object_tangible_borrp_crafting_shared_comp_weapon_receiver_shotgun_legendary:new {
-    rarity = "legendary",
+    rarity = "Legendary",
 
     craftingDamageDieCount = 1,
     craftingDamageDieType = 7,
