@@ -48,30 +48,30 @@ object_tangible_borrp_crafting_shared_comp_weapon_receiver_pistol_legendary = Sh
 }
 ObjectTemplates:addClientTemplate(object_tangible_borrp_crafting_shared_comp_weapon_receiver_pistol_legendary, "object/tangible/borrp/crafting/shared_comp_weapon_receiver_pistol_legendary.iff")
 --********************************************************************************************************************************
-object_tangible_borrp_crafting_shared_comp_weapon_receiver_carbine_common = SharedTangibleObjectTemplate:new {
-	clientTemplateFileName = "object/tangible/borrp/crafting/shared_comp_weapon_receiver_carbine_common.iff"
+object_tangible_borrp_crafting_shared_comp_weapon_receiver_rifle_common = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/borrp/crafting/shared_comp_weapon_receiver_rifle_common.iff"
 }
-ObjectTemplates:addClientTemplate(object_tangible_borrp_crafting_shared_comp_weapon_receiver_carbine_common, "object/tangible/borrp/crafting/shared_comp_weapon_receiver_carbine_common.iff")
+ObjectTemplates:addClientTemplate(object_tangible_borrp_crafting_shared_comp_weapon_receiver_rifle_common, "object/tangible/borrp/crafting/shared_comp_weapon_receiver_rifle_common.iff")
 --********************************************************************************************************************************
 object_tangible_borrp_crafting_shared_comp_weapon_receiver_rifle_uncommon = SharedTangibleObjectTemplate:new {
 	clientTemplateFileName = "object/tangible/borrp/crafting/shared_comp_weapon_receiver_rifle_uncommon.iff"
 }
 ObjectTemplates:addClientTemplate(object_tangible_borrp_crafting_shared_comp_weapon_receiver_rifle_uncommon, "object/tangible/borrp/crafting/shared_comp_weapon_receiver_rifle_uncommon.iff")
 --********************************************************************************************************************************
-object_tangible_borrp_crafting_shared_comp_weapon_receiver_carbine_rare = SharedTangibleObjectTemplate:new {
-	clientTemplateFileName = "object/tangible/borrp/crafting/shared_comp_weapon_receiver_carbine_rare.iff"
+object_tangible_borrp_crafting_shared_comp_weapon_receiver_rifle_rare = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/borrp/crafting/shared_comp_weapon_receiver_rifle_rare.iff"
 }
-ObjectTemplates:addClientTemplate(object_tangible_borrp_crafting_shared_comp_weapon_receiver_carbine_rare, "object/tangible/borrp/crafting/shared_comp_weapon_receiver_carbine_rare.iff")
+ObjectTemplates:addClientTemplate(object_tangible_borrp_crafting_shared_comp_weapon_receiver_rifle_rare, "object/tangible/borrp/crafting/shared_comp_weapon_receiver_rifle_rare.iff")
 --********************************************************************************************************************************
-object_tangible_borrp_crafting_shared_comp_weapon_receiver_carbine_epic = SharedTangibleObjectTemplate:new {
-	clientTemplateFileName = "object/tangible/borrp/crafting/shared_comp_weapon_receiver_carbine_epic.iff"
+object_tangible_borrp_crafting_shared_comp_weapon_receiver_rifle_epic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/borrp/crafting/shared_comp_weapon_receiver_rifle_epic.iff"
 }
-ObjectTemplates:addClientTemplate(object_tangible_borrp_crafting_shared_comp_weapon_receiver_carbine_epic, "object/tangible/borrp/crafting/shared_comp_weapon_receiver_carbine_epic.iff")
+ObjectTemplates:addClientTemplate(object_tangible_borrp_crafting_shared_comp_weapon_receiver_rifle_epic, "object/tangible/borrp/crafting/shared_comp_weapon_receiver_rifle_epic.iff")
 --********************************************************************************************************************************
-object_tangible_borrp_crafting_shared_comp_weapon_receiver_carbine_legendary = SharedTangibleObjectTemplate:new {
-	clientTemplateFileName = "object/tangible/borrp/crafting/shared_comp_weapon_receiver_carbine_legendary.iff"
+object_tangible_borrp_crafting_shared_comp_weapon_receiver_rifle_legendary = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/borrp/crafting/shared_comp_weapon_receiver_rifle_legendary.iff"
 }
-ObjectTemplates:addClientTemplate(object_tangible_borrp_crafting_shared_comp_weapon_receiver_carbine_legendary, "object/tangible/borrp/crafting/shared_comp_weapon_receiver_carbine_legendary.iff")
+ObjectTemplates:addClientTemplate(object_tangible_borrp_crafting_shared_comp_weapon_receiver_rifle_legendary, "object/tangible/borrp/crafting/shared_comp_weapon_receiver_rifle_legendary.iff")
 --********************************************************************************************************************************
 object_tangible_borrp_crafting_shared_comp_weapon_receiver_sniper_common = SharedTangibleObjectTemplate:new {
 	clientTemplateFileName = "object/tangible/borrp/crafting/shared_comp_weapon_receiver_sniper_common.iff"
@@ -162,4 +162,29 @@ object_tangible_borrp_crafting_shared_comp_op_system_acid = SharedTangibleObject
 	clientTemplateFileName = "object/tangible/borrp/crafting/shared_comp_op_system_acid.iff"
 }
 ObjectTemplates:addClientTemplate(object_tangible_borrp_crafting_shared_comp_op_system_acid, "object/tangible/borrp/crafting/shared_comp_op_system_acid.iff")
+--********************************************************************************************************************************
+object_tangible_borrp_crafting_shared_comp_weapon_receiver_carbine_common = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/borrp/crafting/shared_comp_weapon_receiver_carbine_common.iff"
+}
+ObjectTemplates:addClientTemplate(object_tangible_borrp_crafting_shared_comp_weapon_receiver_carbine_common, "object/tangible/borrp/crafting/shared_comp_weapon_receiver_carbine_common.iff")
+--********************************************************************************************************************************
+object_tangible_borrp_crafting_shared_comp_weapon_receiver_carbine_uncommon = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/borrp/crafting/shared_comp_weapon_receiver_carbine_uncommon.iff"
+}
+ObjectTemplates:addClientTemplate(object_tangible_borrp_crafting_shared_comp_weapon_receiver_carbine_uncommon, "object/tangible/borrp/crafting/shared_comp_weapon_receiver_carbine_uncommon.iff")
+--********************************************************************************************************************************
+object_tangible_borrp_crafting_shared_comp_weapon_receiver_carbine_rare = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/borrp/crafting/shared_comp_weapon_receiver_carbine_rare.iff"
+}
+ObjectTemplates:addClientTemplate(object_tangible_borrp_crafting_shared_comp_weapon_receiver_carbine_rare, "object/tangible/borrp/crafting/shared_comp_weapon_receiver_carbine_rare.iff")
+--********************************************************************************************************************************
+object_tangible_borrp_crafting_shared_comp_weapon_receiver_carbine_epic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/borrp/crafting/shared_comp_weapon_receiver_carbine_epic.iff"
+}
+ObjectTemplates:addClientTemplate(object_tangible_borrp_crafting_shared_comp_weapon_receiver_carbine_epic, "object/tangible/borrp/crafting/shared_comp_weapon_receiver_carbine_epic.iff")
+--********************************************************************************************************************************
+object_tangible_borrp_crafting_shared_comp_weapon_receiver_carbine_legendary = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/borrp/crafting/shared_comp_weapon_receiver_carbine_legendary.iff"
+}
+ObjectTemplates:addClientTemplate(object_tangible_borrp_crafting_shared_comp_weapon_receiver_carbine_legendary, "object/tangible/borrp/crafting/shared_comp_weapon_receiver_carbine_legendary.iff")
 --********************************************************************************************************************************
