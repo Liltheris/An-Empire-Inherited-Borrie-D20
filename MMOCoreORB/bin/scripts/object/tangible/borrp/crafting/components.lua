@@ -72,16 +72,16 @@ object_tangible_borrp_crafting_comp_weapon_receiver_pistol_common = object_tangi
     rarity = "Common",
 
     craftingDamageDieCount = 1,
-    craftingDamageDieType = 3,
-    craftingBonusDamage = 0,
+    craftingDamageDieType = 4,
+    craftingBonusDamage = 1,
 }
 -- Uncommon
 object_tangible_borrp_crafting_comp_weapon_receiver_pistol_uncommon = object_tangible_borrp_crafting_shared_comp_weapon_receiver_pistol_uncommon:new {
     rarity = "Uncommon",
 
-    craftingDamageDieCount = 2,
-    craftingDamageDieType = 2,
-    craftingBonusDamage = 2,
+    craftingDamageDieCount = 1,
+    craftingDamageDieType = 4,
+    craftingBonusDamage = 3,
 }
 -- Rare
 object_tangible_borrp_crafting_comp_weapon_receiver_pistol_rare = object_tangible_borrp_crafting_shared_comp_weapon_receiver_pistol_rare:new {
@@ -97,7 +97,7 @@ object_tangible_borrp_crafting_comp_weapon_receiver_pistol_epic = object_tangibl
 
     craftingDamageDieCount = 1,
     craftingDamageDieType = 6,
-    craftingBonusDamage = 2,
+    craftingBonusDamage = 3,
 }
 -- Legendary
 object_tangible_borrp_crafting_comp_weapon_receiver_pistol_legendary = object_tangible_borrp_crafting_shared_comp_weapon_receiver_pistol_legendary:new {
@@ -105,7 +105,7 @@ object_tangible_borrp_crafting_comp_weapon_receiver_pistol_legendary = object_ta
 
     craftingDamageDieCount = 1,
     craftingDamageDieType = 4,
-    craftingBonusDamage = 5,
+    craftingBonusDamage = 6,
 }
 
 -- Carbine Receivers

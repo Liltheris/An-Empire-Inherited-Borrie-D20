@@ -45,4 +45,9 @@ includeFile("draft_schematic/roleplay/component/comp_op_system_acid.lua")
 
 includeFile("draft_schematic/roleplay/component/circuit_board.lua")
 
+includeFile("draft_schematic/roleplay/component/component_saber_casing.lua")
+includeFile("draft_schematic/roleplay/component/component_saber_emitter.lua")
+includeFile("draft_schematic/roleplay/component/component_saber_lense.lua")
+includeFile("draft_schematic/roleplay/component/component_saber_power_cell.lua")
+
 
