@@ -790,17 +790,17 @@ void CraftingSessionImplementation::initialAssembly(int clientCounter) {
 							ammoType = "ammo_powerpack_large";
 							break;
 					};
-
-					String rarity = compTano->getRarity();
-
-					prototypeWep->setAmmoPack(ammoType);
-					prototypeWep->setRarity(rarity);
 				}
 
 				if (compTano->getCraftingDamageDieType() > 0){
 					prototypeWep->setMinDamage(compTano->getCraftingDamageDieCount());
 					prototypeWep->setMaxDamage(compTano->getCraftingDamageDieType());
 					prototypeWep->setBonusDamage(compTano->getCraftingBonusDamage());
+
+					String rarity = compTano->getRarity();
+
+					prototypeWep->setAmmoPack(ammoType);
+					prototypeWep->setRarity(rarity);
 				}
 				// End D20 System /////////////////////////////////////////////////////
 

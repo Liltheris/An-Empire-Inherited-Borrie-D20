@@ -639,7 +639,13 @@ void TangibleObjectImplementation::fillAttributeList(AttributeListMessage* alm, 
 		StringBuffer dmg;
 		dmg << craftingDamageDieCount << "d" << craftingDamageDieType << " + " << craftingBonusDamage;
 		alm->insertAttribute("damage.dmgdice", dmg);
+	}
 
+	if (!craftingAmmoType.isEmpty()) {
+		alm->insertAttribute("wpn_ammo_type", craftingAmmoType);
+	}
+	
+	if (craftingDamageType > 0) {
 		String dmgType = "ERROR";
 		switch (craftingDamageType){
 		case 1:
@@ -673,11 +679,6 @@ void TangibleObjectImplementation::fillAttributeList(AttributeListMessage* alm, 
 
 		alm->insertAttribute("damage.wpn_damage_type", dmgType);
 	}
-
-	if (!craftingAmmoType.isEmpty()) {
-		alm->insertAttribute("wpn_ammo_type", craftingAmmoType);
-	}
-	
 
 	if (!objectSerial.isEmpty()) {
 		alm->insertAttribute("serial_number", objectSerial);
