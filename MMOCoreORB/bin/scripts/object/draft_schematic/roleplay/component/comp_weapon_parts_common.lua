@@ -23,7 +23,7 @@ object_draft_schematic_roleplay_component_comp_weapon_parts_common = object_draf
 
 	ingredientTemplateNames = {"craft_weapon_ingredients_n"},
 	ingredientTitleNames = {"scrap_metal"},
-	ingredientSlotType = {1,1},
+	ingredientSlotType = {1},
 	resourceTypes = {"object/tangible/borrp/crafting/shared_scrap_metal.iff"},
 	resourceQuantities = {1},
 	contribution = {100},
