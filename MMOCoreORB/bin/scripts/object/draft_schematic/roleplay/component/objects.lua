@@ -148,43 +148,43 @@ object_draft_schematic_roleplay_component_shared_comp_weapon_receiver_sniper_leg
 }
 ObjectTemplates:addClientTemplate(object_draft_schematic_roleplay_component_shared_comp_weapon_receiver_sniper_legendary, "object/draft_schematic/roleplay/component/shared_comp_comp_weapon_receiver_sniper_legendary.iff")
 --********************************************************************************************************************************
-object_draft_schematic_roleplay_component_shared_op_system_acid = SharedDraftSchematicObjectTemplate:new {
-	clientTemplateFileName = "object/draft_schematic/roleplay/component/shared_comp_op_system_acid.iff"
+object_draft_schematic_roleplay_component_shared_comp_op_system_acid = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/roleplay/component/shared_comp_comp_op_system_acid.iff"
 }
-ObjectTemplates:addClientTemplate(object_draft_schematic_roleplay_component_shared_op_system_acid, "object/draft_schematic/roleplay/component/shared_comp_op_system_acid")
+ObjectTemplates:addClientTemplate(object_draft_schematic_roleplay_component_shared_comp_op_system_acid, "object/draft_schematic/roleplay/component/shared_comp_comp_op_system_acid")
 --********************************************************************************************************************************
-object_draft_schematic_roleplay_component_shared_op_system_blast = SharedDraftSchematicObjectTemplate:new {
-	clientTemplateFileName = "object/draft_schematic/roleplay/component/shared_comp_op_system_blast.iff"
+object_draft_schematic_roleplay_component_shared_comp_op_system_blast = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/roleplay/component/shared_comp_comp_op_system_blast.iff"
 }
-ObjectTemplates:addClientTemplate(object_draft_schematic_roleplay_component_shared_op_system_blast, "object/draft_schematic/roleplay/component/shared_comp_op_system_blast")
+ObjectTemplates:addClientTemplate(object_draft_schematic_roleplay_component_shared_comp_op_system_blast, "object/draft_schematic/roleplay/component/shared_comp_comp_op_system_blast")
 --********************************************************************************************************************************
-object_draft_schematic_roleplay_component_shared_op_system_cold = SharedDraftSchematicObjectTemplate:new {
-	clientTemplateFileName = "object/draft_schematic/roleplay/component/shared_comp_op_system_cold.iff"
+object_draft_schematic_roleplay_component_shared_comp_op_system_cold = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/roleplay/component/shared_comp_comp_op_system_cold.iff"
 }
-ObjectTemplates:addClientTemplate(object_draft_schematic_roleplay_component_shared_op_system_cold, "object/draft_schematic/roleplay/component/shared_comp_op_system_cold")
+ObjectTemplates:addClientTemplate(object_draft_schematic_roleplay_component_shared_comp_op_system_cold, "object/draft_schematic/roleplay/component/shared_comp_comp_op_system_cold")
 --********************************************************************************************************************************
-object_draft_schematic_roleplay_component_shared_op_system_electricity = SharedDraftSchematicObjectTemplate:new {
-	clientTemplateFileName = "object/draft_schematic/roleplay/component/shared_comp_op_system_electricity.iff"
+object_draft_schematic_roleplay_component_shared_comp_op_system_electricity = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/roleplay/component/shared_comp_comp_op_system_electricity.iff"
 }
-ObjectTemplates:addClientTemplate(object_draft_schematic_roleplay_component_shared_op_system_electricity, "object/draft_schematic/roleplay/component/shared_comp_op_system_electricity")
+ObjectTemplates:addClientTemplate(object_draft_schematic_roleplay_component_shared_comp_op_system_electricity, "object/draft_schematic/roleplay/component/shared_comp_comp_op_system_electricity")
 --********************************************************************************************************************************
-object_draft_schematic_roleplay_component_shared_op_system_energy = SharedDraftSchematicObjectTemplate:new {
-	clientTemplateFileName = "object/draft_schematic/roleplay/component/shared_comp_op_system_energy.iff"
+object_draft_schematic_roleplay_component_shared_comp_op_system_energy = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/roleplay/component/shared_comp_comp_op_system_energy.iff"
 }
-ObjectTemplates:addClientTemplate(object_draft_schematic_roleplay_component_shared_op_system_energy, "object/draft_schematic/roleplay/component/shared_comp_op_system_energy")
+ObjectTemplates:addClientTemplate(object_draft_schematic_roleplay_component_shared_comp_op_system_energy, "object/draft_schematic/roleplay/component/shared_comp_comp_op_system_energy")
 --********************************************************************************************************************************
-object_draft_schematic_roleplay_component_shared_op_system_heat = SharedDraftSchematicObjectTemplate:new {
-	clientTemplateFileName = "object/draft_schematic/roleplay/component/shared_comp_op_system_heat.iff"
+object_draft_schematic_roleplay_component_shared_comp_op_system_heat = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/roleplay/component/shared_comp_comp_op_system_heat.iff"
 }
-ObjectTemplates:addClientTemplate(object_draft_schematic_roleplay_component_shared_op_system_heat, "object/draft_schematic/roleplay/component/shared_comp_op_system_heat")
+ObjectTemplates:addClientTemplate(object_draft_schematic_roleplay_component_shared_comp_op_system_heat, "object/draft_schematic/roleplay/component/shared_comp_comp_op_system_heat")
 --********************************************************************************************************************************
-object_draft_schematic_roleplay_component_shared_op_system_kinetic = SharedDraftSchematicObjectTemplate:new {
-	clientTemplateFileName = "object/draft_schematic/roleplay/component/shared_comp_op_system_kinetic.iff"
+object_draft_schematic_roleplay_component_shared_comp_op_system_kinetic = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/roleplay/component/shared_comp_comp_op_system_kinetic.iff"
 }
-ObjectTemplates:addClientTemplate(object_draft_schematic_roleplay_component_shared_op_system_kinetic, "object/draft_schematic/roleplay/component/shared_comp_op_system_kinetic")
+ObjectTemplates:addClientTemplate(object_draft_schematic_roleplay_component_shared_comp_op_system_kinetic, "object/draft_schematic/roleplay/component/shared_comp_comp_op_system_kinetic")
 --********************************************************************************************************************************
-object_draft_schematic_roleplay_component_shared_op_system_stun = SharedDraftSchematicObjectTemplate:new {
-	clientTemplateFileName = "object/draft_schematic/roleplay/component/shared_comp_op_system_stun.iff"
+object_draft_schematic_roleplay_component_shared_comp_op_system_stun = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/roleplay/component/shared_comp_comp_op_system_stun.iff"
 }
-ObjectTemplates:addClientTemplate(object_draft_schematic_roleplay_component_shared_op_system_stun, "object/draft_schematic/roleplay/component/shared_comp_op_system_stun")
+ObjectTemplates:addClientTemplate(object_draft_schematic_roleplay_component_shared_comp_op_system_stun, "object/draft_schematic/roleplay/component/shared_comp_comp_op_system_stun")
 --********************************************************************************************************************************
