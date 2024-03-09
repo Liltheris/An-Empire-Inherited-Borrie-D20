@@ -1107,7 +1107,7 @@ object_weapon_roleplay_ranged_pistol_cdef_pistol = object_weapon_ranged_pistol_s
 	
 	noPowerAttack = true,
 	
-	rarity="common",
+	rarity="Common",
 
 	ammoPack = _ammoPack,
 	maxAmmo = _maxAmmo,
