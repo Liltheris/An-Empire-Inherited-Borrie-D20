@@ -5,6 +5,7 @@
 #include "server/zone/managers/creature/CreatureManager.h"
 #include "server/zone/packets/chat/ChatSystemMessage.h"
 #include "server/zone/borrie/BorrieRPG.h"
+#include "server/zone/borrie/BorString.h"
 
 //#include "templates/roleplay/RoleplayManager.h"
 
@@ -69,7 +70,7 @@ public:
 				}
 				for (int i = 0; i < numDice; i++) {
 					nTempResult = System::random(diceValue - 1) + 1;
-					DiceRollString += String::valueOf(nTempResult);
+					DiceRollString += BorString::rollColour(nTempResult, diceValue, "\\#FFFFFF");
 					nResult += nTempResult;
 					if (i == numDice - 1)
 						DiceRollString += " =";
@@ -95,7 +96,7 @@ public:
 	static String RollSkill(CreatureObject* creature, String skillName) {
 		int value = creature->getSkillMod("rp_" + skillName);
 		int Roll = System::random(19) + 1;
-		return BorrieRPG::Capitalize(skillName) + " check : 1d20 = " + String::valueOf(Roll) + " + Modifier: " + String::valueOf(value) +
+		return BorrieRPG::Capitalize(skillName) + " check : 1d20 = " + BorString::rollColour(Roll, 20, "\\#FFFFFF"); + " + Modifier: " + String::valueOf(value) +
 			   ". Result: " + String::valueOf(value + Roll);
 	}
 
