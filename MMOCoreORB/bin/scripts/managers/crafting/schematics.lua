@@ -187,7 +187,7 @@ schematics = {
 	{path="object/draft_schematic/roleplay/weapon/rifle/rifle_trando_hunter.iff"},
 	{path="object/draft_schematic/roleplay/weapon/rifle/rifle_tusken.iff"},
 
-	{path="object/draft_schematic/roleplay/weapon/pistol/pistol_scattergun.iff"},
+	{path="object/draft_schematic/roleplay/weapon/shotgun/pistol_scattergun.iff"},
 	{path="object/draft_schematic/roleplay/weapon/shotgun/rifle_dp23.iff"},
 
 	{path="object/draft_schematic/roleplay/weapon/sniper/rifle_adventurer.iff"},

@@ -31,4 +31,4 @@ object_draft_schematic_roleplay_weapon_pistol_pistol_scattergun = object_draft_s
 
 	additionalTemplates = {}
 
-}ObjectTemplates:addTemplate(object_draft_schematic_roleplay_weapon_pistol_pistol_scattergun, "object/draft_schematic/roleplay/weapon/pistol/pistol_scattergun.iff")
+}ObjectTemplates:addTemplate(object_draft_schematic_roleplay_weapon_pistol_pistol_scattergun, "object/draft_schematic/roleplay/weapon/shotgun/pistol_scattergun.iff")

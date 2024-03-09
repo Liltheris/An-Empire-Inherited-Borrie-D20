@@ -31,4 +31,4 @@ object_draft_schematic_roleplay_weapon_rifle_rifle_alliance_gauss = object_draft
 
 	additionalTemplates = {}
 
-}ObjectTemplates:addTemplate(object_draft_schematic_roleplay_weapon_rifle_rifle_alliance_gauss, "object/weapon/roleplay/ranged/rifle/dawnsorrow_rifle.iff")
+}ObjectTemplates:addTemplate(object_draft_schematic_roleplay_weapon_rifle_rifle_alliance_gauss, "object/weapon/roleplay/ranged/rifle/rifle_alliance_gauss.iff")

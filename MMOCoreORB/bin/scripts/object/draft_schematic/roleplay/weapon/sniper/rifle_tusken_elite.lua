@@ -31,4 +31,4 @@ object_draft_schematic_roleplay_weapon_rifle_rifle_tusken_elite = object_draft_s
 
 	additionalTemplates = {}
 
-}ObjectTemplates:addTemplate(object_draft_schematic_roleplay_weapon_rifle_rifle_tusken_elite, "object/draft_schematic/roleplay/weapon/rifle/rifle_tusken_elite.iff")
+}ObjectTemplates:addTemplate(object_draft_schematic_roleplay_weapon_rifle_rifle_tusken_elite, "object/draft_schematic/roleplay/weapon/sniper/rifle_tusken_elite.iff")

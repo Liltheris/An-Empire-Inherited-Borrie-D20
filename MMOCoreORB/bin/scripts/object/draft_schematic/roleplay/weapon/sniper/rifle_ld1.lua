@@ -31,4 +31,4 @@ object_draft_schematic_roleplay_weapon_rifle_rifle_ld1 = object_draft_schematic_
 
 	additionalTemplates = {}
 
-}ObjectTemplates:addTemplate(object_draft_schematic_roleplay_weapon_rifle_rifle_ld1, "object/draft_schematic/roleplay/weapon/rifle/rifle_ld1.iff")
+}ObjectTemplates:addTemplate(object_draft_schematic_roleplay_weapon_rifle_rifle_ld1, "object/draft_schematic/roleplay/weapon/sniper/rifle_ld1.iff")
