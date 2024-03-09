@@ -13,3 +13,8 @@ object_draft_schematic_roleplay_weapon_rifle_shared_rifle_adventurer = SharedDra
 }
 ObjectTemplates:addClientTemplate(object_draft_schematic_roleplay_weapon_rifle_shared_rifle_adventurer, "object/draft_schematic/roleplay/weapon/sniper/shared_rifle_adventurer.iff")
 --********************************************************************************************************************************
+object_draft_schematic_roleplay_weapon_rifle_shared_rifle_dlt20a = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/roleplay/weapon/sniper/shared_rifle_dlt20a.iff"
+}
+ObjectTemplates:addClientTemplate(object_draft_schematic_roleplay_weapon_rifle_shared_rifle_dlt20a, "object/draft_schematic/roleplay/weapon/sniper/shared_rifle_dlt20a.iff")
+--********************************************************************************************************************************

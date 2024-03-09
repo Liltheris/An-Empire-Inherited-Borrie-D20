@@ -193,6 +193,7 @@ schematics = {
 
 	{path="object/draft_schematic/roleplay/weapon/sniper/rifle_adventurer.iff"},
 	{path="object/draft_schematic/roleplay/weapon/sniper/rifle_ld1.iff"},
+	{path="object/draft_schematic/roleplay/weapon/sniper/rifle_dlt20a.iff"},
 	{path="object/draft_schematic/roleplay/weapon/sniper/rifle_tusken_elite.iff"},
 
 	{path="object/draft_schematic/roleplay/component/circuit_board.iff"},
