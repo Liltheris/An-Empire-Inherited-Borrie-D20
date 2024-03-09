@@ -22,9 +22,9 @@ object_draft_schematic_roleplay_component_component_saber_emitter = object_draft
 	customizationDefaults = {},
 
 	ingredientTemplateNames = {"craft_weapon_ingredients_n","craft_weapon_ingredients_n","craft_weapon_ingredients_n"},
-	ingredientTitleNames = {"circuit_board","operating_system_energy","weapon_parts_rare"},
+	ingredientTitleNames = {"circuit_board","operating_system_energy","weapon_parts_uncommon"},
 	ingredientSlotType = {1,1,1},
-	resourceTypes = {"object/tangible/borrp/crafting/shared_circuit_board","object/tangible/borrp/crafting/shared_comp_op_system_energy.iff","object/draft_schematic/roleplay/component/comp_weapon_parts_rare.iff"},
+	resourceTypes = {"object/tangible/borrp/crafting/shared_circuit_board.iff","object/tangible/borrp/crafting/shared_comp_op_system_energy.iff","object/tangible/borrp/crafting/shared_comp_weapon_parts_uncommon.iff"},
 	resourceQuantities = {1,1,1},
 	contribution = {100,100,100},
 	targetTemplate = "object/tangible/item/roleplay/component_saber_emitter.iff",
