@@ -240,4 +240,9 @@ schematics = {
 	{path="object/draft_schematic/roleplay/component/comp_weapon_receiver_sniper_rare.iff"},
 	{path="object/draft_schematic/roleplay/component/comp_weapon_receiver_sniper_epic.iff"},
 	{path="object/draft_schematic/roleplay/component/comp_weapon_receiver_sniper_legendary.iff"},
+
+	{path="object/draft_schematic/roleplay/component/component_saber_casing.iff"},
+	{path="object/draft_schematic/roleplay/component/component_saber_emitter.iff"},
+	{path="object/draft_schematic/roleplay/component/component_saber_lense.iff"},
+	{path="object/draft_schematic/roleplay/component/component_saber_power_cell.iff"},
 };
