@@ -499,6 +499,7 @@ public:
         WeaponObject* defenderWeapon = defender->getWeapon();
         
         String reactionSpam = "";
+        String dmgString = "";
 
         int defenseRoll = BorDice::Roll(1, 20);
         int defenseSkill = defender->getSkillMod("rp_defending");
@@ -512,10 +513,10 @@ public:
             reactionSpam += BorString::getNiceName(defender) + " successfully defends against the attack "+ rollSpam(defenseRoll, defenseSkill, toHit) +"\\#FFFFFF ";
             if (defenderWeapon->isUnarmedWeapon()){
                 // Oh no.
-                reactionSpam += ", however, they're unarmed, taking " + damageNumber(incomingDamage) + "damage to their hands!";
-
                 BorEffect::PerformReactiveAnimation(defender, attacker, "defend", GetSlotHitlocation(9), true);
-                ApplyAdjustedHealthDamage(defender, attackerWeapon, incomingDamage, 9);
+                dmgString = ApplyAdjustedHealthDamage(defender, attackerWeapon, incomingDamage, 9);
+
+                reactionSpam += ", however, they're unarmed, taking " + dmgString + "damage to their hands!";
 
             } else if (defenderWeapon->isJediWeapon() && !attackerWeapon->isJediWeapon()) {
                 // We've successfully defended!
@@ -543,10 +544,11 @@ public:
             }
         } else {
             // Failure!
-            reactionSpam += BorString::getNiceName(defender) + " tries to defend against the attack, but fails "+ rollSpam(defenseRoll, defenseSkill, toHit) +"\\#FFFFFF ";
-            reactionSpam += ", taking "+ damageNumber(incomingDamage) +" damage.";
             BorEffect::PerformReactiveAnimation(defender, attacker, "defend", GetSlotHitlocation(slot), false);
-            ApplyAdjustedHealthDamage(defender, attackerWeapon, incomingDamage, slot);
+            dmgString = ApplyAdjustedHealthDamage(defender, attackerWeapon, incomingDamage, slot);
+
+            reactionSpam += BorString::getNiceName(defender) + " tries to defend against the attack, but fails "+ rollSpam(defenseRoll, defenseSkill, toHit) +"\\#FFFFFF ";
+            reactionSpam += ", taking "+ dmgString +" damage.";
         }
         return reactionSpam;
     }
@@ -556,6 +558,7 @@ public:
         WeaponObject* defenderWeapon = defender->getWeapon();
         
         String reactionSpam = "";
+        String dmgString = "";
 
         int meleeRoll = BorDice::Roll(1, 20);
         int meleeSkill = 0;
@@ -578,9 +581,9 @@ public:
             reactionSpam += ", but " + BorString::getNiceName(defender)+" parries the attack " + rollSpam(meleeRoll, meleeSkill, toHit) +"\\#FFFFFF, avoiding damage and opening " +BorString::getNiceName(defender)+ " up for a counter attack!";
         } else {
             //Unsuccessful Parry
-            ApplyAdjustedHealthDamage(defender, attackerWeapon, incomingDamage, slot);
+            dmgString = ApplyAdjustedHealthDamage(defender, attackerWeapon, incomingDamage, slot);
             BorEffect::PerformReactiveAnimation(defender, attacker, "parry", GetSlotHitlocation(slot), false);
-            reactionSpam += ". " + BorString::getNiceName(defender) + " tries to parry the attack, but fails " + rollSpam(meleeRoll, meleeSkill, toHit) +"\\#FFFFFF, recieving "+ damageNumber(incomingDamage) +" damage!"; 
+            reactionSpam += ". " + BorString::getNiceName(defender) + " tries to parry the attack, but fails " + rollSpam(meleeRoll, meleeSkill, toHit) +"\\#FFFFFF, recieving "+ dmgString +" damage!"; 
         }
         return reactionSpam;
     }
@@ -590,6 +593,7 @@ public:
         WeaponObject* defenderWeapon = defender->getWeapon();
         
         String reactionSpam = "";
+        String dmgString = "";
 
         int maneuverabilitySkill = defender->getSkillMod("rp_maneuverability");
         int dodgeRoll = BorDice::Roll(1, 20);
@@ -610,21 +614,21 @@ public:
             
         } else if(dodgeRoll + maneuverabilitySkill >= (toHit / 2) + armourPenalty) {
             // Partial success, defender stumbles to crouching, and takes half damage.
-            reactionSpam += ", " + BorString::getNiceName(defender) + " struggles to dodge out of the way! " + rollSpam(dodgeRoll, maneuverabilitySkill, toHit) + "\\#FFFFFF ";
-            reactionSpam += BorString::getNiceName(defender) + " stumbles, but only takes "+ damageNumber(incomingDamage / 2) +" damage.";
-
-            ApplyAdjustedHealthDamage(defender, attackerWeapon, incomingDamage / 2, slot);
+            dmgString = ApplyAdjustedHealthDamage(defender, attackerWeapon, incomingDamage / 2, slot);
             BorEffect::PerformReactiveAnimation(defender, attacker, "dodge", GetSlotHitlocation(slot), true);
             
             defender->setPosture(CreaturePosture::CROUCHED, true, true);
 
+            reactionSpam += ", " + BorString::getNiceName(defender) + " struggles to dodge out of the way! " + rollSpam(dodgeRoll, maneuverabilitySkill, toHit) + "\\#FFFFFF ";
+            reactionSpam += BorString::getNiceName(defender) + " stumbles, but only takes "+ dmgString +" damage.";
+
         } else {
             // Failed to dodge entirely!
-            reactionSpam += ", " + BorString::getNiceName(defender) + " tries to dodge out of the way and fails! " + rollSpam(dodgeRoll, maneuverabilitySkill, toHit) + "\\#FFFFFF ";
-            reactionSpam += BorString::getNiceName(defender) +" takes "+ damageNumber(incomingDamage) +" damage.";
-
-            ApplyAdjustedHealthDamage(defender, attackerWeapon, incomingDamage, slot);
+            dmgString = ApplyAdjustedHealthDamage(defender, attackerWeapon, incomingDamage, slot);
             BorEffect::PerformReactiveAnimation(defender, attacker, "dodge", GetSlotHitlocation(slot), false);
+
+            reactionSpam += ", " + BorString::getNiceName(defender) + " tries to dodge out of the way and fails! " + rollSpam(dodgeRoll, maneuverabilitySkill, toHit) + "\\#FFFFFF ";
+            reactionSpam += BorString::getNiceName(defender) +" takes "+ dmgString +" damage.";
         }
         return reactionSpam;
     }
@@ -634,14 +638,15 @@ public:
         WeaponObject* defenderWeapon = defender->getWeapon();
 
         String reactionSpam = "";
+        String dmgString = "";
 
         // Check that the defender has the necessary lightsaber skill, and actually has a lightsaber equipped.
         if(!defender->hasSkill("rp_lightsaber_novice") || !defenderWeapon->isJediWeapon()){
             defender->sendSystemMessage("You must have a lightsaber equipped to use Lightsaber Deflect as your reaction stance!");
 
-            ApplyAdjustedHealthDamage(defender, attackerWeapon, incomingDamage, slot);
+            dmgString = ApplyAdjustedHealthDamage(defender, attackerWeapon, incomingDamage, slot);
             BorEffect::PerformReactiveAnimation(defender, attacker, "hit", GetSlotHitlocation(slot), true);
-            return ", doing (" + GetWeaponDamageString(attackerWeapon) + ") = "+ damageNumber(incomingDamage) +" damage.";
+            return ", doing (" + GetWeaponDamageString(attackerWeapon) + ") = "+ dmgString +" damage.";
         }
 
         // Check if the defender is becoming overwhelmed.
@@ -661,12 +666,13 @@ public:
 
         // Defender failed to reflect at all.
         if (rollResult < toHit/2){
-            reactionSpam += BorString::getNiceName(defender) + " fails to deflect the attack (1d20 = " + String::valueOf(deflectRoll) + " + " + String::valueOf(lightsaberSkill) + " vs DC: "+String::valueOf(toHit)+")";
-            reactionSpam += ", recieving "+ damageNumber(incomingDamage) +" damage!";
-
             //Apply full damage and output the spam!
-            ApplyAdjustedHealthDamage(defender, attackerWeapon, incomingDamage, slot);
+            dmgString = ApplyAdjustedHealthDamage(defender, attackerWeapon, incomingDamage, slot);
             BorEffect::PerformReactiveAnimation(attacker, defender, "hit", GetSlotHitlocation(slot), true);
+
+            reactionSpam += BorString::getNiceName(defender) + " fails to deflect the attack (1d20 = " + String::valueOf(deflectRoll) + " + " + String::valueOf(lightsaberSkill) + " vs DC: "+String::valueOf(toHit)+")";
+            reactionSpam += ", recieving "+ dmgString +" damage!";
+
             return reactionSpam;
         }
 
@@ -683,8 +689,10 @@ public:
             }
             if (attackerWeapon->isJediWeapon() || attackerWeapon->isMeleeWeapon()){
                 // Taking half damage from lightsaber and melee hits!
+                dmgString = ApplyAdjustedHealthDamage(defender, attackerWeapon, incomingDamage / 2, slot);
+
                 reactionSpam += BorString::getNiceName(defender) + " deflects the attack in partial (1d20 = " + String::valueOf(deflectRoll) + " + " + String::valueOf(lightsaberSkill) + " vs DC: "+String::valueOf(toHit/2)+")";
-                reactionSpam += ", still recieving "+ damageNumber(incomingDamage /2) +" damage!";
+                reactionSpam += ", still recieving "+ dmgString +" damage!";
 
                 // Melee weapons take half their maximum condition as damage!
                 if (attackerWeapon->isMeleeWeapon()){
@@ -693,19 +701,20 @@ public:
                 }
 
                 BorEffect::PerformReactiveAnimation(attacker, defender, "parry", GetSlotHitlocation(slot), true);
-                ApplyAdjustedHealthDamage(defender, attackerWeapon, incomingDamage / 2, slot);
+                
 
                 return reactionSpam;
             }
             if (attackerWeapon->isUnarmedWeapon()){
                 // Take partial damage, but also damage the attacker!
+                dmgString = ApplyAdjustedHealthDamage(defender, attackerWeapon, incomingDamage / 2, slot);
+                String atkDmgString = ApplyAdjustedHealthDamage(attacker, attackerWeapon, incomingDamage / 2, slot);
+
                 reactionSpam += BorString::getNiceName(defender) + " deflects the attack in partial (1d20 = " + String::valueOf(deflectRoll) + " + " + String::valueOf(lightsaberSkill) + " vs DC: "+String::valueOf(toHit/2)+")";
-                reactionSpam += ", still recieving "+ damageNumber(incomingDamage / 2) +" damage!";
-                reactionSpam += " However, " + BorString::getNiceName(attacker) + " has hurt themselves in the process, taking "+ damageNumber(incomingDamage / 2) +" damage!";
+                reactionSpam += ", still recieving "+ dmgString +" damage!";
+                reactionSpam += " However, " + BorString::getNiceName(attacker) + " has hurt themselves in the process, taking "+ atkDmgString +" damage!";
 
                 BorEffect::PerformReactiveAnimation(attacker, defender, "parry", GetSlotHitlocation(slot), true);
-                ApplyAdjustedHealthDamage(defender, attackerWeapon, incomingDamage / 2, slot);
-                ApplyAdjustedHealthDamage(attacker, attackerWeapon, incomingDamage / 2, slot);
 
                 return reactionSpam;
             }
@@ -717,10 +726,10 @@ public:
             int damageType = attackerWeapon->getDamageType();
             if (damageType == SharedWeaponObjectTemplate::ENERGY || damageType == SharedWeaponObjectTemplate::ELECTRICITY || damageType == SharedWeaponObjectTemplate::STUN || damageType == SharedWeaponObjectTemplate::LIGHTSABER) {
                 //Return to sender!
-                reactionSpam += ", sending it back to its origin, dealing "+ damageNumber(incomingDamage / 2) +" damage to " + BorString::getNiceName(attacker) +"!";
-
                 BorEffect::PerformReactiveAnimation(defender, attacker, "parry", GetSlotHitlocation(slot), true);
-                ApplyAdjustedHealthDamage(attacker, attackerWeapon, incomingDamage / 2, slot);
+                dmgString = ApplyAdjustedHealthDamage(attacker, attackerWeapon, incomingDamage / 2, slot);
+
+                reactionSpam += ", sending it back to its origin, dealing "+ dmgString +" damage to " + BorString::getNiceName(attacker) +"!";
             } else {
                 //Awww, it only fizzled out...
                 reactionSpam += ", however, it merely fizzles out as it makes contact with the blade!";
@@ -744,11 +753,11 @@ public:
         if (attackerWeapon->isUnarmedWeapon()){
             // Lets face it, taking your fists to a lightsaber fight was never going to work out.
             // Reflect all damage back to the attacker.
-            reactionSpam += ", but " + BorString::getNiceName(defender) + " successfully deflects the attack entirely. (1d20 = " + String::valueOf(deflectRoll) + " + " + String::valueOf(lightsaberSkill) + " vs DC: "+String::valueOf(toHit)+")";
-            reactionSpam += " " + BorString::getNiceName(attacker) + " hurts themselves on the blade for "+ damageNumber(incomingDamage) +" damage!";
-
             BorEffect::PerformReactiveAnimation(defender, attacker, "parry", GetSlotHitlocation(slot), true);
-            ApplyAdjustedHealthDamage(attacker, attackerWeapon, incomingDamage, slot);
+            dmgString = ApplyAdjustedHealthDamage(attacker, attackerWeapon, incomingDamage, slot);
+
+            reactionSpam += ", but " + BorString::getNiceName(defender) + " successfully deflects the attack entirely. (1d20 = " + String::valueOf(deflectRoll) + " + " + String::valueOf(lightsaberSkill) + " vs DC: "+String::valueOf(toHit)+")";
+            reactionSpam += " " + BorString::getNiceName(attacker) + " hurts themselves on the blade for "+ dmgString +" damage!";
 
             return reactionSpam;
         }
@@ -761,6 +770,7 @@ public:
         WeaponObject* defenderWeapon = defender->getWeapon();
         
         String reactionSpam = "";
+        String dmgString = "";
 
         int deflectRoll = BorDice::Roll(1, 20);
         int telekineticSkill = defender->getSkillMod("rp_telekinesis");
@@ -779,18 +789,18 @@ public:
 
         } else if (rollResult >= toHit / 2) {
             // Partial deflection!
-            reactionSpam += BorString::getNiceName(defender) + " quickly raises their hand, attempting to deflect the attack away "+ rollSpam(deflectRoll, telekineticSkill, toHit) + "\\#FFFFFF";
-            reactionSpam += ", however, they are a bit too slow, recieving "+ damageNumber(incomingDamage / 2) +" damage!";
-
             BorEffect::PerformReactiveAnimation(attacker, defender, "parry", GetSlotHitlocation(slot), false);
-            ApplyAdjustedHealthDamage(defender, attackerWeapon, incomingDamage/2, slot);
+            dmgString = ApplyAdjustedHealthDamage(defender, attackerWeapon, incomingDamage/2, slot);
+
+            reactionSpam += BorString::getNiceName(defender) + " quickly raises their hand, attempting to deflect the attack away "+ rollSpam(deflectRoll, telekineticSkill, toHit) + "\\#FFFFFF";
+            reactionSpam += ", however, they are a bit too slow, recieving "+ dmgString +" damage!";
         } else {
             // No deflection!
-            reactionSpam += BorString::getNiceName(defender) + " quickly raises their hand, attempting to deflect the attack away "+ rollSpam(deflectRoll, telekineticSkill, toHit) + "\\#FFFFFF";
-            reactionSpam += ", however, they are too slow, recieving "+ damageNumber(incomingDamage) +" damage!";
-
             BorEffect::PerformReactiveAnimation(attacker, defender, "parry", GetSlotHitlocation(slot), false);
-            ApplyAdjustedHealthDamage(defender, attackerWeapon, incomingDamage, slot);
+            dmgString = ApplyAdjustedHealthDamage(defender, attackerWeapon, incomingDamage, slot);
+
+            reactionSpam += BorString::getNiceName(defender) + " quickly raises their hand, attempting to deflect the attack away "+ rollSpam(deflectRoll, telekineticSkill, toHit) + "\\#FFFFFF";
+            reactionSpam += ", however, they are too slow, recieving "+ dmgString +" damage!";
         }              
         return reactionSpam;
     }
@@ -800,6 +810,7 @@ public:
         WeaponObject* defenderWeapon = defender->getWeapon();
         
         String reactionSpam = "";
+        String dmgString = "";
 
         int absorbRoll = BorDice::Roll(1, 20);
         int absorbSkill = defender->getSkillMod("rp_inward");
@@ -814,16 +825,18 @@ public:
             if(passed && attackerWeapon->getDamageType() != SharedWeaponObjectTemplate::KINETIC) {
                 reactionSpam += BorString::getNiceName(defender) + " absorbs the attack with their hand "+ rollSpam(absorbRoll, absorbSkill, toHit) + "\\#FFFFFF";
             } else {
+                dmgString = ApplyAdjustedHealthDamage(defender, attackerWeapon, incomingDamage, slot);  
+
                 reactionSpam += BorString::getNiceName(defender) + " tries to absorb the attack "+ rollSpam(absorbRoll, absorbSkill, toHit) + "\\#FFFFFF";
-                reactionSpam += ", but fails, recieving "+ damageNumber(incomingDamage) +" damage!";
-                ApplyAdjustedHealthDamage(defender, attackerWeapon, incomingDamage, slot);   
+                reactionSpam += ", but fails, recieving "+ dmgString +" damage!";
+                 
             }
         } else {
             //Can't block this. Full attack.
-            ApplyAdjustedHealthDamage(defender, attackerWeapon, incomingDamage, slot);
+            dmgString = ApplyAdjustedHealthDamage(defender, attackerWeapon, incomingDamage, slot);
             BorEffect::PerformReactiveAnimation(defender, attacker, "hit", GetSlotHitlocation(slot), true);
             defender->sendSystemMessage("You cannot absorb this attack. You recieved full damage.");
-            return ", doing (" + GetWeaponDamageString(attackerWeapon) + ") = "+ damageNumber(incomingDamage) +" damage.";
+            return ", doing (" + GetWeaponDamageString(attackerWeapon) + ") = "+ dmgString +" damage.";
         }
         return reactionSpam;
     }
@@ -857,12 +870,12 @@ public:
         } 
         
         //Simply accept the damage. 
-        ApplyAdjustedHealthDamage(defender, attackerWeapon, incomingDamage, slot);
+        String dmgString = ApplyAdjustedHealthDamage(defender, attackerWeapon, incomingDamage, slot);
         BorEffect::PerformReactiveAnimation(defender, attacker, "hit", GetSlotHitlocation(slot), true);
-        return ", doing (" + GetWeaponDamageString(attackerWeapon) + ") = "+ damageNumber(incomingDamage) +" damage.";
+        return ", doing (" + GetWeaponDamageString(attackerWeapon) + ") = "+ dmgString +" damage.";
     }
 
-    static void ApplyAdjustedHealthDamage(CreatureObject* creature, WeaponObject* attackerWeapon, int damage, int slot) {
+    static String ApplyAdjustedHealthDamage(CreatureObject* creature, WeaponObject* attackerWeapon, int damage, int slot) {
         // Use equipped armour if the creature is a player.
         if(creature->isPlayerCreature()) {
             ManagedReference<ArmorObject*> armour = BorCharacter::GetArmorAtSlot(creature, GetSlotName(slot));
@@ -911,7 +924,7 @@ public:
 
                     //Apply damage to creature and armour.
                     armour->setConditionDamage(armour->getConditionDamage() + armourDamage);
-                    BorCharacter::ModPool(creature, "health", -damage, true);
+                    BorCharacter::ModPool(creature, "health", -healthDamage, true);
 
                     // Output spam.
                     StringIdChatParameter msg;
@@ -926,15 +939,20 @@ public:
                     
                     msg.setDI(armourDamage);
                     creature->sendSystemMessage(msg);
-                    return;
+
+                    String output = damageNumber(healthDamage);
+                    output = output +"(\\#FFFF00"+String::valueOf(damage - healthDamage)+"\\#FFFFFF)";
+                    return output;
                 }
             }
             // No armour is equipped in hit slot, apply damage normally.
             BorCharacter::ModPool(creature, "health", -damage, true);
+            return damageNumber(damage);
         // NPC handling.
         } else {
             //TO DO: Implement NPC armour.
             BorCharacter::ModPool(creature, "health", -damage, true);
+            return damageNumber(damage);
         }
     }
 
@@ -1326,153 +1344,11 @@ public:
         }
         //Apply the damage taken!
         int hitLocation = BorDice::Roll(1, 10);
-        ApplyAdjustedHealthDamage(creature, grenade, damageRoll, hitLocation);
-        spam += " "+damageNumber(damageRoll)+" damage!";
+        String dmgString = ApplyAdjustedHealthDamage(creature, grenade, damageRoll, hitLocation);
+        spam += " "+dmgString+" damage!";
 
         //Finally, output the spam!
         BorrieRPG::BroadcastMessage(creature, spam);
-    }
-
-    static void ThrowRoleplayGrenade(CreatureObject* attacker, CreatureObject* defender, CreatureObject* commander, WeaponObject* grenade) {
-        int toHitDC = GetToHitModifier(attacker, defender, grenade) + 10;
-
-        int demoSkill = attacker->getSkillMod("rp_demolitions");
-        int throwSkill = attacker->getSkillMod("rp_throwing");
-
-        int toHitRoll = BorDice::Roll(1, 20);
-
-        SharedObjectTemplate* templateData = TemplateManager::instance()->getTemplate(grenade->getServerObjectCRC());
-
-		if (templateData == nullptr)
-			return;
-
-		SharedWeaponObjectTemplate* grenadeData = cast<SharedWeaponObjectTemplate*>(templateData);
-
-		if (grenadeData == nullptr)
-			return;
-
-        int skillLevel = grenadeData->getRpSkillLevel();
-
-        int radius = grenade->getDamageRadius();
-
-        bool failedDemoCheck = false;
-        CreatureObject* centerTarget = defender;
-
-        if(demoSkill < skillLevel) {
-            int failureRoll = BorDice::Roll(1, 20);
-            if(failureRoll + demoSkill < 15) {
-                //Blow up in your face!
-                radius = radius / 4;
-                failedDemoCheck = true;
-                centerTarget = attacker;
-            }
-        } 
-
-        if(!failedDemoCheck) {
-            //To hit roll will affect radius. 
-            if(toHitRoll + throwSkill <= toHitDC / 4) {
-                radius = radius / 8;
-            } else if(toHitRoll + throwSkill < toHitDC / 2) {
-                radius = radius / 4;
-            } else if(toHitRoll + throwSkill < toHitDC) {
-                radius = radius / 2;
-            }
-        }
-
-		SortedVector<QuadTreeEntry*> closeObjects;
-		Zone* zone = centerTarget->getZone();
-
-		ManagedReference<CreatureObject*> targetCreature = nullptr;
-
-		if (centerTarget->getCloseObjects() == nullptr) {
-			zone->getInRangeObjects(centerTarget->getPositionX(), centerTarget->getPositionY(), radius, &closeObjects, true);
-		}
-		else {
-			CloseObjectsVector* closeVector = (CloseObjectsVector*) centerTarget->getCloseObjects();
-			closeVector->safeCopyReceiversTo(closeObjects, CloseObjectsVector::CREOTYPE);
-		}
-
-        int targetCount = 0; 
-
-        //Yes I know we do this loop twice, but its to accurately report the target count.
-        for (int i = 0; i < targetCount; i++) {
-			SceneObject* targetObject = static_cast<SceneObject*>(closeObjects.get(i));
-			if (targetObject->isCreatureObject() && centerTarget->isInRange(targetObject, radius)) {
-				targetCount++;
-			}
-		}
-
-        String message = "";
-
-        if(!failedDemoCheck) {
-            //Attacker throws a grenade toward Defender (roll + skill = result), which explodes in the vicinity of X targets!
-            message = BorString::getNiceName(attacker) + " throws a " + grenade->getCustomObjectName().toString() + " toward " + BorString::getNiceName(defender);
-            message = message + " (" + String::valueOf(toHitRoll) + " + " + String::valueOf(throwSkill) + " = " + String::valueOf(toHitRoll + throwSkill);
-            message = message + " vs DC: " + String::valueOf(toHitDC) + ")";
-            message = message + ", which explodes in the vicinity of "+String::valueOf(targetCount)+" targets!";
-        } else {
-            //Attacker attempts to activate the grenade, but it goes off prematurely! The resulting explosion affects X targets!
-            message = BorString::getNiceName(attacker) + " attempts to activate the " + grenade->getCustomObjectName().toString() + ", but it goes off prematurely! The resulting explosion affects \\#FFFF00" + String::valueOf(targetCount) + "\\#. targets!";
-        }
-
-        BorrieRPG::BroadcastMessage(attacker, message);
-
-		for (int i = 0; i < targetCount; i++) {
-			SceneObject* targetObject = static_cast<SceneObject*>(closeObjects.get(i));
-			if (targetObject->isCreatureObject() && centerTarget->isInRange(targetObject, radius)) {
-				targetCreature = cast<CreatureObject*>(targetObject);
-				Locker locker(targetCreature, centerTarget);
-
-				//Handle Grenade Reaction.
-                HandleGrenadeReaction(targetCreature, grenade, BorCharacter::GetTargetDistance(targetCreature, centerTarget));
-			}
-		}
-    }
-
-    static void HandleGrenadeReaction(CreatureObject* victim, WeaponObject* grenade, float distance) {
-        String message = victim->getFirstName() + " is in proximity of the grenade's blast radius!";
-        //Distance affects the dodge roll. You either dodge, or you use telekinesis. 
-        int maneuverabilitySkill = victim->getSkillMod("rp_maneuverability");
-        int telekinesisSkill = victim->getSkillMod("rp_telekinesis");
-        bool dodgedSuccessfully = false;
-
-        int totalDamage = GetDamageRoll(grenade->getMaxDamage(), grenade->getMinDamage(), grenade->getBonusDamage());
-
-        int diceCheck = (int)(grenade->getDamageRadius() * distance);
-
-        if(diceCheck > 28)
-            diceCheck = 28;
-
-        if(diceCheck < 10)
-            diceCheck = 10;
-
-        int dodgeRoll = BorDice::Roll(1, 20);
-
-        if(maneuverabilitySkill >= telekinesisSkill) {
-            //Dodge
-            message = message + " They hurdle to get out of the way ";
-            message = message + "("+String::valueOf(dodgeRoll)+" + "+String::valueOf(maneuverabilitySkill)+" vs DC: "+String::valueOf(diceCheck)+")";
-            dodgedSuccessfully = maneuverabilitySkill >= diceCheck;
-        } else {
-            //Stand Ground with the Force.
-            message = message + " They brace themselves keenly ";
-            message = message + "("+String::valueOf(dodgeRoll)+" + "+String::valueOf(telekinesisSkill)+" vs DC: "+String::valueOf(diceCheck)+")";
-            dodgedSuccessfully = telekinesisSkill >= diceCheck;
-        }
-
-        if(!dodgedSuccessfully) {
-            //Take Damage
-            message = message + ", which fails, causing "+ damageNumber(totalDamage) +" damage.";
-        } else {
-            //Take Minimum Damage. 
-            totalDamage = grenade->getMinDamage();
-            message = message + ", successfully avoiding most of the blast and taking only "+ damageNumber(totalDamage) +" damage.";
-        }
-
-        //TODO: Should randomize what slot it hits. For now its just the chest. 
-        ApplyAdjustedHealthDamage(victim, grenade, totalDamage, 1);
-
-        BorrieRPG::BroadcastMessage(victim, message);
     }
 
     static SortedVector<SceneObject*> getCreaturesInRange(CreatureObject* creature, int radius) {
