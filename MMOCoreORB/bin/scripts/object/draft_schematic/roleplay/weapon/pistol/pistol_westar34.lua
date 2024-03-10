@@ -31,4 +31,4 @@ object_draft_schematic_roleplay_weapon_pistol_pistol_westar_34 = object_draft_sc
 
 	additionalTemplates = {}
 
-}ObjectTemplates:addTemplate(object_draft_schematic_roleplay_weapon_pistol_pistol_d18, "object/draft_schematic/roleplay/weapon/pistol/pistol_westar_34.iff")
+}ObjectTemplates:addTemplate(object_draft_schematic_roleplay_weapon_pistol_pistol_westar_34, "object/draft_schematic/roleplay/weapon/pistol/pistol_westar_34.iff")
