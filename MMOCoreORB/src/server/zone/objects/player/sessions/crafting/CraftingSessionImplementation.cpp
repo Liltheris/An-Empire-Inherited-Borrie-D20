@@ -949,13 +949,16 @@ void CraftingSessionImplementation::initialAssembly(int clientCounter) {
 		///////////////////////////////////////////////////////////////////////
 
 		ManagedReference<SceneObject*> returnComponents = prototype->getSlottedObject("crafted_components");
-		SceneObject* inventory = crafter->getSlottedObject("inventory");
+		if (returnComponents != nullptr){
+			SceneObject* inventory = crafter->getSlottedObject("inventory");
 
-		while (returnComponents->getContainerObjectsSize() > 0){
-			if (inventory->transferObject(returnComponents->getContainerObject(0), -1, true)){
-				inventory->broadcastObject(returnComponents, true);
+			while (returnComponents->getContainerObjectsSize() > 0){
+				if (inventory->transferObject(returnComponents->getContainerObject(0), -1, true)){
+					inventory->broadcastObject(returnComponents, true);
+				}
 			}
 		}
+		
 		// End D20 System /////////////////////////////////////////////////////
 
 		createPrototypeObject(draftSchematic);
