@@ -31,4 +31,4 @@ object_draft_schematic_roleplay_component_circuit_board = object_draft_schematic
 
 	additionalTemplates = {}
 
-}ObjectTemplates:addTemplate(object_draft_schematic_roleplay_component_circuit_board, "object/tangible/borrp/crafting/shared_circuit_board.iff")
+}ObjectTemplates:addTemplate(object_draft_schematic_roleplay_component_circuit_board, "object/tangible/borrp/crafting/circuit_board.iff")
