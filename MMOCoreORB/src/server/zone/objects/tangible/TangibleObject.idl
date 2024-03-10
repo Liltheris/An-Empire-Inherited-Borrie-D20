@@ -74,6 +74,14 @@ class TangibleObject extends SceneObject {
 	protected string rpDescription;
 	protected string rarity;
 
+	protected int craftingDamageDieType;
+	protected int craftingDamageDieCount;
+	protected int craftingBonusDamage;
+	protected int craftingDamageType;
+	protected int craftingMaxAmmo;
+
+	protected string craftingAmmoType;
+
 	@transactional
 	protected transient ThreatMap threatMap;
 
@@ -871,6 +879,31 @@ class TangibleObject extends SceneObject {
 	@read
 	public abstract float getHitChance(){
 		return 0;
+	}
+
+	@read
+	public int getCraftingDamageDieType(){
+		return craftingDamageDieType;
+	}
+
+	@read
+	public int getCraftingDamageDieCount(){
+		return craftingDamageDieCount;
+	}
+
+	@read
+	public int getCraftingBonusDamage(){
+		return craftingBonusDamage;
+	}
+
+	@read
+	public int getCraftingDamageType(){
+		return craftingDamageType;
+	}
+
+	@read
+	public string getCraftingAmmoType(){
+		return craftingAmmoType;
 	}
 
 	@dirty

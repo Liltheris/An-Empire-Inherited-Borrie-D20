@@ -2140,6 +2140,82 @@ object_weapon_roleplay_lightsaber_single_2h_lance_saber_bastila_single = object_
 	childObjects = _childObjects
 }
 
+object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_baylan = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_baylan:new {
+	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_baylan.iff",
+
+
+	
+	minDamage = _minDamage,
+	maxDamage = _maxDamage,
+	attackType = _attackType,
+	damageType = _damageType,
+	armorPiercing = _armorPiercing,
+	pointBlankRange = _pointBlankRange,
+	pointBlankAccuracy = _pointBlankAccuracy,
+	idealRange = _idealRange,
+	idealAccuracy = _idealAccuracy,
+	maxRange = _maxRange,
+	maxRangeAccuracy = _maxRangeAccuracy,
+	childObjects = _childObjects
+}
+
+object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_kol = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_kol:new {
+	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_kol.iff",
+
+
+	
+	minDamage = _minDamage,
+	maxDamage = _maxDamage,
+	attackType = _attackType,
+	damageType = _damageType,
+	armorPiercing = _armorPiercing,
+	pointBlankRange = _pointBlankRange,
+	pointBlankAccuracy = _pointBlankAccuracy,
+	idealRange = _idealRange,
+	idealAccuracy = _idealAccuracy,
+	maxRange = _maxRange,
+	maxRangeAccuracy = _maxRangeAccuracy,
+	childObjects = _childObjects
+}
+
+object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_sabine = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_sabine:new {
+	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_sabine.iff",
+
+
+	
+	minDamage = _minDamage,
+	maxDamage = _maxDamage,
+	attackType = _attackType,
+	damageType = _damageType,
+	armorPiercing = _armorPiercing,
+	pointBlankRange = _pointBlankRange,
+	pointBlankAccuracy = _pointBlankAccuracy,
+	idealRange = _idealRange,
+	idealAccuracy = _idealAccuracy,
+	maxRange = _maxRange,
+	maxRangeAccuracy = _maxRangeAccuracy,
+	childObjects = _childObjects
+}
+
+object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_shin = object_weapon_melee_plasma_saber_2h_sword_shared_2h_sword_saber_shin:new {
+	alternateGrip = "object/weapon/roleplay/lightsaber/single/1h/sword_saber_shin.iff",
+
+
+	
+	minDamage = _minDamage,
+	maxDamage = _maxDamage,
+	attackType = _attackType,
+	damageType = _damageType,
+	armorPiercing = _armorPiercing,
+	pointBlankRange = _pointBlankRange,
+	pointBlankAccuracy = _pointBlankAccuracy,
+	idealRange = _idealRange,
+	idealAccuracy = _idealAccuracy,
+	maxRange = _maxRange,
+	maxRangeAccuracy = _maxRangeAccuracy,
+	childObjects = _childObjects
+}
+
 ObjectTemplates:addTemplate(object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_aayla, "object/weapon/roleplay/lightsaber/single/2h/2h_sword_saber_aayla.iff")
 ObjectTemplates:addTemplate(object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_abjudicator, "object/weapon/roleplay/lightsaber/single/2h/2h_sword_saber_abjudicator.iff")
 ObjectTemplates:addTemplate(object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_adept, "object/weapon/roleplay/lightsaber/single/2h/2h_sword_saber_adept.iff")
@@ -2250,3 +2326,7 @@ ObjectTemplates:addTemplate(object_weapon_roleplay_lightsaber_single_2h_2h_sword
 ObjectTemplates:addTemplate(object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_zatt, "object/weapon/roleplay/lightsaber/single/2h/2h_sword_saber_zatt.iff")
 ObjectTemplates:addTemplate(object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_katana, "object/weapon/roleplay/lightsaber/single/2h/2h_sword_saber_katana.iff")
 ObjectTemplates:addTemplate(object_weapon_roleplay_lightsaber_single_2h_lance_saber_bastila_single, "object/weapon/roleplay/lightsaber/single/2h/lance_saber_bastila_single.iff")
+ObjectTemplates:addTemplate(object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_baylan, "object/weapon/roleplay/lightsaber/single/2h/2h_sword_saber_baylan.iff")
+ObjectTemplates:addTemplate(object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_kol, "object/weapon/roleplay/lightsaber/single/2h/2h_sword_saber_kol.iff")
+ObjectTemplates:addTemplate(object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_sabine, "object/weapon/roleplay/lightsaber/single/2h/2h_sword_saber_sabine.iff")
+ObjectTemplates:addTemplate(object_weapon_roleplay_lightsaber_single_2h_2h_sword_saber_shin, "object/weapon/roleplay/lightsaber/single/2h/2h_sword_saber_shin.iff")

@@ -50,10 +50,28 @@ protected:
 	int junkValue;
 	int price;
 
+	///////////////////////////////////////////////////////////////////
+	// D20 System - Crafting Values
+	///////////////////////////////////////////////////////////////////
+
+	int craftingDamageDieType;
+	int craftingDamageDieCount;
+	int craftingBonusDamage;
+
+	int craftingDamageType;
+	int craftingMaxAmmo;
+	String craftingAmmoType;
+
+	///////////////////////////////////////////////////////////////////
+	// D20 System - Other
+	///////////////////////////////////////////////////////////////////
+
 	bool trainingDevice;
 	String rpTrainingSkill;
 	int rpTrainingLevel;
 	String rarity;
+
+	// End D20 System /////////////////////////////////////////////////
 
 	VectorMap<String, int> skillMods;
 
@@ -243,6 +261,34 @@ public:
 	bool isSharedTangibleObjectTemplate() const override {
 		return true;
 	}
+
+	///////////////////////////////////////////////////////////////////
+	// D20 System - Crafting Values
+	///////////////////////////////////////////////////////////////////
+	int getCraftingDamageDieType() const {
+		return craftingDamageDieType;
+	}
+
+	int getCraftingDamageDieCount() const {
+		return craftingDamageDieCount;
+	}
+
+	int getCraftingBonusDamage() const {
+		return craftingBonusDamage;
+	}
+
+	int getCraftingDamageType() const {
+		return craftingDamageType;
+	}
+
+	int getCraftingMaxAmmo() const {
+		return craftingMaxAmmo;
+	}
+
+	String getCraftingAmmoType() const {
+		return craftingAmmoType;
+	};
+	// End D20 System /////////////////////////////////////////////////
 };
 
 

@@ -1,0 +1,5 @@
+includeFile("draft_schematic/roleplay/weapon/carbine/carbine_bothan.lua")
+includeFile("draft_schematic/roleplay/weapon/carbine/carbine_charric.lua")
+includeFile("draft_schematic/roleplay/weapon/carbine/carbine_ee3.lua")
+includeFile("draft_schematic/roleplay/weapon/carbine/carbine_elite.lua")
+includeFile("draft_schematic/roleplay/weapon/carbine/carbine_laser.lua")

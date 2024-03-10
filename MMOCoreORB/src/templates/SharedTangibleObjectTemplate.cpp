@@ -54,6 +54,20 @@ SharedTangibleObjectTemplate::SharedTangibleObjectTemplate() {
 
 	skillMods.setNoDuplicateInsertPlan();
 	skillMods.setNullValue(0);
+
+	///////////////////////////////////////////////////////////////////
+	// D20 System - Crafting Values
+	///////////////////////////////////////////////////////////////////
+
+	craftingDamageDieType = 0;
+	craftingDamageDieCount = 0;
+	craftingBonusDamage = 0;
+
+	craftingDamageType = 0;
+	craftingMaxAmmo = 0;
+	craftingAmmoType = "";
+
+	// End D20 System /////////////////////////////////////////////////
 }
 
 SharedTangibleObjectTemplate::~SharedTangibleObjectTemplate() {
@@ -147,6 +161,22 @@ void SharedTangibleObjectTemplate::parseVariableData(const String& varName, LuaO
 		rarity = Lua::getStringParameter(state);
 	}else if (varName == "invisible") {
 		invisible = (bool) Lua::getByteParameter(state);
+	///////////////////////////////////////////////////////////////////
+	// D20 System - Crafting Values
+	///////////////////////////////////////////////////////////////////
+	}else if (varName == "craftingDamageDieType") {
+		craftingDamageDieType = Lua::getIntParameter(state);
+	}else if (varName == "craftingDamageDieCount") {
+		craftingDamageDieCount = Lua::getIntParameter(state);
+	}else if (varName == "craftingBonusDamage") {
+		craftingBonusDamage = Lua::getIntParameter(state);
+	}else if (varName == "craftingDamageType") {
+		craftingDamageType = Lua::getIntParameter(state);
+	}else if (varName == "craftingMaxAmmo") {
+		craftingMaxAmmo = Lua::getIntParameter(state);
+	}else if (varName == "craftingAmmoType") {
+		craftingAmmoType = Lua::getStringParameter(state);
+	// End D20 System /////////////////////////////////////////////////
 	} else if (varName == "playerRaces") {
 		LuaObject races(state);
 

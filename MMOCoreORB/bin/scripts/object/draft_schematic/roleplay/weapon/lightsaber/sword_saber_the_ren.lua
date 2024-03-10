@@ -5,7 +5,7 @@ object_draft_schematic_roleplay_weapon_lightsaber_sword_saber_the_ren = object_d
 	customObjectName = "Lightsaber",
 
 	craftingToolTab = 2048, -- (See DraftSchematicObjectTemplate.h)
-	complexity = 16,
+	complexity = 1,
 	size = 1,
 	factoryCrateType = "object/factory/factory_crate_weapon.iff",
 

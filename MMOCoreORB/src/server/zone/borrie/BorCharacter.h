@@ -516,7 +516,7 @@ public:
 
 		if(!target->checkCooldownRecovery("long_rest")){
 			const Time* timeremaining = target->getCooldownTime("long_rest");
-			infoText << "Rest Cooldown: " << ceil(timeremaining->miliDifference() / -3600000.f) << " hours." << endl;
+			infoText << "Rest Cooldown: " << ceil(timeremaining->miliDifference() / -3600000.f) << " hours" << endl;
 		}
 
 		if(forceImmersionLevel == 0)
@@ -750,6 +750,7 @@ public:
 		}
 		//Spy Training
 		if (tree == "spy") {
+			branch = "novice";
 			output << "Espionage (";
 
 			if (target->hasSkill("rp_training_spy_spy_01"))
@@ -773,7 +774,8 @@ public:
 		}
 		//Mandalorian
 		if (tree == "mando") {
-			String styledBranch = "";
+			branch = "novice";
+			String styledBranch = "novice";
 			output << "Mandalorian (";
 
 			if (target->hasSkill("rp_training_mando_kandosii_01")) {
@@ -799,31 +801,26 @@ public:
 		}
 		//Engineer Training
 		if (tree == "engineer") {
-			String styledBranch = "";
+			String styledBranch = "Novice";
 			output << "Engineering (";
 
-			if (target->hasSkill("rp_training_engineer_ship_01"))
-			{
+			if (target->hasSkill("rp_training_engineer_ship_01")) {
 				branch = "ship";
 				styledBranch = "starships";
 
-			} else if (target->hasSkill("rp_training_engineer_weapon_01"))
-			{
+			} else if (target->hasSkill("rp_training_engineer_weapon_01")) {
 				branch = "weapon";
 				styledBranch = "weapons";
 
 			}
-			else if (target->hasSkill("rp_training_engineer_cybernetics_01"))
-			{
-				branch = "cybernetics";
-				styledBranch = "cybernetics";
+			else if (target->hasSkill("rp_training_engineer_electronics_01")) {
+				branch = "electronics";
+				styledBranch = "electronics";
 
 			}
-			else if (target->hasSkill("rp_training_engineer_droid_01"))
-			{
+			else if (target->hasSkill("rp_training_engineer_droid_01")) {
 				branch = "droid";
 				styledBranch = "droids";
-
 			}
 			if (target->hasSkill("rp_training_engineer_master")) {
 				output << "Master " << styledBranch << ")";
@@ -835,6 +832,7 @@ public:
 		}
 		//Criminal Training
 		if (tree == "criminal") {
+			branch = "novice";
 			output << "Criminal (";
 
 			if (target->hasSkill("rp_training_criminal_thief_01"))
@@ -859,6 +857,7 @@ public:
 		}
 		//Medical
 		if (tree == "medical") {
+			branch = "novice";
 			output << "Medical (";
 
 			if (target->hasSkill("rp_training_medical_medic_01"))
@@ -1407,6 +1406,7 @@ public:
 		FillAllPools(creature);
 		creature->setStoredInt("power_attack_count", 0);
 		creature->setStoredInt("is_vulnerable", 0);
+		creature->setStoredInt("rp_heropoint", 1);
 
 		//18 hour cooldown.
 		creature->updateCooldownTimer("long_rest", 18 * 60 * 60 * 1000); 

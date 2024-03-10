@@ -1300,6 +1300,7 @@ includeFile("building/player_sp/city/objects.lua")
 includeFile("tangible/borrp/effects/objects.lua")
 includeFile("tangible/borrp/utility/objects.lua")
 includeFile("tangible/borrp/ammo/objects.lua")
+includeFile("tangible/borrp/crafting/objects.lua")
 
 includeFile("tangible/medicine/roleplay/objects.lua")
 
@@ -1379,3 +1380,11 @@ includeFile("intangible/pet/roleplay/objects.lua")
 includeFile("tangible/deed/rp_pet_deed/objects.lua")
 
 includeFile("tangible/wearables/armor/imp_army/objects.lua")
+
+includeFile("draft_schematic/roleplay/weapon/pistol/objects.lua")
+includeFile("draft_schematic/roleplay/weapon/carbine/objects.lua")
+includeFile("draft_schematic/roleplay/weapon/rifle/objects.lua")
+includeFile("draft_schematic/roleplay/weapon/sniper/objects.lua")
+includeFile("draft_schematic/roleplay/weapon/shotgun/objects.lua")
+
+includeFile("draft_schematic/roleplay/component/objects.lua")

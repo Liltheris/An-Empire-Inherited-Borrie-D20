@@ -20,7 +20,7 @@ object_tangible_wearables_armor_roleplay_mandalorian_armor_mandalorian_helmet_li
 	maxCondition = 100,
 
 
-	rating = LIGHT,
+	rating = HEAVY,
 	rpskill = 5,
 
 

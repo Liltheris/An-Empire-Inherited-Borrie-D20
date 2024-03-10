@@ -266,6 +266,37 @@ object_weapon_roleplay_ranged_carbine_dc15s_carbine = object_weapon_ranged_carbi
 	price = 375,
 }
 
+--DH-17
+object_weapon_roleplay_ranged_carbine_dh17_carbine = object_weapon_ranged_carbine_shared_carbine_dh17:new {
+
+	--[Info]
+	customName = "DH-17 Carbine",
+
+	--[Stats]
+	damageType = ENERGY,
+	armorPiercing = NONE,
+
+	--Damage (minDamage[d]maxDamage) i.e. (2d20)
+	minDamage = 1, --Amount of Die used in Damage
+	maxDamage = 6, --Type of Die used in Damage
+	bonusDamage = 4,
+	
+	rarity="Uncommon",
+
+	ammoPack = _ammoPack,
+	maxAmmo = _maxAmmo,
+	
+	--[Stats]
+	attackType = _attackType,
+	pointBlankRange = _pointBlankRange,
+	pointBlankAccuracy = _pointBlankAccuracy,
+	idealRange = _idealRange,
+	idealAccuracy = _idealAccuracy,
+	maxRange = _maxRange,
+	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 400,
+}
+
 --E-5
 object_weapon_roleplay_ranged_carbine_e5_carbine = object_weapon_ranged_carbine_shared_carbine_e5:new {
 
@@ -655,6 +686,7 @@ ObjectTemplates:addTemplate(object_weapon_roleplay_ranged_carbine_charric_carbin
 ObjectTemplates:addTemplate(object_weapon_roleplay_ranged_carbine_corestrike_rancor_carbine, "object/weapon/roleplay/ranged/carbine/corestrike_rancor_carbine.iff")
 ObjectTemplates:addTemplate(object_weapon_roleplay_ranged_carbine_crusader_mxiii_carbine, "object/weapon/roleplay/ranged/carbine/crusader_mxiii_carbine.iff")
 ObjectTemplates:addTemplate(object_weapon_roleplay_ranged_carbine_dc15s_carbine, "object/weapon/roleplay/ranged/carbine/dc15s_carbine.iff")
+ObjectTemplates:addTemplate(object_weapon_roleplay_ranged_carbine_dh17_carbine, "object/weapon/roleplay/ranged/carbine/dh17_carbine.iff")
 ObjectTemplates:addTemplate(object_weapon_roleplay_ranged_carbine_e5_carbine, "object/weapon/roleplay/ranged/carbine/e5_carbine.iff")
 ObjectTemplates:addTemplate(object_weapon_roleplay_ranged_carbine_e11_carbine, "object/weapon/roleplay/ranged/carbine/e11_carbine.iff")
 ObjectTemplates:addTemplate(object_weapon_roleplay_ranged_carbine_ee3_carbine, "object/weapon/roleplay/ranged/carbine/ee3_carbine.iff")

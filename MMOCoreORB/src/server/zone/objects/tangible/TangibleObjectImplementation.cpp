@@ -75,9 +75,28 @@ void TangibleObjectImplementation::loadTemplateData(SharedObjectTemplate* templa
 	junkDealerNeeded = tanoData->getJunkDealerNeeded();
 	junkValue = tanoData->getJunkValue();
 
-	rarity = tanoData->getRarity();
+	bool wasModified = getStoredString("dm_last_modified") != "";
+	bool craftedWeapon = getStoredInt("crafterWeapon") > 0;
+
+	if(!wasModified || !craftedWeapon) {
+		rarity = tanoData->getRarity();
+	}
 
 	threatMap = nullptr;
+
+	///////////////////////////////////////////////////////////////////
+	// D20 System - Crafting Values
+	///////////////////////////////////////////////////////////////////
+
+	craftingDamageDieType = tanoData->getCraftingDamageDieType();
+	craftingDamageDieCount = tanoData->getCraftingDamageDieCount();
+	craftingBonusDamage = tanoData->getCraftingBonusDamage();
+
+	craftingDamageType = tanoData->getCraftingDamageType();
+	craftingMaxAmmo = tanoData->getCraftingMaxAmmo();
+	craftingAmmoType = tanoData->getCraftingAmmoType();
+
+	// End D20 System /////////////////////////////////////////////////
 }
 
 void TangibleObjectImplementation::notifyLoadFromDatabase() {
@@ -615,9 +634,51 @@ void TangibleObjectImplementation::fillAttributeList(AttributeListMessage* alm, 
 	
 		alm->insertAttribute("rarity", rarityColor + rarity + "\\#.");
 	}
-	
-		
 
+	if(craftingDamageDieType > 0){
+		StringBuffer dmg;
+		dmg << craftingDamageDieCount << "d" << craftingDamageDieType << " + " << craftingBonusDamage;
+		alm->insertAttribute("damage.dmgdice", dmg);
+	}
+
+	if (!craftingAmmoType.isEmpty()) {
+		alm->insertAttribute("wpn_ammo_type", craftingAmmoType);
+	}
+	
+	if (craftingDamageType > 0) {
+		String dmgType = "ERROR";
+		switch (craftingDamageType){
+		case 1:
+			dmgType = "Kinetic";
+			break;
+		case 2:
+			dmgType = "Energy";
+			break;
+		case 4:
+			dmgType = "Blast";
+			break;
+		case 8:
+			dmgType = "Stun";
+			break;
+		case 16:
+			dmgType = "Lightsaber";
+			break;
+		case 32:
+			dmgType = "Heat";
+			break;
+		case 64:
+			dmgType = "Cold";
+			break;
+		case 128:
+			dmgType = "Acid";
+			break;
+		case 256:
+			dmgType = "Electricity";
+			break;
+		}
+
+		alm->insertAttribute("damage.wpn_damage_type", dmgType);
+	}
 
 	if (!objectSerial.isEmpty()) {
 		alm->insertAttribute("serial_number", objectSerial);

@@ -543,3 +543,23 @@ object_draft_schematic_roleplay_weapon_lightsaber_shared_sword_saber_katana = Sh
 }
 ObjectTemplates:addClientTemplate(object_draft_schematic_roleplay_weapon_lightsaber_shared_sword_saber_katana, "object/draft_schematic/roleplay/weapon/lightsaber/shared_sword_saber_katana.iff")
 --********************************************************************************************************************************
+object_draft_schematic_roleplay_weapon_lightsaber_shared_sword_saber_baylan = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/roleplay/weapon/lightsaber/shared_sword_saber_baylan.iff"
+}
+ObjectTemplates:addClientTemplate(object_draft_schematic_roleplay_weapon_lightsaber_shared_sword_saber_baylan, "object/draft_schematic/roleplay/weapon/lightsaber/shared_sword_saber_baylan.iff")
+--********************************************************************************************************************************
+object_draft_schematic_roleplay_weapon_lightsaber_shared_sword_saber_kol = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/roleplay/weapon/lightsaber/shared_sword_saber_kol.iff"
+}
+ObjectTemplates:addClientTemplate(object_draft_schematic_roleplay_weapon_lightsaber_shared_sword_saber_kol, "object/draft_schematic/roleplay/weapon/lightsaber/shared_sword_saber_kol.iff")
+--********************************************************************************************************************************
+object_draft_schematic_roleplay_weapon_lightsaber_shared_sword_saber_sabine = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/roleplay/weapon/lightsaber/shared_sword_saber_sabine.iff"
+}
+ObjectTemplates:addClientTemplate(object_draft_schematic_roleplay_weapon_lightsaber_shared_sword_saber_sabine, "object/draft_schematic/roleplay/weapon/lightsaber/shared_sword_saber_sabine.iff")
+--********************************************************************************************************************************
+object_draft_schematic_roleplay_weapon_lightsaber_shared_sword_saber_shin = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/roleplay/weapon/lightsaber/shared_sword_saber_shin.iff"
+}
+ObjectTemplates:addClientTemplate(object_draft_schematic_roleplay_weapon_lightsaber_shared_sword_saber_shin, "object/draft_schematic/roleplay/weapon/lightsaber/shared_sword_saber_shin.iff")
+--********************************************************************************************************************************

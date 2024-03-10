@@ -30,6 +30,10 @@
 #include "templates/params/RangedIntCustomizationVariable.h"
 #include "server/zone/objects/transaction/TransactionLog.h"
 
+#include "server/zone/borrie/BorDice.h"
+#include "server/zone/borrie/BorCrafting.h"
+#include "server/zone/borrie/BorString.h"
+#include "server/zone/borrie/BorCharacter.h"
 
 int CraftingSessionImplementation::initializeSession(CraftingTool* tool, CraftingStation* station) {
 
@@ -67,6 +71,16 @@ int CraftingSessionImplementation::startSession() {
 		cancelSession();
 		return false;
 	}
+	///////////////////////////////////////////////////////////////////
+	// D20 System - Check will
+	///////////////////////////////////////////////////////////////////
+	if (crafter->getHAM(6) == 0){
+		// Cancel crafting due to lacking will!
+		crafter->sendSystemMessage("You do not have enough will to craft right now!");
+		cancelSession();
+		return false;
+	}
+	// End D20 System /////////////////////////////////////////////////
 
 	/// Get current allowed complexity
 	int complexityLevel = craftingTool->getComplexityLevel();
@@ -679,12 +693,44 @@ void CraftingSessionImplementation::initialAssembly(int clientCounter) {
 	int custpoints = int(crafter->getSkillMod(custskill));
 
 	// Determine the outcome of the craft, Amazing through Critical
-	assemblyResult = craftingManager->calculateAssemblySuccess(crafter, draftSchematic, craftingTool->getEffectiveness());
+	//assemblyResult = craftingManager->calculateAssemblySuccess(crafter, draftSchematic, craftingTool->getEffectiveness());
+	//if (assemblyResult != CraftingManager::AMAZINGSUCCESS && craftingTool->getForceCriticalAssembly() > 0) {
+	//	assemblyResult = CraftingManager::AMAZINGSUCCESS;
+	//	craftingTool->setForceCriticalAssembly(craftingTool->getForceCriticalAssembly() - 1);
+	//}
 
-	if (assemblyResult != CraftingManager::AMAZINGSUCCESS && craftingTool->getForceCriticalAssembly() > 0) {
+	///////////////////////////////////////////////////////////////////////
+	// D20 System - Crafting rolls determine results
+	///////////////////////////////////////////////////////////////////////
+
+	int engineeringSkill = crafter->getSkillMod("rp_engineering");
+	int engineeringRoll = BorDice::Roll(1,20);
+
+	int result = engineeringSkill + engineeringRoll;
+	String output = "";
+
+	if (engineeringRoll == 1){
+		// Automatic failure on a nat 1!
+		assemblyResult = CraftingManager::CRITICALFAILURE;
+		output = "You attempt to craft the item, but crtically fail! " + BorString::skillSpam(engineeringSkill, engineeringRoll, result, draftSchematic->getComplexity());
+		BorCharacter::ModPool(crafter, "will", -2, true);
+	} else if (result == 20) {
+		// Amazing success on nat 20!
 		assemblyResult = CraftingManager::AMAZINGSUCCESS;
-		craftingTool->setForceCriticalAssembly(craftingTool->getForceCriticalAssembly() - 1);
+		output = "You attempt to craft the item, and succeed! " + BorString::skillSpam(engineeringSkill, engineeringRoll, result, draftSchematic->getComplexity());
+	} else if (result >= draftSchematic->getComplexity()){
+		// Success!
+		assemblyResult = CraftingManager::SUCCESS;
+		output = "You attempt to craft the item, and succeed! " + BorString::skillSpam(engineeringSkill, engineeringRoll, result, draftSchematic->getComplexity());
+		BorCharacter::ModPool(crafter, "will", -1, true);
+	} else {
+		// Failure!
+		assemblyResult = CraftingManager::CRITICALFAILURE;
+		output = "You attempt to craft the item, but fail! " + BorString::skillSpam(engineeringSkill, engineeringRoll, result, draftSchematic->getComplexity());
+		BorCharacter::ModPool(crafter, "will", -1, true);
 	}
+
+	crafter->sendSystemMessage(output);
 
 	Locker locker(prototype);
 	//Set initial crafting percentages
@@ -697,6 +743,7 @@ void CraftingSessionImplementation::initialAssembly(int clientCounter) {
 
 	if (prototype->isWeaponObject()) {
 		unsigned int type = prototype->getClientGameObjectType();
+		ManagedReference<WeaponObject*> prototypeWep = prototype.castTo<WeaponObject*>();
 
 		if (type == SceneObjectType::PISTOL || type == SceneObjectType::CARBINE || type == SceneObjectType::RIFLE) {
 			uint32 tanoCRC = prototype->getClientObjectCRC();
@@ -719,6 +766,43 @@ void CraftingSessionImplementation::initialAssembly(int clientCounter) {
 				if (slotName.isEmpty()) {
 					continue;
 				}
+
+				///////////////////////////////////////////////////////////////////////
+				// D20 System - Components modify weapon stats
+				///////////////////////////////////////////////////////////////////////
+				int damageType = compTano->getCraftingDamageType();
+				String ammoType = "ammo_powerpack_medium";
+				if (damageType > 0){
+					prototypeWep->setDamageType(damageType);
+
+					if (damageType == 1){
+						ammoType = "ammo_kinetic";
+					} else {
+						switch (type){
+							case SceneObjectType::PISTOL:
+								ammoType = "ammo_powerpack_small";
+								break;
+							case SceneObjectType::CARBINE:
+								ammoType = "ammo_powerpack_medium";
+								break;
+							case SceneObjectType::RIFLE:
+								ammoType = "ammo_powerpack_large";
+								break;
+						};
+					}
+					prototypeWep->setAmmoPack(ammoType);
+				}
+
+				if (compTano->getCraftingDamageDieType() > 0){
+					prototypeWep->setMinDamage(compTano->getCraftingDamageDieCount());
+					prototypeWep->setMaxDamage(compTano->getCraftingDamageDieType());
+					prototypeWep->setBonusDamage(compTano->getCraftingBonusDamage());
+
+					String rarity = compTano->getRarity();
+
+					prototypeWep->setRarity(rarity);
+				}
+				// End D20 System /////////////////////////////////////////////////////
 
 				const auto& ids = ComponentMap::instance()->getVisibleCRC(tanoCRC, slotName.hashCode());
 
@@ -751,13 +835,13 @@ void CraftingSessionImplementation::initialAssembly(int clientCounter) {
 	}
 
 	// Flag to get the experimenting window
-	if (craftingStation != nullptr && (craftingValues->getVisibleExperimentalPropertyTitleSize() > 0 || manufactureSchematic->allowFactoryRun()))
+	//if (craftingStation != nullptr && (craftingValues->getVisibleExperimentalPropertyTitleSize() > 0 || manufactureSchematic->allowFactoryRun()))
 		// Assemble with Experimenting
-		state = 3;
+	//	state = 3;
 
-	else
+	//else
 		// Assemble without Experimenting
-		state = 4;
+	state = 4;
 
 	// Start DPLAY9 ***********************************************************
 	// Updates the stage of crafting, sets the number of experimentation points
@@ -777,11 +861,13 @@ void CraftingSessionImplementation::initialAssembly(int clientCounter) {
 	prototype->setSerialNumber(serial);
 
 	// Update the prototype with new values
-	prototype->updateCraftingValues(craftingValues, true);
+	// prototype->updateCraftingValues(craftingValues, true);
 
-	addSkillMods();
+	// addSkillMods();
 
-	addWeaponDots();
+	// addWeaponDots();
+
+	prototype->setStoredInt("crafterWeapon", 1);
 
 	// Set default customization
 	SharedTangibleObjectTemplate* templateData =
@@ -800,7 +886,7 @@ void CraftingSessionImplementation::initialAssembly(int clientCounter) {
 		}
 	}
 
-	prototype->setComplexity(manufactureSchematic->getComplexity());
+	prototype->setComplexity(result);
 
 	// Start DMSCO3 ***********************************************************
 	// Sends the updated values to the crafting screen
@@ -857,6 +943,23 @@ void CraftingSessionImplementation::initialAssembly(int clientCounter) {
 
 	// Remove all resources - Not recovering them
 	if (assemblyResult == CraftingManager::CRITICALFAILURE) {
+
+		///////////////////////////////////////////////////////////////////////
+		// D20 System - Return components to inventory
+		///////////////////////////////////////////////////////////////////////
+
+		ManagedReference<SceneObject*> returnComponents = prototype->getSlottedObject("crafted_components");
+		if (returnComponents != nullptr){
+			SceneObject* inventory = crafter->getSlottedObject("inventory");
+
+			while (returnComponents->getContainerObjectsSize() > 0){
+				if (inventory->transferObject(returnComponents->getContainerObject(0), -1, true)){
+					inventory->broadcastObject(returnComponents, true);
+				}
+			}
+		}
+		
+		// End D20 System /////////////////////////////////////////////////////
 
 		createPrototypeObject(draftSchematic);
 
@@ -1246,12 +1349,12 @@ void CraftingSessionImplementation::createPrototype(int clientCounter, bool crea
 
 		if (createItem) {
 
-			startCreationTasks(manufactureSchematic->getComplexity() * 2, false);
+			startCreationTasks(1, false);
 
 		} else {
 
 			// This is for practicing
-			startCreationTasks(manufactureSchematic->getComplexity() * 2, true);
+			startCreationTasks(1, true);
 			xp = round(xp * 1.05f);
 		}
 

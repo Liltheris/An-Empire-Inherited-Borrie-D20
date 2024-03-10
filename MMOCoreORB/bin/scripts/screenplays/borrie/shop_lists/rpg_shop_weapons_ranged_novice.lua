@@ -68,6 +68,7 @@ rpg_shop_weapons_ranged_novice = {
 
 
 		},
+
 	}	
 }
 

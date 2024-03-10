@@ -154,6 +154,17 @@ public:
 				} else {
 					creature->sendSystemMessage("You must provide a name to disguise yourself with!");
 				}
+			}else if (command == "heropoint"){
+				if (creature->getStoredInt("rp_heropoint") == 0){
+				creature->sendSystemMessage("You have no available hero point to use!");
+				}
+
+				if (creature->getStoredInt("rp_heropoint") == 1){
+					creature->setStoredInt("rp_heropoint", 0);
+					BorrieRPG::BroadcastMessage(creature, BorString::getNiceName(creature) + " has used their hero point and may reroll their last dice!");
+				}
+
+			
 			}else if (BorrieRPG::GetChatTypeID(command) != -1) {
 				if (args.hasMoreTokens()) {
 					String speech = arguments.toString().subString(1 + command.length(), arguments.toString().length());
@@ -193,6 +204,7 @@ public:
 		text << "/rp switchgrip - Changes your weapon grip, if your weapon has an alternate grip." << endl;
 		text << "/rp inspect - Inspect yourself and information available to DMs." << endl;
 		text << "/rp disguise [name]- Changes your displayed name to the provided name. Using '/rp disguise clear' removes the disguise name." << endl;
+		text << "/rp heropoint - Allows the reroll of your last non combat skill roll, or to stabilise when dying. " << endl;
 
 		ManagedReference<SuiMessageBox*> box = new SuiMessageBox(creature, SuiWindowType::NONE);
 		box->setPromptTitle("RP COMMAND HELP");

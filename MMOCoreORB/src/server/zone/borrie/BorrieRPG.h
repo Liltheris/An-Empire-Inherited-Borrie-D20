@@ -473,31 +473,36 @@ public:
 	}
 
 	static void ReportPlayerCountToDiscord(CreatureObject* discordBot) {
-		Account* account = discordBot->getPlayerObject()->getAccount();
-		if(account->getUsername() != "discord" && account->getUsername() != "discord2") return;
-		ChatManager* chatManager = discordBot->getZoneServer()->getChatManager();
-		PlayerMap* playerMap = chatManager->getPlayerMap();
-		int playerCount = chatManager->getPlayerCount() - 1;
-		
-		int dmCount = 0;
+		try {
+			Account* account = discordBot->getPlayerObject()->getAccount();
+			if(account->getUsername() != "discord" && account->getUsername() != "discord2") return;
+			ChatManager* chatManager = discordBot->getZoneServer()->getChatManager();
+			PlayerMap* playerMap = chatManager->getPlayerMap();
+			int playerCount = chatManager->getPlayerCount() - 1;
+			
+			int dmCount = 0;
 
-		playerMap->resetIterator(false);
+			playerMap->resetIterator(false);
 
-		while (playerMap->hasNext(false)) {
-			ManagedReference<CreatureObject*> playerObject = playerMap->getNextValue(false);
-			ManagedReference<PlayerObject*> ghost = playerObject->getPlayerObject();
-			if(ghost->getAdminLevel() > 1) {
-				playerCount--;
-				if(playerObject->getStoredString("rp_dm_status") != "") {
-					dmCount++;
+			while (playerMap->hasNext(false)) {
+				ManagedReference<CreatureObject*> playerObject = playerMap->getNextValue(false);
+				ManagedReference<PlayerObject*> ghost = playerObject->getPlayerObject();
+				if(ghost->getAdminLevel() > 1) {
+					playerCount--;
+					if(playerObject->getStoredString("rp_dm_status") != "") {
+						dmCount++;
+					}
 				}
+				
 			}
+
+			if(playerCount < 0) playerCount = 0;
+
+			discordBot->sendSystemMessage("who:" + String::valueOf(playerCount) + ":" + String::valueOf(dmCount));
+		} catch (Exception& e) {
 			
 		}
-
-		if(playerCount < 0) playerCount = 0;
-
-		discordBot->sendSystemMessage("who:" + String::valueOf(playerCount) + ":" + String::valueOf(dmCount));
+		
 	}
 
 	static void NotifyAdminsAboutPlayerStatus(String name, bool isOnline) {

@@ -36,7 +36,7 @@ void WeaponObjectImplementation::initializeTransientMembers() {
 		speedSlice = 1;
 	}
 
-	bool wasModified = getStoredString("dm_last_modified") != "";
+	bool wasModified = getStoredString("dm_last_modified") != "" || getStoredInt("crafterWeapon") > 0;
 
 	if(!wasModified) {
 		minDamage = weaponTemplate->getMinDamage();
@@ -53,7 +53,7 @@ void WeaponObjectImplementation::notifyLoadFromDatabase() {
 	// Update object stats from template.
 	weaponTemplate = dynamic_cast<SharedWeaponObjectTemplate*>(getObjectTemplate());
 
-	bool wasModified = getStoredString("dm_last_modified") != "";
+	bool wasModified = getStoredString("dm_last_modified") != "" || getStoredInt("crafterWeapon") > 0;
 
 	if(!wasModified) {
 		attackType = weaponTemplate->getAttackType();
@@ -84,8 +84,9 @@ void WeaponObjectImplementation::notifyLoadFromDatabase() {
 		maxAmmo = weaponTemplate->getMaxAmmo();
 
 		float templateAttackSpeed = weaponTemplate->getAttackSpeed();
+		rarity = weaponTemplate->getRarity();
 	}
-	rarity = weaponTemplate->getRarity();
+	
 	alternateGrip = weaponTemplate->getAlternateGrip();
 	ammoPack = weaponTemplate->getAmmoPack();
 
@@ -100,51 +101,59 @@ void WeaponObjectImplementation::loadTemplateData(SharedObjectTemplate* template
 	certified = false;
 
 	bool wasModified = getStoredString("dm_last_modified") != "";
+	bool craftedWeapon = getStoredInt("crafterWeapon") > 0;
 
-	if(!wasModified) {
-		attackType = weaponTemplate->getAttackType();
-		weaponEffect =  weaponTemplate->getWeaponEffect();
-		weaponEffectIndex = weaponTemplate->getWeaponEffectIndex();
-
-		damageType = weaponTemplate->getDamageType();
-
-		armorPiercing = weaponTemplate->getArmorPiercing();
-
-		healthAttackCost = weaponTemplate->getHealthAttackCost();
-		actionAttackCost = weaponTemplate->getActionAttackCost();
-		mindAttackCost = weaponTemplate->getMindAttackCost();
-		saberForceCost = weaponTemplate->getForceCost();
-
-		pointBlankAccuracy = weaponTemplate->getPointBlankAccuracy();
-		pointBlankRange = weaponTemplate->getPointBlankRange();
-
-		idealRange = weaponTemplate->getIdealRange();
-		idealAccuracy = weaponTemplate->getIdealAccuracy();
-
-		int templateMaxRange = weaponTemplate->getMaxRange();
-
-		if (templateMaxRange > 5 )
-			maxRange = templateMaxRange;
-
-		maxRangeAccuracy = weaponTemplate->getMaxRangeAccuracy();
-
+	if(!wasModified || !craftedWeapon) {
 		minDamage = weaponTemplate->getMinDamage();
 		maxDamage = weaponTemplate->getMaxDamage();
 		bonusDamage = weaponTemplate->getBonusDamage();
 
-		woundsRatio = weaponTemplate->getWoundsRatio();
-
-		damageRadius = weaponTemplate->getArea();
-
-		rpSkillLevel = weaponTemplate->getRpSkillLevel();
+		damageType = weaponTemplate->getDamageType();
 
 		maxAmmo = weaponTemplate->getMaxAmmo();
+		ammoPack = weaponTemplate->getAmmoPack();
+	}
 
-		float templateAttackSpeed = weaponTemplate->getAttackSpeed();
+	attackType = weaponTemplate->getAttackType();
+	weaponEffect =  weaponTemplate->getWeaponEffect();
+	weaponEffectIndex = weaponTemplate->getWeaponEffectIndex();
 
-		if (templateAttackSpeed > 1)
-			attackSpeed = templateAttackSpeed;
-	}	
+		
+
+	armorPiercing = weaponTemplate->getArmorPiercing();
+
+	healthAttackCost = weaponTemplate->getHealthAttackCost();
+	actionAttackCost = weaponTemplate->getActionAttackCost();
+	mindAttackCost = weaponTemplate->getMindAttackCost();
+	saberForceCost = weaponTemplate->getForceCost();
+
+	pointBlankAccuracy = weaponTemplate->getPointBlankAccuracy();
+	pointBlankRange = weaponTemplate->getPointBlankRange();
+
+	idealRange = weaponTemplate->getIdealRange();
+	idealAccuracy = weaponTemplate->getIdealAccuracy();
+
+	int templateMaxRange = weaponTemplate->getMaxRange();
+
+	if (templateMaxRange > 5 )
+		maxRange = templateMaxRange;
+
+	maxRangeAccuracy = weaponTemplate->getMaxRangeAccuracy();
+
+		
+
+	woundsRatio = weaponTemplate->getWoundsRatio();
+
+	damageRadius = weaponTemplate->getArea();
+
+	rpSkillLevel = weaponTemplate->getRpSkillLevel();
+
+		
+
+	float templateAttackSpeed = weaponTemplate->getAttackSpeed();
+
+	if (templateAttackSpeed > 1)
+		attackSpeed = templateAttackSpeed;
 
 	
 
@@ -155,8 +164,6 @@ void WeaponObjectImplementation::loadTemplateData(SharedObjectTemplate* template
 	}
 
 	alternateGrip = weaponTemplate->getAlternateGrip();
-
-	ammoPack = weaponTemplate->getAmmoPack();
 
 	int bladeColor = weaponTemplate->getBladeColor();
 	if(bladeColor != -1) {

@@ -80,10 +80,73 @@ shop_weapons_ranged = {
 				{template = "object/tangible/borrp/ammo/ammo_kinetic.iff", cost = 20, max = 5, chance = 100, overridePrice = true},
 			}
 
+		},
+
+		{
+			name = "Ranged Weapon Scopes",
+			minItems = 1,
+			items = {
+				{template = "object/tangible/component/weapon/scope_weapon_sm_s01.iff", cost = 10, max = 10, chance = 100, overridePrice = true},
+				{template = "object/tangible/component/weapon/scope_weapon_sm_s02.iff", cost = 10, max = 10, chance = 100, overridePrice = true},
+				{template = "object/tangible/component/weapon/scope_weapon_sm_s03.iff", cost = 10, max = 10, chance = 100, overridePrice = true},
+				{template = "object/tangible/component/weapon/scope_weapon_sm_s04.iff", cost = 10, max = 10, chance = 100, overridePrice = true},
+				{template = "object/tangible/component/weapon/scope_weapon_sm_s05.iff", cost = 10, max = 10, chance = 100, overridePrice = true},
+				{template = "object/tangible/component/weapon/scope_weapon_sm_s06.iff", cost = 10, max = 10, chance = 100, overridePrice = true},
+				{template = "object/tangible/component/weapon/scope_weapon_lg_s01.iff", cost = 10, max = 10, chance = 100, overridePrice = true},
+				{template = "object/tangible/component/weapon/scope_weapon_lg_s02.iff", cost = 10, max = 10, chance = 100, overridePrice = true},
+				{template = "object/tangible/component/weapon/scope_weapon_lg_s03.iff", cost = 10, max = 10, chance = 100, overridePrice = true},
+			}
+
+		},
+
+		{
+			name = "Ranged Weapon Barrels",
+			minItems = 1,
+			items = {
+
+				-- {template = "object/tangible/component/weapon/blaster_barrel_wp_muzzle_lg_s01.iff", cost = 10, max = 10, chance = 100, overridePrice = true},
+				-- {template = "object/tangible/component/weapon/blaster_barrel_wp_muzzle_lg_s02.iff", cost = 10, max = 10, chance = 100, overridePrice = true},
+				-- {template = "object/tangible/component/weapon/blaster_barrel_wp_muzzle_lg_s03.iff", cost = 10, max = 10, chance = 100, overridePrice = true},
+				-- {template = "object/tangible/component/weapon/blaster_barrel_wp_muzzle_lg_s04.iff", cost = 10, max = 10, chance = 100, overridePrice = true},
+				-- {template = "object/tangible/component/weapon/blaster_barrel_wp_muzzle_lg_s05.iff", cost = 10, max = 10, chance = 100, overridePrice = true},
+				-- {template = "object/tangible/component/weapon/blaster_barrel_wp_muzzle_lg_s06.iff", cost = 10, max = 10, chance = 100, overridePrice = true},
+				-- {template = "object/tangible/component/weapon/blaster_barrel_wp_muzzle_lg_s07.iff", cost = 10, max = 10, chance = 100, overridePrice = true},
+				-- {template = "object/tangible/component/weapon/blaster_barrel_wp_muzzle_m_s01.iff", cost = 10, max = 10, chance = 100, overridePrice = true},
+				-- {template = "object/tangible/component/weapon/blaster_barrel_wp_muzzle_m_s02.iff", cost = 10, max = 10, chance = 100, overridePrice = true},
+				-- {template = "object/tangible/component/weapon/blaster_barrel_wp_muzzle_m_s03.iff", cost = 10, max = 10, chance = 100, overridePrice = true},
+				-- {template = "object/tangible/component/weapon/blaster_barrel_wp_muzzle_m_s04.iff", cost = 10, max = 10, chance = 100, overridePrice = true},
+				-- {template = "object/tangible/component/weapon/blaster_barrel_wp_muzzle_m_s05.iff", cost = 10, max = 10, chance = 100, overridePrice = true},
+				-- {template = "object/tangible/component/weapon/blaster_barrel_wp_muzzle_m_s06.iff", cost = 10, max = 10, chance = 100, overridePrice = true},
+				-- {template = "object/tangible/component/weapon/blaster_barrel_wp_muzzle_m_s07.iff", cost = 10, max = 10, chance = 100, overridePrice = true},
+				{template = "object/tangible/component/weapon/blaster_barrel_wp_muzzle_sm_s01.iff", cost = 10, max = 10, chance = 100, overridePrice = true},
+				{template = "object/tangible/component/weapon/blaster_barrel_wp_muzzle_sm_s02.iff", cost = 10, max = 10, chance = 100, overridePrice = true},
+				{template = "object/tangible/component/weapon/blaster_barrel_wp_muzzle_sm_s03.iff", cost = 10, max = 10, chance = 100, overridePrice = true},
+				{template = "object/tangible/component/weapon/blaster_barrel_wp_muzzle_sm_s04.iff", cost = 10, max = 10, chance = 100, overridePrice = true},
+				{template = "object/tangible/component/weapon/blaster_barrel_wp_muzzle_sm_s05.iff", cost = 10, max = 10, chance = 100, overridePrice = true},
+				{template = "object/tangible/component/weapon/blaster_barrel_wp_muzzle_sm_s06.iff", cost = 10, max = 10, chance = 100, overridePrice = true},
+				{template = "object/tangible/component/weapon/blaster_barrel_wp_muzzle_sm_s07.iff", cost = 10, max = 10, chance = 100, overridePrice = true},
+			}
+
 
 
 		},
+
+		{
+			name = "Ranged Weapon Stocks",
+			minItems = 1,
+			items = {
+				{template = "object/tangible/component/weapon/stock.iff", cost = 10, max = 10, chance = 100, overridePrice = true},
+				{template = "object/tangible/component/weapon/weapon_carbine_laser_stock.iff", cost = 10, max = 10, chance = 100, overridePrice = true},
+				{template = "object/tangible/component/weapon/weapon_dlt20_stock.iff", cost = 10, max = 10, chance = 100, overridePrice = true},
+				{template = "object/tangible/component/weapon/weapon_dxr6_stock.iff", cost = 10, max = 10, chance = 100, overridePrice = true},
+				{template = "object/tangible/component/weapon/weapon_ee3_stock.iff", cost = 10, max = 10, chance = 100, overridePrice = true},
+				{template = "object/tangible/component/weapon/weapon_elite_stock.iff", cost = 10, max = 10, chance = 100, overridePrice = true},
+				{template = "object/tangible/component/weapon/weapon_rifle_laser_stock.iff", cost = 10, max = 10, chance = 100, overridePrice = true},
+				{template = "object/tangible/component/weapon/weapon_t21_stock.iff", cost = 10, max = 10, chance = 100, overridePrice = true},
+
+			}
 	}	
+}
 }
 
 RPGVendorShopLists:addShopList(shopListTag, shop_weapons_ranged)
