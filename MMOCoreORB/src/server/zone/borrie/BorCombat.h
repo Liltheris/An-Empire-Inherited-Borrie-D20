@@ -26,13 +26,13 @@ public:
     // TO DO: Reconsider mechanism for determining overall armour class.
     static int GetCharacterArmourClass(CreatureObject* creature){
         int output = 0;
-        for(int i = 1; i > 10; i++){
+        for(int i = 1; i <= 10; i++){
             ManagedReference<ArmorObject*> armour = BorCharacter::GetArmorAtSlot(creature, GetSlotName(i));
-            if(armour == nullptr)
-                continue;
-            int rating = armour->getRating();
-            if(rating > output)
-                output = rating;
+            if(armour != nullptr){
+                int rating = armour->getRating();
+                if(rating > output)
+                    output = rating;
+            }
         }
         return output;
     }
@@ -899,7 +899,7 @@ public:
                         }
                     } else {
                         // Standard damage calculation
-                        if(armourProtection > 0){
+                        if(armourProtection <= 0){
                             //Armour is weak to damage type. Allow all damage through, and increase damage done to the armour itself.
                             armourDamage = damage + armourProtection;
                             healthDamage = damage;
@@ -914,7 +914,7 @@ public:
 
                     if (!BorCharacter::HasRequiredArmourSkill(creature, GetSlotName(slot))){
                         // Lacking armour skill reduces effectiveness to 1.
-                        if(armourProtection < 0){
+                        if(armourProtection > 0){
                             healthDamage = damage - 1;
                             if (healthDamage < 1) 
                                 healthDamage = 1;
