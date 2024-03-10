@@ -5,7 +5,7 @@ object_draft_schematic_roleplay_component_circuit_board = object_draft_schematic
 	customObjectName = "Circuit Board",
 
 	craftingToolTab = 1, -- (See DraftSchematicObjectTemplate.h)
-	complexity = 16,
+	complexity = 10,
 	size = 1,
 	factoryCrateType = "object/factory/factory_crate_weapon.iff",
 

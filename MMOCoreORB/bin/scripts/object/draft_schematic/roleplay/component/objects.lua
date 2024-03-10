@@ -208,3 +208,8 @@ object_draft_schematic_roleplay_component_shared_component_saber_power_cell = Sh
 }
 ObjectTemplates:addClientTemplate(object_draft_schematic_roleplay_component_shared_component_saber_power_cell, "object/draft_schematic/roleplay/component/shared_component_saber_power_cell.iff")
 --********************************************************************************************************************************
+object_draft_schematic_roleplay_component_shared_circuit_board = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/roleplay/component/shared_circuit_board.iff"
+}
+ObjectTemplates:addClientTemplate(object_draft_schematic_roleplay_component_shared_circuit_board, "object/draft_schematic/roleplay/component/shared_circuit_board.iff")
+--********************************************************************************************************************************
