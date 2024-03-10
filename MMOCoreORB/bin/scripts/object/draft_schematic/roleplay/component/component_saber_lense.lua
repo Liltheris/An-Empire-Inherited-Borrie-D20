@@ -22,7 +22,7 @@ object_draft_schematic_roleplay_component_component_saber_lense = object_draft_s
 	customizationDefaults = {},
 
 	ingredientTemplateNames = {"craft_weapon_ingredients_n","craft_weapon_ingredients_n","craft_weapon_ingredients_n","craft_weapon_ingredients_n"},
-	ingredientTitleNames = {"circuit_board","scrap_metal","scrap_metal","weapon_parts_uncommon"},
+	ingredientTitleNames = {"circuit_board","scrap_metal","scrap_metal2","weapon_parts_uncommon"},
 	ingredientSlotType = {1,1,1,1},
 	resourceTypes = {"object/tangible/borrp/crafting/shared_circuit_board.iff","object/tangible/borrp/crafting/shared_scrap_metal.iff","object/tangible/borrp/crafting/shared_scrap_metal.iff","object/tangible/borrp/crafting/shared_comp_weapon_parts_uncommon.iff"},
 	resourceQuantities = {1,1,1,1},
