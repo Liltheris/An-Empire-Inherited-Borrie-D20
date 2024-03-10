@@ -901,12 +901,12 @@ public:
                         // Standard damage calculation
                         if(armourProtection <= 0){
                             //Armour is weak to damage type. Allow all damage through, and increase damage done to the armour itself.
-                            armourDamage = damage + armourProtection;
+                            armourDamage = damage - armourProtection;
                             healthDamage = damage;
                         } else {
                             //Armour resists damage, or ignores damage type.
                             armourDamage = damage;
-                            healthDamage = damage + armourProtection;
+                            healthDamage = damage - armourProtection;
                             if (healthDamage < 1) 
                                 healthDamage = 1;
                         }
