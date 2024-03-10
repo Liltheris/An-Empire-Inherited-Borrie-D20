@@ -38,7 +38,9 @@ rpg_shop_general = {
 			minItems = 1,
 			items = {		
 				{template = "object/tangible/borrp/crafting/scrap_metal.iff", cost = 50, max = 10, chance = 100, overridePrice = true },
+				{customName = "Scrap Metal x10", content="scrap/scrap_metal_x10", template = "object/tangible/item/roleplay/loot_box_s01.iff", cost = 500, max = 10, chance = 100 , overridePrice = true},
 				{template = "object/tangible/borrp/crafting/scrap_electronics.iff", cost = 50, max = 10, chance = 100, overridePrice = true },
+				{customName = "Scrap Electronics x10", content="scrap/scrap_electronics_x10", template = "object/tangible/item/roleplay/loot_box_s01.iff", cost = 500, max = 10, chance = 100 , overridePrice = true},
 		},
 	}
 
