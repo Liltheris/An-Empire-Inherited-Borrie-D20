@@ -163,7 +163,7 @@ schematics = {
 	{path="object/draft_schematic/roleplay/weapon/lightsaber/sword_saber_shin.iff"},
 	{path="object/draft_schematic/roleplay/weapon/lightsaber/sword_saber_sabine.iff"},
 	{path="object/draft_schematic/roleplay/weapon/lightsaber/sword_saber_kol.iff"},
-	{path="object/draft_schematic/roleplay/weapon/lightsaber/sword_saber_Baylan.iff"},
+	{path="object/draft_schematic/roleplay/weapon/lightsaber/sword_saber_baylan.iff"},
 
 	{path="object/draft_schematic/roleplay/weapon/pistol/pistol_d18.iff"},
 	{path="object/draft_schematic/roleplay/weapon/pistol/pistol_cdef.iff"},
