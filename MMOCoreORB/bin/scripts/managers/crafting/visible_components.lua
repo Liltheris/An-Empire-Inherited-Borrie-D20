@@ -72,9 +72,9 @@ scope =
 		{"object/tangible/component/weapon/shared_scope_weapon_sm_s04.iff", "scope_sm_4"},
 		{"object/tangible/component/weapon/shared_scope_weapon_sm_s05.iff", "scope_sm_5"},
 		{"object/tangible/component/weapon/shared_scope_weapon_sm_s06.iff", "scope_sm_6"},
-	--{"object/tangible/component/weapon/shared_scope_weapon_lg_s01.iff", "scope_lg_1"},
-	--{"object/tangible/component/weapon/shared_scope_weapon_lg_s02.iff", "scope_lg_2"},
-	--{"object/tangible/component/weapon/shared_scope_weapon_lg_s03.iff", "scope_lg_3"},
+		{"object/tangible/component/weapon/shared_scope_weapon_lg_s01.iff", "scope_lg_1"},
+		{"object/tangible/component/weapon/shared_scope_weapon_lg_s02.iff", "scope_lg_2"},
+		{"object/tangible/component/weapon/shared_scope_weapon_lg_s03.iff", "scope_lg_3"},
 	}
 
 stock =
