@@ -2,7 +2,7 @@ object_draft_schematic_roleplay_weapon_rifle_rifle_dp23 = object_draft_schematic
 
 	templateType = DRAFTSCHEMATIC,
 
-	customObjectName = "dp23 rifle",
+	customObjectName = "DP-23 Shotgun",
 
 	craftingToolTab = 1, -- (See DraftSchematicObjectTemplate.h)
 	complexity = 8,
@@ -24,7 +24,7 @@ object_draft_schematic_roleplay_weapon_rifle_rifle_dp23 = object_draft_schematic
 	ingredientTemplateNames = {"craft_weapon_ingredients_n","craft_weapon_ingredients_n"},
 	ingredientTitleNames = {"receiver","operating_system"},
 	ingredientSlotType = {1,1},
-	resourceTypes = {"object/tangible/borrp/crafting/shared_comp_weapon_receiver_rifle_common.iff","object/tangible/borrp/crafting/shared_comp_op_system_base.iff"},
+	resourceTypes = {"object/tangible/borrp/crafting/shared_comp_weapon_receiver_shotgun_common.iff","object/tangible/borrp/crafting/shared_comp_op_system_base.iff"},
 	resourceQuantities = {1,1},
 	contribution = {100,100},
 	targetTemplate = "object/weapon/roleplay/ranged/rifle/dp23_rifle.iff",
