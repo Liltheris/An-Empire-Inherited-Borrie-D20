@@ -55,7 +55,10 @@ function BorLootBoxObjectMenuComponent:unpackBox(pPlayer, pObject)
 				if(objectNoSellVar > 0) then
 					SceneObject(pItem):setStoredInt("nosell", 1)
 				end
-				
+				--Generate serial number
+				local newSerial = generateSerial()
+				TangibleObject(pItem):setSerialNumber(newSerial)
+
 				--Setup Customization
 				if(customVar1 ~= "" or customVar1 ~= nil) then
 					TangibleObject(pItem):setCustomizationVariable(customVar1, customVar1Value)
