@@ -5,7 +5,7 @@ object_draft_schematic_roleplay_component_comp_op_system_blast = object_draft_sc
 	customObjectName = "Weapon OS: blast",
 
 	craftingToolTab = 1, -- (See DraftSchematicObjectTemplate.h)
-	complexity = 20,
+	complexity = 26,
 	size = 1,
 	factoryCrateType = "object/factory/factory_crate_weapon.iff",
 

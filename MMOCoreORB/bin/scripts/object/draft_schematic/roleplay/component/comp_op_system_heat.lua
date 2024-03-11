@@ -5,7 +5,7 @@ object_draft_schematic_roleplay_component_comp_op_system_heat = object_draft_sch
 	customObjectName = "Weapon OS: heat",
 
 	craftingToolTab = 1, -- (See DraftSchematicObjectTemplate.h)
-	complexity = 16,
+	complexity = 18,
 	size = 1,
 	factoryCrateType = "object/factory/factory_crate_weapon.iff",
 

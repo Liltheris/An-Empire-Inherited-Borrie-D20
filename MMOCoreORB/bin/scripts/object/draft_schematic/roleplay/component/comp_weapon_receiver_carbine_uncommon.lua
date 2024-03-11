@@ -5,7 +5,7 @@ object_draft_schematic_roleplay_component_comp_weapon_receiver_carbine_uncommon 
 	customObjectName = "uncommon Weapon Parts",
 
 	craftingToolTab = 1, -- (See DraftSchematicObjectTemplate.h)
-	complexity = 8,
+	complexity = 12,
 	size = 1,
 	factoryCrateType = "object/factory/factory_crate_weapon.iff",
 

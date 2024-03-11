@@ -5,7 +5,7 @@ object_draft_schematic_roleplay_component_comp_weapon_parts_legendary = object_d
 	customObjectName = "legendary Weapon Parts",
 
 	craftingToolTab = 1, -- (See DraftSchematicObjectTemplate.h)
-	complexity = 18,
+	complexity = 20,
 	size = 1,
 	factoryCrateType = "object/factory/factory_crate_weapon.iff",
 

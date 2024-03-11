@@ -5,7 +5,7 @@ object_draft_schematic_roleplay_component_component_saber_casing = object_draft_
 	customObjectName = "Lightsaber Casing",
 
 	craftingToolTab = 1, -- (See DraftSchematicObjectTemplate.h)
-	complexity = 10,
+	complexity = 15,
 	size = 1,
 	factoryCrateType = "object/factory/factory_crate_weapon.iff",
 

@@ -5,7 +5,7 @@ object_draft_schematic_roleplay_component_weapon_receiver_sniper_epic = object_d
 	customObjectName = "epic Weapon Parts",
 
 	craftingToolTab = 1, -- (See DraftSchematicObjectTemplate.h)
-	complexity = 8,
+	complexity = 16,
 	size = 1,
 	factoryCrateType = "object/factory/factory_crate_weapon.iff",
 

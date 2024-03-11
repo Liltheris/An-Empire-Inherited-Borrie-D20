@@ -5,7 +5,7 @@ object_draft_schematic_roleplay_weapon_pistol_pistol_striker = object_draft_sche
 	customObjectName = "Striker Blaster Pistol",
 
 	craftingToolTab = 1, -- (See DraftSchematicObjectTemplate.h)
-	complexity = 18,
+	complexity = 8,
 	size = 1,
 	factoryCrateType = "object/factory/factory_crate_weapon.iff",
 

@@ -5,7 +5,7 @@ object_draft_schematic_roleplay_weapon_pistol_pistol_westar_35 = object_draft_sc
 	customObjectName = "Westar 35 Blaster Pistol",
 
 	craftingToolTab = 1, -- (See DraftSchematicObjectTemplate.h)
-	complexity = 16,
+	complexity = 28,
 	size = 1,
 	factoryCrateType = "object/factory/factory_crate_weapon.iff",
 

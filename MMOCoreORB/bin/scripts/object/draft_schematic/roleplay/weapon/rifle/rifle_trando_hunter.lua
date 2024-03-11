@@ -5,7 +5,7 @@ object_draft_schematic_roleplay_weapon_rifle_rifle_trando_hunter = object_draft_
 	customObjectName = "Trandoshan Hunter Rifle",
 
 	craftingToolTab = 1, -- (See DraftSchematicObjectTemplate.h)
-	complexity = 16,
+	complexity = 14,
 	size = 1,
 	factoryCrateType = "object/factory/factory_crate_weapon.iff",
 

@@ -5,7 +5,7 @@ object_draft_schematic_roleplay_weapon_rifle_rifle_alliance_gauss = object_draft
 	customObjectName = "Alliance Gauss Rifle",
 
 	craftingToolTab = 1, -- (See DraftSchematicObjectTemplate.h)
-	complexity = 16,
+	complexity = 14,
 	size = 1,
 	factoryCrateType = "object/factory/factory_crate_weapon.iff",
 
