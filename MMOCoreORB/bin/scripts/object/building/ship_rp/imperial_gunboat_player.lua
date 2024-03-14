@@ -1,6 +1,6 @@
 object_building_ship_rp_imperial_gunboat_player = object_building_ship_rp_shared_imperial_gunboat_player:new {
-	entrancePoint = {1,1},
-	entranceCell = 1,
+	entrancePoint = {0,0},
+	entranceCell = 2,
 	
 	childObjects = {
 		{templateFile = "object/tangible/terminal/terminal_player_structure.iff", x = 3.43967, z = 2.52505, y = 37.2039, cellid = 1, ow = 1, ox = 0, oy = 0, oz = 0, containmentType = -1},
