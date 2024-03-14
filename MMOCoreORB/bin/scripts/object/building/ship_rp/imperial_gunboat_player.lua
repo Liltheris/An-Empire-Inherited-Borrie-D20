@@ -1,5 +1,5 @@
 object_building_ship_rp_imperial_gunboat_player = object_building_ship_rp_shared_imperial_gunboat_player:new {
-	entrancePoint = {0,0},
+	entrancePoint = {1,1},
 	entranceCell = 1,
 	
 	childObjects = {
