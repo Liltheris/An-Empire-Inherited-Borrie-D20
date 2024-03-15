@@ -1,6 +1,6 @@
 object_building_ship_rp_vt49 = object_building_ship_rp_shared_vt49:new {
-	entrancePoint = {0,0},
-	entranceCell = 1,
+	entrancePoint = {-7.8, -1.4},
+	entranceCell = 2,
 	
 	childObjects = {	
 		{templateFile = "object/tangible/ship/roleplay/terminal_navicomputer.iff", x = -2.2277, z = 3.66616, y = 0.784991, cellid = 1, ow = -1, ox = 0, oy = 0, oz = 0, containmentType = -1},

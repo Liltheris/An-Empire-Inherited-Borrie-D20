@@ -1,6 +1,6 @@
 object_building_ship_rp_ykl37r = object_building_ship_rp_shared_ykl37r:new {
-	entrancePoint = {0,0},
-	entranceCell = 1,
+	entrancePoint = {11.19, -3.9},
+	entranceCell = 4,
 	
 	publicStructure = 0,
 	baseMaintenanceRate = 0,

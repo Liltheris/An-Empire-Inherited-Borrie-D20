@@ -1,6 +1,6 @@
 object_building_ship_rp_rebel_gunboat_player = object_building_ship_rp_shared_rebel_gunboat_player:new {
-	entrancePoint = {0,36.8},
-	entranceCell = 1,
+	entrancePoint = {-0.1, 1.95},
+	entranceCell = 2,
 	
 	childObjects = {
 		{templateFile = "object/tangible/terminal/terminal_player_structure.iff", x = -2.53253, z = 1.49877,  y = 11.5558, cellid = 1, ow = -1, ox = 0, oy = -5.96046e-08, oz = 0, containmentType = -1},
