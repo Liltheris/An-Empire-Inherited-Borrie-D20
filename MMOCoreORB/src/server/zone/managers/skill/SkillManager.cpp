@@ -869,6 +869,11 @@ bool SkillManager::fulfillsSkillPrerequisites(const String& skillName, CreatureO
 		}
 	}
 
+	// Check if our force learning is on cooldown.
+	if(BorSkill::GetSkillIsForceSkill(skill->getSkillName()) && creature->getStoredInt("force_skill_learned") > 0){
+		return false;
+	}
+
 	PlayerObject* ghost = creature->getPlayerObject();
 	if (ghost == nullptr || ghost->getJediState() < skill->getJediStateRequired()) {
 		return false;
