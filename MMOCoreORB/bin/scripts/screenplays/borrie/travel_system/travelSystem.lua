@@ -148,7 +148,7 @@ function travelSystem:populateLandingSiteList(pPlayer, planet, isPublic)
 			end
 			-- Add the spaceport if it is available.
 			if(site_available or isDM) then
-				table.insert(sites, {site, 0})
+				table.insert(sites, site)
 			end
 		end
 	end
@@ -168,7 +168,7 @@ function travelSystem:populateLandingSiteList(pPlayer, planet, isPublic)
 
 				-- Add the site if it is available.
 				if(site_available or isDM) then
-					table.insert(sites, planet.landing_sites[i])
+					table.insert(sites, site)
 				end
 			end
 		end
@@ -193,17 +193,6 @@ function travelSystemScreenplay:handleSuiSelectPlanet(pPlayer, pSui, eventIndex,
 
 	if (pPlayer == nil) then
 		return
-	end
-
-	local pGhost = CreatureObject(pPlayer):getPlayerObject()
-	local isDM = false;
-	
-	if (pGhost == nil) then
-		return
-	end
-	
-	if(PlayerObject(pGhost):isPrivileged()) then
-		isDm = true;
 	end
 	
 	if (cancelPressed) then
