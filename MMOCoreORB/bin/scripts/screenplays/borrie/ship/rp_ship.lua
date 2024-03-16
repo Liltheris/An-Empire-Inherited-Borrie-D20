@@ -321,7 +321,7 @@ function BorRpShip:landShip(pObject, pPlayer, landingSpot)
 
 	local pPoint
 	-- Spawn the terrain flatener if we're not inside a cell.
-	if(landingSpot[6] == 0) then
+	if(landingSpot[7] == 0) then
 		pPoint = spawnBuilding(pPlayer, flatTemplate, posX, posY, 0)
 		
 		if(pPoint == nil) then
