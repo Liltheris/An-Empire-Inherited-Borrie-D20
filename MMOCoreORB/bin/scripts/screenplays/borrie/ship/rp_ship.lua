@@ -365,6 +365,11 @@ function BorRpShip:landShip(pObject, pPlayer, landingSpot)
 		local angle = SceneObject(pPlayer):getDirectionAngle()
 		local zoneName = SceneObject(pPlayer):getZoneName()
 
+		local planetTag = travelSystem:getPlanetTagForZone(zoneName)
+
+		SceneObject(pShip):setStoredString("current_planet", planetTag)
+		SceneObject(pShip):setStoredString("landing_point", "")
+
 		--TO DO: Allow landing within in hangars maybe.
 		landingSpot = {zoneName, posX, posZ, posY, angle, 0}
 	end
@@ -487,6 +492,7 @@ function BorRpShip:takeOffShip(pObject, pPlayer, isFromShip)
 	writeData(key, 0)
 
 	SceneObject(pShip):setStoredString("landing_spot_key", "")
+	SceneObject(pShip):setStoredString("landing_point", "")
 	SceneObject(pShip):setStoredInt("allow_exit", 0)
 
 	local pPoint = getStoredObject(pNpc, "terrain")

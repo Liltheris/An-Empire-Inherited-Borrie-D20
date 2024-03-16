@@ -2,6 +2,15 @@ local ObjectManager = require("managers.object.object_manager")
 
 travelSystem = {}
 
+-- Returns a plent Tag for the given planet zone.
+function travelSystem:getPlanetTagForZone(zone)
+	for i = 1, #travel_destinations, 1 do
+		if(travel_destinations[i].zone == zone) then
+			return travel_destinations[i].tag
+		end
+	end
+end
+
 -- Takes a string "tag" and returns the index of the planet it refers to.
 function travelSystem:getPlanetFromTag(tag)
 	-- Loop over the planet list until we find the planet index that matches our tag.
