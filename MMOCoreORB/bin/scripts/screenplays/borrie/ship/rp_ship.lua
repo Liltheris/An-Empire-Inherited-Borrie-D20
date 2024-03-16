@@ -259,7 +259,7 @@ function BorRpShip:landShipCallback(pPlayer, pSui, eventIndex, rowIndex)
 	local exitPoint
 	--Try to land the ship at that location if possible.
 	if(newLanding.land_ship == true or newLanding.land_ship == nil) then
-		exitPoint = BorRpSip:landAtEmptyLandingSpot(pPlayer, pShip, currentPlanetTag, newLanding)
+		exitPoint = BorRpShip:landAtEmptyLandingSpot(pPlayer, pShip, currentPlanetTag, newLanding)
 	end
 
 	--Manual landing is required.
