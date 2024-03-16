@@ -10,43 +10,38 @@ function travelSystem:getPlanetFromTag(tag)
 			return travel_destinations[i]
 		end
 	end
-	-- Return -1 if the tag somehow doesn't exist in the destinations.
-	return -1
 end
 
 -- Returns the first free landing spot, or a default fallback if no site is available.
 function travelSystem:getFreeLandingSite(landing_spots, land_ship)
 	-- Pick the first (and probably only) landing site.
 	if (land_ship == false) then
-		return landing_spots[1]
+		return {landing_spots[1], false}
 	end
 
 	-- TODO: Implement a check for the landing spot availability.
 	for i = 1, #landing_spots, 1 do
-		return landing_spots[1]
+		return {landing_spots[1], true}
 	end
 
-	-- Return a 0,0 coordinate as fallback.
-	return {0.0, 0.0, 0.0, 0, 0}
+	-- Return the first landing spot coordinate as fallback.
+	return {landing_spots[1], false}
 end
 
 -- Return a set of landing coordinates (x, z, y, facing, cell) for a landing site tag.
-function travelSystem:getLandingSiteFromTag(planetIndex, tag)
+function travelSystem:getLandingSiteFromTag(planet, tag)
 	-- Loop over the spaceport and landing sites until we find one matching the tag.
-	for i = 1, #travel_destinations[planetIndex].spaceports, 1 do
-		if (travel_destinations[i].spaceports.tag == tag) then
-			return travelSystem.getFreeLandingSite(travel_destinations[i].spaceports.landing_spots, travel_destinations[i].spaceports.land_ship)
+	for i = 1, #planet.spaceports, 1 do
+		if (planet.spaceports[i].tag == tag) then
+			return travelSystem.getFreeLandingSite(planet.spaceports[i].landing_spots, planet.spaceports[i].land_ship)
 		end
 	end
 
-	for i = 1, #travel_destinations[planetIndex].spaceports, 1 do
-		if (travel_destinations[i].landing_sites.tag == tag) then
-			return travelSystem.getFreeLandingSite(travel_destinations[i].landing_sites.landing_spots, travel_destinations[i].landing_sites.land_ship)
+	for i = 1, #planet.Landing_sites, 1 do
+		if (planet.landing_sites[i].tag == tag) then
+			return travelSystem.getFreeLandingSite(planet.landing_sites[i].landing_spots, planet.landing_sites[i].land_ship)
 		end
 	end
-
-	-- Return a 0,0 coordinate as fallback.
-	return {0.0, 0.0, 0.0, 0, 0}
 end
 
 -- returns an array of planets
@@ -196,7 +191,6 @@ function travelSystemScreenplay:handleSuiSelectPlanet(pPlayer, pSui, eventIndex,
 	end
 	
 	local options = {}
-	local factionBlocked = 0
 	local sites = travelSystem:populateLandingSiteList(pPlayer, planet, true)
 
 	if(sites == nil) then
@@ -213,8 +207,6 @@ function travelSystemScreenplay:handleSuiSelectPlanet(pPlayer, pSui, eventIndex,
 
 	if (#options > 0) then
 		suiManager:sendListBox(pNpc, pPlayer, "Instant Travel System", "Select a location you'd like to land at.", 2, "@cancel", "", "@ok", "travelSystemScreenplay", "travelToPoint", 32, options)
-	elseif (factionBlocked == 1) then
-		CreatureObject(pPlayer):sendSystemMessage("You are not allowed to travel to any destinations on this planet.")
 	else
 		CreatureObject(pPlayer):sendSystemMessage("Unfortunately, no travel destinations could be found for this planet. Please inform administration.")
 	end
@@ -257,7 +249,7 @@ function travelSystemScreenplay:travelToPoint(pPlayer, pSui, eventIndex, arg0)
 	if(dest == nil) then
 		return
 	end
-	--Check destination faction.
+
 	--------------------------------ZONE--------X------Z------Y-------CELL---
 	SceneObject(pPlayer):switchZone(dest[1], dest[2],dest[3],dest[4], dest[6]) 
 end
