@@ -117,3 +117,39 @@ function RpShipControlDeviceMenuComponent:handleObjectMenuSelect(pObject, pPlaye
 	
 	return 0
 end
+
+--ShipCaller
+RpShipCallerMenuComponent = {}
+
+function RpShipCallerMenuComponent:fillObjectMenuResponse(pSceneObject, pMenuResponse, pPlayer)
+	local menuResponse = LuaObjectMenuResponse(pMenuResponse)
+	
+	local pShip = getShipFromControlDevice(pSceneObject)
+
+	if(pShip == nil) then
+		pShip = pSceneObject
+	end
+	
+	local shipID = SceneObject(pShip):getObjectID()
+	
+	local eventID = readData(shipID .. ":landShip:shipStatus")
+	
+	--menuResponse:addRadialMenuItem(120, 3, "Board Ship")
+	if(eventID ~= 2 and eventID ~= 3) then
+		menuResponse:addRadialMenuItem(81, 3, "Land Ship")
+	elseif(eventID == 3) then
+		menuResponse:addRadialMenuItem(82, 3, "Send Ship Away")
+	end
+end
+
+function RpShipCallerMenuComponent:handleObjectMenuSelect(pObject, pPlayer, selectedID)
+	if (selectedID == 80) then --Board Ship
+		
+	elseif(selectedID == 81) then --Land Ship
+		BorRpShip:landShip(pObject, pPlayer)
+	elseif(selectedID == 82) then --Send Ship Away
+		BorRpShip:takeOffShip(pObject, pPlayer, false)
+	end
+	
+	return 0
+end

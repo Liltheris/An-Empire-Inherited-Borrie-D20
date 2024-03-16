@@ -10,9 +10,33 @@ BorRpShip = {
 		["4862"] = {"rp_yavin4", 5000,0,5500,0},
 		["547745"] = {"rp_sulon",2976.56, 10, 1377.47, 0},
 		["3692"] = {"rp_truska", -1663, 15, -2923, 0},
-	}
+	},
 
 }
+
+--Land the ship at an empty landing spot, or alternatively notify that the ship cannot land.
+function BorRpShip:landAtEmptyLandingSpot(pPlayer, pShip, planetTag, landingSite)
+	local siteTag = landingSite.tag
+	local checkString = planetTag..":"..siteTag..":"
+	local key
+
+	for i = 1, #landingSite.landing_spots, 1 do
+		key = checkString .. i
+		if (readData(key) ~= 1) then
+			writeData(key, 1)
+			SceneObject(pShip):setStoredString("landing_spot_key", key)
+			BorRpShip:landShip(pShip, pPlayer, landingSite.landing_spots[i])
+			return nil
+		end
+	end
+
+	--fall back to the public arrivals, if it exists.
+	if (landingSite.public_arrival ~= nil) then
+		return landingSite.public_arrival
+	else
+		return landingSite.landing_spots[1]
+	end
+end
 
 function BorRpShip:exitShip(pPlayer)
 	--Get Ship
@@ -43,7 +67,22 @@ function BorRpShip:exitShip(pPlayer)
 		return 0
 	end	
 
-	CreatureObject(pPlayer):sendSystemMessage("You cannot exit the ship as it is currently not landed.")
+	if (SceneObject(pShip):getStoredString("allow_exit")) then
+		local planetTag = SceneObject(pShip):getStoredString("current_planet")
+		local siteTag = SceneObject(pShip):getStoredString("landing_point")
+		local site travelSystem:getLandingSiteFromTag(planetTag, siteTag)
+
+		if (site.public_arrival ~= nil) then
+			SceneObject(pPlayer):switchZone(site.public_arrival[1], site.public_arrival[2], site.public_arrival[3], site.public_arrival[4], site.public_arrival[6]) 
+			return 0
+		else
+			SceneObject(pPlayer):switchZone(site.landing_spots[1][1], site.landing_spots[1][2], site.landing_spots[1][3], site.landing_spots[1][4], site.landing_spots[1][6]) 
+			return 0
+		end
+
+	else
+		CreatureObject(pPlayer):sendSystemMessage("You cannot exit the ship as it is currently not landed.")
+	end
 
 end
 
@@ -216,11 +255,17 @@ function BorRpShip:landShipCallback(pPlayer, pSui, eventIndex, rowIndex)
 	if(shipName == "") then
 		shipName = "The Ship"
 	end
-	
+
+	local exitPoint
 	--Try to land the ship at that location if possible.
 	if(newLanding.land_ship == true or newLanding.land_ship == nil) then
-		BorRpShip:landShip(pShip, pPlayer, newLanding.landing_spots[1])
-	else
+		exitPoint = BorRpSip:landAtEmptyLandingSpot(pPlayer, pShip, currentPlanetTag, newLanding)
+	end
+
+	--Manual landing is required.
+	if(exitPoint ~= nil) then
+
+		SceneObject(pShip):setStoredInt("allow_exit", 1)
 		local message = shipName .. " has now landed at " .. newLanding.name .. "."
 	
 		self:broadcastToPassengers(pShip, message)	
@@ -438,7 +483,13 @@ function BorRpShip:takeOffShip(pObject, pPlayer, isFromShip)
 		return 0
 	end
 	
-	local pPoint = getStoredObject(currentLandingSpot, "terrain")
+	local key = SceneObject(pShip):getStoredString("landing_spot_key")
+	writeData(key, 0)
+
+	SceneObject(pShip):setStoredString("landing_spot_key", "")
+	SceneObject(pShip):setStoredInt("allow_exit", 0)
+
+	local pPoint = getStoredObject(pNpc, "terrain")
 	if(pNpc ~= nil) then
 		CreatureObject(pNpc):setPosture(PRONE)
 		createEvent(29 * 1000, "BorRpShip", "clearAppearance", pNpc, "")
@@ -527,7 +578,7 @@ function BorRpShip:handleInstantTravelSelectPlanet(pPlayer, pSui, eventIndex, ar
 	
 	local suiManager = LuaSuiManager()
 		
-	SceneObject(pPlayer):setStoredInt("travel_planet", planetTag)
+	SceneObject(pPlayer):setStoredString("travel_planet", planetTag)
 	
 	local options = {}
 	local planet = travelSystem:getPlanetFromTag(planetTag)
@@ -555,7 +606,7 @@ function BorRpShip:personalShipTravel(pPlayer, pSui, eventIndex, arg0)
 	if (cancelPressed) then
 		return
 	end
-	local planetTag = SceneObject(pPlayer):getStoredInt("travel_planet")
+	local planetTag = SceneObject(pPlayer):getStoredString("travel_planet")
 	local planet = travelSystem:getPlanetFromTag(planetTag)
 	
 	local sites = travelSystem:populateLandingSiteList(pPlayer, planet, false)

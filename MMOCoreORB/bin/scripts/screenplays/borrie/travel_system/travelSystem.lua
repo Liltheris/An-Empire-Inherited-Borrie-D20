@@ -28,13 +28,13 @@ function travelSystem:getFreeLandingSite(landing_spots, land_ship)
 	return {landing_spots[1], false}
 end
 
--- Return a set of landing coordinates (x, z, y, facing, cell) for a landing site tag.
+-- Return a landing site table for a landing site tag.
 function travelSystem:getLandingSiteFromTag(planet, tag)
 	-- Loop over the spaceport and landing sites until we find one matching the tag.
 	if (planet.spaceports ~= nil) then
 		for i = 1, #planet.spaceports, 1 do
 			if (planet.spaceports[i].tag == tag) then
-				return travelSystem.getFreeLandingSite(planet.spaceports[i].landing_spots, planet.spaceports[i].land_ship)
+				return planet.spaceports[i]
 			end
 		end
 	end
@@ -42,7 +42,7 @@ function travelSystem:getLandingSiteFromTag(planet, tag)
 	if (planet.landing_sites ~= nil) then
 		for i = 1, #planet.Landing_sites, 1 do
 			if (planet.landing_sites[i].tag == tag) then
-				return travelSystem.getFreeLandingSite(planet.landing_sites[i].landing_spots, planet.landing_sites[i].land_ship)
+				return planet.landing_sites[i]
 			end
 		end
 	end
