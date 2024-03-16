@@ -7,7 +7,7 @@ function travelSystem:getPlanetFromTag(tag)
 	-- Loop over the planet list until we find the planet index that matches our tag.
 	for i = 1, #travel_destinations, 1 do
 		if(travel_destinations[i].tag == tag) then
-			return i
+			return travel_destinations[i]
 		end
 	end
 	-- Return -1 if the tag somehow doesn't exist in the destinations.
