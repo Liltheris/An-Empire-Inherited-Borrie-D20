@@ -58,7 +58,7 @@ public:
 
 		ManagedReference<PlayerManager*> playerManager = creature->getZoneServer()->getPlayerManager();
 
-		ManagedReference<StructureObject*> closestPlayerShip = playerManager->getInRangeBoardableRpShip(creature);
+		ManagedReference<SceneObject*> closestPlayerShip = BorUtil::getInRangeBoardableRpShip(creature);
 
 		if(closestPlayerShip != nullptr) {
 			if(closestPlayerShip->getStoredInt("acceptingPassengers") == 1) {

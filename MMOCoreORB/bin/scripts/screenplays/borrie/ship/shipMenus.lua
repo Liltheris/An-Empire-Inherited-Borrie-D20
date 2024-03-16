@@ -79,6 +79,12 @@ function RpShipControlDeviceMenuComponent:fillObjectMenuResponse(pSceneObject, p
 	
 	local pShip = getShipFromControlDevice(pSceneObject)
 	
+	--Transfer the controller data to the ship.
+	if(pShip ~= nil) then
+		SceneObject(pShip):setStoredString("flatteningTemplate", ScenObject(pSceneObject):getStoredString("flatteningTemplate"))
+		SceneObject(pShip):setStoredString("appearanceMobile", ScenObject(pSceneObject):getStoredString("appearanceMobile"))
+	end
+
 	if(pShip == nil) then
 		pShip = pSceneObject
 	end
@@ -93,12 +99,14 @@ function RpShipControlDeviceMenuComponent:fillObjectMenuResponse(pSceneObject, p
 	elseif(eventID == 3) then
 		menuResponse:addRadialMenuItem(82, 3, "Send Ship Away")
 	end
-	
-	if(pShip ~= pSceneObject) then
+	--Show option to generate a ship caller only if used on the datapad item.
+	if(pShip ~= pSceneObject and SceneObject(pSceneObject):isTangibleObject() == false) then
 		menuResponse:addRadialMenuItem(83, 3, "Generate Caller")
 	end
-	
-	menuResponse:addRadialMenuItem(84, 3, "Rename Ship")
+	--Show option to rename the ship only if used on the datapad item.
+	if(SceneObject(pObject):isTangibleObject() == false) then
+		menuResponse:addRadialMenuItem(84, 3, "Rename Ship")
+	end
 end
 
 function RpShipControlDeviceMenuComponent:handleObjectMenuSelect(pObject, pPlayer, selectedID)
@@ -109,7 +117,7 @@ function RpShipControlDeviceMenuComponent:handleObjectMenuSelect(pObject, pPlaye
 	elseif(selectedID == 82) then --Send Ship Away
 		BorRpShip:takeOffShip(pObject, pPlayer, false)
 	elseif(selectedID == 83) then --Generate Caller
-		
+		BorRpShip:generateCaller(pObject, pPlayer)
 	elseif(selectedID == 84) then --Rename Ship
 		BorRpShip:renameShip(pObject, pPlayer)
 	end
