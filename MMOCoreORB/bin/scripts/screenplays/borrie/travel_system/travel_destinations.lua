@@ -211,7 +211,7 @@ travel_destinations = {
 				landing_spots = {
 					{"rp_tatooine", 597.0, 0.0, 5.0, 0, 0},
 				},
-				public_arrival = {"rp_tatooine", 0.0, 0.0, 0.0, 0, 0}
+				public_arrival = {"rp_tatooine", 597.0, 0.0, 5.0, 0, 0}
 			},
 			{
 				tag = "anchorhead",
