@@ -266,7 +266,7 @@ travel_destinations = {
 	--Yavin IV
 	{
 		tag = "yavin",
-		name = "Yavin_IV",
+		name = "Yavin IV",
 		zone = "rp_yavin4",
 		landing_sites = {
 			{

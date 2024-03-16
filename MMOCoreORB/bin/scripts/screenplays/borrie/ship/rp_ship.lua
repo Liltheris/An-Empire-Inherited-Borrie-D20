@@ -334,8 +334,8 @@ function BorRpShip:landShip(pObject, pPlayer, landingSpot)
 
 	local pPoint
 	-- Spawn the terrain flatener if we're not inside a cell.
-	if(landingSpot[7] == 0) then
-		pPoint = spawnBuilding(pPlayer, flatTemplate, posX, posY, 0)
+	if(landingSpot[6] == 0) then
+		pPoint = spawnBuilding(pPlayer, flatTemplate, landingSpot[2], landingSpot[4], 0)
 		
 		if(pPoint == nil) then
 			CreatureObject(pPlayer):sendSystemMessage("Could not find the landing point object. Aborting landing sequence...")
@@ -527,7 +527,7 @@ function BorRpShip:handleInstantTravelSelectPlanet(pPlayer, pSui, eventIndex, ar
 	
 	local suiManager = LuaSuiManager()
 		
-	SceneObject(pPlayer):setStoredInt("travel_planet", planet)
+	SceneObject(pPlayer):setStoredInt("travel_planet", planetTag)
 	
 	local options = {}
 	local planet = travelSystem:getPlanetFromTag(planetTag)
