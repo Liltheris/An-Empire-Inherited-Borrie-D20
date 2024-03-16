@@ -44,7 +44,7 @@ function travelSystem:getLandingSiteFromTag(planet, tag)
 	end
 end
 
--- returns an array of planets
+-- returns a table of all planets that the player is able to travel to.
 function travelSystem:populatePlanetList(pPlayer, isPublic)
 	if (pPlayer == nil) then
 		return
@@ -54,6 +54,18 @@ function travelSystem:populatePlanetList(pPlayer, isPublic)
 	local planet_available = false
 	local player_faction = SceneObject(pPlayer):getStoredString("faction_current")
 	local player_zone = SceneObject(pPlayer):getZoneName()
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
+	local isDM = false
+	
+	if (pGhost == nil) then
+		return
+	end
+	
+	if(PlayerObject(pGhost):isPrivileged()) then
+		isDm = true
+	end
+
+	local dest = {}
 
 	-- List available spaceports.
 	for i = 1, #travel_destinations, 1 do
@@ -62,33 +74,34 @@ function travelSystem:populatePlanetList(pPlayer, isPublic)
 		if(isZoneEnabled(travel_destinations[i].zone)) then
 			-- Check spaceport availability
 			for j = 1, #travel_destinations[i].spaceports, 1 do
+				dest = travel_destinations[i].spaceports[j]
 				-- Check if the planet has public spaceports.
-				if(travel_destinations[i].spaceports[j].access == "public") then
+				if(dest.access == "public" or dest.access == nil) then
 					planet_available = true
 				end
 
 				-- Check if we have an authorized spaceport
-				if(travel_destinations[i].spaceports[j].access == player_faction) then
+				if(dest.access == player_faction) then
 					planet_available = true
 				end
 			end
 			-- Check landing site availability
 			if (isPublic == false) then
 				for j = 1, #travel_destinations[i].landing_sites, 1 do
+					dest = travel_destinations[i].landing_sites[j]
 					-- Check if the landing site doesn't need a skill to be available.
-					if (travel_destinations[i].landing_sites[j].skill == "") then
+					if (dest.skill == "" or dest.skill == nil) then
 						planet_available = true
-					end
 
 					-- Check if we have the matching skill for the landing site.
-					if (CreatureObject(pPlayer):hasSkill(travel_destinations[i].landing_sites[j].skill)) then
+					elseif (CreatureObject(pPlayer):hasSkill(dest.skill)) then
 						planet_available = true
 					end
 				end
 			end
 			
 			-- Finally, add the planet to the list if it is available.
-			if(planet_available) then
+			if(planet_available or isDM) then
 				table.insert(options, travel_destinations[i])
 			end
 		end
@@ -106,34 +119,46 @@ function travelSystem:populateLandingSiteList(pPlayer, planet, isPublic)
 	local sites = {}
 	local site_available = false
 	local player_faction = SceneObject(pPlayer):getStoredString("faction_current")
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
+	local isDM = false
+	local site = {}
+	
+	if (pGhost == nil) then
+		return
+	end
+	
+	if(PlayerObject(pGhost):isPrivileged()) then
+		isDm = true
+	end
 
 	for i = 1, #planet.spaceports, 1 do
 		site_available = false
+		site = planet.spaceports[i]
 		-- Check if the spaceport is public, or the player is of the same faction.
-		if (planet.spaceports[i].access == "public" or planet.spaceports[i].access == player_faction) then
+		if (site.access == "public" or site.access == player_faction or site.access == nil) then
 			site_available = true
 		end
 		-- Add the spaceport if it is available.
-		if(site_available) then
-			table.insert(sites, {planet.spaceports[i], 0})
+		if(site_available or isDM) then
+			table.insert(sites, {site, 0})
 		end
 	end
 
 	if (isPublic == false) then
 		for i = 1, #planet.landing_sites, 1 do
 			site_available = false
+			site = planet.landing_sites[i]
 			-- Check if the site doesn't need a skill to be available
-			if(planet.landing_sites[i].skill == "") then
+			if(site.skill == "" or site.skill == nil) then
 				site_available = true
-			end
 
 			-- Check if we have the matching skill for the landing site.
-			if (CreatureObject(pPlayer):hasSkill(planet.landing_sites[i].skill)) then
+			elseif (CreatureObject(pPlayer):hasSkill(site.skill)) then
 				site_available = true
 			end
 
 			-- Add the site if it is available.
-			if(site_available) then
+			if(site_available or isDM) then
 				table.insert(sites, planet.landing_sites[i])
 			end
 		end
@@ -177,6 +202,7 @@ function travelSystemScreenplay:handleSuiSelectPlanet(pPlayer, pSui, eventIndex,
 	local planets = travelSystem:populatePlanetList(pPlayer, true)
 
 	if (planets == nil) then
+		CreatureObject(pPlayer):sendSystemMessage("ERROR: travelSystem:populatePlanetList() returned nil!")
 		return
 	end
 
