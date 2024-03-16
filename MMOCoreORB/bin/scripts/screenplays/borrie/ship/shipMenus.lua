@@ -48,7 +48,6 @@ function ShipNavicomputerMenuComponent:fillObjectMenuResponse(pSceneObject, pMen
 	elseif(eventID == 0) then 
 		menuResponse:addRadialMenuItem(80, 3, "Plot a Course")
 		menuResponse:addRadialMenuItem(81, 3, "Land the Ship")
-		menuResponse:addRadialMenuItem(83, 3, "Travel to Beacon")
 	end
 	
 end
@@ -64,8 +63,6 @@ function ShipNavicomputerMenuComponent:handleObjectMenuSelect(pObject, pPlayer, 
 		BorRpShip:promptLandShipMenu(pPlayer, pObject)
 	elseif(selectedID == 82) then --Take Off
 		BorRpShip:takeOffShip(pObject, pPlayer, true)
-	elseif(selectedID == 83) then --Travel to Beacon
-		BorRpShip:promptBeaconLanding(pPlayer, pObject)
 	end
 	
 	return 0
@@ -99,14 +96,10 @@ function RpShipControlDeviceMenuComponent:fillObjectMenuResponse(pSceneObject, p
 	elseif(eventID == 3) then
 		menuResponse:addRadialMenuItem(82, 3, "Send Ship Away")
 	end
-	--Show option to generate a ship caller only if used on the datapad item.
-	if(pShip ~= pSceneObject and SceneObject(pSceneObject):isTangibleObject() == false) then
+	if(pShip ~= pSceneObject) then
 		menuResponse:addRadialMenuItem(83, 3, "Generate Caller")
 	end
-	--Show option to rename the ship only if used on the datapad item.
-	if(SceneObject(pObject):isTangibleObject() == false) then
-		menuResponse:addRadialMenuItem(84, 3, "Rename Ship")
-	end
+	menuResponse:addRadialMenuItem(84, 3, "Rename Ship")
 end
 
 function RpShipControlDeviceMenuComponent:handleObjectMenuSelect(pObject, pPlayer, selectedID)
