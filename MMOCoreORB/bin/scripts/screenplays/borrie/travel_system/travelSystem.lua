@@ -93,7 +93,7 @@ function travelSystem:populatePlanetList(pPlayer, isPublic)
 			end
 			-- Check landing site availability
 			if (travel_destinations[i].landing_sites ~= nil) then
-				if (isPublic == false) then
+				if (isPublic == false or isDM) then
 					for j = 1, #travel_destinations[i].landing_sites, 1 do
 						dest = travel_destinations[i].landing_sites[j]
 						-- Check if the landing site doesn't need a skill to be available.
@@ -153,7 +153,7 @@ function travelSystem:populateLandingSiteList(pPlayer, planet, isPublic)
 		end
 	end
 	if (planet.landing_sites ~= nil) then
-		if (isPublic == false) then
+		if (isPublic == false or isDM) then
 			for i = 1, #planet.landing_sites, 1 do
 				site_available = false
 				site = planet.landing_sites[i]
@@ -271,6 +271,12 @@ function travelSystemScreenplay:travelToPoint(pPlayer, pSui, eventIndex, arg0)
 
 	local dest = sites[arg0 + 1].public_arrival
 
+	-- If no public arrival spot is defined, fall back to the first landing spot.
+	if (dest == nil) then
+		dest = sites[arg0 + 1].landing_spots[1]
+	end
+
+	-- Somehow, we're still nil, so just return.
 	if(dest == nil) then
 		return
 	end
