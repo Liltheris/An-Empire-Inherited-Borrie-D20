@@ -81,8 +81,8 @@ function RpShipControlDeviceMenuComponent:fillObjectMenuResponse(pSceneObject, p
 	
 	--Transfer the controller data to the ship.
 	if(pShip ~= nil) then
-		SceneObject(pShip):setStoredString("flatteningTemplate", ScenObject(pSceneObject):getStoredString("flatteningTemplate"))
-		SceneObject(pShip):setStoredString("appearanceMobile", ScenObject(pSceneObject):getStoredString("appearanceMobile"))
+		SceneObject(pShip):setStoredString("flatteningTemplate", SceneObject(pSceneObject):getStoredString("flatteningTemplate"))
+		SceneObject(pShip):setStoredString("appearanceMobile", SceneObject(pSceneObject):getStoredString("appearanceMobile"))
 	end
 
 	if(pShip == nil) then
