@@ -1,5 +1,157 @@
 local ObjectManager = require("managers.object.object_manager")
 
+travelSystem = {}
+
+-- Takes a string "tag" and returns the index of the planet it refers to.
+function travelSystem:getPlanetFromTag(tag)
+	-- Loop over the planet list until we find the planet index that matches our tag.
+	for i = 1, #travel_destinations, 1 do
+		if(travel_destinations[i].tag == tag) then
+			return i
+		end
+	end
+	-- Return -1 if the tag somehow doesn't exist in the destinations.
+	return -1
+end
+
+-- Returns the first free landing spot, or a default fallback if no site is available.
+function travelSystem:getFreeLandingSite(landing_spots, land_ship)
+	-- Pick the first (and probably only) landing site.
+	if (land_ship == false) then
+		return landing_spots[1]
+	end
+
+	-- TODO: Implement a check for the landing spot availability.
+	for i = 1, #landing_spots, 1 do
+		return landing_spots[1]
+	end
+
+	-- Return a 0,0 coordinate as fallback.
+	return {0.0, 0.0, 0.0, 0, 0}
+end
+
+-- Return a set of landing coordinates (x, z, y, facing, cell) for a landing site tag.
+function travelSystem:getLandingSiteFromTag(planetIndex, tag)
+	-- Loop over the spaceport and landing sites until we find one matching the tag.
+	for i = 1, #travel_destinations[planetIndex].spaceports, 1 do
+		if (travel_destinations[i].spaceports.tag == tag) then
+			return travelSystem.getFreeLandingSite(travel_destinations[i].spaceports.landing_spots, travel_destinations[i].spaceports.land_ship)
+		end
+	end
+
+	for i = 1, #travel_destinations[planetIndex].spaceports, 1 do
+		if (travel_destinations[i].landing_sites.tag == tag) then
+			return travelSystem.getFreeLandingSite(travel_destinations[i].landing_sites.landing_spots, travel_destinations[i].landing_sites.land_ship)
+		end
+	end
+
+	-- Return a 0,0 coordinate as fallback.
+	return {0.0, 0.0, 0.0, 0, 0}
+end
+
+-- returns an array of planets
+function travelSystem:populatePlanetList(pPlayer, isPublic)
+	if (pPlayer == nil) then
+		return
+	end
+
+	local options = {}
+	local planet_available = false
+	local player_faction = SceneObject(pPlayer):getStoredString("faction_current")
+	local player_zone = SceneObject(pPlayer):getZoneName()
+
+	-- List available spaceports.
+	for i = 1, #travel_destinations, 1 do
+		planet_available = false
+		-- Make sure that the planet is enabled
+		if(isZoneEnabled(travel_destinations[i].zone)) then
+			-- Check spaceport availability
+			for j = 1, #travel_destinations[i].spaceports, 1 do
+				-- Check if the planet has public spaceports.
+				if(travel_destinations[i].spaceports[j].access == "public") then
+					planet_available = true
+				end
+
+				-- Check if we have an authorized spaceport
+				if(travel_destinations[i].spaceports[j].access == player_faction) then
+					planet_available = true
+				end
+			end
+			-- Check landing site availability
+			if (isPublic == false) then
+				for j = 1, #travel_destinations[i].landing_sites, 1 do
+					-- Check if the landing site doesn't need a skill to be available.
+					if (travel_destinations[i].landing_sites[j].skill == "") then
+						planet_available = true
+					end
+
+					-- Check if we have the matching skill for the landing site.
+					if (CreatureObject(pPlayer):hasSkill(travel_destinations[i].landing_sites[j].skill)) then
+						planet_available = true
+					end
+				end
+			end
+			
+			-- Finally, add the planet to the list if it is available.
+			if(planet_available) then
+				table.insert(options, travel_destinations[i])
+			end
+		end
+	end
+	-- Return our options!
+	return options
+end
+
+-- Returns a list of the landing sites available to pPlayer
+function travelSystem:populateLandingSiteList(pPlayer, planet, isPublic)
+	if (pPlayer == nil) then
+		return
+	end
+
+	local sites = {}
+	local site_available = false
+	local player_faction = SceneObject(pPlayer):getStoredString("faction_current")
+
+	for i = 1, #planet.spaceports, 1 do
+		site_available = false
+		-- Check if the spaceport is public, or the player is of the same faction.
+		if (planet.spaceports[i].access == "public" or planet.spaceports[i].access == player_faction) then
+			site_available = true
+		end
+		-- Add the spaceport if it is available.
+		if(site_available) then
+			table.insert(sites, {planet.spaceports[i], 0})
+		end
+	end
+
+	if (isPublic == false) then
+		for i = 1, #planet.landing_sites, 1 do
+			site_available = false
+			-- Check if the site doesn't need a skill to be available
+			if(planet.landing_sites[i].skill == "") then
+				site_available = true
+			end
+
+			-- Check if we have the matching skill for the landing site.
+			if (CreatureObject(pPlayer):hasSkill(planet.landing_sites[i].skill)) then
+				site_available = true
+			end
+
+			-- Add the site if it is available.
+			if(site_available) then
+				table.insert(sites, planet.landing_sites[i])
+			end
+		end
+	end
+
+	-- Return our landing sites!
+	return sites
+end
+
+-----------------------------------------------
+-- Start Travel ScreenPlay
+-----------------------------------------------
+
 travelSystemScreenplay = ScreenPlay:new {
 	numberOfActs = 1,
 }
@@ -27,10 +179,15 @@ function travelSystemScreenplay:handleSuiSelectPlanet(pPlayer, pSui, eventIndex,
 	if (cancelPressed) then
 		return
 	end
+	local planets = travelSystem:populatePlanetList(pPlayer, true)
+
+	if (planets == nil) then
+		return
+	end
+
+	local planet = planets[arg0 + 1]
 	
-	local planet = arg0 + 1
-	
-	SceneObject(pPlayer):setStoredInt("travel_planet", planet)
+	SceneObject(pPlayer):setStoredString("travel_planet", planet.tag)
 	
 	local suiManager = LuaSuiManager()
 	
@@ -40,26 +197,15 @@ function travelSystemScreenplay:handleSuiSelectPlanet(pPlayer, pSui, eventIndex,
 	
 	local options = {}
 	local factionBlocked = 0
-	
-	for i = 1, #travel_destinations[planet].destinations, 1 do
+	local sites = travelSystem:populateLandingSiteList(pPlayer, planet, true)
 
-		--Get landing zone faction control.
-		local destFaction = travel_destinations[planet].destinations[i][7]
-		
-		--Check the landing zone's faction control. If the faction isn't defined, assume it's public.
-		if (destFaction == nil or destFaction == "public" or isDM) then
-			table.insert(options, {travel_destinations[planet].destinations[i][1], 0})
-			
-		--Get the player's current faction and compare it with the LZ.
-		elseif (SceneObject(pPlayer):getStoredString("faction_current") == destFaction) then
-			
-			--Add the destination.
-			table.insert(options, {travel_destinations[planet].destinations[i][1], 0})
-		else
-			--Make note that a destination was filtered out.
-			table.insert(options, {"-UNAVAILABLE-", 0})
-			factionBlocked = 1
-		end
+	if(sites == nil) then
+		CreatureObject(pPlayer):sendSystemMessage("ERROR: travelSystem:populateLandingSiteList() returned nil!")
+		return
+	end
+
+	for i = 1, #sites, 1 do
+		table.insert(options, {sites[i].name, 0})
 	end
 
 	local listBox = LuaSuiListBox(pSui)
@@ -97,15 +243,21 @@ function travelSystemScreenplay:travelToPoint(pPlayer, pSui, eventIndex, arg0)
 		return
 	end
 	
-	local planet = SceneObject(pPlayer):getStoredInt("travel_planet")
-	local dest = travel_destinations[planet].destinations[arg0 + 1]
+	local planet = travelSystem:getPlanetFromTag(SceneObject(pPlayer):getStoredString("travel_planet")) 
+
+	local sites = travelSystem:populateLandingSiteList(pPlayer, planet, true)
+
+	if(sites == nil) then
+		CreatureObject(pPlayer):sendSystemMessage("ERROR: travelSystem:populateLandingSiteList() returned nil!")
+		return
+	end
+
+	local dest = sites[arg0 + 1].public_arrival
+
 	if(dest == nil) then
 		return
 	end
 	--Check destination faction.
-	if(dest[7] == nil or dest[7] == "public" or dest[7] == SceneObject(pPlayer):getStoredString("faction_current") or isDM) then
-		--------------------------------ZONE--------X------Z------Y-------CELL---
-		SceneObject(pPlayer):switchZone(dest[2], dest[3],dest[4],dest[5], dest[6]) 
-		return
-	end
+	--------------------------------ZONE--------X------Z------Y-------CELL---
+	SceneObject(pPlayer):switchZone(dest[1], dest[2],dest[3],dest[4], dest[6]) 
 end
