@@ -312,7 +312,7 @@ function BorRpShip:landShip(pObject, pPlayer, landingSpot)
 	end
 
 	--Spawn Ship
-	local pNpc = spawnRoleplayMobile(zoneName, "rp_base_npc", 1, posX, posZ, posY, angle, 0, shipNpcTemplate, "default", "default", "default")
+	local pNpc = spawnRoleplayMobile(landingSpot[1], "rp_base_npc", 1, landingSpot[2], landingSpot[3], landingSpot[4], landingSpot[5], landingSpot[6], shipNpcTemplate, "default", "default", "default")
 	
 	if(pNpc == nil) then
 		CreatureObject(pPlayer):sendSystemMessage("Could not find the ship object for landing animation. Aborting landing sequence...")
