@@ -274,9 +274,22 @@ end
 
 --Attempt to land the ship 
 function BorRpShip:landShip(pObject, pPlayer, landingSpot)
-	if(SceneObject(pPlayer):getParent() ~= nil) then
-		CreatureObject(pPlayer):sendSystemMessage("You cannot do this inside a structure.")
-		return 0
+
+	if(landingSpot == nil) then
+		local posX = SceneObject(pPlayer):getWorldPositionX()
+		local posY = SceneObject(pPlayer):getWorldPositionY()
+		local posZ = SceneObject(pPlayer):getWorldPositionZ()
+		local angle = SceneObject(pPlayer):getDirectionAngle()
+		local zoneName = SceneObject(pPlayer):getZoneName()
+		--local cellid = SceneObject(pPlayer):getParent()
+
+		if(SceneObject(pPlayer):getParent() ~= nil) then
+			CreatureObject(pPlayer):sendSystemMessage("You cannot do this inside a structure.")
+			return 0
+		end
+
+		--TO DO: Allow landing within in hangars maybe.
+		landingSpot = {zoneName, posX, posZ, posY, angle, 0}
 	end
 	
 	local pShip = getShipFromControlDevice(pObject)
