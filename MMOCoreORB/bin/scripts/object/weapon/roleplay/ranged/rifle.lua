@@ -129,7 +129,7 @@ object_weapon_roleplay_ranged_rifle_bowcaster = object_weapon_ranged_rifle_share
 
 	rarity="Common",
 
-	ammoPack = "ammo_energy",
+	ammoPack = _ammoPack,
 	maxAmmo = _maxAmmo,
 	
 	--[Stats]
