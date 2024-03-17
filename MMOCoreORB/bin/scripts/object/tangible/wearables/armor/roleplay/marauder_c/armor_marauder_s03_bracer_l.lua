@@ -19,7 +19,7 @@ object_tangible_wearables_armor_roleplay_marauder_c_armor_marauder_s03_bracer_l 
 
 
 	rating = LIGHT,
-	rpskill = 4,
+	rpskill = 2,
 
 	price = 350,
 
