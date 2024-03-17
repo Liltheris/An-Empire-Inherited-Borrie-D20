@@ -1,0 +1,6 @@
+{"trooper","rp_mandalore", -3805.76, 35, -2611.77, 136, 0,},
+{"trooper","rp_mandalore", -3798.48, 35, -2604.24, 137, 0,},
+{"trooper","rp_mandalore", -3744.36, 35, -2573.4, 183, 0,},
+{"trooper","rp_mandalore", -3734.23, 35, -2573.47, 184, 0,},
+{"trooper","rp_mandalore", -3809.18, 36, -2639.29, 48, 0,},
+{"trooper","rp_mandalore", -3772.69, 35, -2642.55, 134, 0,},

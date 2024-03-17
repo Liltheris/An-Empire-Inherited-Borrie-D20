@@ -5,5 +5,5 @@ equipment = {
 	{"object/tangible/wearables/hat/hat_imp_s01.iff", "/private/index_color_2", 0, "/private/index_color_1", 20, },
 	{"object/tangible/wearables/pants/pants_s34.iff", "/private/index_color_1", 20, },
 	{"object/tangible/wearables/boots/boots_s12.iff", "/private/index_color_1", 199, },
-	{"object/tangible/wearables/rank/rank_imp_commander.iff", },
+	{"object/tangible/wearables/rank/rank_imp_admiral.iff", },
 }
