@@ -1,0 +1,10 @@
+spawnRoleplayMobile("rp_tatooine", "rp_base_npc", 1, 4363.46, 7.95616, -6035.07, 341, 0, "object/mobile/r5.iff", "default", "default", "default") --Equip, Skill, Customization
+spawnRoleplayMobile("rp_tatooine", "rp_base_npc", 1, 4385.96, 8.02548, -6038.21, 63, 0, "object/mobile/r4.iff", "default", "default", "default") --Equip, Skill, Customization
+spawnRoleplayMobile("rp_tatooine", "rp_base_npc", 1, 4386.84, 8.02553, -6038.1, 84, 0, "object/mobile/jawa.iff", "default", "default", "default") --Equip, Skill, Customization
+spawnRoleplayMobile("rp_tatooine", "rp_base_npc", 1, 4387.12, 8.02472, -6038.93, 26, 0, "object/mobile/jawa.iff", "default", "default", "default") --Equip, Skill, Customization
+spawnRoleplayMobile("rp_tatooine", "rp_base_npc", 1, 4390.2, 8.00891, -6079.91, 65, 0, "object/mobile/bantha_saddle.iff", "default", "default", "default") --Equip, Skill, Customization
+spawnRoleplayMobile("rp_tatooine", "rp_base_npc", 1, 4363.91, 7.99987, -6070.67, 0, 0, "object/mobile/dewback.iff", "default", "default", "default") --Equip, Skill, Customization
+spawnRoleplayMobile("rp_tatooine", "rp_base_npc", 1, 4311.61, 8.20058, -6119.64, 0, 0, "object/mobile/r5.iff", "default", "default", "default") --Equip, Skill, Customization
+spawnRoleplayMobile("rp_tatooine", "rp_base_npc", 1, 4438.03, 7.86973, -6134.37, 91, 0, "object/mobile/jawa.iff", "default", "default", "default") --Equip, Skill, Customization
+spawnRoleplayMobile("rp_tatooine", "rp_base_npc", 1, 4438.97, 7.86986, -6134.4, 273, 0, "object/mobile/jawa.iff", "default", "default", "default") --Equip, Skill, Customization
+spawnRoleplayMobile("rp_tatooine", "rp_base_npc", 1, 8.62281, -0.894992, 0.447349, 91, 610030906, "object/mobile/battle_droid.iff", "default", "default", "default") --Equip, Skill, Customization
