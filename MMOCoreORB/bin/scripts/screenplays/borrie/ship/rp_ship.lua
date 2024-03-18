@@ -76,7 +76,7 @@ function BorRpShip:exitShip(pPlayer)
 			return 0
 		end
 		
-		local site travelSystem:getLandingSiteFromTag(planet, siteTag)
+		local site = travelSystem:getLandingSiteFromTag(planet, siteTag)
 
 		if (site.public_arrival ~= nil) then
 			SceneObject(pPlayer):switchZone(site.public_arrival[1], site.public_arrival[2], site.public_arrival[3], site.public_arrival[4], site.public_arrival[6]) 
