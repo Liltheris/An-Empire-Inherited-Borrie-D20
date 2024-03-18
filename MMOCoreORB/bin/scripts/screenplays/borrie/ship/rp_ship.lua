@@ -218,8 +218,10 @@ function BorRpShip:promptLandShipMenu(pPlayer, pObject)
 		table.insert(options, {sites[i].name, 0})
 	end
 	
-	-- Insert extra option for manual coordinates entering.
-	table.insert(options, {"Enter Coordinates", 0})
+	-- Insert extra option for manual coordinates entering if we're not in deep space.
+	if (planet.zone ~= "rp_space") then
+		table.insert(options, {"Enter Coordinates", 0})
+	end
 
 	local suiManager = LuaSuiManager()
 	suiManager:sendListBox(pObject, pPlayer, "Navicomputer", "Select a landing point.\n\nCurrent Location: " .. planet.name, 1, "@cancel", "", "", "BorRpShip", "landShipCallback", 10, options)
@@ -255,28 +257,83 @@ function BorRpShip:landShipCallback(pPlayer, pSui, eventIndex, rowIndex)
 
 	local newLanding = sites[rowIndex + 1]
 	
-	SceneObject(pShip):setStoredString("landing_point", newLanding.tag)
+	--Prompt the coordinates input, or land normally if we do have a landing site.
+	if(newLanding == nil) then
+		local suiManager = LuaSuiManager()
+		suiManager:sendInputBox(pObject, pPlayer, "BorRpShip", "landCoordsCallback", "Enter the coordinates you wish to land at.", "@ok")
+	else
+		SceneObject(pShip):setStoredString("landing_point", newLanding.tag)
 	
-	local shipName = SceneObject(pShip):getCustomObjectName()
-	if(shipName == "") then
-		shipName = "The Ship"
+		local shipName = SceneObject(pShip):getCustomObjectName()
+		if(shipName == "") then
+			shipName = "The Ship"
+		end
+
+		local exitPoint
+		--Try to land the ship at that location if possible.
+		if(newLanding.land_ship == true or newLanding.land_ship == nil) then
+			exitPoint = BorRpShip:landAtEmptyLandingSpot(pPlayer, pShip, currentPlanetTag, newLanding)
+		end
+
+		--Manual landing is required.
+		if(exitPoint ~= nil) then
+
+			SceneObject(pShip):setStoredInt("allow_exit", 1)
+			local message = shipName .. " has now landed at " .. newLanding.name .. "."
+		
+			self:broadcastToPassengers(pShip, message)	
+		end
+	end
+end
+
+function BorRpShip:landCoordsCallback(pPlayer, pSui, eventIndex, coords)
+	if(eventIndex == 1) then
+		return 0
+	end
+	
+	if(coords == "") then
+		CreatureObject(pPlayer):sendSystemMessage("You need to enter coordinates. Format: X, Y, heading (degrees)")
+		return 0
 	end
 
-	local exitPoint
-	--Try to land the ship at that location if possible.
-	if(newLanding.land_ship == true or newLanding.land_ship == nil) then
-		exitPoint = BorRpShip:landAtEmptyLandingSpot(pPlayer, pShip, currentPlanetTag, newLanding)
-	end
-
-	--Manual landing is required.
-	if(exitPoint ~= nil) then
-
-		SceneObject(pShip):setStoredInt("allow_exit", 1)
-		local message = shipName .. " has now landed at " .. newLanding.name .. "."
+	local pCell = SceneObject(pPlayer):getParent()
 	
-		self:broadcastToPassengers(pShip, message)	
+	if(pCell == nil) then
+		return 0
 	end
 	
+	local pShip = SceneObject(pCell):getParent()
+	
+	if(pShip == nil) then
+		return 0
+	end	
+	
+	local currentPlanetTag = SceneObject(pShip):getStoredString("current_planet")
+	local planet = travelSystem:getPlanetFromTag(currentPlanetTag)
+	
+	if(planet == nil) then
+		CreatureObject(pPlayer):sendSystemMessage("Error occured. Could not find planet with tag: " .. currentPlanetTag)
+		return 0
+	end
+
+	local landingCoordinates
+
+	--Split the string into parts.
+	for str in string.gmatch(coords, "([^"%s"]+)") do
+		table.insert(landingCoordinates, str)
+	end
+
+	--Remove characters and convert to numerical values.
+	for i = 1, #landingCoordinates, 1 do
+		local str = string.gsub(landingCoordinates[i], ",", "")
+		landingCoordinates[i] = tonumber(str)
+	end
+
+	--land the ship at the coordinates!
+	SceneObject(pShip):setStoredString("landing_point", "custom")
+
+	BorRpShip:landShip(pShip, pPlayer, {planet.zone, landingCoordinates[1], 0, landingCoordinates[2], landingCoordinates[3], 0})
+
 end
 
 function BorRpShip:renameShip(pObject, pPlayer)
@@ -297,7 +354,7 @@ function BorRpShip:renameShipCallback(pPlayer, pSui, eventIndex, newName)
 		return 0
 	end
 	
-	if(message == "") then
+	if(newName == "") then
 		CreatureObject(pPlayer):sendSystemMessage("You need to enter a new name.")
 		return 0
 	end
