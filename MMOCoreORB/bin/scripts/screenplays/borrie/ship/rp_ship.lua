@@ -391,7 +391,7 @@ function BorRpShip:landShip(pObject, pPlayer, landingSpot)
 	local pPoint
 	-- Spawn the terrain flatener if we're not inside a cell.
 	if(landingSpot[6] == 0) then
-		pPoint = spawnBuilding(pPlayer, flatTemplate, landingSpot[2], landingSpot[4], 0)
+		pPoint = spawnBuilding(pNpc, flatTemplate, landingSpot[2], landingSpot[4], 0)
 		
 		if(pPoint == nil) then
 			CreatureObject(pPlayer):sendSystemMessage("Could not find the landing point object. Aborting landing sequence...")
