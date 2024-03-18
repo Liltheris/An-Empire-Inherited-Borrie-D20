@@ -257,9 +257,8 @@ function BorRpShip:landShipCallback(pPlayer, pSui, eventIndex, rowIndex)
 	
 	--Prompt the coordinates input, or land normally if we do have a landing site.
 	if(rowIndex + 1 > #sites) then
-		CreatureObject(pPlayer):sendSystemMessage("rowIndex + 1 > #sites, prompting coordinates input.")
 		local suiManager = LuaSuiManager()
-		suiManager:sendInputBox(pObject, pPlayer, "BorRpShip", "landCoordsCallback", "Enter the coordinates you wish to land at.", "@ok")
+		suiManager:sendInputBox(pShip, pPlayer, "BorRpShip", "landCoordsCallback", "Enter the coordinates you wish to land at.", "@ok")
 	else
 		local newLanding = sites[rowIndex + 1]
 
