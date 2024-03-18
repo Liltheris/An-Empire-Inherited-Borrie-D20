@@ -326,6 +326,7 @@ end
 --Attempt to land the ship 
 function BorRpShip:landShip(pObject, pPlayer, landingSpot)
 
+	-- If we weren't provided with a landing spot, land at the player's location!
 	if(landingSpot == nil) then
 		local posX = SceneObject(pPlayer):getWorldPositionX()
 		local posY = SceneObject(pPlayer):getWorldPositionY()
@@ -333,6 +334,11 @@ function BorRpShip:landShip(pObject, pPlayer, landingSpot)
 		local angle = SceneObject(pPlayer):getDirectionAngle()
 		local zoneName = SceneObject(pPlayer):getZoneName()
 		--local cellid = SceneObject(pPlayer):getParent()
+
+		local planetTag = travelSystem:getPlanetTagForZone(zoneName)
+
+		SceneObject(pShip):setStoredString("current_planet", planetTag)
+		SceneObject(pShip):setStoredString("landing_point", "")
 
 		if(SceneObject(pPlayer):getParent() ~= nil) then
 			CreatureObject(pPlayer):sendSystemMessage("You cannot do this inside a structure.")
@@ -362,23 +368,6 @@ function BorRpShip:landShip(pObject, pPlayer, landingSpot)
 	-- Should probably not be handled this way, but it worksTM for now.
 	local flatTemplate = SceneObject(pObject):getStoredString("flatteningTemplate")
 	local shipNpcTemplate = SceneObject(pObject):getStoredString("appearanceMobile")
-	
-	-- If we weren't provided with a landing spot, land at the player's location!
-	if(landingSpot == nil) then
-		local posX = SceneObject(pPlayer):getWorldPositionX()
-		local posY = SceneObject(pPlayer):getWorldPositionY()
-		local posZ = SceneObject(pPlayer):getWorldPositionZ()
-		local angle = SceneObject(pPlayer):getDirectionAngle()
-		local zoneName = SceneObject(pPlayer):getZoneName()
-
-		local planetTag = travelSystem:getPlanetTagForZone(zoneName)
-
-		SceneObject(pShip):setStoredString("current_planet", planetTag)
-		SceneObject(pShip):setStoredString("landing_point", "")
-
-		--TO DO: Allow landing within in hangars maybe.
-		landingSpot = {zoneName, posX, posZ, posY, angle, 0}
-	end
 
 	--Spawn Ship
 	local pNpc = spawnRoleplayMobile(landingSpot[1], "rp_base_npc", 1, landingSpot[2], landingSpot[3], landingSpot[4], landingSpot[5], landingSpot[6], shipNpcTemplate, "default", "default", "default")
@@ -643,4 +632,27 @@ end
 --Generates a ship caller item for the pObject ship.
 function BorRpShip:generateCaller(pObject, pPlayer)
 	--TO DO: Actually write this
+	local pInventory = SceneObject(pPlayer):getSlottedObject("inventory")
+
+	if (pInventory == nil) then
+		return
+	end
+
+	local pItem = giveItem(pInventory, "object/tangible/borrp/utility/ship_caller.iff", -1)	
+
+	if(pItem == nil) then
+		CreatureObject(pPlayer):sendSystemMessage("Failed to spawn ship caller.")
+		return
+	end
+
+	local shipID = SceneObject(pObject):getStoredLong("structure")
+
+	SceneObject(pItem):setStoredLong("structure", shipID)
+
+	local customName = SceneObject(pObject):getCustomObjectName()
+
+	SceneObject(pItem):setCustomObjectName("Caller ("..customName..")")
+
+	local newSerial = generateSerial()
+	TangibleObject(pItem):setSerialNumber(newSerial)
 end
