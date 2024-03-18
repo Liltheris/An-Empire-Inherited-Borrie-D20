@@ -197,7 +197,7 @@ function BorRpShip:promptLandShipMenu(pPlayer, pObject)
 	end	
 	
 	local currentPlanetTag = SceneObject(pShip):getStoredString("current_planet")
-	local currentLandingTag = SceneObject(pShip):getStoredString("landing_spot")
+	local currentLandingTag = SceneObject(pShip):getStoredString("landing_point")
 	
 	local options = {}
 	local planet = travelSystem:getPlanetFromTag(currentPlanetTag)
@@ -255,7 +255,7 @@ function BorRpShip:landShipCallback(pPlayer, pSui, eventIndex, rowIndex)
 
 	local newLanding = sites[rowIndex + 1]
 	
-	SceneObject(pShip):setStoredString("landing_spot", newLanding.tag)
+	SceneObject(pShip):setStoredString("landing_point", newLanding.tag)
 	
 	local shipName = SceneObject(pShip):getCustomObjectName()
 	if(shipName == "") then
