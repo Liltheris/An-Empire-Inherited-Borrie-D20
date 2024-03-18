@@ -1,6 +1,6 @@
 object_building_ship_rp_blacksun_transport = object_building_ship_rp_shared_blacksun_transport:new {
-	entrancePoint = {-5.4,-18.0},
-	entranceCell = 1,
+	entrancePoint = {0.0, 3.5},
+	entranceCell = 20,
 	
 	publicStructure = 0,
 	baseMaintenanceRate = 0,

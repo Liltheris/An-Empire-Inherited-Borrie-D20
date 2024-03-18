@@ -19,15 +19,18 @@ function RpTravelTerminalMenuComponent:handleObjectMenuSelect(pObject, pPlayer, 
 	end
 
 	local suiManager = LuaSuiManager()
+	local planets = travelSystem:populatePlanetList(pPlayer, true)
 	local options = { }
 	
-	for i = 1, #travel_destinations, 1 do
-		if(isZoneEnabled(travel_destinations[i].zone)) then
-			table.insert(options, {travel_destinations[i].name, 0})
-		end
+	if (planets == nil) then
+		CreatureObject(pPlayer):sendSystemMessage("ERROR: travelSystem:populatePlanetList() returned nil!")
+		return 0
 	end
-	
-	
+
+	-- get the names from our planets
+	for i = 1, #planets, 1 do
+		table.insert(options, {planets[i].name, 0})
+	end
 	
 	if(#options > 0) then
 		suiManager:sendListBox(pObject, pPlayer, "Instant Travel System", "Select a planet you'd like to go to.", 2, "@cancel", "", "@ok", "travelSystemScreenplay", "handleSuiSelectPlanet", 32, options)

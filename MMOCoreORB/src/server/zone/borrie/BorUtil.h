@@ -2178,6 +2178,65 @@ public:
         }
     }
 
+    static SceneObject* getInRangeBoardableRpShip(CreatureObject* creature) {
+        SceneObject* ship = nullptr;
+        float distance = 16000;
+
+        Zone* zone = creature->getZone();
+
+        if (zone == nullptr) {
+            return nullptr;
+        }
+
+        Locker _locker(zone);
+
+        CloseObjectsVector* closeObjs = (CloseObjectsVector*)creature->getCloseObjects();
+        SortedVector<QuadTreeEntry*> closeObjects;
+        closeObjs->safeCopyReceiversTo(closeObjects, CloseObjectsVector::CREOTYPE);
+
+        for (int i = 0; i < closeObjects.size(); ++i) {
+            ManagedReference<SceneObject*> tObj = cast<SceneObject*>( closeObjects.get(i));
+
+            if (tObj != nullptr) {
+                float dist = tObj->getDistanceTo(creature);
+
+                uint64 connectedShip = tObj->getStoredLong("connected_ship");
+                    
+                if (dist < distance && connectedShip > 0) {
+                    bool validEntry = false;
+                    ManagedReference<SceneObject*> shipObject = creature->getZoneServer()->getObject(connectedShip).castTo<SceneObject*>();
+                    if(shipObject->isBuildingObject()) {
+                        //Check to see if the player is on the admin list, entry list, or if the ship is private
+                        BuildingObject* shipStructure = cast<BuildingObject*>( shipObject.get());
+                        if(shipStructure->isPublicStructure()) {
+                            validEntry = true;
+                        } else if(shipStructure->isOnAdminList(creature)) {
+                            validEntry = true;
+                        } else if(shipStructure->isAllowedEntry(creature)) {
+                            validEntry = true;
+                        }
+                    } else if (dist < distance) { //Non-Building Ship
+                        //Check to see if player owns the shipObject
+                        SceneObject* datapad = creature->getSlottedObject("datapad");
+                        if(shipObject->getParentID() == datapad->getObjectID()) {
+                            validEntry = true;
+                        }
+                    }	
+
+                    if(validEntry) {
+                        ship = tObj;
+                        distance = dist;
+                    }				
+                }
+            }
+        }
+
+        if (distance < 10)
+            return ship;
+
+        return nullptr;
+    }
+
 };
 
 #endif 

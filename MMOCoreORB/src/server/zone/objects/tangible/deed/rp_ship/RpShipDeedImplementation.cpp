@@ -108,6 +108,9 @@ int RpShipDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byt
         	}
 
         	structure->setStoredInt("ship_id", newShipID);
+			structure->setStoredString("appearanceMobile", appearanceMobile);
+			structure->setStoredString("flatteningTemplate", landFlatteningPoint);
+			
         	rpShipControlDevice->setStoredLong("structure", structure->getObjectID());
         	realDirectorManager->setQuestStatus("player_rp_ship_count", String::valueOf(newShipID));
 

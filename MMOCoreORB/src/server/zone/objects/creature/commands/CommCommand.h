@@ -33,6 +33,7 @@ public:
 			return GENERALERROR;
 
 		ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
+		ManagedReference<CreatureObject*> targetCreature;
 
 		if (ghost == nullptr)
 			return GENERALERROR;
@@ -42,23 +43,33 @@ public:
 
 		String targetName = "";
 
-		if(args.hasMoreTokens()){
-			targetName = args.getStringToken();
-		} else {
-			creature->sendSystemMessage("Incorrect syntax! Example: /comm [PlayerName] [Optional:ChatType] [Message].");
+		// Obtain the target, if we have one.
+		if (target != 0) {
+			ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target, false);
+			if (object->isCreatureObject()){
+				targetCreature = object->asCreatureObject();
+			}
 		}
 
-		ManagedReference<PlayerManager*> playerManager = server->getPlayerManager();
-		ManagedReference<CreatureObject*> targetCreature = playerManager->getPlayer(targetName);
+		if (targetCreature == nullptr){
+			if(args.hasMoreTokens()){
+				targetName = args.getStringToken();
+			} else {
+				creature->sendSystemMessage("Incorrect syntax! Example: /comm [PlayerName] [Optional:ChatType] [Message].");
+			}
 
-		if (targetCreature == nullptr) {
-			creature->sendSystemMessage("The specified player does not exist.");
-			return INVALIDTARGET;
-		}
+			ManagedReference<PlayerManager*> playerManager = server->getPlayerManager();
+			targetCreature = playerManager->getPlayer(targetName);
 
-		if (targetCreature->getZone() == nullptr) {
-			creature->sendSystemMessage("The specified player is not online.");
-			return INVALIDTARGET;
+			if (targetCreature == nullptr) {
+				creature->sendSystemMessage("The specified player does not exist.");
+				return INVALIDTARGET;
+			}
+
+			if (targetCreature->getZone() == nullptr) {
+				creature->sendSystemMessage("The specified player is not online.");
+				return INVALIDTARGET;
+			}
 		}
 
 		String message = arguments.toString().subString(1 + targetName.length(), arguments.toString().length());

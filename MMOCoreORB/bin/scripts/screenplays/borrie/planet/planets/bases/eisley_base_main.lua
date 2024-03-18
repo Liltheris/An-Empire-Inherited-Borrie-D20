@@ -113,9 +113,6 @@ base = {
 		{"grunt_army", "rp_tatooine", 600.844,  0,  125.582,  137,  0},
 		{"trooper", "rp_tatooine", 1035.47,  -0.5,  116.341,  309,  0},
 		{"trooper", "rp_tatooine", 1029.95,  -0.5,  110.413,  309,  0},
-		{"trooper", "rp_tatooine", 1042.56,  0,  13.1717,  343,  0},
-		{"trooper", "rp_tatooine", 1038.59,  0,  19.2142,  116,  0},
-		{"officer", "rp_tatooine", 1039.06,  0.241211,  15.198,  55,  0},
 	}
 }
 

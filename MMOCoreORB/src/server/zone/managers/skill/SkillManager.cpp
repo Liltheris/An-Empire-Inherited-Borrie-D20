@@ -372,9 +372,10 @@ bool SkillManager::awardSkill(const String& skillName, CreatureObject* creature,
 				}  
 			}
 		}
+
 		//Set our cooldown timer to 16 hours if the skill wasn't granted by a DM.
-		if(BorSkill::GetSkillIsForceSkill(skill->getSkillName()) && !dmOverride && !noXpRequired){
-			creature->updateCooldownTimer(BorSkill::GetSkillRealName(skill->getSkillName()), 18 * 60 * 60 * 1000); 
+		if(BorSkill::GetSkillIsForceSkill(skill->getSkillName()) && ghost->getAdminLevel() < 14){
+			creature->setStoredInt("force_skill_learned", 1);
 		}
 
 		MissionManager* missionManager = creature->getZoneServer()->getMissionManager();
@@ -866,6 +867,11 @@ bool SkillManager::fulfillsSkillPrerequisites(const String& skillName, CreatureO
 		if (creature->hasSkill(precludedSkillName)) {
 			return false;
 		}
+	}
+
+	// Check if our force learning is on cooldown.
+	if(BorSkill::GetSkillIsForceSkill(skill->getSkillName()) && creature->getStoredInt("force_skill_learned") > 0){
+		return false;
 	}
 
 	PlayerObject* ghost = creature->getPlayerObject();
