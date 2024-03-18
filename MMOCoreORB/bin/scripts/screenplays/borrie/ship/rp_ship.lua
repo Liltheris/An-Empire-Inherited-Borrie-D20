@@ -655,6 +655,9 @@ function BorRpShip:handleInstantTravelSelectPlanet(pPlayer, pSui, eventIndex, ar
 	for i = 1, #sites, 1 do
 		table.insert(options, {sites[i].name, 0})
 	end
+
+	--Coordinates
+	table.insert(options, {"Enter Coordinates", 0})
 	
 	suiManager:sendListBox(pPlayer, pPlayer, "Navicomputer", "Select a landing point.", 1, "@cancel", "", "", "BorRpShip", "personalShipTravel", 10, options)
 end
@@ -673,17 +676,60 @@ function BorRpShip:personalShipTravel(pPlayer, pSui, eventIndex, arg0)
 		return 0
 	end
 
-	-- Just set to the first site in the list for now.
-	local dest = sites[arg0 + 1].landing_spots[1]
-	if(dest == nil) then
-		CreatureObject(pPlayer):sendSystemMessage("Error finding destination:  " .. (arg0 + 1))
-		return
+	if (arg0 + 1 > #sites) then
+		local suiManager = LuaSuiManager()
+		suiManager:sendInputBox(pShip, pPlayer, "BorRpShip", "FighterlandCoordsCallback", "Enter the coordinates you wish to land at.", "@ok")
+	else
+		-- Just set to the first site in the list for now.
+		local dest = sites[arg0 + 1].landing_spots[1]
+		if(dest == nil) then
+			CreatureObject(pPlayer):sendSystemMessage("Error finding destination:  " .. (arg0 + 1))
+			return
+		end
+
+		--------------------------------ZONE--------X------Z------Y-------CELL---
+		SceneObject(pPlayer):switchZone(dest[1], dest[2],dest[3],dest[4], dest[6]) 
+
+		--WIP: Make Ship Take Off
+	end
+end
+
+function BorRpShip:FighterLandCoordsCallback(pPlayer, pSui, eventIndex, coords)
+	if(eventIndex == 1) then
+		return 0
 	end
 	
-	--------------------------------ZONE--------X------Z------Y-------CELL---
-	SceneObject(pPlayer):switchZone(dest[1], dest[2],dest[3],dest[4], dest[6]) 
+	if(coords == "") then
+		CreatureObject(pPlayer):sendSystemMessage("You need to enter coordinates. Format: X, Y, heading (degrees)")
+		return 0
+	end
 	
-	--WIP: Make Ship Take Off
+	local currentPlanetTag = SceneObject(pPlayer):getStoredString("travel_planet")
+	local planet = travelSystem:getPlanetFromTag(currentPlanetTag)
+	
+	if(planet == nil) then
+		CreatureObject(pPlayer):sendSystemMessage("Error occured. Could not find planet with tag: " .. currentPlanetTag)
+		return 0
+	end
+
+	local landingCoordinates = {}
+
+	--Split the string into parts.
+	for str in string.gmatch(coords, "([^%s]+)") do
+		table.insert(landingCoordinates, str)
+	end
+
+	--Remove characters and convert to numerical values.
+	for i = 1, #landingCoordinates, 1 do
+		local str = string.gsub(landingCoordinates[i], ",", "")
+		landingCoordinates[i] = tonumber(str)
+	end
+
+	--land the ship at the coordinates!
+	SceneObject(pPlayer):switchZone(planet.zone, landingCoordinates[1], 0, landingCoordinates[2], 0)
+
+	--BorRpShip:landShip(pShip, pPlayer, {planet.zone, landingCoordinates[1], 0, landingCoordinates[2], landingCoordinates[3], 0})
+
 end
 
 --Generates a ship caller item for the pObject ship.
