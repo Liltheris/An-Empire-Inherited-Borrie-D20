@@ -254,14 +254,15 @@ function BorRpShip:landShipCallback(pPlayer, pSui, eventIndex, rowIndex)
 		CreatureObject(pPlayer):sendSystemMessage("Error occured. Could not find landing sites for planet ["..currentPlanetTag.."]")
 		return 0
 	end
-
-	local newLanding = sites[rowIndex + 1]
 	
 	--Prompt the coordinates input, or land normally if we do have a landing site.
-	if(newLanding == nil) then
+	if(rowIndex + 1 > #sites) then
+		CreatureObject(pPlayer):sendSystemMessage("rowIndex + 1 > #sites, prompting coordinates input.")
 		local suiManager = LuaSuiManager()
 		suiManager:sendInputBox(pObject, pPlayer, "BorRpShip", "landCoordsCallback", "Enter the coordinates you wish to land at.", "@ok")
 	else
+		local newLanding = sites[rowIndex + 1]
+
 		SceneObject(pShip):setStoredString("landing_point", newLanding.tag)
 	
 		local shipName = SceneObject(pShip):getCustomObjectName()
@@ -495,7 +496,7 @@ function BorRpShip:notifyShipLanded(pShip)
 	local posY = SceneObject(pNpc):getWorldPositionY()
 	local zoneName = SceneObject(pNpc):getZoneName()
 	local planetName = BorPlanetManager.planets[zoneName].name
-	self:broadcastToPassengers(pShip, "The " .. shipName .. " has landed at " .. posX .. ", " .. posY .. ", " .. planetName .. ".")	
+	self:broadcastToPassengers(pShip, "The " .. shipName .. " has landed at " .. math.floor(posX+0.5) .. ", " .. math.floor(posY+0.5) .. ", " .. planetName .. ".")	
 end
 
 function BorRpShip:notifyPointLanded(pNpc)
