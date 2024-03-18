@@ -316,7 +316,7 @@ function BorRpShip:landCoordsCallback(pPlayer, pSui, eventIndex, coords)
 		return 0
 	end
 
-	local landingCoordinates
+	local landingCoordinates = {}
 
 	--Split the string into parts.
 	for str in string.gmatch(coords, "([^%s]+)") do
