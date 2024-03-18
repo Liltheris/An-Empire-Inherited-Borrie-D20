@@ -319,7 +319,7 @@ function BorRpShip:landCoordsCallback(pPlayer, pSui, eventIndex, coords)
 	local landingCoordinates
 
 	--Split the string into parts.
-	for str in string.gmatch(coords, "([^"%s"]+)") do
+	for str in string.gmatch(coords, "([^%s]+)") do
 		table.insert(landingCoordinates, str)
 	end
 
