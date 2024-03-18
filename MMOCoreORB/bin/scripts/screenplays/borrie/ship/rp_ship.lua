@@ -326,6 +326,12 @@ end
 --Attempt to land the ship 
 function BorRpShip:landShip(pObject, pPlayer, landingSpot)
 
+	local pShip = getShipFromControlDevice(pObject)
+	
+	if(pShip == nil) then
+		pShip = pObject
+	end
+
 	-- If we weren't provided with a landing spot, land at the player's location!
 	if(landingSpot == nil) then
 		local posX = SceneObject(pPlayer):getWorldPositionX()
@@ -347,12 +353,6 @@ function BorRpShip:landShip(pObject, pPlayer, landingSpot)
 
 		--TO DO: Allow landing within in hangars maybe.
 		landingSpot = {zoneName, posX, posZ, posY, angle, 0}
-	end
-	
-	local pShip = getShipFromControlDevice(pObject)
-	
-	if(pShip == nil) then
-		pShip = pObject
 	end
 	
 	local shipID = SceneObject(pShip):getObjectID()
