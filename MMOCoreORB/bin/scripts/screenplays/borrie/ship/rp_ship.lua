@@ -57,9 +57,9 @@ function BorRpShip:exitShip(pPlayer)
 	local eventID = readData(shipID .. ":landShip:shipStatus")
 	
 	if(currentLandingSpot ~= nil and eventID == 3) then
-		local lPosX = SceneObject(currentLandingSpot):getWorldPositionX()
-		local lPosY = SceneObject(currentLandingSpot):getWorldPositionY()
-		local lPosZ = SceneObject(currentLandingSpot):getWorldPositionZ()
+		local lPosX = SceneObject(currentLandingSpot):getPositionX()
+		local lPosY = SceneObject(currentLandingSpot):getPositionY()
+		local lPosZ = SceneObject(currentLandingSpot):getPositionZ()
 		local lCell = SceneObject(currentLandingSpot):getParentID()
 		local lZone = SceneObject(currentLandingSpot):getZoneName()
 				
