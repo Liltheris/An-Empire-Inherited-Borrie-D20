@@ -678,7 +678,7 @@ function BorRpShip:personalShipTravel(pPlayer, pSui, eventIndex, arg0)
 
 	if (arg0 + 1 > #sites) then
 		local suiManager = LuaSuiManager()
-		suiManager:sendInputBox(pShip, pPlayer, "BorRpShip", "FighterlandCoordsCallback", "Enter the coordinates you wish to land at.", "@ok")
+		suiManager:sendInputBox(pPlayer, pPlayer, "BorRpShip", "FighterlandCoordsCallback", "Enter the coordinates you wish to land at.", "@ok")
 	else
 		-- Just set to the first site in the list for now.
 		local dest = sites[arg0 + 1].landing_spots[1]
