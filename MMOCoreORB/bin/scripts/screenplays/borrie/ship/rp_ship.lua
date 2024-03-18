@@ -366,8 +366,8 @@ function BorRpShip:landShip(pObject, pPlayer, landingSpot)
 	end
 	
 	-- Should probably not be handled this way, but it worksTM for now.
-	local flatTemplate = SceneObject(pObject):getStoredString("flatteningTemplate")
-	local shipNpcTemplate = SceneObject(pObject):getStoredString("appearanceMobile")
+	local flatTemplate = SceneObject(pShip):getStoredString("flatteningTemplate")
+	local shipNpcTemplate = SceneObject(pShip):getStoredString("appearanceMobile")
 
 	--Spawn Ship
 	local pNpc = spawnRoleplayMobile(landingSpot[1], "rp_base_npc", 1, landingSpot[2], landingSpot[3], landingSpot[4], landingSpot[5], landingSpot[6], shipNpcTemplate, "default", "default", "default")
