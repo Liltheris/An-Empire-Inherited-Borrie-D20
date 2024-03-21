@@ -22,6 +22,8 @@ import server.zone.managers.minigames.FishingManager;
 import server.zone.managers.minigames.GamblingManager;
 import server.zone.managers.minigames.ForageManager;
 
+import server.zone.managers.roleplay.RoleplayManager;
+
 @dirty
 class ZoneProcessServer extends ManagedService {
 	transient protected ZoneServer zoneServer;
@@ -41,6 +43,8 @@ class ZoneProcessServer extends ManagedService {
 	transient protected SuiManager suiManager;
 
 	transient protected SkillManager professionManager;
+
+	transient protected RoleplayManager roleplayManager;
 
 	private transient FishingManager fishingManager;
 	private transient GamblingManager gamblingManager;
@@ -124,5 +128,11 @@ class ZoneProcessServer extends ManagedService {
 	@dirty
 	public ForageManager getForageManager() {
 		return forageManager;
+	}
+
+	@local
+	@dirty
+	public SkillManager getRoleplayManager() {
+		return roleplayManager;
 	}
 }
