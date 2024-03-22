@@ -104,6 +104,7 @@ int RoleplayManager::getRpSkillIndex(String skill, RpSkillType type) {
 			}
 			break;
 		}
+		default: return -1;
 	}
 	
 	//Return -1, as we've not been able to find the skill!
