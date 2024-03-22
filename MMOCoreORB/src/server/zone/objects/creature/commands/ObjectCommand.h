@@ -36,7 +36,6 @@ public:
 
 			if (commandType.beginsWith("createitem") || commandType.beginsWith("createother")) {
 				String objectTemplate;
-			//	objectTemplate.replaceAll("shared_", ""); 
 				args.getStringToken(objectTemplate);
 
 				ManagedReference<CraftingManager*> craftingManager = creature->getZoneServer()->getCraftingManager();
