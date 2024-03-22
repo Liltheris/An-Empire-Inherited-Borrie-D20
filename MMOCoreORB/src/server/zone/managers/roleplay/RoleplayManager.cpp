@@ -20,6 +20,60 @@ void RoleplayManager::loadLuaConfig() {
 
 	skillCostMultiplier = lua->getGlobalFloat("skillCostMultiplier");
 
+	LuaObject luaAttributes = lua->getGlobalObject("attributes");
+
+	//Load our attributes from lua!
+	if (luaAttributes.isValidTable()){
+		for (int i = 1; i < luaAttributes.getTableSize(); i++){
+			LuaObject data = luaAttributes.getObjectAt(i);
+			if(data.isValidTable()){
+				attributes->add(RpSkillData{data.getStringAt(1),data.getStringAt(2),data.getStringAt(3)});
+			} else {
+				error("Attribute at index "+String::valueOf(i)+" is not a valid lua object!");
+			}
+			data.pop();
+		}
+	} else {
+		fatal("LUA ATTRIBUTES OBJECT IS NOT VALID!");
+	}
+	luaAttributes.pop();
+
+	LuaObject luaSkills = lua->getGlobalObject("skills");
+
+	//Load our skills from lua!
+	if (luaSkills.isValidTable()){
+		for (int i = 1; i < luaSkills.getTableSize(); i++){
+			LuaObject data = luaSkills.getObjectAt(i);
+			if(data.isValidTable()){
+				skills->add(RpSkillData{data.getStringAt(1),data.getStringAt(2),data.getStringAt(3)});
+			} else {
+				error("Skill at index "+String::valueOf(i)+" is not a valid lua object!");
+			}
+			data.pop();
+		}
+	} else {
+		fatal("LUA SKILLS OBJECT IS NOT VALID!");
+	}
+	luaSkills.pop();
+
+	LuaObject luaForceSkills = lua->getGlobalObject("forceSkills");
+
+	//Load our Force skills from lua!
+	if (luaForceSkills.isValidTable()){
+		for (int i = 1; i < luaForceSkills.getTableSize(); i++){
+			LuaObject data = luaForceSkills.getObjectAt(i);
+			if(data.isValidTable()){
+				forceSkills->add(RpSkillData{data.getStringAt(1),data.getStringAt(2),data.getStringAt(3)});
+			} else {
+				error("ForceSkill at index "+String::valueOf(i)+" is not a valid lua object!");
+			}
+			data.pop();
+		}
+	} else {
+		fatal("LUA FORCESKILLS OBJECT IS NOT VALID!");
+	}
+	luaForceSkills.pop();
+
 	delete lua;
 	lua = nullptr;
 }
@@ -57,5 +111,12 @@ int RoleplayManager::getRpSkillIndex(String skill, RpSkillType type) {
 }
 
 RpSkillData RoleplayManager::getRpSkill(int index, RpSkillType type) {
-
+	switch (type){
+		case RpSkillType::ATTRIBUTE: return attributes->get(index);
+		case RpSkillType::SKILL: return skills->get(index);
+		case RpSkillType::FORCESKILL:return forceSkills->get(index);
+		default:{
+			error("getRpSkill() was provided with an invalid type.");
+		}
+	}
 }
