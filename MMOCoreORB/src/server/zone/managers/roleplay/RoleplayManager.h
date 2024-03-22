@@ -8,7 +8,8 @@ namespace zone {
 namespace managers {
 namespace roleplay {
 
-struct RpSkillData {
+class RpSkillData {
+public:
 	String name;
 	String parentSkillName;
 	String altParentSkill;
