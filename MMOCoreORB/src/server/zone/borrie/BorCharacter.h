@@ -1374,11 +1374,11 @@ public:
 	}
 
 	static void doLongRest(CreatureObject* creature) {
-		int time = Time::currentNanoTime();
+		unsigned long long time = Time::currentNanoTime();
 
 		//Check if they are still on rest cooldown.
-		if(time < creature->getStoredInt("long_rest_time")){
-			int timeRemaining = creature->getStoredInt("long_rest_time") - time;
+		if(time < creature->getStoredLong("long_rest_time")){
+			unsigned long long timeRemaining = creature->getStoredLong("long_rest_time") - time;
 			BorrieRPG::BroadcastMessage(creature, BorString::getNiceName(creature) + " was unable to rest, as they have rested too recently.");
 			creature->sendSystemMessage("You can rest again in " +String::valueOf(ceil(timeRemaining / -3600000.f))+ " hours.");
 			return;
@@ -1412,7 +1412,7 @@ public:
 		creature->setStoredInt("rp_heropoint", 1);
 
 		//18 hour cooldown.
-		creature->setStoredInt("long_rest_time", time + 18 * 60 * 60 * 1000); 
+		creature->setStoredLong("long_rest_time", time + 18 * 60 * 60 * 1000); 
 	}
 
 	static bool attuneForceCrystal(CreatureObject* creature, SceneObject* crystal){
