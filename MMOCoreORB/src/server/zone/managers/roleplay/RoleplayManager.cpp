@@ -119,6 +119,7 @@ RpSkillData RoleplayManager::getRpSkill(int index, RpSkillType type) {
 			error("getRpSkill() was provided with an invalid type.");
 		}
 	}
+	return RpSkillData();
 }
 
 Vector<RpSkillData>* RoleplayManager::getRpSkillData(RpSkillType type){
@@ -130,4 +131,5 @@ Vector<RpSkillData>* RoleplayManager::getRpSkillData(RpSkillType type){
 			error("getRpSkillData() was provided with an invalid type.");
 		}
 	}
+	return nullptr;
 }
