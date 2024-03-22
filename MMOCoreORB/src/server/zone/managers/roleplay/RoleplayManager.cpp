@@ -27,7 +27,7 @@ void RoleplayManager::loadLuaConfig() {
 		for (int i = 1; i < luaAttributes.getTableSize(); i++){
 			LuaObject data = luaAttributes.getObjectAt(i);
 			if(data.isValidTable()){
-				attributes->add(RpSkillData{data.getStringAt(1),data.getStringAt(2),data.getStringAt(3)});
+				attributes->add(RpSkillData(data.getStringAt(1),data.getStringAt(2),data.getStringAt(3)));
 			} else {
 				error("Attribute at index "+String::valueOf(i)+" is not a valid lua object!");
 			}
@@ -45,7 +45,7 @@ void RoleplayManager::loadLuaConfig() {
 		for (int i = 1; i < luaSkills.getTableSize(); i++){
 			LuaObject data = luaSkills.getObjectAt(i);
 			if(data.isValidTable()){
-				skills->add(RpSkillData{data.getStringAt(1),data.getStringAt(2),data.getStringAt(3)});
+				skills->add(RpSkillData(data.getStringAt(1),data.getStringAt(2),data.getStringAt(3)));
 			} else {
 				error("Skill at index "+String::valueOf(i)+" is not a valid lua object!");
 			}
@@ -63,7 +63,7 @@ void RoleplayManager::loadLuaConfig() {
 		for (int i = 1; i < luaForceSkills.getTableSize(); i++){
 			LuaObject data = luaForceSkills.getObjectAt(i);
 			if(data.isValidTable()){
-				forceSkills->add(RpSkillData{data.getStringAt(1),data.getStringAt(2),data.getStringAt(3)});
+				forceSkills->add(RpSkillData(data.getStringAt(1),data.getStringAt(2),data.getStringAt(3)));
 			} else {
 				error("ForceSkill at index "+String::valueOf(i)+" is not a valid lua object!");
 			}

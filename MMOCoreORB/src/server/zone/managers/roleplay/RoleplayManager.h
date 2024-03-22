@@ -12,6 +12,16 @@ struct RpSkillData {
 	String name;
 	String parentSkillName;
 	String altParentSkill;
+
+	RpSkillData(){
+		name, parentSkillName, altParentSkill = "";
+	}
+
+	RpSkillData(String newName, String newParent, String newAltParent){
+		name = newName;
+		parentSkillName = newParent;
+		altParentSkill = newAltParent;
+	}
 };
 
 enum RpSkillType {
@@ -37,6 +47,22 @@ public:
     ~RoleplayManager();
 
     void loadLuaConfig();
+
+	float getSkillCostMultiplier() const {
+		return skillCostMultiplier;
+	}
+
+	int getMaxAttributes() const {
+		return maxAttributes;
+	}
+
+	int getMaxTraining() const {
+		return maxTraining;
+	}
+
+	int getMaxFeats() const {
+		return maxFeats;
+	}
 
     //Returns the index of the given RP skill. Returns -1 if skill does not exist.
     int getRpSkillIndex(String skill, RpSkillType type = RpSkillType::ALLSKILLS);
