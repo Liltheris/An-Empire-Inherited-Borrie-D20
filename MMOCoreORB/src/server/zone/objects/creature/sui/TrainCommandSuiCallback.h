@@ -87,12 +87,12 @@ public:
 
 	String GetAttributeStringFromID(int id) {
 		RoleplayManager* rp = RoleplayManager::instance();
-		return rp->getRpSkill(id,RpSkillType::ATTRIBUTE).name;
+		return rp->getRpSkill(id,RpSkillType::ATTRIBUTE)->name;
 	}
 
 	String GetSkillStringFromID(int id) {
 		RoleplayManager* rp = RoleplayManager::instance();
-		return rp->getRpSkill(id,RpSkillType::SKILL).name;
+		return rp->getRpSkill(id,RpSkillType::SKILL)->name;
 	}
 
 	String GetSkillNumeral(int value) {
@@ -143,12 +143,12 @@ public:
 		} else box->setPromptText("What attribute would you like to rank up?");
 
 		RoleplayManager* rp = RoleplayManager::instance();
-		Vector<RpSkillData>* data = rp->getRpSkillData(RpSkillType::ATTRIBUTE);
+		Vector<RpSkillData*>* data = rp->getRpSkillData(RpSkillType::ATTRIBUTE);
 
 		for (int i = 0; i < data->size(); i++){
-			RpSkillData skill = data->get(i);
+			RpSkillData* skill = data->get(i);
 
-			box->addMenuItem(BorrieRPG::Capitalize(skill.name)+" "+GetSkillNumeral(BorSkill::GetRealSkillLevel(player, skill.name)+1));
+			box->addMenuItem(BorrieRPG::Capitalize(skill->name)+" "+GetSkillNumeral(BorSkill::GetRealSkillLevel(player, skill->name)+1));
 		}
 		
 		player->getPlayerObject()->addSuiBox(box);
@@ -171,13 +171,13 @@ public:
 		}
 
 		RoleplayManager* rp = RoleplayManager::instance();
-		Vector<RpSkillData>* data = rp->getRpSkillData(RpSkillType::SKILL);
+		Vector<RpSkillData*>* data = rp->getRpSkillData(RpSkillType::SKILL);
 
 		for (int i = 0; i < data->size(); i++){
-			RpSkillData skill = data->get(i);
+			RpSkillData* skill = data->get(i);
 
-			int parentLevel = BorSkill::GetRealSkillLevel(player, skill.parentSkillName);
-			int skillLevel = BorSkill::GetRealSkillLevel(player, skill.name);
+			int parentLevel = BorSkill::GetRealSkillLevel(player, skill->parentSkillName);
+			int skillLevel = BorSkill::GetRealSkillLevel(player, skill->name);
 
 			String colour = "\\#.";
 
@@ -185,7 +185,7 @@ public:
 				colour = (parentLevel + 3 <= skillLevel) ? "\\#FF0000" : "\\#FFFF00";
 			}
 
-			box->addMenuItem(colour + BorrieRPG::Capitalize(skill.name)+" "+GetSkillNumeral(BorSkill::GetRealSkillLevel(player, skill.name)+1));
+			box->addMenuItem(colour + BorrieRPG::Capitalize(skill->name)+" "+GetSkillNumeral(BorSkill::GetRealSkillLevel(player, skill->name)+1));
 		}
 
 		player->getPlayerObject()->addSuiBox(box);
@@ -206,7 +206,7 @@ public:
 		if (BorSkill::CanTrainNextSkill(player, currentRank + 1, skillName)) {
 			suibox->setPromptTitle("Confirm training?"); 
 			//Can train!
-			suibox->setPromptText("Are you sure you want to train this attribute?");
+			suibox->setPromptText("Are you sure you want to train this attribute?\n\nThis will cost 40,000 Roleplay experience.");
 			suibox->setCallback(new TrainCommandSuiCallback(server, 3, index));
 			suibox->setOkButton(true, "Confirm");
 			suibox->setCancelButton(true, "Go Back");
@@ -234,9 +234,11 @@ public:
 
 		ManagedReference<SuiMessageBox*> suibox = new SuiMessageBox(player, SuiWindowType::TEACH_OFFER);
 		if (BorSkill::CanTrainNextSkill(player, currentRank + 1, skillName, skillParent, skillAltParent)) {
+			int xp = BorSkill::getFinalXpCost(player, "rp_"+skillName+BorSkill::GetSkillSuffixFromValue(currentRank+1));
+
 			suibox->setPromptTitle("Confirm training?"); 
 			//Can train!
-			suibox->setPromptText("Are you sure you want to train this skill?");
+			suibox->setPromptText("Are you sure you want to train this skill?\n\nThis will cost "+String::valueOf(xp)+" Roleplay experience.");
 			suibox->setCallback(new TrainCommandSuiCallback(server, 4, index));
 			suibox->setOkButton(true, "Confirm");
 			suibox->setCancelButton(true, "Go Back");
@@ -282,7 +284,7 @@ public:
 			SkillManager* skillManager = SkillManager::instance();
 			
 			int freePoints = player->getStoredInt("starter_skill_points");
-			if(freePoints > 0) {
+			if(freePoints > 0 && currentRank < BorSkill::GetRealSkillLevel(player, skillParent)) {
 				player->setStoredInt("starter_skill_points", freePoints - 1);
 				skillManager->awardSkill("rp_" + skill + "_" + BorSkill::GetSkillSuffixFromValue(currentRank + 1), player, true, false, true);
 				player->sendSystemMessage("You've gained a point in " + skill + "! You have " + String::valueOf(freePoints - 1) + " remaining free skill points.");

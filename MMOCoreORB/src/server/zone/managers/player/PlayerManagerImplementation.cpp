@@ -4513,7 +4513,7 @@ bool PlayerManagerImplementation::offerTeaching(CreatureObject* teacher, Creatur
 
 	StringBuffer prompt;
 	prompt << teacher->getDisplayedName()
-															<< " has offered to teach you " << sklname << " (" << skill->getXpCost()
+															<< " has offered to teach you " << sklname << " (" << skill->getXpCost() * BorSkill::getXpCostMultiplier(student, skill->getSkillName())
 															<< " " << expname  << " experience cost).";
 
 	suibox->setPromptText(prompt.toString());

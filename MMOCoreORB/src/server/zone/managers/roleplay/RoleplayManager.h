@@ -32,9 +32,9 @@ enum RpSkillType {
 };
 
 class RoleplayManager : public Singleton<RoleplayManager>, public Logger, public Object {
-    Vector<RpSkillData>* attributes;
-	Vector<RpSkillData>* skills;
-	Vector<RpSkillData>* forceSkills;
+    Vector<RpSkillData*>* attributes;
+	Vector<RpSkillData*>* skills;
+	Vector<RpSkillData*>* forceSkills;
 
 	int maxAttributes;
 	int maxTraining;
@@ -68,9 +68,9 @@ public:
     int getRpSkillIndex(String skill, RpSkillType type = RpSkillType::ALLSKILLS);
 
     //Returns the skill data at the given index.
-    RpSkillData getRpSkill(int index, RpSkillType type = RpSkillType::ALLSKILLS);
+    RpSkillData* getRpSkill(int index, RpSkillType type = RpSkillType::ALLSKILLS);
 
-	Vector<RpSkillData>* getRpSkillData(RpSkillType type);
+	Vector<RpSkillData*>* getRpSkillData(RpSkillType type);
 };
 
 }

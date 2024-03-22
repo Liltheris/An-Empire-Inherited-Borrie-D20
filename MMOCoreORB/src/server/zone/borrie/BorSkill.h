@@ -20,12 +20,12 @@ public:
 
 	static String GetSkillParent(String skill) {
 		RoleplayManager* rp = RoleplayManager::instance();
-		return rp->getRpSkill(rp->getRpSkillIndex(skill), RpSkillType::SKILL).parentSkillName;
+		return rp->getRpSkill(rp->getRpSkillIndex(skill, RpSkillType::SKILL), RpSkillType::SKILL)->parentSkillName;
 	}
 
 	static String GetSkillAltParent(String skill) {
 		RoleplayManager* rp = RoleplayManager::instance();
-		return rp->getRpSkill(rp->getRpSkillIndex(skill), RpSkillType::SKILL).altParentSkill;
+		return rp->getRpSkill(rp->getRpSkillIndex(skill, RpSkillType::SKILL), RpSkillType::SKILL)->altParentSkill;
 	}
 
 	static bool GetStringIsSkill(String skill) {
@@ -152,28 +152,65 @@ public:
 	}
 
 	static bool CanTrainNextSkill(CreatureObject* creature, int rank, String skill, String parentAttribute = "", String altParentAttribute = "") {
-		if(rank > 10) return false;
-		if(skill == "") return false;
+
+		if(rank > 10)
+			return false;
+		if(skill == "")
+			return false;
+
 		String skillName = "rp_" + skill + "_" + GetSkillSuffixFromValue(rank);
+
 		SkillManager* skillManager = SkillManager::instance();
+		RoleplayManager* rp = RoleplayManager::instance();
+
 		bool hasXP = skillManager->canLearnSkill(skillName, creature, false);
 		int points = creature->getStoredInt("starter_attr_points");
-		if (parentAttribute != "" && altParentAttribute != "") {
+
+		/*if (parentAttribute != "" && altParentAttribute != "") {
 			points = creature->getStoredInt("starter_skill_points");
-			//creature->sendSystemMessage("Trying to train skill");
+
 			int parentValue = GetRealSkillLevel(creature, parentAttribute);
 			int altParentValue = GetRealSkillLevel(creature, altParentAttribute);
 			String skillRealName = GetSkillRealName(skill);
 			if(parentValue < rank && altParentValue < rank) {
 				return false;
 			} 				
-		} else {
-			//creature->sendSystemMessage("Trying to train attribute");
-		}
+		}*/
 
-		if(points > 0) return true;
+		RpSkillData* data = rp->getRpSkill(rp->getRpSkillIndex(skill, RpSkillType::SKILL), RpSkillType::SKILL);
+
+		int parentLevel = GetRealSkillLevel(creature, data->parentSkillName);
+		int skillLevel = GetRealSkillLevel(creature, data->name);
+
+		if(skillLevel - parentLevel <= 0 && points > 0)
+			return true;
 		
 		return hasXP;
+	}
+
+	static float getXpCostMultiplier(CreatureObject* player, String skill){
+		RoleplayManager* rp = RoleplayManager::instance();
+
+		skill = GetSkillRealName(skill);
+
+		RpSkillData* data = rp->getRpSkill(rp->getRpSkillIndex(skill, RpSkillType::SKILL), RpSkillType::SKILL);
+
+		int parentLevel = GetRealSkillLevel(player, data->parentSkillName);
+		int skillLevel = GetRealSkillLevel(player, data->name);
+
+		if (skillLevel - parentLevel > 0){
+			return pow(rp->getSkillCostMultiplier(), skillLevel - parentLevel);
+		}
+
+		return 1.0f;
+	}
+
+	static int getFinalXpCost(CreatureObject* player, String skillName){
+		SkillManager* skillManager = SkillManager::instance();
+		float multi = getXpCostMultiplier(player, skillName);
+
+		return skillManager->getSkill(skillName)->getXpCost() * multi;
+
 	}
 
 	static bool GetQualifiedForSkill(CreatureObject* creature, String skill) {
@@ -189,17 +226,7 @@ public:
 			}
 			int desiredLevel = GetSkillLevelFromString(skill);
 			if (desiredLevel == -1)
-				return false;
-			String parent = GetSkillParent(skillName);
-			String altParent = GetSkillAltParent(skillName);
-			int parentLevel = GetRealSkillLevel(creature, parent);
-			int altParentLevel = GetRealSkillLevel(creature, altParent);
-			if(parentLevel < desiredLevel && altParentLevel < desiredLevel) {
-				return false;
-			} else {
-				return true;
-			}
-			
+				return false;			
 		} else {
 			return true;
 		}
