@@ -4,6 +4,8 @@
 #include "server/zone/objects/player/sui/SuiCallback.h"
 #include "server/zone/objects/player/sui/transferbox/SuiTransferBox.h"
 
+#include "server/zone/managers/roleplay/RoleplayManager.h"
+
 class TrainCommandSuiCallback : public SuiCallback {
 private:
 	int state;
@@ -112,95 +114,13 @@ public:
 	}
 
 	String GetAttributeStringFromID(int id) {
-		if (id == 0)
-			return "awareness";
-		else if (id == 1)
-			return "charisma";
-		else if (id == 2)
-			return "constitution";
-		else if (id == 3)
-			return "dexterity";
-		else if (id == 4)
-			return "intelligence";
-		else if (id == 5)
-			return "mindfulness";
-		else if (id == 6)
-			return "precision";
-		else if (id == 7)
-			return "strength";
-		else
-			return "";
+		RoleplayManager* rp = RoleplayManager::instance();
+		return rp->getRpSkill(id,RpSkillType::ATTRIBUTE).name;
 	}
 
 	String GetSkillStringFromID(int id) {
-		if (id == 0)
-			return "armor";
-		else if (id == 1)
-			return "athletics";
-		else if (id == 2)
-			return "bluff";
-		else if (id == 3)
-			return "command";
-		else if (id == 4)
-			return "composure";
-		else if (id == 5)
-			return "computers";
-		else if (id == 6)
-			return "defending";
-		else if (id == 7)
-			return "demolitions";
-		else if (id == 8)
-			return "engineering";
-		else if (id == 9)
-			return "intimidation";
-		else if (id == 10)
-			return "investigation";
-		else if (id == 11)
-			return "larceny";
-		else if (id == 12)
-			return "maneuverability";
-		else if (id == 13)
-			return "mechanics";
-		else if (id == 14)
-			return "medicine";
-		else if (id == 15)
-			return "melee";
-		else if (id == 16)
-			return "performance";
-		else if (id == 17)
-			return "persuasion";
-		else if (id == 18)
-			return "piloting";
-		else if (id == 19)
-			return "ranged";
-		else if (id == 20)
-			return "resolve";
-		else if (id == 21)
-			return "science";
-		else if (id == 22)
-			return "slicing";
-		else if (id == 23)
-			return "stealth";
-		else if (id == 24)
-			return "survival";
-		else if (id == 25)
-			return "throwing";
-		else if (id == 26)
-			return "unarmed";
-		else if (id == 27)
-			return "sense";
-		else if (id == 28)
-			return "lightning";
-		else if (id == 29)
-			return "telekinesis";
-		else if (id == 30)
-			return "control";
-		else if (id == 31)
-			return "alter";
-		else if (id == 32)
-			return "inward";
-		else
-			return "";
+		RoleplayManager* rp = RoleplayManager::instance();
+		return rp->getRpSkill(id,RpSkillType::SKILL).name;
 	}
 
 	String GetSkillNumeral(int value) {
@@ -248,15 +168,16 @@ public:
 		box->setPromptTitle("Training Attribute Menu");
 		if(freeAttrPoints > 0) {
 			box->setPromptText("What attribute would you like to rank up?\n\nFree Attribute Boxes: " + String::valueOf(freeAttrPoints));
-		} else box->setPromptText("What attribute would you like to rank up?");					
-		box->addMenuItem("Awareness " + 		GetSkillNumeral(BorSkill::GetRealSkillLevel(player, "awareness")+1));
-		box->addMenuItem("Charisma " + 			GetSkillNumeral(BorSkill::GetRealSkillLevel(player, "charisma")+1));
-		box->addMenuItem("Constitution " + 		GetSkillNumeral(BorSkill::GetRealSkillLevel(player, "constitution")+1));
-		box->addMenuItem("Dexterity " + 		GetSkillNumeral(BorSkill::GetRealSkillLevel(player, "dexterity")+1));
-		box->addMenuItem("Intelligence " + 		GetSkillNumeral(BorSkill::GetRealSkillLevel(player, "intelligence")+1));
-		box->addMenuItem("Mindfulness " + 		GetSkillNumeral(BorSkill::GetRealSkillLevel(player, "mindfulness")+1));
-		box->addMenuItem("Precision " + 		GetSkillNumeral(BorSkill::GetRealSkillLevel(player, "precision")+1));
-		box->addMenuItem("Strength " + 			GetSkillNumeral(BorSkill::GetRealSkillLevel(player, "strength")+1));
+		} else box->setPromptText("What attribute would you like to rank up?");
+
+		RoleplayManager* rp = RoleplayManager::instance();
+		Vector<RpSkillData>* data = rp->getRpSkillData(RpSkillType::ATTRIBUTE);
+
+		for (int i = 0; i < data->size(); i++){
+			RpSkillData skill = data->get(i);
+
+			box->addMenuItem(BorrieRPG::Capitalize(skill.name) + GetSkillNumeral(BorSkill::GetRealSkillLevel(player, skill.name)+1));
+		}
 		
 		player->getPlayerObject()->addSuiBox(box);
 		player->sendMessage(box->generateMessage());
@@ -275,6 +196,15 @@ public:
 			box->setPromptText("What skill would you like to rank up? Remember that skills can only go as high as their associated attribute's max rank.\n\nFree Skill Boxes: " + String::valueOf(freeSkillPoints));
 		} else {
 			box->setPromptText("What skill would you like to rank up? Remember that skills can only go as high as their associated attribute's max rank.");
+		}
+
+		RoleplayManager* rp = RoleplayManager::instance();
+		Vector<RpSkillData>* data = rp->getRpSkillData(RpSkillType::SKILL);
+
+		for (int i = 0; i < data->size(); i++){
+			RpSkillData skill = data->get(i);
+
+			box->addMenuItem(BorrieRPG::Capitalize(skill.name) + GetSkillNumeral(BorSkill::GetRealSkillLevel(player, skill.name)+1));
 		}
 
 		box->addMenuItem("Armor " +				GetSkillNumeral(BorSkill::GetRealSkillLevel(player,"armor")+1));

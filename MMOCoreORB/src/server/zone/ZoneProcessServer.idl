@@ -132,7 +132,7 @@ class ZoneProcessServer extends ManagedService {
 
 	@local
 	@dirty
-	public SkillManager getRoleplayManager() {
+	public RoleplayManager getRoleplayManager() {
 		return roleplayManager;
 	}
 }

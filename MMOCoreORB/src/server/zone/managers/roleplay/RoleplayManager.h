@@ -43,6 +43,8 @@ public:
 
     //Returns the skill data at the given index.
     RpSkillData getRpSkill(int index, RpSkillType type = RpSkillType::ALLSKILLS);
+
+	Vector<RpSkillData>* getRpSkillData(RpSkillType type);
 };
 
 }

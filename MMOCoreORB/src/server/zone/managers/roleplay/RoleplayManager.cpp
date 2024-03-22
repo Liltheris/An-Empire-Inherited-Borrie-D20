@@ -120,3 +120,14 @@ RpSkillData RoleplayManager::getRpSkill(int index, RpSkillType type) {
 		}
 	}
 }
+
+Vector<RpSkillData>* RoleplayManager::getRpSkillData(RpSkillType type){
+	switch (type){
+		case RpSkillType::ATTRIBUTE: return attributes;
+		case RpSkillType::SKILL: return skills;
+		case RpSkillType::FORCESKILL:return forceSkills;
+		default:{
+			error("getRpSkillData() was provided with an invalid type.");
+		}
+	}
+}
