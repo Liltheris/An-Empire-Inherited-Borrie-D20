@@ -27,7 +27,13 @@ void RoleplayManager::loadLuaConfig() {
 		for (int i = 1; i < luaAttributes.getTableSize(); i++){
 			LuaObject data = luaAttributes.getObjectAt(i);
 			if(data.isValidTable()){
-				attributes->add(new RpSkillData(data.getStringAt(1),data.getStringAt(2),data.getStringAt(3)));
+				RpSkillData skill = RpSkillData();
+
+				skill.setName(data.getStringAt(1));
+				skill.setParent(data.getStringAt(2));
+				skill.setAltParent(data.getStringAt(3));
+
+				attributes.add(skill);
 			} else {
 				error("Attribute at index "+String::valueOf(i)+" is not a valid lua object!");
 			}
@@ -45,7 +51,13 @@ void RoleplayManager::loadLuaConfig() {
 		for (int i = 1; i < luaSkills.getTableSize(); i++){
 			LuaObject data = luaSkills.getObjectAt(i);
 			if(data.isValidTable()){
-				skills->add(new RpSkillData(data.getStringAt(1),data.getStringAt(2),data.getStringAt(3)));
+				RpSkillData skill = RpSkillData();
+
+				skill.setName(data.getStringAt(1));
+				skill.setParent(data.getStringAt(2));
+				skill.setAltParent(data.getStringAt(3));
+
+				skills.add(skill);
 			} else {
 				error("Skill at index "+String::valueOf(i)+" is not a valid lua object!");
 			}
@@ -63,7 +75,13 @@ void RoleplayManager::loadLuaConfig() {
 		for (int i = 1; i < luaForceSkills.getTableSize(); i++){
 			LuaObject data = luaForceSkills.getObjectAt(i);
 			if(data.isValidTable()){
-				forceSkills->add(new RpSkillData(data.getStringAt(1),data.getStringAt(2),data.getStringAt(3)));
+				RpSkillData skill = RpSkillData();
+
+				skill.setName(data.getStringAt(1));
+				skill.setParent(data.getStringAt(2));
+				skill.setAltParent(data.getStringAt(3));
+
+				forceSkills.add(skill);
 			} else {
 				error("ForceSkill at index "+String::valueOf(i)+" is not a valid lua object!");
 			}
@@ -81,49 +99,52 @@ void RoleplayManager::loadLuaConfig() {
 int RoleplayManager::getRpSkillIndex(String skill, RpSkillType type) {
 	switch (type){
 		case RpSkillType::ATTRIBUTE:{
-			for (int i = 0; i < attributes->size(); i++){
-				if (attributes->get(i)->name == skill){
+			for (int i = 0; i < attributes.size(); i++){
+				if (attributes.get(i).getName() == skill){
 					return i;
 				}
 			}
 			break;
 		}	
 		case RpSkillType::SKILL:{
-			for (int i = 0; i < skills->size(); i++){
-				if (skills->get(i)->name == skill){
+			for (int i = 0; i < skills.size(); i++){
+				if (skills.get(i).getName() == skill){
 					return i;
 				}
 			}
 			break;
 		}
 		case RpSkillType::FORCESKILL:{
-			for (int i = 0; i < forceSkills->size(); i++){
-				if (forceSkills->get(i)->name == skill){
+			for (int i = 0; i < forceSkills.size(); i++){
+				if (forceSkills.get(i).getName() == skill){
 					return i;
 				}
 			}
 			break;
 		}
-		default: return -1;
+		default: {
+			error("getRPSkillIndex() was provided with an invalid type!");
+			return -1;
+		}
 	}
 	
 	//Return -1, as we've not been able to find the skill!
 	return -1;
 }
 
-RpSkillData* RoleplayManager::getRpSkill(int index, RpSkillType type) {
+RpSkillData RoleplayManager::getRpSkill(int index, RpSkillType type) {
 	switch (type){
-		case RpSkillType::ATTRIBUTE: return attributes->get(index);
-		case RpSkillType::SKILL: return skills->get(index);
-		case RpSkillType::FORCESKILL:return forceSkills->get(index);
+		case RpSkillType::ATTRIBUTE: return attributes.get(index);
+		case RpSkillType::SKILL: return skills.get(index);
+		case RpSkillType::FORCESKILL:return forceSkills.get(index);
 		default:{
 			error("getRpSkill() was provided with an invalid type.");
 		}
 	}
-	return new RpSkillData();
+	return RpSkillData();
 }
 
-Vector<RpSkillData*>* RoleplayManager::getRpSkillData(RpSkillType type){
+Vector<RpSkillData> RoleplayManager::getRpSkillList(RpSkillType type){
 	switch (type){
 		case RpSkillType::ATTRIBUTE: return attributes;
 		case RpSkillType::SKILL: return skills;
@@ -132,5 +153,5 @@ Vector<RpSkillData*>* RoleplayManager::getRpSkillData(RpSkillType type){
 			error("getRpSkillData() was provided with an invalid type.");
 		}
 	}
-	return nullptr;
+	return skills;
 }

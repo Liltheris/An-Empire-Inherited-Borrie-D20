@@ -20,12 +20,12 @@ public:
 
 	static String GetSkillParent(String skill) {
 		RoleplayManager* rp = RoleplayManager::instance();
-		return rp->getRpSkill(rp->getRpSkillIndex(skill, RpSkillType::SKILL), RpSkillType::SKILL)->parentSkillName;
+		return rp->getRpSkill(rp->getRpSkillIndex(skill, RpSkillType::SKILL), RpSkillType::SKILL).getParent();
 	}
 
 	static String GetSkillAltParent(String skill) {
 		RoleplayManager* rp = RoleplayManager::instance();
-		return rp->getRpSkill(rp->getRpSkillIndex(skill, RpSkillType::SKILL), RpSkillType::SKILL)->altParentSkill;
+		return rp->getRpSkill(rp->getRpSkillIndex(skill, RpSkillType::SKILL), RpSkillType::SKILL).getAltParent();
 	}
 
 	static bool GetStringIsSkill(String skill) {
@@ -177,10 +177,10 @@ public:
 			} 				
 		}*/
 
-		RpSkillData* data = rp->getRpSkill(rp->getRpSkillIndex(skill, RpSkillType::SKILL), RpSkillType::SKILL);
+		RpSkillData data = rp->getRpSkill(rp->getRpSkillIndex(skill, RpSkillType::SKILL), RpSkillType::SKILL);
 
-		int parentLevel = GetRealSkillLevel(creature, data->parentSkillName);
-		int skillLevel = GetRealSkillLevel(creature, data->name);
+		int parentLevel = GetRealSkillLevel(creature, data.getParent());
+		int skillLevel = GetRealSkillLevel(creature, data.getName());
 
 		if(skillLevel - parentLevel <= 0 && points > 0)
 			return true;
@@ -193,10 +193,14 @@ public:
 
 		skill = GetSkillRealName(skill);
 
-		RpSkillData* data = rp->getRpSkill(rp->getRpSkillIndex(skill, RpSkillType::SKILL), RpSkillType::SKILL);
+		RpSkillData data = rp->getRpSkill(rp->getRpSkillIndex(skill, RpSkillType::SKILL), RpSkillType::SKILL);
 
-		int parentLevel = GetRealSkillLevel(player, data->parentSkillName);
-		int skillLevel = GetRealSkillLevel(player, data->name);
+		if (data.getParent() == ""){
+			return 1.0f;
+		}
+
+		int parentLevel = GetRealSkillLevel(player, data.getParent());
+		int skillLevel = GetRealSkillLevel(player, data.getName());
 
 		if (skillLevel - parentLevel > 0){
 			return pow(rp->getSkillCostMultiplier(), skillLevel - parentLevel);
@@ -231,6 +235,52 @@ public:
 			return true;
 		}
 		return false;
+	}
+
+	static void trainAttribute(CreatureObject* player, String skillName) {
+		int currentRank = GetRealSkillLevel(player, skillName);
+
+		// Check that we still meet the requirements for the skill.
+		if (CanTrainNextSkill(player, currentRank + 1, skillName)) {
+			SkillManager* skillManager = SkillManager::instance();
+			int freePoints = player->getStoredInt("starter_attr_points");
+			// Spend free Attribute points if we have them, otherwise, spend XP.
+			if(freePoints > 0) {
+				player->setStoredInt("starter_attr_points", freePoints - 1);
+				skillManager->awardSkill("rp_" + skillName + "_" + GetSkillSuffixFromValue(currentRank + 1), player, true, false, true);
+				player->sendSystemMessage("You've gained a point in " + skillName + ". You have " + String::valueOf(freePoints - 1) + " remaining free attribute points.");
+			} else {
+				skillManager->awardSkill("rp_" + skillName + "_" + GetSkillSuffixFromValue(currentRank + 1), player, true, false, false);
+				player->sendSystemMessage("You've gained a point in " + skillName + ".");
+			}
+		} else {
+			//Something happened
+			player->sendSystemMessage("ERROR: Something happened. You were eligible for the attribute you selected when you selected it, but you are no longer eligible.");
+		}
+	}
+
+	static void trainSkill(CreatureObject* player, String skillName) {
+		String skillParent = GetSkillParent(skillName);
+		String skillAltParent = GetSkillAltParent(skillName);
+		int currentRank = GetRealSkillLevel(player, skillName);
+
+		if (CanTrainNextSkill(player, currentRank + 1, skillName, skillParent, skillAltParent)) {
+			//Train it
+			SkillManager* skillManager = SkillManager::instance();
+			int freePoints = player->getStoredInt("starter_skill_points");
+			// Spend free Skill points if we have them, and the skill does not exceed the attribute level.
+			if(freePoints > 0 && currentRank < BorSkill::GetRealSkillLevel(player, skillParent)) {
+				player->setStoredInt("starter_skill_points", freePoints - 1);
+				skillManager->awardSkill("rp_" + skillName + "_" + BorSkill::GetSkillSuffixFromValue(currentRank + 1), player, true, false, true);
+				player->sendSystemMessage("You've gained a point in " + skillName + "! You have " + String::valueOf(freePoints - 1) + " remaining free skill points.");
+			} else {
+				skillManager->awardSkill("rp_" + skillName + "_" + BorSkill::GetSkillSuffixFromValue(currentRank + 1), player, true, false, false);
+				player->sendSystemMessage("You've gained a point in " + skillName + "!");
+			}
+		} else {
+			//Something happened
+			player->sendSystemMessage("ERROR: Something happened. You were eligible for the skill you selected when you selected it, but you are no longer eligible.");
+		}
 	}
 };
 

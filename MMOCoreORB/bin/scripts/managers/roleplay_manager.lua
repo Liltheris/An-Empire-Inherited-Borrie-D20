@@ -8,6 +8,19 @@ maxFeats = 5
 --Multiplier added on top of each skill's XP cost for being over the attribute cap.
 skillCostMultiplier = 1.5
 
+skillLevels = {
+    [1]  = "novice",
+    [2]  = "a01",
+    [3]  = "a02",
+    [4]  = "a03",
+    [5]  = "a04",
+    [6]  = "b01",
+    [7]  = "b02",
+    [8]  = "b03",
+    [9]  = "b04",
+    [10] = "master",
+}
+
 attributes = {
     --name, parent, altParent
     {"awareness",       "", ""},

@@ -2,28 +2,12 @@
 #define ROLEPLAYMANAGER_H_
 
 #include "engine/engine.h"
+#include "server/zone/managers/roleplay/RpSkillData.h"
 
 namespace server {
 namespace zone {
 namespace managers {
 namespace roleplay {
-
-class RpSkillData : public Object {
-public:
-	String name;
-	String parentSkillName;
-	String altParentSkill;
-
-	RpSkillData(){
-		name, parentSkillName, altParentSkill = "";
-	}
-
-	RpSkillData(String newName, String newParent, String newAltParent){
-		name = newName;
-		parentSkillName = newParent;
-		altParentSkill = newAltParent;
-	}
-};
 
 enum RpSkillType {
 	ALLSKILLS = 0,
@@ -33,9 +17,9 @@ enum RpSkillType {
 };
 
 class RoleplayManager : public Singleton<RoleplayManager>, public Logger, public Object {
-    Vector<RpSkillData*>* attributes;
-	Vector<RpSkillData*>* skills;
-	Vector<RpSkillData*>* forceSkills;
+    Vector<RpSkillData> attributes;
+	Vector<RpSkillData> skills;
+	Vector<RpSkillData> forceSkills;
 
 	int maxAttributes;
 	int maxTraining;
@@ -66,12 +50,13 @@ public:
 	}
 
     //Returns the index of the given RP skill. Returns -1 if skill does not exist.
-    int getRpSkillIndex(String skill, RpSkillType type = RpSkillType::ALLSKILLS);
+    int getRpSkillIndex(String skill, RpSkillType type = RpSkillType::SKILL);
 
     //Returns the skill data at the given index.
-    RpSkillData* getRpSkill(int index, RpSkillType type = RpSkillType::ALLSKILLS);
+    RpSkillData getRpSkill(int index, RpSkillType type = RpSkillType::SKILL);
 
-	Vector<RpSkillData*>* getRpSkillData(RpSkillType type);
+	//Returns the vector containing the skills of the requested type.
+	Vector<RpSkillData> getRpSkillList(RpSkillType type = RpSkillType::SKILL);
 };
 
 }

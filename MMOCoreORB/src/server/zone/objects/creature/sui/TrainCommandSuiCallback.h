@@ -87,12 +87,12 @@ public:
 
 	String GetAttributeStringFromID(int id) {
 		RoleplayManager* rp = RoleplayManager::instance();
-		return rp->getRpSkill(id,RpSkillType::ATTRIBUTE)->name;
+		return rp->getRpSkill(id,RpSkillType::ATTRIBUTE).getName();
 	}
 
 	String GetSkillStringFromID(int id) {
 		RoleplayManager* rp = RoleplayManager::instance();
-		return rp->getRpSkill(id,RpSkillType::SKILL)->name;
+		return rp->getRpSkill(id,RpSkillType::SKILL).getName();
 	}
 
 	String GetSkillNumeral(int value) {
@@ -143,12 +143,12 @@ public:
 		} else box->setPromptText("What attribute would you like to rank up?");
 
 		RoleplayManager* rp = RoleplayManager::instance();
-		Vector<RpSkillData*>* data = rp->getRpSkillData(RpSkillType::ATTRIBUTE);
+		Vector<RpSkillData> data = rp->getRpSkillList(RpSkillType::ATTRIBUTE);
 
-		for (int i = 0; i < data->size(); i++){
-			RpSkillData* skill = data->get(i);
+		for (int i = 0; i < data.size(); i++){
+			RpSkillData skill = data.get(i);
 
-			box->addMenuItem(BorrieRPG::Capitalize(skill->name)+" "+GetSkillNumeral(BorSkill::GetRealSkillLevel(player, skill->name)+1));
+			box->addMenuItem(BorrieRPG::Capitalize(skill.getName())+" "+GetSkillNumeral(BorSkill::GetRealSkillLevel(player, skill.getName())+1));
 		}
 		
 		player->getPlayerObject()->addSuiBox(box);
@@ -171,13 +171,13 @@ public:
 		}
 
 		RoleplayManager* rp = RoleplayManager::instance();
-		Vector<RpSkillData*>* data = rp->getRpSkillData(RpSkillType::SKILL);
+		Vector<RpSkillData> data = rp->getRpSkillList(RpSkillType::SKILL);
 
-		for (int i = 0; i < data->size(); i++){
-			RpSkillData* skill = data->get(i);
+		for (int i = 0; i < data.size(); i++){
+			RpSkillData skill = data.get(i);
 
-			int parentLevel = BorSkill::GetRealSkillLevel(player, skill->parentSkillName);
-			int skillLevel = BorSkill::GetRealSkillLevel(player, skill->name);
+			int parentLevel = BorSkill::GetRealSkillLevel(player, skill.getParent());
+			int skillLevel = BorSkill::GetRealSkillLevel(player, skill.getName());
 
 			String colour = "\\#.";
 
@@ -185,7 +185,7 @@ public:
 				colour = (parentLevel + 3 <= skillLevel) ? "\\#FF0000" : "\\#FFFF00";
 			}
 
-			box->addMenuItem(colour + BorrieRPG::Capitalize(skill->name)+" "+GetSkillNumeral(BorSkill::GetRealSkillLevel(player, skill->name)+1));
+			box->addMenuItem(colour + BorrieRPG::Capitalize(skill.getName())+" "+GetSkillNumeral(BorSkill::GetRealSkillLevel(player, skill.getName())+1));
 		}
 
 		player->getPlayerObject()->addSuiBox(box);
@@ -234,7 +234,7 @@ public:
 
 		ManagedReference<SuiMessageBox*> suibox = new SuiMessageBox(player, SuiWindowType::TEACH_OFFER);
 		if (BorSkill::CanTrainNextSkill(player, currentRank + 1, skillName, skillParent, skillAltParent)) {
-			int xp = BorSkill::getFinalXpCost(player, "rp_"+skillName+BorSkill::GetSkillSuffixFromValue(currentRank+1));
+			int xp = BorSkill::getFinalXpCost(player, "rp_"+skillName+"_"+BorSkill::GetSkillSuffixFromValue(currentRank+1));
 
 			suibox->setPromptTitle("Confirm training?"); 
 			//Can train!
@@ -245,7 +245,7 @@ public:
 		} else {
 			suibox->setPromptTitle("Not eligible for training.");
 			//Failure. Can't train.
-			suibox->setPromptText("You are not currently eligible to train this skill. You do not have enough experience points and high enough of the associated attribute.");
+			suibox->setPromptText("You are not currently eligible to train this skill. You do not have enough experience points.");
 			suibox->setCallback(new TrainCommandSuiCallback(server, -1, state));
 			suibox->setCancelButton(true, "Go Back");
 		}	
@@ -254,48 +254,13 @@ public:
 	}
 
 	void TrainAttribute(CreatureObject* player, SuiBox* suiBox, uint32 eventIndex, Vector<UnicodeString>* args, int state, int selection) {
-		String skill = GetAttributeStringFromID(selection);
-		int currentRank = BorSkill::GetRealSkillLevel(player, skill);
-		if (BorSkill::CanTrainNextSkill(player, currentRank + 1, skill)) {
-			//Train it
-			SkillManager* skillManager = SkillManager::instance();
-			int freePoints = player->getStoredInt("starter_attr_points");
-			if(freePoints > 0) {
-				player->setStoredInt("starter_attr_points", freePoints - 1);
-				skillManager->awardSkill("rp_" + skill + "_" + BorSkill::GetSkillSuffixFromValue(currentRank + 1), player, true, false, true);
-				player->sendSystemMessage("You've gained a point in " + skill + ". You have " + String::valueOf(freePoints - 1) + " remaining free attribute points.");
-			} else {
-				skillManager->awardSkill("rp_" + skill + "_" + BorSkill::GetSkillSuffixFromValue(currentRank + 1), player, true, false, false);
-				player->sendSystemMessage("You've gained a point in " + skill + ".");
-			}
-		} else {
-			//Something happened
-			player->sendSystemMessage("ERROR: Something happened. You were eligible for the attribute you selected when you selected it, but you are no longer eligible.");
-		}
+		String skillName = GetAttributeStringFromID(selection);
+		BorSkill::trainAttribute(player, skillName);
 	}
 
 	void TrainSkill(CreatureObject* player, SuiBox* suiBox, uint32 eventIndex, Vector<UnicodeString>* args, int state, int selection) {
-		String skill = GetSkillStringFromID(selection);
-		String skillParent = BorSkill::GetSkillParent(skill);
-		String skillAltParent = BorSkill::GetSkillAltParent(skill);
-		int currentRank = BorSkill::GetRealSkillLevel(player, skill);
-		if (BorSkill::CanTrainNextSkill(player, currentRank + 1, skill, skillParent, skillAltParent)) {
-			//Train it
-			SkillManager* skillManager = SkillManager::instance();
-			
-			int freePoints = player->getStoredInt("starter_skill_points");
-			if(freePoints > 0 && currentRank < BorSkill::GetRealSkillLevel(player, skillParent)) {
-				player->setStoredInt("starter_skill_points", freePoints - 1);
-				skillManager->awardSkill("rp_" + skill + "_" + BorSkill::GetSkillSuffixFromValue(currentRank + 1), player, true, false, true);
-				player->sendSystemMessage("You've gained a point in " + skill + "! You have " + String::valueOf(freePoints - 1) + " remaining free skill points.");
-			} else {
-				skillManager->awardSkill("rp_" + skill + "_" + BorSkill::GetSkillSuffixFromValue(currentRank + 1), player, true, false, false);
-				player->sendSystemMessage("You've gained a point in " + skill + "!");
-			}
-		} else {
-			//Something happened
-			player->sendSystemMessage("ERROR: Something happened. You were eligible for the skill you selected when you selected it, but you are no longer eligible.");
-		}
+		String skillName = GetSkillStringFromID(selection);
+		BorSkill::trainSkill(player, skillName);
 	}
 };
 
