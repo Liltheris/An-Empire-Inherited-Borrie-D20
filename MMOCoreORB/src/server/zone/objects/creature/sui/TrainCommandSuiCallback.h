@@ -181,9 +181,11 @@ public:
 
 			String colour = "\\#.";
 
-			if (parentLevel <= skillLevel && skillLevel != 10){
+			if (parentLevel <= skillLevel && skillLevel != 10)
 				colour = (parentLevel + 3 <= skillLevel) ? "\\#FF0000" : "\\#FFFF00";
-			}
+
+			if (skillLevel == 10)
+				colour = "\\#DBDBDB"
 
 			box->addMenuItem(colour + BorrieRPG::Capitalize(skill.getName())+" "+GetSkillNumeral(BorSkill::GetRealSkillLevel(player, skill.getName())+1));
 		}

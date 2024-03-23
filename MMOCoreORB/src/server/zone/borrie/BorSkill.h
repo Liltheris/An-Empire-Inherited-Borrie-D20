@@ -189,16 +189,16 @@ public:
 	static float getXpCostMultiplier(CreatureObject* player, String skill){
 		RoleplayManager* rp = RoleplayManager::instance();
 
-		skill = GetSkillRealName(skill);
+		String skillName = GetSkillRealName(skill);
 
-		RpSkillData data = rp->getRpSkill(rp->getRpSkillIndex(skill, RpSkillType::SKILL), RpSkillType::SKILL);
+		RpSkillData data = rp->getRpSkill(rp->getRpSkillIndex(skillName, RpSkillType::SKILL), RpSkillType::SKILL);
 
 		if (data.getParent() == ""){
 			return 1.0f;
 		}
 
 		int parentLevel = GetRealSkillLevel(player, data.getParent());
-		int skillLevel = GetRealSkillLevel(player, data.getName());
+		int skillLevel = GetSkillLevelFromString(skill);
 
 		if (skillLevel - parentLevel > 0){
 			return pow(rp->getSkillCostMultiplier(), skillLevel - parentLevel);
