@@ -448,7 +448,9 @@ void WeaponObjectImplementation::fillAttributeList(AttributeListMessage* alm, Cr
 	int skillDamage = 0;
 	if (isMeleeWeapon() || isUnarmedWeapon()){
 		skillDamage = object->getSkillMod("rp_melee_bonus");
-	} else if (isJediWeapon()) {
+	}
+	
+	if (isJediWeapon()) {
 		skillDamage = object->getSkillMod("rp_lightsaber");
 	}
 

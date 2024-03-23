@@ -151,7 +151,7 @@ public:
 		}
 	}
 
-	static bool CanTrainNextSkill(CreatureObject* creature, int rank, String skill, String parentAttribute = "", String altParentAttribute = "") {
+	static bool CanTrainNextSkill(CreatureObject* creature, int rank, String skill) {
 
 		if(rank > 10)
 			return false;
@@ -164,25 +164,38 @@ public:
 		RoleplayManager* rp = RoleplayManager::instance();
 
 		bool hasXP = skillManager->canLearnSkill(skillName, creature, false);
-		int points = creature->getStoredInt("starter_attr_points");
+		int points = 0;
 
-		RpSkillData data = rp->getRpSkill(rp->getRpSkillIndex(skill, RpSkillType::SKILL), RpSkillType::SKILL);
-
-		if (data.getName() != ""){
+		// Skill handling
+		if (rp->getRpSkillIndex(skill, RpSkillType::SKILL) != -1){
+			// Get our starter points.
 			points = creature->getStoredInt("starter_skill_points");
+
+			// Get the skill's data.
+			RpSkillData data = rp->getRpSkill(rp->getRpSkillIndex(skill, RpSkillType::SKILL), RpSkillType::SKILL);
 
 			int parentLevel = GetRealSkillLevel(creature, data.getParent());
 			int skillLevel = GetRealSkillLevel(creature, data.getName());
 
+			// We can learn the skill if we have points and our level does not exceed our parent level.
 			if(skillLevel - parentLevel < 0 && points > 0)
-				return true;
-		} else {
-			data = rp->getRpSkill(rp->getRpSkillIndex(skill, RpSkillType::ATTRIBUTE), RpSkillType::ATTRIBUTE);
-
-			if (data.getName() != "" && points > 0)
 				return true;
 		}
 
+		// Attribute handling
+		if (rp->getRpSkillIndex(skill, RpSkillType::ATTRIBUTE) != -1){
+			// Get our starter points.
+			points = creature->getStoredInt("starter_attr_points");
+
+			// Get our attribute's data.
+			RpSkillData data = rp->getRpSkill(rp->getRpSkillIndex(skill, RpSkillType::ATTRIBUTE), RpSkillType::ATTRIBUTE);
+			
+			// We can get the attribute if we have a point!
+			if (points > 0)
+				return true;
+		}
+
+		// No special handling, so just check if we have the XP needed.
 		return hasXP;
 	}
 
@@ -262,7 +275,7 @@ public:
 		String skillAltParent = GetSkillAltParent(skillName);
 		int currentRank = GetRealSkillLevel(player, skillName);
 
-		if (CanTrainNextSkill(player, currentRank + 1, skillName, skillParent, skillAltParent)) {
+		if (CanTrainNextSkill(player, currentRank + 1, skillName)) {
 			//Train it
 			SkillManager* skillManager = SkillManager::instance();
 			int freePoints = player->getStoredInt("starter_skill_points");

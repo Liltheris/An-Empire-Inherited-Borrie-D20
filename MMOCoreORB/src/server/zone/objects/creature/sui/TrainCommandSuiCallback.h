@@ -208,7 +208,7 @@ public:
 		if (BorSkill::CanTrainNextSkill(player, currentRank + 1, skillName)) {
 			suibox->setPromptTitle("Confirm training?"); 
 			//Can train!
-			suibox->setPromptText("Are you sure you want to train this attribute?\n\nThis will cost 40,000 Roleplay experience.");
+			suibox->setPromptText("Are you sure you want to train this attribute?\n\nThis will cost 45,000 Roleplay experience.");
 			suibox->setCallback(new TrainCommandSuiCallback(server, 3, index));
 			suibox->setOkButton(true, "Confirm");
 			suibox->setCancelButton(true, "Go Back");
@@ -235,12 +235,19 @@ public:
 		int currentRank = BorSkill::GetRealSkillLevel(player, skillName);
 
 		ManagedReference<SuiMessageBox*> suibox = new SuiMessageBox(player, SuiWindowType::TEACH_OFFER);
-		if (BorSkill::CanTrainNextSkill(player, currentRank + 1, skillName, skillParent, skillAltParent)) {
+		if (BorSkill::CanTrainNextSkill(player, currentRank + 1, skillName)) {
 			int xp = BorSkill::getFinalXpCost(player, "rp_"+skillName+"_"+BorSkill::GetSkillSuffixFromValue(currentRank+1));
+
+			float mod = BorSkill::getXpCostMultiplier(player, "rp_"+skillName+"_"+BorSkill::GetSkillSuffixFromValue(currentRank+1));
+			String colour = "\\#.";
+
+			if (mod > 1.0f){
+				colour = (mod > 3.0f) ? "\\#FF0000" : "\\#FFFF00";
+			}
 
 			suibox->setPromptTitle("Confirm training?"); 
 			//Can train!
-			suibox->setPromptText("Are you sure you want to train this skill?\n\nThis will cost "+String::valueOf(xp)+" Roleplay experience.");
+			suibox->setPromptText("Are you sure you want to train this skill?\n\nThis will cost "+colour+String::valueOf(xp)+"\\#. Roleplay experience.");
 			suibox->setCallback(new TrainCommandSuiCallback(server, 4, index));
 			suibox->setOkButton(true, "Confirm");
 			suibox->setCancelButton(true, "Go Back");

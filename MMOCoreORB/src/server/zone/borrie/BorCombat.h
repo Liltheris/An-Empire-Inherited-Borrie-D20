@@ -40,13 +40,13 @@ public:
     }
 
     static int getWeaponBonusDamage(CreatureObject* creature, WeaponObject* weapon){
-        //Melee weapons use weapon bonus damage + a bonus from strength
-        if (weapon->isMeleeWeapon() || weapon->isUnarmedWeapon()){
-            return weapon->getBonusDamage() + creature->getSkillMod("rp_melee_bonus");
-        }
         //Lightsabers use the lightsaber skill for bonus damage.
         if (weapon->isJediWeapon()){
             return creature->getSkillMod("rp_lightsaber");
+        }
+        //Melee weapons use weapon bonus damage + a bonus from strength
+        if (weapon->isMeleeWeapon() || weapon->isUnarmedWeapon()){
+            return weapon->getBonusDamage() + creature->getSkillMod("rp_melee_bonus");
         }
         return weapon->getBonusDamage();
     }
