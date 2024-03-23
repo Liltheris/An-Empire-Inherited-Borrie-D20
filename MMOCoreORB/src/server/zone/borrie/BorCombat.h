@@ -5,6 +5,8 @@
 #include "server/zone/managers/creature/CreatureManager.h"
 #include "server/zone/packets/chat/ChatSystemMessage.h"
 
+#include "server/zone/managers/roleplay/RoleplayManager.h"
+
 #include "server/zone/borrie/BorrieRPG.h"
 #include "server/zone/borrie/BorString.h"
 #include "server/zone/borrie/BorCharacter.h"
@@ -37,9 +39,21 @@ public:
         return output;
     }
 
-
+    static int getWeaponBonusDamage(CreatureObject* creature, WeaponObject* weapon){
+        //Melee weapons use weapon bonus damage + a bonus from strength
+        if (weapon->isMeleeWeapon() || weapon->isUnarmedWeapon()){
+            return weapon->getBonusDamage() + creature->getSkillMod("rp_melee_bonus");
+        }
+        //Lightsabers use the lightsaber skill for bonus damage.
+        if (weapon->isJediWeapon()){
+            return creature->getSkillMod("rp_lightsaber");
+        }
+        return weapon->getBonusDamage();
+    }
 
     static void AttackTarget(CreatureObject* attacker, CreatureObject* defender, CreatureObject* commander, int bodyPartTarget, bool powerAttack, bool ignoreLOS = false) {
+        RoleplayManager* rp = RoleplayManager::instance();
+
         ManagedReference<WeaponObject*> weapon = attacker->getWeapon();
 
         if(weapon->isBroken()) {
@@ -55,7 +69,7 @@ public:
         }
 
         // Determine the to hit DC.
-        int toHitDC = GetToHitModifier(attacker, defender, weapon) + 10;
+        int toHitDC = rp->getBaseDC() + GetToHitModifier(attacker, defender, weapon);
         int aimMod = 0;
         bool aimed = false;
 
@@ -189,11 +203,7 @@ public:
         if(powerAttack)
             damageDieCount++;
 
-        int bonusDamage = weapon->getBonusDamage();
-
-        if(weapon->isJediWeapon()) {
-            bonusDamage += attacker->getSkillMod("rp_lightsaber");
-        }
+        int bonusDamage = getWeaponBonusDamage(attacker, weapon);
 
         int totalDamage = GetDamageRoll(damageDieType, damageDieCount, bonusDamage);
 
@@ -269,6 +279,8 @@ public:
 
     //TO DO: When full refactor is done, this either needs to be folded into the main attack command, or sections of the attack command need to be compartmentalised into functions, to be reused here.
     static void FlurryAttackTarget(CreatureObject* attacker, CreatureObject* defender, CreatureObject* commander, bool ignoreLOS = false) {
+        RoleplayManager* rp = RoleplayManager::instance();
+
         ManagedReference<WeaponObject*> weapon = attacker->getWeapon();
         if(weapon->isBroken()) {
             commander->sendSystemMessage("Your weapon is broken, and you can't attack with a broken weapon.");
@@ -286,7 +298,7 @@ public:
         DrainActionOrWill(attacker, 1);
 
         // Determine the to hit DC.
-        int toHitDC = GetToHitModifier(attacker, defender, weapon) + 10;
+        int toHitDC = rp->getBaseDC() + GetToHitModifier(attacker, defender, weapon);
         int aimMod = 0;
         bool aimed = false;
 
@@ -389,11 +401,7 @@ public:
         
         int damageDieCount = weapon->getMinDamage();
         int damageDieType = weapon->getMaxDamage();
-        int bonusDamage = weapon->getBonusDamage();
-
-        if(weapon->isJediWeapon()) {
-            bonusDamage += attacker->getSkillMod("rp_lightsaber");
-        }
+        int bonusDamage = getWeaponBonusDamage(attacker, weapon);
 
         int damage1 = GetDamageRoll(damageDieType, damageDieCount, bonusDamage) / 2;
         int damage2 = GetDamageRoll(damageDieType, damageDieCount, bonusDamage) / 2;
@@ -427,7 +435,6 @@ public:
         } else {
             combatSpam += " and hit " + String::valueOf(hitCount) + " times!";
         }
-
 
         if(ignoreLOS) {
             BorrieRPG::BroadcastMessage(attacker, combatSpam + " " + toHitString +  reactionResult + " (Line of Sight Ignored)");
@@ -1174,7 +1181,7 @@ public:
 
         int distanceModifier = 0;
         bool tooClose = false;
-        
+
         if(distance < minRange) {
             //We're outside of the minimum range!
 			distanceModifier = attackerWeapon->getPointBlankAccuracy(); // PointBlankAccuracy is the too close DC mod
@@ -1213,7 +1220,17 @@ public:
             postureModifier += 5;
         } 
 
-        return distanceModifier + postureModifier;
+        int weaponModifier = 0;
+
+        if (attackerWeapon->getRequiredSkill() != ""){
+            int attackerLevel = BorSkill::GetRealSkillLevel(attacker, attackerWeapon->getRequiredSkill());
+            if (attackerLevel < attackerWeapon->getRequiredLevel()){
+                attacker->sendSystemMessage("\\#FFFF00Your "+BorString::capitalise(attackerWeapon->getRequiredSkill())+" is lower than your weapon's requirement! You suffer a +10 to the DC as a result!");
+                weaponModifier = 10;
+            }
+        }
+
+        return distanceModifier + postureModifier + weaponModifier;
     }
 
     static void throwGrenade(CreatureObject* attacker, CreatureObject* defender, CreatureObject* commander, WeaponObject* grenade) {

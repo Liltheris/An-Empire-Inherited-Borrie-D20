@@ -1,3 +1,12 @@
+-------------------------
+-- Combat
+-------------------------
+combatBaseDC = 10
+
+
+-------------------------
+-- Skills
+-------------------------
 --The maximum amount of attribute levels a player can have over 1.
 maxAttributes = 40
 
@@ -35,7 +44,7 @@ attributes = {
 
 skills = {
     {"armor",           "constitution", ""},
-    {"athletics",       "dexterity",    ""},
+    {"athletics",       "constitution", ""},
     {"bluff",           "charisma",     ""},
     {"command",         "charisma",     ""},
     {"composure",       "mindfulness",  ""},

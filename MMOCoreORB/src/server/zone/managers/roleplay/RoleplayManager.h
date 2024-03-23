@@ -21,6 +21,8 @@ class RoleplayManager : public Singleton<RoleplayManager>, public Logger, public
 	Vector<RpSkillData> skills;
 	Vector<RpSkillData> forceSkills;
 
+	int combatBaseDC;
+
 	int maxAttributes;
 	int maxTraining;
 	int maxFeats;
@@ -47,6 +49,10 @@ public:
 
 	int getMaxFeats() const {
 		return maxFeats;
+	}
+
+	int getBaseDC() const {
+		return combatBaseDC;
 	}
 
     //Returns the index of the given RP skill. Returns -1 if skill does not exist.

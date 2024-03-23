@@ -57,6 +57,9 @@ protected:
 
 	String ammoPack;
 
+	String requiredSkill;
+	int requiredLevel;
+
 	bool primaryAttributeOnly;
 	bool dexOnlyWeapon;
 	bool noPowerAttack;
@@ -443,6 +446,14 @@ public:
 			return "Unknown";
 			break;
 		}
+	}
+
+	const String getRequiredSkill() const {
+		return requiredSkill;
+	}
+
+	const int getRequiredLevel() const {
+		return requiredLevel;
 	}
 
 	const Vector<String>* getDefenderDefenseModifiers() const {

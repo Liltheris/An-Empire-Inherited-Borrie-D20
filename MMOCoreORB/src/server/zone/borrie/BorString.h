@@ -55,6 +55,10 @@ public:
     static String getNameTag(CreatureObject* creature, String color = "\\#00FFFF"){
         return "\\#FFFFFF[" + color + getNiceName(creature) + "\\#FFFFFF]";
     }
+
+    static String capitalise(String input) {
+		return input.subString(0, 1).toUpperCase() + input.subString(1, input.length());
+	}
 };
 
 #endif

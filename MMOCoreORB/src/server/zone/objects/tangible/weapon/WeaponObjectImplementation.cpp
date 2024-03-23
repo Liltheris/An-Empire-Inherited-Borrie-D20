@@ -20,6 +20,8 @@
 #include "server/zone/ZoneProcessServer.h"
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 
+#include "server/zone/borrie/BorString.h"
+
 
 void WeaponObjectImplementation::initializeTransientMembers() {
 	TangibleObjectImplementation::initializeTransientMembers();
@@ -86,6 +88,9 @@ void WeaponObjectImplementation::notifyLoadFromDatabase() {
 		float templateAttackSpeed = weaponTemplate->getAttackSpeed();
 		rarity = weaponTemplate->getRarity();
 	}
+
+	requiredSkill = weaponTemplate->getRequiredSkill();
+	requiredLevel = weaponTemplate->getRequiredLevel();
 	
 	alternateGrip = weaponTemplate->getAlternateGrip();
 	ammoPack = weaponTemplate->getAmmoPack();
@@ -113,6 +118,9 @@ void WeaponObjectImplementation::loadTemplateData(SharedObjectTemplate* template
 		maxAmmo = weaponTemplate->getMaxAmmo();
 		ammoPack = weaponTemplate->getAmmoPack();
 	}
+
+	requiredSkill = weaponTemplate->getRequiredSkill();
+	requiredLevel = weaponTemplate->getRequiredLevel();
 
 	attackType = weaponTemplate->getAttackType();
 	weaponEffect =  weaponTemplate->getWeaponEffect();
@@ -431,28 +439,21 @@ void WeaponObjectImplementation::fillAttributeList(AttributeListMessage* alm, Cr
 
 	StringBuffer dmg;
 
-	if (isJediWeapon()) {
-		int totalBonus = bDamage + object->getSkillMod("rp_lightsaber");
-		bDamage = totalBonus;
-
-	} else if(isUnarmedWeapon()) {
-		int totalBonus = bDamage + (object->getSkillMod("rp_unarmed") / 2);
-		if(object->hasSkill("rp_training_tka_novice") && object->hasSkill("rp_force_prog_novice")) {
-			int tk_mod = object->getSkillMod("rp_telekinesis");
-			int inw_mod = object->getSkillMod("rp_inward");
-			if(tk_mod > inw_mod)
-				totalBonus += tk_mod;
-			else 
-				totalBonus += inw_mod;
-
-			bDamage = totalBonus;
-		}
-	} 
-
 	if (bDamage > 0)
 		dmg << minDmg << "d" << maxDmg << " + " << bDamage;
-	else 
+	else
 		dmg << minDmg << "d" << maxDmg;
+
+	
+	int skillDamage = 0;
+	if (isMeleeWeapon() || isUnarmedWeapon()){
+		skillDamage = object->getSkillMod("rp_melee_bonus");
+	} else if (isJediWeapon()) {
+		skillDamage = object->getSkillMod("rp_lightsaber");
+	}
+
+	if (skillDamage > 0)
+		dmg << " + \\#00FF00" << skillDamage << "\\#.";
 
 	alm->insertAttribute("damage.dmgdice", dmg);
 
@@ -612,8 +613,8 @@ void WeaponObjectImplementation::fillAttributeList(AttributeListMessage* alm, Cr
 		}
 	}	
 
-	if(weaponTemplate->getIsDexOnlyWeapon()) {
-		alm->insertAttribute("restrictions.dex_only", "True");
+	if(requiredSkill != "") {
+		alm->insertAttribute("restrictions.requiredSkill", BorString::capitalise(requiredSkill) + " " + String::valueOf(requiredLevel));
 	}
 
 	if(weaponTemplate->getPowerAttackIsRestricted()) {

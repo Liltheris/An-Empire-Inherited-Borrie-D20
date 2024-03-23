@@ -18,6 +18,8 @@ void RoleplayManager::loadLuaConfig() {
 	maxFeats = lua->getGlobalInt("maxFeats");
 	maxTraining = lua->getGlobalInt("maxTraining");
 
+	combatBaseDC = lua->getGlobalInt("combatBaseDC");
+
 	skillCostMultiplier = lua->getGlobalFloat("skillCostMultiplier");
 
 	LuaObject luaAttributes = lua->getGlobalObject("attributes");
