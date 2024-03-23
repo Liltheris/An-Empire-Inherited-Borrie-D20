@@ -13,6 +13,8 @@
 #include "server/zone/managers/skill/SkillManager.h"
 #include "server/zone/managers/vendor/VendorManager.h"
 
+#include "server/zone/managers/roleplay/RoleplayManager.h"
+
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 #include "server/zone/managers/minigames/FishingManager.h"
 #include "server/zone/managers/minigames/GamblingManager.h"
@@ -87,5 +89,8 @@ void ZoneProcessServerImplementation::initialize() {
 	forageManager->deploy();
 
 	ShipManager::instance();
+
+	roleplayManager = RoleplayManager::instance();
+	roleplayManager->loadLuaConfig();
 
 }

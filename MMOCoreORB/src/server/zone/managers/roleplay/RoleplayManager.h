@@ -2,72 +2,30 @@
 #define ROLEPLAYMANAGER_H_
 
 #include "engine/engine.h"
+#include "server/zone/managers/roleplay/RpSkillData.h"
 
 namespace server {
 namespace zone {
 namespace managers {
 namespace roleplay {
 
-struct RpSkillData {
-	String name;
-	String parentSkillName;
-	String altParentSkill;
-};
-
 enum RpSkillType {
-    SKILL = 0,
+	ALLSKILLS = 0,
     ATTRIBUTE = 1,
-    FORCESKILL = 2,
+	SKILL = 2,
+    FORCESKILL = 3,
 };
 
 class RoleplayManager : public Singleton<RoleplayManager>, public Logger, public Object {
-    const RpSkillData attributes[8] = {
-		{"awareness", "", ""},
-		{"charisma", "", ""},
-		{"constitution", "", ""},
-		{"dexterity", "", ""},
-		{"intelligence", "", ""},
-		{"mindfulness", "", ""},
-		{"precision", "", ""},
-		{"strength", "", ""},
-	};
-	const RpSkillData skills[26] = {
-		{"armor", "constitution", ""},
-		{"athletics", "dexterity", ""},
-		{"bluff", "charisma", ""},
-		{"command", "charisma", ""},
-		{"composure", "mindfulness", ""},
-		{"computers", "intelligence", ""},
-		{"defending", "", ""},
-		{"demolitions", "precision", ""},
-		{"engineering", "intelligence", ""},
-		{"intimidation", "charisma", ""},
-		{"investigation", "awareness", ""},
-		{"larceny", "dexterity", ""},
-		{"maneuverability", "dexterity", ""},
-		{"mechanics", "precision", ""},
-		{"medicine", "intelligence", ""},
-		{"melee", "dexterity", ""},
-		{"performance", "charisma", ""},
-		{"persuasion", "charisma", ""},
-		{"piloting", "intelligence", ""},
-		{"ranged", "precision", ""},
-		{"resolve", "mindfulness", ""},
-		{"science", "intelligence", ""},
-		{"slicing", "intelligence", ""},
-		{"survival", "awareness", ""},
-		{"throwing", "precision", ""},
-		{"unarmed", "dexterity", ""},
-	};
-	const RpSkillData forceSkills[7] = {
-		{"alter", "", ""},
-		{"control", "", ""},
-		{"inward", "", ""},
-		{"lightning", "", ""},
-		{"lightsaber", "", ""},
-		{"sense", "", ""},
-		{"telekinesis", "", ""},
-	};
+    Vector<RpSkillData> attributes;
+	Vector<RpSkillData> skills;
+	Vector<RpSkillData> forceSkills;
+
+	int maxAttributes;
+	int maxTraining;
+	int maxFeats;
+
+	float skillCostMultiplier;
 
 public:
     RoleplayManager();
@@ -75,11 +33,30 @@ public:
 
     void loadLuaConfig();
 
+	float getSkillCostMultiplier() const {
+		return skillCostMultiplier;
+	}
+
+	int getMaxAttributes() const {
+		return maxAttributes;
+	}
+
+	int getMaxTraining() const {
+		return maxTraining;
+	}
+
+	int getMaxFeats() const {
+		return maxFeats;
+	}
+
     //Returns the index of the given RP skill. Returns -1 if skill does not exist.
-    int getRpSkillIndex(String skill);
+    int getRpSkillIndex(String skill, RpSkillType type = RpSkillType::SKILL);
 
     //Returns the skill data at the given index.
-    RpSkillData getRpSkill(int index);
+    RpSkillData getRpSkill(int index, RpSkillType type = RpSkillType::SKILL);
+
+	//Returns the vector containing the skills of the requested type.
+	Vector<RpSkillData> getRpSkillList(RpSkillType type = RpSkillType::SKILL);
 };
 
 }

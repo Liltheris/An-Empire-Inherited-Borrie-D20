@@ -274,7 +274,7 @@ bool SkillManager::awardSkill(const String& skillName, CreatureObject* creature,
 
 		//Witdraw experience.
 		if (!noXpRequired) {
-			ghost->addExperience(skill->getXpType(), -skill->getXpCost(), true);
+			ghost->addExperience(skill->getXpType(), -skill->getXpCost() * BorSkill::getXpCostMultiplier(creature, skillName), true);
 		}
 
 		creature->addSkill(skill, notifyClient);
@@ -761,7 +761,7 @@ bool SkillManager::canLearnSkill(const String& skillName, CreatureObject* creatu
 	if (ghost != nullptr) {
 		//Check if player has enough xp to learn the skill.
 		if (!noXpRequired) {
-			if (ghost->getExperience(skill->getXpType()) < skill->getXpCost()) {
+			if (ghost->getExperience(skill->getXpType()) < skill->getXpCost() * BorSkill::getXpCostMultiplier(creature, skillName)) {
 				return false;
 			}
 		}
@@ -793,7 +793,7 @@ bool SkillManager::fulfillsSkillPrerequisitesAndXp(const String& skillName, Crea
 	ManagedReference<PlayerObject* > ghost = creature->getPlayerObject();
 	if (ghost != nullptr) {
 		//Check if player has enough xp to learn the skill.
-		if (skill->getXpCost() > 0 && ghost->getExperience(skill->getXpType()) < skill->getXpCost()) {
+		if (skill->getXpCost() > 0 && ghost->getExperience(skill->getXpType()) < skill->getXpCost() * BorSkill::getXpCostMultiplier(creature, skillName)) {
 			return false;
 		}
 	}
