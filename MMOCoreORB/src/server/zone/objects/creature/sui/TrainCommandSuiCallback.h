@@ -185,7 +185,7 @@ public:
 				colour = (parentLevel + 3 <= skillLevel) ? "\\#FF0000" : "\\#FFFF00";
 
 			if (skillLevel == 10)
-				colour = "\\#DBDBDB"
+				colour = "\\#DBDBDB";
 
 			box->addMenuItem(colour + BorrieRPG::Capitalize(skill.getName())+" "+GetSkillNumeral(BorSkill::GetRealSkillLevel(player, skill.getName())+1));
 		}
