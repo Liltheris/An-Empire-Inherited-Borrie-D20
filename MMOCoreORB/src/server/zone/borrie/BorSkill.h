@@ -217,22 +217,22 @@ public:
 
 	static bool GetQualifiedForSkill(CreatureObject* creature, String skill) {
 		String skillName = GetSkillRealName(skill);
+
+		if (GetStringIsForceSkill(skillName)) {
+			//See if they have Force Aware at the very least.
+			if(!creature->hasSkill("rp_force_prog_rank_01")) //Force Aware
+				return false;
+		}
+
 		if (GetStringIsSkill(skillName)) {
-			if(GetStringIsForceSkill(skillName)) {
-				//See if they have Force Aware at the very least.
-				if(!creature->hasSkill("rp_force_prog_rank_01")) //Force Aware
-					return false;
-				//Check if the Force skill is off cooldown to learn.
-				if(!creature->checkCooldownRecovery(skill))
-					return false;
-			}
 			int desiredLevel = GetSkillLevelFromString(skill);
 			if (desiredLevel == -1)
-				return false;			
+				return false;
 		} else {
 			return true;
 		}
-		return false;
+
+		return true;
 	}
 
 	static void trainAttribute(CreatureObject* player, String skillName) {
