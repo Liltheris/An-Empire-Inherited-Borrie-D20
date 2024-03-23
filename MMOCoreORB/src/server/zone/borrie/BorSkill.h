@@ -166,25 +166,23 @@ public:
 		bool hasXP = skillManager->canLearnSkill(skillName, creature, false);
 		int points = creature->getStoredInt("starter_attr_points");
 
-		/*if (parentAttribute != "" && altParentAttribute != "") {
-			points = creature->getStoredInt("starter_skill_points");
-
-			int parentValue = GetRealSkillLevel(creature, parentAttribute);
-			int altParentValue = GetRealSkillLevel(creature, altParentAttribute);
-			String skillRealName = GetSkillRealName(skill);
-			if(parentValue < rank && altParentValue < rank) {
-				return false;
-			} 				
-		}*/
-
 		RpSkillData data = rp->getRpSkill(rp->getRpSkillIndex(skill, RpSkillType::SKILL), RpSkillType::SKILL);
 
-		int parentLevel = GetRealSkillLevel(creature, data.getParent());
-		int skillLevel = GetRealSkillLevel(creature, data.getName());
+		if (data.getName() != ""){
+			points = creature->getStoredInt("starter_skill_points");
 
-		if(skillLevel - parentLevel <= 0 && points > 0)
-			return true;
-		
+			int parentLevel = GetRealSkillLevel(creature, data.getParent());
+			int skillLevel = GetRealSkillLevel(creature, data.getName());
+
+			if(skillLevel - parentLevel < 0 && points > 0)
+				return true;
+		} else {
+			data = rp->getRpSkill(rp->getRpSkillIndex(skill, RpSkillType::ATTRIBUTE), RpSkillType::ATTRIBUTE);
+
+			if (data.getName() != "" && points > 0)
+				return true;
+		}
+
 		return hasXP;
 	}
 
