@@ -448,11 +448,11 @@ public:
 		}
 	}
 
-	const String getRequiredSkill() const {
+	inline String getRequiredSkill() const {
 		return requiredSkill;
 	}
 
-	const int getRequiredLevel() const {
+	inline int getRequiredLevel() const {
 		return requiredLevel;
 	}
 
