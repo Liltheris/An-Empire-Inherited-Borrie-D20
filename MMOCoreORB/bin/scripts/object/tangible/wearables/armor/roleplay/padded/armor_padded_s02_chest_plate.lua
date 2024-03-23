@@ -23,8 +23,8 @@ object_tangible_wearables_armor_roleplay_padded_armor_padded_s02_chest_plate = o
 
 	price = 800,
 
-	kinetic = 4,
-	energy = 2,
+	kinetic = 2,
+	energy = 4,
 	electricity = 4,
 	stun = 0,
 	blast = 0,

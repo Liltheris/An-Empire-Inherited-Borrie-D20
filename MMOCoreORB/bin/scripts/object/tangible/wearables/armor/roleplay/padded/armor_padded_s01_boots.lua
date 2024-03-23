@@ -23,8 +23,8 @@ object_tangible_wearables_armor_roleplay_padded_armor_padded_s01_boots = object_
 
 	price = 400,
 
-	kinetic = 4,
-	energy = 2,
+	kinetic = 2,
+	energy = 4,
 	electricity = 4,
 	stun = 0,
 	blast = 0,
