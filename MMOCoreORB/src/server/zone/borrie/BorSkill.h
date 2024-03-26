@@ -347,6 +347,8 @@ public:
 		playerObject->addExperience("rp_general", xp);
 
 		player->setStoredInt("respec", 1);
+
+		return true;
 	}
 
 	static int revokeFullSkill(CreatureObject* player, String skillName, bool returnXP = true){
