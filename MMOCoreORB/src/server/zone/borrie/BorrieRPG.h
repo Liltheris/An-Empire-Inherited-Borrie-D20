@@ -172,19 +172,50 @@ public:
 		creature->broadcastMessage(msg, true);
 	}
 
-	static void BroadcastRoll(CreatureObject* creature, String rollMessage) {
-		BroadcastMessage(creature, rollMessage);
+	static void broadcastSecretMessage(CreatureObject* creature, String message) {
+		ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
+
+		ChatManager* chatManager = creature->getZoneServer()->getChatManager();
+		Locker chatManagerLocker(chatManager);
+
+		PlayerMap* playerMap = chatManager->getPlayerMap();
+		playerMap->resetIterator();
+
+		String finalMessage = BorString::getNameTag(creature) + " " + message;
+
+		creature->sendSystemMessage(finalMessage);
+
+		while (playerMap->hasNext()) {
+			ManagedReference<CreatureObject*> playerCreature = playerMap->getNextValue();
+			ManagedReference<PlayerObject*> playerObject = playerCreature->getPlayerObject();
+
+			if (playerObject->isPrivileged()) {
+				playerCreature->sendSystemMessage(finalMessage);
+			}
+		}
 	}
 
-	static void BroadcastRoll(CreatureObject* commander, CreatureObject* creature, String rollMessage) {
-		if(commander != creature) {
-			UnicodeString message1("[\\#00FFFF"+commander->getFirstName()+"\\#FFFFFF] for [\\#FFFF00" + BorString::getNiceName(creature) + "\\#FFFFFF]: " + rollMessage);
-			ChatSystemMessage* msg = new ChatSystemMessage(message1, ChatSystemMessage::DISPLAY_CHATANDSCREEN);
-			creature->broadcastMessage(msg, true);
+	static void BroadcastRoll(CreatureObject* creature, String rollMessage, bool secret = false) {
+		if (secret) {
+			broadcastSecretMessage(creature, rollMessage);
 		} else {
-			UnicodeString message1("[\\#00FFFF" + BorString::getNiceName(creature) + "\\#FFFFFF]: " + rollMessage);
-			ChatSystemMessage* msg = new ChatSystemMessage(message1, ChatSystemMessage::DISPLAY_CHATANDSCREEN);
-			creature->broadcastMessage(msg, true);
+			BroadcastMessage(creature, rollMessage);
+		}
+		
+	}
+
+	static void BroadcastRoll(CreatureObject* commander, CreatureObject* creature, String rollMessage, bool secret = false) {
+		if(commander != creature) {
+			String message1 = " for [\\#FFFF00" + BorString::getNiceName(creature) + "\\#FFFFFF]: " + rollMessage;
+			if (secret)
+				BroadcastMessage(commander, message1);
+			else
+				broadcastSecretMessage(commander, message1);
+		} else {
+			if (secret)
+				BroadcastMessage(creature, rollMessage);
+			else
+				broadcastSecretMessage(creature, rollMessage);
 		}		
 	}
 

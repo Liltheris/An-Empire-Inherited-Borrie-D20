@@ -69,15 +69,18 @@ public:
 				args.getStringToken(command);
 				command = command.toLowerCase();
 
-				
-
 				if (command == "help") {
 					HelpDisplay(creature);
-				} else if (BorSkill::GetStringIsSkill(command) || BorSkill::GetStringIsAttribute(command)) {
+				} else if (BorSkill::GetStringIsSkill(command) || BorSkill::GetStringIsAttribute(command) || BorSkill::GetStringIsForceSkill(command)) {
+					if (args.hasMoreTokens())
+						args.getStringToken(secondCommand);
+					bool secret = secondCommand == "secret";
+
 					if(adminLevelCheck > 0) {
-						BorrieRPG::BroadcastRoll(targetCreature, BorDice::RollSkill(targetCreature, command));
+
+						BorrieRPG::BroadcastRoll(targetCreature, BorDice::RollSkill(targetCreature, command), secret);
 					} else {
-						BorrieRPG::BroadcastRoll(creature, targetCreature, BorDice::RollSkill(targetCreature, command));
+						BorrieRPG::BroadcastRoll(creature, targetCreature, BorDice::RollSkill(targetCreature, command), secret);
 					}
 					
 				} else if (BorDice::GetCommandIsDie(command)) {
