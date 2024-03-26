@@ -1,0 +1,5 @@
+spawnSceneObject("rp_tatooine", "object/tangible/furniture/cheap/chest_s01.iff", 6.95443, 0.75, 2.97027, 610009368, -0.707107, 0, 0.707107, 0)
+spawnSceneObject("rp_dantooine", "object/tangible/furniture/plain/plain_chest_s01.iff", 1.38029, 0.75, -1.36702, 610015514, 1, 0, 0, 0)
+spawnSceneObject("rp_rori", "object/tangible/furniture/plain/plain_chest_s01.iff", 4.47445, 0.7, 3.9998, 610014461, -4.37114e-08, 0, 1, 0)
+spawnSceneObject("rp_space", "object/tangible/furniture/plain/plain_chest_s01.iff", -32.2937, 0.65, 21.1693, 808256, 0.887011, 0, -0.461748, 0)
+spawnSceneObject("rp_mandalore", "object/tangible/furniture/cheap/chest_s01.iff", 23.4868, 1.30119, 2.03038, 50663, -4.37114e-08, 0, 1, 0)
