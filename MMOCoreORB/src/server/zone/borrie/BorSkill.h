@@ -152,20 +152,24 @@ public:
 	}
 
 	static bool CanTrainNextSkill(CreatureObject* creature, int rank, String skill) {
-
+		creature->sendSystemMessage("checking rank.");
 		if(rank > 10)
 			return false;
 		if(skill == "")
 			return false;
 
+		creature->sendSystemMessage("creating skill string:");
 		String skillName = "rp_" + skill + "_" + GetSkillSuffixFromValue(rank);
+		creature->sendSystemMessage(skillName);
 
 		SkillManager* skillManager = SkillManager::instance();
 		RoleplayManager* rp = RoleplayManager::instance();
 
+		creature->sendSystemMessage("checking skillManager->canLearnSkill()");
 		bool hasXP = skillManager->canLearnSkill(skillName, creature, false);
 		int points = 0;
 
+		creature->sendSystemMessage("Check if we are looking for a skill.");
 		// Skill handling
 		if (rp->getRpSkillIndex(skill, RpSkillType::SKILL) != -1){
 			// Get our starter points.
@@ -182,6 +186,7 @@ public:
 				return true;
 		}
 
+		creature->sendSystemMessage("check if we are looking for an attribute.");
 		// Attribute handling
 		if (rp->getRpSkillIndex(skill, RpSkillType::ATTRIBUTE) != -1){
 			// Get our starter points.
@@ -195,6 +200,7 @@ public:
 				return true;
 		}
 
+		creature->sendSystemMessage("Returning hasXP");
 		// No special handling, so just check if we have the XP needed.
 		return hasXP;
 	}

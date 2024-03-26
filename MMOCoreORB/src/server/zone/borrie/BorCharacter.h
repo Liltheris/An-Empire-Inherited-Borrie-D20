@@ -131,12 +131,13 @@ public:
 			box->setPromptTitle("Force Sensitivity");
 			String message = "You must choose whether or not this character is sensitive to the Force. ";
 			message += "If you choose to be Force Sensitive, you will have the option to train your ability in the Force, becoming Jedi, Sith, or something else. ";
-			message += "If you opt not to be Force Sensitive, you will have an extra 20 skill points available to you, as well as 5 more free skills you can train. ";
+			message += "If you opt not to be Force Sensitive, you will not be able to train in the Force, but are safe from persecution by the Inquisitorius. ";
 			message += "WARNING: Once you've made this decision, it is final. So choose carefully.";
 			box->setPromptText(message);
 			box->setOkButton(false, "@");
-			box->addMenuItem("I am Force Sensitive (-20 Skill Points)");
-			box->addMenuItem("I am NOT Force Sensitive (+5 Free Skills)");
+			box->addMenuItem("I am Force Sensitive");
+			box->addMenuItem("I am NOT Force Sensitive");
+			box->addMenuItem("Surprise me");
 			creature->getPlayerObject()->addSuiBox(box);
 			creature->sendMessage(box->generateMessage());
 		}
@@ -1374,7 +1375,7 @@ public:
 	}
 
 	static void doLongRest(CreatureObject* creature) {
-		uint64 time = Time::currentNanoTime();
+		uint64 time = Time::currentNanoTime() / 1000;
 
 		creature->sendSystemMessage(String::valueOf(time));
 		creature->sendSystemMessage(String::valueOf(creature->getStoredLong("long_rest_time")));
