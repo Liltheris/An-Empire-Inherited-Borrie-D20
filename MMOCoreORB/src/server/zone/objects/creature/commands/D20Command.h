@@ -84,11 +84,8 @@ public:
 					}
 					
 				} else if (BorDice::GetCommandIsDie(command)) {
-					if (args.hasMoreTokens()) {
-						args.getStringToken(secondCommand);
-						Result = BorDice::RollRPDie(targetCreature, command, Integer::valueOf(secondCommand));
-					} else
-						Result = BorDice::RollRPDie(targetCreature, command);
+					Result = BorDice::RollRPDie(targetCreature, command);
+					
 					if (Result == "fail") {
 						creature->sendSystemMessage("ERROR: Attempted to roll die for " + command + " and failed.");
 					} else

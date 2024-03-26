@@ -47,50 +47,68 @@ public:
 		}
 	}
 
+	static bool parseDiceString(String roll, int &number, int &type, int &bonus){
+		StringTokenizer main(roll);
+		main.setDelimeter("+");
+		if (!main.hasMoreTokens())
+			return false;
+		
+		//split our roll from our bonus.
+		roll = main.getStringToken();
+
+		// Set our roll bonus. No need to return false if we don't have a bonus though.
+		bonus = 0;
+		if (main.hasMoreTokens())
+			bonus = main.getIntToken();
+
+		StringTokenizer dice(roll);
+		dice.setDelimeter("d");
+
+		// Get the number of dice thrown.
+		if (!dice.hasMoreTokens())
+			return false;
+		number = dice.getIntToken();
+
+		// Get our dice type.
+		if (!dice.hasMoreTokens())
+			return false;
+		type = dice.getIntToken();
+
+		return true;
+	}
+
 	static String RollRPDie(CreatureObject* creature, String roll, int mod = 0) {
-		int numDice, diceValue, nTempResult, nResult = 0;
+		int numDice, diceValue, bonus, nTempResult, nResult = 0;
 		String sNumDice, sDiceValue, DiceRollString;
-		StringTokenizer args(roll);
-		args.setDelimeter("d");
-		if (!args.hasMoreTokens()) {
-			// Return. Send message that there was no proper set up.
+
+		if (!parseDiceString(roll, numDice, diceValue, bonus)){
 			return "fail";
-		} else {
-			args.getStringToken(sNumDice);
-			if (args.hasMoreTokens()) {
-				args.getStringToken(sDiceValue);
-				numDice = Integer::valueOf(sNumDice);
-				diceValue = Integer::valueOf(sDiceValue);
-				if (numDice > 10 || numDice < 1) {
-					creature->sendSystemMessage("You cannot roll more than 1 - 10 dice.");
-					return "fail";
-				} else if (diceValue > 100 || diceValue < 2) {
-					creature->sendSystemMessage("Accepted die are d2 - 100");
-					return "fail";
-				}
-				for (int i = 0; i < numDice; i++) {
-					nTempResult = System::random(diceValue - 1) + 1;
-					DiceRollString += BorString::rollColour(nTempResult, diceValue, "\\#FFFFFF");
-					nResult += nTempResult;
-					if (i == numDice - 1)
-						DiceRollString += " =";
-					else
-						DiceRollString += " + ";
-				}
-
-				if (mod != 0)
-					return "Roll " + sNumDice + "d" + sDiceValue + ": " + DiceRollString + " (Modifier: " + String::valueOf(mod) +
-						   ") Result: " + String::valueOf(nResult + mod);
-				else
-					return "Roll " + sNumDice + "d" + sDiceValue + ": " + DiceRollString + " Result: " + String::valueOf(nResult);
-
-			} else {
-				// Return, we need the full thing.
-				return "fail";
-			}
 		}
 
-		return "fail";
+		if (numDice > 10 || numDice < 1){
+			creature->sendSystemMessage("You cannot roll more than 1 - 10 dice.");
+			return "fail";
+		}
+
+		if (diceValue > 100 || diceValue < 2){
+			creature->sendSystemMessage("Accepted die are d2 - 100");
+			return "fail";
+		}
+
+		for (int i = 0; i < numDice; i++){
+			nTempResult = System::random(diceValue - 1) + 1;
+			DiceRollString += BorString::rollColour(nTempResult, diceValue, "\\#FFFFFF");
+			nResult += nTempResult;
+			if (i == numDice - 1)
+				DiceRollString += " =";
+			else
+				DiceRollString += " + ";
+		}
+
+		if (mod != 0)
+			return "Roll "+String::valueOf(numDice)+"d"+String::valueOf(diceValue)+": "+DiceRollString+" (Modifier: "+String::valueOf(mod)+") Result: "+String::valueOf(nResult + mod);
+		else
+			return "Roll "+String::valueOf(numDice)+"d"+String::valueOf(diceValue)+": "+DiceRollString+" Result: "+String::valueOf(nResult);
 	}
 
 	static String RollSkill(CreatureObject* creature, String skillName) {
