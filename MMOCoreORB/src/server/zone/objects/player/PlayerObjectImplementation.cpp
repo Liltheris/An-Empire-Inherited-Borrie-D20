@@ -1429,7 +1429,7 @@ void PlayerObjectImplementation::notifyOnline() {
 		SkillManager::instance()->awardSkill("rp_utility_disguised", playerCreature, true, false, true, true);
 	}
 	
-	if (playerCreature->getStoredInt("repsec") != 1){
+	if (playerCreature->getStoredInt("respec") != 1){
 		BorSkill::resetSkillsAndAttributes(playerCreature);
 	}
 	

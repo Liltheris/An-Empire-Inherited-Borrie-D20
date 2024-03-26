@@ -48,7 +48,7 @@ public:
 		String result = creature->getFirstName();
         RoleplayManager* rp = RoleplayManager::instance();
 
-		if (rp->isNameExcluded(result)){
+		if (rp->isNameExcluded(result.toLowerCase())){
 			result = creature->getDisplayedName();
 		}
 		return result;
