@@ -601,6 +601,8 @@ bool PlayerCreationManager::createCharacter(ClientCreateCharacterCallback* callb
 	playerCreature->setStoredInt("starter_attr_points", 30);
 	playerCreature->setStoredInt("starter_skill_points", 15);
 
+	playerCreature->setStoredInt("respec", 1);
+
 	return true;
 }
 

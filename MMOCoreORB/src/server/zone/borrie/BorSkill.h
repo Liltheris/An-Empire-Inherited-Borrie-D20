@@ -304,6 +304,96 @@ public:
 			player->sendSystemMessage("ERROR: Something happened. You were eligible for the skill you selected when you selected it, but you are no longer eligible.");
 		}
 	}
+
+	static bool resetSkillsAndAttributes(CreatureObject* player){
+		bool maxedSkillFound = false;
+
+		int xp = 0;
+
+		RoleplayManager* rp = RoleplayManager::instance();
+
+		Vector<RpSkillData> skills = rp->getRpSkillList(RpSkillType::SKILL);
+		Vector<RpSkillData> attributes = rp->getRpSkillList(RpSkillType::ATTRIBUTE);
+
+		for (int i = 0; i < skills.size(); i++){
+			RpSkillData skill = skills.get(i);
+
+			if(!maxedSkillFound && player->hasSkill("rp_"+skill.getName()+"_master")){
+				maxedSkillFound = true;
+				revokeFullSkill(player, skill.getName(), false);
+			} else {
+				xp += revokeFullSkill(player, skill.getName());
+			}
+		}
+
+		for (int i = 0; i < attributes.size(); i++){
+			RpSkillData attribute = attributes.get(i);
+
+			revokeFullSkill(player, attribute.getName());
+		}
+
+		player->setStoredInt("starter_skill_points", 15);
+		player->setStoredInt("starter_attr_points", 30);
+		player->setStoredLong("long_rest_time", -1);
+
+
+		PlayerObject* playerObject = player->getPlayerObject();
+		playerObject->addExperience("rp_general", xp);
+
+		player->setStoredInt("respec", 1);
+	}
+
+	static int revokeFullSkill(CreatureObject* player, String skillName, bool returnXP = true){
+		int xp = 0;
+
+		if(player->hasSkill("rp_" + skillName + "_master")) {
+			xp += revokeRpSkill(player,"rp_" + skillName + "_master");
+		}
+		if(player->hasSkill("rp_" + skillName + "_b04")) {
+			xp += revokeRpSkill(player,"rp_" + skillName + "_b04");
+		}
+		if(player->hasSkill("rp_" + skillName + "_b03")) {
+			xp += revokeRpSkill(player,"rp_" + skillName + "_b03");
+		}
+		if(player->hasSkill("rp_" + skillName + "_b02")) {
+			xp += revokeRpSkill(player,"rp_" + skillName + "_b02");
+		}
+		if(player->hasSkill("rp_" + skillName + "_b01")) {
+			xp += revokeRpSkill(player,"rp_" + skillName + "_b01");
+		}
+		if(player->hasSkill("rp_" + skillName + "_a04")) {
+			xp += revokeRpSkill(player,"rp_" + skillName + "_a04");
+		}
+		if(player->hasSkill("rp_" + skillName + "_a03")) {
+			xp += revokeRpSkill(player,"rp_" + skillName + "_a03");
+		}
+		if(player->hasSkill("rp_" + skillName + "_a02")) {
+			xp += revokeRpSkill(player,"rp_" + skillName + "_a02");
+		}
+		if(player->hasSkill("rp_" + skillName + "_a01")) {
+			xp += revokeRpSkill(player,"rp_" + skillName + "_a01");
+		}
+		if(player->hasSkill("rp_" + skillName + "_novice")) {
+			xp += revokeRpSkill(player,"rp_" + skillName + "_novice");
+		}
+
+		if (returnXP){
+			return xp;
+		}
+		return 0;
+	}
+
+	static int revokeRpSkill(CreatureObject* creature, String skillName){
+		SkillManager* skillManager = SkillManager::instance();
+		Skill* skill = skillManager->getSkill(skillName);
+
+		if (skill != nullptr){
+			int xp = skill->getXpCost();
+			creature->removeSkill(skillName);
+			return xp;
+		}
+		return 0;
+	}
 };
 
 #endif /*BORSKILL_H_*/
