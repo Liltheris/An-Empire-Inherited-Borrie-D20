@@ -849,7 +849,7 @@ public:
 		text << "/dm setstoredint [name] [value] - Sets the value of the provided stored int" << endl;
 		text << "/dm setstoredstring [name] [value] - Sets the value of the provided stored string" << endl;
 		text << "/dm resetcooldown [name] - Sets the provided cooldown timer to 0." << endl;
-		text << "/dm resetrest - Restes the long rest timer on the target." << endl;
+		text << "/dm resetrest - Resets the long rest timer on the target." << endl;
 
 		ManagedReference<SuiMessageBox*> box = new SuiMessageBox(creature, SuiWindowType::NONE);
 		box->setPromptTitle("DM COMMAND HELP");
