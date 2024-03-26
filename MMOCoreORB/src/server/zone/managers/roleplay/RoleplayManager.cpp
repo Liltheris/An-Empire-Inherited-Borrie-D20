@@ -26,7 +26,7 @@ void RoleplayManager::loadLuaConfig() {
 
 	//Load our attributes from lua!
 	if (luaAttributes.isValidTable()){
-		for (int i = 1; i < luaAttributes.getTableSize(); i++){
+		for (int i = 1; i <= luaAttributes.getTableSize(); i++){
 			LuaObject data = luaAttributes.getObjectAt(i);
 			if(data.isValidTable()){
 				RpSkillData skill = RpSkillData();
@@ -50,7 +50,7 @@ void RoleplayManager::loadLuaConfig() {
 
 	//Load our skills from lua!
 	if (luaSkills.isValidTable()){
-		for (int i = 1; i < luaSkills.getTableSize(); i++){
+		for (int i = 1; i <= luaSkills.getTableSize(); i++){
 			LuaObject data = luaSkills.getObjectAt(i);
 			if(data.isValidTable()){
 				RpSkillData skill = RpSkillData();
@@ -74,7 +74,7 @@ void RoleplayManager::loadLuaConfig() {
 
 	//Load our Force skills from lua!
 	if (luaForceSkills.isValidTable()){
-		for (int i = 1; i < luaForceSkills.getTableSize(); i++){
+		for (int i = 1; i <= luaForceSkills.getTableSize(); i++){
 			LuaObject data = luaForceSkills.getObjectAt(i);
 			if(data.isValidTable()){
 				RpSkillData skill = RpSkillData();

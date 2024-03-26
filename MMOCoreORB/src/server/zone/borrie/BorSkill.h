@@ -322,7 +322,7 @@ public:
 		Vector<RpSkillData> skills = rp->getRpSkillList(RpSkillType::SKILL);
 		Vector<RpSkillData> attributes = rp->getRpSkillList(RpSkillType::ATTRIBUTE);
 
-		for (int i = 0; i <= skills.size(); i++){
+		for (int i = 0; i < skills.size(); i++){
 			RpSkillData skill = skills.get(i);
 
 			if(!maxedSkillFound && player->hasSkill("rp_"+skill.getName()+"_master")){
@@ -333,7 +333,7 @@ public:
 			}
 		}
 
-		for (int i = 0; i <= attributes.size(); i++){
+		for (int i = 0; i < attributes.size(); i++){
 			RpSkillData attribute = attributes.get(i);
 
 			revokeFullSkill(player, attribute.getName(), true);
