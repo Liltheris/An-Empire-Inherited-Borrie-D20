@@ -57,14 +57,14 @@ public:
 				OpenTopMenu(player, suiBox, eventIndex, args, state, selection);
 				return;
 			}				
-			
+			player->sendSystemMessage("Opening confirm Attribute selection.");
 			OpenConfirmSkillSelectionWindow(player, suiBox, eventIndex, args, state, selection);			
 		} else if (state == 3) { //Train a Attribute
 			if (cancelPressed) {
 				OpenAttributeSelectionMenu(player, suiBox, eventIndex, args, state, selection);
 				return;
 			}				
-			
+			player->sendSystemMessage("Training Attribute.");
 			TrainAttribute(player, suiBox, eventIndex, args, state, selection);
 
 			OpenAttributeSelectionMenu(player, suiBox, eventIndex, args, state, selection);
@@ -195,17 +195,22 @@ public:
 	}
 
 	void OpenConfirmAttributeSelectionWindow(CreatureObject* player, SuiBox* suiBox, uint32 eventIndex, Vector<UnicodeString>* args, int state, int selection) {
+		player->sendSystemMessage("OpenConfirmAttributeSelectionWindow()");
 		int freeSkillPoints = player->getStoredInt("starter_skill_points");
 		int freeAttrPoints = player->getStoredInt("starter_attr_points");
 		int index = Integer::valueOf(args->get(0).toString());
 		//Get index as skill
+		player->sendSystemMessage("GetAttributeStringFromID() executing.");
 		String skillName = GetAttributeStringFromID(index);
 		//Check to see what the next level of that skill is
 		//See if they quality for that skill
+		player->sendSystemMessage("GetRealSkillLevel executing.");
 		int currentRank = BorSkill::GetRealSkillLevel(player, skillName);
 		// Give them a new SUI box option either confirming, or informing that they can't train that right now. 
+		player->sendSystemMessage("Create message box.");
 		ManagedReference<SuiMessageBox*> suibox = new SuiMessageBox(player, SuiWindowType::TEACH_OFFER);
 		if (BorSkill::CanTrainNextSkill(player, currentRank + 1, skillName)) {
+			player->sendSystemMessage("Can Train Level.");
 			suibox->setPromptTitle("Confirm training?"); 
 			//Can train!
 			suibox->setPromptText("Are you sure you want to train this attribute?\n\nThis will cost 45,000 Roleplay experience.");
@@ -213,12 +218,14 @@ public:
 			suibox->setOkButton(true, "Confirm");
 			suibox->setCancelButton(true, "Go Back");
 		} else {
+			player->sendSystemMessage("Can't train level.");
 			suibox->setPromptTitle("Not eligible for training.");
 			//Failure. Can't train.
 			suibox->setPromptText("You are not currently eligible to train this attribute. You do not have enough experience points.");
 			suibox->setCallback(new TrainCommandSuiCallback(server, -1, state));
 			suibox->setCancelButton(true, "Go Back");
 		}	
+		player->sendSystemMessage("Sending Box.");
 		player->getPlayerObject()->addSuiBox(suibox);
 		player->sendMessage(suibox->generateMessage());
 	}

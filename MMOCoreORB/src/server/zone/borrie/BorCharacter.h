@@ -1374,13 +1374,16 @@ public:
 	}
 
 	static void doLongRest(CreatureObject* creature) {
-		unsigned long long time = Time::currentNanoTime();
+		uint64 time = Time::currentNanoTime();
+
+		creature->sendSystemMessage(String::valueOf(time));
+		creature->sendSystemMessage(String::valueOf(creature->getStoredLong("long_rest_time")));
 
 		//Check if they are still on rest cooldown.
 		if(time < creature->getStoredLong("long_rest_time")){
-			unsigned long long timeRemaining = creature->getStoredLong("long_rest_time") - time;
+			uint64 timeRemaining = creature->getStoredLong("long_rest_time") - time;
 			BorrieRPG::BroadcastMessage(creature, BorString::getNiceName(creature) + " was unable to rest, as they have rested too recently.");
-			creature->sendSystemMessage("You can rest again in " +String::valueOf(ceil(timeRemaining / -3600000.f))+ " hours.");
+			creature->sendSystemMessage("You can rest again in " +String::valueOf(ceil(timeRemaining / -3600000))+ " hours.");
 			return;
 		}
 
