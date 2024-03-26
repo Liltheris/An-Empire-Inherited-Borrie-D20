@@ -29,4 +29,5 @@ content ={
 {"object/tangible/component/weapon/blaster_barrel_wp_muzzle_sm_s05.iff"},
 {"object/tangible/component/weapon/blaster_barrel_wp_muzzle_sm_s06.iff"},
 {"object/tangible/component/weapon/blaster_barrel_wp_muzzle_sm_s07.iff"},
+{"object/tangible/component/weapon/stock.iff"},
 }
