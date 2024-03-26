@@ -252,8 +252,14 @@ public:
 			int desiredLevel = GetSkillLevelFromString(skill);
 			if (desiredLevel == -1)
 				return false;
-		} else {
-			return true;
+		}
+
+		if (GetStringIsAttribute(skillName)) {
+			SkillManager* skillManager = SkillManager::instance();
+			RoleplayManager* rp = RoleplayManager::instance();
+
+			if (skillManager->getRpAttributeCount(creature) >= rp->getMaxAttributes())
+				return false;
 		}
 
 		return true;

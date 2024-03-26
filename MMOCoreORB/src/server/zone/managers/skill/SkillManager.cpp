@@ -917,6 +917,20 @@ int SkillManager::getForceSkillCount(CreatureObject* creature) {
 	return forceSensitiveSkillCount;
 }
 
+int SkillManager::getRpAttributeCount(CreatureObject* creature) {
+	const SkillList* skills =  creature->getSkillList();
+	int attributeCount = 0;
+	for (int i = 0; i < skills->size(); ++i) {
+		const String& skillName = skills->get(i)->getSkillName();
+		if ((skillName.contains("rp_awareness") || skillName.contains("rp_charisma") || skillName.contains("rp_constitution") 
+		|| skillName.contains("rp_dexterity") || skillName.contains("rp_intelligence") || skillName.contains("rp_mindfulness")
+		|| skillName.contains("rp_precision") || skillName.contains("rp_strength")) && !skillName.contains("_novice")) 
+			attributeCount++;
+	}
+
+	return attributeCount;
+}
+
 int SkillManager::getTrainingSkillCount(CreatureObject* creature) {
 	const SkillList* skills =  creature->getSkillList();
 	int trainingSkillCount = 0;
