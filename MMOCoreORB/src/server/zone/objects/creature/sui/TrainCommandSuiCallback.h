@@ -207,7 +207,10 @@ public:
 			player->sendSystemMessage("Can Train Level.");
 			suibox->setPromptTitle("Confirm training?"); 
 			//Can train!
-			suibox->setPromptText("Are you sure you want to train this attribute?\n\nThis will cost 45,000 Roleplay experience.");
+			if (freeAttrPoints < 1)
+				suibox->setPromptText("Are you sure you want to train this attribute?\n\nThis will cost 45,000 Roleplay experience.");
+			else
+				suibox->setPromptText("Are you sure you want to train this attribute?\n\nThis will cost 1 attribute point.");
 			suibox->setCallback(new TrainCommandSuiCallback(server, 3, index));
 			suibox->setOkButton(true, "Confirm");
 			suibox->setCancelButton(true, "Go Back");
@@ -248,7 +251,10 @@ public:
 
 			suibox->setPromptTitle("Confirm training?"); 
 			//Can train!
-			suibox->setPromptText("Are you sure you want to train this skill?\n\nThis will cost "+colour+String::valueOf(xp)+"\\#. Roleplay experience.");
+			if (freeSkillPoints < 1)
+				suibox->setPromptText("Are you sure you want to train this skill?\n\nThis will cost "+colour+String::valueOf(xp)+"\\#. Roleplay experience.");
+			else
+				suibox->setPromptText("Are you sure you want to train this skill?\n\nThis will cost 1 skill point.");
 			suibox->setCallback(new TrainCommandSuiCallback(server, 4, index));
 			suibox->setOkButton(true, "Confirm");
 			suibox->setCancelButton(true, "Go Back");
