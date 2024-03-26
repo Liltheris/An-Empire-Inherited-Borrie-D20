@@ -81,3 +81,9 @@ forceSkills = {
     {"sense",       "", ""},
     {"telekinesis", "", ""},    
 }
+
+-------------------------
+-- Other settings
+-------------------------
+
+stringExcludedNames = {"the", "a", "an", "lord", "darth", "master"}

@@ -21,6 +21,8 @@ class RoleplayManager : public Singleton<RoleplayManager>, public Logger, public
 	Vector<RpSkillData> skills;
 	Vector<RpSkillData> forceSkills;
 
+	Vector<String> stringExcludedNames;
+
 	int combatBaseDC;
 
 	int maxAttributes;
@@ -63,6 +65,11 @@ public:
 
 	//Returns the vector containing the skills of the requested type.
 	Vector<RpSkillData> getRpSkillList(RpSkillType type = RpSkillType::SKILL);
+
+	//Returns true if the provided string is an excluded first name.
+	inline bool isNameExcluded(String name){
+		return stringExcludedNames.contains(name);
+	}
 };
 
 }

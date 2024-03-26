@@ -2,6 +2,7 @@
 #define BORSTRING_H_
 
 #include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/managers/roleplay/RoleplayManager.h"
 #include "engine/engine.h"
 
 /*Class dealing with the manipulation and formatting of strings for output in system messages and broadcasts.*/
@@ -45,8 +46,9 @@ public:
     /*Outputs the creature's first name, or full name if non-standard.*/
     static String getNiceName(CreatureObject* creature){
 		String result = creature->getFirstName();
+        RoleplayManager* rp = RoleplayManager::instance();
 
-		if (result == "a" || result == "an" || result == "the"){
+		if (rp->isNameExcluded(result)){
 			result = creature->getDisplayedName();
 		}
 		return result;

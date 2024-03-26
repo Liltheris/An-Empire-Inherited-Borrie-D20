@@ -94,6 +94,19 @@ void RoleplayManager::loadLuaConfig() {
 	}
 	luaForceSkills.pop();
 
+	LuaObject luaStringExcludedNames = lua->getGlobalObject("stringExcludedNames");
+
+	if (luaStringExcludedNames.isValidTable()){
+		for (int i = 1; i < luaStringExcludedNames.getTableSize(); i++){
+			String name = luaStringExcludedNames.getStringAt(i);
+
+			stringExcludedNames.add(name);
+		}
+	} else {
+		fatal("LUA STRING EXCLUDED NAMES OBJECT IS NOT VALID!");
+	}
+	luaStringExcludedNames.pop();
+
 	delete lua;
 	lua = nullptr;
 }
