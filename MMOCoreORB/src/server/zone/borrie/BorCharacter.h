@@ -4,6 +4,7 @@
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/managers/creature/CreatureManager.h"
 #include "server/zone/packets/chat/ChatSystemMessage.h"
+#include "server/zone/managers/stringid/StringIdManager.h"
 
 //#include "templates/roleplay/RoleplayManager.h"
 
@@ -137,7 +138,7 @@ public:
 			box->setOkButton(false, "@");
 			box->addMenuItem("I am Force Sensitive");
 			box->addMenuItem("I am NOT Force Sensitive");
-			box->addMenuItem("Surprise me");
+			box->addMenuItem("Surprise me!");
 			creature->getPlayerObject()->addSuiBox(box);
 			creature->sendMessage(box->generateMessage());
 		}
@@ -1010,6 +1011,15 @@ public:
 			creature->updateCooldownTimer("exp_music", 60 * 1000);
 			creature->playMusicMessage("sound/music_acq_thespian.snd");
 		}
+	}
+
+	static void rewardXP(CreatureObject* creature, CreatureObject* dm, String type, int amount){
+		StringIdManager* sidman = StringIdManager::instance();
+
+		String expname = sidman->getStringId(String("@exp_n:" + type).hashCode()).toString();
+
+		creature->getZoneServer()->getPlayerManager()->awardExperience(creature, type, amount, true, false, false);
+		dm->sendSystemMessage("Rewarded "+creature->getFirstName()+" "+String::valueOf(amount) +" "+expname+" experience.");
 	}
 
 	static void ModifyDailyFactionContribution(CreatureObject* creature, CreatureObject* dm, int amount) {

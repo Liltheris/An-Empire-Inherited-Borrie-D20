@@ -586,7 +586,13 @@ public:
 							if(args.hasMoreTokens())  {
 								int amount;
 								amount = args.getIntToken();
-								BorCharacter::RewardGeneralRPExperience(object->asCreatureObject(), creature, amount, true);
+
+								String type = "rp_general";
+
+								if(args.hasMoreTokens()){
+									type = args.getStringToken();
+								}
+								BorCharacter::rewardXP(object->asCreatureObject(), creature, type, amount);
 								//Prints to log. ...?
 							} else {
 								creature->sendSystemMessage("You need to specify an amount of experience to give.");
@@ -770,6 +776,23 @@ public:
 					} else {
 						creature->sendSystemMessage("Invalid Target.");
 					}	
+				} else if (command == "resetrest") {
+					if(object != nullptr) {
+						if (object->isCreatureObject() && object->isPlayerCreature()) {
+							if (object->isCreatureObject()) {
+								creo = object->asCreatureObject();
+								creo->setStoredLong("long_rest_time", -1);
+								creature->sendSystemMessage("The long rest cooldown timer has been reset for target!");
+							} else {
+								creature->sendSystemMessage("Target needs to be a creature!");
+								return SUCCESS;
+							}
+						} else {
+							creature->sendSystemMessage("Invalid Target.");
+						}
+					} else {
+						creature->sendSystemMessage("Invalid Target.");
+					}	
 				}
 			}
 		} catch (Exception& e) {
@@ -813,7 +836,7 @@ public:
 		text << "/dm randomname <type> - Sets a random name on the target based on the type provided, such as human, rodian, bothan, etc. " << endl;
 		text << "/dm grantpoint <attribute/skill> - Grants a free skill or attribute point to the target" << endl;
 		text << "/dm removepoint <attribute/skill> - Removes a free skill or attribute point from the target" << endl;
-		text << "/dm exp <value> - Gives the target General RP Experience based on the amount provided" << endl;
+		text << "/dm exp <value> <type> - Gives the target XP of the provided type. If not type is provided, grants general XP." << endl;
 		text << "/dm toggleai - Toggles the AI of an NPC to always be on or off. Helps with stubborn NPCs." << endl;
 		text << "/dm setheight <value> - Set the height of an NPC" << endl;
 		text << "/dm alertturn - Marks your target and announces to everyone that it is their turn" << endl;
@@ -826,6 +849,7 @@ public:
 		text << "/dm setstoredint [name] [value] - Sets the value of the provided stored int" << endl;
 		text << "/dm setstoredstring [name] [value] - Sets the value of the provided stored string" << endl;
 		text << "/dm resetcooldown [name] - Sets the provided cooldown timer to 0." << endl;
+		text << "/dm resetrest - Restes the long rest timer on the target." << endl;
 
 		ManagedReference<SuiMessageBox*> box = new SuiMessageBox(creature, SuiWindowType::NONE);
 		box->setPromptTitle("DM COMMAND HELP");
