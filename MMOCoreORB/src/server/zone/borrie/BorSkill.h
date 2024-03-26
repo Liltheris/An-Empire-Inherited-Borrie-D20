@@ -159,7 +159,7 @@ public:
 			return false;
 
 		String skillName = "rp_" + skill + "_" + GetSkillSuffixFromValue(rank);
-		creature->sendSystemMessage(skillName);
+
 
 		SkillManager* skillManager = SkillManager::instance();
 		RoleplayManager* rp = RoleplayManager::instance();

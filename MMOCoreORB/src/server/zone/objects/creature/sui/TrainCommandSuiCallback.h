@@ -204,7 +204,6 @@ public:
 		// Give them a new SUI box option either confirming, or informing that they can't train that right now. 
 		ManagedReference<SuiMessageBox*> suibox = new SuiMessageBox(player, SuiWindowType::TEACH_OFFER);
 		if (BorSkill::CanTrainNextSkill(player, currentRank + 1, skillName)) {
-			player->sendSystemMessage("Can Train Level.");
 			suibox->setPromptTitle("Confirm training?"); 
 			//Can train!
 			if (freeAttrPoints < 1)
@@ -215,14 +214,12 @@ public:
 			suibox->setOkButton(true, "Confirm");
 			suibox->setCancelButton(true, "Go Back");
 		} else {
-			player->sendSystemMessage("Can't train level.");
 			suibox->setPromptTitle("Not eligible for training.");
 			//Failure. Can't train.
 			suibox->setPromptText("You are not currently eligible to train this attribute. You do not have enough experience points.");
 			suibox->setCallback(new TrainCommandSuiCallback(server, -1, state));
 			suibox->setCancelButton(true, "Go Back");
 		}	
-		player->sendSystemMessage("Sending Box.");
 		player->getPlayerObject()->addSuiBox(suibox);
 		player->sendMessage(suibox->generateMessage());
 	}
