@@ -25,6 +25,7 @@ content = {
 	{"object/tangible/wearables/hat/shared_nightsister_hat_s02.iff",},
 	{"object/tangible/wearables/hat/shared_nightsister_hat_s03.iff",},
 	{"object/tangible/wearables/mask/shared_mask_sith_s01.iff",},
+	{"object/tangible/wearables/mask/shared_mask_bandana_s01.iff",},
 	{"object/tangible/wearables/hood/shared_hood_kubaz_s01.iff",},
 	{"object/tangible/wearables/hood/shared_sithcloak_h00.iff",},
 	{"object/tangible/wearables/hood/shared_sithcloak_h01.iff",},
