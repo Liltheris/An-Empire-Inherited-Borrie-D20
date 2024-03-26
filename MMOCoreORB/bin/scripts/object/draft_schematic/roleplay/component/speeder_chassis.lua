@@ -27,7 +27,7 @@ object_draft_schematic_roleplay_component_speeder_chassis = object_draft_schemat
 	resourceTypes = {"object/tangible/borrp/crafting/shared_scrap_metal.iff","object/tangible/borrp/crafting/shared_scrap_metal.iff","object/tangible/borrp/crafting/shared_scrap_metal.iff","object/tangible/borrp/crafting/shared_scrap_metal.iff"},
 	resourceQuantities = {1,1,1,1},
 	contribution = {100,100,100,100},
-	targetTemplate = "object/tangible/borrp/crafting/circuit_board.iff",
+	targetTemplate = "object/tangible/borrp/crafting/speeder_chassis.iff",
 
 	additionalTemplates = {}
 

@@ -1,8 +1,8 @@
-object_draft_schematic_roleplay_component_speeder_engine = object_draft_schematic_roleplay_component_shared_speeder_engine:new {
+object_draft_schematic_roleplay_component_swoop_chassis = object_draft_schematic_roleplay_component_shared_swoop_chassis:new {
 
 	templateType = DRAFTSCHEMATIC,
 
-	customObjectName = "Speeder engine",
+	customObjectName = "swoop Chassis",
 
 	craftingToolTab = 1, -- (See DraftSchematicObjectTemplate.h)
 	complexity = 6,
@@ -27,8 +27,8 @@ object_draft_schematic_roleplay_component_speeder_engine = object_draft_schemati
 	resourceTypes = {"object/tangible/borrp/crafting/shared_scrap_metal.iff","object/tangible/borrp/crafting/shared_scrap_metal.iff","object/tangible/borrp/crafting/shared_scrap_metal.iff","object/tangible/borrp/crafting/shared_scrap_metal.iff"},
 	resourceQuantities = {1,1,1,1},
 	contribution = {100,100,100,100},
-	targetTemplate = "object/tangible/borrp/crafting/speeder_engine.iff",
+	targetTemplate = "object/tangible/borrp/crafting/swoop_chassis.iff",
 
 	additionalTemplates = {}
 
-}ObjectTemplates:addTemplate(object_draft_schematic_roleplay_component_speeder_engine, "object/draft_schematic/roleplay/component/speeder_engine.iff")
+}ObjectTemplates:addTemplate(object_draft_schematic_roleplay_component_swoop_chassis, "object/draft_schematic/roleplay/component/swoop_chassis.iff")
