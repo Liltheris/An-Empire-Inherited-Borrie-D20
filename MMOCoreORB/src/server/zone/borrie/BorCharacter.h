@@ -1375,7 +1375,7 @@ public:
 	}
 
 	static void doLongRest(CreatureObject* creature) {
-		uint64 time = Time::currentNanoTime() / 1000;
+		uint64 time = Time::currentNanoTime() / 1000000;
 
 		creature->sendSystemMessage(String::valueOf(time));
 		creature->sendSystemMessage(String::valueOf(creature->getStoredLong("long_rest_time")));

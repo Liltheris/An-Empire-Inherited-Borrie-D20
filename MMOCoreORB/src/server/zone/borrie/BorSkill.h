@@ -152,24 +152,20 @@ public:
 	}
 
 	static bool CanTrainNextSkill(CreatureObject* creature, int rank, String skill) {
-		creature->sendSystemMessage("checking rank.");
 		if(rank > 10)
 			return false;
 		if(skill == "")
 			return false;
 
-		creature->sendSystemMessage("creating skill string:");
 		String skillName = "rp_" + skill + "_" + GetSkillSuffixFromValue(rank);
 		creature->sendSystemMessage(skillName);
 
 		SkillManager* skillManager = SkillManager::instance();
 		RoleplayManager* rp = RoleplayManager::instance();
 
-		creature->sendSystemMessage("checking skillManager->canLearnSkill()");
 		bool hasXP = skillManager->canLearnSkill(skillName, creature, false);
 		int points = 0;
 
-		creature->sendSystemMessage("Check if we are looking for a skill.");
 		// Skill handling
 		if (rp->getRpSkillIndex(skill, RpSkillType::SKILL) != -1){
 			// Get our starter points.
@@ -186,7 +182,6 @@ public:
 				return true;
 		}
 
-		creature->sendSystemMessage("check if we are looking for an attribute.");
 		// Attribute handling
 		if (rp->getRpSkillIndex(skill, RpSkillType::ATTRIBUTE) != -1){
 			// Get our starter points.
@@ -200,7 +195,6 @@ public:
 				return true;
 		}
 
-		creature->sendSystemMessage("Returning hasXP");
 		// No special handling, so just check if we have the XP needed.
 		return hasXP;
 	}
@@ -209,9 +203,20 @@ public:
 		RoleplayManager* rp = RoleplayManager::instance();
 
 		String skillName = GetSkillRealName(skill);
+		RpSkillData data;
 
-		RpSkillData data = rp->getRpSkill(rp->getRpSkillIndex(skillName, RpSkillType::SKILL), RpSkillType::SKILL);
+		if (GetStringIsSkill(skillName)){
+			data = rp->getRpSkill(rp->getRpSkillIndex(skillName, RpSkillType::SKILL), RpSkillType::SKILL);
+		} else if (GetStringIsAttribute(skillName)){
+			data = rp->getRpSkill(rp->getRpSkillIndex(skillName, RpSkillType::ATTRIBUTE), RpSkillType::ATTRIBUTE);
+		} else if (GetStringIsForceSkill){
+			data = rp->getRpSkill(rp->getRpSkillIndex(skillName, RpSkillType::FORCESKILL), RpSkillType::FORCESKILL);
+		} else {
+			//The skill in question is not an RP skill of any type, so just assume that the XP cost multiplier is 1.
+			return 1.0f;
+		}
 
+		//If the found skill does not have a skill parent, simply return 1 as the multiplier.
 		if (data.getParent() == ""){
 			return 1.0f;
 		}
