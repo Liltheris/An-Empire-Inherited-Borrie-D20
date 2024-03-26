@@ -322,21 +322,21 @@ public:
 		Vector<RpSkillData> skills = rp->getRpSkillList(RpSkillType::SKILL);
 		Vector<RpSkillData> attributes = rp->getRpSkillList(RpSkillType::ATTRIBUTE);
 
-		for (int i = 0; i < skills.size(); i++){
+		for (int i = 0; i <= skills.size(); i++){
 			RpSkillData skill = skills.get(i);
 
 			if(!maxedSkillFound && player->hasSkill("rp_"+skill.getName()+"_master")){
 				maxedSkillFound = true;
-				revokeFullSkill(player, skill.getName(), false);
+				revokeFullSkill(player, skill.getName(), false, false);
 			} else {
 				xp += revokeFullSkill(player, skill.getName());
 			}
 		}
 
-		for (int i = 0; i < attributes.size(); i++){
+		for (int i = 0; i <= attributes.size(); i++){
 			RpSkillData attribute = attributes.get(i);
 
-			revokeFullSkill(player, attribute.getName());
+			revokeFullSkill(player, attribute.getName(), true);
 		}
 
 		player->setStoredInt("starter_skill_points", 15);
@@ -349,10 +349,15 @@ public:
 
 		player->setStoredInt("respec", 1);
 
+		player->sendSystemMessage("Your character has been given a respec! All skills and attributes have been automatically surrendered.");
+		player->sendSystemMessage("30 Attribute points have been added");
+		player->sendSystemMessage("15 Skill points have been added.");
+		player->sendSystemMessage(String::valueOf(xp)+" Roleplay Experience has been added.");
+
 		return true;
 	}
 
-	static int revokeFullSkill(CreatureObject* player, String skillName, bool returnXP = true){
+	static int revokeFullSkill(CreatureObject* player, String skillName, bool isAttribute = false, bool returnXP = true){
 		int xp = 0;
 
 		if(player->hasSkill("rp_" + skillName + "_master")) {
@@ -382,7 +387,7 @@ public:
 		if(player->hasSkill("rp_" + skillName + "_a01")) {
 			xp += revokeRpSkill(player,"rp_" + skillName + "_a01");
 		}
-		if(player->hasSkill("rp_" + skillName + "_novice")) {
+		if(player->hasSkill("rp_" + skillName + "_novice") && !isAttribute) {
 			xp += revokeRpSkill(player,"rp_" + skillName + "_novice");
 		}
 
