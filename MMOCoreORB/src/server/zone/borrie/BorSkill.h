@@ -6,6 +6,7 @@
 #include "server/zone/packets/chat/ChatSystemMessage.h"
 #include "engine/util/u3d/Coordinate.h"
 #include "server/zone/managers/skill/SkillManager.h"
+#include "server/zone/objects/player/PlayerObject.h"
 
 #include "server/zone/managers/roleplay/RoleplayManager.h"
 
