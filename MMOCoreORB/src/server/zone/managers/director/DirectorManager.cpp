@@ -719,7 +719,7 @@ int DirectorManager::applyAdjustedHealthDamage(lua_State* L) {
 		return 0;
 	}
 
-	String output = BorCombat::ApplyAdjustedHealthDamage(creature, damageType, damage, slot)
+	String output = BorCombat::ApplyAdjustedHealthDamage(creature, damageType, damage, slot);
 	
 	lua_pushstring(L, output.toCharArray());
 
