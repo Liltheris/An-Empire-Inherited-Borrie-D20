@@ -708,8 +708,9 @@ public:
 							//ensuring proper capitalisation.
 							damageType = BorString::capitalise(damageType.toLowerCase());
 						}
+						String output = BorCombat::ApplyAdjustedHealthDamage(creo, damageType, damage, slot);
 
-						BorCombat::ApplyAdjustedHealthDamage(creo, damageType, damage, slot);
+						BorrieRPG::BroadcastMessage(creo, BorString::getNiceName(creo)+" takes "+output+" "+damageType+" damage!");
 					}	
 				} 
 			}
