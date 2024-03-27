@@ -3,7 +3,7 @@
 -------------------------------------------
 _attackType = MELEEATTACK
 
-_damageType = ENERGY
+_damageType = KINETIC
 
 _armorPiercing = NONE
 
@@ -60,6 +60,9 @@ object_weapon_roleplay_melee_onehanded_acid_sword = object_weapon_melee_sword_sh
 	
 	rarity="Epic",
 
+	requiredSkill = "strength",
+	requiredLevel = 2,
+
 	--[Stats]
 	attackType = _attackType,
 	pointBlankRange = _pointBlankRange,
@@ -77,15 +80,18 @@ object_weapon_roleplay_melee_onehanded_bandit_sword = object_weapon_melee_sword_
 	customName = "Bandit Sword",
 
 	--[Stats]
-	damageType = KINETIC,
+	damageType = _damageType,
 	armorPiercing = NONE,
 
 	--Damage (minDamage[d]maxDamage) i.e. (2d20)
 	minDamage = 1, --Amount of Die used in Damage
-	maxDamage = 6, --Type of Die used in Damage
+	maxDamage = 4, --Type of Die used in Damage
 	bonusDamage = 2,
 	
 	rarity="Uncommon",
+
+	requiredSkill = "strength",
+	requiredLevel = 2,
 
 	--[Stats]
 	attackType = _attackType,
@@ -110,7 +116,7 @@ object_weapon_roleplay_melee_onehanded_ceremonial_cutlass = object_weapon_melee_
 	--Damage (minDamage[d]maxDamage) i.e. (2d20)
 	minDamage = 1, --Amount of Die used in Damage
 	maxDamage = 4, --Type of Die used in Damage
-	bonusDamage = 2,
+	bonusDamage = 3,
 	
 	rarity="Rare",
 
@@ -141,6 +147,9 @@ object_weapon_roleplay_melee_onehanded_crusader_templar_sword = object_weapon_me
 	
 	rarity="Epic",
 
+	requiredSkill = "strength",
+	requiredLevel = 2,
+
 	--[Stats]
 	attackType = _attackType,
 	pointBlankRange = _pointBlankRange,
@@ -166,7 +175,8 @@ object_weapon_roleplay_melee_onehanded_dagger = object_weapon_melee_knife_shared
 	maxDamage = 4, --Type of Die used in Damage
 	bonusDamage = 0,
 	
-	rarity="Common",
+	rarity = "Common",
+	dot = "bleed",
 
 	--[Stats]
 	attackType = _attackType,
@@ -336,6 +346,9 @@ object_weapon_roleplay_melee_onehanded_mace = object_weapon_melee_sword_shared_s
 	
 	rarity="Common",
 
+	requiredSkill = "strength",
+	requiredLevel = 5,
+
 	--[Stats]
 	attackType = _attackType,
 	pointBlankRange = _pointBlankRange,
@@ -358,12 +371,15 @@ object_weapon_roleplay_melee_onehanded_marauder_sword = object_weapon_melee_swor
 
 	--Damage (minDamage[d]maxDamage) i.e. (2d20)
 	minDamage = 1, --Amount of Die used in Damage
-	maxDamage = 10, --Type of Die used in Damage
-	bonusDamage = 0,
+	maxDamage = 4, --Type of Die used in Damage
+	bonusDamage = 4,
 	
 	noDodgeReaction = true,
 	
 	rarity="Uncommon",
+
+	requiredSkill = "strength",
+	requiredLevel = 2,
 
 	--[Stats]
 	attackType = _attackType,
@@ -388,9 +404,13 @@ object_weapon_roleplay_melee_onehanded_naktra_crystal_knife = object_weapon_mele
 	--Damage (minDamage[d]maxDamage) i.e. (2d20)
 	minDamage = 1, --Amount of Die used in Damage
 	maxDamage = 4, --Type of Die used in Damage
-	bonusDamage = 2,
+	bonusDamage = 5,
 	
 	rarity="Legendary",
+	dot = "bleed",
+
+	requiredSkill = "dexterity",
+	requiredLevel = 2,
 
 	--[Stats]
 	attackType = _attackType,
@@ -502,6 +522,9 @@ object_weapon_roleplay_melee_onehanded_ryyk_blade = object_weapon_melee_sword_sh
 	
 	rarity="Rare",
 
+	requiredSkill = "strength",
+	requiredLevel = 2,
+
 	--[Stats]
 	attackType = _attackType,
 	pointBlankRange = _pointBlankRange,
@@ -528,6 +551,7 @@ object_weapon_roleplay_melee_onehanded_stone_knife = object_weapon_melee_knife_s
 	bonusDamage = 0,
 	
 	rarity="Common",
+	dot = "bleed",
 
 	--[Stats]
 	attackType = _attackType,
@@ -582,6 +606,7 @@ object_weapon_roleplay_melee_onehanded_survival_knife = object_weapon_melee_knif
 	bonusDamage = 1,
 	
 	rarity="Common",
+	dot = "bleed",
 
 	--[Stats]
 	attackType = _attackType,
@@ -605,7 +630,7 @@ object_weapon_roleplay_melee_onehanded_sword = object_weapon_melee_sword_shared_
 
 	--Damage (minDamage[d]maxDamage) i.e. (2d20)
 	minDamage = 1, --Amount of Die used in Damage
-	maxDamage = 2, --Type of Die used in Damage
+	maxDamage = 4, --Type of Die used in Damage
 	bonusDamage = 2,
 	
 	rarity="Common",
@@ -633,7 +658,7 @@ object_weapon_roleplay_melee_onehanded_trandoshan_skinner = object_weapon_melee_
 	--Damage (minDamage[d]maxDamage) i.e. (2d20)
 	minDamage = 1, --Amount of Die used in Damage
 	maxDamage = 4, --Type of Die used in Damage
-	bonusDamage = 3,
+	bonusDamage = 4,
 	
 	rarity="Rare",
 
@@ -659,10 +684,14 @@ object_weapon_roleplay_melee_onehanded_vibroblade = object_weapon_melee_knife_sh
 
 	--Damage (minDamage[d]maxDamage) i.e. (2d20)
 	minDamage = 1, --Amount of Die used in Damage
-	maxDamage = 3, --Type of Die used in Damage
+	maxDamage = 4, --Type of Die used in Damage
 	bonusDamage = 2,
 	
 	rarity="Common",
+	dot = "bleed",
+
+	requiredSkill = "dexterity",
+	requiredLevel = 4,
 
 	--[Stats]
 	attackType = _attackType,
@@ -687,7 +716,7 @@ object_weapon_roleplay_melee_onehanded_vibrosword = object_weapon_melee_sword_sh
 	--Damage (minDamage[d]maxDamage) i.e. (2d20)
 	minDamage = 1, --Amount of Die used in Damage
 	maxDamage = 4, --Type of Die used in Damage
-	bonusDamage = 2,
+	bonusDamage = 4,
 	
 	rarity="Common",
 
@@ -719,6 +748,7 @@ object_weapon_roleplay_melee_onehanded_vicious_ryyk_blade = object_weapon_melee_
 	noDodgeReaction = true,
 	
 	rarity="Epic",
+	dot = "bleed",
 
 	--[Stats]
 	attackType = _attackType,
@@ -742,12 +772,15 @@ object_weapon_roleplay_melee_onehanded_wookiee_scythe = object_weapon_melee_swor
 
 	--Damage (minDamage[d]maxDamage) i.e. (2d20)
 	minDamage = 1, --Amount of Die used in Damage
-	maxDamage = 9, --Type of Die used in Damage
-	bonusDamage = 1,
+	maxDamage = 6, --Type of Die used in Damage
+	bonusDamage = 4,
 	
 	noDodgeReaction = true,
 	
 	rarity="Epic",
+
+	requiredSkill = "strength",
+	requiredLevel = 2,
 
 	--[Stats]
 	attackType = _attackType,

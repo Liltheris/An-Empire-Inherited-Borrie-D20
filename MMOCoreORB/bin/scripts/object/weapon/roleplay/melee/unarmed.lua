@@ -3,7 +3,7 @@
 -------------------------------------------
 _attackType = MELEEATTACK
 
-_damageType = ENERGY
+_damageType = KINETIC
 
 _armorPiercing = NONE
 

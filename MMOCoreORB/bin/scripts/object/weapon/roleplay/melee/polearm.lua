@@ -3,7 +3,7 @@
 -------------------------------------------
 _attackType = MELEEATTACK
 
-_damageType = ENERGY
+_damageType = KINETIC
 
 _armorPiercing = NONE
 
@@ -55,10 +55,13 @@ object_weapon_roleplay_melee_polearm_electric_polearm = object_weapon_melee_pole
 
 	--Damage (minDamage[d]maxDamage) i.e. (2d20)
 	minDamage = 1, --Amount of Die used in Damage
-	maxDamage = 9, --Type of Die used in Damage
-	bonusDamage = 1,
+	maxDamage = 6, --Type of Die used in Damage
+	bonusDamage = 4,
 	
 	rarity="Rare",
+
+	requiredSkill = "dexterity",
+	requiredLevel = 2,
 
 	--[Stats]
 	attackType = _attackType,
@@ -82,10 +85,13 @@ object_weapon_roleplay_melee_polearm_force_pike = object_weapon_melee_polearm_sh
 
 	--Damage (minDamage[d]maxDamage) i.e. (2d20)
 	minDamage = 1, --Amount of Die used in Damage
-	maxDamage = 8, --Type of Die used in Damage
+	maxDamage = 6, --Type of Die used in Damage
 	bonusDamage = 4,
 	
 	rarity="Rare",
+
+	requiredSkill = "dexterity",
+	requiredLevel = 4,
 
 	--[Stats]
 	attackType = _attackType,
@@ -114,6 +120,9 @@ object_weapon_roleplay_melee_polearm_gand_shockprod_staff = object_weapon_melee_
 	
 	rarity="Rare",
 
+	requiredSkill = "dexterity",
+	requiredLevel = 2,
+
 	--[Stats]
 	attackType = _attackType,
 	pointBlankRange = _pointBlankRange,
@@ -141,6 +150,9 @@ object_weapon_roleplay_melee_polearm_heavy_vibrolance = object_weapon_melee_pole
 	
 	rarity="Uncommon",
 
+	requiredSkill = "strength",
+	requiredLevel = 4,
+
 	--[Stats]
 	attackType = _attackType,
 	pointBlankRange = _pointBlankRange,
@@ -163,10 +175,13 @@ object_weapon_roleplay_melee_polearm_kaminoan_lance = object_weapon_melee_polear
 
 	--Damage (minDamage[d]maxDamage) i.e. (2d20)
 	minDamage = 1, --Amount of Die used in Damage
-	maxDamage = 9, --Type of Die used in Damage
-	bonusDamage = 1,
+	maxDamage = 8, --Type of Die used in Damage
+	bonusDamage = 2,
 	
 	rarity="Epic",
+
+	requiredSkill = "dexterity",
+	requiredLevel = 4,
 
 	--[Stats]
 	attackType = _attackType,
@@ -194,6 +209,9 @@ object_weapon_roleplay_melee_polearm_kashyyyk_lance = object_weapon_melee_polear
 	bonusDamage = 3,
 	
 	rarity="Rare",
+
+	requiredSkill = "dexterity",
+	requiredLevel = 2,
 
 	--[Stats]
 	attackType = _attackType,
@@ -239,7 +257,7 @@ object_weapon_roleplay_melee_polearm_nightsister_lance = object_weapon_melee_pol
 	customName = "Nightsister Lance",
 
 	--[Stats]
-	damageType = ELECTRICITY,
+	damageType = KINETIC,
 	armorPiercing = NONE,
 
 	--Damage (minDamage[d]maxDamage) i.e. (2d20)
@@ -248,6 +266,9 @@ object_weapon_roleplay_melee_polearm_nightsister_lance = object_weapon_melee_pol
 	bonusDamage = 2,
 	
 	rarity="Epic",
+
+	requiredSkill = "dexterity",
+	requiredLevel = 4,
 
 	--[Stats]
 	attackType = _attackType,
@@ -271,10 +292,13 @@ object_weapon_roleplay_melee_polearm_obsidian_lance = object_weapon_melee_polear
 
 	--Damage (minDamage[d]maxDamage) i.e. (2d20)
 	minDamage = 1, --Amount of Die used in Damage
-	maxDamage = 9, --Type of Die used in Damage
-	bonusDamage = 1,
+	maxDamage = 8, --Type of Die used in Damage
+	bonusDamage = 2,
 	
 	rarity="Epic",
+
+	requiredSkill = "dexterity",
+	requiredLevel = 4,
 
 	--[Stats]
 	attackType = _attackType,
@@ -303,6 +327,9 @@ object_weapon_roleplay_melee_polearm_pestilence = object_weapon_melee_polearm_sh
 	
 	rarity="Legendary",
 
+	requiredSkill = "dexterity",
+	requiredLevel = 4,
+
 	--[Stats]
 	attackType = _attackType,
 	pointBlankRange = _pointBlankRange,
@@ -330,6 +357,9 @@ object_weapon_roleplay_melee_polearm_phrik_electrostaff = object_weapon_melee_po
 	
 	rarity="Legendary",
 
+	requiredSkill = "dexterity",
+	requiredLevel = 4,
+
 	--[Stats]
 	attackType = _attackType,
 	pointBlankRange = _pointBlankRange,
@@ -352,10 +382,14 @@ object_weapon_roleplay_melee_polearm_poison_pike = object_weapon_melee_polearm_s
 
 	--Damage (minDamage[d]maxDamage) i.e. (2d20)
 	minDamage = 1, --Amount of Die used in Damage
-	maxDamage = 8, --Type of Die used in Damage
-	bonusDamage = 2,
+	maxDamage = 6, --Type of Die used in Damage
+	bonusDamage = 0,
 	
 	rarity="Rare",
+	dot = "poison",
+
+	requiredSkill = "dexterity",
+	requiredLevel = 4,
 
 	--[Stats]
 	attackType = _attackType,
@@ -466,6 +500,9 @@ object_weapon_roleplay_melee_polearm_vibro_longaxe = object_weapon_melee_polearm
 	
 	rarity="Common",
 
+	requiredSkill = "strength",
+	requiredLevel = 5,
+
 	--[Stats]
 	attackType = _attackType,
 	pointBlankRange = _pointBlankRange,
@@ -547,6 +584,9 @@ object_weapon_roleplay_melee_polearm_xandank_lance = object_weapon_melee_polearm
 	bonusDamage = 4,
 	
 	rarity="Legendary",
+
+	requiredSkill = "dexterity",
+	requiredLevel = 4,
 
 	--[Stats]
 	attackType = _attackType,
