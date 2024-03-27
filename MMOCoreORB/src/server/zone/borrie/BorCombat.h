@@ -882,7 +882,7 @@ public:
         return ", doing (" + GetWeaponDamageString(attackerWeapon) + ") = "+ dmgString +" damage.";
     }
 
-    static String ApplyAdjustedHealthDamage(CreatureObject* creature, WeaponObject* attackerWeapon, int damage, int slot) {
+    static String ApplyAdjustedHealthDamage(CreatureObject* creature, String damageType, int damage, int slot) {
         // Use equipped armour if the creature is a player.
         if(creature->isPlayerCreature()) {
             ManagedReference<ArmorObject*> armour = BorCharacter::GetArmorAtSlot(creature, GetSlotName(slot));
@@ -890,8 +890,7 @@ public:
                 if(!armour->isBroken()) {
                     int armourDamage = 0;
                     int healthDamage = 0;
-                    String damageType = GetDamageType(attackerWeapon);
-                    int armourProtection = GetArmorProtection(armour, GetDamageType(attackerWeapon));
+                    int armourProtection = GetArmorProtection(armour, damageType);
 
                     if(damageType == "Lightsaber") { 
                         // Special Lightsaber Rules
@@ -961,6 +960,10 @@ public:
             BorCharacter::ModPool(creature, "health", -damage, true);
             return damageNumber(damage);
         }
+    }
+
+    static String ApplyAdjustedHealthDamage(CreatureObject* creature, WeaponObject* attackerWeapon, int damage, int slot) {
+        ApplyAdjustedHealthDamage(creature, GetDamageType(attackerWeapon), damage, slot);
     }
 
     static int GetArmorProtection(ArmorObject* armor, String damageType) {

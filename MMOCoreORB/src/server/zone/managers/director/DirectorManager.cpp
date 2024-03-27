@@ -95,6 +95,7 @@
 
 #include "server/zone/borrie/BorEffect.h"
 #include "server/zone/borrie/BorUtil.h"
+#include "server/zone/borrie/BorCombat.h"
 
 int DirectorManager::DEBUG_MODE = 0;
 int DirectorManager::ERROR_CODE = NO_ERROR;
@@ -703,6 +704,26 @@ int DirectorManager::loadScreenPlays(Lua* luaEngine) {
 
 void DirectorManager::reloadScreenPlays() {
 	masterScreenPlayVersion.increment();
+}
+
+int DirectorManager::applyAdjustedHealthDamage(lua_State* L) {
+	
+	CreatureObject* creature = (CreatureObject*) lua_touserdata(L, -1);
+	String damageType = lua_tostring(L, -2);
+	int damage = lua_tonumber(L, -3);
+	int slot = lua_tonumber(L, -4);
+
+	if (creature == nullptr){
+		String err = "DirectorManager::applyAdjustedHealthDamage was provided with an invalid creature object!";
+		printTraceError(L, err);
+		return 0;
+	}
+
+	String output = BorCombat::ApplyAdjustedHealthDamage(creature, damageType, damage, slot)
+	
+	lua_pushstring(L, output.toCharArray());
+
+	return 1;
 }
 
 int DirectorManager::writeScreenPlayData(lua_State* L) {

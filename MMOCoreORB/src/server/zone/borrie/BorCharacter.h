@@ -1394,7 +1394,7 @@ public:
 		if(time < creature->getStoredLong("long_rest_time")){
 			uint64 timeRemaining = creature->getStoredLong("long_rest_time") - time;
 			BorrieRPG::BroadcastMessage(creature, BorString::getNiceName(creature) + " was unable to rest, as they have rested too recently.");
-			creature->sendSystemMessage("You can rest again in " +String::valueOf(ceil(timeRemaining / -3600000))+ " hours.");
+			creature->sendSystemMessage("You can rest again in " +String::valueOf(timeRemaining / 3600000)+ " hours.");
 			return;
 		}
 

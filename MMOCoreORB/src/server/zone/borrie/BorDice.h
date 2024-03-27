@@ -105,8 +105,8 @@ public:
 				DiceRollString += " + ";
 		}
 
-		if (mod != 0)
-			return "Roll "+String::valueOf(numDice)+"d"+String::valueOf(diceValue)+": "+DiceRollString+" (Modifier: "+String::valueOf(mod)+") Result: "+String::valueOf(nResult + mod);
+		if (bonus != 0)
+			return "Roll "+String::valueOf(numDice)+"d"+String::valueOf(diceValue)+": "+DiceRollString+" (Modifier: "+String::valueOf(bonus)+") Result: "+String::valueOf(nResult + bonus);
 		else
 			return "Roll "+String::valueOf(numDice)+"d"+String::valueOf(diceValue)+": "+DiceRollString+" Result: "+String::valueOf(nResult);
 	}

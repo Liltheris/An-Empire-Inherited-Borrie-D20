@@ -686,6 +686,31 @@ public:
 					} else {
 						creature->sendSystemMessage("Invalid Target");
 					}	
+				} else if(command == "damage") {
+					if(object->isCreatureObject()) {
+						creo = object->asCreatureObject();
+						int damage, slot = 0;
+						String damageType = "kinetic";
+
+						if (args.hasMoreTokens()) {
+							damage = args.getIntToken();
+						} else {
+							creature->sendSystemMessage("Error: missing damage value! Syntax: /dm damage [damage] [slot] [type]");
+							return SUCCESS;
+						}
+						
+						if (args.hasMoreTokens())
+							slot = args.getIntToken();
+
+						if (args.hasMoreTokens()){
+							damageType = args.getStringToken();
+							
+							//ensuring proper capitalisation.
+							damageType = BorString::capitalise(damageType.toLowerCase());
+						}
+
+						BorCombat::ApplyAdjustedHealthDamage(creo, damageType, damage, slot);
+					}	
 				} 
 			}
 			if (adminLevelCheck > 14) { // Full DM
@@ -850,6 +875,7 @@ public:
 		text << "/dm setstoredstring [name] [value] - Sets the value of the provided stored string" << endl;
 		text << "/dm resetcooldown [name] - Sets the provided cooldown timer to 0." << endl;
 		text << "/dm resetrest - Resets the long rest timer on the target." << endl;
+		text << "/dm damage [damage] [slot] [type] - Applies the the damage of specified type to the targeted slot." << endl;
 
 		ManagedReference<SuiMessageBox*> box = new SuiMessageBox(creature, SuiWindowType::NONE);
 		box->setPromptTitle("DM COMMAND HELP");
