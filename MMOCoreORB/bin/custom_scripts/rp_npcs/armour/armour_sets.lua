@@ -12,12 +12,13 @@ armour_stormtrooper = {
 }
 
 armourset_stormtrooper = {
-    {"hat", stormtrooper},
-    {"chest", stormtrooper},
-    {"shoes", stormtrooper},
-    {"bracer_upper_l", stormtrooper},
-    {"bracer_upper_r", stormtrooper},
-    {"bicep_l", stormtrooper},
-    {"bicep_r", stormtrooper},
-    {"gloves", stormtrooper},
+    {"hat", armour_stormtrooper},
+    {"chest2", armour_stormtrooper},
+    {"pants1", armour_stormtrooper},
+    {"shoes", armour_stormtrooper},
+    {"bracer_upper_l", armour_stormtrooper},
+    {"bracer_upper_r", armour_stormtrooper},
+    {"bicep_l", armour_stormtrooper},
+    {"bicep_r", armour_stormtrooper},
+    {"gloves", armour_stormtrooper},
 }
