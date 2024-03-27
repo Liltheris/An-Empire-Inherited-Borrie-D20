@@ -956,7 +956,61 @@ public:
             return damageNumber(damage);
         // NPC handling.
         } else {
-            
+            String armourName = creature->getStoredString("armour_set");
+            if (armourName != ""){
+                Lua* lua = DirectorManager::instance()->getLuaInstance();
+
+                if(!lua->runFile("custom_scripts/rp_npcs/armour/armour_sets.lua")) {
+                    //Simply apply the damage, as a weird error has occured.
+                    BorCharacter::ModPool(creature, "health", -damage, true);
+                    return damageNumber(damage);
+                }
+
+                LuaObject armourSet = lua->getGlobalObject(armourName);
+
+                if(!armourSet.isValidTable()){
+                    //Apply the damage, as the armour set is not valid.
+                    BorCharacter::ModPool(creature, "health", -damage, true);
+                    return damageNumber(damage);
+                }
+
+                String slotString = GetSlotName(slot);
+
+                for (int i = 1; i <= armourSet.getTableSize(); i++){
+                    LuaObject armourSlotObject = armourSet.getObjectAt(i);
+
+                    if (!armourSlotObject.isValidTable())
+                        continue;
+
+                    if (armourSlotObject.getStringAt(1) != slotString)
+                        continue;
+
+                    LuaObject armourObject = armourSlotObject.getObjectAt(2);
+
+                    int armourProtection = armourObject.getIntField(damageType.toLowerCase());
+
+                    int healthDamage = damage;
+
+                    // Standard damage calculation
+                    if(armourProtection <= 0){
+                        //Armour is weak to damage type.
+                        healthDamage = damage;
+                    } else {
+                        //Armour resists damage, or ignores damage type.
+                        healthDamage = damage - armourProtection;
+                        if (healthDamage < 1) 
+                            healthDamage = 1;
+                    }
+
+                    //Apply damage to creature.
+                    BorCharacter::ModPool(creature, "health", -healthDamage, true);
+
+                    String output = damageNumber(healthDamage);
+                    output = output +"(\\#FFFF00"+String::valueOf(damage - healthDamage)+"\\#FFFFFF)";
+                    return output;
+                }
+            }
+
             //TO DO: Implement NPC armour.
             BorCharacter::ModPool(creature, "health", -damage, true);
             return damageNumber(damage);

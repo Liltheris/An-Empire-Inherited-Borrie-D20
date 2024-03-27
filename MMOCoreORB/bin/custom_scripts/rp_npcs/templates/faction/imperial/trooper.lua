@@ -16,4 +16,6 @@ npc_template = {
 		{"rp_human_male", {"random_military"}},
 		{"rp_human_female", {"random_military"}},
 	},	
+
+	armour = "armourset_stormtrooper",
 }
