@@ -979,39 +979,46 @@ public:
                 for (int i = 1; i <= armourSet.getTableSize(); i++){
                     LuaObject armourSlotObject = armourSet.getObjectAt(i);
 
-                    if (!armourSlotObject.isValidTable())
-                        continue;
+                    if (armourSlotObject.isValidTable()){
 
-                    if (armourSlotObject.getStringAt(1) != slotString)
-                        continue;
+                        if (armourSlotObject.getStringAt(1) == slotString){
+                            LuaObject armourObject = armourSlotObject.getObjectAt(2);
 
-                    LuaObject armourObject = armourSlotObject.getObjectAt(2);
+                            if (armourObject.isValidTable()){
+                                int armourProtection = armourObject.getIntField(damageType.toLowerCase());
 
-                    int armourProtection = armourObject.getIntField(damageType.toLowerCase());
+                                int healthDamage = damage;
 
-                    int healthDamage = damage;
+                                // Standard damage calculation
+                                if(armourProtection <= 0){
+                                    //Armour is weak to damage type.
+                                    healthDamage = damage;
+                                } else {
+                                    //Armour resists damage, or ignores damage type.
+                                    healthDamage = damage - armourProtection;
+                                    if (healthDamage < 1) 
+                                        healthDamage = 1;
+                                }
 
-                    // Standard damage calculation
-                    if(armourProtection <= 0){
-                        //Armour is weak to damage type.
-                        healthDamage = damage;
-                    } else {
-                        //Armour resists damage, or ignores damage type.
-                        healthDamage = damage - armourProtection;
-                        if (healthDamage < 1) 
-                            healthDamage = 1;
+                                //Apply damage to creature.
+                                BorCharacter::ModPool(creature, "health", -healthDamage, true);
+
+                                String output = damageNumber(healthDamage);
+                                output = output +"(\\#FFFF00"+String::valueOf(damage - healthDamage)+"\\#FFFFFF)";
+
+                                armourObject.pop();
+                                armourSlotObject.pop();
+                                armourSet.pop();
+                                return output;
+                            }
+                            armourObject.pop();
+                        }
                     }
-
-                    //Apply damage to creature.
-                    BorCharacter::ModPool(creature, "health", -healthDamage, true);
-
-                    String output = damageNumber(healthDamage);
-                    output = output +"(\\#FFFF00"+String::valueOf(damage - healthDamage)+"\\#FFFFFF)";
-                    return output;
+                    armourSlotObject.pop();
                 }
+                armourSet.pop();
             }
 
-            //TO DO: Implement NPC armour.
             BorCharacter::ModPool(creature, "health", -damage, true);
             return damageNumber(damage);
         }
