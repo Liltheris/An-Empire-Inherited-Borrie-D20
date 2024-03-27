@@ -1387,9 +1387,6 @@ public:
 	static void doLongRest(CreatureObject* creature) {
 		uint64 time = Time::currentNanoTime() / 1000000;
 
-		creature->sendSystemMessage(String::valueOf(time));
-		creature->sendSystemMessage(String::valueOf(creature->getStoredLong("long_rest_time")));
-
 		//Check if they are still on rest cooldown.
 		if(time < creature->getStoredLong("long_rest_time")){
 			uint64 timeRemaining = creature->getStoredLong("long_rest_time") - time;
