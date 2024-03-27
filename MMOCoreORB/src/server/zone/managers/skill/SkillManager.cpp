@@ -904,28 +904,40 @@ int SkillManager::getForceSensitiveSkillCount(CreatureObject* creature, bool inc
 }
 
 int SkillManager::getForceSkillCount(CreatureObject* creature) {
+	RoleplayManager* rp = RoleplayManager::instance();
+	Vector<RpSkillData> forceSkills = rp->getRpSkillList(RpSkillType::FORCESKILL);
+
 	const SkillList* skills =  creature->getSkillList();
 	int forceSensitiveSkillCount = 0;
 	for (int i = 0; i < skills->size(); ++i) {
 		const String& skillName = skills->get(i)->getSkillName();
-		if (skillName.contains("rp_lightsaber") || skillName.contains("rp_sense") || skillName.contains("rp_lightning") 
-		|| skillName.contains("rp_telekinesis") || skillName.contains("rp_control") || skillName.contains("rp_alter")
-		|| skillName.contains("rp_inward")) 
-			forceSensitiveSkillCount++;
+
+		for (int j = 0; j < forceSkills.size(); j++){
+			if (skillName.contains("rp_"+rp->getRpSkill(j, RpSkillType::FORCESKILL).getName())){
+				forceSensitiveSkillCount++;
+				break;
+			}
+		}
 	}
 
 	return forceSensitiveSkillCount;
 }
 
 int SkillManager::getRpAttributeCount(CreatureObject* creature) {
+	RoleplayManager* rp = RoleplayManager::instance();
+	Vector<RpSkillData> attributes = rp->getRpSkillList(RpSkillType::ATTRIBUTE);
+
 	const SkillList* skills =  creature->getSkillList();
 	int attributeCount = 0;
 	for (int i = 0; i < skills->size(); ++i) {
 		const String& skillName = skills->get(i)->getSkillName();
-		if ((skillName.contains("rp_awareness") || skillName.contains("rp_charisma") || skillName.contains("rp_constitution") 
-		|| skillName.contains("rp_dexterity") || skillName.contains("rp_intelligence") || skillName.contains("rp_mindfulness")
-		|| skillName.contains("rp_precision") || skillName.contains("rp_strength")) && !skillName.contains("_novice")) 
-			attributeCount++;
+
+		for (int j = 0; j < attributes.size(); j++){
+			if (skillName.contains("rp_"+rp->getRpSkill(j, RpSkillType::ATTRIBUTE).getName())){
+				attributeCount++;
+				break;
+			}
+		}
 	}
 
 	return attributeCount;
