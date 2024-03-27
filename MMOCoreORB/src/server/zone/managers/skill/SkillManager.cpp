@@ -933,7 +933,7 @@ int SkillManager::getRpAttributeCount(CreatureObject* creature) {
 		const String& skillName = skills->get(i)->getSkillName();
 
 		for (int j = 0; j < attributes.size(); j++){
-			if (skillName.contains("rp_"+rp->getRpSkill(j, RpSkillType::ATTRIBUTE).getName())){
+			if (skillName.contains("rp_"+rp->getRpSkill(j, RpSkillType::ATTRIBUTE).getName()) && !skillName.contains("_novice")){
 				attributeCount++;
 				break;
 			}

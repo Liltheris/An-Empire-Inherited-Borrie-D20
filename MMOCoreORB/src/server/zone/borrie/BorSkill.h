@@ -341,7 +341,7 @@ public:
 
 		player->setStoredInt("starter_skill_points", 15);
 		player->setStoredInt("starter_attr_points", 30);
-		player->setStoredLong("long_rest_time", -1);
+		player->deleteStoredLong("long_rest_time");
 
 
 		PlayerObject* playerObject = player->getPlayerObject();

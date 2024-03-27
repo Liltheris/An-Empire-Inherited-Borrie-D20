@@ -781,7 +781,7 @@ public:
 						if (object->isCreatureObject() && object->isPlayerCreature()) {
 							if (object->isCreatureObject()) {
 								creo = object->asCreatureObject();
-								creo->setStoredLong("long_rest_time", -1);
+								creo->deleteStoredLong("long_rest_time");
 								creature->sendSystemMessage("The long rest cooldown timer has been reset for target!");
 							} else {
 								creature->sendSystemMessage("Target needs to be a creature!");
