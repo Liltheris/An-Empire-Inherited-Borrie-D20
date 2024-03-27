@@ -225,6 +225,7 @@ public:
 	}
 
 	void OpenConfirmSkillSelectionWindow(CreatureObject* player, SuiBox* suiBox, uint32 eventIndex, Vector<UnicodeString>* args, int state, int selection) {
+
 		int freeSkillPoints = player->getStoredInt("starter_skill_points");
 		int freeAttrPoints = player->getStoredInt("starter_attr_points");
 		int index = Integer::valueOf(args->get(0).toString());
@@ -248,7 +249,7 @@ public:
 
 			suibox->setPromptTitle("Confirm training?"); 
 			//Can train!
-			if (freeSkillPoints < 1)
+			if (freeSkillPoints < 1 && currentRank < BorSkill::GetRealSkillLevel(player, skillParent))
 				suibox->setPromptText("Are you sure you want to train this skill?\n\nThis will cost "+colour+String::valueOf(xp)+"\\#. Roleplay experience.");
 			else
 				suibox->setPromptText("Are you sure you want to train this skill?\n\nThis will cost 1 skill point.");
