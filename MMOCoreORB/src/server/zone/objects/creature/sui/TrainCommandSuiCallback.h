@@ -216,7 +216,7 @@ public:
 		} else {
 			suibox->setPromptTitle("Not eligible for training.");
 			//Failure. Can't train.
-			suibox->setPromptText("You are not currently eligible to train this attribute. You do not have enough experience points.");
+			suibox->setPromptText("You are not currently eligible to train this attribute. You do not have enough experience points.\n\nYou require 45000 Roleplay experience.");
 			suibox->setCallback(new TrainCommandSuiCallback(server, -1, state));
 			suibox->setCancelButton(true, "Go Back");
 		}	
@@ -236,17 +236,17 @@ public:
 
 		int currentRank = BorSkill::GetRealSkillLevel(player, skillName);
 
+		int xp = BorSkill::getFinalXpCost(player, "rp_"+skillName+"_"+BorSkill::GetSkillSuffixFromValue(currentRank+1));
+
+		float mod = BorSkill::getXpCostMultiplier(player, "rp_"+skillName+"_"+BorSkill::GetSkillSuffixFromValue(currentRank+1));
+		String colour = "\\#.";
+
+		if (mod > 1.0f){
+			colour = (mod > 3.0f) ? "\\#FF0000" : "\\#FFFF00";
+		}
+
 		ManagedReference<SuiMessageBox*> suibox = new SuiMessageBox(player, SuiWindowType::TEACH_OFFER);
 		if (BorSkill::CanTrainNextSkill(player, currentRank + 1, skillName)) {
-			int xp = BorSkill::getFinalXpCost(player, "rp_"+skillName+"_"+BorSkill::GetSkillSuffixFromValue(currentRank+1));
-
-			float mod = BorSkill::getXpCostMultiplier(player, "rp_"+skillName+"_"+BorSkill::GetSkillSuffixFromValue(currentRank+1));
-			String colour = "\\#.";
-
-			if (mod > 1.0f){
-				colour = (mod > 3.0f) ? "\\#FF0000" : "\\#FFFF00";
-			}
-
 			suibox->setPromptTitle("Confirm training?"); 
 			//Can train!
 			if (freeSkillPoints < 1 && currentRank < BorSkill::GetRealSkillLevel(player, skillParent))
@@ -259,7 +259,7 @@ public:
 		} else {
 			suibox->setPromptTitle("Not eligible for training.");
 			//Failure. Can't train.
-			suibox->setPromptText("You are not currently eligible to train this skill. You do not have enough experience points.");
+			suibox->setPromptText("You are not currently eligible to train this skill. You do not have enough experience points.\n\nYou require "+colour+String::valueOf(xp)+"\\#. Roleplay experience.");
 			suibox->setCallback(new TrainCommandSuiCallback(server, -1, state));
 			suibox->setCancelButton(true, "Go Back");
 		}	
