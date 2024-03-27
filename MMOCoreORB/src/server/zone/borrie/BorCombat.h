@@ -956,6 +956,7 @@ public:
             return damageNumber(damage);
         // NPC handling.
         } else {
+            
             //TO DO: Implement NPC armour.
             BorCharacter::ModPool(creature, "health", -damage, true);
             return damageNumber(damage);
@@ -963,7 +964,7 @@ public:
     }
 
     static String ApplyAdjustedHealthDamage(CreatureObject* creature, WeaponObject* attackerWeapon, int damage, int slot) {
-        ApplyAdjustedHealthDamage(creature, GetDamageType(attackerWeapon), damage, slot);
+        return ApplyAdjustedHealthDamage(creature, GetDamageType(attackerWeapon), damage, slot);
     }
 
     static int GetArmorProtection(ArmorObject* armor, String damageType) {
