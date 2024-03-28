@@ -656,6 +656,26 @@ public:
             return ", doing (" + GetWeaponDamageString(attackerWeapon) + ") = "+ dmgString +" damage.";
         }
 
+//Check if crystal belongs to deflector? Deflecter? Defender? Who the fuck knows.
+        int crystalMod = 0;
+        if(weapon->isJediWeapon()) {
+            ManagedReference<SceneObject*> saberInv = weapon->getSlottedObject("saber_inv");
+
+            if(saberInv != nullptr) {
+                int containerSize = saberInv->getContainerObjectsSize();
+
+                for (int j = containerSize - 1; j >= 0; --j) {
+		            ManagedReference<SceneObject*> crystal = saberInv->getContainerObject(j);
+
+		            if (crystal != nullptr){
+                        if (crystal->getStoredString("attuned_id") == String::valueOf(attacker->getObjectID()))
+                            crystalMod -= 2;
+                        j = 0;
+                    }        
+		        }
+	        }
+        }
+        
         // Check if the defender is becoming overwhelmed.
         int deflectionCount = defender->getStoredInt("deflection_count");
         defender->setStoredInt("deflection_count", deflectionCount + 1);
@@ -666,18 +686,26 @@ public:
 
         int rollResult = deflectRoll + lightsaberSkill;
 
-        // Deflect action cost is determined by 11 - lightsaber skill, capped to at least 1.
-        int actionCost = 11 - lightsaberSkill;
-        if(actionCost <= 0) actionCost = 1;
+      // Deflect action cost is determined by skill mod checkpoints. Does not allow to deflect between 1-3
+        int actionCost = 99;
+        if(lightsaberSkill >=9)
+            actionCost = 1;
+        else if (lightsaberSkill >=7)
+            actionCost = 2;
+         else if (lightsaberSkill >=5)
+            actionCost = 3;
+         else if (lightsaberSkill >=3)
+            actionCost = 5;
+        else actionCost = 99;
         DrainActionOrWill(defender, actionCost * actionPointMod);
 
         // Defender failed to reflect at all.
-        if (rollResult < toHit/2){
+        if (rollResult < toHit/2 + crystalMod){
             //Apply full damage and output the spam!
             dmgString = ApplyAdjustedHealthDamage(defender, attackerWeapon, incomingDamage, slot);
             BorEffect::PerformReactiveAnimation(attacker, defender, "hit", GetSlotHitlocation(slot), true);
 
-            reactionSpam += BorString::getNiceName(defender) + " fails to deflect the attack (1d20 = " + String::valueOf(deflectRoll) + " + " + String::valueOf(lightsaberSkill) + " vs DC: "+String::valueOf(toHit)+")";
+            reactionSpam += BorString::getNiceName(defender) + " fails to deflect the attack (1d20 = " + String::valueOf(deflectRoll) + " + " + String::valueOf(lightsaberSkill) + " vs DC: "+String::valueOf(toHit + crystalMod)+")";
             reactionSpam += ", recieving "+ dmgString +" damage!";
 
             return reactionSpam;
@@ -687,7 +715,7 @@ public:
         if (rollResult < toHit){
             if (attackerWeapon->isRangedWeapon()){
                 // Sending bolts away!
-                reactionSpam += BorString::getNiceName(defender) + " successfully deflects the shot (1d20 = " + String::valueOf(deflectRoll) + " + " + String::valueOf(lightsaberSkill) + " vs DC: "+String::valueOf(toHit/2)+")";
+                reactionSpam += BorString::getNiceName(defender) + " successfully deflects the shot (1d20 = " + String::valueOf(deflectRoll) + " + " + String::valueOf(lightsaberSkill) + " vs DC: "+String::valueOf(toHit/2 + crystalMod)+")";
                 reactionSpam += ", sending it harmlessly away.";
 
                 BorEffect::PerformReactiveAnimation(defender, attacker, "parry", GetSlotHitlocation(slot), false);
@@ -698,7 +726,7 @@ public:
                 // Taking half damage from lightsaber and melee hits!
                 dmgString = ApplyAdjustedHealthDamage(defender, attackerWeapon, incomingDamage / 2, slot);
 
-                reactionSpam += BorString::getNiceName(defender) + " deflects the attack in partial (1d20 = " + String::valueOf(deflectRoll) + " + " + String::valueOf(lightsaberSkill) + " vs DC: "+String::valueOf(toHit/2)+")";
+                reactionSpam += BorString::getNiceName(defender) + " deflects the attack in partial (1d20 = " + String::valueOf(deflectRoll) + " + " + String::valueOf(lightsaberSkill) + " vs DC: "+String::valueOf(toHit/2 + crystalMod)+")";
                 reactionSpam += ", still recieving "+ dmgString +" damage!";
 
                 // Melee weapons take half their maximum condition as damage!
@@ -717,7 +745,7 @@ public:
                 dmgString = ApplyAdjustedHealthDamage(defender, attackerWeapon, incomingDamage / 2, slot);
                 String atkDmgString = ApplyAdjustedHealthDamage(attacker, attackerWeapon, incomingDamage / 2, slot);
 
-                reactionSpam += BorString::getNiceName(defender) + " deflects the attack in partial (1d20 = " + String::valueOf(deflectRoll) + " + " + String::valueOf(lightsaberSkill) + " vs DC: "+String::valueOf(toHit/2)+")";
+                reactionSpam += BorString::getNiceName(defender) + " deflects the attack in partial (1d20 = " + String::valueOf(deflectRoll) + " + " + String::valueOf(lightsaberSkill) + " vs DC: "+String::valueOf(toHit/2 + crystalMod)+")";
                 reactionSpam += ", still recieving "+ dmgString +" damage!";
                 reactionSpam += " However, " + BorString::getNiceName(attacker) + " has hurt themselves in the process, taking "+ atkDmgString +" damage!";
 
@@ -728,7 +756,7 @@ public:
         }
         // We've fully deflected the attack!
         if (attackerWeapon->isRangedWeapon()){
-            reactionSpam += BorString::getNiceName(defender) + " successfully deflects the shot (1d20 = " + String::valueOf(deflectRoll) + " + " + String::valueOf(lightsaberSkill) + " vs DC: "+String::valueOf(toHit)+")";
+            reactionSpam += BorString::getNiceName(defender) + " successfully deflects the shot (1d20 = " + String::valueOf(deflectRoll) + " + " + String::valueOf(lightsaberSkill) + " vs DC: "+String::valueOf(toHit + crystalMod)+")";
 
             int damageType = attackerWeapon->getDamageType();
             if (damageType == SharedWeaponObjectTemplate::ENERGY || damageType == SharedWeaponObjectTemplate::ELECTRICITY || damageType == SharedWeaponObjectTemplate::STUN || damageType == SharedWeaponObjectTemplate::LIGHTSABER) {
@@ -747,7 +775,7 @@ public:
         }
         if (attackerWeapon->isJediWeapon() || attackerWeapon->isMeleeWeapon()){
             //Blocking all damage!
-            reactionSpam += ", but " + BorString::getNiceName(defender) + " successfully deflects the attack entirely. (1d20 = " + String::valueOf(deflectRoll) + " + " + String::valueOf(lightsaberSkill) + " vs DC: "+String::valueOf(toHit)+")";
+            reactionSpam += ", but " + BorString::getNiceName(defender) + " successfully deflects the attack entirely. (1d20 = " + String::valueOf(deflectRoll) + " + " + String::valueOf(lightsaberSkill) + " vs DC: "+String::valueOf(toHit + crystalMod)+")";
 
             if (attackerWeapon->isMeleeWeapon()){
                 reactionSpam += " " + BorString::getNiceName(attacker) + "'s weapon is not resistant to Lightsabers, and is destroyed in the process!";
@@ -763,7 +791,7 @@ public:
             BorEffect::PerformReactiveAnimation(defender, attacker, "parry", GetSlotHitlocation(slot), true);
             dmgString = ApplyAdjustedHealthDamage(attacker, attackerWeapon, incomingDamage, slot);
 
-            reactionSpam += ", but " + BorString::getNiceName(defender) + " successfully deflects the attack entirely. (1d20 = " + String::valueOf(deflectRoll) + " + " + String::valueOf(lightsaberSkill) + " vs DC: "+String::valueOf(toHit)+")";
+            reactionSpam += ", but " + BorString::getNiceName(defender) + " successfully deflects the attack entirely. (1d20 = " + String::valueOf(deflectRoll) + " + " + String::valueOf(lightsaberSkill) + " vs DC: "+String::valueOf(toHit + crystalMod)+")";
             reactionSpam += " " + BorString::getNiceName(attacker) + " hurts themselves on the blade for "+ dmgString +" damage!";
 
             return reactionSpam;
