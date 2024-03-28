@@ -5,7 +5,7 @@ npc_template = {
 		"rp_human_male", 65,
 		"rp_human_female", 35
 	},
-	skillTemplates = {"factional/common/scout"},
+	skillTemplates = {"common/soldier_scout"},
 	
 	equipmentTemplates = {
 		{"rp_human_male", {"faction/inquisitor/scout"}},
@@ -22,5 +22,7 @@ npc_template = {
 		{"/shared_owner/blend_muscle", 0},
 		{"/shared_owner/blend_fat", 0},
 		{"height", 1.2},
-	}
+	},
+
+	armour = "armourset_scouttrooper",
 }

@@ -5,7 +5,7 @@ npc_template = {
 		"rp_human_male", 90,
 		"rp_human_female", 10
 	},
-	skillTemplates = {"factional/common/elite"},
+	skillTemplates = {"common/soldier_strong"},
 	
 	equipmentTemplates = {
 		{"rp_human_male", {"faction/inquisitor/elite"}},
@@ -22,5 +22,7 @@ npc_template = {
 		{"/shared_owner/blend_muscle", 0},
 		{"/shared_owner/blend_fat", 0},
 		{"height", 1.3},
-	}
+	},
+
+	armour = "armourset_shocktrooper",
 }
