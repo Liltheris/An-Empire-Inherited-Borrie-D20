@@ -656,10 +656,10 @@ public:
             return ", doing (" + GetWeaponDamageString(attackerWeapon) + ") = "+ dmgString +" damage.";
         }
 
-//Check if crystal belongs to deflector? Deflecter? Defender? Who the fuck knows.
+        // Check if crystal belongs to deflector? Deflecter? Defender? Who the fuck knows.
         int crystalMod = 0;
-        if(weapon->isJediWeapon()) {
-            ManagedReference<SceneObject*> saberInv = weapon->getSlottedObject("saber_inv");
+        if(defenderWeapon->isJediWeapon()) {
+            ManagedReference<SceneObject*> saberInv = defenderWeapon->getSlottedObject("saber_inv");
 
             if(saberInv != nullptr) {
                 int containerSize = saberInv->getContainerObjectsSize();
@@ -697,6 +697,7 @@ public:
          else if (lightsaberSkill >=3)
             actionCost = 5;
         else actionCost = 99;
+
         DrainActionOrWill(defender, actionCost * actionPointMod);
 
         // Defender failed to reflect at all.
@@ -1207,8 +1208,18 @@ public:
                     return false;
                 }
                 int lightsaberSkill = defender->getSkillMod("rp_lightsaber");
-                int actionCost = 11 - lightsaberSkill;
-                if(actionCost <= 0) actionCost = 1;
+
+                int actionCost = 99;
+                if(lightsaberSkill >=9)
+                    actionCost = 1;
+                else if (lightsaberSkill >=7)
+                    actionCost = 2;
+                else if (lightsaberSkill >=5)
+                    actionCost = 3;
+                else if (lightsaberSkill >=3)
+                    actionCost = 5;
+                else actionCost = 99;
+
                 if(defenderWeapon->isJediWeapon()) {
                     if(defenderAction >= (actionCost)) {
                         return true;
