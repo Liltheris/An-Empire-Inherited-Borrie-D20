@@ -77,7 +77,8 @@ function BorForce_Lightning:performAbility(pPlayer, fpi)
 		local damageString = applyAdjustedHealthDamage(pTarget, "electricity", damage, hitSlot)
 
 		msg = msg..BorForceUtility:rollSpam(roll, skillValue, dc).." and hits, shocking them with a bolt of lightning, dealing 1d"..dieType.."+"..fpi.." = "..damageString.." damage!"
-		
+		BorForceUtility:playAbilityEffects(pPlayer, pTarget, self)
+		BorForce:addCorruptionPoints(pPlayer, self.corruptionPoints)
 	else
 		msg = msg..BorForceUtility:rollSpam(roll, skillValue, dc).." and fails!"
 	end
