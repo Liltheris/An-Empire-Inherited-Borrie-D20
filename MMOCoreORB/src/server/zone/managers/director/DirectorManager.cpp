@@ -710,10 +710,10 @@ void DirectorManager::reloadScreenPlays() {
 
 int DirectorManager::applyAdjustedHealthDamage(lua_State* L) {
 	
-	CreatureObject* creature = (CreatureObject*) lua_touserdata(L, -1);
-	String damageType = lua_tostring(L, -2);
-	int damage = lua_tonumber(L, -3);
-	int slot = lua_tonumber(L, -4);
+	int slot = lua_tonumber(L, -1);
+	int damage = lua_tonumber(L, -2);
+	String damageType = lua_tostring(L, -3);
+	CreatureObject* creature = (CreatureObject*) lua_touserdata(L, -4);
 
 	if (creature == nullptr){
 		String err = "DirectorManager::applyAdjustedHealthDamage was provided with an invalid creature object!";
