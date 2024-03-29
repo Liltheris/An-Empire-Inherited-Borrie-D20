@@ -12,15 +12,15 @@ BorForce_BasePower = {
 	targetAnim = "",
 	combatAnim = "",
 
-	minRange = 0,
-	idealRange = 0,
-	farRange = 0,
-	maxRange = 0,
+	minRange = -1,
+	idealRange = -1,
+	farRange = -1,
+	maxRange = -1,
 
 	targetSelf = false,
-	multiTarget = false,
+	targetCount = 1,
 
-	fpiMin = 0,
+	fpiMin = 1,
 	fpiMax = 999,
 
 	corruptionPoints = 0,
@@ -75,8 +75,8 @@ function BorForce_BasePower:new(newData)
 		outData.targetSelf = newData.targetSelf
 	end
 
-	if(newData.multiTarget ~= nil) then
-		outData.multiTarget = newData.multiTarget
+	if(newData.targetCount ~= nil) then
+		outData.targetCount = newData.targetCount
 	end
 
 	if(newData.fpiMin ~= nil) then
@@ -124,7 +124,7 @@ function BorForceUtility:displayHelp(power, pPlayer)
 	--Corruption
 	if(power.corruptionPoints ~= 0) then
 		msg = msg .. "\nCorruption: "..power.corruptionPoints
-		if(power.multiTarget) then
+		if(power.targetCount > 1) then
 			msg = msg .. " per target hit."
 		end
 	end
@@ -196,19 +196,14 @@ function BorForceUtility:getForcePointInput(pPlayer, power)
 	if(pPlayer ~= nil) then
 
 		local fpiMax = 999
-		local fpiMin = 0
 
 		if (power.fpiMax ~= 999) then
 			fpiMax = power.fpiMax
 		end
 
-		if (power.fpiMin ~= 0) then
-			fpiMin = power.fpiMin
-		end
-
 		local input = SceneObject(pPlayer):getStoredInt("force_command_fpi")
 
-		return math.floor(math.max(math.min(self:capMaximumAllowedForcePoints(pPlayer, input), fpiMax), fpiMin))
+		return math.floor(math.min(self:capMaximumAllowedForcePoints(pPlayer, input), fpiMax))
 	else
 		return 0
 	end
@@ -229,12 +224,17 @@ function BorForceUtility:canUseForcePower(pPlayer, pTarget, power)
 		return false
 	end
 
-	if((pTarget == nil or pTarget == pPlayer) and power.targetSelf == false) then
+	if((pTarget == nil or SceneObject(pTarget):isCreatureObject() == false) and power.targetSelf == false) then
 		CreatureObject(pPlayer):sendSystemMessage("You require a valid target to use "..power.name..".")
 		return false
 	end
 
-	if(targetSelf == false) then
+	if(pTarget == pPlayer and power.targetSelf == false) then
+		CreatureObject(pPlayer):sendSystemMessage("You cannot use "..power.name.." on yourself.")
+		return false
+	end
+
+	if(power.targetSelf == false) then
 		if(SceneObject(pPlayer):getDistanceTo(pTarget) < power.minRange) then
 			CreatureObject(pPlayer):sendSystemMessage("You are too close to your target to use "..power.name..".")
 			return false
@@ -247,6 +247,20 @@ function BorForceUtility:canUseForcePower(pPlayer, pTarget, power)
 	end
 
 	return true
+end
+
+function BorForceUtility:getRangeDC(pPlayer, pTarget, power)
+	local dc = 99
+
+	if (SceneObject(pPlayer):getDistanceTo(pTarget) < power.idealRange) then
+		dc = 15
+	elseif (SceneObject(pPlayer):getDistanceTo(pTarget) < power.farRange) then
+		dc = 10
+	elseif (SceneObject(pPlayer):getDistanceTo(pTarget) < power.maxRange) then
+		dc = 20
+	end
+
+	return dc
 end
 
 function BorForceUtility:reportPowerNotKnown(pPlayer)

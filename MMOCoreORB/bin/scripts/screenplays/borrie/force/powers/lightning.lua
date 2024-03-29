@@ -1,43 +1,32 @@
-BorForce_Lightning = {
+BorForce_Lightning = BorForce_BasePower:new({
 	name = "Force Lightning",
-	animationName = "force_lightning_1_particle_level_3",
-	maxRange = 16,
+	requiredSkills = {"rp_lightning_a03"},
+	combatAnim = "force_lightning_1_particle_level_3",
+
+	minRange = 0,
+	idealRange = 1,
+	farRange = 12,
+	maxRange = 20,
+
 	corruptionPoints = 1,
-}
+
+	helpString = "Roll Lightning versus a scaling range DC. On success, does 1d2 - 1d12 + 1 electricity damage per Force point invested."
+})
 
 function BorForce_Lightning:showHelp(pPlayer)
-	
+	BorForceUtility:displayHelp(self, pPlayer)
 end
 
 function BorForce_Lightning:execute(pPlayer)
-	local hasPower = CreatureObject(pPlayer):hasSkill("rp_lightning_a03")
-	
-	if(hasPower == false) then
-		BorForceUtility:reportPowerNotKnown(pPlayer)
-		return
-	end
 	
 	local targetID = CreatureObject(pPlayer):getTargetID()
 	local pTarget = getSceneObject(targetID)
-		
-	if (pTarget == nil or not SceneObject(pTarget):isCreatureObject()) then
-		CreatureObject(pPlayer):sendSystemMessage("Invalid target, must be a creature.")
-		return
-	end
 	
-	if(SceneObject(pPlayer):getObjectID() == SceneObject(pTarget):getObjectID()) then
-		CreatureObject(pPlayer):sendSystemMessage("Invalid target. You cannot target yourself with this ability.")
-		return
-	end
-	
-	if(SceneObject(pPlayer):getDistanceTo(pTarget) > self.maxRange) then
-		CreatureObject(pPlayer):sendSystemMessage("Your target is too far away.")
-		return
-	end
+	BorForceUtility:canUseForcePower(pPlayer, pTarget, self)
 	
 	local fpi = BorForceUtility:getForcePointInput(pPlayer)
 	
-	if(fpi < 1) then
+	if(fpi < self.fpiMin) then
 		BorForceUtility:promptForcePointInput(pPlayer, self.name, "BorForce_Lightning", "onFPICallback")
 	else 
 		self:performAbility(pPlayer, fpi)
@@ -62,43 +51,35 @@ function BorForce_Lightning:onFPICallback(pPlayer, pSui, eventIndex, remaining, 
 end
 
 function BorForce_Lightning:performAbility(pPlayer, fpi)
-	local pGhost = CreatureObject(pPlayer):getPlayerObject()
 
-	if (pGhost == nil) then
+	if(BorForceUtility:handleFPI(pPlayer, self, fpi) == false) then
 		return
 	end
 	
 	local targetID = CreatureObject(pPlayer):getTargetID()
 	local pTarget = getSceneObject(targetID)
 		
-	if (pTarget == nil or not SceneObject(pTarget):isCreatureObject()) then
-		CreatureObject(pPlayer):sendSystemMessage("Invalid target, must be a creature.")
-		return
-	end
-	
-	if(SceneObject(pPlayer):getObjectID() == SceneObject(pTarget):getObjectID()) then
-		CreatureObject(pPlayer):sendSystemMessage("Invalid target. You cannot target yourself with this ability.")
-		return
-	end
-	
-	if(SceneObject(pPlayer):getDistanceTo(pTarget) > self.maxRange) then
-		CreatureObject(pPlayer):sendSystemMessage("Your target is too far away.")
-		return
-	end
-	
-	local forcePower = math.floor(PlayerObject(pGhost):getForcePower())
-	
-	fpi = math.floor(fpi)
-	
-	if(forcePower < fpi) then
-		CreatureObject(pPlayer):sendSystemMessage("You don't have enough Force Power to commit " .. fpi .. " points.")
-		return
-	end
+	BorForceUtility:canUseForcePower(pPlayer, pTarget, self)
 	
 	local targetName = CreatureObject(pTarget):getFirstName() 
-	
-	--Begin Force Code
-	
-	--Drain Force Pool Accordingly.
-	PlayerObject(pGhost):setForcePower(forcePower - fpi)	
+	local dc = math.floor(BorForceUtility:getRangeDC(pPlayer, pTarget, self))
+
+	local skillValue = math.floor(CreatureObject(pPlayer):getSkillMod("rp_lightning"))
+	local dieType = math.floor(skillValue/2)
+	local roll = math.floor(math.random(1,20))	
+
+	local msg = CreatureObject(pPlayer):getFirstName().." attempts to use "..self.name.." on "..targetName.." "
+
+	if((skillValue + roll >= dc and roll > 1) or roll == 20) then
+		local damage = math.floor(math.random(1,dieType) + fpi)
+		local hitSlot = math.floor(math.random(1,10))
+		local damageString = applyAdjustedHealthDamage(pTarget, "electricity", damage, hitSlot)
+
+		msg = msg..BorForceUtility:rollSpam(roll, skillValue, dc).." and hits, shocking them with a bolt of lightning, dealing 1d"..dieType.."+"..fpi.." = "..damageString.." damage!"
+		
+	else
+		msg = msg..BorForceUtility:rollSpam(roll, skillValue, dc).." and fails!"
+	end
+
+	broadcastMessageWithName(pPlayer, msg)
 end
