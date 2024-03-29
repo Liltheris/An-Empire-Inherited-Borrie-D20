@@ -4,7 +4,6 @@ BorForceUtility = {
 
 BorForce_BasePower = {
 	name = "",
-	animationName = "",
 	requiredSkills = {},
 
 	selfEffect = "",
@@ -28,6 +27,76 @@ BorForce_BasePower = {
 
 	helpString = "",
 }
+
+function BorForce_BasePower:new(newData)
+	local outData = self
+
+	if(newData.name ~= nil) then
+		outData.name = newData.name
+	end
+
+	if(newData.requiredSkills ~= nil) then
+		outData.requiredSkills = newData.requiredSkills
+	end
+
+	if(newData.selfEffect ~= nil) then
+		outData.selfEffect = newData.selfEffect
+	end
+
+	if(newData.selfAnim ~= nil) then
+		outData.selfAnim = newData.selfAnim
+	end
+
+	if(newData.targetAnim ~= nil) then
+		outData.targetAnim = newData.targetAnim
+	end
+
+	if(newData.combatAnim ~= nil) then
+		outData.combatAnim = newData.combatAnim
+	end
+
+	if(newData.minRange ~= nil) then
+		outData.minRange = newData.minRange
+	end
+
+	if(newData.idealRange ~= nil) then
+		outData.idealRange = newData.idealRange
+	end
+
+	if(newData.farRange ~= nil) then
+		outData.farRange = newData.farRange
+	end
+
+	if(newData.maxRange ~= nil) then
+		outData.maxRange = newData.maxRange
+	end
+
+	if(newData.targetSelf ~= nil) then
+		outData.targetSelf = newData.targetSelf
+	end
+
+	if(newData.multiTarget ~= nil) then
+		outData.multiTarget = newData.multiTarget
+	end
+
+	if(newData.fpiMin ~= nil) then
+		outData.fpiMin = newData.fpiMin
+	end
+
+	if(newData.fpiMax ~= nil) then
+		outData.fpiMax = newData.fpiMax
+	end
+
+	if(newData.corruptionPoints ~= nil) then
+		outData.corruptionPoints = newData.corruptionPoints
+	end
+
+	if(newData.helpString ~= nil) then
+		outData.helpString = newData.helpString
+	end
+
+	return outData
+end
 
 function BorForceUtility:displayHelp(power, pPlayer)
 	local msg = power.name..": "

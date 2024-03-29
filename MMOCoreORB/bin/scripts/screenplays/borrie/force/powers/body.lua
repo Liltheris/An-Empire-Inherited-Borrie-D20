@@ -1,4 +1,4 @@
-BorForce_Body = BorForce_BasePower:new {
+BorForce_Body = BorForce_BasePower:new({
 	name = "Force Body",
 	requiredSkills = {"rp_ability_forcebody", "rp_training_jedi_guardian_01"},
 	selfEffect = "clienteffect/pl_force_heal_self.cef",
@@ -6,7 +6,7 @@ BorForce_Body = BorForce_BasePower:new {
 	targetSelf = true,
 
 	helpString = "Roll Alter, DC 10. On success, restores 1 Action Point for every Force Point invested."
-}
+})
 
 function BorForce_Body:showHelp(pPlayer)
 	BorForceUtility:displayHelp(self, pPlayer)
@@ -45,7 +45,9 @@ end
 
 function BorForce_Body:performAbility(pPlayer, fpi)
 
-	BorForceUtility:handleFPI(pPlayer, self, fpi)
+	if(BorForceUtility:handleFPI(pPlayer, self, fpi) == false) then
+		return
+	end
 	
 	local dc = 10
 
