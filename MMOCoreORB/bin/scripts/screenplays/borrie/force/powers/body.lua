@@ -44,40 +44,24 @@ function BorForce_Body:onFPICallback(pPlayer, pSui, eventIndex, remaining, spent
 end
 
 function BorForce_Body:performAbility(pPlayer, fpi)
-	local pGhost = CreatureObject(pPlayer):getPlayerObject()
 
-	if (pGhost == nil) then
-		return
-	end
-	
-	local forcePower = math.floor(PlayerObject(pGhost):getForcePower())
-	
-	fpi = math.floor(fpi)
-	
-	local clientEffect = "clienteffect/pl_force_heal_self.cef"
-	
-	if(forcePower < fpi) then
-		CreatureObject(pPlayer):sendSystemMessage("You don't have enough Force Power to commit " .. fpi .. " points.")
-		return
-	end
+	BorForceUtility:handleFPI(pPlayer, self, fpi)
 	
 	local dc = 10
 
 	local skillValue = math.floor(CreatureObject(pPlayer):getSkillMod("rp_inward"))
 	local roll = math.floor(math.random(1,20))	
 		
-	local message = CreatureObject(pPlayer):getFirstName().." used "..self.name.."!"
-	
+	local msg = CreatureObject(pPlayer):getFirstName().." used "..self.name.."!"
+
 	if((skillValue + roll >= dc and roll > 1) or roll == 20) then
-		message = message .. " They rejuvinate themselves for "..fpi.." action points! "..BorForceUtility:rollSpam(roll, skillValue, dc)
+		msg = msg .. " They rejuvinate themselves for "..fpi.." action points! "..BorForceUtility:rollSpam(roll, skillValue, dc)
 		BorForceUtility:playAbilityEffects(pPlayer, pPlayer, self)
 
 		CreatureObject(pPlayer):setHAM(3, math.min(CreatureObject(pPlayer):getHAM(3) + fpi, CreatureObject(pPlayer):getMaxHAM(3)))
 	else 
-		message = message .. " Unfortunately, their focus is broken, and they fail to rejuvinate themselves. "..BorForceUtility:rollSpam(roll, skillValue, dc)
+		msg = msg .. " Unfortunately, their focus is broken, and they fail to rejuvinate themselves. "..BorForceUtility:rollSpam(roll, skillValue, dc)
 	end
 	
-	broadcastMessageWithName(pPlayer, message)
-	
-	PlayerObject(pGhost):setForcePower(forcePower - fpi)	
+	broadcastMessageWithName(pPlayer, msg)
 end

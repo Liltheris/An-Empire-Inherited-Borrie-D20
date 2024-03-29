@@ -80,6 +80,27 @@ function BorForceUtility:rollSpam(roll, bonus, dc)
 	return "\\#DBDBDB(1d20: "..roll.." + "..bonus.." = "..roll+bonus.." vs DC: "+dc+")\\#FFFFFF"
 end
 
+function BorForceUtility:handleFPI(pPlayer, power, fpi)
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
+
+	if (pGhost == nil) then
+		return false
+	end
+	
+	local forcePower = math.floor(PlayerObject(pGhost):getForcePower())
+
+	fpi = math.floor(fpi)
+	
+	if(forcePower < fpi) then
+		CreatureObject(pPlayer):sendSystemMessage("You don't have enough Force Power to commit ".. fpi .." points.")
+		return false
+	end
+
+	PlayerObject(pGhost):setForcePower(forcePower - fpi)
+
+	return true
+end
+
 function BorForceUtility:playAbilityEffects(pPlayer, pTarget, power)
 	if(power.combatAnim ~= "") then
 		CreatureObject(pPlayer):doCombatAnimation(pPlayer, pTarget, power.combatAnim)
