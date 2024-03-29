@@ -18,16 +18,14 @@ function BorForce_Lightning:showHelp(pPlayer)
 end
 
 function BorForce_Lightning:execute(pPlayer)
-	
-	local targetID = CreatureObject(pPlayer):getTargetID()
-	local pTarget = getSceneObject(targetID)
-	
-	BorForceUtility:canUseForcePower(pPlayer, pTarget, self)
-	
 	local fpi = BorForceUtility:getForcePointInput(pPlayer, self)
 	
+	if(BorForceUtility:canUseForcePower(pPlayer, pPlayer, self) == false) then
+		return
+	end
+	
 	if(fpi < self.fpiMin) then
-		BorForceUtility:promptForcePointInput(pPlayer, self.name, "BorForce_Lightning", "onFPICallback")
+		BorForceUtility:promptForcePointInput(pPlayer, self, "BorForce_Lightning", "onFPICallback")
 	else 
 		self:performAbility(pPlayer, fpi)
 	end
