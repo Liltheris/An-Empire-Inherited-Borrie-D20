@@ -475,6 +475,8 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	luaEngine->registerFunction("broadcastMessageToArea", broadcastMessageToArea);
 	luaEngine->registerFunction("broadcastMessageWithName", broadcastMessageWithName);
 	luaEngine->registerFunction("generateSerial", generateSerial);
+	//AEI functions
+	luaEngine->registerFunction("applyAdjustedHealthDamage", applyAdjustedHealthDamage);
 
 
 	//Navigation Mesh Management
