@@ -74,7 +74,8 @@ function BorForce_Lightning:performAbility(pPlayer, fpi)
 	if((skillValue + roll >= dc and roll > 1) or roll == 20) then
 		local damage = math.floor(math.random(1,dieType) + fpi)
 		local hitSlot = math.floor(math.random(1,10))
-		local damageString = applyAdjustedHealthDamage(pTarget, "electricity", damage, hitSlot)
+		--local damageString = applyAdjustedHealthDamage(pTarget, "electricity", damage, hitSlot)
+		local damageString = applyAdjustedHealthDamage(hitSlot, damage, "electricity", pTarget)
 
 		msg = msg..BorForceUtility:rollSpam(roll, skillValue, dc).." and hits, shocking them with a bolt of lightning, dealing 1d"..dieType.."+"..fpi.." = "..damageString.." damage!"
 		BorForceUtility:playAbilityEffects(pPlayer, pTarget, self)
