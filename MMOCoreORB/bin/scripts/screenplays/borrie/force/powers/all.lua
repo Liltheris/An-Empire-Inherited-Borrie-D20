@@ -118,7 +118,7 @@ function BorForceUtility:displayHelp(power, pPlayer)
 		msg = msg .. "\nRanges: ("
 		if (power.minRange ~= -1) then
 			msg = msg .. "Min: "..power.minRange..", " 
-			msg = msg .. "Ideal: "..power.idealRange.." - "..power.farRange", "
+			msg = msg .. "Ideal: "..power.idealRange.." - "..power.farRange..", "
 			msg = msg .. "Max: "..power.maxRange..")"
 		end
 	else

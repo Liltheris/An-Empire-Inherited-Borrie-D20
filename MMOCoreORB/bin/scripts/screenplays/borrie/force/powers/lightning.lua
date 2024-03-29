@@ -19,8 +19,11 @@ end
 
 function BorForce_Lightning:execute(pPlayer)
 	local fpi = BorForceUtility:getForcePointInput(pPlayer, self)
+
+	local targetID = CreatureObject(pPlayer):getTargetID()
+	local pTarget = getSceneObject(targetID)
 	
-	if(BorForceUtility:canUseForcePower(pPlayer, pPlayer, self) == false) then
+	if(BorForceUtility:canUseForcePower(pPlayer, pTarget, self) == false) then
 		return
 	end
 	
