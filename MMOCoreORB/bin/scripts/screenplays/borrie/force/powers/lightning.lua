@@ -24,7 +24,7 @@ function BorForce_Lightning:execute(pPlayer)
 	
 	BorForceUtility:canUseForcePower(pPlayer, pTarget, self)
 	
-	local fpi = BorForceUtility:getForcePointInput(pPlayer)
+	local fpi = BorForceUtility:getForcePointInput(pPlayer, self)
 	
 	if(fpi < self.fpiMin) then
 		BorForceUtility:promptForcePointInput(pPlayer, self.name, "BorForce_Lightning", "onFPICallback")
