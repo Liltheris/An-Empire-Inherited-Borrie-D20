@@ -61,7 +61,7 @@ function BorForce_Defense:performAbility(pPlayer, fpi)
 	
 	local message = CreatureObject(pPlayer):getFirstName() .. " uses " .. self.name .. "!"
 	
-	if(roll + skillValue >= 5 + dc) then
+	if(roll + skillValue >= dc) then
 		SceneObject(pPlayer):setStoredInt("force_defense", fpi)
 		message = message .. " The Force surrounds them, protecting them from up to " .. fpi .. " damage on the next attack against them."
 	else

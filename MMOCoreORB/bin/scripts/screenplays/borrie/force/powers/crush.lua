@@ -77,7 +77,7 @@ function BorForce_Crush:performAbility(pPlayer, fpi)
 	local msg = CreatureObject(pPlayer):getFirstName().." attempts to use "..self.name.." on "..targetName.." "
 
 	if((skillValue + roll >= dc and roll > 1) or roll == 20) then
-		local damage = math.floor(math.random(1,dieType) + fpi)
+		local damage = math.floor(math.random(1,6) + fpi)
 		local hitSlot = math.floor(math.random(1,10))
 		local damageString = applyAdjustedHealthDamage(pTarget, "kinetic", damage, hitSlot)
 

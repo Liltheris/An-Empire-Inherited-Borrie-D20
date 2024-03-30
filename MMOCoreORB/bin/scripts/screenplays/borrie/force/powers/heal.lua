@@ -6,6 +6,8 @@ BorForce_Heal = BorForce_BasePower:new({
 
 	selfEffect = "clienteffect/pl_force_heal_self.cef",
 
+	targetSelf = true,
+
 	helpString = "Roll Alter against DC10 + Dark side points / 2 to heal 2 health point per Force point used."
 })
 

@@ -9,7 +9,7 @@ BorForce_Project = BorForce_BasePower:new({
 
 	targetSelf = true,
 
-	helpString = "Projects an image of the user away from their current location. The next attack against the user must beat FPI * 2 to hit instead of the range DC. "
+	helpString = "Projects an image of the user away from their current location. The next attack against the user must beat 10 + FPI * 2 to hit instead of the range DC. "
 })
 
 function BorForce_Project:showHelp(pPlayer)
@@ -65,8 +65,8 @@ function BorForce_Project:performAbility(pPlayer, fpi)
 
 	if((skillValue + roll >= dc and roll > 1) or roll == 20) then
 
-		msg = msg.." and succeeds! They become hard to focus on, seeming to be in two places at the same time. The DC of the next attack against them is now ".. fpi*2 .."!"
-		SceneObject(pPlayer):setStoredInt("project_dc", fpi)
+		msg = msg.." and succeeds! They become hard to focus on, seeming to be in two places at the same time. The DC of the next attack against them is now ".. 10+fpi*2 .."!"
+		SceneObject(pPlayer):setStoredInt("project_dc", 10+fpi)
 		SceneObject(pPlayer):setStoredInt("project_timer", 2)
 	else
 		msg = msg.." and fails!"

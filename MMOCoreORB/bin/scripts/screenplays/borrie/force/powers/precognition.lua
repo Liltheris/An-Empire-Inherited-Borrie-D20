@@ -58,7 +58,7 @@ function BorForce_Precognition:performAbility(pPlayer, fpi)
 
 	local msg = CreatureObject(pPlayer):getFirstName() .. " uses " .. self.name .. " "..BorForceUtility:rollSpamFPI(roll, skillValue, fpi, dc)
 
-	if((skillValue + roll >= dc and roll > 1) or roll == 20) then
+	if((skillValue + roll + fpi >= dc and roll > 1) or roll == 20) then
 		msg = msg .. " and gains insight into the future, or reveals the past..."
 	else
 		msg = msg .. " and fails. They do not sense what the future holds, or what has happened before."
