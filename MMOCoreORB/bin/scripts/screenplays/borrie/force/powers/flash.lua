@@ -96,7 +96,7 @@ function BorForce_Flash:performAbility(pPlayer, fpi)
 	
 	msg = msg .. rollString
 
-	BorForceUtility:playAbilityEffects(pPlayer, pPlayer, self)
+	BorForceUtility:playAbilityEffects(pPlayer, pTarget, self)
 	broadcastMessageWithName(pPlayer, msg)
 	
 end

@@ -17,7 +17,7 @@ function BorForce_Project:showHelp(pPlayer)
 end
 
 function BorForce_Project:execute(pPlayer)
-	local fpi = BorForceUtility:getForcePointInput(pPlayer)
+	local fpi = BorForceUtility:getForcePointInput(pPlayer, power)
 
 	if(BorForceUtility:canUseForcePower(pPlayer, pPlayer, self) == false) then
 		return
@@ -66,8 +66,8 @@ function BorForce_Project:performAbility(pPlayer, fpi)
 	if((skillValue + roll >= dc and roll > 1) or roll == 20) then
 
 		msg = msg.." and succeeds! They become hard to focus on, seeming to be in two places at the same time. The DC of the next attack against them is now ".. fpi*2 .."!"
-		CreatureObject(pPlayer):setStoredInt("project_dc", fpi)
-		CreatureObject(pPlayer):setStoredInt("project_timer", 2)
+		SceneObject(pPlayer):setStoredInt("project_dc", fpi)
+		SceneObject(pPlayer):setStoredInt("project_timer", 2)
 	else
 		msg = msg.." and fails!"
 	end

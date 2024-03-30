@@ -1,6 +1,6 @@
 BorForce_Crush = BorForce_BasePower:new({
 	name = "Force Crush",
-	requiredSkills = {"rp_ability_frocecrush"},
+	requiredSkills = {"rp_ability_forcecrush"},
 	combatAnim = "force_choke_1_particle_level_1",
 
 	action = "Major",

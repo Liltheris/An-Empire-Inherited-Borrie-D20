@@ -176,7 +176,7 @@ function BorForceUtility:applyStatusEffect(caster, target, status, duration)
 	end
 
 	--Apply the timer for the status.
-	CreatureObject(target):setStoredInt("state_"..status.."_duration", duration)
+	SceneObject(target):setStoredInt("state_"..status.."_duration", duration)
 
 	return true
 end

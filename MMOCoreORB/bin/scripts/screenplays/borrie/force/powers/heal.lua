@@ -14,7 +14,7 @@ function BorForce_Heal:showHelp(pPlayer)
 end
 
 function BorForce_Heal:execute(pPlayer)
-	local fpi = BorForceUtility:getForcePointInput(pPlayer)
+	local fpi = BorForceUtility:getForcePointInput(pPlayer, power)
 
 	if(BorForceUtility:canUseForcePower(pPlayer, pPlayer, self) == false) then
 		return

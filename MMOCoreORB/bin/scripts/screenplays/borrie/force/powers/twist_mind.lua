@@ -90,8 +90,8 @@ function BorForce_TwistMind:performAbility(pPlayer, fpi)
 	local targetName = CreatureObject(pTarget):getFirstName()
 	local msg = CreatureObject(pPlayer):getFirstName() .. " uses " .. self.name .. " on "..targetName
 
-	msg = msg .."\\#DBDBDB(1d20: "..rollColour(roll).." + "..skillValue.." + \\#FF00FF"..fpi.."\\#DBDBDB = "..total.."vs "
-	msg = msg .."2d20: ("..rollColour(targetRoll1).." + "..rollColour(targetRoll2)..") + "..targetSkillValue1.." + "..targetSkillValue2.." = "..targetTotal1+targetTotal2..")\\#FFFFFF"
+	msg = msg .."\\#DBDBDB(1d20: "..self:rollColour(roll).." + "..skillValue.." + \\#FF00FF"..fpi.."\\#DBDBDB = "..total.."vs "
+	msg = msg .."2d20: ("..self:rollColour(targetRoll1).." + "..self:rollColour(targetRoll2)..") + "..targetSkillValue1.." + "..targetSkillValue2.." = "..targetTotal1+targetTotal2..")\\#FFFFFF"
 
 	if(total > targetTotal1+targetTotal2) then
 		msg = msg .. " and succeed! "..targetName.." writhes in agony as their mind is turned and twisted until they drop unconscious."

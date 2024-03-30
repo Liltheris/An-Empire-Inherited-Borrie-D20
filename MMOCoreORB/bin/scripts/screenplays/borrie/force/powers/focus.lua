@@ -13,7 +13,7 @@ function BorForce_Focus:showHelp(pPlayer)
 end
 
 function BorForce_Focus:execute(pPlayer)
-	local fpi = BorForceUtility:getForcePointInput(pPlayer)
+	local fpi = BorForceUtility:getForcePointInput(pPlayer, power)
 
 	if(BorForceUtility:canUseForcePower(pPlayer, pPlayer, self) == false) then
 		return
@@ -59,7 +59,7 @@ function BorForce_Focus:performAbility(pPlayer, fpi)
 
 	msg = msg.." Their next non-social, non-combat skill roll will be replaced with "..BorForceUtility:rollSpamFPINoDC(roll, skillValue, fpi).."!"
 
-	CreatureObject(pPlayer):setStoredInt("focus_roll", roll+skillValue+fpi)
+	SceneObject(pPlayer):setStoredInt("focus_roll", roll+skillValue+fpi)
 	
 	BorForceUtility:playAbilityEffects(pPlayer, pPlayer, self)
 	broadcastMessageWithName(pPlayer, msg)
