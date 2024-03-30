@@ -282,6 +282,12 @@ function SpaceTansariiPointStationScreenPlay:spawnSceneObjects()
 	SceneObject(sObj):setDispenserContainer(true)
 	SceneObject(sObj):populateInventoryFromContentList("furniture_plants")
 
+	--Weapon Parts
+	sObj = spawnSceneObject("rp_space", "object/tangible/furniture/plain/plain_chest_s01.iff", -32.2937, 0.65, 21.1693, 808256, 0.887011, 0, -0.461748, 0)
+	SceneObject(sObj):setCustomObjectName("Scopes, Stocks and & Muzzles")
+	SceneObject(sObj):setPublicContainer(true)
+	SceneObject(sObj):setDispenserContainer(true)
+	SceneObject(sObj):populateInventoryFromContentList("weapon_attachments")
 
 end
 

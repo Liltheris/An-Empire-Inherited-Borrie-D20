@@ -301,7 +301,12 @@ function RoriNewRestussScreenPlay:spawnSceneObjects()
 	SceneObject(sObj):setDispenserContainer(true)
 	SceneObject(sObj):populateInventoryFromContentList("tailor_ithorian2")
 
-	
+	--Weapon Parts
+	sObj = spawnSceneObject("rp_rori", "object/tangible/furniture/plain/plain_chest_s01.iff", 4.47445, 0.7, 3.9998, 610014461, -4.37114e-08, 0, 1, 0)
+	SceneObject(sObj):setCustomObjectName("Scopes, Stocks and & Muzzles")
+	SceneObject(sObj):setPublicContainer(true)
+	SceneObject(sObj):setDispenserContainer(true)
+	SceneObject(sObj):populateInventoryFromContentList("weapon_attachments")
 
 end
 
