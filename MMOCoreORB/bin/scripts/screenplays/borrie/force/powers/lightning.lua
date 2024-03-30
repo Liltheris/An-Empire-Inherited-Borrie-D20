@@ -52,15 +52,16 @@ function BorForce_Lightning:onFPICallback(pPlayer, pSui, eventIndex, remaining, 
 end
 
 function BorForce_Lightning:performAbility(pPlayer, fpi)
+	local targetID = CreatureObject(pPlayer):getTargetID()
+	local pTarget = getSceneObject(targetID)
+		
+	if(BorForceUtility:canUseForcePower(pPlayer, pTarget, self) == false) then
+		return
+	end
 
 	if(BorForceUtility:handleFPI(pPlayer, self, fpi) == false) then
 		return
 	end
-	
-	local targetID = CreatureObject(pPlayer):getTargetID()
-	local pTarget = getSceneObject(targetID)
-		
-	BorForceUtility:canUseForcePower(pPlayer, pTarget, self)
 	
 	local targetName = CreatureObject(pTarget):getFirstName() 
 	local dc = math.floor(BorForceUtility:getRangeDC(pPlayer, pTarget, self))

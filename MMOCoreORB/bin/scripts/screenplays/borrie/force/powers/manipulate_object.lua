@@ -1,23 +1,24 @@
-BorForce_ManipulateObject = {
+BorForce_ManipulateObject = BorForce_BasePower:new({
 	name = "Manipulate Object",
-	animationName = "force_choke"
-}
+	requiredSkills = {"rp_telekinesis_novice"},
+
+	selfAnim = "force_choke",
+
+	helpString = "Allows the user to move an object through the Force. Roll Telekinesis + FPI vs a DC that is determined by the complexity of the manipulation, and the size of the object.",
+})
 
 function BorForce_ManipulateObject:showHelp(pPlayer)
-	
+	BorForceUtility:displayHelp(self, pPlayer)
 end
 
 function BorForce_ManipulateObject:execute(pPlayer)
-	local hasPower = CreatureObject(pPlayer):hasSkill("rp_telekinesis_novice")
+	local fpi = BorForceUtility:getForcePointInput(pPlayer, self)
 	
-	if(hasPower == false) then
-		BorForceUtility:reportPowerNotKnown(pPlayer)
+	if(BorForceUtility:canUseForcePower(pPlayer, pPlayer, self) == false) then
 		return
 	end
 	
-	local fpi = BorForceUtility:getForcePointInput(pPlayer)
-	
-	if(fpi < 1) then
+	if(fpi < self.fpiMin) then
 		BorForceUtility:promptForcePointInput(pPlayer, self.name, "BorForce_ManipulateObject", "onFPICallback")
 	else 
 		self:performAbility(pPlayer, fpi)
@@ -42,25 +43,19 @@ function BorForce_ManipulateObject:onFPICallback(pPlayer, pSui, eventIndex, rema
 end
 
 function BorForce_ManipulateObject:performAbility(pPlayer, fpi)
-	local pGhost = CreatureObject(pPlayer):getPlayerObject()
+	if(BorForceUtility:canUseForcePower(pPlayer, pPlayer, self) == false) then
+		return
+	end
+	
+	if(BorForceUtility:handleFPI(pPlayer, self, fpi) == false) then
+		return
+	end
 
-	if (pGhost == nil) then
-		return
-	end
+	local skillValue = math.floor(CreatureObject(pPlayer):getSkillMod("rp_telekinesis"))
+	local roll = math.floor(math.random(1,20))	
+		
+	local msg = CreatureObject(pPlayer):getFirstName().." uses "..self.name.."!"
+	msg = msg .. "They attempt to move an object through the Force! " .. BorForceUtility:rollSpamFPINoDC(roll, skillValue, fpi)
 	
-	local forcePower = math.floor(PlayerObject(pGhost):getForcePower())
-	
-	fpi = math.floor(fpi)
-	
-	if(forcePower < fpi) then
-		CreatureObject(pPlayer):sendSystemMessage("You don't have enough Force Power to commit " .. fpi .. " points.")
-		return
-	end
-	
-	--Execute Force Code
-	
-	
-	--Drain Force Pool
-	PlayerObject(pGhost):setForcePower(forcePower - fpi)	
-	
+	BorForceUtility:playAbilityEffects(pPlayer, pPlayer, self)
 end

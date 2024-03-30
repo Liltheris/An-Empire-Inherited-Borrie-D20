@@ -18,6 +18,8 @@ BorForce_BasePower = {
 	name = "",
 	requiredSkills = {},
 
+	action = "Minor",
+
 	selfEffect = "",
 	selfAnim = "",
 	targetEffect = "",
@@ -49,6 +51,10 @@ function BorForce_BasePower:new(newData)
 
 	if(newData.requiredSkills ~= nil) then
 		outData.requiredSkills = newData.requiredSkills
+	end
+
+	if(newData.action ~= nil) then
+		outData.action = newData.action
 	end
 
 	if(newData.selfEffect ~= nil) then
@@ -126,10 +132,10 @@ function BorForceUtility:displayHelp(power, pPlayer)
 	end
 
 	--FPI costs
-	if(power.fpiMin ~= 0) then
+	if(power.fpiMin ~= 1) then
 		msg = msg .. "\nMinimum FPI: "..power.fpiMin
 	end
-	if(power.fpiMin ~= 0) then
+	if(power.fpiMin ~= 999) then
 		msg = msg .. "\nMaximum FPI: "..power.fpiMax
 	end
 
@@ -141,7 +147,9 @@ function BorForceUtility:displayHelp(power, pPlayer)
 		end
 	end
 
-	msg =  msg .. "\n"..power.helpString
+	msg = msg.."\nAction type: "..power.action
+
+	msg = msg.."\n"..power.helpString
 
 	--Output the final message
 	CreatureObject(pPlayer):sendSystemMessage(msg)
@@ -159,6 +167,48 @@ function BorForceUtility:rollSpam(roll, bonus, dc)
 	end
 
 	return "\\#DBDBDB(1d20: "..roll.." + "..bonus.." = "..roll+bonus.." vs DC: "..dc..")\\#FFFFFF"
+end
+
+function BorForceUtility:rollSpamFPI(roll, bonus, fpi, dc)
+	rollString = ""
+
+	if (roll == 20) then
+		rollString = "\\#00FF00"..roll.."\\#DBDBDB"
+	elseif (roll == 1) then
+		rollString = "\\#FF0000"..roll.."\\#DBDBDB"
+	else
+		rollString = rollString..roll
+	end
+
+	return "\\#DBDBDB(1d20: "..roll.." + "..bonus.." + \\#0000FF"..fpi.."\\#DBDBDB = "..roll+bonus+fpi.." vs DC: "..dc..")\\#FFFFFF"
+end
+
+function BorForceUtility:rollSpamNoDC(roll, bonus)
+	rollString = ""
+
+	if (roll == 20) then
+		rollString = "\\#00FF00"..roll.."\\#DBDBDB"
+	elseif (roll == 1) then
+		rollString = "\\#FF0000"..roll.."\\#DBDBDB"
+	else
+		rollString = rollString..roll
+	end
+
+	return "\\#DBDBDB(1d20: "..roll.." + "..bonus.." = "..roll+bonus..")\\#FFFFFF"
+end
+
+function BorForceUtility:rollSpamFPINoDC(roll, bonus, fpi)
+	rollString = ""
+
+	if (roll == 20) then
+		rollString = "\\#00FF00"..roll.."\\#DBDBDB"
+	elseif (roll == 1) then
+		rollString = "\\#FF0000"..roll.."\\#DBDBDB"
+	else
+		rollString = rollString..roll
+	end
+
+	return "\\#DBDBDB(1d20: "..roll.." + "..bonus.." + \\#0000FF"..fpi.."\\#DBDBDB = "..roll+bonus+fpi..")\\#FFFFFF"
 end
 
 function BorForceUtility:handleFPI(pPlayer, power, fpi)

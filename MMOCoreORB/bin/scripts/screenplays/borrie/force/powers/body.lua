@@ -44,6 +44,9 @@ function BorForce_Body:onFPICallback(pPlayer, pSui, eventIndex, remaining, spent
 end
 
 function BorForce_Body:performAbility(pPlayer, fpi)
+	if(BorForceUtility:canUseForcePower(pPlayer, pPlayer, self) == false) then
+		return
+	end
 
 	if(BorForceUtility:handleFPI(pPlayer, self, fpi) == false) then
 		return
