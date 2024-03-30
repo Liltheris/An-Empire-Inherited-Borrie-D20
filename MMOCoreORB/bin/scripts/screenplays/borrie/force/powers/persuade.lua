@@ -16,11 +16,7 @@ BorForce_Persuade = BorForce_BasePower:new({
 })
 
 function BorForce_Persuade:showHelp(pPlayer)
-	local helpMessage = self.name .. ": "
-	helpMessage =  helpMessage .. "Gain an automatic success for persuasion, bluff, or intimidation checks. "
-	helpMessage =  helpMessage .. "Rolls with the Control skill + fpi against the target’s Mindfulness. "
-	helpMessage =  helpMessage .. "Upon success, your next persuasion, bluff, or intimidation check will be considered an automatic success. "
-	CreatureObject(pPlayer):sendSystemMessage(helpMessage)
+	BorForceUtility:displayHelp(self, pPlayer)
 end
 
 function BorForce_Persuade:execute(pPlayer)

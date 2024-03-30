@@ -74,13 +74,28 @@ public:
 				} else if (BorSkill::GetStringIsSkill(command) || BorSkill::GetStringIsAttribute(command) || BorSkill::GetStringIsForceSkill(command)) {
 					if (args.hasMoreTokens())
 						args.getStringToken(secondCommand);
-					bool secret = secondCommand == "secret";
+					int advantage = 0;
+					bool secret = false;
+					if (secondCommand == "advantage" || secondCommand == "adv"){
+						advantage = 1;
+
+						if (args.hasMoreTokens())
+							args.getStringToken(secondCommand);
+					} else if (secondCommand == "disadvantage" || secondCommand == "dis"){
+						advantage = -1;
+
+						if (args.hasMoreTokens())
+							args.getStringToken(secondCommand);
+					}
+					
+					if (secondCommand == "secret") {
+						secret = true;
+					}
 
 					if(adminLevelCheck > 0) {
-
-						BorrieRPG::BroadcastRoll(targetCreature, BorDice::RollSkill(targetCreature, command), secret);
+						BorrieRPG::BroadcastRoll(targetCreature, BorDice::rollSkill(targetCreature, command, advantage), secret);
 					} else {
-						BorrieRPG::BroadcastRoll(creature, targetCreature, BorDice::RollSkill(targetCreature, command), secret);
+						BorrieRPG::BroadcastRoll(creature, targetCreature, BorDice::rollSkill(targetCreature, command, advantage), secret);
 					}
 					
 				} else if (BorDice::GetCommandIsDie(command)) {

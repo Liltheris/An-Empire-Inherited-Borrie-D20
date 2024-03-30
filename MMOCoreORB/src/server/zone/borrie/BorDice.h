@@ -95,27 +95,77 @@ public:
 			return "fail";
 		}
 
-		for (int i = 0; i < numDice; i++){
-			nTempResult = System::random(diceValue - 1) + 1;
-			DiceRollString += BorString::rollColour(nTempResult, diceValue, "\\#FFFFFF");
-			nResult += nTempResult;
-			if (i == numDice - 1)
-				DiceRollString += " =";
-			else
-				DiceRollString += " + ";
+		if (numDice > 1){
+			for (int i = 0; i < numDice; i++){
+				nTempResult = System::random(diceValue - 1) + 1;
+				DiceRollString += BorString::rollColour(nTempResult, diceValue, "\\#FFFFFF");
+				nResult += nTempResult;
+				if (i == numDice - 1){
+					DiceRollString += " = ";
+					DiceRollString += String::valueOf(nResult);
+				} else {
+					DiceRollString += " + ";
+				}
+			}
+		} else {
+			nResult = System::random(diceValue - 1) + 1;
+			DiceRollString += BorString::rollColour(nResult, diceValue, "\\#FFFFFF");
 		}
 
 		if (bonus != 0)
-			return "Roll "+String::valueOf(numDice)+"d"+String::valueOf(diceValue)+": "+DiceRollString+" (Modifier: "+String::valueOf(bonus)+") Result: "+String::valueOf(nResult + bonus);
+			return "Roll "+String::valueOf(numDice)+"d"+String::valueOf(diceValue)+": "+DiceRollString+" + Modifier: "+String::valueOf(bonus)+". Result: "+String::valueOf(nResult + bonus);
 		else
 			return "Roll "+String::valueOf(numDice)+"d"+String::valueOf(diceValue)+": "+DiceRollString+" Result: "+String::valueOf(nResult);
 	}
 
+	/*THIS FUNCTION IS DEPRECATED. USE BorDice::rollSkill() instead!*/
 	static String RollSkill(CreatureObject* creature, String skillName) {
 		int value = creature->getSkillMod("rp_" + skillName);
 		int Roll = System::random(19) + 1;
 		return BorrieRPG::Capitalize(skillName) + " check : 1d20 = " + BorString::rollColour(Roll, 20, "\\#FFFFFF") + " + Modifier: " + String::valueOf(value) +
 			   ". Result: " + String::valueOf(value + Roll);
+	}
+
+	/*Rolls a skill normally, with advantage, or with disadvantage. Returns a roll string in the following formats: 
+	[skillName] check : 1d20 = <roll> + Modifier: <modifier>. Result = <roll + modifier>
+	[skillName] check : (Advantage!) 2d20 = <roll1>, <roll2>: <finalRoll> + Modifier: <modifier>. Result = <finalRoll + modifier>
+	[skillName] check : (Disadvantage!) 2d20 = <roll1>, <roll2>: <finalRoll> + Modifier: <modifier>. Result = <finalRoll + modifier>
+	*/
+	static String rollSkill(CreatureObject* creature, String skillName, int advantage = 0){
+		int value = creature->getSkillMod("rp_" + skillName);
+		int roll1 = System::random(19) + 1;
+		int roll2 = System::random(19) + 1;
+		String output = BorString::capitalise(skillName) + " check : ";
+
+
+		if (advantage > 0){
+			//We're rolling with advantage! Happy us!
+			output += "(Advantage!) 2d20 = "+BorString::rollColour(roll1, 20, "\\#FFFFFF")+", "+BorString::rollColour(roll2, 20, "\\#FFFFFF")+": ";
+			int finalRoll = 0;
+			if (roll1 > roll2)
+				finalRoll = roll1;
+			else
+				finalRoll = roll2;
+			
+			output += String::valueOf(finalRoll);
+		} else if (advantage < 0){
+			//We're rolling with disadvantage. Oh no!
+			output += "(Disadvantage!) 2d20 = "+BorString::rollColour(roll1, 20, "\\#FFFFFF")+", "+BorString::rollColour(roll2, 20, "\\#FFFFFF")+": ";
+			int finalRoll = 0;
+			if (roll1 < roll2)
+				finalRoll = roll1;
+			else
+				finalRoll = roll2;
+			
+			output += String::valueOf(finalRoll);
+		} else {
+			//We're just rolling. This is fine.
+			output += "1d20 = " + BorString::rollColour(roll1, 20, "\\#FFFFFF");
+		}
+
+		output += " + Modifier: "+String::valueOf(value)+". Result: " + String::valueOf(value + roll1);
+
+		return output;
 	}
 
 	static int Roll(int dieCount, int dieType) {
