@@ -4,9 +4,17 @@ BorForce_Trick = BorForce_BasePower:new({
 
 	selfAnim = "force_persuasion",
 
+	minRange = 0,
+	idealRange = 0,
+	farRange = 20,
+	maxRange = 50,
+
+	fpiMin = 1,
+	fpiMax = 20,
+
 	targetSelf = false,
 
-	helpString = "Mind Trick can replace one bluff, persuasion or intimidation roll. If the target's mindfulness roll is beat, the success is considered a nat 20.\nForce-sensitive double their mindfulness roll.",
+	helpString = "Mind Trick creates a distraction if the target's mindfulness roll is beat.\nForce-sensitive double their mindfulness roll.",
 })
 
 function BorForce_Trick:showHelp(pPlayer)
@@ -86,7 +94,7 @@ function BorForce_Trick:performAbility(pPlayer, fpi)
 	end
 
 	if(total > targetTotal) then
-		msg = msg .. " and succeeds! "..CreatureObject(pPlayer):getFirstName().." fools "..targetName..", allowing them to perform a social check with an automatic nat 20 success."
+		msg = msg .. " and succeeds! "..CreatureObject(pPlayer):getFirstName().." tricks "..targetName..", distracting them!"
 	else 
 		msg = msg .. " and fails!"
 	end

@@ -57,10 +57,9 @@ function BorForce_Sight:performAbility(pPlayer, fpi)
 	local roll = math.floor(math.random(1,20))
 	
 	local msg = CreatureObject(pPlayer):getFirstName() .. " uses " .. self.name .. "!"
-			
-
-		msg = msg .. " They listen to the Force, attempting to reveal what they cannot see. "..BorForceUtility:rollSpamFPINoDC(roll, skillValue, fpi)
-		msg = msg .. " All stealthed characters within 50 meters must roll stealth against their roll result to remain stealthed."
+	
+	msg = msg .. " They listen to the Force, attempting to reveal what they cannot see. "..BorForceUtility:rollSpamFPINoDC(roll, skillValue, fpi)
+	msg = msg .. " All stealthed characters within 50 meters must roll stealth against their roll result to remain stealthed."
 	
 	broadcastMessageWithName(pPlayer, msg)
 	

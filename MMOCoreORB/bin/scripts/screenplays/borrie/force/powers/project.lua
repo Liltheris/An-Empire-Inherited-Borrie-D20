@@ -1,24 +1,30 @@
-BorForce_Project = {
+BorForce_Project = BorForce_BasePower:new({
 	name = "Force Project",
-	animationName = "force_illusion"
-}
+	requiredSkills = {"rp_ability_projectimage"},
+
+	selfAnim = "force_illusion",
+
+	fpiMin = 1,
+	fpiMax = 15,
+
+	targetSelf = true,
+
+	helpString = "Projects an image of the user away from their current location. The next attack against the user must beat FPI * 2 to hit instead of the range DC. "
+})
 
 function BorForce_Project:showHelp(pPlayer)
-	
+	BorForceUtility:displayHelp(self, pPlayer)
 end
 
 function BorForce_Project:execute(pPlayer)
-	local hasPower = CreatureObject(pPlayer):hasSkill("rp_alter_b02")
-	
-	if(hasPower == false) then
-		BorForceUtility:reportPowerNotKnown(pPlayer)
+	local fpi = BorForceUtility:getForcePointInput(pPlayer)
+
+	if(BorForceUtility:canUseForcePower(pPlayer, pPlayer, self) == false) then
 		return
 	end
 	
-	local fpi = BorForceUtility:getForcePointInput(pPlayer)
-	
-	if(fpi < 1) then
-		BorForceUtility:promptForcePointInput(pPlayer, self.name, "BorForce_Project", "onFPICallback")
+	if(fpi < self.fpiMin) then
+		BorForceUtility:promptForcePointInput(pPlayer, self, "BorForce_Project", "onFPICallback")
 	else 
 		self:performAbility(pPlayer, fpi)
 	end
@@ -42,25 +48,30 @@ function BorForce_Project:onFPICallback(pPlayer, pSui, eventIndex, remaining, sp
 end
 
 function BorForce_Project:performAbility(pPlayer, fpi)
-	local pGhost = CreatureObject(pPlayer):getPlayerObject()
+	if(BorForceUtility:canUseForcePower(pPlayer, pTarget, self) == false) then
+		return
+	end
 
-	if (pGhost == nil) then
+	if(BorForceUtility:handleFPI(pPlayer, self, fpi) == false) then
 		return
 	end
-	
-	local forcePower = math.floor(PlayerObject(pGhost):getForcePower())
-	
-	fpi = math.floor(fpi)
-	
-	if(forcePower < fpi) then
-		CreatureObject(pPlayer):sendSystemMessage("You don't have enough Force Power to commit " .. fpi .. " points.")
-		return
+
+	local dc = 10
+
+	local skillValue = math.floor(CreatureObject(pPlayer):getSkillMod("rp_alter"))
+	local roll = math.floor(math.random(1,20))	
+
+	local msg = CreatureObject(pPlayer):getFirstName() .." uses "..self.name.. " "..BorForceUtility:rollSpam(roll, skillValue, dc)
+
+	if((skillValue + roll >= dc and roll > 1) or roll == 20) then
+
+		msg = msg.." and succeeds! They become hard to focus on, seeming to be in two places at the same time. The DC of the next attack against them is now ".. fpi*2 .."!"
+		CreatureObject(pPlayer):setStoredInt("project_dc", fpi)
+		CreatureObject(pPlayer):setStoredInt("project_timer", 2)
+	else
+		msg = msg.." and fails!"
 	end
 	
-	--Execute Force Code
-	
-	
-	--Drain Force Pool
-	PlayerObject(pGhost):setForcePower(forcePower - fpi)	
-	
+	BorForceUtility:playAbilityEffects(pPlayer, pPlayer, self)
+	broadcastMessageWithName(pPlayer, msg)	
 end

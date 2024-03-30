@@ -1,24 +1,28 @@
-BorForce_Defense = {
+BorForce_Defense = BorForce_BasePower:new({
 	name = "Force Defense",
-	effectName = "clienteffect/pl_force_shield_self.cef",
-}
+	requiredSkills = {"rp_ability_forcedefense"},
+
+	selfEffect = "clienteffect/pl_force_shield_self.cef",
+	selfAnim = "force_protection",
+
+	targetSelf = true,
+
+	helpString = "Roll inward against 5 + half of the Force Points used. On success, the next attack against the user will absorb 1 damage per force point used.",
+})
 
 function BorForce_Defense:showHelp(pPlayer)
-	
+	BorForceUtility:displayHelp(self, pPlayer)
 end
 
 function BorForce_Defense:execute(pPlayer)
-	local hasPower = CreatureObject(pPlayer):hasSkill("rp_ability_forcedefense")
-	
-	if(hasPower == false) then
-		BorForceUtility:reportPowerNotKnown(pPlayer)
+	local fpi = BorForceUtility:getForcePointInput(pPlayer)
+
+	if(BorForceUtility:canUseForcePower(pPlayer, pPlayer, self) == false) then
 		return
 	end
 	
-	local fpi = BorForceUtility:getForcePointInput(pPlayer)
-	
-	if(fpi < 1) then
-		BorForceUtility:promptForcePointInput(pPlayer, self.name, "BorForce_Defense", "onFPICallback")
+	if(fpi < self.fpiMin) then
+		BorForceUtility:promptForcePointInput(pPlayer, self, "BorForce_Defense", "onFPICallback")
 	else 
 		self:performAbility(pPlayer, fpi)
 	end
@@ -42,38 +46,29 @@ function BorForce_Defense:onFPICallback(pPlayer, pSui, eventIndex, remaining, sp
 end
 
 function BorForce_Defense:performAbility(pPlayer, fpi)
-	local pGhost = CreatureObject(pPlayer):getPlayerObject()
+	if(BorForceUtility:canUseForcePower(pPlayer, pTarget, self) == false) then
+		return
+	end
 
-	if (pGhost == nil) then
+	if(BorForceUtility:handleFPI(pPlayer, self, fpi) == false) then
 		return
 	end
+
+	local dc = 5 + math.floor((fpi / 2)+0.5)
 	
-	local forcePower = math.floor(PlayerObject(pGhost):getForcePower())
-	
-	fpi = math.floor(fpi)
-	
-	if(forcePower < fpi) then
-		CreatureObject(pPlayer):sendSystemMessage("You don't have enough Force Power to commit " .. fpi .. " points.")
-		return
-	end
-	
-	--Execute Force Code
 	local skillValue = math.floor(CreatureObject(pPlayer):getSkillMod("rp_inward"))
 	local roll = math.floor(math.random(1,20))
 	
-	local message = CreatureObject(pPlayer):getFirstName() .. " used " .. self.name .. "!"
+	local message = CreatureObject(pPlayer):getFirstName() .. " uses " .. self.name .. "!"
 	
-	if(roll + skillValue >= 5 + fpi / 2) then
+	if(roll + skillValue >= 5 + dc) then
 		SceneObject(pPlayer):setStoredInt("force_defense", fpi)
 		message = message .. " The Force surrounds them, protecting them from up to " .. fpi .. " damage on the next attack against them."
 	else
 		SceneObject(pPlayer):setStoredInt("force_defense", 0)
 		message = message .. " They attempt to protect themself against incoming attacks, but fail!"
 	end
-	message = message .. " (1d20 = " .. roll .. " + " .. skillValue .. " = " .. roll + skillValue .. " vs DC: " .. 5 + fpi / 2 .. ")"
+	message = message .. BorForceUtility:rollSpam(roll, skillValue, dc)
+
 	broadcastMessageWithName(pPlayer, message)
-	
-	--Drain Force Pool
-	PlayerObject(pGhost):setForcePower(forcePower - fpi)	
-	
 end

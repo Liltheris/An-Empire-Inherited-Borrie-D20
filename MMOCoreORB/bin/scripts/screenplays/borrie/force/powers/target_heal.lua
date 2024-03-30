@@ -1,6 +1,6 @@
 BorForce_TargetHeal = BorForce_BasePower:new({
 	name = "Force Heal Other",
-	requiredSkills = {"rp_ability_healself", "rp_training_jedi_consular_01"},
+	requiredSkills = {"rp_ability_healother", "rp_training_jedi_consular_01"},
 
 	combatAnim = "force_healing_1",
 	targetSelf = false,

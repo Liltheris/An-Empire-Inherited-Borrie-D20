@@ -11,6 +11,9 @@ BorForce_Lightning = BorForce_BasePower:new({
 	farRange = 12,
 	maxRange = 20,
 
+	fpiMin = 1,
+	fpiMax = 10,
+
 	corruptionPoints = 1,
 
 	helpString = "Roll Lightning versus a scaling range DC. On success, does 1d2 - 1d12 + 1 electricity damage per Force point invested."
