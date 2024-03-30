@@ -4,6 +4,8 @@ BorForce_ManipulateObject = BorForce_BasePower:new({
 
 	selfAnim = "force_choke",
 
+	targetSelf = true,
+
 	helpString = "Allows the user to move an object through the Force. Roll Telekinesis + FPI vs a DC that is determined by the complexity of the manipulation, and the size of the object.",
 })
 

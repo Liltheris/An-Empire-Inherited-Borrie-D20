@@ -4,6 +4,8 @@ BorForce_Speed = BorForce_BasePower:new({
 
 	selfEffect = "clienteffect/pl_force_speed_self.cef",
 
+	targetSelf = true,
+
 	helpString = "Allows you to move an extra 2 meters per Force point spent. Alternatively, roll Alter + FPI vs DC30. On success, you may perform a second major action this turn.",
 })
 

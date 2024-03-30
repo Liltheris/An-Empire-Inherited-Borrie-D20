@@ -6,6 +6,8 @@ BorForce_Meditate = BorForce_MeditatePower:new({
 
 	selfEffect = "clienteffect/pl_force_meditate_self.cef",
 
+	targetSelf = true,
+
 	helpString = "Restore half of your total Force Pool as a short rest. You must be out of combat, and not in imminent danger to do this.",
 })
 

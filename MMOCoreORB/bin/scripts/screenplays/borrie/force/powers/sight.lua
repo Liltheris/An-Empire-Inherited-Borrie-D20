@@ -3,6 +3,8 @@ BorForce_Sight = BorForce_MeditatePower:new({
 
 	selfAnim = "force_persuasion",
 
+	targetSelf = true,
+
 	helpString = "All characters within 50 meters of the user must roll Stealth versus the user's Sense roll + FPI. Additionally, clears the blinded status effect.",
 })
 

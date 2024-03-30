@@ -5,6 +5,8 @@ BorForce_Jump = BorForce_BasePower:new({
 	selfEffect = "clienteffect/pl_force_jump.cef",
 	selfAnim = "jump",
 
+	targetSelf = true,
+
 	helpString = "Jump to any location within FPI * 4 meters range, and remove any movement impairing effects.",
 })
 
