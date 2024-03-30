@@ -134,36 +134,42 @@ public:
 	static String rollSkill(CreatureObject* creature, String skillName, int advantage = 0){
 		int value = creature->getSkillMod("rp_" + skillName);
 		int roll1 = System::random(19) + 1;
-		int roll2 = System::random(19) + 1;
+		int finalRoll = roll1;
 		String output = BorString::capitalise(skillName) + " check : ";
 
 
 		if (advantage > 0){
 			//We're rolling with advantage! Happy us!
+			//Rolling the second die here to not have a roll to into the void.
+			int roll2 = System::random(19) + 1;
+
 			output += "(Advantage!) 2d20 = "+BorString::rollColour(roll1, 20, "\\#FFFFFF")+", "+BorString::rollColour(roll2, 20, "\\#FFFFFF")+": ";
-			int finalRoll = 0;
+			
 			if (roll1 > roll2)
 				finalRoll = roll1;
 			else
 				finalRoll = roll2;
 			
-			output += String::valueOf(finalRoll);
+			output += BorString::rollColour(finalRoll, 20, "\\#FFFFFF");
 		} else if (advantage < 0){
 			//We're rolling with disadvantage. Oh no!
+			//Rolling the second die here to not have a roll to into the void.
+			int roll2 = System::random(19) + 1;
+
 			output += "(Disadvantage!) 2d20 = "+BorString::rollColour(roll1, 20, "\\#FFFFFF")+", "+BorString::rollColour(roll2, 20, "\\#FFFFFF")+": ";
-			int finalRoll = 0;
+
 			if (roll1 < roll2)
 				finalRoll = roll1;
 			else
 				finalRoll = roll2;
 			
-			output += String::valueOf(finalRoll);
+			output += BorString::rollColour(finalRoll, 20, "\\#FFFFFF");
 		} else {
 			//We're just rolling. This is fine.
 			output += "1d20 = " + BorString::rollColour(roll1, 20, "\\#FFFFFF");
 		}
 
-		output += " + Modifier: "+String::valueOf(value)+". Result: " + String::valueOf(value + roll1);
+		output += " + Modifier: "+String::valueOf(value)+". Result: " + String::valueOf(value + finalRoll);
 
 		return output;
 	}
