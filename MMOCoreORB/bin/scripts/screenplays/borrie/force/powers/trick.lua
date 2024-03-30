@@ -1,4 +1,4 @@
-BorForce_Trick = BorForce_MeditatePower:new({
+BorForce_Trick = BorForce_BasePower:new({
 	name = "Mind Trick",
 	requiredSkills = {"rp_control_novice"},
 

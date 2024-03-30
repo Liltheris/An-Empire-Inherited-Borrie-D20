@@ -1,5 +1,6 @@
 BorForce_Sight = BorForce_BasePower:new({
 	name = "Force Sight",
+	requiredSkills = {"rp_sight_novice"},
 
 	selfAnim = "force_persuasion",
 

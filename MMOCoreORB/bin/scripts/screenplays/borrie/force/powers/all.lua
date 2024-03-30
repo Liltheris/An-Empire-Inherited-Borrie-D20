@@ -135,7 +135,7 @@ function BorForceUtility:displayHelp(power, pPlayer)
 	if(power.fpiMin ~= 1) then
 		msg = msg .. "\nMinimum FPI: "..power.fpiMin
 	end
-	if(power.fpiMin ~= 999) then
+	if(power.fpiMax ~= 999) then
 		msg = msg .. "\nMaximum FPI: "..power.fpiMax
 	end
 
@@ -153,6 +153,32 @@ function BorForceUtility:displayHelp(power, pPlayer)
 
 	--Output the final message
 	CreatureObject(pPlayer):sendSystemMessage(msg)
+end
+
+function BorForceUtility:applyStatusEffect(caster, target, status, duration)
+	if(status == "stunned") then
+		CreatureObject(target):setState(STUNNED)
+
+	elseif(status == "blinded") then
+		CreatureObject(target):setState(BLINDED)
+
+	elseif(status == "immobilized") then
+		CreatureObject(target):setState(IMMOBILIZED)
+
+	elseif(status == "onfire") then
+		CreatureObject(target):setState(ONFIRE)
+
+	elseif(status == "bleeding") then
+		CreatureObject(target):setState(BLEEDING)
+	else
+		CreatureObject(caster):sendSystemMessage("Error: failed to apply "..status.." to target!")
+		return false
+	end
+
+	--Apply the timer for the status.
+	CreatureObject(target):setStoredInt("state_"..status.."_duration", duration)
+
+	return true
 end
 
 function BorForceUtility:rollSpam(roll, bonus, dc)
@@ -180,7 +206,7 @@ function BorForceUtility:rollSpamFPI(roll, bonus, fpi, dc)
 		rollString = rollString..roll
 	end
 
-	return "\\#DBDBDB(1d20: "..roll.." + "..bonus.." + \\#0000FF"..fpi.."\\#DBDBDB = "..roll+bonus+fpi.." vs DC: "..dc..")\\#FFFFFF"
+	return "\\#DBDBDB(1d20: "..roll.." + "..bonus.." + \\#FF00FF"..fpi.."\\#DBDBDB = "..roll+bonus+fpi.." vs DC: "..dc..")\\#FFFFFF"
 end
 
 function BorForceUtility:rollSpamNoDC(roll, bonus)
@@ -208,7 +234,7 @@ function BorForceUtility:rollSpamFPINoDC(roll, bonus, fpi)
 		rollString = rollString..roll
 	end
 
-	return "\\#DBDBDB(1d20: "..roll.." + "..bonus.." + \\#0000FF"..fpi.."\\#DBDBDB = "..roll+bonus+fpi..")\\#FFFFFF"
+	return "\\#DBDBDB(1d20: "..roll.." + "..bonus.." + \\#FF00FF"..fpi.."\\#DBDBDB = "..roll+bonus+fpi..")\\#FFFFFF"
 end
 
 function BorForceUtility:handleFPI(pPlayer, power, fpi)

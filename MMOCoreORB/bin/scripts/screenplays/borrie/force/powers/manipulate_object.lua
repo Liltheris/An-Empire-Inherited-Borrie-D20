@@ -21,7 +21,7 @@ function BorForce_ManipulateObject:execute(pPlayer)
 	end
 	
 	if(fpi < self.fpiMin) then
-		BorForceUtility:promptForcePointInput(pPlayer, self.name, "BorForce_ManipulateObject", "onFPICallback")
+		BorForceUtility:promptForcePointInput(pPlayer, self, "BorForce_ManipulateObject", "onFPICallback")
 	else 
 		self:performAbility(pPlayer, fpi)
 	end
