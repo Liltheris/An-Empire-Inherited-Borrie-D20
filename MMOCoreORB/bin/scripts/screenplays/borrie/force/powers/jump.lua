@@ -60,5 +60,5 @@ function BorForce_Jump:performAbility(pPlayer, fpi)
 	--TO DO: Added status effect clearing.
 
 	BorForceUtility:playAbilityEffects(pPlayer, pPlayer, self)
-	broadcastMessageWithName(pPlayer, message)
+	broadcastMessageWithName(pPlayer, msg)
 end

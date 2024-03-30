@@ -1,4 +1,4 @@
-BorForce_Sight = BorForce_MeditatePower:new({
+BorForce_Sight = BorForce_BasePower:new({
 	name = "Force Sight",
 
 	selfAnim = "force_persuasion",

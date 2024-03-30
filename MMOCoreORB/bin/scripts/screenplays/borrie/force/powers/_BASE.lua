@@ -55,4 +55,5 @@ function BorForce_BASE:performAbility(pPlayer, fpi)
 
 
 	BorForceUtility:playAbilityEffects(pPlayer, pPlayer, self)
+	broadcastMessageWithName(pPlayer, msg)
 end

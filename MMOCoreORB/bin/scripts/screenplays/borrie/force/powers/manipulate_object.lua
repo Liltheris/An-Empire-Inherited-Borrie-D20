@@ -60,4 +60,5 @@ function BorForce_ManipulateObject:performAbility(pPlayer, fpi)
 	msg = msg .. "They attempt to move an object through the Force! " .. BorForceUtility:rollSpamFPINoDC(roll, skillValue, fpi)
 	
 	BorForceUtility:playAbilityEffects(pPlayer, pPlayer, self)
+	broadcastMessageWithName(pPlayer, msg)
 end

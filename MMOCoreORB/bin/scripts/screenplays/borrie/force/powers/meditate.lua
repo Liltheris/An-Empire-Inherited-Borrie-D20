@@ -1,4 +1,4 @@
-BorForce_Meditate = BorForce_MeditatePower:new({
+BorForce_Meditate = BorForce_BasePower:new({
 	name = "Force Meditation",
 	requiredSkills = {"rp_inward_novice"},
 
