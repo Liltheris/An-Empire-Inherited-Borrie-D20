@@ -52,7 +52,7 @@ function BorForce_BASE:performAbility(pPlayer, fpi)
 		return
 	end
 
-
+	local msg = CreatureObject(pPlayer):getFirstName() .. " uses " .. self.name .. "!"
 
 	BorForceUtility:playAbilityEffects(pPlayer, pPlayer, self)
 	broadcastMessageWithName(pPlayer, msg)

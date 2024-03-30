@@ -1,6 +1,9 @@
 BorForce_Lightning = BorForce_BasePower:new({
 	name = "Force Lightning",
 	requiredSkills = {"rp_lightning_a03"},
+
+	action = "Major",
+
 	combatAnim = "force_lightning_1_particle_level_3",
 
 	minRange = 0,

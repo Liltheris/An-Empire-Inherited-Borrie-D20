@@ -56,7 +56,7 @@ function BorForce_ManipulateObject:performAbility(pPlayer, fpi)
 	local skillValue = math.floor(CreatureObject(pPlayer):getSkillMod("rp_telekinesis"))
 	local roll = math.floor(math.random(1,20))	
 		
-	local msg = CreatureObject(pPlayer):getFirstName().." uses "..self.name.."!"
+	local msg = CreatureObject(pPlayer):getFirstName().." uses "..self.name.."! "
 	msg = msg .. "They attempt to move an object through the Force! " .. BorForceUtility:rollSpamFPINoDC(roll, skillValue, fpi)
 	
 	BorForceUtility:playAbilityEffects(pPlayer, pPlayer, self)

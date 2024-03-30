@@ -16,6 +16,9 @@ end
 function BorForce_Trick:execute(pPlayer)
 	local fpi = BorForceUtility:getForcePointInput(pPlayer, self)
 
+	local targetID = CreatureObject(pPlayer):getTargetID()
+	local pTarget = getSceneObject(targetID)
+
 	if(BorForceUtility:canUseForcePower(pPlayer, pTarget, self) == false) then
 		return
 	end
