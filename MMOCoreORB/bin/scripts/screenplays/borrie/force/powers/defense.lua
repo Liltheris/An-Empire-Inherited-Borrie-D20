@@ -63,7 +63,7 @@ function BorForce_Defense:performAbility(pPlayer, fpi)
 	
 	if(roll + skillValue >= dc) then
 		SceneObject(pPlayer):setStoredInt("force_defense", fpi)
-		message = message .. " The Force surrounds them, protecting them from up to " .. fpi .. " damage on the next attack against them."
+		message = message .. " The Force surrounds them, protecting them from up to \\#FF00FF" .. fpi .. "\\#FFFFFF damage on the next attack against them."
 	else
 		SceneObject(pPlayer):setStoredInt("force_defense", 0)
 		message = message .. " They attempt to protect themself against incoming attacks, but fail!"

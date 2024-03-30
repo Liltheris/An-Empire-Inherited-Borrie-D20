@@ -98,7 +98,7 @@ function BorForce_TwistMind:performAbility(pPlayer, fpi)
 
 		CreatureObject(pTarget):setPosture(KNOCKEDDOWN)
 
-		BorForceUtility:playAbilityEffects(pPlayer, pPlayer, self)
+		BorForceUtility:playAbilityEffects(pPlayer, pTarget, self)
 	else 
 		msg = msg .. " and fails, becoming stunned!"
 		BorForceUtility:applyStatusEffect(pPlayer, pPlayer, "stunned", 1)

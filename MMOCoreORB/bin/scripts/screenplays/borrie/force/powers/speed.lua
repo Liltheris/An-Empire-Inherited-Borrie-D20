@@ -59,7 +59,7 @@ function BorForce_Speed:performAbility(pPlayer, fpi)
 	local roll = math.floor(math.random(1,20))	
 		
 	local msg = CreatureObject(pPlayer):getFirstName() .. " uses " .. self.name .. "!"
-	msg = msg .. " They can go up to " .. fpi * 2 .. " extra meters on their next move action"
+	msg = msg .. " They can go up to \\#FF00FF" .. fpi * 2 .. "\\#FFFFFF extra meters on their next move action"
 	if((skillValue + roll >= dc and roll > 1) or roll == 20) then
 		msg = msg .. " or they can perform a second major action! "..BorForceUtility:rollSpamFPI(roll, skillValue, fpi, dc)
 	else 

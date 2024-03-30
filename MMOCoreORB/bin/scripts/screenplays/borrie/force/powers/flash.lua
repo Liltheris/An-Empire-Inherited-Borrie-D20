@@ -87,7 +87,7 @@ function BorForce_Flash:performAbility(pPlayer, fpi)
 
 		blindDuration = math.floor(math.max(blindCount, blindDuration))
 
-		msg = msg .. " From their palm, a flash of light shines out, and blinds " .. targetName .. " for " .. tonumber(blindDuration) .. " turns! "
+		msg = msg .. " From their palm, a flash of light shines out, and blinds " .. targetName .. " for \\#FFFF00" .. tonumber(blindDuration) .. "\\#FFFFFF turns! "
 		
 		BorForceUtility:applyStatusEffect(pPlayer, pTarget, "blinded", blindDuration)
 	else 

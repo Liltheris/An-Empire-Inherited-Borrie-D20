@@ -73,7 +73,7 @@ function BorForce_TargetHeal:performAbility(pPlayer, fpi)
 	local targetName = CreatureObject(pTarget):getFirstName() 
 
 	if((skillValue + roll >= dc and roll > 1) or roll == 20) then
-		message = message .. " They heal ".. targetName .." for ".. fpi * 2 .." health points! ".. BorForceUtility:rollSpam(roll, skillValue, dc)
+		message = message .. " They heal ".. targetName .." for \\#00FF00".. fpi * 2 .."\\#FFFFFF health points! ".. BorForceUtility:rollSpam(roll, skillValue, dc)
 
 		BorForceUtility:playAbilityEffects(pPlayer, pTarget, self)
 		CreatureObject(pTarget):setHAM(0, math.min(CreatureObject(pTarget):getHAM(0) + fpi * 2, CreatureObject(pTarget):getMaxHAM(0)))

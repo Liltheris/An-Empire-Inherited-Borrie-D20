@@ -55,7 +55,7 @@ function BorForce_Jump:performAbility(pPlayer, fpi)
 	end
 		
 	local msg = CreatureObject(pPlayer):getFirstName().." uses "..self.name.."!"
-	msg = msg.." They can jump up to "..fpi * 4 .." meters, and clear all movement impairing effects."
+	msg = msg.." They can jump up to \\#FF00FF"..fpi * 4 .."\\#FFFFFF meters, and clear all movement impairing effects."
 	
 	--TO DO: Added status effect clearing.
 

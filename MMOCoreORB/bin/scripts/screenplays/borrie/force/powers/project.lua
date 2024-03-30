@@ -65,7 +65,7 @@ function BorForce_Project:performAbility(pPlayer, fpi)
 
 	if((skillValue + roll >= dc and roll > 1) or roll == 20) then
 
-		msg = msg.." and succeeds! They become hard to focus on, seeming to be in two places at the same time. The DC of the next attack against them is now ".. 10+fpi*2 .."!"
+		msg = msg.." and succeeds! They become hard to focus on, seeming to be in two places at the same time. The DC of the next attack against them is now \\#FF00FF".. 10+fpi*2 .."\\#FFFFFF!"
 		SceneObject(pPlayer):setStoredInt("project_dc", 10+fpi)
 		SceneObject(pPlayer):setStoredInt("project_timer", 2)
 	else

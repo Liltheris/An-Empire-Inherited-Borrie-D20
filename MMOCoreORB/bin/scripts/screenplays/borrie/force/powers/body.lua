@@ -60,7 +60,7 @@ function BorForce_Body:performAbility(pPlayer, fpi)
 	local msg = CreatureObject(pPlayer):getFirstName().." used "..self.name.."!"
 
 	if((skillValue + roll >= dc and roll > 1) or roll == 20) then
-		msg = msg .. " They rejuvinate themselves for "..fpi.." action points! "..BorForceUtility:rollSpam(roll, skillValue, dc)
+		msg = msg .. " They rejuvinate themselves for \\#FF00FF"..fpi.."\\#FFFFFF action points! "..BorForceUtility:rollSpam(roll, skillValue, dc)
 		BorForceUtility:playAbilityEffects(pPlayer, pPlayer, self)
 
 		CreatureObject(pPlayer):setHAM(3, math.min(CreatureObject(pPlayer):getHAM(3) + fpi, CreatureObject(pPlayer):getMaxHAM(3)))

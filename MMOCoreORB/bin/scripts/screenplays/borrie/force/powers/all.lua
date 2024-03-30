@@ -192,7 +192,7 @@ function BorForceUtility:rollSpam(roll, bonus, dc)
 		rollString = rollString..roll
 	end
 
-	return "\\#DBDBDB(1d20: "..roll.." + "..bonus.." = "..roll+bonus.." vs DC: "..dc..")\\#FFFFFF"
+	return "\\#DBDBDB(1d20: "..rollString.." + "..bonus.." = "..roll+bonus.." vs DC: "..dc..")\\#FFFFFF"
 end
 
 function BorForceUtility:rollSpamFPI(roll, bonus, fpi, dc)

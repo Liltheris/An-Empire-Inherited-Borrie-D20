@@ -85,11 +85,12 @@ function BorForce_Crush:performAbility(pPlayer, fpi)
 		BorForceUtility:playAbilityEffects(pPlayer, pTarget, self)
 
 		-- ObjectTypes 1026 is droids, 1027 is probe droids (god knows why they are seperate. #SOE)
-		if(CreatureObject(pTarget):getGameObjectType() ~= 1026 and CreatureObject(pTarget):getGameObjectType() ~= 1027) then
+		if(SceneObject(pTarget):getGameObjectType() ~= 1026 and SceneObject(pTarget):getGameObjectType() ~= 1027) then
 			BorForce:addCorruptionPoints(pPlayer, self.corruptionPoints)
 		end
 	else
 		msg = msg..BorForceUtility:rollSpam(roll, skillValue, dc).." and fails!"
 	end
 
+	broadcastMessageWithName(pPlayer, msg)
 end
