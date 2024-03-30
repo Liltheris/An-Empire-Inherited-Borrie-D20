@@ -12,7 +12,7 @@ function BorForce_Precognition:showHelp(pPlayer)
 end
 
 function BorForce_Precognition:execute(pPlayer)
-	local fpi = BorForceUtility:getForcePointInput(pPlayer, power)
+	local fpi = BorForceUtility:getForcePointInput(pPlayer, self)
 
 	if(BorForceUtility:canUseForcePower(pPlayer, pPlayer, self) == false) then
 		return

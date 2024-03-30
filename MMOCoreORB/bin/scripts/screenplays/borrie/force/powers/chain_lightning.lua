@@ -35,7 +35,7 @@ function BorForce_ChainLightning:execute(pPlayer)
 		return
 	end
 	
-	local fpi = BorForceUtility:getForcePointInput(pPlayer, power)
+	local fpi = BorForceUtility:getForcePointInput(pPlayer, self)
 	
 	if(fpi < 1) then
 		BorForceUtility:promptForcePointInput(pPlayer, self.name, "BorForce_ChainLightning", "onFPICallback")
