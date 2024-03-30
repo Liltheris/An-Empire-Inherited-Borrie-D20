@@ -94,9 +94,9 @@ function BorForce_Trick:performAbility(pPlayer, fpi)
 	end
 
 	if(total > targetTotal) then
-		msg = msg .. " and succeeds! "..CreatureObject(pPlayer):getFirstName().." tricks "..targetName..", distracting them!"
+		msg = msg .. " and succeed! "..CreatureObject(pPlayer):getFirstName().." tricks "..targetName..", distracting them!"
 	else 
-		msg = msg .. " and fails!"
+		msg = msg .. " and fail!"
 	end
 
 	broadcastMessageWithName(pPlayer, msg)

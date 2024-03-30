@@ -1,25 +1,25 @@
-BorForce_Precognition = {
-	name = "Precognition"
-}
+BorForce_Precognition = BorForce_BasePower:new({
+	name = "Precognition",
+	requiredSkills = {"rp_ability_legendary_precognition"},
+
+	targetSelf = true,
+
+	helpString = "Roll Sense + FPI vs DC 30. On success,  may provide a glimpse of the future, or an accurate view of past events.\n\\#FF0000Due to the nature of this power, it can only be performed with DM validation."
+})
 
 function BorForce_Precognition:showHelp(pPlayer)
-	local helpMessage = self.name .. ": "
-	helpMessage = helpMessage .. "Contextual to RP. Roll 1d20 + sense + FPI to potentially get a hint of the future from a DM, or get a prophecy.  "
-	CreatureObject(pPlayer):sendSystemMessage(helpMessage)
+	BorForceUtility:displayHelp(self, pPlayer)
 end
 
 function BorForce_Precognition:execute(pPlayer)
-	local hasPower = CreatureObject(pPlayer):hasSkill("rp_sense_b03")
-	
-	if(hasPower == false) then
-		BorForceUtility:reportPowerNotKnown(pPlayer)
+	local fpi = BorForceUtility:getForcePointInput(pPlayer)
+
+	if(BorForceUtility:canUseForcePower(pPlayer, pPlayer, self) == false) then
 		return
 	end
 	
-	local fpi = BorForceUtility:getForcePointInput(pPlayer)
-	
-	if(fpi < 1) then
-		BorForceUtility:promptForcePointInput(pPlayer, self.name, "BorForce_Precognition", "onFPICallback")
+	if(fpi < self.fpiMin) then
+		BorForceUtility:promptForcePointInput(pPlayer, self, "BorForce_Precognition", "onFPICallback")
 	else 
 		self:performAbility(pPlayer, fpi)
 	end
@@ -43,33 +43,25 @@ function BorForce_Precognition:onFPICallback(pPlayer, pSui, eventIndex, remainin
 end
 
 function BorForce_Precognition:performAbility(pPlayer, fpi)
-	local pGhost = CreatureObject(pPlayer):getPlayerObject()
+	if(BorForceUtility:canUseForcePower(pPlayer, pTarget, self) == false) then
+		return
+	end
 
-	if (pGhost == nil) then
+	if(BorForceUtility:handleFPI(pPlayer, self, fpi) == false) then
 		return
 	end
 	
-	local forcePower = math.floor(PlayerObject(pGhost):getForcePower())
-	
-	fpi = math.floor(fpi)
-	
-	if(forcePower < fpi) then
-		CreatureObject(pPlayer):sendSystemMessage("You don't have enough Force Power to commit " .. fpi .. " points.")
-		return
-	end
-	
+	local dc = 30
+
 	local skillValue = math.floor(CreatureObject(pPlayer):getSkillMod("rp_sense"))
-	local roll = math.floor(math.random(1,20))
-	local yourTotal = skillValue + fpi + roll
-	
-	local message = CreatureObject(pPlayer):getFirstName() .. " used " .. self.name .. "!"
-	
-	message = message .. " They try to peer into the future, trying to get some hint as to what may come."
-	
-	local rollString = " (1d20 = " .. roll .. " + " .. skillValue .. " + " .. fpi .. " = " .. yourTotal .. ")" 
-	
-	broadcastMessageWithName(pPlayer, message .. rollString)
-	
-	PlayerObject(pGhost):setForcePower(forcePower - fpi)
-	
+	local roll = math.floor(math.random(1,20))	
+
+	local msg = CreatureObject(pPlayer):getFirstName() .. " uses " .. self.name .. " "..BorForceUtility:rollSpamFPI(roll, skillValue, fpi, dc)
+
+	if((skillValue + roll >= dc and roll > 1) or roll == 20) then
+		msg = msg .. " and gains insight into the future, or reveals the past..."
+	else
+		msg = msg .. " and fails. They do not sense what the future holds, or what has happened before."
+	end
+	broadcastMessageWithName(pPlayer, msg)
 end

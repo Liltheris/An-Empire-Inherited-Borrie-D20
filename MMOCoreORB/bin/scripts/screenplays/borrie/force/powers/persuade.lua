@@ -96,9 +96,9 @@ function BorForce_Persuade:performAbility(pPlayer, fpi)
 	end
 
 	if(total > targetTotal) then
-		msg = msg .. " and succeeds! "..CreatureObject(pPlayer):getFirstName().." persuades "..targetName..", allowing them to perform a social check with an automatic nat 20 success."
+		msg = msg .. " and succeed! "..CreatureObject(pPlayer):getFirstName().." persuades "..targetName..", allowing them to perform a social check with an automatic nat 20 success."
 	else 
-		msg = msg .. " and fails!"
+		msg = msg .. " and fail!"
 	end
 
 	broadcastMessageWithName(pPlayer, msg)

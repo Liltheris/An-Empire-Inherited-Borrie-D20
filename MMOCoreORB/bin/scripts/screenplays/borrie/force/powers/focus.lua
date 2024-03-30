@@ -3,6 +3,7 @@ BorForce_Focus = BorForce_BasePower:new({
 	requiredSkills = {"rp_inward_a03"},
 
 	selfEffect = "clienteffect/pl_force_feedback_self.cef",
+	targetSelf = true,
 
 	helpString = "Use to replace your next non-social, non-combat skill roll with the result of your Inward roll + FPI."
 })
