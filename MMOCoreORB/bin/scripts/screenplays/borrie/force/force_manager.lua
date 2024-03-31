@@ -111,6 +111,8 @@ function BorForce:addCorruptionPoints(pTarget, value)
 	else 
 		CreatureObject(pTarget):setShockWounds(original + value)
 	end
+
+	CreatureObject(pTarget):sendSystemMessage("You have fallen by "..value.." points to the dark side.")
 end
 
 function BorForce:gatherCrystal(pPlayer, pObject)

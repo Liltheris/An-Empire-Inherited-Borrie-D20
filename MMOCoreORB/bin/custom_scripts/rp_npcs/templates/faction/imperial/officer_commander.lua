@@ -5,7 +5,7 @@ npc_template = {
 		"rp_human_male", 90,
 		"rp_human_female", 10
 	},
-	skillTemplates = {"factional/common/officer_commander"},
+	skillTemplates = {"common/soldier_officer"},
 	
 	equipmentTemplates = {
 		{"rp_human_male", {"faction/imperial/officer_commander"}},

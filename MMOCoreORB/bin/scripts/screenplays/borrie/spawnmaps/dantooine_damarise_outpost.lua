@@ -95,7 +95,13 @@ function DantooineDamariseOutpostScreenPlay:spawnSceneObjects()
 	
 	--Jukebox--
 	spawnSceneObject("rp_dantooine", "object/tangible/terminal/terminal_jukebox.iff", 13.244, 1.28309, 9.24321, 610015450, 0.707107, 0, 0.707107, 0)
-	
+
+	--Weapon Parts
+	sObj = spawnSceneObject("rp_dantooine", "object/tangible/furniture/plain/plain_chest_s01.iff", 1.38029, 0.75, -1.36702, 610015514, 1, 0, 0, 0)
+	SceneObject(sObj):setCustomObjectName("Scopes, Stocks and & Muzzles")
+	SceneObject(sObj):setPublicContainer(true)
+	SceneObject(sObj):setDispenserContainer(true)
+	SceneObject(sObj):populateInventoryFromContentList("weapon_attachments")
 
 end
 

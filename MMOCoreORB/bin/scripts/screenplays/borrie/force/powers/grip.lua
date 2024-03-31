@@ -1,104 +1,71 @@
-BorForce_Grip = {
+BorForce_Grip = BorForce_BasePower:new({
 	name = "Force Grip",
-	animationName = "force_choke",
+	requiredSkills = {"rp_ability_forcegrip"},
+
+	SelfAnim = "force_choke",
+
+	minRange = 0,
+	idealRange = 1,
+	farRange = 20,
 	maxRange = 32,
-	corruptionPoints = 1,
-}
+
+	fpiMin = 2,
+	fpiMax = 2,
+
+	targetSelf = false,
+
+	helpString = "Roll Telekinesis vs a Ranged DC to attempt to immobilise the target. If the success is a nat 20, also stuns the target."
+})
 
 function BorForce_Grip:showHelp(pPlayer)
-	
+	BorForceUtility:displayHelp(self, pPlayer)
 end
 
 function BorForce_Grip:execute(pPlayer)
-	local hasPower = CreatureObject(pPlayer):hasSkill("rp_telekinesis_b01")
-	
-	if(hasPower == false) then
-		BorForceUtility:reportPowerNotKnown(pPlayer)
-		return
-	end
-	
 	local targetID = CreatureObject(pPlayer):getTargetID()
 	local pTarget = getSceneObject(targetID)
-		
-	if (pTarget == nil or not SceneObject(pTarget):isCreatureObject()) then
-		CreatureObject(pPlayer):sendSystemMessage("Invalid target, must be a creature.")
-		return
-	end
-	
-	if(SceneObject(pPlayer):getObjectID() == SceneObject(pTarget):getObjectID()) then
-		CreatureObject(pPlayer):sendSystemMessage("Invalid target. You cannot target yourself with this ability. Is this really the right time to grip yourself?")
-		return
-	end
-	
-	if(SceneObject(pPlayer):getDistanceTo(pTarget) > self.maxRange) then
-		CreatureObject(pPlayer):sendSystemMessage("Your target is too far away.")
-		return
-	end
-	
-	local fpi = BorForceUtility:getForcePointInput(pPlayer)
-	
-	if(fpi < 1) then
-		BorForceUtility:promptForcePointInput(pPlayer, self.name, "BorForce_Grip", "onFPICallback")
-	else 
-		self:performAbility(pPlayer, fpi)
-	end
-end
 
-function BorForce_Grip:onFPICallback(pPlayer, pSui, eventIndex, remaining, spent) 
-	local cancelPressed = (eventIndex == 1)
-
-	if (cancelPressed) then
+	if(BorForceUtility:canUseForcePower(pPlayer, pTarget, self) == false) then
 		return
 	end
 	
-	spent = tonumber(spent)
-	
-	if(spent < 1) then
-		CreatureObject(pPlayer):sendSystemMessage("You need to commit at least one force point to use this ability.")
-		return
-	end
-	
-	self:performAbility(pPlayer, spent)
+	self:performAbility(pPlayer, fpi)
 end
 
 function BorForce_Grip:performAbility(pPlayer, fpi)
-	local pGhost = CreatureObject(pPlayer):getPlayerObject()
-
-	if (pGhost == nil) then
-		return
-	end
-	
 	local targetID = CreatureObject(pPlayer):getTargetID()
 	local pTarget = getSceneObject(targetID)
 		
-	if (pTarget == nil or not SceneObject(pTarget):isCreatureObject()) then
-		CreatureObject(pPlayer):sendSystemMessage("Invalid target, must be a creature.")
+	if(BorForceUtility:canUseForcePower(pPlayer, pTarget, self) == false) then
 		return
 	end
-	
-	if(SceneObject(pPlayer):getObjectID() == SceneObject(pTarget):getObjectID()) then
-		CreatureObject(pPlayer):sendSystemMessage("Invalid target. You cannot target yourself with this ability.")
-		return
-	end
-	
-	if(SceneObject(pPlayer):getDistanceTo(pTarget) > self.maxRange) then
-		CreatureObject(pPlayer):sendSystemMessage("Your target is too far away.")
-		return
-	end
-	
-	local forcePower = math.floor(PlayerObject(pGhost):getForcePower())
-	
-	fpi = math.floor(fpi)
-	
-	if(forcePower < fpi) then
-		CreatureObject(pPlayer):sendSystemMessage("You don't have enough Force Power to commit " .. fpi .. " points.")
+
+	if(BorForceUtility:handleFPI(pPlayer, self, 2) == false) then
 		return
 	end
 	
 	local targetName = CreatureObject(pTarget):getFirstName() 
+
+	local dc = math.floor(BorForceUtility:getRangeDC(pPlayer, pTarget, self))
+
+	local skillValue = math.floor(CreatureObject(pPlayer):getSkillMod("rp_telekinesis"))
+	local roll = math.floor(math.random(1,20))	
+
+	local msg = CreatureObject(pPlayer):getFirstName().." attempts to use "..self.name.." on "..targetName.." "..BorForceUtility:rollSpam(roll, skillValue, dc)
 	
-	--Begin Force Code
+	if((skillValue + roll >= dc and roll > 1) or roll == 20) then
+		BorForceUtility:applyStatusEffect(pPlayer, pTarget, "immobilized", 1)
+		msg = msg.." and succeeds, immobilising them!"
+
+		if(roll == 20) then
+			BorForceUtility:applyStatusEffect(pPlayer, pTarget, "stunned", 1)
+			msg = msg.." additionally, "..targetName.." is also stunned!"
+		end
+
+		BorForceUtility:playAbilityEffects(pPlayer, pTarget, self)
+	else
+		msg = msg..BorForceUtility:rollSpam(roll, skillValue, dc).." and fails!"
+	end
 	
-	--Drain Force Pool Accordingly.
-	PlayerObject(pGhost):setForcePower(forcePower - fpi)	
+	broadcastMessageWithName(pPlayer, msg)
 end

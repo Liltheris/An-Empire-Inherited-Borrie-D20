@@ -46,6 +46,7 @@ import server.zone.managers.city.CityManager;
 import server.zone.managers.name.NameManager;
 
 import server.zone.managers.roleplay.RoleplayCombatAnimManager;
+import server.zone.managers.roleplay.RoleplayManager;
 
 @dirty
 class ZoneServer extends ManagedService implements Logger {
@@ -397,6 +398,12 @@ class ZoneServer extends ManagedService implements Logger {
 	@dirty
 	public SkillManager getSkillManager() {
 		return processor.getSkillManager();
+	}
+
+	@local
+	@dirty
+	public RoleplayManager getRoleplayManager() {
+		return processor.getRoleplayManager();
 	}
 
 	@local

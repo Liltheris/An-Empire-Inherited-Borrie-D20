@@ -6,288 +6,41 @@
 #include "server/zone/packets/chat/ChatSystemMessage.h"
 #include "engine/util/u3d/Coordinate.h"
 #include "server/zone/managers/skill/SkillManager.h"
+#include "server/zone/objects/player/PlayerObject.h"
 
-//#include "templates/roleplay/RoleplayManager.h"
+#include "server/zone/managers/roleplay/RoleplayManager.h"
 
 #include "server/db/ServerDatabase.h"
 
 class BorSkill : public Logger {
 public:
 	static bool GetStringIsAttribute(String input) {
-		if (input == "strength")
-			return true;
-		else if (input == "precision")
-			return true;
-		else if (input == "dexterity")
-			return true;
-		else if (input == "awareness")
-			return true;
-		else if (input == "intelligence")
-			return true;
-		else if (input == "charisma")
-			return true;
-		else if (input == "constitution")
-			return true;
-		else if (input == "mindfulness")
-			return true;
-		else
-			return false;
+		RoleplayManager* rp = RoleplayManager::instance();
+		return (rp->getRpSkillIndex(input, RpSkillType::ATTRIBUTE) != -1);
 	}
 
 	static String GetSkillParent(String skill) {
-		if (skill == "melee")
-			return "strength";
-		else if (skill == "intimidation")
-			return "strength";
-		else if (skill == "unarmed")
-			return "strength";
-		else if (skill == "lightsaber")
-			return "strength";
-		else if (skill == "ranged")
-			return "precision";
-		else if (skill == "mechanics")
-			return "precision";
-		else if (skill == "demolitions")
-			return "precision";
-		else if (skill == "engineering")
-			return "precision";
-		else if (skill == "larceny")
-			return "dexterity";
-		else if (skill == "stealth")
-			return "dexterity";
-		else if (skill == "maneuverability")
-			return "dexterity";
-		else if (skill == "throwing")
-			return "dexterity";
-		else if (skill == "investigation")
-			return "awareness";
-		else if (skill == "piloting")
-			return "awareness";
-		else if (skill == "survival")
-			return "awareness";
-		else if (skill == "sense")
-			return "awareness";
-		else if (skill == "slicing")
-			return "intelligence";
-		else if (skill == "computers")
-			return "intelligence";
-		else if (skill == "medicine")
-			return "intelligence";
-		else if (skill == "science")
-			return "intelligence";
-		else if (skill == "persuasion")
-			return "charisma";
-		else if (skill == "bluff")
-			return "charisma";
-		else if (skill == "composure")
-			return "charisma";
-		else if (skill == "resolve")
-			return "charisma";
-		else if (skill == "athletics")
-			return "constitution";
-		else if (skill == "lightning")
-			return "constitution";
-		else if (skill == "armor")
-			return "constitution";
-		else if (skill == "defending")
-			return "constitution";
-		else if (skill == "telekinesis")
-			return "mindfulness";
-		else if (skill == "control")
-			return "mindfulness";
-		else if (skill == "alter")
-			return "mindfulness";
-		else if (skill == "inward")
-			return "mindfulness";
-		else if (skill == "performance")
-			return "charisma";
-		else if (skill == "command")
-			return "charisma";
-		else
-			return "";
+		RoleplayManager* rp = RoleplayManager::instance();
+		return rp->getRpSkill(rp->getRpSkillIndex(skill, RpSkillType::SKILL), RpSkillType::SKILL).getParent();
 	}
 
 	static String GetSkillAltParent(String skill) {
-		if (skill == "melee")
-			return "dexterity";
-		else if (skill == "intimidation")
-			return "constitution";
-		else if (skill == "unarmed")
-			return "dexterity";
-		else if (skill == "lightsaber")
-			return "dexterity";
-		else if (skill == "ranged")
-			return "dexterity";
-		else if (skill == "mechanics")
-			return "intelligence";
-		else if (skill == "demolitions")
-			return "awareness";
-		else if (skill == "engineering")
-			return "intelligence";
-		else if (skill == "larceny")
-			return "charisma";
-		else if (skill == "stealth")
-			return "awareness";
-		else if (skill == "maneuverability")
-			return "awareness";
-		else if (skill == "throwing")
-			return "strength";
-		else if (skill == "investigation")
-			return "intelligence";
-		else if (skill == "piloting")
-			return "intelligence";
-		else if (skill == "survival")
-			return "constitution";
-		else if (skill == "sense")
-			return "mindfulness";
-		else if (skill == "slicing")
-			return "precision";
-		else if (skill == "computers")
-			return "precision";
-		else if (skill == "medicine")
-			return "precision";
-		else if (skill == "science")
-			return "mindfulness";
-		else if (skill == "persuasion")
-			return "awareness";
-		else if (skill == "bluff")
-			return "intelligence";
-		else if (skill == "composure")
-			return "mindfulness";
-		else if (skill == "resolve")
-			return "constitution";
-		else if (skill == "athletics")
-			return "dexterity";
-		else if (skill == "lightning")
-			return "intelligence";
-		else if (skill == "armor")
-			return "strength";
-		else if (skill == "defending")
-			return "strength";
-		else if (skill == "telekinesis")
-			return "precision";
-		else if (skill == "control")
-			return "charisma";
-		else if (skill == "alter")
-			return "strength";
-		else if (skill == "inward")
-			return "intelligence";
-		else if (skill == "performance")
-			return "mindfulness";
-		else if (skill == "command")
-			return "intelligence";
-		else
-			return "";
+		RoleplayManager* rp = RoleplayManager::instance();
+		return rp->getRpSkill(rp->getRpSkillIndex(skill, RpSkillType::SKILL), RpSkillType::SKILL).getAltParent();
 	}
 
 	static bool GetStringIsSkill(String skill) {
-		if (skill == "melee")
-			return true;
-		else if (skill == "intimidation")
-			return true;
-		else if (skill == "unarmed")
-			return true;
-		else if (skill == "lightsaber")
-			return true;
-		else if (skill == "ranged")
-			return true;
-		else if (skill == "mechanics")
-			return true;
-		else if (skill == "demolitions")
-			return true;
-		else if (skill == "engineering")
-			return true;
-		else if (skill == "larceny")
-			return true;
-		else if (skill == "stealth")
-			return true;
-		else if (skill == "maneuverability")
-			return true;
-		else if (skill == "throwing")
-			return true;
-		else if (skill == "investigation")
-			return true;
-		else if (skill == "piloting")
-			return true;
-		else if (skill == "survival")
-			return true;
-		else if (skill == "sense")
-			return true;
-		else if (skill == "slicing")
-			return true;
-		else if (skill == "computers")
-			return true;
-		else if (skill == "medicine")
-			return true;
-		else if (skill == "science")
-			return true;
-		else if (skill == "persuasion")
-			return true;
-		else if (skill == "bluff")
-			return true;
-		else if (skill == "composure")
-			return true;
-		else if (skill == "resolve")
-			return true;
-		else if (skill == "athletics")
-			return true;
-		else if (skill == "lightning")
-			return true;
-		else if (skill == "armor")
-			return true;
-		else if (skill == "defending")
-			return true;
-		else if (skill == "telekinesis")
-			return true;
-		else if (skill == "control")
-			return true;
-		else if (skill == "alter")
-			return true;
-		else if (skill == "inward")
-			return true;
-		else if (skill == "performance")
-			return true;
-		else if (skill == "command")
-			return true;
-		else
-			return false;
+		RoleplayManager* rp = RoleplayManager::instance();
+		return (rp->getRpSkillIndex(skill, RpSkillType::SKILL) != -1);
 	}
 
 	static bool GetStringIsForceSkill(String skill) {
-		if (skill == "telekinesis")
-			return true;
-		else if (skill == "control")
-			return true;
-		else if (skill == "alter")
-			return true;
-		else if (skill == "inward")
-			return true;
-		else if (skill == "lightning")
-			return true;
-		else if (skill == "lightsaber")
-			return true;
-		else if (skill == "sense")
-			return true;
-		else 
-			return false;
+		RoleplayManager* rp = RoleplayManager::instance();
+		return (rp->getRpSkillIndex(skill, RpSkillType::FORCESKILL) != -1);
 	}
 
 	static bool GetSkillIsForceSkill(String skill) {
-		if(skill.contains("telekinesis"))
-			return true;
-		else if(skill.contains("control"))
-			return true;
-		else if(skill.contains("alter"))
-			return true;
-		else if(skill.contains("inward"))
-			return true;
-		else if(skill.contains("lightning"))
-			return true;
-		else if(skill.contains("lightsaber"))
-			return true;
-		else if(skill.contains("sense"))
-			return true;
-		else return false;
+		return GetStringIsForceSkill(GetSkillRealName(skill));
 	}
 
 	static String GetSkillRealName(String input) {
@@ -399,58 +152,261 @@ public:
 		}
 	}
 
-	static bool CanTrainNextSkill(CreatureObject* creature, int rank, String skill, String parentAttribute = "", String altParentAttribute = "") {
-		if(rank > 10) return false;
-		if(skill == "") return false;
+	static bool CanTrainNextSkill(CreatureObject* creature, int rank, String skill) {
+		if(rank > 10)
+			return false;
+		if(skill == "")
+			return false;
+
 		String skillName = "rp_" + skill + "_" + GetSkillSuffixFromValue(rank);
+
+
 		SkillManager* skillManager = SkillManager::instance();
+		RoleplayManager* rp = RoleplayManager::instance();
+
 		bool hasXP = skillManager->canLearnSkill(skillName, creature, false);
-		int points = creature->getStoredInt("starter_attr_points");
-		if (parentAttribute != "" && altParentAttribute != "") {
+		int points = 0;
+
+		// Skill handling
+		if (rp->getRpSkillIndex(skill, RpSkillType::SKILL) != -1){
+			// Get our starter points.
 			points = creature->getStoredInt("starter_skill_points");
-			//creature->sendSystemMessage("Trying to train skill");
-			int parentValue = GetRealSkillLevel(creature, parentAttribute);
-			int altParentValue = GetRealSkillLevel(creature, altParentAttribute);
-			String skillRealName = GetSkillRealName(skill);
-			if(parentValue < rank && altParentValue < rank) {
-				return false;
-			} 				
-		} else {
-			//creature->sendSystemMessage("Trying to train attribute");
+
+			// Get the skill's data.
+			RpSkillData data = rp->getRpSkill(rp->getRpSkillIndex(skill, RpSkillType::SKILL), RpSkillType::SKILL);
+
+			int parentLevel = GetRealSkillLevel(creature, data.getParent());
+			int skillLevel = GetRealSkillLevel(creature, data.getName());
+
+			// We can learn the skill if we have points and our level does not exceed our parent level.
+			if(skillLevel - parentLevel < 0 && points > 0)
+				return true;
 		}
 
-		if(points > 0) return true;
-		
+		// Attribute handling
+		if (rp->getRpSkillIndex(skill, RpSkillType::ATTRIBUTE) != -1){
+			// Get our starter points.
+			points = creature->getStoredInt("starter_attr_points");
+
+			// Get our attribute's data.
+			RpSkillData data = rp->getRpSkill(rp->getRpSkillIndex(skill, RpSkillType::ATTRIBUTE), RpSkillType::ATTRIBUTE);
+			
+			// We can get the attribute if we have a point!
+			if (points > 0)
+				return true;
+		}
+
+		// No special handling, so just check if we have the XP needed.
 		return hasXP;
+	}
+
+	static float getXpCostMultiplier(CreatureObject* player, String skill){
+		RoleplayManager* rp = RoleplayManager::instance();
+
+		String skillName = GetSkillRealName(skill);
+		RpSkillData data;
+
+		if (GetStringIsSkill(skillName)){
+			data = rp->getRpSkill(rp->getRpSkillIndex(skillName, RpSkillType::SKILL), RpSkillType::SKILL);
+		} else if (GetStringIsAttribute(skillName)){
+			data = rp->getRpSkill(rp->getRpSkillIndex(skillName, RpSkillType::ATTRIBUTE), RpSkillType::ATTRIBUTE);
+		} else if (GetStringIsForceSkill){
+			data = rp->getRpSkill(rp->getRpSkillIndex(skillName, RpSkillType::FORCESKILL), RpSkillType::FORCESKILL);
+		} else {
+			//The skill in question is not an RP skill of any type, so just assume that the XP cost multiplier is 1.
+			return 1.0f;
+		}
+
+		//If the found skill does not have a skill parent, simply return 1 as the multiplier.
+		if (data.getParent() == ""){
+			return 1.0f;
+		}
+
+		int parentLevel = GetRealSkillLevel(player, data.getParent());
+		int skillLevel = GetSkillLevelFromString(skill);
+
+		if (skillLevel - parentLevel > 0){
+			return pow(rp->getSkillCostMultiplier(), skillLevel - parentLevel);
+		}
+
+		return 1.0f;
+	}
+
+	static int getFinalXpCost(CreatureObject* player, String skillName){
+		SkillManager* skillManager = SkillManager::instance();
+		float multi = getXpCostMultiplier(player, skillName);
+
+		return skillManager->getSkill(skillName)->getXpCost() * multi;
+
 	}
 
 	static bool GetQualifiedForSkill(CreatureObject* creature, String skill) {
 		String skillName = GetSkillRealName(skill);
+
+		if (GetStringIsForceSkill(skillName)) {
+			//See if they have Force Aware at the very least.
+			if(!creature->hasSkill("rp_force_prog_rank_01")) //Force Aware
+				return false;
+		}
+
 		if (GetStringIsSkill(skillName)) {
-			if(GetStringIsForceSkill(skillName)) {
-				//See if they have Force Aware at the very least.
-				if(!creature->hasSkill("rp_force_prog_rank_01")) //Force Aware
-					return false;
-				//Check if the Force skill is off cooldown to learn.
-				if(!creature->checkCooldownRecovery(skill))
-					return false;
-			}
 			int desiredLevel = GetSkillLevelFromString(skill);
 			if (desiredLevel == -1)
 				return false;
-			String parent = GetSkillParent(skillName);
-			String altParent = GetSkillAltParent(skillName);
-			int parentLevel = GetRealSkillLevel(creature, parent);
-			int altParentLevel = GetRealSkillLevel(creature, altParent);
-			if(parentLevel < desiredLevel && altParentLevel < desiredLevel) {
-				return false;
-			} else {
-				return true;
-			}
-			
-		} else {
-			return true;
 		}
+
+		if (GetStringIsAttribute(skillName)) {
+			SkillManager* skillManager = SkillManager::instance();
+			RoleplayManager* rp = RoleplayManager::instance();
+
+			if (skillManager->getRpAttributeCount(creature) >= rp->getMaxAttributes())
+				return false;
+		}
+
+		return true;
+	}
+
+	static void trainAttribute(CreatureObject* player, String skillName) {
+		int currentRank = GetRealSkillLevel(player, skillName);
+
+		// Check that we still meet the requirements for the skill.
+		if (CanTrainNextSkill(player, currentRank + 1, skillName)) {
+			SkillManager* skillManager = SkillManager::instance();
+			int freePoints = player->getStoredInt("starter_attr_points");
+			// Spend free Attribute points if we have them, otherwise, spend XP.
+			if(freePoints > 0) {
+				player->setStoredInt("starter_attr_points", freePoints - 1);
+				skillManager->awardSkill("rp_" + skillName + "_" + GetSkillSuffixFromValue(currentRank + 1), player, true, false, true);
+				player->sendSystemMessage("You've gained a point in " + skillName + ". You have " + String::valueOf(freePoints - 1) + " remaining free attribute points.");
+			} else {
+				skillManager->awardSkill("rp_" + skillName + "_" + GetSkillSuffixFromValue(currentRank + 1), player, true, false, false);
+				player->sendSystemMessage("You've gained a point in " + skillName + ".");
+			}
+		} else {
+			//Something happened
+			player->sendSystemMessage("ERROR: Something happened. You were eligible for the attribute you selected when you selected it, but you are no longer eligible.");
+		}
+	}
+
+	static void trainSkill(CreatureObject* player, String skillName) {
+		String skillParent = GetSkillParent(skillName);
+		String skillAltParent = GetSkillAltParent(skillName);
+		int currentRank = GetRealSkillLevel(player, skillName);
+
+		if (CanTrainNextSkill(player, currentRank + 1, skillName)) {
+			//Train it
+			SkillManager* skillManager = SkillManager::instance();
+			int freePoints = player->getStoredInt("starter_skill_points");
+			// Spend free Skill points if we have them, and the skill does not exceed the attribute level.
+			if(freePoints > 0 && currentRank < BorSkill::GetRealSkillLevel(player, skillParent)) {
+				player->setStoredInt("starter_skill_points", freePoints - 1);
+				skillManager->awardSkill("rp_" + skillName + "_" + BorSkill::GetSkillSuffixFromValue(currentRank + 1), player, true, false, true);
+				player->sendSystemMessage("You've gained a point in " + skillName + "! You have " + String::valueOf(freePoints - 1) + " remaining free skill points.");
+			} else {
+				skillManager->awardSkill("rp_" + skillName + "_" + BorSkill::GetSkillSuffixFromValue(currentRank + 1), player, true, false, false);
+				player->sendSystemMessage("You've gained a point in " + skillName + "!");
+			}
+		} else {
+			//Something happened
+			player->sendSystemMessage("ERROR: Something happened. You were eligible for the skill you selected when you selected it, but you are no longer eligible.");
+		}
+	}
+
+	static bool resetSkillsAndAttributes(CreatureObject* player){
+		bool maxedSkillFound = false;
+
+		int xp = 0;
+
+		RoleplayManager* rp = RoleplayManager::instance();
+
+		Vector<RpSkillData> skills = rp->getRpSkillList(RpSkillType::SKILL);
+		Vector<RpSkillData> attributes = rp->getRpSkillList(RpSkillType::ATTRIBUTE);
+
+		for (int i = 0; i < skills.size(); i++){
+			RpSkillData skill = skills.get(i);
+
+			if(!maxedSkillFound && player->hasSkill("rp_"+skill.getName()+"_master")){
+				maxedSkillFound = true;
+				revokeFullSkill(player, skill.getName(), false, false);
+			} else {
+				xp += revokeFullSkill(player, skill.getName());
+			}
+		}
+
+		for (int i = 0; i < attributes.size(); i++){
+			RpSkillData attribute = attributes.get(i);
+
+			revokeFullSkill(player, attribute.getName(), true);
+		}
+
+		player->setStoredInt("starter_skill_points", 15);
+		player->setStoredInt("starter_attr_points", 30);
+		player->deleteStoredLong("long_rest_time");
+
+
+		PlayerObject* playerObject = player->getPlayerObject();
+		playerObject->addExperience("rp_general", xp);
+
+		player->setStoredInt("respec", 1);
+
+		player->sendSystemMessage("Your character has been given a respec! All skills and attributes have been automatically surrendered.");
+		player->sendSystemMessage("30 Attribute points have been added");
+		player->sendSystemMessage("15 Skill points have been added.");
+		player->sendSystemMessage(String::valueOf(xp)+" Roleplay Experience has been added.");
+
+		return true;
+	}
+
+	static int revokeFullSkill(CreatureObject* player, String skillName, bool isAttribute = false, bool returnXP = true){
+		int xp = 0;
+
+		if(player->hasSkill("rp_" + skillName + "_master")) {
+			xp += revokeRpSkill(player,"rp_" + skillName + "_master");
+		}
+		if(player->hasSkill("rp_" + skillName + "_b04")) {
+			xp += revokeRpSkill(player,"rp_" + skillName + "_b04");
+		}
+		if(player->hasSkill("rp_" + skillName + "_b03")) {
+			xp += revokeRpSkill(player,"rp_" + skillName + "_b03");
+		}
+		if(player->hasSkill("rp_" + skillName + "_b02")) {
+			xp += revokeRpSkill(player,"rp_" + skillName + "_b02");
+		}
+		if(player->hasSkill("rp_" + skillName + "_b01")) {
+			xp += revokeRpSkill(player,"rp_" + skillName + "_b01");
+		}
+		if(player->hasSkill("rp_" + skillName + "_a04")) {
+			xp += revokeRpSkill(player,"rp_" + skillName + "_a04");
+		}
+		if(player->hasSkill("rp_" + skillName + "_a03")) {
+			xp += revokeRpSkill(player,"rp_" + skillName + "_a03");
+		}
+		if(player->hasSkill("rp_" + skillName + "_a02")) {
+			xp += revokeRpSkill(player,"rp_" + skillName + "_a02");
+		}
+		if(player->hasSkill("rp_" + skillName + "_a01")) {
+			xp += revokeRpSkill(player,"rp_" + skillName + "_a01");
+		}
+		if(player->hasSkill("rp_" + skillName + "_novice") && !isAttribute) {
+			xp += revokeRpSkill(player,"rp_" + skillName + "_novice");
+		}
+
+		if (returnXP){
+			return xp;
+		}
+		return 0;
+	}
+
+	static int revokeRpSkill(CreatureObject* creature, String skillName){
+		SkillManager* skillManager = SkillManager::instance();
+		Skill* skill = skillManager->getSkill(skillName);
+
+		if (skill != nullptr){
+			int xp = skill->getXpCost();
+			creature->removeSkill(skillName);
+			return xp;
+		}
+		return 0;
 	}
 };
 

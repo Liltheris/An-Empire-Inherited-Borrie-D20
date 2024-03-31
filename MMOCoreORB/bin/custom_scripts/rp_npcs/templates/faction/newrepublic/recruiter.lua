@@ -12,7 +12,7 @@ npc_template = {
 		"rp_twilek_male", 15, "rp_twilek_female", 10,
 	},
 	
-	skillTemplates = {"factional/common/officer"},
+	skillTemplates = {"common/soldier_officer"},
 	
 	equipmentTemplates = {
 		{"rp_human_male", {"faction/newrepublic/officer"}},

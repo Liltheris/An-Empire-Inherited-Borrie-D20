@@ -4,6 +4,8 @@
 #include "server/zone/objects/player/sui/SuiCallback.h"
 #include "server/zone/objects/player/sui/transferbox/SuiTransferBox.h"
 
+#include "server/zone/managers/roleplay/RoleplayManager.h"
+
 class TrainCommandSuiCallback : public SuiCallback {
 private:
 	int state;
@@ -55,14 +57,12 @@ public:
 				OpenTopMenu(player, suiBox, eventIndex, args, state, selection);
 				return;
 			}				
-			
 			OpenConfirmSkillSelectionWindow(player, suiBox, eventIndex, args, state, selection);			
 		} else if (state == 3) { //Train a Attribute
 			if (cancelPressed) {
 				OpenAttributeSelectionMenu(player, suiBox, eventIndex, args, state, selection);
 				return;
 			}				
-			
 			TrainAttribute(player, suiBox, eventIndex, args, state, selection);
 
 			OpenAttributeSelectionMenu(player, suiBox, eventIndex, args, state, selection);
@@ -80,127 +80,17 @@ public:
 				OpenTopMenu(player, suiBox, eventIndex, args, state, selection);
 				return;
 			}
-		} else if(state == 6) { //Convert Exp: Select Attribute
-			if (cancelPressed) {
-				OpenConversionTypeDialogue(player, suiBox, eventIndex, args, state, selection);
-				return;
-			}
-
-			OpenConversionAttributeList(player, suiBox, eventIndex, args, state, selection);
-
-		} else if(state == 7) { //Convert Exp: Select SKill
-			if (cancelPressed) {
-				OpenConversionTypeDialogue(player, suiBox, eventIndex, args, state, selection);
-				return;
-			}
-
-			OpenConversionSkillList(player, suiBox, eventIndex, args, state, selection);
-		} else if (state == 8) { //Convert Exp: Select the amount: ATTRIBUTE
-			if (cancelPressed) {
-				OpenConversionAttributeList(player, suiBox, eventIndex, args, state, selection);
-				return;
-			}
-
-
-		} else if (state == 9) { //Convert Exp: Select the amount: SKILL
-			if (cancelPressed) {
-				OpenConversionSkillList(player, suiBox, eventIndex, args, state, selection);
-				return;
-			}
-
 		}
 	}
 
 	String GetAttributeStringFromID(int id) {
-		if (id == 0)
-			return "awareness";
-		else if (id == 1)
-			return "charisma";
-		else if (id == 2)
-			return "constitution";
-		else if (id == 3)
-			return "dexterity";
-		else if (id == 4)
-			return "intelligence";
-		else if (id == 5)
-			return "mindfulness";
-		else if (id == 6)
-			return "precision";
-		else if (id == 7)
-			return "strength";
-		else
-			return "";
+		RoleplayManager* rp = RoleplayManager::instance();
+		return rp->getRpSkill(id,RpSkillType::ATTRIBUTE).getName();
 	}
 
 	String GetSkillStringFromID(int id) {
-		if (id == 0)
-			return "armor";
-		else if (id == 1)
-			return "athletics";
-		else if (id == 2)
-			return "bluff";
-		else if (id == 3)
-			return "command";
-		else if (id == 4)
-			return "composure";
-		else if (id == 5)
-			return "computers";
-		else if (id == 6)
-			return "defending";
-		else if (id == 7)
-			return "demolitions";
-		else if (id == 8)
-			return "engineering";
-		else if (id == 9)
-			return "intimidation";
-		else if (id == 10)
-			return "investigation";
-		else if (id == 11)
-			return "larceny";
-		else if (id == 12)
-			return "maneuverability";
-		else if (id == 13)
-			return "mechanics";
-		else if (id == 14)
-			return "medicine";
-		else if (id == 15)
-			return "melee";
-		else if (id == 16)
-			return "performance";
-		else if (id == 17)
-			return "persuasion";
-		else if (id == 18)
-			return "piloting";
-		else if (id == 19)
-			return "ranged";
-		else if (id == 20)
-			return "resolve";
-		else if (id == 21)
-			return "science";
-		else if (id == 22)
-			return "slicing";
-		else if (id == 23)
-			return "stealth";
-		else if (id == 24)
-			return "survival";
-		else if (id == 25)
-			return "throwing";
-		else if (id == 26)
-			return "unarmed";
-		else if (id == 27)
-			return "sense";
-		else if (id == 28)
-			return "lightning";
-		else if (id == 29)
-			return "telekinesis";
-		else if (id == 30)
-			return "control";
-		else if (id == 31)
-			return "alter";
-		else if (id == 32)
-			return "inward";
-		else
-			return "";
+		RoleplayManager* rp = RoleplayManager::instance();
+		return rp->getRpSkill(id,RpSkillType::SKILL).getName();
 	}
 
 	String GetSkillNumeral(int value) {
@@ -248,15 +138,16 @@ public:
 		box->setPromptTitle("Training Attribute Menu");
 		if(freeAttrPoints > 0) {
 			box->setPromptText("What attribute would you like to rank up?\n\nFree Attribute Boxes: " + String::valueOf(freeAttrPoints));
-		} else box->setPromptText("What attribute would you like to rank up?");					
-		box->addMenuItem("Awareness " + 		GetSkillNumeral(BorSkill::GetRealSkillLevel(player, "awareness")+1));
-		box->addMenuItem("Charisma " + 			GetSkillNumeral(BorSkill::GetRealSkillLevel(player, "charisma")+1));
-		box->addMenuItem("Constitution " + 		GetSkillNumeral(BorSkill::GetRealSkillLevel(player, "constitution")+1));
-		box->addMenuItem("Dexterity " + 		GetSkillNumeral(BorSkill::GetRealSkillLevel(player, "dexterity")+1));
-		box->addMenuItem("Intelligence " + 		GetSkillNumeral(BorSkill::GetRealSkillLevel(player, "intelligence")+1));
-		box->addMenuItem("Mindfulness " + 		GetSkillNumeral(BorSkill::GetRealSkillLevel(player, "mindfulness")+1));
-		box->addMenuItem("Precision " + 		GetSkillNumeral(BorSkill::GetRealSkillLevel(player, "precision")+1));
-		box->addMenuItem("Strength " + 			GetSkillNumeral(BorSkill::GetRealSkillLevel(player, "strength")+1));
+		} else box->setPromptText("What attribute would you like to rank up?");
+
+		RoleplayManager* rp = RoleplayManager::instance();
+		Vector<RpSkillData> data = rp->getRpSkillList(RpSkillType::ATTRIBUTE);
+
+		for (int i = 0; i < data.size(); i++){
+			RpSkillData skill = data.get(i);
+
+			box->addMenuItem(BorrieRPG::Capitalize(skill.getName())+" "+GetSkillNumeral(BorSkill::GetRealSkillLevel(player, skill.getName())+1));
+		}
 		
 		player->getPlayerObject()->addSuiBox(box);
 		player->sendMessage(box->generateMessage());
@@ -272,45 +163,33 @@ public:
 
 		box->setPromptTitle("Training Skill Menu");
 		if(freeSkillPoints > 0) {
-			box->setPromptText("What skill would you like to rank up? Remember that skills can only go as high as their associated attribute's max rank.\n\nFree Skill Boxes: " + String::valueOf(freeSkillPoints));
+			box->setPromptText("What skill would you like to rank up?\n\nFree Skill Boxes: " + String::valueOf(freeSkillPoints));
 		} else {
-			box->setPromptText("What skill would you like to rank up? Remember that skills can only go as high as their associated attribute's max rank.");
+			box->setPromptText("What skill would you like to rank up?");
 		}
 
-		box->addMenuItem("Armor " +				GetSkillNumeral(BorSkill::GetRealSkillLevel(player,"armor")+1));
-		box->addMenuItem("Athletics " +			GetSkillNumeral(BorSkill::GetRealSkillLevel(player,"athletics")+1));
-		box->addMenuItem("Bluff " +				GetSkillNumeral(BorSkill::GetRealSkillLevel(player,"bluff")+1));
-		box->addMenuItem("Command " +			GetSkillNumeral(BorSkill::GetRealSkillLevel(player,"command")+1));
-		box->addMenuItem("Composure " +			GetSkillNumeral(BorSkill::GetRealSkillLevel(player,"composure")+1));
-		box->addMenuItem("Computers " +			GetSkillNumeral(BorSkill::GetRealSkillLevel(player,"computers")+1));
-		box->addMenuItem("Defending " +			GetSkillNumeral(BorSkill::GetRealSkillLevel(player,"defending")+1));
-		box->addMenuItem("Demolitions " +		GetSkillNumeral(BorSkill::GetRealSkillLevel(player,"demolitions")+1));
-		box->addMenuItem("Engineering " +		GetSkillNumeral(BorSkill::GetRealSkillLevel(player,"engineering")+1));
-		box->addMenuItem("Intimidation " +		GetSkillNumeral(BorSkill::GetRealSkillLevel(player,"intimidation")+1));
-		box->addMenuItem("Investigation " +		GetSkillNumeral(BorSkill::GetRealSkillLevel(player,"investigation")+1));
-		box->addMenuItem("Larceny " +			GetSkillNumeral(BorSkill::GetRealSkillLevel(player,"larceny")+1));
-		box->addMenuItem("Maneuverability " +	GetSkillNumeral(BorSkill::GetRealSkillLevel(player,"maneuverability")+1));
-		box->addMenuItem("Mechanics " +			GetSkillNumeral(BorSkill::GetRealSkillLevel(player,"mechanics")+1));
-		box->addMenuItem("Medicine " +			GetSkillNumeral(BorSkill::GetRealSkillLevel(player,"medicine")+1));
-		box->addMenuItem("Melee " +				GetSkillNumeral(BorSkill::GetRealSkillLevel(player,"melee")+1));
-		box->addMenuItem("Performance " +		GetSkillNumeral(BorSkill::GetRealSkillLevel(player,"performance")+1));
-		box->addMenuItem("Persuasion " +		GetSkillNumeral(BorSkill::GetRealSkillLevel(player,"persuasion")+1));
-		box->addMenuItem("Piloting " +			GetSkillNumeral(BorSkill::GetRealSkillLevel(player,"piloting")+1));
-		box->addMenuItem("Ranged " +			GetSkillNumeral(BorSkill::GetRealSkillLevel(player,"ranged")+1));
-		box->addMenuItem("Resolve " +			GetSkillNumeral(BorSkill::GetRealSkillLevel(player,"resolve")+1));
-		box->addMenuItem("Science " +			GetSkillNumeral(BorSkill::GetRealSkillLevel(player,"science")+1));
-		box->addMenuItem("Slicing " +			GetSkillNumeral(BorSkill::GetRealSkillLevel(player,"slicing")+1));
-		box->addMenuItem("Stealth " +			GetSkillNumeral(BorSkill::GetRealSkillLevel(player,"stealth")+1));
-		box->addMenuItem("Survival " +			GetSkillNumeral(BorSkill::GetRealSkillLevel(player,"survival")+1));
-		box->addMenuItem("Throwing " +			GetSkillNumeral(BorSkill::GetRealSkillLevel(player,"throwing")+1));
-		box->addMenuItem("Unarmed " +			GetSkillNumeral(BorSkill::GetRealSkillLevel(player,"unarmed")+1));
+		RoleplayManager* rp = RoleplayManager::instance();
+		Vector<RpSkillData> data = rp->getRpSkillList(RpSkillType::SKILL);
+
+		for (int i = 0; i < data.size(); i++){
+			RpSkillData skill = data.get(i);
+
+			int parentLevel = BorSkill::GetRealSkillLevel(player, skill.getParent());
+			int skillLevel = BorSkill::GetRealSkillLevel(player, skill.getName());
+
+			String colour = "\\#.";
+
+			if (parentLevel <= skillLevel && skillLevel != 10)
+				colour = (parentLevel + 3 <= skillLevel) ? "\\#FF0000" : "\\#FFFF00";
+
+			if (skillLevel == 10)
+				colour = "\\#DBDBDB";
+
+			box->addMenuItem(colour + BorrieRPG::Capitalize(skill.getName())+" "+GetSkillNumeral(BorSkill::GetRealSkillLevel(player, skill.getName())+1));
+		}
 
 		player->getPlayerObject()->addSuiBox(box);
 		player->sendMessage(box->generateMessage());
-	}
-
-	void OpenExpConversionTopMenu(CreatureObject* player, SuiBox* suiBox, uint32 eventIndex, Vector<UnicodeString>* args, int state, int selection) {
-
 	}
 
 	void OpenConfirmAttributeSelectionWindow(CreatureObject* player, SuiBox* suiBox, uint32 eventIndex, Vector<UnicodeString>* args, int state, int selection) {
@@ -327,14 +206,17 @@ public:
 		if (BorSkill::CanTrainNextSkill(player, currentRank + 1, skillName)) {
 			suibox->setPromptTitle("Confirm training?"); 
 			//Can train!
-			suibox->setPromptText("Are you sure you want to train this attribute?");
+			if (freeAttrPoints < 1)
+				suibox->setPromptText("Are you sure you want to train this attribute?\n\nThis will cost 45,000 Roleplay experience.");
+			else
+				suibox->setPromptText("Are you sure you want to train this attribute?\n\nThis will cost 1 attribute point.");
 			suibox->setCallback(new TrainCommandSuiCallback(server, 3, index));
 			suibox->setOkButton(true, "Confirm");
 			suibox->setCancelButton(true, "Go Back");
 		} else {
 			suibox->setPromptTitle("Not eligible for training.");
 			//Failure. Can't train.
-			suibox->setPromptText("You are not currently eligible to train this attribute. You do not have enough experience points.");
+			suibox->setPromptText("You are not currently eligible to train this attribute. You do not have enough experience points.\n\nYou require 45000 Roleplay experience.");
 			suibox->setCallback(new TrainCommandSuiCallback(server, -1, state));
 			suibox->setCancelButton(true, "Go Back");
 		}	
@@ -343,25 +225,41 @@ public:
 	}
 
 	void OpenConfirmSkillSelectionWindow(CreatureObject* player, SuiBox* suiBox, uint32 eventIndex, Vector<UnicodeString>* args, int state, int selection) {
+
 		int freeSkillPoints = player->getStoredInt("starter_skill_points");
 		int freeAttrPoints = player->getStoredInt("starter_attr_points");
 		int index = Integer::valueOf(args->get(0).toString());
+
 		String skillName = GetSkillStringFromID(index);
 		String skillParent = BorSkill::GetSkillParent(skillName);
 		String skillAltParent = BorSkill::GetSkillAltParent(skillName);
+
 		int currentRank = BorSkill::GetRealSkillLevel(player, skillName);
+
+		int xp = BorSkill::getFinalXpCost(player, "rp_"+skillName+"_"+BorSkill::GetSkillSuffixFromValue(currentRank+1));
+
+		float mod = BorSkill::getXpCostMultiplier(player, "rp_"+skillName+"_"+BorSkill::GetSkillSuffixFromValue(currentRank+1));
+		String colour = "\\#.";
+
+		if (mod > 1.0f){
+			colour = (mod > 3.0f) ? "\\#FF0000" : "\\#FFFF00";
+		}
+
 		ManagedReference<SuiMessageBox*> suibox = new SuiMessageBox(player, SuiWindowType::TEACH_OFFER);
-		if (BorSkill::CanTrainNextSkill(player, currentRank + 1, skillName, skillParent, skillAltParent)) {
+		if (BorSkill::CanTrainNextSkill(player, currentRank + 1, skillName)) {
 			suibox->setPromptTitle("Confirm training?"); 
 			//Can train!
-			suibox->setPromptText("Are you sure you want to train this skill?");
+			if (freeSkillPoints < 1 || currentRank >= BorSkill::GetRealSkillLevel(player, skillParent))
+				suibox->setPromptText("Are you sure you want to train this skill?\n\nThis will cost "+colour+String::valueOf(xp)+"\\#. Roleplay experience.");
+			else
+				suibox->setPromptText("Are you sure you want to train this skill?\n\nThis will cost 1 skill point.");
 			suibox->setCallback(new TrainCommandSuiCallback(server, 4, index));
 			suibox->setOkButton(true, "Confirm");
 			suibox->setCancelButton(true, "Go Back");
 		} else {
 			suibox->setPromptTitle("Not eligible for training.");
 			//Failure. Can't train.
-			suibox->setPromptText("You are not currently eligible to train this skill. You do not have enough experience points and high enough of the associated attribute.");
+			suibox->setPromptText("You are not currently eligible to train this skill. You do not have enough experience points.\n\nYou require "+colour+String::valueOf(xp)+"\\#. Roleplay experience.");
 			suibox->setCallback(new TrainCommandSuiCallback(server, -1, state));
 			suibox->setCancelButton(true, "Go Back");
 		}	
@@ -370,111 +268,14 @@ public:
 	}
 
 	void TrainAttribute(CreatureObject* player, SuiBox* suiBox, uint32 eventIndex, Vector<UnicodeString>* args, int state, int selection) {
-		String skill = GetAttributeStringFromID(selection);
-		int currentRank = BorSkill::GetRealSkillLevel(player, skill);
-		if (BorSkill::CanTrainNextSkill(player, currentRank + 1, skill)) {
-			//Train it
-			SkillManager* skillManager = SkillManager::instance();
-			int freePoints = player->getStoredInt("starter_attr_points");
-			if(freePoints > 0) {
-				player->setStoredInt("starter_attr_points", freePoints - 1);
-				skillManager->awardSkill("rp_" + skill + "_" + BorSkill::GetSkillSuffixFromValue(currentRank + 1), player, true, false, true);
-				player->sendSystemMessage("You've gained a point in " + skill + ". You have " + String::valueOf(freePoints - 1) + " remaining free attribute points.");
-			} else {
-				skillManager->awardSkill("rp_" + skill + "_" + BorSkill::GetSkillSuffixFromValue(currentRank + 1), player, true, false, false);
-				player->sendSystemMessage("You've gained a point in " + skill + ".");
-			}
-		} else {
-			//Something happened
-			player->sendSystemMessage("ERROR: Something happened. You were eligible for the attribute you selected when you selected it, but you are no longer eligible.");
-		}
+		String skillName = GetAttributeStringFromID(selection);
+		BorSkill::trainAttribute(player, skillName);
 	}
 
 	void TrainSkill(CreatureObject* player, SuiBox* suiBox, uint32 eventIndex, Vector<UnicodeString>* args, int state, int selection) {
-		String skill = GetSkillStringFromID(selection);
-		String skillParent = BorSkill::GetSkillParent(skill);
-		String skillAltParent = BorSkill::GetSkillAltParent(skill);
-		int currentRank = BorSkill::GetRealSkillLevel(player, skill);
-		if (BorSkill::CanTrainNextSkill(player, currentRank + 1, skill, skillParent, skillAltParent)) {
-			//Train it
-			SkillManager* skillManager = SkillManager::instance();
-			
-			int freePoints = player->getStoredInt("starter_skill_points");
-			if(freePoints > 0) {
-				player->setStoredInt("starter_skill_points", freePoints - 1);
-				skillManager->awardSkill("rp_" + skill + "_" + BorSkill::GetSkillSuffixFromValue(currentRank + 1), player, true, false, true);
-				player->sendSystemMessage("You've gained a point in " + skill + "! You have " + String::valueOf(freePoints - 1) + " remaining free skill points.");
-			} else {
-				skillManager->awardSkill("rp_" + skill + "_" + BorSkill::GetSkillSuffixFromValue(currentRank + 1), player, true, false, false);
-				player->sendSystemMessage("You've gained a point in " + skill + "!");
-			}
-		} else {
-			//Something happened
-			player->sendSystemMessage("ERROR: Something happened. You were eligible for the skill you selected when you selected it, but you are no longer eligible.");
-		}
+		String skillName = GetSkillStringFromID(selection);
+		BorSkill::trainSkill(player, skillName);
 	}
-
-	void OpenConversionTypeDialogue(CreatureObject* player, SuiBox* suiBox, uint32 eventIndex, Vector<UnicodeString>* args, int state, int selection) {
-		ManagedReference<SuiListBox*> box = new SuiListBox(player, SuiWindowType::JUKEBOX_SELECTION);
-		box->setCallback(new TrainCommandSuiCallback(server, 0, 0));
-		box->setPromptTitle("Training Menu");
-		
-		box->setPromptText("What type of experience would you like to convert?");	
-		box->setCancelButton(true, "@cancel");
-		//box->setOkButton(false, "@");
-		box->addMenuItem("Convert to Attribute Experience");
-		box->addMenuItem("Convert to Skill Experience");
-		player->getPlayerObject()->addSuiBox(box);
-		player->sendMessage(box->generateMessage());
-	}
-
-	void OpenConversionAttributeList(CreatureObject* player, SuiBox* suiBox, uint32 eventIndex, Vector<UnicodeString>* args, int state, int selection) {
-		int index = Integer::valueOf(args->get(0).toString());
-		ManagedReference<SuiListBox*> box = new SuiListBox(player, SuiWindowType::JUKEBOX_SELECTION);
-		box->setCancelButton(true, "Back");
-		box->setCallback(new TrainCommandSuiCallback(server, 10, index));
-
-		box->setPromptTitle("Converting to Attribute Experience");
-		box->setPromptText("What attribute would you like to convert experience for? Attribute Rate: 100:1");				
-		box->addMenuItem("Awareness");
-		box->addMenuItem("Charisma");
-		box->addMenuItem("Constitution");
-		box->addMenuItem("Dexterity");
-		box->addMenuItem("Intelligence");
-		box->addMenuItem("Mindfulness");
-		box->addMenuItem("Precision");
-		box->addMenuItem("Strength");
-		
-		player->getPlayerObject()->addSuiBox(box);
-		player->sendMessage(box->generateMessage());
-	}
-
-	void OpenConversionSkillList(CreatureObject* player, SuiBox* suiBox, uint32 eventIndex, Vector<UnicodeString>* args, int state, int selection) {
-
-	}
-
-	void OpenConversionTransferBox(CreatureObject* player, SuiBox* suiBox, uint32 eventIndex, Vector<UnicodeString>* args, int state, int selection) {
-		int delegateRatioFrom = 1;
-		int delegateRatioTo = 1;
-
-		if(state == 6) { //Attribute Conversion
-			delegateRatioFrom = 100;
-		} else if(state == 7) { //Skill Conversion
-			delegateRatioFrom = 10;
-		}
-
-		ManagedReference<SuiTransferBox*> sui = new SuiTransferBox(player, SuiWindowType::DELEGATE_TRANSFER);
-		//sui->setCallback(new TrainCommandSuiCallback(server, -1, index));
-		sui->setPromptTitle("@player_structure:select_amount"); //Select Amount
-		sui->setPromptText("Current general roleplayer experience:" + String::valueOf(0));
-		sui->addFrom("Total amount", String::valueOf(1), String::valueOf(1), String::valueOf(delegateRatioFrom));
-		sui->addTo("Converted amount", "0", "0", String::valueOf(delegateRatioTo));
-
-		player->getPlayerObject()->addSuiBox(sui);
-		player->sendMessage(sui->generateMessage());
-	}
-	
-
 };
 
 #endif /* TRAINCOMMANDSUICALLBACK_H_ */

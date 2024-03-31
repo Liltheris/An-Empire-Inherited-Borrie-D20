@@ -20,6 +20,7 @@ content = {
 	{"object/tangible/wearables/shirt/shared_shirt_s34.iff", },
 	{"object/tangible/wearables/shirt/shared_shirt_s38.iff", },
 	{"object/tangible/wearables/shirt/shared_shirt_s42.iff", },
+	{"object/tangible/wearables/shirt/shared_shirt_s43.iff", },
 	{"object/tangible/wearables/armor/ubese/shared_armor_ubese_shirt.iff", },
 	{"object/tangible/wearables/shirt/shared_shirt_dera.iff", },
 	{"object/tangible/wearables/shirt/shared_nightsister_shirt_s01.iff",},

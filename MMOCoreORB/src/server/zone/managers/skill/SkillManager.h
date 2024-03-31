@@ -109,6 +109,8 @@ public:
 
 	int getForceSkillCount(CreatureObject* creature);
 
+	int getRpAttributeCount(CreatureObject* creature);
+
 	int getTrainingSkillCount(CreatureObject* creature);
 
 	int getTrainingSkillRank(CreatureObject* creature, const String& skillPrefix);

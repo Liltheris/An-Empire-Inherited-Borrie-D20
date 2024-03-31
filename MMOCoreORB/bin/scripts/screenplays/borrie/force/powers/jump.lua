@@ -1,27 +1,28 @@
-BorForce_Jump = {
-	name = "Force Jump"	
-}
+BorForce_Jump = BorForce_BasePower:new({
+	name = "Force Jump",
+	requiredSkills = {"rp_alter_a01"},
+
+	selfEffect = "clienteffect/pl_force_jump.cef",
+	selfAnim = "jump",
+
+	targetSelf = true,
+
+	helpString = "Jump to any location within FPI * 4 meters range, and remove any movement impairing effects.",
+})
 
 function BorForce_Jump:showHelp(pPlayer)
-	local helpMessage = self.name .. ": "
-	helpMessage =  helpMessage .. "Jump to any location within a <Force Point Input> * 4 meter range. Removes any movement impairing effect."
-	helpMessage = helpMessage .. " If your landing location is not an immediately flat surface, such as jumping over a wall, you need to incorporate that distance into your jump's range."
-	helpMessage = helpMessage .. " If you do not, you take the meters fallen * 2 as health damage."
-	CreatureObject(pPlayer):sendSystemMessage(helpMessage)
+	BorForceUtility:displayHelp(self, pPlayer)
 end
 
 function BorForce_Jump:execute(pPlayer)
-	local hasPower = CreatureObject(pPlayer):hasSkill("rp_alter_a03")
+	local fpi = BorForceUtility:getForcePointInput(pPlayer, self)
 	
-	if(hasPower == false) then
-		BorForceUtility:reportPowerNotKnown(pPlayer)
+	if(BorForceUtility:canUseForcePower(pPlayer, pPlayer, self) == false) then
 		return
 	end
 	
-	local fpi = BorForceUtility:getForcePointInput(pPlayer)
-	
-	if(fpi < 1) then
-		BorForceUtility:promptForcePointInput(pPlayer, self.name, "BorForce_Jump", "onFPICallback")
+	if(fpi < self.fpiMin) then
+		BorForceUtility:promptForcePointInput(pPlayer, self, "BorForce_Jump", "onFPICallback")
 	else 
 		self:performAbility(pPlayer, fpi)
 	end
@@ -45,31 +46,19 @@ function BorForce_Jump:onFPICallback(pPlayer, pSui, eventIndex, remaining, spent
 end
 
 function BorForce_Jump:performAbility(pPlayer, fpi)
-	local pGhost = CreatureObject(pPlayer):getPlayerObject()
-
-	if (pGhost == nil) then
+	if(BorForceUtility:canUseForcePower(pPlayer, pPlayer, self) == false) then
 		return
 	end
 	
-	fpi = math.floor(fpi)
-	
-	local forcePower = math.floor(PlayerObject(pGhost):getForcePower())
-	
-	if(forcePower < fpi) then
-		CreatureObject(pPlayer):sendSystemMessage("You don't have enough Force Power to commit " .. fpi .. " points.")
+	if(BorForceUtility:handleFPI(pPlayer, self, fpi) == false) then
 		return
 	end
-	
-	local skillValue = math.floor(CreatureObject(pPlayer):getSkillMod("rp_alter"))
 		
-	local message = CreatureObject(pPlayer):getFirstName() .. " used " .. self.name .. "!"
-	message = message .. " They can jump up to " .. fpi * 4 .. " meters! If their destination is not solid ground, they need to incorporate that into range, or take Distance * 2 fall damage!"
+	local msg = CreatureObject(pPlayer):getFirstName().." uses "..self.name.."!"
+	msg = msg.." They can jump up to \\#FF00FF"..fpi * 4 .."\\#FFFFFF meters, and clear all movement impairing effects."
 	
-	broadcastMessageWithName(pPlayer, message)
-	
-	PlayerObject(pGhost):setForcePower(forcePower - fpi)
-	
-	local clientEffect = "clienteffect/pl_force_jump.cef"
-	CreatureObject(pPlayer):playEffect(clientEffect, "")	
-	CreatureObject(pPlayer):doAnimation("jump")
+	--TO DO: Added status effect clearing.
+
+	BorForceUtility:playAbilityEffects(pPlayer, pPlayer, self)
+	broadcastMessageWithName(pPlayer, msg)
 end

@@ -220,7 +220,9 @@ namespace server {
 		static int setStoredObject(lua_State* L);
 		static int broadcastMessageToArea(lua_State* L);
 		static int broadcastMessageWithName(lua_State* L);
+		// AEI
 		static int generateSerial(lua_State* L);
+		static int applyAdjustedHealthDamage(lua_State* L);
 
 	private:
 		static void setupLuaPackagePath(Lua* luaEngine);

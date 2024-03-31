@@ -47,57 +47,131 @@ public:
 		}
 	}
 
-	static String RollRPDie(CreatureObject* creature, String roll, int mod = 0) {
-		int numDice, diceValue, nTempResult, nResult = 0;
-		String sNumDice, sDiceValue, DiceRollString;
-		StringTokenizer args(roll);
-		args.setDelimeter("d");
-		if (!args.hasMoreTokens()) {
-			// Return. Send message that there was no proper set up.
-			return "fail";
-		} else {
-			args.getStringToken(sNumDice);
-			if (args.hasMoreTokens()) {
-				args.getStringToken(sDiceValue);
-				numDice = Integer::valueOf(sNumDice);
-				diceValue = Integer::valueOf(sDiceValue);
-				if (numDice > 10 || numDice < 1) {
-					creature->sendSystemMessage("You cannot roll more than 1 - 10 dice.");
-					return "fail";
-				} else if (diceValue > 100 || diceValue < 2) {
-					creature->sendSystemMessage("Accepted die are d2 - 100");
-					return "fail";
-				}
-				for (int i = 0; i < numDice; i++) {
-					nTempResult = System::random(diceValue - 1) + 1;
-					DiceRollString += BorString::rollColour(nTempResult, diceValue, "\\#FFFFFF");
-					nResult += nTempResult;
-					if (i == numDice - 1)
-						DiceRollString += " =";
-					else
-						DiceRollString += " + ";
-				}
+	static bool parseDiceString(String roll, int &number, int &type, int &bonus){
+		StringTokenizer main(roll);
+		main.setDelimeter("+");
+		if (!main.hasMoreTokens())
+			return false;
+		
+		//split our roll from our bonus.
+		roll = main.getStringToken();
 
-				if (mod != 0)
-					return "Roll " + sNumDice + "d" + sDiceValue + ": " + DiceRollString + " (Modifier: " + String::valueOf(mod) +
-						   ") Result: " + String::valueOf(nResult + mod);
-				else
-					return "Roll " + sNumDice + "d" + sDiceValue + ": " + DiceRollString + " Result: " + String::valueOf(nResult);
+		// Set our roll bonus. No need to return false if we don't have a bonus though.
+		bonus = 0;
+		if (main.hasMoreTokens())
+			bonus = main.getIntToken();
 
-			} else {
-				// Return, we need the full thing.
-				return "fail";
-			}
-		}
+		StringTokenizer dice(roll);
+		dice.setDelimeter("d");
 
-		return "fail";
+		// Get the number of dice thrown.
+		if (!dice.hasMoreTokens())
+			return false;
+		number = dice.getIntToken();
+
+		// Get our dice type.
+		if (!dice.hasMoreTokens())
+			return false;
+		type = dice.getIntToken();
+
+		return true;
 	}
 
+	static String RollRPDie(CreatureObject* creature, String roll, int mod = 0) {
+		int numDice, diceValue, bonus, nTempResult, nResult = 0;
+		String sNumDice, sDiceValue, DiceRollString;
+
+		if (!parseDiceString(roll, numDice, diceValue, bonus)){
+			return "fail";
+		}
+
+		if (numDice > 10 || numDice < 1){
+			creature->sendSystemMessage("You cannot roll more than 1 - 10 dice.");
+			return "fail";
+		}
+
+		if (diceValue > 100 || diceValue < 2){
+			creature->sendSystemMessage("Accepted die are d2 - 100");
+			return "fail";
+		}
+
+		if (numDice > 1){
+			for (int i = 0; i < numDice; i++){
+				nTempResult = System::random(diceValue - 1) + 1;
+				DiceRollString += BorString::rollColour(nTempResult, diceValue, "\\#FFFFFF");
+				nResult += nTempResult;
+				if (i == numDice - 1){
+					DiceRollString += " = ";
+					DiceRollString += String::valueOf(nResult);
+				} else {
+					DiceRollString += " + ";
+				}
+			}
+		} else {
+			nResult = System::random(diceValue - 1) + 1;
+			DiceRollString += BorString::rollColour(nResult, diceValue, "\\#FFFFFF");
+		}
+
+		if (bonus != 0)
+			return "Roll "+String::valueOf(numDice)+"d"+String::valueOf(diceValue)+": "+DiceRollString+" + Modifier: "+String::valueOf(bonus)+". Result: "+String::valueOf(nResult + bonus);
+		else
+			return "Roll "+String::valueOf(numDice)+"d"+String::valueOf(diceValue)+": "+DiceRollString+" Result: "+String::valueOf(nResult);
+	}
+
+	/*THIS FUNCTION IS DEPRECATED. USE BorDice::rollSkill() instead!*/
 	static String RollSkill(CreatureObject* creature, String skillName) {
 		int value = creature->getSkillMod("rp_" + skillName);
 		int Roll = System::random(19) + 1;
 		return BorrieRPG::Capitalize(skillName) + " check : 1d20 = " + BorString::rollColour(Roll, 20, "\\#FFFFFF") + " + Modifier: " + String::valueOf(value) +
 			   ". Result: " + String::valueOf(value + Roll);
+	}
+
+	/*Rolls a skill normally, with advantage, or with disadvantage. Returns a roll string in the following formats: 
+	[skillName] check : 1d20 = <roll> + Modifier: <modifier>. Result = <roll + modifier>
+	[skillName] check : (Advantage!) 2d20 = <roll1>, <roll2>: <finalRoll> + Modifier: <modifier>. Result = <finalRoll + modifier>
+	[skillName] check : (Disadvantage!) 2d20 = <roll1>, <roll2>: <finalRoll> + Modifier: <modifier>. Result = <finalRoll + modifier>
+	*/
+	static String rollSkill(CreatureObject* creature, String skillName, int advantage = 0){
+		int value = creature->getSkillMod("rp_" + skillName);
+		int roll1 = System::random(19) + 1;
+		int finalRoll = roll1;
+		String output = BorString::capitalise(skillName) + " check : ";
+
+
+		if (advantage > 0){
+			//We're rolling with advantage! Happy us!
+			//Rolling the second die here to not have a roll to into the void.
+			int roll2 = System::random(19) + 1;
+
+			output += "(Advantage!) 2d20 = "+BorString::rollColour(roll1, 20, "\\#FFFFFF")+", "+BorString::rollColour(roll2, 20, "\\#FFFFFF")+": ";
+			
+			if (roll1 > roll2)
+				finalRoll = roll1;
+			else
+				finalRoll = roll2;
+			
+			output += BorString::rollColour(finalRoll, 20, "\\#FFFFFF");
+		} else if (advantage < 0){
+			//We're rolling with disadvantage. Oh no!
+			//Rolling the second die here to not have a roll to into the void.
+			int roll2 = System::random(19) + 1;
+
+			output += "(Disadvantage!) 2d20 = "+BorString::rollColour(roll1, 20, "\\#FFFFFF")+", "+BorString::rollColour(roll2, 20, "\\#FFFFFF")+": ";
+
+			if (roll1 < roll2)
+				finalRoll = roll1;
+			else
+				finalRoll = roll2;
+			
+			output += BorString::rollColour(finalRoll, 20, "\\#FFFFFF");
+		} else {
+			//We're just rolling. This is fine.
+			output += "1d20 = " + BorString::rollColour(roll1, 20, "\\#FFFFFF");
+		}
+
+		output += " + Modifier: "+String::valueOf(value)+". Result: " + String::valueOf(value + finalRoll);
+
+		return output;
 	}
 
 	static int Roll(int dieCount, int dieType) {

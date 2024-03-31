@@ -17,7 +17,7 @@ function BorForce_Rage:execute(pPlayer)
 		return
 	end
 	
-	local fpi = BorForceUtility:getForcePointInput(pPlayer)
+	local fpi = BorForceUtility:getForcePointInput(pPlayer, self)
 	
 	if(fpi < 1) then
 		BorForceUtility:promptForcePointInput(pPlayer, self.name, "BorForce_Rage", "onFPICallback")

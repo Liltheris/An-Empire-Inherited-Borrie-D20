@@ -1,43 +1,35 @@
-BorForce_Shock = {
+BorForce_Shock = BorForce_BasePower:new({
 	name = "Force Shock",
-	animationName = "force_lightning_1_particle_level_1_medium",
-	maxRange = 32
-}
+	requiredSkills = {"rp_lightning_novice"},
+
+	combatAnim = "force_lightning_1_particle_level_1_medium",
+
+	minRange = 0,
+	idealRange = 1,
+	farRange = 12,
+	maxRange = 20,
+
+	corruptionPoints = 1,
+
+	helpString = "",
+})
 
 function BorForce_Shock:showHelp(pPlayer)
-	
+	BorForceUtility:displayHelp(self, pPlayer)
 end
 
 function BorForce_Shock:execute(pPlayer)
-	local hasPower = CreatureObject(pPlayer):hasSkill("rp_lightning_novice")
-	
-	if(hasPower == false) then
-		BorForceUtility:reportPowerNotKnown(pPlayer)
-		return
-	end
-	
+	local fpi = BorForceUtility:getForcePointInput(pPlayer, self)
+
 	local targetID = CreatureObject(pPlayer):getTargetID()
 	local pTarget = getSceneObject(targetID)
-		
-	if (pTarget == nil or not SceneObject(pTarget):isCreatureObject()) then
-		CreatureObject(pPlayer):sendSystemMessage("Invalid target, must be a creature.")
+	
+	if(BorForceUtility:canUseForcePower(pPlayer, pTarget, self) == false) then
 		return
 	end
 	
-	if(SceneObject(pPlayer):getObjectID() == SceneObject(pTarget):getObjectID()) then
-		CreatureObject(pPlayer):sendSystemMessage("Invalid target. You cannot target yourself with this ability. Shocking.")
-		return
-	end
-	
-	if(SceneObject(pPlayer):getDistanceTo(pTarget) > self.maxRange) then
-		CreatureObject(pPlayer):sendSystemMessage("Your target is too far away.")
-		return
-	end
-	
-	local fpi = BorForceUtility:getForcePointInput(pPlayer)
-	
-	if(fpi < 1) then
-		BorForceUtility:promptForcePointInput(pPlayer, self.name, "BorForce_Shock", "onFPICallback")
+	if(fpi < self.fpiMin) then
+		BorForceUtility:promptForcePointInput(pPlayer, self, "BorForce_Shock", "onFPICallback")
 	else 
 		self:performAbility(pPlayer, fpi)
 	end
@@ -61,43 +53,33 @@ function BorForce_Shock:onFPICallback(pPlayer, pSui, eventIndex, remaining, spen
 end
 
 function BorForce_Shock:performAbility(pPlayer, fpi)
-	local pGhost = CreatureObject(pPlayer):getPlayerObject()
-
-	if (pGhost == nil) then
-		return
-	end
-	
 	local targetID = CreatureObject(pPlayer):getTargetID()
 	local pTarget = getSceneObject(targetID)
 		
-	if (pTarget == nil or not SceneObject(pTarget):isCreatureObject()) then
-		CreatureObject(pPlayer):sendSystemMessage("Invalid target, must be a creature.")
+	if(BorForceUtility:canUseForcePower(pPlayer, pTarget, self) == false) then
 		return
 	end
-	
-	if(SceneObject(pPlayer):getObjectID() == SceneObject(pTarget):getObjectID()) then
-		CreatureObject(pPlayer):sendSystemMessage("Invalid target. You cannot target yourself with this ability.")
-		return
-	end
-	
-	if(SceneObject(pPlayer):getDistanceTo(pTarget) > self.maxRange) then
-		CreatureObject(pPlayer):sendSystemMessage("Your target is too far away.")
-		return
-	end
-	
-	local forcePower = math.floor(PlayerObject(pGhost):getForcePower())
-	
-	fpi = math.floor(fpi)
-	
-	if(forcePower < fpi) then
-		CreatureObject(pPlayer):sendSystemMessage("You don't have enough Force Power to commit " .. fpi .. " points.")
+
+	if(BorForceUtility:handleFPI(pPlayer, self, fpi) == false) then
 		return
 	end
 	
 	local targetName = CreatureObject(pTarget):getFirstName() 
+
+	local dc = math.floor(BorForceUtility:getRangeDC(pPlayer, pTarget, self))
+
+	local skillValue = math.floor(CreatureObject(pPlayer):getSkillMod("rp_lightning"))
+	local roll = math.floor(math.random(1,20))
+
+	local msg = CreatureObject(pPlayer):getFirstName() .. " uses " .. self.name
+
+	if((skillValue + roll >= dc and roll > 1) or roll == 20) then
+		msg = msg .. "! A flash of lightning extends from their fingertips and strikes "..targetName.." "..BorForceUtility:rollSpamFPI(roll, skillValue, fpi, dc)
+		msg = msg .. ", leaving them stunned!"
+		BorForceUtility:playAbilityEffects(pPlayer, pTarget, self)
+	else
+		msg = msg .. " but fails!" .. BorForceUtility:rollSpamFPI(roll, skillValue, fpi, dc)
+	end
 	
-	--Begin Force Code
-	
-	--Drain Force Pool Accordingly.
-	PlayerObject(pGhost):setForcePower(forcePower - fpi)	
+	broadcastMessageWithName(pPlayer, msg)
 end

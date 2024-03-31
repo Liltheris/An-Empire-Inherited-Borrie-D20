@@ -274,7 +274,7 @@ bool SkillManager::awardSkill(const String& skillName, CreatureObject* creature,
 
 		//Witdraw experience.
 		if (!noXpRequired) {
-			ghost->addExperience(skill->getXpType(), -skill->getXpCost(), true);
+			ghost->addExperience(skill->getXpType(), -skill->getXpCost() * BorSkill::getXpCostMultiplier(creature, skillName), true);
 		}
 
 		creature->addSkill(skill, notifyClient);
@@ -761,7 +761,7 @@ bool SkillManager::canLearnSkill(const String& skillName, CreatureObject* creatu
 	if (ghost != nullptr) {
 		//Check if player has enough xp to learn the skill.
 		if (!noXpRequired) {
-			if (ghost->getExperience(skill->getXpType()) < skill->getXpCost()) {
+			if (ghost->getExperience(skill->getXpType()) < skill->getXpCost() * BorSkill::getXpCostMultiplier(creature, skillName)) {
 				return false;
 			}
 		}
@@ -793,7 +793,7 @@ bool SkillManager::fulfillsSkillPrerequisitesAndXp(const String& skillName, Crea
 	ManagedReference<PlayerObject* > ghost = creature->getPlayerObject();
 	if (ghost != nullptr) {
 		//Check if player has enough xp to learn the skill.
-		if (skill->getXpCost() > 0 && ghost->getExperience(skill->getXpType()) < skill->getXpCost()) {
+		if (skill->getXpCost() > 0 && ghost->getExperience(skill->getXpType()) < skill->getXpCost() * BorSkill::getXpCostMultiplier(creature, skillName)) {
 			return false;
 		}
 	}
@@ -904,17 +904,43 @@ int SkillManager::getForceSensitiveSkillCount(CreatureObject* creature, bool inc
 }
 
 int SkillManager::getForceSkillCount(CreatureObject* creature) {
+	RoleplayManager* rp = RoleplayManager::instance();
+	Vector<RpSkillData> forceSkills = rp->getRpSkillList(RpSkillType::FORCESKILL);
+
 	const SkillList* skills =  creature->getSkillList();
 	int forceSensitiveSkillCount = 0;
 	for (int i = 0; i < skills->size(); ++i) {
 		const String& skillName = skills->get(i)->getSkillName();
-		if (skillName.contains("rp_lightsaber") || skillName.contains("rp_sense") || skillName.contains("rp_lightning") 
-		|| skillName.contains("rp_telekinesis") || skillName.contains("rp_control") || skillName.contains("rp_alter")
-		|| skillName.contains("rp_inward")) 
-			forceSensitiveSkillCount++;
+
+		for (int j = 0; j < forceSkills.size(); j++){
+			if (skillName.contains("rp_"+rp->getRpSkill(j, RpSkillType::FORCESKILL).getName())){
+				forceSensitiveSkillCount++;
+				break;
+			}
+		}
 	}
 
 	return forceSensitiveSkillCount;
+}
+
+int SkillManager::getRpAttributeCount(CreatureObject* creature) {
+	RoleplayManager* rp = RoleplayManager::instance();
+	Vector<RpSkillData> attributes = rp->getRpSkillList(RpSkillType::ATTRIBUTE);
+
+	const SkillList* skills =  creature->getSkillList();
+	int attributeCount = 0;
+	for (int i = 0; i < skills->size(); ++i) {
+		const String& skillName = skills->get(i)->getSkillName();
+
+		for (int j = 0; j < attributes.size(); j++){
+			if (skillName.contains("rp_"+rp->getRpSkill(j, RpSkillType::ATTRIBUTE).getName()) && !skillName.contains("_novice")){
+				attributeCount++;
+				break;
+			}
+		}
+	}
+
+	return attributeCount;
 }
 
 int SkillManager::getTrainingSkillCount(CreatureObject* creature) {

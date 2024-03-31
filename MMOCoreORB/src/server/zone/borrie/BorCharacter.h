@@ -4,6 +4,7 @@
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/managers/creature/CreatureManager.h"
 #include "server/zone/packets/chat/ChatSystemMessage.h"
+#include "server/zone/managers/stringid/StringIdManager.h"
 
 //#include "templates/roleplay/RoleplayManager.h"
 
@@ -131,12 +132,13 @@ public:
 			box->setPromptTitle("Force Sensitivity");
 			String message = "You must choose whether or not this character is sensitive to the Force. ";
 			message += "If you choose to be Force Sensitive, you will have the option to train your ability in the Force, becoming Jedi, Sith, or something else. ";
-			message += "If you opt not to be Force Sensitive, you will have an extra 20 skill points available to you, as well as 5 more free skills you can train. ";
+			message += "If you opt not to be Force Sensitive, you will not be able to train in the Force, but are safe from persecution by the Inquisitorius. ";
 			message += "WARNING: Once you've made this decision, it is final. So choose carefully.";
 			box->setPromptText(message);
 			box->setOkButton(false, "@");
-			box->addMenuItem("I am Force Sensitive (-20 Skill Points)");
-			box->addMenuItem("I am NOT Force Sensitive (+5 Free Skills)");
+			box->addMenuItem("I am Force Sensitive");
+			box->addMenuItem("I am NOT Force Sensitive");
+			box->addMenuItem("Surprise me!");
 			creature->getPlayerObject()->addSuiBox(box);
 			creature->sendMessage(box->generateMessage());
 		}
@@ -1011,6 +1013,15 @@ public:
 		}
 	}
 
+	static void rewardXP(CreatureObject* creature, CreatureObject* dm, String type, int amount){
+		StringIdManager* sidman = StringIdManager::instance();
+
+		String expname = sidman->getStringId(String("@exp_n:" + type).hashCode()).toString();
+
+		creature->getZoneServer()->getPlayerManager()->awardExperience(creature, type, amount, true, false, false);
+		dm->sendSystemMessage("Rewarded "+creature->getFirstName()+" "+String::valueOf(amount) +" "+expname+" experience.");
+	}
+
 	static void ModifyDailyFactionContribution(CreatureObject* creature, CreatureObject* dm, int amount) {
 		if(creature->isPlayerCreature()) {
 
@@ -1374,13 +1385,13 @@ public:
 	}
 
 	static void doLongRest(CreatureObject* creature) {
-		int time = Time::currentNanoTime();
+		uint64 time = Time::currentNanoTime() / 1000000;
 
 		//Check if they are still on rest cooldown.
-		if(time < creature->getStoredInt("long_rest_time")){
-			int timeRemaining = creature->getStoredInt("long_rest_time") - time;
+		if(time < creature->getStoredLong("long_rest_time")){
+			uint64 timeRemaining = creature->getStoredLong("long_rest_time") - time;
 			BorrieRPG::BroadcastMessage(creature, BorString::getNiceName(creature) + " was unable to rest, as they have rested too recently.");
-			creature->sendSystemMessage("You can rest again in " +String::valueOf(ceil(timeRemaining / -3600000.f))+ " hours.");
+			creature->sendSystemMessage("You can rest again in " +String::valueOf(timeRemaining / 3600000)+ " hours.");
 			return;
 		}
 
@@ -1412,7 +1423,7 @@ public:
 		creature->setStoredInt("rp_heropoint", 1);
 
 		//18 hour cooldown.
-		creature->setStoredInt("long_rest_time", time + 18 * 60 * 60 * 1000); 
+		creature->setStoredLong("long_rest_time", time + 18 * 60 * 60 * 1000); 
 	}
 
 	static bool attuneForceCrystal(CreatureObject* creature, SceneObject* crystal){

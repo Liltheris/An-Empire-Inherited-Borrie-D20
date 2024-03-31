@@ -5,6 +5,8 @@
 #include "server/zone/managers/creature/CreatureManager.h"
 #include "server/zone/packets/chat/ChatSystemMessage.h"
 
+#include "server/zone/managers/roleplay/RoleplayManager.h"
+
 #include "server/zone/borrie/BorrieRPG.h"
 #include "server/zone/borrie/BorString.h"
 #include "server/zone/borrie/BorCharacter.h"
@@ -37,9 +39,21 @@ public:
         return output;
     }
 
-
+    static int getWeaponBonusDamage(CreatureObject* creature, WeaponObject* weapon){
+        //Lightsabers use the lightsaber skill for bonus damage.
+        if (weapon->isJediWeapon()){
+            return creature->getSkillMod("rp_lightsaber");
+        }
+        //Melee weapons use weapon bonus damage + a bonus from strength
+        if (weapon->isMeleeWeapon() || weapon->isUnarmedWeapon()){
+            return weapon->getBonusDamage() + creature->getSkillMod("rp_melee_bonus");
+        }
+        return weapon->getBonusDamage();
+    }
 
     static void AttackTarget(CreatureObject* attacker, CreatureObject* defender, CreatureObject* commander, int bodyPartTarget, bool powerAttack, bool ignoreLOS = false) {
+        RoleplayManager* rp = RoleplayManager::instance();
+
         ManagedReference<WeaponObject*> weapon = attacker->getWeapon();
 
         if(weapon->isBroken()) {
@@ -55,7 +69,7 @@ public:
         }
 
         // Determine the to hit DC.
-        int toHitDC = GetToHitModifier(attacker, defender, weapon) + 10;
+        int toHitDC = rp->getBaseDC() + GetToHitModifier(attacker, defender, weapon);
         int aimMod = 0;
         bool aimed = false;
 
@@ -189,11 +203,7 @@ public:
         if(powerAttack)
             damageDieCount++;
 
-        int bonusDamage = weapon->getBonusDamage();
-
-        if(weapon->isJediWeapon()) {
-            bonusDamage += attacker->getSkillMod("rp_lightsaber");
-        }
+        int bonusDamage = getWeaponBonusDamage(attacker, weapon);
 
         int totalDamage = GetDamageRoll(damageDieType, damageDieCount, bonusDamage);
 
@@ -269,6 +279,8 @@ public:
 
     //TO DO: When full refactor is done, this either needs to be folded into the main attack command, or sections of the attack command need to be compartmentalised into functions, to be reused here.
     static void FlurryAttackTarget(CreatureObject* attacker, CreatureObject* defender, CreatureObject* commander, bool ignoreLOS = false) {
+        RoleplayManager* rp = RoleplayManager::instance();
+
         ManagedReference<WeaponObject*> weapon = attacker->getWeapon();
         if(weapon->isBroken()) {
             commander->sendSystemMessage("Your weapon is broken, and you can't attack with a broken weapon.");
@@ -286,7 +298,7 @@ public:
         DrainActionOrWill(attacker, 1);
 
         // Determine the to hit DC.
-        int toHitDC = GetToHitModifier(attacker, defender, weapon) + 10;
+        int toHitDC = rp->getBaseDC() + GetToHitModifier(attacker, defender, weapon);
         int aimMod = 0;
         bool aimed = false;
 
@@ -389,11 +401,7 @@ public:
         
         int damageDieCount = weapon->getMinDamage();
         int damageDieType = weapon->getMaxDamage();
-        int bonusDamage = weapon->getBonusDamage();
-
-        if(weapon->isJediWeapon()) {
-            bonusDamage += attacker->getSkillMod("rp_lightsaber");
-        }
+        int bonusDamage = getWeaponBonusDamage(attacker, weapon);
 
         int damage1 = GetDamageRoll(damageDieType, damageDieCount, bonusDamage) / 2;
         int damage2 = GetDamageRoll(damageDieType, damageDieCount, bonusDamage) / 2;
@@ -427,7 +435,6 @@ public:
         } else {
             combatSpam += " and hit " + String::valueOf(hitCount) + " times!";
         }
-
 
         if(ignoreLOS) {
             BorrieRPG::BroadcastMessage(attacker, combatSpam + " " + toHitString +  reactionResult + " (Line of Sight Ignored)");
@@ -649,6 +656,26 @@ public:
             return ", doing (" + GetWeaponDamageString(attackerWeapon) + ") = "+ dmgString +" damage.";
         }
 
+        // Check if crystal belongs to deflector? Deflecter? Defender? Who the fuck knows.
+        int crystalMod = 0;
+        if(defenderWeapon->isJediWeapon()) {
+            ManagedReference<SceneObject*> saberInv = defenderWeapon->getSlottedObject("saber_inv");
+
+            if(saberInv != nullptr) {
+                int containerSize = saberInv->getContainerObjectsSize();
+
+                for (int j = containerSize - 1; j >= 0; --j) {
+		            ManagedReference<SceneObject*> crystal = saberInv->getContainerObject(j);
+
+		            if (crystal != nullptr){
+                        if (crystal->getStoredString("attuned_id") == String::valueOf(attacker->getObjectID()))
+                            crystalMod -= 2;
+                        j = 0;
+                    }        
+		        }
+	        }
+        }
+        
         // Check if the defender is becoming overwhelmed.
         int deflectionCount = defender->getStoredInt("deflection_count");
         defender->setStoredInt("deflection_count", deflectionCount + 1);
@@ -659,18 +686,27 @@ public:
 
         int rollResult = deflectRoll + lightsaberSkill;
 
-        // Deflect action cost is determined by 11 - lightsaber skill, capped to at least 1.
-        int actionCost = 11 - lightsaberSkill;
-        if(actionCost <= 0) actionCost = 1;
+      // Deflect action cost is determined by skill mod checkpoints. Does not allow to deflect between 1-3
+        int actionCost = 99;
+        if(lightsaberSkill >=9)
+            actionCost = 1;
+        else if (lightsaberSkill >=7)
+            actionCost = 2;
+         else if (lightsaberSkill >=5)
+            actionCost = 3;
+         else if (lightsaberSkill >=3)
+            actionCost = 5;
+        else actionCost = 99;
+
         DrainActionOrWill(defender, actionCost * actionPointMod);
 
         // Defender failed to reflect at all.
-        if (rollResult < toHit/2){
+        if (rollResult < toHit/2 + crystalMod){
             //Apply full damage and output the spam!
             dmgString = ApplyAdjustedHealthDamage(defender, attackerWeapon, incomingDamage, slot);
             BorEffect::PerformReactiveAnimation(attacker, defender, "hit", GetSlotHitlocation(slot), true);
 
-            reactionSpam += BorString::getNiceName(defender) + " fails to deflect the attack (1d20 = " + String::valueOf(deflectRoll) + " + " + String::valueOf(lightsaberSkill) + " vs DC: "+String::valueOf(toHit)+")";
+            reactionSpam += BorString::getNiceName(defender) + " fails to deflect the attack (1d20 = " + String::valueOf(deflectRoll) + " + " + String::valueOf(lightsaberSkill) + " vs DC: "+String::valueOf(toHit + crystalMod)+")";
             reactionSpam += ", recieving "+ dmgString +" damage!";
 
             return reactionSpam;
@@ -680,7 +716,7 @@ public:
         if (rollResult < toHit){
             if (attackerWeapon->isRangedWeapon()){
                 // Sending bolts away!
-                reactionSpam += BorString::getNiceName(defender) + " successfully deflects the shot (1d20 = " + String::valueOf(deflectRoll) + " + " + String::valueOf(lightsaberSkill) + " vs DC: "+String::valueOf(toHit/2)+")";
+                reactionSpam += BorString::getNiceName(defender) + " successfully deflects the shot (1d20 = " + String::valueOf(deflectRoll) + " + " + String::valueOf(lightsaberSkill) + " vs DC: "+String::valueOf(toHit/2 + crystalMod)+")";
                 reactionSpam += ", sending it harmlessly away.";
 
                 BorEffect::PerformReactiveAnimation(defender, attacker, "parry", GetSlotHitlocation(slot), false);
@@ -691,7 +727,7 @@ public:
                 // Taking half damage from lightsaber and melee hits!
                 dmgString = ApplyAdjustedHealthDamage(defender, attackerWeapon, incomingDamage / 2, slot);
 
-                reactionSpam += BorString::getNiceName(defender) + " deflects the attack in partial (1d20 = " + String::valueOf(deflectRoll) + " + " + String::valueOf(lightsaberSkill) + " vs DC: "+String::valueOf(toHit/2)+")";
+                reactionSpam += BorString::getNiceName(defender) + " deflects the attack in partial (1d20 = " + String::valueOf(deflectRoll) + " + " + String::valueOf(lightsaberSkill) + " vs DC: "+String::valueOf(toHit/2 + crystalMod)+")";
                 reactionSpam += ", still recieving "+ dmgString +" damage!";
 
                 // Melee weapons take half their maximum condition as damage!
@@ -710,7 +746,7 @@ public:
                 dmgString = ApplyAdjustedHealthDamage(defender, attackerWeapon, incomingDamage / 2, slot);
                 String atkDmgString = ApplyAdjustedHealthDamage(attacker, attackerWeapon, incomingDamage / 2, slot);
 
-                reactionSpam += BorString::getNiceName(defender) + " deflects the attack in partial (1d20 = " + String::valueOf(deflectRoll) + " + " + String::valueOf(lightsaberSkill) + " vs DC: "+String::valueOf(toHit/2)+")";
+                reactionSpam += BorString::getNiceName(defender) + " deflects the attack in partial (1d20 = " + String::valueOf(deflectRoll) + " + " + String::valueOf(lightsaberSkill) + " vs DC: "+String::valueOf(toHit/2 + crystalMod)+")";
                 reactionSpam += ", still recieving "+ dmgString +" damage!";
                 reactionSpam += " However, " + BorString::getNiceName(attacker) + " has hurt themselves in the process, taking "+ atkDmgString +" damage!";
 
@@ -721,7 +757,7 @@ public:
         }
         // We've fully deflected the attack!
         if (attackerWeapon->isRangedWeapon()){
-            reactionSpam += BorString::getNiceName(defender) + " successfully deflects the shot (1d20 = " + String::valueOf(deflectRoll) + " + " + String::valueOf(lightsaberSkill) + " vs DC: "+String::valueOf(toHit)+")";
+            reactionSpam += BorString::getNiceName(defender) + " successfully deflects the shot (1d20 = " + String::valueOf(deflectRoll) + " + " + String::valueOf(lightsaberSkill) + " vs DC: "+String::valueOf(toHit + crystalMod)+")";
 
             int damageType = attackerWeapon->getDamageType();
             if (damageType == SharedWeaponObjectTemplate::ENERGY || damageType == SharedWeaponObjectTemplate::ELECTRICITY || damageType == SharedWeaponObjectTemplate::STUN || damageType == SharedWeaponObjectTemplate::LIGHTSABER) {
@@ -740,7 +776,7 @@ public:
         }
         if (attackerWeapon->isJediWeapon() || attackerWeapon->isMeleeWeapon()){
             //Blocking all damage!
-            reactionSpam += ", but " + BorString::getNiceName(defender) + " successfully deflects the attack entirely. (1d20 = " + String::valueOf(deflectRoll) + " + " + String::valueOf(lightsaberSkill) + " vs DC: "+String::valueOf(toHit)+")";
+            reactionSpam += ", but " + BorString::getNiceName(defender) + " successfully deflects the attack entirely. (1d20 = " + String::valueOf(deflectRoll) + " + " + String::valueOf(lightsaberSkill) + " vs DC: "+String::valueOf(toHit + crystalMod)+")";
 
             if (attackerWeapon->isMeleeWeapon()){
                 reactionSpam += " " + BorString::getNiceName(attacker) + "'s weapon is not resistant to Lightsabers, and is destroyed in the process!";
@@ -756,7 +792,7 @@ public:
             BorEffect::PerformReactiveAnimation(defender, attacker, "parry", GetSlotHitlocation(slot), true);
             dmgString = ApplyAdjustedHealthDamage(attacker, attackerWeapon, incomingDamage, slot);
 
-            reactionSpam += ", but " + BorString::getNiceName(defender) + " successfully deflects the attack entirely. (1d20 = " + String::valueOf(deflectRoll) + " + " + String::valueOf(lightsaberSkill) + " vs DC: "+String::valueOf(toHit)+")";
+            reactionSpam += ", but " + BorString::getNiceName(defender) + " successfully deflects the attack entirely. (1d20 = " + String::valueOf(deflectRoll) + " + " + String::valueOf(lightsaberSkill) + " vs DC: "+String::valueOf(toHit + crystalMod)+")";
             reactionSpam += " " + BorString::getNiceName(attacker) + " hurts themselves on the blade for "+ dmgString +" damage!";
 
             return reactionSpam;
@@ -875,7 +911,7 @@ public:
         return ", doing (" + GetWeaponDamageString(attackerWeapon) + ") = "+ dmgString +" damage.";
     }
 
-    static String ApplyAdjustedHealthDamage(CreatureObject* creature, WeaponObject* attackerWeapon, int damage, int slot) {
+    static String ApplyAdjustedHealthDamage(CreatureObject* creature, String damageType, int damage, int slot) {
         // Use equipped armour if the creature is a player.
         if(creature->isPlayerCreature()) {
             ManagedReference<ArmorObject*> armour = BorCharacter::GetArmorAtSlot(creature, GetSlotName(slot));
@@ -883,8 +919,7 @@ public:
                 if(!armour->isBroken()) {
                     int armourDamage = 0;
                     int healthDamage = 0;
-                    String damageType = GetDamageType(attackerWeapon);
-                    int armourProtection = GetArmorProtection(armour, GetDamageType(attackerWeapon));
+                    int armourProtection = GetArmorProtection(armour, damageType);
 
                     if(damageType == "Lightsaber") { 
                         // Special Lightsaber Rules
@@ -950,10 +985,76 @@ public:
             return damageNumber(damage);
         // NPC handling.
         } else {
-            //TO DO: Implement NPC armour.
+            String armourName = creature->getStoredString("armour_set");
+            if (armourName != ""){
+                Lua* lua = DirectorManager::instance()->getLuaInstance();
+
+                if(!lua->runFile("custom_scripts/rp_npcs/armour/armour_sets.lua")) {
+                    //Simply apply the damage, as a weird error has occured.
+                    BorCharacter::ModPool(creature, "health", -damage, true);
+                    return damageNumber(damage);
+                }
+
+                LuaObject armourSet = lua->getGlobalObject(armourName);
+
+                if(!armourSet.isValidTable()){
+                    //Apply the damage, as the armour set is not valid.
+                    BorCharacter::ModPool(creature, "health", -damage, true);
+                    return damageNumber(damage);
+                }
+
+                String slotString = GetSlotName(slot);
+
+                for (int i = 1; i <= armourSet.getTableSize(); i++){
+                    LuaObject armourSlotObject = armourSet.getObjectAt(i);
+
+                    if (armourSlotObject.isValidTable()){
+
+                        if (armourSlotObject.getStringAt(1) == slotString){
+                            LuaObject armourObject = armourSlotObject.getObjectAt(2);
+
+                            if (armourObject.isValidTable()){
+                                int armourProtection = armourObject.getIntField(damageType.toLowerCase());
+
+                                int healthDamage = damage;
+
+                                // Standard damage calculation
+                                if(armourProtection <= 0){
+                                    //Armour is weak to damage type.
+                                    healthDamage = damage;
+                                } else {
+                                    //Armour resists damage, or ignores damage type.
+                                    healthDamage = damage - armourProtection;
+                                    if (healthDamage < 1) 
+                                        healthDamage = 1;
+                                }
+
+                                //Apply damage to creature.
+                                BorCharacter::ModPool(creature, "health", -healthDamage, true);
+
+                                String output = damageNumber(healthDamage);
+                                output = output +"(\\#FFFF00"+String::valueOf(damage - healthDamage)+"\\#FFFFFF)";
+
+                                armourObject.pop();
+                                armourSlotObject.pop();
+                                armourSet.pop();
+                                return output;
+                            }
+                            armourObject.pop();
+                        }
+                    }
+                    armourSlotObject.pop();
+                }
+                armourSet.pop();
+            }
+
             BorCharacter::ModPool(creature, "health", -damage, true);
             return damageNumber(damage);
         }
+    }
+
+    static String ApplyAdjustedHealthDamage(CreatureObject* creature, WeaponObject* attackerWeapon, int damage, int slot) {
+        return ApplyAdjustedHealthDamage(creature, GetDamageType(attackerWeapon), damage, slot);
     }
 
     static int GetArmorProtection(ArmorObject* armor, String damageType) {
@@ -1107,8 +1208,18 @@ public:
                     return false;
                 }
                 int lightsaberSkill = defender->getSkillMod("rp_lightsaber");
-                int actionCost = 11 - lightsaberSkill;
-                if(actionCost <= 0) actionCost = 1;
+
+                int actionCost = 99;
+                if(lightsaberSkill >=9)
+                    actionCost = 1;
+                else if (lightsaberSkill >=7)
+                    actionCost = 2;
+                else if (lightsaberSkill >=5)
+                    actionCost = 3;
+                else if (lightsaberSkill >=3)
+                    actionCost = 5;
+                else actionCost = 99;
+
                 if(defenderWeapon->isJediWeapon()) {
                     if(defenderAction >= (actionCost)) {
                         return true;
@@ -1174,7 +1285,7 @@ public:
 
         int distanceModifier = 0;
         bool tooClose = false;
-        
+
         if(distance < minRange) {
             //We're outside of the minimum range!
 			distanceModifier = attackerWeapon->getPointBlankAccuracy(); // PointBlankAccuracy is the too close DC mod
@@ -1213,7 +1324,17 @@ public:
             postureModifier += 5;
         } 
 
-        return distanceModifier + postureModifier;
+        int weaponModifier = 0;
+
+        if (attackerWeapon->getRequiredSkill() != ""){
+            int attackerLevel = BorSkill::GetRealSkillLevel(attacker, attackerWeapon->getRequiredSkill());
+            if (attackerLevel < attackerWeapon->getRequiredLevel()){
+                attacker->sendSystemMessage("\\#FFFF00Your "+BorString::capitalise(attackerWeapon->getRequiredSkill())+" is lower than your weapon's requirement! You suffer a +10 to the DC as a result!");
+                weaponModifier = 10;
+            }
+        }
+
+        return distanceModifier + postureModifier + weaponModifier;
     }
 
     static void throwGrenade(CreatureObject* attacker, CreatureObject* defender, CreatureObject* commander, WeaponObject* grenade) {

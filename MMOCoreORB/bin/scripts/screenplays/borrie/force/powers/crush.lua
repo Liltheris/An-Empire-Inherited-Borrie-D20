@@ -1,44 +1,39 @@
-BorForce_Crush = {
+BorForce_Crush = BorForce_BasePower:new({
 	name = "Force Crush",
-	animationName = "force_choke_1_particle_level_1",
-	maxRange = 16,
+	requiredSkills = {"rp_ability_forcecrush"},
+	combatAnim = "force_choke_1_particle_level_1",
+
+	action = "Major",
+
+	minRange = 0,
+	idealRange = 1,
+	farRange = 20,
+	maxRange = 32,
+
+	fpiMin = 1,
+	fpiMax = 10,
+
 	corruptionPoints = 2,
-}
+
+	helpString = "Crush the target for 1 point of kinetic damage for every Force point invested. If used on a living target, gain two points of dark side corruption.",
+})
 
 function BorForce_Crush:showHelp(pPlayer)
-	
+	BorForceUtility:displayHelp(self, pPlayer)
 end
 
 function BorForce_Crush:execute(pPlayer)
-	local hasPower = CreatureObject(pPlayer):hasSkill("rp_telekinesis_b03")
-	
-	if(hasPower == false) then
-		BorForceUtility:reportPowerNotKnown(pPlayer)
-		return
-	end
-	
+	local fpi = BorForceUtility:getForcePointInput(pPlayer, self)
+
 	local targetID = CreatureObject(pPlayer):getTargetID()
 	local pTarget = getSceneObject(targetID)
-		
-	if (pTarget == nil or not SceneObject(pTarget):isCreatureObject()) then
-		CreatureObject(pPlayer):sendSystemMessage("Invalid target, must be a creature.")
+
+	if(BorForceUtility:canUseForcePower(pPlayer, pTarget, self) == false) then
 		return
 	end
 	
-	if(SceneObject(pPlayer):getObjectID() == SceneObject(pTarget):getObjectID()) then
-		CreatureObject(pPlayer):sendSystemMessage("Invalid target. You cannot target yourself with this ability. I know, you must be crushed.")
-		return
-	end
-	
-	if(SceneObject(pPlayer):getDistanceTo(pTarget) > self.maxRange) then
-		CreatureObject(pPlayer):sendSystemMessage("Your target is too far away.")
-		return
-	end
-	
-	local fpi = BorForceUtility:getForcePointInput(pPlayer)
-	
-	if(fpi < 1) then
-		BorForceUtility:promptForcePointInput(pPlayer, self.name, "BorForce_Crush", "onFPICallback")
+	if(fpi < self.fpiMin) then
+		BorForceUtility:promptForcePointInput(pPlayer, self, "BorForce_Crush", "onFPICallback")
 	else 
 		self:performAbility(pPlayer, fpi)
 	end
@@ -62,43 +57,40 @@ function BorForce_Crush:onFPICallback(pPlayer, pSui, eventIndex, remaining, spen
 end
 
 function BorForce_Crush:performAbility(pPlayer, fpi)
-	local pGhost = CreatureObject(pPlayer):getPlayerObject()
-
-	if (pGhost == nil) then
-		return
-	end
-	
 	local targetID = CreatureObject(pPlayer):getTargetID()
 	local pTarget = getSceneObject(targetID)
 		
-	if (pTarget == nil or not SceneObject(pTarget):isCreatureObject()) then
-		CreatureObject(pPlayer):sendSystemMessage("Invalid target, must be a creature.")
+	if(BorForceUtility:canUseForcePower(pPlayer, pTarget, self) == false) then
 		return
 	end
-	
-	if(SceneObject(pPlayer):getObjectID() == SceneObject(pTarget):getObjectID()) then
-		CreatureObject(pPlayer):sendSystemMessage("Invalid target. You cannot target yourself with this ability.")
-		return
-	end
-	
-	if(SceneObject(pPlayer):getDistanceTo(pTarget) > self.maxRange) then
-		CreatureObject(pPlayer):sendSystemMessage("Your target is too far away.")
-		return
-	end
-	
-	local forcePower = math.floor(PlayerObject(pGhost):getForcePower())
-	
-	fpi = math.floor(fpi)
-	
-	if(forcePower < fpi) then
-		CreatureObject(pPlayer):sendSystemMessage("You don't have enough Force Power to commit " .. fpi .. " points.")
+
+	if(BorForceUtility:handleFPI(pPlayer, self, fpi) == false) then
 		return
 	end
 	
 	local targetName = CreatureObject(pTarget):getFirstName() 
-	
-	--Begin Force Code
-	
-	--Drain Force Pool Accordingly.
-	PlayerObject(pGhost):setForcePower(forcePower - fpi)	
+	local dc = math.floor(BorForceUtility:getRangeDC(pPlayer, pTarget, self))
+
+	local skillValue = math.floor(CreatureObject(pPlayer):getSkillMod("rp_telekinesis"))
+	local roll = math.floor(math.random(1,20))	
+
+	local msg = CreatureObject(pPlayer):getFirstName().." attempts to use "..self.name.." on "..targetName.." "
+
+	if((skillValue + roll >= dc and roll > 1) or roll == 20) then
+		local damage = math.floor(math.random(1,6) + fpi)
+		local hitSlot = math.floor(math.random(1,10))
+		local damageString = applyAdjustedHealthDamage(pTarget, "kinetic", damage, hitSlot)
+
+		msg = msg..BorForceUtility:rollSpam(roll, skillValue, dc).." and succeeds, crushing them for 1d"..dieType.."+"..fpi.." = "..damageString.." damage!"
+		BorForceUtility:playAbilityEffects(pPlayer, pTarget, self)
+
+		-- ObjectTypes 1026 is droids, 1027 is probe droids (god knows why they are seperate. #SOE)
+		if(SceneObject(pTarget):getGameObjectType() ~= 1026 and SceneObject(pTarget):getGameObjectType() ~= 1027) then
+			BorForce:addCorruptionPoints(pPlayer, self.corruptionPoints)
+		end
+	else
+		msg = msg..BorForceUtility:rollSpam(roll, skillValue, dc).." and fails!"
+	end
+
+	broadcastMessageWithName(pPlayer, msg)
 end

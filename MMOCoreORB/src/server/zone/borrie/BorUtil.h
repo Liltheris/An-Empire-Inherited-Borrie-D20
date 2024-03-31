@@ -259,6 +259,7 @@ public:
             String name;
             String randomName;
             String title;
+            String armour;
 
             Vector<String>* customizationOverrideNames = new Vector<String>();
             Vector<int>* customizationOverrideValues = new Vector<int>();
@@ -288,6 +289,8 @@ public:
                         name = Lua::getStringParameter(state);
                     } else if(varName == "title") {
                         title = Lua::getStringParameter(state);
+                    } else if(varName == "armour") {
+                        armour = Lua::getStringParameter(state);
                     } else if(varName == "randomName") {
                         randomName = Lua::getStringParameter(state);
                     } else if(varName == "baseTemplates") {
@@ -458,6 +461,10 @@ public:
             if(conversationTemplate != "") {
                 npc->setConvoTemplate(conversationTemplate);
                 npc->setStoredString("rp_convo_template", conversationTemplate);
+            } 
+
+            if(armour != "") {
+                npc->setStoredString("armour_set", armour);
             } 
 
             return npc;

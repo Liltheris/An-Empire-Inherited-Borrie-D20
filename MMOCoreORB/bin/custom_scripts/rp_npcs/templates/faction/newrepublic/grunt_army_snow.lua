@@ -7,7 +7,7 @@ npc_template = {
 		 "rp_human_female", 40
 	},
 	
-	skillTemplates = {"factional/common/grunt_army"},
+	skillTemplates = {"common/soldier_weak"},
 	
 	equipmentTemplates = {
 		{"rp_human_male", {"faction/newrepublic/grunt_army_snow"}},

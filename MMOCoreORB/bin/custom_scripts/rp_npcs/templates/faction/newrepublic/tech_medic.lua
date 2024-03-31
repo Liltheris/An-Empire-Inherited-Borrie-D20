@@ -11,7 +11,7 @@ npc_template = {
 		"rp_twilek_male", 15, "rp_twilek_female", 10,
 	},
 	
-	skillTemplates = {"factional/common/tech_medic"},
+	skillTemplates = {"common/soldier_medic"},
 	
 	equipmentTemplates = {
 		{"rp_human_male", {"faction/newrepublic/tech_medic"}},

@@ -1,18 +1,22 @@
-BorForce_Meditate = {
+BorForce_Meditate = BorForce_BasePower:new({
 	name = "Force Meditation",
-}
+	requiredSkills = {"rp_inward_novice"},
+
+	action = "Short rest",
+
+	selfEffect = "clienteffect/pl_force_meditate_self.cef",
+
+	targetSelf = true,
+
+	helpString = "Restore half of your total Force Pool as a short rest. You must be out of combat, and not in imminent danger to do this.",
+})
 
 function BorForce_Meditate:showHelp(pPlayer)
-	local helpMessage = self.name .. ": "
-	helpMessage =  helpMessage .. "Spend a will point to regenerate half of your force bar as a short rest. Can only be done in a safe space. "
-	CreatureObject(pPlayer):sendSystemMessage(helpMessage)
+	BorForceUtility:displayHelp(self, pPlayer)
 end
 
 function BorForce_Meditate:execute(pPlayer)
-	local hasPower = CreatureObject(pPlayer):hasSkill("rp_inward_novice")
-	
-	if(hasPower == false) then
-		BorForceUtility:reportPowerNotKnown(pPlayer)
+	if(BorForceUtility:canUseForcePower(pPlayer, pPlayer, self) == false) then
 		return
 	end
 	
@@ -43,17 +47,19 @@ function BorForce_Meditate:performAbility(pPlayer, fpi)
 	
 	local clientEffect = "clienteffect/pl_force_meditate_self.cef"
 	
-	local message = CreatureObject(pPlayer):getFirstName() .. " used " .. self.name .. "! In the cover of safety, they regenerate their force pool by " .. tonumber(forcePowerMax / 2) .. " points!"
+	local message = CreatureObject(pPlayer):getFirstName() .. " used " .. self.name .. "! In the cover of safety, they regenerate their force pool by " .. math.floor(forcePowerMax / 2) .. " points!"
 	
 	CreatureObject(pPlayer):setMoodString("meditating")
 	CreatureObject(pPlayer):setPosture(POSTURESITTING)
-	CreatureObject(pPlayer):playEffect(clientEffect, "")
+
 	
-	local forcePowerPoints = math.min(forcePowerMax, forcePower + (forcePowerMax * 1))
+	local forcePowerPoints = math.min(forcePowerMax, forcePower + (forcePowerMax / 2))
 	
 	PlayerObject(pGhost):setForcePower(forcePowerPoints)
 	SceneObject(pPlayer):setStoredInt("force_defense", 0)
 	CreatureObject(pPlayer):setHAM(6, CreatureObject(pPlayer):getHAM(6) - 1)
 	
 	broadcastMessageWithName(pPlayer, message)
+
+	BorForceUtility:playAbilityEffects(pPlayer, pPlayer, self)
 end

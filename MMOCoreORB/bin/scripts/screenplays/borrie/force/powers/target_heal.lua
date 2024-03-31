@@ -1,44 +1,34 @@
-BorForce_TargetHeal = {
+BorForce_TargetHeal = BorForce_BasePower:new({
 	name = "Force Heal Other",
-	maxRange = 16
-}
+	requiredSkills = {"rp_ability_healother", "rp_training_jedi_consular_01"},
+
+	combatAnim = "force_healing_1",
+	targetSelf = false,
+
+	minRange = 0,
+	idealRange = 2,
+	farRange = 4,
+	maxRange = 8,
+
+	helpString = "Roll Alter against DC10 + Dark side points / 2 to heal a target within 8 meters range for 2 health point per Force point used."
+})
 
 function BorForce_TargetHeal:showHelp(pPlayer)
-	local helpMessage = self.name .. ": "
-	helpMessage =  helpMessage .. "Heal target within 8 meters range with Alter against DC:15 + dark side points / 2 to heal their health pool for <ForcePointInput>."
-	CreatureObject(pPlayer):sendSystemMessage(helpMessage)
+	BorForceUtility:displayHelp(self, pPlayer)
 end
 
 function BorForce_TargetHeal:execute(pPlayer)
-	local hasPower = CreatureObject(pPlayer):hasSkill("rp_ability_healother") or CreatureObject(pPlayer):hasSkill("rp_training_jedi_consular_01")
-	
-	if(hasPower == false) then
-		BorForceUtility:reportPowerNotKnown(pPlayer)
-		return
-	end
-	
+	local fpi = BorForceUtility:getForcePointInput(pPlayer, self)
+
 	local targetID = CreatureObject(pPlayer):getTargetID()
 	local pTarget = getSceneObject(targetID)
-		
-	if (pTarget == nil or not SceneObject(pTarget):isCreatureObject()) then
-		CreatureObject(pPlayer):sendSystemMessage("Invalid target, must be a creature.")
+	
+	if(BorForceUtility:canUseForcePower(pPlayer, pTarget, self) == false) then
 		return
 	end
 	
-	if(SceneObject(pPlayer):getObjectID() == SceneObject(pTarget):getObjectID()) then
-		CreatureObject(pPlayer):sendSystemMessage("Invalid target. You cannot target yourself with this ability. Use Force Heal.")
-		return
-	end
-	
-	if(SceneObject(pPlayer):getDistanceTo(pTarget) > self.maxRange) then
-		CreatureObject(pPlayer):sendSystemMessage("Your target is too far away.")
-		return
-	end
-	
-	local fpi = BorForceUtility:getForcePointInput(pPlayer)
-	
-	if(fpi < 1) then
-		BorForceUtility:promptForcePointInput(pPlayer, self.name, "BorForce_TargetHeal", "onFPICallback")
+	if(fpi < self.fpiMin) then
+		BorForceUtility:promptForcePointInput(pPlayer, self, "BorForce_TargetHeal", "onFPICallback")
 	else 
 		self:performAbility(pPlayer, fpi)
 	end
@@ -62,55 +52,35 @@ function BorForce_TargetHeal:onFPICallback(pPlayer, pSui, eventIndex, remaining,
 end
 
 function BorForce_TargetHeal:performAbility(pPlayer, fpi)
-	local pGhost = CreatureObject(pPlayer):getPlayerObject()
-
-	if (pGhost == nil) then
-		return
-	end
-	
 	local targetID = CreatureObject(pPlayer):getTargetID()
 	local pTarget = getSceneObject(targetID)
 		
-	if (pTarget == nil or not SceneObject(pTarget):isCreatureObject()) then
-		CreatureObject(pPlayer):sendSystemMessage("Invalid target, must be a creature.")
+	if(BorForceUtility:canUseForcePower(pPlayer, pTarget, self) == false) then
 		return
 	end
-	
-	if(SceneObject(pPlayer):getObjectID() == SceneObject(pTarget):getObjectID()) then
-		CreatureObject(pPlayer):sendSystemMessage("Invalid target. You cannot target yourself with this ability. Use Force Heal.")
-		return
-	end
-	
-	if(SceneObject(pPlayer):getDistanceTo(pTarget) > self.maxRange) then
-		CreatureObject(pPlayer):sendSystemMessage("Your target is too far away.")
-		return
-	end
-	
-	local forcePower = math.floor(PlayerObject(pGhost):getForcePower())
-	
-	fpi = math.floor(fpi)
-	
-	if(forcePower < fpi) then
-		CreatureObject(pPlayer):sendSystemMessage("You don't have enough Force Power to commit " .. fpi .. " points.")
+
+	if(BorForceUtility:handleFPI(pPlayer, self, fpi) == false) then
 		return
 	end
 	
 	local skillValue = math.floor(CreatureObject(pPlayer):getSkillMod("rp_alter"))
 	local roll = math.floor(math.random(1,20))	
 	local darkSidePoints = CreatureObject(pPlayer):getShockWounds()
+
+	local dc = math.floor(10 + darkSidePoints/2)
 	
 	local message = CreatureObject(pPlayer):getFirstName() .. " used " .. self.name .. "!"
 	local targetName = CreatureObject(pTarget):getFirstName() 
-	if(skillValue + roll >= 15 + darkSidePoints/2) then
-		message = message .. " They heal ".. targetName .." for ".. fpi * 2 .." health points! (1d20 = " .. roll .. " + " .. skillValue .. " = " .. roll + skillValue .. " vs DC: " .. 15 + darkSidePoints/2 .. ")"
-		CreatureObject(pPlayer):doCombatAnimation(pPlayer, pTarget, "force_healing_1")
+
+	if((skillValue + roll >= dc and roll > 1) or roll == 20) then
+		message = message .. " They heal ".. targetName .." for \\#00FF00".. fpi * 2 .."\\#FFFFFF health points! ".. BorForceUtility:rollSpam(roll, skillValue, dc)
+
+		BorForceUtility:playAbilityEffects(pPlayer, pTarget, self)
 		CreatureObject(pTarget):setHAM(0, math.min(CreatureObject(pTarget):getHAM(0) + fpi * 2, CreatureObject(pTarget):getMaxHAM(0)))
 	else 
-		message = message .. " Unfortunately, their focus is broken, and they fail to heal ".. targetName ..". (1d20 = " .. roll .. " + " .. skillValue .. " = " .. roll + skillValue .. " vs DC: " .. 15 + darkSidePoints/2 .. ")"
+		message = message .. " Unfortunately, their focus is broken, and they fail to heal ".. targetName ..". ".. BorForceUtility:rollSpam(roll, skillValue, dc)
 	end
 	
 	broadcastMessageWithName(pPlayer, message)
-	
-	PlayerObject(pGhost):setForcePower(forcePower - fpi)
 	
 end

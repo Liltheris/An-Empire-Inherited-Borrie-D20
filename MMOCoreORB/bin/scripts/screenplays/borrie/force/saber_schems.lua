@@ -116,6 +116,7 @@ rp_saber_schematics = {
 	"object/draft_schematic/roleplay/weapon/lightsaber_pole/shared_lance_saber_rey3_staff.iff",
 	"object/draft_schematic/roleplay/weapon/lightsaber_pole/shared_lance_saber_vanquisher.iff",
 
+	"object/draft_schematic/roleplay/weapon/lightsaber_pole/shared_lance_saber_katana.iff",
 	"object/draft_schematic/roleplay/weapon/lightsaber/shared_sword_saber_baylan.iff",
 	"object/draft_schematic/roleplay/weapon/lightsaber/shared_sword_saber_kol.iff",
 	"object/draft_schematic/roleplay/weapon/lightsaber/shared_sword_saber_sabine.iff",

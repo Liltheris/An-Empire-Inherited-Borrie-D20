@@ -172,19 +172,50 @@ public:
 		creature->broadcastMessage(msg, true);
 	}
 
-	static void BroadcastRoll(CreatureObject* creature, String rollMessage) {
-		BroadcastMessage(creature, rollMessage);
+	static void broadcastSecretMessage(CreatureObject* creature, String message) {
+		ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
+
+		ChatManager* chatManager = creature->getZoneServer()->getChatManager();
+		Locker chatManagerLocker(chatManager);
+
+		PlayerMap* playerMap = chatManager->getPlayerMap();
+		playerMap->resetIterator();
+
+		String finalMessage = BorString::getNameTag(creature) + " " + message;
+
+		creature->sendSystemMessage(finalMessage);
+
+		while (playerMap->hasNext()) {
+			ManagedReference<CreatureObject*> playerCreature = playerMap->getNextValue();
+			ManagedReference<PlayerObject*> playerObject = playerCreature->getPlayerObject();
+
+			if (playerObject->isPrivileged()) {
+				playerCreature->sendSystemMessage(finalMessage);
+			}
+		}
 	}
 
-	static void BroadcastRoll(CreatureObject* commander, CreatureObject* creature, String rollMessage) {
-		if(commander != creature) {
-			UnicodeString message1("[\\#00FFFF"+commander->getFirstName()+"\\#FFFFFF] for [\\#FFFF00" + BorString::getNiceName(creature) + "\\#FFFFFF]: " + rollMessage);
-			ChatSystemMessage* msg = new ChatSystemMessage(message1, ChatSystemMessage::DISPLAY_CHATANDSCREEN);
-			creature->broadcastMessage(msg, true);
+	static void BroadcastRoll(CreatureObject* creature, String rollMessage, bool secret = false) {
+		if (secret) {
+			broadcastSecretMessage(creature, rollMessage);
 		} else {
-			UnicodeString message1("[\\#00FFFF" + BorString::getNiceName(creature) + "\\#FFFFFF]: " + rollMessage);
-			ChatSystemMessage* msg = new ChatSystemMessage(message1, ChatSystemMessage::DISPLAY_CHATANDSCREEN);
-			creature->broadcastMessage(msg, true);
+			BroadcastMessage(creature, rollMessage);
+		}
+		
+	}
+
+	static void BroadcastRoll(CreatureObject* commander, CreatureObject* creature, String rollMessage, bool secret = false) {
+		if(commander != creature) {
+			String message1 = " for [\\#FFFF00" + BorString::getNiceName(creature) + "\\#FFFFFF]: " + rollMessage;
+			if (secret)
+				BroadcastMessage(commander, message1);
+			else
+				broadcastSecretMessage(commander, message1);
+		} else {
+			if (secret)
+				BroadcastMessage(creature, rollMessage);
+			else
+				broadcastSecretMessage(creature, rollMessage);
 		}		
 	}
 
@@ -231,14 +262,14 @@ public:
 		Locker chatManagerLocker(chatManager);
 
 		PlayerMap* playerMap = chatManager->getPlayerMap();
-		playerMap->resetIterator(false);
+		playerMap->resetIterator();
 
 		String pName = "[DMCHAT][\\#FF6C00" + creature->getFirstName() + "\\#FFFFFF]: ";
 		UnicodeString message1(pName + msg);
 		ChatSystemMessage* csmsg = new ChatSystemMessage(message1, ChatSystemMessage::DISPLAY_CHATONLY);
 
-		while (playerMap->hasNext(false)) {
-			ManagedReference<CreatureObject*> playerCreature = playerMap->getNextValue(false);
+		while (playerMap->hasNext()) {
+			ManagedReference<CreatureObject*> playerCreature = playerMap->getNextValue();
 			if(playerCreature == nullptr)
 				continue;
 
@@ -277,10 +308,10 @@ public:
 
 		String result;
 
-		playerMap->resetIterator(false);
+		playerMap->resetIterator();
 
-		while (playerMap->hasNext(false)) {
-			ManagedReference<CreatureObject*> playerObject = playerMap->getNextValue(false);
+		while (playerMap->hasNext()) {
+			ManagedReference<CreatureObject*> playerObject = playerMap->getNextValue();
 
 			Account* account = playerObject->getPlayerObject()->getAccount();
 
@@ -338,10 +369,10 @@ public:
 
 		String result;
 
-		playerMap->resetIterator(false);
+		playerMap->resetIterator();
 
-		while (playerMap->hasNext(false)) {
-			ManagedReference<CreatureObject*> playerObject = playerMap->getNextValue(false);
+		while (playerMap->hasNext()) {
+			ManagedReference<CreatureObject*> playerObject = playerMap->getNextValue();
 			Zone* zone = playerObject->getZone();
 			String playerPlanet = zone->getZoneName();
 
@@ -386,12 +417,12 @@ public:
 		VectorMap<String, int> planetCounts;
 		Vector<String> planets;
 
-		playerMap->resetIterator(false);
+		playerMap->resetIterator();
 
 		String result;
 
-		while (playerMap->hasNext(false)) {
-			ManagedReference<CreatureObject*> playerObject = playerMap->getNextValue(false);
+		while (playerMap->hasNext()) {
+			ManagedReference<CreatureObject*> playerObject = playerMap->getNextValue();
 			Zone* zone = playerObject->getZone();
 			String playerPlanet = zone->getZoneName();
 
@@ -482,10 +513,10 @@ public:
 			
 			int dmCount = 0;
 
-			playerMap->resetIterator(false);
+			playerMap->resetIterator();
 
-			while (playerMap->hasNext(false)) {
-				ManagedReference<CreatureObject*> playerObject = playerMap->getNextValue(false);
+			while (playerMap->hasNext()) {
+				ManagedReference<CreatureObject*> playerObject = playerMap->getNextValue();
 				ManagedReference<PlayerObject*> ghost = playerObject->getPlayerObject();
 				if(ghost->getAdminLevel() > 1) {
 					playerCount--;
@@ -509,9 +540,9 @@ public:
 		ChatManager* chatManager = ServerCore::getZoneServer()->getChatManager();
 		PlayerMap* playerMap = chatManager->getPlayerMap();
 
-		playerMap->resetIterator(false);
-		while (playerMap->hasNext(false)) {
-			ManagedReference<CreatureObject*> playerObject = playerMap->getNextValue(false);
+		playerMap->resetIterator();
+		while (playerMap->hasNext()) {
+			ManagedReference<CreatureObject*> playerObject = playerMap->getNextValue();
 			
 			if(playerObject->getStoredInt("dm_alert_incoming") == 1) {
 				playerObject->sendSystemMessage("!\\#FFFF00***" + name + (isOnline ? " is now online." : " has gone offline."));
@@ -531,25 +562,6 @@ public:
 		creature->getPlayerObject()->addSuiBox(sui);
 		creature->sendMessage(sui->generateMessage());
 	}
-
-	/*
-	static void ReportOnlineCount(CreatureObject* creature) {
-		StringBuffer fetchStatement;
-		fetchStatement << "SELECT COUNT(*) FROM rp_characters WHERE isonline = '1'";
-		UniqueReference<ResultSet*> fetchedResults(ServerDatabase::instance()->executeQuery(fetchStatement.toString()));
-		if (fetchedResults == nullptr) {
-			creature->sendSystemMessage("An error occured. Could not get online count. (ERROR:1)");
-		} else {
-			if (fetchedResults->next()) {
-				String count = fetchedResults->getString(0);
-				creature->sendSystemMessage("Current Online Players: " + count + ".");
-				// TODO: Want to retrieve more information and inform them of statuses.
-			} else {
-				creature->sendSystemMessage("An error occured. Could not get online count. (ERROR:2)");
-			}
-		}
-	} 
-	*/
 
 	static int GetChatTypeID(String chatType) {
 		ChatManager* chatManager = ServerCore::getZoneServer()->getChatManager();

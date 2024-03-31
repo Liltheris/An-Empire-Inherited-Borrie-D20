@@ -292,6 +292,13 @@ function RpMandaloreKeldabeScreenPlay:spawnSceneObjects()
 	sObj = spawnSceneObject("rp_mandalore", "object/tangible/sign/all_sign_city_s03.iff", -3984.68, 35, -2750.19, 0, 0.927184, 0, 0.374607, 0)
 	SceneObject(sObj):setCustomObjectName("House Deomer")
 
+	--Weapon Parts
+	sObj = spawnSceneObject("rp_mandalore", "object/tangible/furniture/cheap/chest_s01.iff", 23.4868, 1.30119, 2.03038, 50663, -4.37114e-08, 0, 1, 0)
+	SceneObject(sObj):setCustomObjectName("Scopes, Stocks and & Muzzles")
+	SceneObject(sObj):setPublicContainer(true)
+	SceneObject(sObj):setDispenserContainer(true)
+	SceneObject(sObj):populateInventoryFromContentList("weapon_attachments")
+
 end
 
 function RpMandaloreKeldabeScreenPlay:spawnMobiles()

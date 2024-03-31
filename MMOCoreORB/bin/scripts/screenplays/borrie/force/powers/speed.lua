@@ -1,26 +1,27 @@
-BorForce_Speed = {
-	name = "Force Speed"
-}
+BorForce_Speed = BorForce_BasePower:new({
+	name = "Force Speed",
+	requiredSkills = {"rp_alter_novice"},
+
+	selfEffect = "clienteffect/pl_force_speed_self.cef",
+
+	targetSelf = true,
+
+	helpString = "Allows you to move an extra 2 meters per Force point spent. Alternatively, roll Alter + FPI vs DC30. On success, you may perform a second major action this turn.",
+})
 
 function BorForce_Speed:showHelp(pPlayer)
-	local helpMessage = self.name .. ": "
-	helpMessage =  helpMessage .. "Allows you to move <Force Point Input> * 2 extra meters on your next move turn."
-	helpMessage = helpMessage .. " If you pass a DC 30 Check against your Alter skill with your FPI as a modifier, you can perform two major actions in your next turn."
-	CreatureObject(pPlayer):sendSystemMessage(helpMessage)
+	BorForceUtility:displayHelp(self, pPlayer)
 end
 
 function BorForce_Speed:execute(pPlayer)
-	local hasPower = CreatureObject(pPlayer):hasSkill("rp_alter_novice")
-	
-	if(hasPower == false) then
-		BorForceUtility:reportPowerNotKnown(pPlayer)
+	local fpi = BorForceUtility:getForcePointInput(pPlayer, self)
+
+	if(BorForceUtility:canUseForcePower(pPlayer, pPlayer, self) == false) then
 		return
 	end
 	
-	local fpi = BorForceUtility:getForcePointInput(pPlayer)
-	
-	if(fpi < 1) then
-		BorForceUtility:promptForcePointInput(pPlayer, self.name, "BorForce_Speed", "onFPICallback")
+	if(fpi < self.fpiMin) then
+		BorForceUtility:promptForcePointInput(pPlayer, self, "BorForce_Speed", "onFPICallback")
 	else 
 		self:performAbility(pPlayer, fpi)
 	end
@@ -44,36 +45,28 @@ function BorForce_Speed:onFPICallback(pPlayer, pSui, eventIndex, remaining, spen
 end
 
 function BorForce_Speed:performAbility(pPlayer, fpi)
-	local pGhost = CreatureObject(pPlayer):getPlayerObject()
+	if(BorForceUtility:canUseForcePower(pPlayer, pPlayer, self) == false) then
+		return
+	end
+	
+	if(BorForceUtility:handleFPI(pPlayer, self, fpi) == false) then
+		return
+	end
+	
+	local dc = 30
 
-	if (pGhost == nil) then
-		return
-	end
-	
-	local forcePower = math.floor(PlayerObject(pGhost):getForcePower())
-	
-	fpi = math.floor(fpi)
-	
-	if(forcePower < fpi) then
-		CreatureObject(pPlayer):sendSystemMessage("You don't have enough Force Power to commit " .. fpi .. " points.")
-		return
-	end
-	
 	local skillValue = math.floor(CreatureObject(pPlayer):getSkillMod("rp_alter"))
 	local roll = math.floor(math.random(1,20))	
 		
-	local message = CreatureObject(pPlayer):getFirstName() .. " used " .. self.name .. "!"
-	message = message .. " They can go up to " .. fpi * 2 .. " extra meters on their next move action!"
-	if(skillValue + roll + fpi >= 30) then
-		message = message .. " or, they can perform two major actions the next turn! (1d20 = " .. roll .. " + " .. skillValue .. " + " .. fpi .. " = " .. roll + skillValue + fpi .. " vs DC: 30)"
+	local msg = CreatureObject(pPlayer):getFirstName() .. " uses " .. self.name .. "!"
+	msg = msg .. " They can go up to \\#FF00FF" .. fpi * 2 .. "\\#FFFFFF extra meters on their next move action"
+	if((skillValue + roll >= dc and roll > 1) or roll == 20) then
+		msg = msg .. " or they can perform a second major action! "..BorForceUtility:rollSpamFPI(roll, skillValue, fpi, dc)
 	else 
-		message = message .. " (1d20 = " .. roll .. " + " .. skillValue .. " + " .. fpi .. " = " .. roll + skillValue + fpi.. " vs DC: 30) (Bonus failed)"
+		msg = msg .. "! They cannot perform a second major action. "..BorForceUtility:rollSpamFPI(roll, skillValue, fpi, dc)
 	end
 	
-	broadcastMessageWithName(pPlayer, message)
+	broadcastMessageWithName(pPlayer, msg)
 	
-	PlayerObject(pGhost):setForcePower(forcePower - fpi)
-	
-	local clientEffect = "clienteffect/pl_force_speed_self.cef"
-	CreatureObject(pPlayer):playEffect(clientEffect, "")	
+	BorForceUtility:playAbilityEffects(pPlayer, pPlayer, self)
 end

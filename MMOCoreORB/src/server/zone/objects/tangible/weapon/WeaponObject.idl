@@ -48,6 +48,9 @@ class WeaponObject extends TangibleObject {
 	protected float maxDamage;
 	public int bonusDamage;
 
+	protected string requiredSkill;
+	protected int requiredLevel;
+
 	protected float damageRadius;
 
 	protected float woundsRatio;
@@ -452,6 +455,16 @@ class WeaponObject extends TangibleObject {
 	@read
 	public string getAmmoPack() {
 		return ammoPack;
+	}
+
+	@read
+	public string getRequiredSkill() {
+		return requiredSkill;
+	}
+
+	@read
+	public int getRequiredLevel() {
+		return requiredLevel;
 	}
 
 	@read

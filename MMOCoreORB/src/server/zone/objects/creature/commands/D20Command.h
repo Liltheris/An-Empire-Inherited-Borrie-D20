@@ -69,23 +69,38 @@ public:
 				args.getStringToken(command);
 				command = command.toLowerCase();
 
-				
-
 				if (command == "help") {
 					HelpDisplay(creature);
-				} else if (BorSkill::GetStringIsSkill(command) || BorSkill::GetStringIsAttribute(command)) {
+				} else if (BorSkill::GetStringIsSkill(command) || BorSkill::GetStringIsAttribute(command) || BorSkill::GetStringIsForceSkill(command)) {
+					if (args.hasMoreTokens())
+						args.getStringToken(secondCommand);
+					int advantage = 0;
+					bool secret = false;
+					if (secondCommand == "advantage" || secondCommand == "adv"){
+						advantage = 1;
+
+						if (args.hasMoreTokens())
+							args.getStringToken(secondCommand);
+					} else if (secondCommand == "disadvantage" || secondCommand == "dis"){
+						advantage = -1;
+
+						if (args.hasMoreTokens())
+							args.getStringToken(secondCommand);
+					}
+					
+					if (secondCommand == "secret") {
+						secret = true;
+					}
+
 					if(adminLevelCheck > 0) {
-						BorrieRPG::BroadcastRoll(targetCreature, BorDice::RollSkill(targetCreature, command));
+						BorrieRPG::BroadcastRoll(targetCreature, BorDice::rollSkill(targetCreature, command, advantage), secret);
 					} else {
-						BorrieRPG::BroadcastRoll(creature, targetCreature, BorDice::RollSkill(targetCreature, command));
+						BorrieRPG::BroadcastRoll(creature, targetCreature, BorDice::rollSkill(targetCreature, command, advantage), secret);
 					}
 					
 				} else if (BorDice::GetCommandIsDie(command)) {
-					if (args.hasMoreTokens()) {
-						args.getStringToken(secondCommand);
-						Result = BorDice::RollRPDie(targetCreature, command, Integer::valueOf(secondCommand));
-					} else
-						Result = BorDice::RollRPDie(targetCreature, command);
+					Result = BorDice::RollRPDie(targetCreature, command);
+					
 					if (Result == "fail") {
 						creature->sendSystemMessage("ERROR: Attempted to roll die for " + command + " and failed.");
 					} else

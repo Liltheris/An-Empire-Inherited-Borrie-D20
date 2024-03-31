@@ -551,6 +551,13 @@ function RpTatooineMosEisleyScreenPlay:spawnSceneObjects()
 	SceneObject(sObj):setDispenserContainer(true)
 	SceneObject(sObj):populateInventoryFromContentList("furniture_plants")
 	
+	--Weapon Parts
+	sObj = spawnSceneObject("rp_tatooine", "object/tangible/furniture/cheap/chest_s01.iff", 6.95443, 0.75, 2.97027, 610009368, -0.707107, 0, 0.707107, 0)
+	SceneObject(sObj):setCustomObjectName("Scopes, Stocks and & Muzzles")
+	SceneObject(sObj):setPublicContainer(true)
+	SceneObject(sObj):setDispenserContainer(true)
+	SceneObject(sObj):populateInventoryFromContentList("weapon_attachments")
+
 	--Jukebox--
 	spawnSceneObject("rp_tatooine", "object/tangible/terminal/terminal_jukebox.iff", 27.0829, -0.894995, 8.68511, 610008176, -0.707107, 0, 0.707107, 0)
 

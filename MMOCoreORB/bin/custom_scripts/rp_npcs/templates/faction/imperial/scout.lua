@@ -5,7 +5,7 @@ npc_template = {
 		"rp_human_male", 65,
 		"rp_human_female", 35
 	},
-	skillTemplates = {"factional/common/scout"},
+	skillTemplates = {"common/soldier_scout"},
 	
 	equipmentTemplates = {
 		{"rp_human_male", {"faction/imperial/scout"}},
@@ -16,4 +16,6 @@ npc_template = {
 		{"rp_human_male", {"random_military"}},
 		{"rp_human_female", {"random_military"}},
 	},	
+
+	armour = "armourset_scouttrooper",
 }

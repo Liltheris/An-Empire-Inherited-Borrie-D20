@@ -3,7 +3,7 @@
 -------------------------------------------
 _attackType = MELEEATTACK
 
-_damageType = ENERGY
+_damageType = KINETIC
 
 _armorPiercing = NONE
 
@@ -62,6 +62,9 @@ object_weapon_roleplay_melee_twohanded_axe = object_weapon_melee_axe_shared_axe_
 	
 	rarity="Common",
 
+	requiredSkill = "strength",
+	requiredLevel = 5,
+
 	--[Stats]
 	attackType = _attackType,
 	pointBlankRange = _pointBlankRange,
@@ -92,6 +95,9 @@ object_weapon_roleplay_melee_twohanded_ceremonial_scythe = object_weapon_melee_2
 	
 	rarity="Epic",
 
+	requiredSkill = "strength",
+	requiredLevel = 4,
+
 	--[Stats]
 	attackType = _attackType,
 	pointBlankRange = _pointBlankRange,
@@ -121,6 +127,9 @@ object_weapon_roleplay_melee_twohanded_cleaver = object_weapon_melee_2h_sword_sh
 	
 	rarity="Uncommon",
 
+	requiredSkill = "strength",
+	requiredLevel = 5,
+
 	--[Stats]
 	attackType = _attackType,
 	pointBlankRange = _pointBlankRange,
@@ -143,13 +152,16 @@ object_weapon_roleplay_melee_twohanded_executioners_axe = object_weapon_melee_2h
 
 	--Damage (minDamage[d]maxDamage) i.e. (2d20)
 	minDamage = 1, --Amount of Die used in Damage
-	maxDamage = 10, --Type of Die used in Damage
-	bonusDamage = 4,
+	maxDamage = 5, --Type of Die used in Damage
+	bonusDamage = 5,
 	
 	noDodgeReaction = true,
 	primaryAttributeOnly = true,
 	
 	rarity="Epic",
+
+	requiredSkill = "strength",
+	requiredLevel = 5,
 
 	--[Stats]
 	attackType = _attackType,
@@ -181,6 +193,9 @@ object_weapon_roleplay_melee_twohanded_fierce_cleaver = object_weapon_melee_2h_s
 	
 	rarity="Rare",
 
+	requiredSkill = "strength",
+	requiredLevel = 5,
+
 	--[Stats]
 	attackType = _attackType,
 	pointBlankRange = _pointBlankRange,
@@ -203,12 +218,15 @@ object_weapon_roleplay_melee_twohanded_gamorean_axe = object_weapon_melee_2h_swo
 
 	--Damage (minDamage[d]maxDamage) i.e. (2d20)
 	minDamage = 1, --Amount of Die used in Damage
-	maxDamage = 9, --Type of Die used in Damage
-	bonusDamage = 1,
+	maxDamage = 6, --Type of Die used in Damage
+	bonusDamage = 4,
 
 	primaryAttributeOnly = true,
 	
 	rarity="Uncommon",
+
+	requiredSkill = "strength",
+	requiredLevel = 6,
 
 	--[Stats]
 	attackType = _attackType,
@@ -232,12 +250,15 @@ object_weapon_roleplay_melee_twohanded_katana = object_weapon_melee_2h_sword_sha
 
 	--Damage (minDamage[d]maxDamage) i.e. (2d20)
 	minDamage = 1, --Amount of Die used in Damage
-	maxDamage = 8, --Type of Die used in Damage
+	maxDamage = 6, --Type of Die used in Damage
 	bonusDamage = 2,
 
 	primaryAttributeOnly = true,
 	
 	rarity="Common",
+
+	requiredSkill = "strength",
+	requiredLevel = 2,
 
 	--[Stats]
 	attackType = _attackType,
@@ -262,12 +283,15 @@ object_weapon_roleplay_melee_twohanded_massassi_great_sword = object_weapon_mele
 	--Damage (minDamage[d]maxDamage) i.e. (2d20)
 	minDamage = 1, --Amount of Die used in Damage
 	maxDamage = 8, --Type of Die used in Damage
-	bonusDamage = 6,
+	bonusDamage = 4,
 	
 	noDodgeReaction = true,
 	primaryAttributeOnly = true,
 	
 	rarity="Legendary",
+
+	requiredSkill = "strength",
+	requiredLevel = 5,
 
 	--[Stats]
 	attackType = _attackType,
@@ -291,13 +315,16 @@ object_weapon_roleplay_melee_twohanded_obsidian_great_sword = object_weapon_mele
 
 	--Damage (minDamage[d]maxDamage) i.e. (2d20)
 	minDamage = 1, --Amount of Die used in Damage
-	maxDamage = 10, --Type of Die used in Damage
+	maxDamage = 8, --Type of Die used in Damage
 	bonusDamage = 2,
 	
 	noDodgeReaction = true,
 	primaryAttributeOnly = true,
 	
 	rarity="Epic",
+
+	requiredSkill = "strength",
+	requiredLevel = 5,
 
 	--[Stats]
 	attackType = _attackType,
@@ -322,13 +349,16 @@ object_weapon_roleplay_melee_twohanded_power_hammer = object_weapon_melee_2h_swo
 	--Damage (minDamage[d]maxDamage) i.e. (2d20)
 	minDamage = 1, --Amount of Die used in Damage
 	maxDamage = 4, --Type of Die used in Damage
-	bonusDamage = 8,
+	bonusDamage = 4,
 	
 	noPowerAttack = true,
 	noDodgeReaction = true,
 	primaryAttributeOnly = true,
 	
 	rarity="Rare",
+
+	requiredSkill = "strength",
+	requiredLevel = 7,
 
 	--[Stats]
 	attackType = _attackType,
@@ -352,13 +382,16 @@ object_weapon_roleplay_melee_twohanded_scythe_blade = object_weapon_melee_2h_swo
 
 	--Damage (minDamage[d]maxDamage) i.e. (2d20)
 	minDamage = 1, --Amount of Die used in Damage
-	maxDamage = 10, --Type of Die used in Damage
+	maxDamage = 8, --Type of Die used in Damage
 	bonusDamage = 4,
 	
 	noDodgeReaction = true,
 	primaryAttributeOnly = true,
 	
 	rarity="Rare",
+
+	requiredSkill = "strength",
+	requiredLevel = 4,
 
 	--[Stats]
 	attackType = _attackType,
@@ -382,13 +415,16 @@ object_weapon_roleplay_melee_twohanded_sith_great_sword = object_weapon_melee_2h
 
 	--Damage (minDamage[d]maxDamage) i.e. (2d20)
 	minDamage = 1, --Amount of Die used in Damage
-	maxDamage = 12, --Type of Die used in Damage
+	maxDamage = 8, --Type of Die used in Damage
 	bonusDamage = 2,
 	
 	noDodgeReaction = true,
 	primaryAttributeOnly = true,
 	
 	rarity="Legendary",
+
+	requiredSkill = "strength",
+	requiredLevel = 5,
 
 	--[Stats]
 	attackType = _attackType,
@@ -412,13 +448,16 @@ object_weapon_roleplay_melee_twohanded_tulrus_sword = object_weapon_melee_2h_swo
 
 	--Damage (minDamage[d]maxDamage) i.e. (2d20)
 	minDamage = 1, --Amount of Die used in Damage
-	maxDamage = 11, --Type of Die used in Damage
-	bonusDamage = 1,
+	maxDamage = 10, --Type of Die used in Damage
+	bonusDamage = 0,
 	
 	noDodgeReaction = true,
 	primaryAttributeOnly = true,
 	
 	rarity="Epic",
+
+	requiredSkill = "strength",
+	requiredLevel = 4,
 
 	--[Stats]
 	attackType = _attackType,
@@ -442,12 +481,15 @@ object_weapon_roleplay_melee_twohanded_vibroaxe = object_weapon_melee_axe_shared
 
 	--Damage (minDamage[d]maxDamage) i.e. (2d20)
 	minDamage = 1, --Amount of Die used in Damage
-	maxDamage = 9, --Type of Die used in Damage
-	bonusDamage = 1,
+	maxDamage = 8, --Type of Die used in Damage
+	bonusDamage = 2,
 	
 	primaryAttributeOnly = true,
 	
 	rarity="Common",
+
+	requiredSkill = "strength",
+	requiredLevel = 5,
 
 	--[Stats]
 	attackType = _attackType,
@@ -471,13 +513,16 @@ object_weapon_roleplay_melee_twohanded_wookiee_broadsword = object_weapon_melee_
 
 	--Damage (minDamage[d]maxDamage) i.e. (2d20)
 	minDamage = 1, --Amount of Die used in Damage
-	maxDamage = 10, --Type of Die used in Damage
+	maxDamage = 8, --Type of Die used in Damage
 	bonusDamage = 2,
 	
 	noDodgeReaction = true,
 	primaryAttributeOnly = true,
 	
 	rarity="Rare",
+
+	requiredSkill = "strength",
+	requiredLevel = 6,
 
 	--[Stats]
 	attackType = _attackType,

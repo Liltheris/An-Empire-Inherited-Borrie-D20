@@ -46,7 +46,7 @@ public:
 		// Obtain the target, if we have one.
 		if (target != 0) {
 			ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target, false);
-			if (object->isCreatureObject()){
+			if (object->isCreatureObject() && target == creature->getTargetID()){
 				targetCreature = object->asCreatureObject();
 			}
 		}

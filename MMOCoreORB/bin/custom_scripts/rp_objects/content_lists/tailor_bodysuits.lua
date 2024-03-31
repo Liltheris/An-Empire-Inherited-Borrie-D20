@@ -9,9 +9,9 @@ content = {
 	{"object/tangible/wearables/bodysuit/shared_bodysuit_s15.iff", },
 	{"object/tangible/wearables/bodysuit/shared_bodysuit_s16.iff", },
 	{"object/tangible/wearables/bodysuit/shared_bodysuit_trando_slaver.iff", },
-	{"object/tangible/tcg/series1/shared_wearable_arc170_flightsuit.iff", },
-	{"object/tangible/tcg/series1/shared_wearable_imperial_flightsuit.iff", },
-	{"object/tangible/tcg/series1/shared_wearable_orange_flightsuit.iff", },
+	--{"object/tangible/tcg/series1/shared_wearable_arc170_flightsuit.iff", },
+	--{"object/tangible/tcg/series1/shared_wearable_imperial_flightsuit.iff", },
+	--{"object/tangible/tcg/series1/shared_wearable_orange_flightsuit.iff", },
 	{"object/tangible/tcg/series6/shared_wearable_greedos_outfit.iff", },
 	{"object/tangible/wearables/bodysuit/shared_bodysuit_rodian_hunter.iff", },
 }

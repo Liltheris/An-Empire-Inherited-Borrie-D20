@@ -5,7 +5,7 @@ npc_template = {
 		"rp_human_male", 80,
 		"rp_human_female", 20
 	},
-	skillTemplates = {"factional/common/trooper_swamp"},
+	skillTemplates = {"common/soldier"},
 	
 	equipmentTemplates = {
 		{"rp_human_male", {"faction/imperial/trooper_swamp"}},
@@ -16,4 +16,6 @@ npc_template = {
 		{"rp_human_male", {"random_military"}},
 		{"rp_human_female", {"random_military"}},
 	},	
+
+	armour = "armourset_stormtrooper",
 }
