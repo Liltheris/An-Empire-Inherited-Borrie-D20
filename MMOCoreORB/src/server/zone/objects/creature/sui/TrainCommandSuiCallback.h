@@ -163,9 +163,9 @@ public:
 
 		box->setPromptTitle("Training Skill Menu");
 		if(freeSkillPoints > 0) {
-			box->setPromptText("What skill would you like to rank up? Remember that skills can only go as high as their associated attribute's max rank.\n\nFree Skill Boxes: " + String::valueOf(freeSkillPoints));
+			box->setPromptText("What skill would you like to rank up?\n\nFree Skill Boxes: " + String::valueOf(freeSkillPoints));
 		} else {
-			box->setPromptText("What skill would you like to rank up? Remember that skills can only go as high as their associated attribute's max rank.");
+			box->setPromptText("What skill would you like to rank up?");
 		}
 
 		RoleplayManager* rp = RoleplayManager::instance();
@@ -249,7 +249,7 @@ public:
 		if (BorSkill::CanTrainNextSkill(player, currentRank + 1, skillName)) {
 			suibox->setPromptTitle("Confirm training?"); 
 			//Can train!
-			if (freeSkillPoints < 1 && currentRank < BorSkill::GetRealSkillLevel(player, skillParent))
+			if (freeSkillPoints < 1 || currentRank >= BorSkill::GetRealSkillLevel(player, skillParent))
 				suibox->setPromptText("Are you sure you want to train this skill?\n\nThis will cost "+colour+String::valueOf(xp)+"\\#. Roleplay experience.");
 			else
 				suibox->setPromptText("Are you sure you want to train this skill?\n\nThis will cost 1 skill point.");
