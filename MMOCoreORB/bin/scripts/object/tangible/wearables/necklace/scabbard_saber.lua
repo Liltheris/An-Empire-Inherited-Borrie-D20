@@ -1,4 +1,0 @@
-object_tangible_wearables_necklace_scabbard_saber = object_tangible_wearables_necklace_shared_scabbard_saber:new {
-
-}
-ObjectTemplates:addTemplate(object_tangible_wearables_necklace_scabbard_saber, "object/tangible/wearables/necklace/scabbard_saber.iff")
