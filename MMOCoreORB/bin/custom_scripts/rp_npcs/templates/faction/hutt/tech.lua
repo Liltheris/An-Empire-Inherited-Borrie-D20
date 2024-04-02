@@ -21,7 +21,7 @@ npc_template = {
 		{"rp_rodian_male", {"faction/hutt/tech"}},
 		{"rp_rodian_female", {"faction/hutt/tech"}},
 		{"rp_nikto_male", {"faction/hutt/tech"}},
-		{"rp_weeqay_male", {"faction/hutt/tech"}},
+		{"rp_weequay_male", {"faction/hutt/tech"}},
 	},	
 	
 	customizationTemplates = {

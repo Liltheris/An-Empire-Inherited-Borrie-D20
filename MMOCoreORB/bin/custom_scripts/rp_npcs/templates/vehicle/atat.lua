@@ -8,4 +8,6 @@ npc_template = {
 	skillTemplates = {"vehicle/atat"},
 	
 	armourTemplates = {"atat"},
+
+	armour = "armourset_vehicle",
 }

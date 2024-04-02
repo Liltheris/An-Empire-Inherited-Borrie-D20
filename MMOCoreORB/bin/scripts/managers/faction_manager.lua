@@ -34,6 +34,7 @@ factionList = {
 	{ "smugglers_alliance", true, "", "", 1.0 },
 	{ "blacksun", true, "", "", 1.0 },
 	{ "crimson_maw", true, "", "", 1.0 },
+	{ "antarian_rangers", true, "", "", 1.0},
 	------------------------------------------------
 	--Local factions
 	------------------------------------------------
