@@ -3,6 +3,7 @@
 
 #include "engine/engine.h"
 #include "server/zone/managers/roleplay/RpSkillData.h"
+#include "server/zone/managers/roleplay/RpCombatAnimSet.h"
 
 namespace server {
 namespace zone {
@@ -22,6 +23,20 @@ class RoleplayManager : public Singleton<RoleplayManager>, public Logger, public
 	Vector<RpSkillData> forceSkills;
 
 	Vector<String> stringExcludedNames;
+
+	RpCombatAnimSet pistolAnims;
+	RpCombatAnimSet carbineAnims;
+	RpCombatAnimSet rifleAnims;
+	RpCombatAnimSet sniperAnims;
+	RpCombatAnimSet repeaterAnims;
+
+	RpCombatAnimSet swordAnims;
+	RpCombatAnimSet sword2hAnims;
+	RpCombatAnimSet poleAnims;
+	RpCombatAnimSet unarmedAnims;
+
+	int midAnimThreshold;
+	int strongAnimThreshold;
 
 	int combatBaseDC;
 
@@ -70,6 +85,18 @@ public:
 	inline bool isNameExcluded(String name){
 		return stringExcludedNames.contains(name);
 	}
+
+	String getCombatAnim(String animSet, int damage);
+
+	inline String getFlurryAnim(String animSet){
+		return getAnimSet(animSet).getFlurryAnim();
+	}
+
+	inline String getPowerAnim(String animSet){
+		return getAnimSet(animSet).getPowerAnim();
+	}
+
+	RpCombatAnimSet getAnimSet(String setName);
 };
 
 }

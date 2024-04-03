@@ -263,6 +263,8 @@ public:
 	}
 
 	static String GetDefaultAttackAnimation(TangibleObject* attacker, WeaponObject* weapon, uint8 hitLocation, int damage) {
+		RoleplayManager* rp = RoleplayManager::instance();
+
 		enum lateralLocations { LEFT, CENTER, RIGHT };
 		static const char* headLocations[] = {"attack_high_left", "attack_high_center", "attack_high_right"};
 		static const char* chestLocations[] = {"attack_mid_left", "attack_mid_center", "attack_mid_right"};

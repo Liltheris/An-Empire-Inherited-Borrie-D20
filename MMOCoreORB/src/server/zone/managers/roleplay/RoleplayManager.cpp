@@ -107,6 +107,412 @@ void RoleplayManager::loadLuaConfig() {
 	}
 	luaStringExcludedNames.pop();
 
+	// Begin Combat animation data loading
+
+	if (!lua->runFile("scripts/managers/roleplay/combat_animation_manager.lua")) {
+		fatal("COULD NOT FIND COMBAT ANIMATIONS");
+	}
+
+	// Animation type thresholds
+
+	midAnimThreshold = lua->getGlobalInt("midAnimThreshold");
+	strongAnimThreshold = lua->getGlobalInt("strongAnimThreshold");
+
+	// Pistol Anims
+
+	LuaObject luaWeaponAnims = lua->getGlobalObject("rp_pistol_anims");
+	if (luaWeaponAnims.isValidTable()){
+		pistolAnims = RpCombatAnimSet(true);
+
+		LuaObject anims = luaWeaponAnims.getObjectField("basic");
+		if (anims.isValidTable()){
+			for (int i = 1; i < anims.getTableSize(); i++){
+				pistolAnims.addBasicAnim(anims.getStringAt(i));
+			}
+		}
+		anims.pop();
+
+		anims = luaWeaponAnims.getObjectField("flurry");
+		if (anims.isValidTable()){
+			for (int i = 1; i < anims.getTableSize(); i++){
+				pistolAnims.addFlurryAnim(anims.getStringAt(i));
+			}
+		}
+		anims.pop();
+
+		anims = luaWeaponAnims.getObjectField("power");
+		if (anims.isValidTable()){
+			for (int i = 1; i < anims.getTableSize(); i++){
+				pistolAnims.addPowerAnim(anims.getStringAt(i));
+			}
+		}
+		anims.pop();
+
+	} else {
+		fatal("COMBAT ANIMS: PISTOL ANIMS LUA OBJECT IS NOT VALID!");
+	}
+	luaWeaponAnims.pop();
+
+	// Carbine Anims
+
+	luaWeaponAnims = lua->getGlobalObject("rp_carbine_anims");
+	if (luaWeaponAnims.isValidTable()){
+		carbineAnims = RpCombatAnimSet(true);
+
+		LuaObject anims = luaWeaponAnims.getObjectField("basic");
+		if (anims.isValidTable()){
+			for (int i = 1; i < anims.getTableSize(); i++){
+				carbineAnims.addBasicAnim(anims.getStringAt(i));
+			}
+		}
+		anims.pop();
+
+		anims = luaWeaponAnims.getObjectField("flurry");
+		if (anims.isValidTable()){
+			for (int i = 1; i < anims.getTableSize(); i++){
+				carbineAnims.addFlurryAnim(anims.getStringAt(i));
+			}
+		}
+		anims.pop();
+
+		anims = luaWeaponAnims.getObjectField("power");
+		if (anims.isValidTable()){
+			for (int i = 1; i < anims.getTableSize(); i++){
+				carbineAnims.addPowerAnim(anims.getStringAt(i));
+			}
+		}
+		anims.pop();
+
+	} else {
+		fatal("COMBAT ANIMS: CARBINE ANIMS LUA OBJECT IS NOT VALID!");
+	}
+	luaWeaponAnims.pop();
+
+	// Rifle Anims
+
+	luaWeaponAnims = lua->getGlobalObject("rp_rifle_anims");
+	if (luaWeaponAnims.isValidTable()){
+		rifleAnims = RpCombatAnimSet(true);
+
+		LuaObject anims = luaWeaponAnims.getObjectField("basic");
+		if (anims.isValidTable()){
+			for (int i = 1; i < anims.getTableSize(); i++){
+				rifleAnims.addBasicAnim(anims.getStringAt(i));
+			}
+		}
+		anims.pop();
+
+		anims = luaWeaponAnims.getObjectField("flurry");
+		if (anims.isValidTable()){
+			for (int i = 1; i < anims.getTableSize(); i++){
+				rifleAnims.addFlurryAnim(anims.getStringAt(i));
+			}
+		}
+		anims.pop();
+
+		anims = luaWeaponAnims.getObjectField("power");
+		if (anims.isValidTable()){
+			for (int i = 1; i < anims.getTableSize(); i++){
+				rifleAnims.addPowerAnim(anims.getStringAt(i));
+			}
+		}
+		anims.pop();
+
+	} else {
+		fatal("COMBAT ANIMS: RIFLE ANIMS LUA OBJECT IS NOT VALID!");
+	}
+	luaWeaponAnims.pop();
+
+	// Sniper Anims
+
+	luaWeaponAnims = lua->getGlobalObject("rp_sniper_anims");
+	if (luaWeaponAnims.isValidTable()){
+		sniperAnims = RpCombatAnimSet(true);
+
+		LuaObject anims = luaWeaponAnims.getObjectField("basic");
+		if (anims.isValidTable()){
+			for (int i = 1; i < anims.getTableSize(); i++){
+				sniperAnims.addBasicAnim(anims.getStringAt(i));
+			}
+		}
+		anims.pop();
+
+		anims = luaWeaponAnims.getObjectField("flurry");
+		if (anims.isValidTable()){
+			for (int i = 1; i < anims.getTableSize(); i++){
+				sniperAnims.addFlurryAnim(anims.getStringAt(i));
+			}
+		}
+		anims.pop();
+
+		anims = luaWeaponAnims.getObjectField("power");
+		if (anims.isValidTable()){
+			for (int i = 1; i < anims.getTableSize(); i++){
+				sniperAnims.addPowerAnim(anims.getStringAt(i));
+			}
+		}
+		anims.pop();
+
+	} else {
+		fatal("COMBAT ANIMS: SNIPER ANIMS LUA OBJECT IS NOT VALID!");
+	}
+	luaWeaponAnims.pop();
+
+	// Repeater Anims
+
+	luaWeaponAnims = lua->getGlobalObject("rp_repeater_anims");
+	if (luaWeaponAnims.isValidTable()){
+		repeaterAnims = RpCombatAnimSet(true);
+
+		LuaObject anims = luaWeaponAnims.getObjectField("basic");
+		if (anims.isValidTable()){
+			for (int i = 1; i < anims.getTableSize(); i++){
+				repeaterAnims.addBasicAnim(anims.getStringAt(i));
+			}
+		}
+		anims.pop();
+
+		anims = luaWeaponAnims.getObjectField("flurry");
+		if (anims.isValidTable()){
+			for (int i = 1; i < anims.getTableSize(); i++){
+				repeaterAnims.addFlurryAnim(anims.getStringAt(i));
+			}
+		}
+		anims.pop();
+
+		anims = luaWeaponAnims.getObjectField("power");
+		if (anims.isValidTable()){
+			for (int i = 1; i < anims.getTableSize(); i++){
+				repeaterAnims.addPowerAnim(anims.getStringAt(i));
+			}
+		}
+		anims.pop();
+
+	} else {
+		fatal("COMBAT ANIMS: REPEATER ANIMS LUA OBJECT IS NOT VALID!");
+	}
+	luaWeaponAnims.pop();
+
+	// 1h Anims
+
+	luaWeaponAnims = lua->getGlobalObject("rp_1h_anims");
+	if (luaWeaponAnims.isValidTable()){
+		swordAnims = RpCombatAnimSet(false);
+
+		LuaObject anims = luaWeaponAnims.getObjectField("basic");
+		if (anims.isValidTable()){
+			LuaObject subAnims = anims.getObjectField("weak");
+			if (subAnims.isValidTable()){
+				for (int i = 1; i < subAnims.getTableSize(); i++){
+					swordAnims.addBasicAnim(subAnims.getStringAt(i), "weak");
+				}
+			}
+			subAnims.pop();
+
+			subAnims = anims.getObjectField("mid");
+			if (subAnims.isValidTable()){
+				for (int i = 1; i < subAnims.getTableSize(); i++){
+					swordAnims.addBasicAnim(subAnims.getStringAt(i), "mid");
+				}
+			}
+			subAnims.pop();
+
+			subAnims = anims.getObjectField("strong");
+			if (subAnims.isValidTable()){
+				for (int i = 1; i < subAnims.getTableSize(); i++){
+					swordAnims.addBasicAnim(subAnims.getStringAt(i), "strong");
+				}
+			}
+			subAnims.pop();
+		}
+		anims.pop();
+
+		anims = luaWeaponAnims.getObjectField("flurry");
+		if (anims.isValidTable()){
+			for (int i = 1; i < anims.getTableSize(); i++){
+				swordAnims.addFlurryAnim(anims.getStringAt(i));
+			}
+		}
+		anims.pop();
+
+		anims = luaWeaponAnims.getObjectField("power");
+		if (anims.isValidTable()){
+			for (int i = 1; i < anims.getTableSize(); i++){
+				swordAnims.addPowerAnim(anims.getStringAt(i));
+			}
+		}
+		anims.pop();
+
+	} else {
+		fatal("COMBAT ANIMS: 1H ANIMS LUA OBJECT IS NOT VALID!");
+	}
+	luaWeaponAnims.pop();
+
+	// 2h Anims
+
+	luaWeaponAnims = lua->getGlobalObject("rp_2h_anims");
+	if (luaWeaponAnims.isValidTable()){
+		sword2hAnims = RpCombatAnimSet(false);
+
+		LuaObject anims = luaWeaponAnims.getObjectField("basic");
+		if (anims.isValidTable()){
+			LuaObject subAnims = anims.getObjectField("weak");
+			if (subAnims.isValidTable()){
+				for (int i = 1; i < subAnims.getTableSize(); i++){
+					sword2hAnims.addBasicAnim(subAnims.getStringAt(i), "weak");
+				}
+			}
+			subAnims.pop();
+
+			subAnims = anims.getObjectField("mid");
+			if (subAnims.isValidTable()){
+				for (int i = 1; i < subAnims.getTableSize(); i++){
+					sword2hAnims.addBasicAnim(subAnims.getStringAt(i), "mid");
+				}
+			}
+			subAnims.pop();
+
+			subAnims = anims.getObjectField("strong");
+			if (subAnims.isValidTable()){
+				for (int i = 1; i < subAnims.getTableSize(); i++){
+					sword2hAnims.addBasicAnim(subAnims.getStringAt(i), "strong");
+				}
+			}
+			subAnims.pop();
+		}
+		anims.pop();
+
+		anims = luaWeaponAnims.getObjectField("flurry");
+		if (anims.isValidTable()){
+			for (int i = 1; i < anims.getTableSize(); i++){
+				sword2hAnims.addFlurryAnim(anims.getStringAt(i));
+			}
+		}
+		anims.pop();
+
+		anims = luaWeaponAnims.getObjectField("power");
+		if (anims.isValidTable()){
+			for (int i = 1; i < anims.getTableSize(); i++){
+				sword2hAnims.addPowerAnim(anims.getStringAt(i));
+			}
+		}
+		anims.pop();
+
+	} else {
+		fatal("COMBAT ANIMS: 2H ANIMS LUA OBJECT IS NOT VALID!");
+	}
+	luaWeaponAnims.pop();
+
+	// 1h Anims
+
+	luaWeaponAnims = lua->getGlobalObject("rp_pole_anims");
+	if (luaWeaponAnims.isValidTable()){
+		poleAnims = RpCombatAnimSet(false);
+
+		LuaObject anims = luaWeaponAnims.getObjectField("basic");
+		if (anims.isValidTable()){
+			LuaObject subAnims = anims.getObjectField("weak");
+			if (subAnims.isValidTable()){
+				for (int i = 1; i < subAnims.getTableSize(); i++){
+					poleAnims.addBasicAnim(subAnims.getStringAt(i), "weak");
+				}
+			}
+			subAnims.pop();
+
+			subAnims = anims.getObjectField("mid");
+			if (subAnims.isValidTable()){
+				for (int i = 1; i < subAnims.getTableSize(); i++){
+					poleAnims.addBasicAnim(subAnims.getStringAt(i), "mid");
+				}
+			}
+			subAnims.pop();
+
+			subAnims = anims.getObjectField("strong");
+			if (subAnims.isValidTable()){
+				for (int i = 1; i < subAnims.getTableSize(); i++){
+					poleAnims.addBasicAnim(subAnims.getStringAt(i), "strong");
+				}
+			}
+			subAnims.pop();
+		}
+		anims.pop();
+
+		anims = luaWeaponAnims.getObjectField("flurry");
+		if (anims.isValidTable()){
+			for (int i = 1; i < anims.getTableSize(); i++){
+				poleAnims.addFlurryAnim(anims.getStringAt(i));
+			}
+		}
+		anims.pop();
+
+		anims = luaWeaponAnims.getObjectField("power");
+		if (anims.isValidTable()){
+			for (int i = 1; i < anims.getTableSize(); i++){
+				poleAnims.addPowerAnim(anims.getStringAt(i));
+			}
+		}
+		anims.pop();
+
+	} else {
+		fatal("COMBAT ANIMS: POLE ANIMS LUA OBJECT IS NOT VALID!");
+	}
+	luaWeaponAnims.pop();
+
+	// Unarmed Anims
+
+	luaWeaponAnims = lua->getGlobalObject("rp_unarmed_anims");
+	if (luaWeaponAnims.isValidTable()){
+		unarmedAnims = RpCombatAnimSet(false);
+
+		LuaObject anims = luaWeaponAnims.getObjectField("basic");
+		if (anims.isValidTable()){
+			LuaObject subAnims = anims.getObjectField("weak");
+			if (subAnims.isValidTable()){
+				for (int i = 1; i < subAnims.getTableSize(); i++){
+					unarmedAnims.addBasicAnim(subAnims.getStringAt(i), "weak");
+				}
+			}
+			subAnims.pop();
+
+			subAnims = anims.getObjectField("mid");
+			if (subAnims.isValidTable()){
+				for (int i = 1; i < subAnims.getTableSize(); i++){
+					unarmedAnims.addBasicAnim(subAnims.getStringAt(i), "mid");
+				}
+			}
+			subAnims.pop();
+
+			subAnims = anims.getObjectField("strong");
+			if (subAnims.isValidTable()){
+				for (int i = 1; i < subAnims.getTableSize(); i++){
+					unarmedAnims.addBasicAnim(subAnims.getStringAt(i), "strong");
+				}
+			}
+			subAnims.pop();
+		}
+		anims.pop();
+
+		anims = luaWeaponAnims.getObjectField("flurry");
+		if (anims.isValidTable()){
+			for (int i = 1; i < anims.getTableSize(); i++){
+				unarmedAnims.addFlurryAnim(anims.getStringAt(i));
+			}
+		}
+		anims.pop();
+
+		anims = luaWeaponAnims.getObjectField("power");
+		if (anims.isValidTable()){
+			for (int i = 1; i < anims.getTableSize(); i++){
+				unarmedAnims.addPowerAnim(anims.getStringAt(i));
+			}
+		}
+		anims.pop();
+
+	} else {
+		fatal("COMBAT ANIMS: UNARMED ANIMS LUA OBJECT IS NOT VALID!");
+	}
+	luaWeaponAnims.pop();
+
 	delete lua;
 	lua = nullptr;
 }
@@ -169,4 +575,37 @@ Vector<RpSkillData> RoleplayManager::getRpSkillList(RpSkillType type){
 		}
 	}
 	return skills;
+}
+
+String RoleplayManager::getCombatAnim(String animSet, int damage){
+	int level = 0;
+
+	if (damage >= strongAnimThreshold)
+		level = 2;
+	else if (damage >= midAnimThreshold)
+		level = 1;
+
+	return getAnimSet(animSet).getBasicAnim(level);
+}
+
+RpCombatAnimSet RoleplayManager::getAnimSet(String setName){
+	if (setName == "pistol")
+		return pistolAnims;
+	else if (setName == "carbine")
+		return carbineAnims;
+	else if (setName == "rifle")
+		return rifleAnims;
+	else if (setName == "sniper")
+		return sniperAnims;
+	else if (setName == "repeater")
+		return repeaterAnims;
+	else if (setName == "1h")
+		return swordAnims;
+	else if (setName == "2h")
+		return sword2hAnims;
+	else if (setName == "pole")
+		return poleAnims;
+	else if (setName == "unarmed")
+		return unarmedAnims;
+	else return pistolAnims;
 }
