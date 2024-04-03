@@ -3054,11 +3054,23 @@ String CreatureObjectImplementation::getFirstName() const {
 
 	int idx = fullName.indexOf(' ');
 
+	String firstName = "";
+
 	if (idx != -1) {
-		return fullName.subString(0, idx).toString();
+		firstName = fullName.subString(0, idx).toString();
 	} else {
-		return fullName.toString();
+		firstName = fullName.toString();
 	}
+
+	String originalName = getStoredString("original_first_name");
+
+	if (originalName == "")
+		return firstName;
+
+	if (originalName == firstName)
+		return firstName;
+	else
+		return originalName;
 }
 
 String CreatureObjectImplementation::setFirstName(const String& newFirstName) {
