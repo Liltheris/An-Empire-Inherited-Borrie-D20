@@ -3,6 +3,20 @@
 -------------------------
 combatBaseDC = 10
 
+aimedDcMods = {
+    2,  --chest
+    2,  --chest
+    5,  --legs
+    5,  --feet
+    5,  --left bracer
+    5,  --right bracer
+    5,  --left bicep
+    5,  --right bicep
+    10, --hands
+    10  --head
+}
+
+powerAttackDcMod = 5
 
 -------------------------
 -- Skills

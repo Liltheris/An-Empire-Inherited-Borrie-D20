@@ -39,6 +39,9 @@ class RoleplayManager : public Singleton<RoleplayManager>, public Logger, public
 	int strongAnimThreshold;
 
 	int combatBaseDC;
+	int powerAttackDcMod;
+
+	int aimedDcMods[9];
 
 	int maxAttributes;
 	int maxTraining;
@@ -70,6 +73,14 @@ public:
 
 	int getBaseDC() const {
 		return combatBaseDC;
+	}
+
+	int getPowerAttacDckMod() const {
+		return powerAttackDcMod;
+	}
+
+	int getAimedAttackMod(int slot) const {
+		return aimedDcMods[slot];
 	}
 
     //Returns the index of the given RP skill. Returns -1 if skill does not exist.

@@ -51,6 +51,243 @@ public:
         return weapon->getBonusDamage();
     }
 
+    /*Determines the DC for an attack based on range, bonuses and maluses. Uses a weapon object.*/
+    static int getToHitDC(CreatureObject* attacker, CreatureObject* defender, int aimedLocation = -1, bool powerAttack = false){
+        RoleplayManager* rp = RoleplayManager::instance();
+        ManagedReference<WeaponObject*> weapon = attacker->getWeapon();
+
+        int dc = rp->getBaseDC() + GetToHitModifier(attacker, defender, weapon);
+        int aimMod = 0;
+
+        // Aimed attack DC modifier.
+        if(aimedLocation != -1) {
+            // Modify the to Hit DC depending on the part being aimed at.
+            // Chest is +2, Head and hands are +10, all other body parts are +5.
+            dc += rp->getAimedAttackMod(aimedLocation);
+        }
+
+        // Apply a DC increase to power attacks.
+        if(powerAttack && !weapon->isRangedWeapon()) {
+            dc += rp->getPowerAttacDckMod();
+        }
+
+        // Reduce the DC by 2 if the weapon is our own crystal.
+        if(weapon->isJediWeapon()) {
+            ManagedReference<SceneObject*> saberInv = weapon->getSlottedObject("saber_inv");
+
+            if(saberInv != nullptr) {
+                int containerSize = saberInv->getContainerObjectsSize();
+
+                for (int j = containerSize - 1; j >= 0; --j) {
+		            ManagedReference<SceneObject*> crystal = saberInv->getContainerObject(j);
+
+		            if (crystal != nullptr){
+                        if (crystal->getStoredString("attuned_id") == String::valueOf(attacker->getObjectID()))
+                            dc -= 2;
+                        j = 0;
+                    }        
+		        }
+	        }
+        }
+
+        // Reduce the DC by 5 if the target is currently vulnerable.
+        if(defender->getStoredInt("is_vulnerable") > 0){
+            dc -= 5;
+            defender->setStoredInt("is_vulnerable", 0);
+        }
+
+        return dc;
+    }
+
+    static int getToHitRoll(CreatureObject* attacker, int &roll, int &skillMod, int &forceBonus){
+        RoleplayManager* rp = RoleplayManager::instance();
+
+        ManagedReference<WeaponObject*> weapon = attacker->getWeapon();
+
+        if(weapon->isJediWeapon()) skillMod = attacker->getSkillMod("rp_lightsaber");
+        else if(weapon->isUnarmedWeapon()) skillMod = attacker->getSkillMod("rp_unarmed");
+        else if(weapon->isMeleeWeapon()) skillMod = attacker->getSkillMod("rp_melee");
+        else if(weapon->isRangedWeapon()) skillMod = attacker->getSkillMod("rp_ranged");
+
+        roll = BorDice::Roll(1, 20);
+
+        //Force focus mod
+        if (attacker->getStoredInt("force_focus_mod") > 0){
+            forceBonus = attacker->getStoredInt("force_focus_mod");
+        }
+
+        return roll + skillMod + forceBonus;
+    }
+
+    static bool checkLightsaberSelfHit(CreatureObject* attacker, int rollResult){
+        RoleplayManager* rp = RoleplayManager::instance();
+
+        ManagedReference<WeaponObject*> weapon = attacker->getWeapon();
+
+        if(weapon->isJediWeapon()){
+            int lightsaberSkill = attacker->getSkillMod("rp_lightsaber");
+            // Must beat a DC of 18 if we're unskilled with a lightsaber!
+            if(lightsaberSkill == 0 && rollResult < 18){
+                return true;
+            }
+            // Must beat a DC of 2 if we're below lightsaber III!
+            if(lightsaberSkill < 3 && rollResult < 2){
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /*Checks for and deducts ammo, returning true if the weapon is currently able to perform the attack.*/
+    static bool handleAmmoUse(WeaponObject* weapon, int ammoRequired = 1, bool powerAttack = false){
+        if (weapon->getAmmoPack() == "") {
+            // The weapon doesn't use ammo and therefore does not need to be reloaded.
+            return true;
+        }
+
+        // Initialise ammo for new weapons.
+		if(weapon->getStoredInt("ammo_used") < 0)
+			weapon->setStoredInt("ammo_used", 0);
+            
+        int ammoUsed = weapon->getStoredInt("ammo_used");
+        int maxAmmo = weapon->getMaxAmmo();
+
+        int ammoRemaining = maxAmmo - ammoUsed;
+
+        if(powerAttack)
+            ammoRequired = maxAmmo/2;
+
+        //Check if we're out of ammo, or if we're power attacking that we have at least half the power pack left.
+        if(ammoRemaining < ammoRequired)
+            return false;
+
+        //Remove ammo, emptying the ammo if power attacking, or removing 1 if normal attacking.
+        if (powerAttack)
+            weapon->setStoredInt("ammo_used", maxAmmo);
+        else weapon->setStoredInt("ammo_used", ammoUsed + ammoRequired);
+
+        return true;
+    }
+
+    static void applyWeaponCondition(WeaponObject* weapon, int damageDealt, bool missed, bool powerAttack = false){
+        int conditionDamage = 0;
+
+        // Lightsabers do not take condition damage.
+        if (weapon->isJediWeapon())
+            return;
+
+        // If we miss with a non-ranged weapon, take no condition damage.
+        if (missed && !weapon->isRangedWeapon())
+            return;
+
+        if(weapon->isRangedWeapon() && powerAttack)
+        {
+            conditionDamage = damageDealt;
+        // Melee weapons take the damage as condition damage, 2x if power attacking
+        } else if(weapon->isMeleeWeapon() || weapon->isUnarmedWeapon()){
+            conditionDamage = damageDealt;
+
+            if(powerAttack)
+                conditionDamage = conditionDamage * 2;
+        }
+        // Apply the damage.
+        weapon->setConditionDamage(weapon->getConditionDamage() + conditionDamage);
+    }
+
+    static int getWeaponDamage(CreatureObject* attacker, WeaponObject* weapon, int &diceCount, int &diceType, int &weaponBonus, int &skillBonus, int &roll, bool powerAttack = false){
+        diceCount = weapon->getMinDamage();
+        diceType = weapon->getMaxDamage();
+        weaponBonus = weapon->getBonusDamage();
+        skillBonus = getWeaponBonusDamage(attacker, weapon);
+
+        if (powerAttack)
+            diceCount++;
+
+        roll = BorDice::Roll(diceCount, diceType);
+
+        return roll + weaponBonus + skillBonus;
+    }
+
+    /*Standard RP attack.*/
+    static void standardAttack(CreatureObject* commander, CreatureObject* attacker, CreatureObject* defender, bool ignoreSight = false){
+        RoleplayManager* rp = RoleplayManager::instance();
+
+        ManagedReference<WeaponObject*> weapon = attacker->getWeapon();
+
+        String spam = BorString::getNiceName(attacker)+" attacked "+BorString::getNiceName(defender)+" ";
+
+        if(!ignoreSight) {
+            if (!CollisionManager::checkLineOfSight(attacker, defender)) {
+                commander->sendSystemMessage("You don't have a direct line of sight of your target.");
+                return;
+            }
+        } else {
+            spam = "\\#FFFF00(LOS ignored)\\#FFFFFF " + spam;
+        }
+
+        if(!handleAmmoUse(weapon)){
+            commander->sendSystemMessage("Your weapon does not have enough ammo! You will have to reload before attacking.");
+            return;
+        }
+
+        int dc = getToHitDC(attacker, defender);
+
+        int roll, skillMod, forceBonus = 0;
+
+        int result = getToHitRoll(attacker, roll, skillMod, forceBonus);
+
+        // We hit if we meet or beat the DC or roll a nat 20 with a ranged weapon. On a nat 1, we always miss.
+        bool hasHit = (result >= dc || (roll == 20 && weapon->isRangedWeapon())) && roll != 1;
+
+        int hitSlot = BorDice::Roll(1, 10);
+
+        // Determine damage dealt.
+        // We need to do this even if we miss, as ranged weapons reduce condition based on it if power attacking.
+
+        int damageDieCount, damageDieType, bonusDamage, skillDamage, damageRoll = 0;
+        int totalDamage = getWeaponDamage(attacker, weapon, damageDieCount, damageDieType, bonusDamage, skillDamage, damageRoll);
+
+        // Weapon condition handling
+        applyWeaponCondition(weapon, totalDamage, !hasHit);
+
+        // Lightsaber self-hit check.
+        if (checkLightsaberSelfHit(attacker, result)){
+            BorEffect::PerformReactiveAnimation(attacker, attacker, "hit", hitSlot, true);
+            BorrieRPG::BroadcastMessage(attacker, BorString::getNiceName(attacker) + " accidently hurts themselves with the lightsaber, doing "+damageNumber(totalDamage)+" damage!");
+            ApplyAdjustedHealthDamage(attacker, weapon, totalDamage, hitSlot);
+            return;
+        }
+
+        // We've missed!
+        if (!hasHit){
+            spam += "and missed! " + BorString::skillSpam(skillMod, roll, forceBonus, result, dc) + "\\#FFFFFF";
+
+            BorEffect::PerformReactiveAnimation(defender, attacker, "miss", GetSlotHitlocation(hitSlot), true);
+            BorrieRPG::BroadcastMessage(attacker, spam);
+            return;
+        }
+
+        // Handle hitting!
+        bool criticalHit = hitSlot == 10 || roll == 20;
+
+        if (criticalHit)
+            totalDamage =  totalDamage * 1.5;
+
+        //Calculate the Reaction
+        String reactionResult = HandleCombatReaction(attacker, defender, totalDamage, roll + skillMod, hitSlot, false, false);
+
+        if (criticalHit){
+            spam += "and critically hit "+BorString::getNiceName(defender)+"'s "+GetSlotDisplayName(hitSlot)+"! ";
+        } else {
+            spam += "and hit "+BorString::getNiceName(defender)+"'s "+GetSlotDisplayName(hitSlot)+"! ";
+        }
+
+        spam += BorString::skillSpam(skillMod, roll, forceBonus, result, dc) + "\\#FFFFFF" + reactionResult;
+
+        BorrieRPG::BroadcastMessage(attacker, spam);
+    }
+
     static void AttackTarget(CreatureObject* attacker, CreatureObject* defender, CreatureObject* commander, int bodyPartTarget, bool powerAttack, bool ignoreLOS = false) {
         RoleplayManager* rp = RoleplayManager::instance();
 
@@ -653,7 +890,7 @@ public:
 
             dmgString = ApplyAdjustedHealthDamage(defender, attackerWeapon, incomingDamage, slot);
             BorEffect::PerformReactiveAnimation(defender, attacker, "hit", GetSlotHitlocation(slot), true);
-            return ", doing (" + GetWeaponDamageString(attackerWeapon) + ") = "+ dmgString +" damage.";
+            return ", doing (" + GetWeaponDamageString(attacker, attackerWeapon) + ") = "+ dmgString +" damage.";
         }
 
         // Check if crystal belongs to deflector? Deflecter? Defender? Who the fuck knows.
@@ -872,7 +1109,7 @@ public:
             dmgString = ApplyAdjustedHealthDamage(defender, attackerWeapon, incomingDamage, slot);
             BorEffect::PerformReactiveAnimation(defender, attacker, "hit", GetSlotHitlocation(slot), true);
             defender->sendSystemMessage("You cannot absorb this attack. You recieved full damage.");
-            return ", doing (" + GetWeaponDamageString(attackerWeapon) + ") = "+ dmgString +" damage.";
+            return ", doing (" + GetWeaponDamageString(attacker, attackerWeapon) + ") = "+ dmgString +" damage.";
         }
         return reactionSpam;
     }
@@ -908,7 +1145,7 @@ public:
         //Simply accept the damage. 
         String dmgString = ApplyAdjustedHealthDamage(defender, attackerWeapon, incomingDamage, slot);
         BorEffect::PerformReactiveAnimation(defender, attacker, "hit", GetSlotHitlocation(slot), true);
-        return ", doing (" + GetWeaponDamageString(attackerWeapon) + ") = "+ dmgString +" damage.";
+        return ", doing (" + GetWeaponDamageString(attacker, attackerWeapon) + ") = "+ dmgString +" damage.";
     }
 
     static String ApplyAdjustedHealthDamage(CreatureObject* creature, String damageType, int damage, int slot) {
@@ -1182,11 +1419,17 @@ public:
         else return CombatManager::HIT_BODY;
     }
 
-    static String GetWeaponDamageString(WeaponObject* weapon) {
-        if(weapon->getBonusDamage() > 0)
-            return String::valueOf(weapon->getMinDamage()) + "d" + String::valueOf(weapon->getMaxDamage()) + " + " + String::valueOf(weapon->getBonusDamage());
-        else
-            return String::valueOf(weapon->getMinDamage()) + "d" + String::valueOf(weapon->getMaxDamage());
+    static String GetWeaponDamageString(CreatureObject* attacker, WeaponObject* weapon) {
+        int skillBonus = getWeaponBonusDamage(attacker, weapon);
+        String output = String::valueOf(weapon->getMinDamage()) + "d" + String::valueOf(weapon->getMaxDamage());
+
+        if (weapon->getBonusDamage() > 0)
+            output += " + " + String::valueOf(weapon->getBonusDamage());
+        
+        if (skillBonus > 0)
+            output += " + " + String::valueOf(skillBonus);
+
+        return output;
     }
 
     static bool CanPerformReaction(CreatureObject* defender, int reactionType, int incomingDamage, WeaponObject* attackerWeapon, WeaponObject* defenderWeapon) {

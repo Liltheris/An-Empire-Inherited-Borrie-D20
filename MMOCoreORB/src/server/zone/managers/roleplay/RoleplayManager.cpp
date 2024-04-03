@@ -20,6 +20,18 @@ void RoleplayManager::loadLuaConfig() {
 
 	combatBaseDC = lua->getGlobalInt("combatBaseDC");
 
+	powerAttackDcMod = lua->getGlobalInt("powerAttackDcMod");
+
+	LuaObject luaAimedMods = lua->getGlobalObject("aimedDcMods");
+
+	if (luaAimedMods.isValidTable()){
+		for (int i = 1; i < luaAimedMods.getTableSize(); i++){
+			aimedDcMods[i-1] = luaAimedMods.getIntAt(i);
+		}
+	} else {
+		fatal("LUA AIMEDDCMODS OBJECT IS NOT VALID!");
+	}
+
 	skillCostMultiplier = lua->getGlobalFloat("skillCostMultiplier");
 
 	LuaObject luaAttributes = lua->getGlobalObject("attributes");
