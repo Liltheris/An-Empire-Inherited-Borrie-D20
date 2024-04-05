@@ -208,14 +208,14 @@ public:
 		if(commander != creature) {
 			String message1 = " for [\\#FFFF00" + BorString::getNiceName(creature) + "\\#FFFFFF]: " + rollMessage;
 			if (secret)
-				BroadcastMessage(commander, message1);
-			else
 				broadcastSecretMessage(commander, message1);
+			else
+				BroadcastMessage(commander, message1);
 		} else {
 			if (secret)
-				BroadcastMessage(creature, rollMessage);
-			else
 				broadcastSecretMessage(creature, rollMessage);
+			else
+				BroadcastMessage(creature, rollMessage);
 		}		
 	}
 

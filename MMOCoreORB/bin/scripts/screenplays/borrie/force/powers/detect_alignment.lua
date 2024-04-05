@@ -61,7 +61,7 @@ function BorForce_DetectAlignment:performAbility(pPlayer, fpi)
 	elseif (darkSidePoints < 90) then
 		msg = msg .. ", who is deeply corrupted by the dark side."
 	else
-		msg = msg .. ", and immediately regret this decision. To look upon them is to look into the void of the dark side itself."
+		msg = msg .. ", and immediately regret this decision. To look upon them is to look into the void of the dark side itself. Every part of your being screams to you but one word: Run."
 	end
 	
 	CreatureObject(pPlayer):sendSystemMessage(targetMsg)
