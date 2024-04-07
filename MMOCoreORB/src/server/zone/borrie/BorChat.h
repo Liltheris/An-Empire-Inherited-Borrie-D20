@@ -70,9 +70,11 @@ public:
 	    }	
     }
 
-    static void PrintSpatialChatToDiscord(CreatureObject* target, const UnicodeString& message, String spatialChatType, short range) {
+    static void PrintSpatialChatToDiscord(CreatureObject* target, const UnicodeString& message, String spatialChatType, int languageID, uint32 moodID) {
         ChatManager* chatManager = target->getZoneServer()->getChatManager();
         ChatRoom* obsvRoom = chatManager->getChatRoomByFullPath("SWG.An Empire Inherited.Chat.global");
+
+        String moodName = chatManager->getMoodType(moodID);
 
         bool anonymous = false;
         if(target->isPlayerCreature()) {
@@ -104,8 +106,11 @@ public:
             }
         }
 
+        // Discord bot expects the following format: ChatType::LanguageID::MoodString::message
+        String finalMessage = spatialChatType+"::"+String::valueOf(languageID)+"::"+moodName+"::";
+
         if(!anonymous) {
-            obsvRoom->broadcastMessage(new ChatRoomMessage(name, target->getZoneServer()->getGalaxyName(), UnicodeString(spatialChatType + "|") + message, obsvRoom->getRoomID(), false));
+            obsvRoom->broadcastMessage(new ChatRoomMessage(name, target->getZoneServer()->getGalaxyName(), UnicodeString(finalMessage) + message, obsvRoom->getRoomID(), false));
         }
     }
 

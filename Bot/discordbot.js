@@ -70,11 +70,15 @@ SWG.recvChat = function(message, player) {
 
 SWG.recvSpatialChat = function(message, player) {
     console.log("sending chat to discord " + player + ": " + message);
-	var dataArray = message.split("|");
+	var dataArray = message.split("::");
+
+    // Chat type
 	if(dataArray[0] == "") 
 		dataArray[0] = "say";
-	
-	var messageContent = dataArray[1];
+
+    var languageID = Number(dataArray[1]);
+    var mood = dataArray[2];
+	var messageContent = dataArray[3];
 	var spatialMsg = "msg.";
 	
 	if(dataArray[0] == "DM") {
@@ -84,7 +88,7 @@ SWG.recvSpatialChat = function(message, player) {
 	} else if(dataArray[0] == "whisper") {
 		spatialMsg = "**" + player + " whispers something unintelligible.**";
 	} else if(messageContent[0] !== '(') {
-		spatialMsg = "**" + player + " " + dataArray[0] + "s,** \"" + messageContent + "\""; 
+		spatialMsg = "**" + player + " " + dataArray[0] + "s"+parseMood(mood)+",** \"" + messageContent + "\"" + parseLanguage(languageID); 
 	} else {
 		return;
 	}
@@ -99,18 +103,41 @@ SWG.recvTell = function(from, message) {
 }
 
 SWG.recvSystemMsg = function(message) {
-	if(message.startsWith("who")) {
-		const dataArray = message.split(":");
+    // Split the string into the data elements. Format should be [0]=Type, [1]=Sender, [n]=Data. Who differs.
+    const dataArray = message.split("::");
+
+    // Handle online player/DM output.
+	if(dataArray[0] == "who") {
 		var dataString = "AEI: Players: " + dataArray[1] + " DMs: " + dataArray[2];
-        //var dataString = "DR: Players: 420 DMs: 69";
-		//notif.send("Players Online: " + dataArray[1] + " | DMs Online: " + dataArray[2]);
 		client.user.setPresence({ status: "online", game: {name: dataString}});
-	} else if(message.startsWith("lw")) {
-        const dataArray = message.split(":");
+
+    // Handle in-game DM chat.
+	} else if(dataArray[0] == "lw") {
         var dmName = dataArray[1].substring(17, dataArray[1].length - 8);
         var chatString = "**" + dmName + ":** " + dataArray[2];
 
-        if (dmchat) dmchat.send(chatString);
+        if (notif) notif.send(chatString);
+        else console.log("discord disconnected");
+
+    // Handle DM calls going to the DM channel.
+    } else if(dataArray[0] == "dmcall") {
+        var dmCall = "**--DM CALL: "+dataArray[1]+"--**"+"\n"+dataArray[2];
+
+        if (dmchat) dmchat.send(dmCall);
+        else console.log("discord disconnected");
+
+    // Long rest reporting.
+    } else if(dataArray[0] == "rest") {
+        var rest = "**"+dataArray[1]+":** "+dataArray[2];
+
+        if (notif) notif.send(rest);
+        else console.log("discord disconnected");
+
+    // Force reporting.
+    } else if(dataArray[0] == "force") {
+        var force = "**"+dataArray[1]+":** "+dataArray[2];
+
+        if (notif) notif.send(force);
         else console.log("discord disconnected");
     }
 }
@@ -118,3 +145,68 @@ SWG.recvSystemMsg = function(message) {
 setInterval(() => SWG.sendTell(config.SWG.Character, "ping"), 30000);
 
 setInterval(() => SWG.sendTell(config.SWG.Character, "getwho"), 3000);
+
+function parseMood(moodString){
+    switch (moodString){
+        case "default": return "";
+        case "angry": return " angrily";
+        case "bloodthirsty": return " bloodthirstily";
+        case "cocky": return " cockily";
+        case "courtly": return " courtily";
+        case "dreamy": return " dreamily";
+        case "drunk": return " drunkedly";
+        case "emphatic": return " emphatically";
+        case "evil": return " evily";
+        case "forgive": return " forgivingly";
+        case "guilty": return " guiltily";
+        case "happy": return " happily";
+        case "lofty": return " loftily";
+        case "sleepy": return " sleepily";
+        case "snobby": return " snobbily";
+        case "sorry": return " with regret";
+        case "whiny": return " whinily";
+        case "friendly": return " friendlily";
+        case "lazy": return " lazily";
+        case "hungry": return " hungrily";
+        case "thirsty": return " thirstily";
+        case "shifty": return " shiftily";
+        case "crotchety": return " crotchetily";
+        case "surly": return " surlily";
+        case "bubbly": return " bubblily";
+        case "grumpy": return " grumpily";
+        case "gloomy": return " gloomily";
+        case "dainty": return " daintily";
+        case "haughty": return " haughtily";
+        case "goofy": return " goofily";
+        case "silly": return " sillily";
+        case "wary": return " warily";
+        // Most mood strings work this way, thankfully.
+        default: return " "+moodString+"ly";
+    }
+}
+
+function parseLanguage(LanguageID){
+    switch (LanguageID){
+        // No need to show the language string for Basic.
+        case 0: return "";
+        case 1: return " in Rodian";
+        case 2: return " in Doshan";
+        case 3: return " in Moncalamarian";
+        case 4: return " in Shyriiwook";
+        case 5: return " in Bothese";
+        case 6: return " in Ryl";
+        case 7: return " in Zabrakii";
+        case 8: return " in Lekku";
+        case 9: return " in Ithorian";
+        case 10: return " in Sullustan";
+        case 11: return " in Cheunh";
+        case 12: return " in Mando'a";
+        case 13: return " in Miralukese";
+        case 14: return " in Huttese";
+        case 15: return " in Mirialan";
+        case 16: return " in Jawaese";
+        case 17: return " in Jawa Trade";
+        case 18: return " in Sith";
+        default: return "";
+    }
+}

@@ -244,7 +244,7 @@ public:
 				playerCreature->sendSystemMessage(pName + msg);
 			}
 			if(playerCreature->getFirstName() == "Discord") {
-				playerCreature->sendSystemMessage("lw:" + creature->getFirstName() + ":DM Call - " + msg);
+				playerCreature->sendSystemMessage("dmcall::" + creature->getFirstName() + "::DM Call - " + msg);
 			}
 		}
 	}
@@ -278,7 +278,7 @@ public:
 				continue;
 
 			if(playerCreature->getFirstName() == "Discord") {
-				playerCreature->sendSystemMessage("lw:" + creature->getFirstName() + ":" + msg);
+				playerCreature->sendSystemMessage("lw::" + creature->getFirstName() + "::" + msg);
 			}
 
 			if (playerObject->isPrivileged()) { // TODO: Check to see if a character is a secret DM.
@@ -529,7 +529,7 @@ public:
 
 			if(playerCount < 0) playerCount = 0;
 
-			discordBot->sendSystemMessage("who:" + String::valueOf(playerCount) + ":" + String::valueOf(dmCount));
+			discordBot->sendSystemMessage("who::" + String::valueOf(playerCount) + "::" + String::valueOf(dmCount));
 		} catch (Exception& e) {
 			
 		}
