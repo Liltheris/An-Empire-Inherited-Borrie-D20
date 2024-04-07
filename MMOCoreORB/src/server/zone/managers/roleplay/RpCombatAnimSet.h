@@ -74,13 +74,13 @@ public:
 	String completeWeakAnim(String anim) const {
 		String intensity = System::random(1) == 1 ? "_medium" : "_light";
 
-		return anim += intensity + "_" + String::valueOf(System::random(3));
+		return anim + intensity + "_" + String::valueOf(System::random(3));
 	}
 
 	String completeAnim(String anim) const {
 		String intensity = System::random(1) == 1 ? "_medium" : "_light";
 
-		return anim += intensity;
+		return anim + intensity;
 	}
 
 	String getPowerAnim(){
