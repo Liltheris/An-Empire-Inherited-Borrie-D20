@@ -597,7 +597,10 @@ String RoleplayManager::getCombatAnim(String animSet, int damage){
 	else if (damage >= midAnimThreshold)
 		level = 1;
 
-	return getAnimSet(animSet).getBasicAnim(level);
+	String anim = getAnimSet(animSet).getBasicAnim(level);
+
+	info("getCombatAnim() - level: "+String::valueOf(level)+" animSet: "+animSet+" - Anim: "+anim, true);
+	return anim;
 }
 
 RpCombatAnimSet RoleplayManager::getAnimSet(String setName){

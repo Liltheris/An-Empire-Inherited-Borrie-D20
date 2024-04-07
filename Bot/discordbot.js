@@ -188,25 +188,25 @@ function parseMood(moodString){
 function parseLanguage(LanguageID){
     switch (LanguageID){
         // No need to show the language string for Basic.
-        case 0: return "";
-        case 1: return " in Rodian";
-        case 2: return " in Doshan";
-        case 3: return " in Moncalamarian";
-        case 4: return " in Shyriiwook";
-        case 5: return " in Bothese";
-        case 6: return " in Ryl";
-        case 7: return " in Zabrakii";
-        case 8: return " in Lekku";
-        case 9: return " in Ithorian";
-        case 10: return " in Sullustan";
-        case 11: return " in Cheunh";
-        case 12: return " in Mando'a";
-        case 13: return " in Miralukese";
-        case 14: return " in Huttese";
-        case 15: return " in Mirialan";
-        case 16: return " in Jawaese";
-        case 17: return " in Jawa Trade";
-        case 18: return " in Sith";
+        case 1: return "";
+        case 2: return " in Rodian";
+        case 3: return " in Doshan";
+        case 4: return " in Moncalamarian";
+        case 5: return " in Shyriiwook";
+        case 6: return " in Bothese";
+        case 7: return " in Ryl";
+        case 8: return " in Zabrakii";
+        case 9: return " in Lekku";
+        case 10: return " in Ithorian";
+        case 11: return " in Sullustan";
+        case 12: return " in Cheunh";
+        case 13: return " in Mando'a";
+        case 14: return " in Miralukese";
+        case 15: return " in Huttese";
+        case 16: return " in Mirialan";
+        case 17: return " in Jawaese";
+        case 18: return " in Jawa Trade";
+        case 19: return " in Sith";
         default: return "";
     }
 }
