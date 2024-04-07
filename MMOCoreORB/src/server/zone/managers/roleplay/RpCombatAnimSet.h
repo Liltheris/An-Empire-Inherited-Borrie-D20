@@ -57,18 +57,30 @@ public:
 
 	String getBasicAnim(int level = 0) const {
 		if (isSimple)
-			return basicAnims.get(System::random(basicAnims.size()-1));
+			return completeAnim(basicAnims.get(System::random(basicAnims.size()-1)));
 
 		// Non-simple anims are based on a strength level.
 		switch (level){
-			case 0: return basicAnims_weak.get(System::random(basicAnims_weak.size()-1));
-			case 1: return basicAnims_mid.get(System::random(basicAnims_mid.size()-1));
-			case 2: return basicAnims_strong.get(System::random(basicAnims_strong.size()-1));
+			case 0: return completeWeakAnim(basicAnims_weak.get(System::random(basicAnims_weak.size()-1)));
+			case 1: return completeAnim(basicAnims_mid.get(System::random(basicAnims_mid.size()-1)));
+			case 2: return completeAnim(basicAnims_strong.get(System::random(basicAnims_strong.size()-1)));
 			// return a simple anim if we get a weird value.
-			default: return basicAnims_weak.get(System::random(basicAnims_weak.size()-1));
+			default: return completeAnim(basicAnims_weak.get(System::random(basicAnims_weak.size()-1)));
 		}
 
 		return "";
+	}
+
+	String completeWeakAnim(String anim) const {
+		String intensity = System::random(1) == 1 ? "_medium" : "_light";
+
+		return anim += intensity + "_" + String::valueOf(System::random(3));
+	}
+
+	String completeAnim(String anim) const {
+		String intensity = System::random(1) == 1 ? "_medium" : "_light";
+
+		return anim += intensity;
 	}
 
 	String getPowerAnim(){

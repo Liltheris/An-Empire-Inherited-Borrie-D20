@@ -91,7 +91,7 @@ public:
 			}
 
 			if(command == "faux") {
-				BorEffect::PerformReactiveAnimation(storedTargetCreature, targetCreature, "hit", CombatManager::HIT_BODY, true);
+				BorEffect::PerformReactiveAnimation(storedTargetCreature, targetCreature, "hit", CombatManager::HIT_BODY, true, System::random(29)+1, "basic");
 			} else if (command == "power") {
 				BorCombat::AttackTarget(storedTargetCreature, targetCreature, creature, -1, true, noLos);
 			} else if(command == "flurry") {
