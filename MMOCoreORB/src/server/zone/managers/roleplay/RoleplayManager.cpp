@@ -599,7 +599,7 @@ String RoleplayManager::getCombatAnim(String animSet, int damage){
 
 	String anim = getAnimSet(animSet).getBasicAnim(level);
 
-	info("getCombatAnim() - level: "+String::valueOf(level)+" animSet: "+animSet+" - Anim: "+anim, true);
+	info("getCombatAnim() - level: "+String::valueOf(level)+" animSet: "+animSet+" - Anim: "+anim);
 	return anim;
 }
 

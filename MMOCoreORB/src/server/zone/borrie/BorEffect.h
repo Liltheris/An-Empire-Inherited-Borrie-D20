@@ -282,7 +282,7 @@ public:
 		}
 
 		if (animSet == ""){
-			String animSet = weapon->getWeaponType();
+			animSet = weapon->getWeaponType();
 
 			if(animSet == "onehandedmelee")
 				animSet = "1h";
