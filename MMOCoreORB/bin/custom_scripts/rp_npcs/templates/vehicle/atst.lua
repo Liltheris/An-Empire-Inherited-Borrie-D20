@@ -6,4 +6,5 @@ npc_template = {
 	
 	armourTemplates = {"atst"},
 	
+	armour = "armourset_vehicle",
 }

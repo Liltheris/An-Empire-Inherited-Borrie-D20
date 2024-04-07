@@ -2466,20 +2466,3 @@ object_tangible_wearables_necklace_shared_necklace_wampum = SharedTangibleObject
 ObjectTemplates:addClientTemplate(object_tangible_wearables_necklace_shared_necklace_wampum, "object/tangible/wearables/necklace/shared_necklace_wampum.iff")
 --******************************************************************************************************************************************
 
-object_tangible_wearables_necklace_shared_scabbard_saber = SharedTangibleObjectTemplate:new {
-	clientTemplateFileName = "object/tangible/wearables/necklace/shared_scabbard_saber.iff"
-}
-ObjectTemplates:addClientTemplate(object_tangible_wearables_necklace_shared_scabbard_saber, "object/tangible/wearables/necklace/shared_scabbard_saber.iff")
---******************************************************************************************************************************************
-
-object_tangible_wearables_necklace_shared_scabbard_sword = SharedTangibleObjectTemplate:new {
-	clientTemplateFileName = "object/tangible/wearables/necklace/shared_scabbard_sword.iff"
-}
-ObjectTemplates:addClientTemplate(object_tangible_wearables_necklace_shared_scabbard_sword, "object/tangible/wearables/necklace/shared_scabbard_sword.iff")
---******************************************************************************************************************************************
-
-object_tangible_wearables_necklace_shared_scabbard_blank = SharedTangibleObjectTemplate:new {
-	clientTemplateFileName = "object/tangible/wearables/necklace/shared_scabbard_blank.iff"
-}
-ObjectTemplates:addClientTemplate(object_tangible_wearables_necklace_shared_scabbard_blank, "object/tangible/wearables/necklace/shared_scabbard_blank.iff")
---******************************************************************************************************************************************
