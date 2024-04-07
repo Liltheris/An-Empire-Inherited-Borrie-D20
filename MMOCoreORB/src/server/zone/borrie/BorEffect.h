@@ -284,9 +284,9 @@ public:
 		if (animSet == ""){
 			animSet = weapon->getWeaponType();
 
-			if(animSet == "onehandedmelee")
+			if(animSet == "onehandmelee")
 				animSet = "1h";
-			else if(animSet == "twohandedmelee")
+			else if(animSet == "twohandmelee")
 				animSet = "2h";
 			else if(animSet == "polearm")
 				animSet = "pole";
