@@ -96,6 +96,9 @@ forceSkills = {
     {"telekinesis", "", ""},    
 }
 
+-- The number of force skill boxes that need to be learned to level up the Force immersion.
+forceTiers = {5, 15, 40, 70}
+
 -------------------------
 -- Other settings
 -------------------------

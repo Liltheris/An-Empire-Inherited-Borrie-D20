@@ -232,6 +232,51 @@ public:
 		return 1.0f;
 	}
 
+	static void updateForceImmersion(CreatureObject* player, bool notifyClient){
+		SkillManager* skillManager = SkillManager::instance();
+		RoleplayManager* rp = RoleplayManager::instance();
+
+		if (!player->hasSkill("rp_force_prog_rank_01") || player->hasSkill("rp_force_prog_rank_master"))
+			return;
+
+		int nextForceTier = 0;
+		int forceSkills = skillManager->getForceSkillCount(player);
+
+		if (player->hasSkill("rp_force_prog_rank_04")){
+			nextForceTier = 5;
+		} else if (player->hasSkill("rp_force_prog_rank_03")){
+			nextForceTier = 4;
+		} else if (player->hasSkill("rp_force_prog_rank_02")){
+			nextForceTier = 3;
+		} else if (player->hasSkill("rp_force_prog_rank_01")){
+			nextForceTier = 2;
+		}
+
+		switch (nextForceTier) {
+			case 2:
+				if (forceSkills >= rp->getForceTierRequirement(nextForceTier)) {
+					skillManager->awardSkill("rp_force_prog_rank_02", player, notifyClient, false, false);
+				}
+				return;
+			case 3:
+				if (forceSkills >= rp->getForceTierRequirement(nextForceTier)) {
+					skillManager->awardSkill("rp_force_prog_rank_03", player, notifyClient, false, false);
+				}
+				return;
+			case 4:
+				if (forceSkills >= rp->getForceTierRequirement(nextForceTier)) {
+					skillManager->awardSkill("rp_force_prog_rank_04", player, notifyClient, false, false);
+				}
+				return;
+			case 5:
+				if (forceSkills >= rp->getForceTierRequirement(nextForceTier)) {
+					skillManager->awardSkill("rp_force_prog_rank_05", player, notifyClient, false, false);
+				}
+				return;
+			default: return;
+		}
+	}
+
 	static int getFinalXpCost(CreatureObject* player, String skillName){
 		SkillManager* skillManager = SkillManager::instance();
 		float multi = getXpCostMultiplier(player, skillName);

@@ -119,6 +119,22 @@ void RoleplayManager::loadLuaConfig() {
 	}
 	luaStringExcludedNames.pop();
 
+	LuaObject luaForceTiers = lua->getGlobalObject("forceTiers");
+
+	if (luaForceTiers.isValidTable()){
+		for (int i = 1; i < luaForceTiers.getTableSize(); i++){
+			int name = luaForceTiers.getIntAt(i);
+
+			forceTiers.add(name);
+		}
+	} else {
+		fatal("LUA FORCE TIERS OBJECT IS NOT VALID!");
+	}
+	if (forceTiers.size() < 4){
+		fatal(" FORCE TIERS ARE INCOMPLETE!");
+	}
+	luaForceTiers.pop();
+
 	// Begin Combat animation data loading
 
 	if (!lua->runFile("scripts/managers/roleplay/combat_animation_manager.lua")) {
@@ -529,7 +545,7 @@ void RoleplayManager::loadLuaConfig() {
 	lua = nullptr;
 }
 
-int RoleplayManager::getRpSkillIndex(String skill, RpSkillType type) {
+int RoleplayManager::getRpSkillIndex(String skill, RpSkillType type) const {
 	switch (type){
 		case RpSkillType::ATTRIBUTE:{
 			for (int i = 0; i < attributes.size(); i++){
@@ -565,7 +581,7 @@ int RoleplayManager::getRpSkillIndex(String skill, RpSkillType type) {
 	return -1;
 }
 
-RpSkillData RoleplayManager::getRpSkill(int index, RpSkillType type) {
+RpSkillData RoleplayManager::getRpSkill(int index, RpSkillType type) const {
 	switch (type){
 		case RpSkillType::ATTRIBUTE: return attributes.get(index);
 		case RpSkillType::SKILL: return skills.get(index);
@@ -577,7 +593,7 @@ RpSkillData RoleplayManager::getRpSkill(int index, RpSkillType type) {
 	return RpSkillData();
 }
 
-Vector<RpSkillData> RoleplayManager::getRpSkillList(RpSkillType type){
+Vector<RpSkillData> RoleplayManager::getRpSkillList(RpSkillType type) const {
 	switch (type){
 		case RpSkillType::ATTRIBUTE: return attributes;
 		case RpSkillType::SKILL: return skills;
@@ -589,7 +605,7 @@ Vector<RpSkillData> RoleplayManager::getRpSkillList(RpSkillType type){
 	return skills;
 }
 
-String RoleplayManager::getCombatAnim(String animSet, int damage){
+String RoleplayManager::getCombatAnim(String animSet, int damage) const {
 	int level = 0;
 
 	if (damage >= strongAnimThreshold)
@@ -603,7 +619,7 @@ String RoleplayManager::getCombatAnim(String animSet, int damage){
 	return anim;
 }
 
-RpCombatAnimSet RoleplayManager::getAnimSet(String setName){
+RpCombatAnimSet RoleplayManager::getAnimSet(String setName) const {
 	if (setName == "pistol")
 		return pistolAnims;
 	else if (setName == "carbine")
@@ -623,4 +639,11 @@ RpCombatAnimSet RoleplayManager::getAnimSet(String setName){
 	else if (setName == "unarmed")
 		return unarmedAnims;
 	else return pistolAnims;
+}
+
+int RoleplayManager::getForceTierRequirement(int tier) const {
+	if (tier < 2 || tier > 5);
+		return -1;
+
+	return forceTiers.get(tier-2);
 }
