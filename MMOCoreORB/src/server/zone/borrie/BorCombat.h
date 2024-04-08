@@ -233,7 +233,9 @@ public:
 
         int dc = getToHitDC(attacker, defender);
 
-        int roll, skillMod, forceBonus = 0;
+        int roll = 0;
+        int skillMod = 0;
+        int forceBonus = 0;
 
         int result = getToHitRoll(attacker, roll, skillMod, forceBonus);
 
