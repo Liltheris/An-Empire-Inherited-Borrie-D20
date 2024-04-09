@@ -123,15 +123,15 @@ void RoleplayManager::loadLuaConfig() {
 
 	if (luaForceTiers.isValidTable()){
 		for (int i = 1; i < luaForceTiers.getTableSize(); i++){
-			int name = luaForceTiers.getIntAt(i);
+			int forceTier = luaForceTiers.getIntAt(i);
 
-			forceTiers.add(name);
+			forceTiers.add(forceTier);
 		}
 	} else {
 		fatal("LUA FORCE TIERS OBJECT IS NOT VALID!");
 	}
 	if (forceTiers.size() < 4){
-		fatal(" FORCE TIERS ARE INCOMPLETE!");
+		warning(" Force Tiers are incomplete! Found tiers: "+String::valueOf(forceTiers.size())+" Expected 4!");
 	}
 	luaForceTiers.pop();
 
