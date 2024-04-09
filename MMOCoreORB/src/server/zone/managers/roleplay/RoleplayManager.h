@@ -100,7 +100,7 @@ public:
 	}
 
 	//Returns the number of skill boxes required for the provided force tier. Returns -1 on invalid values.
-	int getForceTierRequirement(int tier) const ;
+	int getForceTierRequirement(int tier) const;
 
 	String getCombatAnim(String animSet, int damage) const;
 

@@ -642,7 +642,7 @@ RpCombatAnimSet RoleplayManager::getAnimSet(String setName) const {
 }
 
 int RoleplayManager::getForceTierRequirement(int tier) const {
-	if (tier < 2 || tier > 5);
+	if (tier < 2 || tier > 5)
 		return -1;
 
 	return forceTiers.get(tier-2);
