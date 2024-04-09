@@ -109,7 +109,7 @@ void RoleplayManager::loadLuaConfig() {
 	LuaObject luaStringExcludedNames = lua->getGlobalObject("stringExcludedNames");
 
 	if (luaStringExcludedNames.isValidTable()){
-		for (int i = 1; i < luaStringExcludedNames.getTableSize(); i++){
+		for (int i = 1; i <= luaStringExcludedNames.getTableSize(); i++){
 			String name = luaStringExcludedNames.getStringAt(i);
 
 			stringExcludedNames.add(name);
@@ -122,7 +122,7 @@ void RoleplayManager::loadLuaConfig() {
 	LuaObject luaForceTiers = lua->getGlobalObject("forceTiers");
 
 	if (luaForceTiers.isValidTable()){
-		for (int i = 1; i < luaForceTiers.getTableSize(); i++){
+		for (int i = 1; i <= luaForceTiers.getTableSize(); i++){
 			int forceTier = luaForceTiers.getIntAt(i);
 
 			forceTiers.add(forceTier);
@@ -615,7 +615,7 @@ String RoleplayManager::getCombatAnim(String animSet, int damage) const {
 
 	String anim = getAnimSet(animSet).getBasicAnim(level);
 
-	info("getCombatAnim() - level: "+String::valueOf(level)+" animSet: "+animSet+" - Anim: "+anim);
+	info("getCombatAnim() - level: "+String::valueOf(level)+" animSet: "+animSet+" - Anim: "+anim, true);
 	return anim;
 }
 

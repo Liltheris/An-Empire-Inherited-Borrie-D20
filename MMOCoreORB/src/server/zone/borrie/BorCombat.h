@@ -48,7 +48,7 @@ public:
         if (weapon->isMeleeWeapon() || weapon->isUnarmedWeapon()){
             return weapon->getBonusDamage() + creature->getSkillMod("rp_melee_bonus");
         }
-        return weapon->getBonusDamage();
+        return 0;
     }
 
     /*Determines the DC for an attack based on range, bonuses and maluses. Uses a weapon object.*/
