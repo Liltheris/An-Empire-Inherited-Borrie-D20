@@ -34,7 +34,7 @@ rpg_shop_weapons_melee_novice = {
 			name = "Unarmed",
 			minItems = 1,
 			items = {
-				{template = "object/weapon/roleplay/melee/polearm/wood_staff.iff", cost = 25, max = 10, chance = 100 },
+				{template = "object/weapon/roleplay/melee/unarmed/vibroknuckler.iff", cost = 25, max = 10, chance = 100 },
 			}
 		},
 	}	
