@@ -93,7 +93,6 @@ public:
         // Reduce the DC by 5 if the target is currently vulnerable.
         if(defender->getStoredInt("is_vulnerable") > 0){
             dc -= 5;
-            defender->setStoredInt("is_vulnerable", 0);
         }
 
         return dc;
@@ -1398,8 +1397,8 @@ public:
         else if(slot == 4) return "feet";
         else if(slot == 5) return "left forearm";
         else if(slot == 6) return "right forearm";
-        else if(slot == 7) return "left bracer";
-        else if(slot == 8) return "right bracer";
+        else if(slot == 7) return "left bicep";
+        else if(slot == 8) return "right bicep";
         else if(slot == 9) return "hands";
         else if(slot == 10) return "head";
         else return "chest";

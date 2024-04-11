@@ -396,13 +396,13 @@ function BorForceUtility:promptForcePointInput(pPlayer, power, screenplay, callb
 	local forcePower = PlayerObject(pGhost):getForcePower()	
 	
 	local fpiMax = 999
-	local fpiMin = 0
+	local fpiMin = 1
 
 	if (power.fpiMax ~= 999) then
 		fpiMax = power.fpiMax
 	end
 
-	if (power.fpiMin ~= 0) then
+	if (power.fpiMin ~= 1) then
 		fpiMin = power.fpiMin
 	end
 

@@ -831,12 +831,13 @@ public:
 							}
 							if (object->isCreatureObject()) {
 								creo = object->asCreatureObject();
-								creature->sendSystemMessage("Stored Int: "+intName+": "+String::valueOf(creo->getStoredInt(intName)))
+								creature->sendSystemMessage("Stored Int: "+intName+": "+String::valueOf(creo->getStoredInt(intName)));
 							}	
+						}
+					} else {
+						creature->sendSystemMessage("Invalid Target.");
 					}
 				}
-			}else {
-				creature->sendSystemMessage("Invalid Target.");
 			}
 		} catch (Exception& e) {
 			creature->sendSystemMessage("Invalid arguments for DM command. Help: /dm help");
