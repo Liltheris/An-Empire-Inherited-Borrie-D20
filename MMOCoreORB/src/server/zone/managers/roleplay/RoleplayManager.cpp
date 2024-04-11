@@ -585,7 +585,7 @@ RpSkillData RoleplayManager::getRpSkill(int index, RpSkillType type) const {
 	switch (type){
 		case RpSkillType::ATTRIBUTE: return attributes.get(index);
 		case RpSkillType::SKILL: return skills.get(index);
-		case RpSkillType::FORCESKILL:return forceSkills.get(index);
+		case RpSkillType::FORCESKILL: return forceSkills.get(index);
 		default:{
 			error("getRpSkill() was provided with an invalid type.");
 		}

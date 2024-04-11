@@ -210,7 +210,7 @@ public:
 			data = rp->getRpSkill(rp->getRpSkillIndex(skillName, RpSkillType::SKILL), RpSkillType::SKILL);
 		} else if (GetStringIsAttribute(skillName)){
 			data = rp->getRpSkill(rp->getRpSkillIndex(skillName, RpSkillType::ATTRIBUTE), RpSkillType::ATTRIBUTE);
-		} else if (GetStringIsForceSkill){
+		} else if (GetStringIsForceSkill(skillName)){
 			data = rp->getRpSkill(rp->getRpSkillIndex(skillName, RpSkillType::FORCESKILL), RpSkillType::FORCESKILL);
 		} else {
 			//The skill in question is not an RP skill of any type, so just assume that the XP cost multiplier is 1.
