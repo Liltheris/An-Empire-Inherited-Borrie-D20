@@ -42,6 +42,13 @@ shop_weapons_melee = {
 				{template = "object/weapon/roleplay/melee/polearm/force_pike.iff", cost = 600, max = 10, chance = 100 },
 			}
 		},
+		{
+			name = "Unarmed",
+			minItems = 1,
+			items = {
+				{template = "object/weapon/roleplay/melee/polearm/wood_staff.iff", cost = 25, max = 10, chance = 100 },
+			}
+		},
 	}	
 }
 

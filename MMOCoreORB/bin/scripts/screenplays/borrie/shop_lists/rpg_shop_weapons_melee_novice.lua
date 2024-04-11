@@ -30,6 +30,13 @@ rpg_shop_weapons_melee_novice = {
 				{template = "object/weapon/roleplay/melee/polearm/reinforced_staff.iff", cost = 600, max = 10, chance = 100 },
 			}
 		},
+		{
+			name = "Unarmed",
+			minItems = 1,
+			items = {
+				{template = "object/weapon/roleplay/melee/polearm/wood_staff.iff", cost = 25, max = 10, chance = 100 },
+			}
+		},
 	}	
 }
 
