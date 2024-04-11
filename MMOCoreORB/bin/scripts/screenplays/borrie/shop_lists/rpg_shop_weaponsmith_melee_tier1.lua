@@ -11,7 +11,6 @@ shop_weapons_melee = {
 				{template = "object/weapon/roleplay/melee/twohanded/cleaver.iff", cost = 550, max = 10, chance = 100 },
 				{template = "object/weapon/roleplay/melee/twohanded/katana.iff", cost = 850, max = 10, chance = 100 },
 				{template = "object/weapon/roleplay/melee/twohanded/vibroaxe.iff", cost = 850, max = 10, chance = 100 },
-				{template = "object/weapon/roleplay/melee/twohanded/power_hammer.iff", cost = 850, max = 10, chance = 100 },
 			}
 		},
 		{
