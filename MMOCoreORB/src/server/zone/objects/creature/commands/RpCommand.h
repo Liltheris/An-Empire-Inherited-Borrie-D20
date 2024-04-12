@@ -155,7 +155,7 @@ public:
 					creature->sendSystemMessage("You must provide a name to disguise yourself with!");
 				}
 			}else if (command == "heropoint"){
-				if (creature->getStoredInt("rp_heropoint") == 0){
+				if (creature->getStoredInt("rp_heropoint") != 1){
 				creature->sendSystemMessage("You have no available hero point to use!");
 				}
 
