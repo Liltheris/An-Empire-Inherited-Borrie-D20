@@ -39,6 +39,7 @@ public:
         return output;
     }
 
+    /*Returns the skill bonus for the provided weapon and creature combination.*/
     static int getWeaponBonusDamage(CreatureObject* creature, WeaponObject* weapon){
         //Lightsabers use the lightsaber skill for bonus damage.
         if (weapon->isJediWeapon()){
@@ -46,7 +47,7 @@ public:
         }
         //Melee weapons use weapon bonus damage + a bonus from strength
         if (weapon->isMeleeWeapon() || weapon->isUnarmedWeapon()){
-            return weapon->getBonusDamage() + creature->getSkillMod("rp_melee_bonus");
+            return creature->getSkillMod("rp_melee_bonus");
         }
         return 0;
     }
@@ -513,6 +514,77 @@ public:
         if(!weapon->isJediWeapon()){
             weapon->setConditionDamage(weapon->getConditionDamage() + conditionDamage);
         }
+    }
+
+    /*Checks for validity, and performs the defend reaction from the given context.*/
+    static bool performDefend(CreatureObject* attacker, CreatureObject* defender, int damage,int hitRoll, int slot, int apMod, String &spam, bool meleeAttack = false){
+        RoleplayManager* rp = RoleplayManager::instance();
+
+        WeaponObject* attackerWeapon = attacker->getWeapon();
+        WeaponObject* defenderWeapon = defender->getWeapon();
+
+        if (defenderWeapon->isBroken())
+            return false;
+
+        if(attackerWeapon->isRangedWeapon() && !meleeAttack)
+            return false;
+
+        if(BorCharacter::getAvailableAction(defender) < 1)
+            return false;
+
+        int skillMod = defender->getSkillMod("rp_defending");
+        int roll = BorDice::Roll(1, 20);
+        int result = skillMod + roll;
+
+        int apCost = 1 * apMod;
+
+        String dmgString;
+
+        BorCharacter::drainActionOrWill(defender, apCost);
+
+        if (result >= hitRoll) {
+            // Success!
+            spam += BorString::getNiceName(defender) + " successfully defends against the attack "+ BorString::skillSpam(skillMod, roll, result, hitRoll) +"\\#FFFFFF ";
+            if (defenderWeapon->isUnarmedWeapon()){
+                // Successfully failed!
+                BorEffect::PerformReactiveAnimation(defender, attacker, "defend", GetSlotHitlocation(9), true, damage, "basic");
+                dmgString = ApplyAdjustedHealthDamage(defender, attackerWeapon, damage, 9);
+
+                spam += ", however, they're unarmed, taking " + dmgString + "damage to their hands!";
+
+            } else if (defenderWeapon->isJediWeapon() && !attackerWeapon->isJediWeapon()){
+                //We've defended, and our lightsaber destroys the attacker's weapon!
+                attackerWeapon->setConditionDamage(attackerWeapon->getMaxCondition());
+                BorEffect::PerformReactiveAnimation(defender, attacker, "defend", GetSlotHitlocation(slot), true, damage, "basic");
+
+                spam += ", destroying "+ BorString::getNiceName(attacker) +"'s weapon in the process!";
+
+            } else if (!defenderWeapon->isJediWeapon() && attackerWeapon->isJediWeapon()){
+                //We've defended, but our weapon is destroyed because, y'know, lightsaber.
+                defenderWeapon->setConditionDamage(defenderWeapon->getMaxCondition());
+                BorEffect::PerformReactiveAnimation(defender, attacker, "defend", GetSlotHitlocation(slot), true, damage, "basic");
+
+                spam += ", destroying their weapon in the process!";
+
+            } else {
+                // We've successfully defended, and nobody's weapon was destroyed in the process!
+                if (!defenderWeapon->isJediWeapon())
+                     defenderWeapon->setConditionDamage(defenderWeapon->getConditionDamage() + damage);
+
+                BorEffect::PerformReactiveAnimation(defender, attacker, "defend", GetSlotHitlocation(slot), true, damage, "basic");
+
+                spam += ", absorbing "+ damageNumber(damage) +" damage into their weapon.";
+            }
+        } else {
+            // Failure!
+            BorEffect::PerformReactiveAnimation(defender, attacker, "defend", GetSlotHitlocation(slot), false, damage, "basic");
+            dmgString = ApplyAdjustedHealthDamage(defender, attackerWeapon, damage, slot);
+
+            spam += BorString::getNiceName(defender) + " tries to defend against the attack, but fails "+ BorString::skillSpam(skillMod, roll, result, hitRoll) +"\\#FFFFFF";
+            spam += ", taking "+ dmgString +" damage.";
+        }
+
+        return true;
     }
 
     //TO DO: When full refactor is done, this either needs to be folded into the main attack command, or sections of the attack command need to be compartmentalised into functions, to be reused here.
@@ -1487,12 +1559,14 @@ public:
         } else return false;
     }
 
+    /*DEPRECATED! Use BorCharacter::getAvailableAction() instead!*/
     static int GetAvailableActionPoints(CreatureObject* creature) {
         if(creature->getHAM(3) == 0)
             return creature->getHAM(6);
         else return creature->getHAM(3) + creature->getHAM(6);
     }
 
+    /*DEPRECATED! Use BorCharacter::getAvailableForce() instead!*/
     static int GetAvailableForcePoints(CreatureObject* creature) {
         if(creature->isPlayerCreature()) {
             return creature->getPlayerObject()->getForcePower();
@@ -1501,6 +1575,7 @@ public:
         }
     }
 
+    /*DEPRECATED! Use BorCharacter::drainActionOrWill() instead!*/
     static void DrainActionOrWill(CreatureObject* creature, int amount) {
         if(creature->getHAM(3) >= amount)
             BorCharacter::ModPool(creature, "action", amount * -1, true);
@@ -1511,6 +1586,7 @@ public:
         }
     }
 
+    /*DEPRECATED! Use BorCharacter::drainForce() instead!*/
     static void DrainForce(CreatureObject* creature, int amount) {
         if(creature->isPlayerCreature()) {
             BorCharacter::ModPool(creature, "force", amount * -1, true);
@@ -1527,6 +1603,7 @@ public:
 
         int distanceModifier = 0;
         bool tooClose = false;
+
 
         if(distance < minRange) {
             //We're outside of the minimum range!
@@ -1569,7 +1646,7 @@ public:
         int weaponModifier = 0;
 
         if (attackerWeapon->getRequiredSkill() != ""){
-            int attackerLevel = BorSkill::GetRealSkillLevel(attacker, attackerWeapon->getRequiredSkill());
+            int attackerLevel = attacker->getSkillMod("rp_"+attackerWeapon->getRequiredSkill());
             if (attackerLevel < attackerWeapon->getRequiredLevel()){
                 attacker->sendSystemMessage("\\#FFFF00Your "+BorString::capitalise(attackerWeapon->getRequiredSkill())+" is lower than your weapon's requirement! You suffer a +10 to the DC as a result!");
                 weaponModifier = 10;
