@@ -45,7 +45,7 @@ function BorForce_Meditate:performAbility(pPlayer, fpi)
 		return
 	end
 	
-	local message = CreatureObject(pPlayer):getFirstName() .. " used " .. self.name .. "! In the cover of safety, they regenerate their force pool by " .. math.floor(forcePowerMax / 2) .. " points!"
+	local message = CreatureObject(pPlayer):getFirstName() .. " used " .. self.name .. "! In the cover of safety, they regenerate their force pool by " .. forcePowerMax .. " points!"
 	
 	CreatureObject(pPlayer):setMoodString("meditating")
 	CreatureObject(pPlayer):setPosture(POSTURESITTING)
