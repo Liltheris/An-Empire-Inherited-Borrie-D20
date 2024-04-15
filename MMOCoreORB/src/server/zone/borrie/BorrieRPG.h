@@ -315,19 +315,10 @@ public:
 
 			Account* account = playerObject->getPlayerObject()->getAccount();
 
-			String name = playerObject->getFirstName();
-			String originalName = playerObject->getStoredString("original_first_name");
-
-			name += playerObject->getLastName() == "" ? "" : " " + playerObject->getLastName();
-
-			if(originalName != playerObject->getFirstName() && originalName != ""){
-				originalName = " ("+playerObject->getStoredString("original_name")+") ";
-			} else {
-				originalName = "";
-			}
+			String name = playerObject->getDisplayedName();
 
 			if(showAll) {
-				result += "\\#FFFF00" + name + originalName + "\\#FFFFFF (" + account->getUsername() +") ";
+				result += "\\#FFFF00" + name + "\\#FFFFFF (" + account->getUsername() +") ";
 				if(account->getAdminLevel() > 0) {
 					result += " Admin: " + String::valueOf(account->getAdminLevel());
 				} 
@@ -378,18 +369,9 @@ public:
 
 			Account* account = playerObject->getPlayerObject()->getAccount();
 
-			String name = playerObject->getFirstName();
-			String originalName = playerObject->getStoredString("original_first_name");
+			String name = playerObject->getDisplayedName();
 
-			name += playerObject->getLastName() == "" ? "" : " " + playerObject->getLastName();
-
-			if(originalName != playerObject->getFirstName() && originalName != ""){
-				originalName = " ("+playerObject->getStoredString("original_name")+") ";
-			} else {
-				originalName = "";
-			}
-
-			result += "\\#FFFF00" + name + originalName + "\\#FFFFFF (" + account->getUsername() +"): ";
+			result += "\\#FFFF00" + name + "\\#FFFFFF (" + account->getUsername() +"): ";
 
 			result += GetPlanetName(playerPlanet);
 
