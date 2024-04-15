@@ -634,7 +634,7 @@ public:
             return false;
 
         if ((attackerWeapon->isRangedWeapon() && !meleeAttack) || defenderWeapon->isRangedWeapon())
-            return;
+            return false;
 
         String dmgString = "";
 
