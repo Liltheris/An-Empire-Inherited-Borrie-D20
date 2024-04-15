@@ -516,6 +516,37 @@ public:
         }
     }
 
+    static String attemptReaction(CreatureObject* attacker, CreatureObject* defender, int damage,int hitRoll, int slot, int apMod, bool meleeAttack = false){
+        RoleplayManager* rp = RoleplayManager::instance();
+
+        String spam = "";
+
+        switch (defender->getStoredInt("reaction_stance")){
+            case RpReactionStance::DEFEND:
+                if (performDefend(attacker, defender, damage, hitRoll, slot, apMod, spam, meleeAttack))
+                    return spam;
+            case RpReactionStance::PARRY:
+                 if (performParry(attacker, defender, damage, hitRoll, slot, apMod, spam, meleeAttack))
+                    return spam;
+            case RpReactionStance::DODGE:
+                if (performDodge(attacker, defender, damage, hitRoll, slot, apMod, spam))
+                    return spam;
+            case RpReactionStance::LIGHTSABERDEFLECT:
+                if (CanPerformReaction(defender, defender->getStoredInt("reaction_stance"), damage, attacker->getWeapon(), defender->getWeapon()))
+                    return DoLightsaberDeflectReaction(attacker, defender, damage, hitRoll, slot, apMod);
+            case RpReactionStance::FORCEDEFLECT:
+                if (CanPerformReaction(defender, defender->getStoredInt("reaction_stance"), damage, attacker->getWeapon(), defender->getWeapon()))
+                    return DoForceDeflectReaction(attacker, defender, damage, hitRoll, slot, apMod);
+            case RpReactionStance::FORCEABSORB:
+                if (CanPerformReaction(defender, defender->getStoredInt("reaction_stance"), damage, attacker->getWeapon(), defender->getWeapon()))
+                    return DoForceAbsorbReaction(attacker, defender, damage, hitRoll, slot, apMod);
+            default:
+                String dmgString = ApplyAdjustedHealthDamage(defender, attacker->getWeapon(), damage, slot);
+                BorEffect::PerformReactiveAnimation(defender, attacker, "hit", GetSlotHitlocation(slot), true, damage, "basic");
+                return ", doing (" + GetWeaponDamageString(attacker, attacker->getWeapon()) + ") = "+ dmgString +" damage.";
+        }
+    }
+
     /*Checks for validity, and performs the defend reaction from the given context.*/
     static bool performDefend(CreatureObject* attacker, CreatureObject* defender, int damage,int hitRoll, int slot, int apMod, String &spam, bool meleeAttack = false){
         RoleplayManager* rp = RoleplayManager::instance();
@@ -524,6 +555,9 @@ public:
         WeaponObject* defenderWeapon = defender->getWeapon();
 
         if (defenderWeapon->isBroken())
+            return false;
+
+        if (defenderWeapon->getDefendIsRestricted())
             return false;
 
         if(attackerWeapon->isRangedWeapon() && !meleeAttack)
@@ -586,6 +620,107 @@ public:
 
         return true;
     }
+
+    static bool performParry(CreatureObject* attacker, CreatureObject* defender, int damage,int hitRoll, int slot, int apMod, String &spam, bool meleeAttack = false){
+        RoleplayManager* rp = RoleplayManager::instance();
+
+        WeaponObject* attackerWeapon = attacker->getWeapon();
+        WeaponObject* defenderWeapon = defender->getWeapon();
+
+        if (defenderWeapon->isBroken())
+            return false;
+
+        if (defenderWeapon->getParryIsRestricted())
+            return false;
+
+        if ((attackerWeapon->isRangedWeapon() && !meleeAttack) || defenderWeapon->isRangedWeapon())
+            return;
+
+        String dmgString = "";
+
+        int roll = 0;
+        int skillMod = 0;
+        int forceBonus = 0;
+
+        int result = getToHitRoll(defender, roll, skillMod, forceBonus);
+
+        BorCharacter::drainActionOrWill(defender, 3*apMod);
+
+        if(result >= hitRoll) {
+            //Successful Parry
+            attacker->setStoredInt("is_vulnerable", 2);
+            BorEffect::PerformReactiveAnimation(defender, attacker, "parry", GetSlotHitlocation(slot), true, damage, "basic");
+            spam += ", but " + BorString::getNiceName(defender)+" parries the attack " + BorString::skillSpam(skillMod, roll, result, hitRoll) +"\\#FFFFFF, avoiding damage and opening " +BorString::getNiceName(defender)+ " up for a counter attack!";
+        } else {
+            //Unsuccessful Parry
+            dmgString = ApplyAdjustedHealthDamage(defender, attackerWeapon, damage, slot);
+            BorEffect::PerformReactiveAnimation(defender, attacker, "parry", GetSlotHitlocation(slot), false, damage, "basic");
+            spam += ". " + BorString::getNiceName(defender) + " tries to parry the attack, but fails " + BorString::skillSpam(skillMod, roll, result, hitRoll) +"\\#FFFFFF, recieving "+ dmgString +" damage!"; 
+        }
+        return true;
+
+    }
+
+    static bool performDodge(CreatureObject* attacker, CreatureObject* defender, int damage,int hitRoll, int slot, int apMod, String &spam){
+        RoleplayManager* rp = RoleplayManager::instance();
+
+        WeaponObject* attackerWeapon = attacker->getWeapon();
+        WeaponObject* defenderWeapon = defender->getWeapon();
+        
+        if (!defender->isStanding())
+            return false;
+            
+        if (defenderWeapon->getDodgeIsRestricted()){
+            defender->sendSystemMessage("You cannot dodge with your currently equipped weapon!");
+            return false;
+        }
+
+        if (BorCharacter::IsWearingArmourUnskilled(defender) || GetCharacterArmourClass(defender) > 2){
+            defender->sendSystemMessage("Your armour prevents you from dodging!");
+            return false;
+        }
+
+        String dmgString = "";
+
+        int skillMod = defender->getSkillMod("rp_maneuverability");
+        int roll = BorDice::Roll(1, 20);
+        
+        int result = roll + skillMod;
+
+        // Determine the cost to dodge, based on the armour class.
+        int dodgeCost = 1 + GetCharacterArmourClass(defender);
+        int armourPenalty = 0;
+        if (GetCharacterArmourClass(defender) > 1)
+            armourPenalty = 5;
+        BorCharacter::drainActionOrWill(defender, dodgeCost * apMod);
+
+        if(result >= hitRoll + armourPenalty) {
+            // The defender has successfully dodged!
+            spam += ", but " + BorString::getNiceName(defender) + " dodges out of the way! " + BorString::skillSpam(skillMod, roll, result, hitRoll) + "\\#FFFFFF ";
+            BorEffect::PerformReactiveAnimation(defender, attacker, "dodge", GetSlotHitlocation(slot), true, damage, "basic");
+            
+        } else if(result >= (hitRoll / 2) + armourPenalty) {
+            // Partial success, defender stumbles to crouching, and takes half damage.
+            dmgString = ApplyAdjustedHealthDamage(defender, attackerWeapon, damage / 2, slot);
+            BorEffect::PerformReactiveAnimation(defender, attacker, "dodge", GetSlotHitlocation(slot), true, damage, "basic");
+            
+            defender->setPosture(CreaturePosture::CROUCHED, true, true);
+
+            spam += ", " + BorString::getNiceName(defender) + " struggles to dodge out of the way! " + BorString::skillSpam(skillMod, roll, result, hitRoll) + "\\#FFFFFF ";
+            spam += BorString::getNiceName(defender) + " stumbles, but only takes "+ dmgString +" damage.";
+
+        } else {
+            // Failed to dodge entirely!
+            dmgString = ApplyAdjustedHealthDamage(defender, attackerWeapon, damage, slot);
+            BorEffect::PerformReactiveAnimation(defender, attacker, "dodge", GetSlotHitlocation(slot), false, damage, "basic");
+
+            spam += ", " + BorString::getNiceName(defender) + " tries to dodge out of the way and fails! " + BorString::skillSpam(skillMod, roll, result, hitRoll) + "\\#FFFFFF ";
+            spam += BorString::getNiceName(defender) +" takes "+ dmgString +" damage.";
+        }
+        return true;
+    }
+
+
 
     //TO DO: When full refactor is done, this either needs to be folded into the main attack command, or sections of the attack command need to be compartmentalised into functions, to be reused here.
     static void FlurryAttackTarget(CreatureObject* attacker, CreatureObject* defender, CreatureObject* commander, bool ignoreLOS = false) {
