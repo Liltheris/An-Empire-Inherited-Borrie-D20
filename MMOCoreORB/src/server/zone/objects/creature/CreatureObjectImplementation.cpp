@@ -3051,15 +3051,15 @@ void CreatureObjectImplementation::sendCustomCombatSpam(const UnicodeString& cus
 
 String CreatureObjectImplementation::getFirstName() const {
 	UnicodeString fullName = getCustomObjectName();
-
-	int idx = fullName.indexOf(' ');
+	UnicodeTokenizer tokenizer(fullName);
 
 	String firstName = "";
 
-	if (idx != -1) {
-		firstName = fullName.subString(0, idx).toString();
-	} else {
-		firstName = fullName.toString();
+	if (tokenizer.hasMoreTokens()){
+		UnicodeString uniName;
+
+		tokenizer.getUnicodeToken(uniName);
+		firstName = uniName.toString();
 	}
 
 	String originalName = getStoredString("original_first_name");
