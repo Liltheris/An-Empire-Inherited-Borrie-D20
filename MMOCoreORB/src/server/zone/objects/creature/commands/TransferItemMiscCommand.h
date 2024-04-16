@@ -134,6 +134,7 @@ public:
 		Locker locker(object);
 
 		object->createChildObjects();
+		object->setSerialNumber(creature->getZoneServer()->getCraftingManager()->generateSerial());
 
 		if (destinationObject->transferObject(object, -1, true)) {
 			destinationObject->broadcastObject(object, true);
