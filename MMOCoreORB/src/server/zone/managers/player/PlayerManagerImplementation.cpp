@@ -4427,12 +4427,12 @@ bool PlayerManagerImplementation::promptTeachableSkills(CreatureObject* teacher,
 	//We checked if they had the player object in slot with isPlayerCreature
 	CreatureObject* student = cast<CreatureObject*>(target);
 
-	if (teacher->getGroup() == nullptr || student->getGroup() != teacher->getGroup()) {
+	/*if (teacher->getGroup() == nullptr || student->getGroup() != teacher->getGroup()) {
 		StringIdChatParameter params("teaching", "not_in_same_group"); //You must be within the same group as %TT in order to teach.
 		params.setTT(student->getDisplayedName());
 		teacher->sendSystemMessage(params);
 		return false;
-	}
+	}*/
 
 	if (student->isDead()) {
 		StringIdChatParameter params("teaching", "student_dead"); //%TT does not feel like being taught right now.

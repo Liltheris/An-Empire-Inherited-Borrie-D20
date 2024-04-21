@@ -60,12 +60,14 @@ public:
 		if (args.hasMoreTokens()) {
 			args.getStringToken(command);
 			if(command == "faux") {
-				BorEffect::PerformReactiveAnimation(targetCreature, creature, "hit", CombatManager::HIT_BODY, true);
+				BorEffect::PerformReactiveAnimation(targetCreature, creature, "hit", CombatManager::HIT_BODY, true, System::random(29)+1, "basic");
 			} else if(command == "nolos") {
-				BorCombat::AttackTarget(creature, targetCreature, creature, -1, false, true);
+				//BorCombat::AttackTarget(creature, targetCreature, creature, -1, false, true);
+				BorCombat::standardAttack(creature, creature, targetCreature, true);
 			}
 		} else {
-			BorCombat::AttackTarget(creature, targetCreature, creature, -1, false);
+			//BorCombat::AttackTarget(creature, targetCreature, creature, -1, false);
+			BorCombat::standardAttack(creature, creature, targetCreature, false);
 		}
 
 		return SUCCESS;

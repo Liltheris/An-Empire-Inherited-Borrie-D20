@@ -244,7 +244,7 @@ public:
 				playerCreature->sendSystemMessage(pName + msg);
 			}
 			if(playerCreature->getFirstName() == "Discord") {
-				playerCreature->sendSystemMessage("lw:" + creature->getFirstName() + ":DM Call - " + msg);
+				playerCreature->sendSystemMessage("dmcall::" + creature->getFirstName() + "::DM Call - " + msg);
 			}
 		}
 	}
@@ -278,7 +278,7 @@ public:
 				continue;
 
 			if(playerCreature->getFirstName() == "Discord") {
-				playerCreature->sendSystemMessage("lw:" + creature->getFirstName() + ":" + msg);
+				playerCreature->sendSystemMessage("lw::" + creature->getFirstName() + "::" + msg);
 			}
 
 			if (playerObject->isPrivileged()) { // TODO: Check to see if a character is a secret DM.
@@ -315,19 +315,10 @@ public:
 
 			Account* account = playerObject->getPlayerObject()->getAccount();
 
-			String name = playerObject->getFirstName();
-			String originalName = playerObject->getStoredString("original_first_name");
-
-			name += playerObject->getLastName() == "" ? "" : " " + playerObject->getLastName();
-
-			if(originalName != playerObject->getFirstName() && originalName != ""){
-				originalName = " ("+playerObject->getStoredString("original_name")+") ";
-			} else {
-				originalName = "";
-			}
+			String name = playerObject->getDisplayedName();
 
 			if(showAll) {
-				result += "\\#FFFF00" + name + originalName + "\\#FFFFFF (" + account->getUsername() +") ";
+				result += "\\#FFFF00" + name + "\\#FFFFFF (" + account->getUsername() +") ";
 				if(account->getAdminLevel() > 0) {
 					result += " Admin: " + String::valueOf(account->getAdminLevel());
 				} 
@@ -378,18 +369,9 @@ public:
 
 			Account* account = playerObject->getPlayerObject()->getAccount();
 
-			String name = playerObject->getFirstName();
-			String originalName = playerObject->getStoredString("original_first_name");
+			String name = playerObject->getDisplayedName();
 
-			name += playerObject->getLastName() == "" ? "" : " " + playerObject->getLastName();
-
-			if(originalName != playerObject->getFirstName() && originalName != ""){
-				originalName = " ("+playerObject->getStoredString("original_name")+") ";
-			} else {
-				originalName = "";
-			}
-
-			result += "\\#FFFF00" + name + originalName + "\\#FFFFFF (" + account->getUsername() +"): ";
+			result += "\\#FFFF00" + name + "\\#FFFFFF (" + account->getUsername() +"): ";
 
 			result += GetPlanetName(playerPlanet);
 
@@ -529,7 +511,7 @@ public:
 
 			if(playerCount < 0) playerCount = 0;
 
-			discordBot->sendSystemMessage("who:" + String::valueOf(playerCount) + ":" + String::valueOf(dmCount));
+			discordBot->sendSystemMessage("who::" + String::valueOf(playerCount) + "::" + String::valueOf(dmCount));
 		} catch (Exception& e) {
 			
 		}

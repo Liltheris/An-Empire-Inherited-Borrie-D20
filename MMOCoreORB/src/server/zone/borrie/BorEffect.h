@@ -234,10 +234,10 @@ public:
 		}
 	}
 
-	static void PerformReactiveAnimation(CreatureObject* reactor, CreatureObject* reactee, String mode, uint8 hitLocation, bool success) {
+	static void PerformReactiveAnimation(CreatureObject* reactor, CreatureObject* reactee, String mode, uint8 hitLocation, bool success, int damage, String attackType) {
 		ManagedReference<WeaponObject*> reacteeWeapon = reactee->getWeapon();
 		ManagedReference<WeaponObject*> reactorWeapon = reactor->getWeapon();
-		uint32 animCRC = GetDefaultAttackAnimation(reactee->asTangibleObject(), reacteeWeapon, hitLocation, 0).hashCode();
+		uint32 animCRC = getCombatAnimation(reactee->asTangibleObject(), reacteeWeapon, damage, attackType).hashCode();
 		// hitstatus: 0x0-MISS 0x1-HIT 0x2-BLOCK 0x3-DODGE 0x5-COUNTER 0x7-RICOCHET 0x8-REFLECT 0x9-REFLECT_TO_TARGET
 		int hitStatus = 0x01;
 		if (mode == "defend") {
@@ -260,6 +260,47 @@ public:
 			hitStatus = 0x0;
 		}
 		reactee->doCombatAnimation(reactor, animCRC, hitStatus, 0x00);
+	}
+
+	/*Returns a complete combat animation string.*/
+	static String getCombatAnimation(TangibleObject* attacker, WeaponObject* weapon, int damage, String attackType = "basic"){
+		RoleplayManager* rp = RoleplayManager::instance();
+
+		String animSet = ""; //TO DO: Implement explicit animsets on weapon templates.
+		String animation = "";
+
+		if (attacker->getGameObjectType() == SceneObjectType::DROIDCREATURE || attacker->getGameObjectType() == SceneObjectType::PROBOTCREATURE) {
+			return "droid_attack_light";
+		}
+
+		if (attacker->isCreature()){
+			if (weapon->isRangedWeapon())
+				return "creature_attack_ranged_light";
+			else
+				return "creature_attack_light";
+		}
+
+		if (animSet == ""){
+			animSet = weapon->getWeaponType();
+
+			if(animSet == "onehandmelee")
+				animSet = "1h";
+			else if(animSet == "twohandmelee")
+				animSet = "2h";
+			else if(animSet == "polearm")
+				animSet = "pole";
+		}
+
+		// Handling of normal and aimed attacks.
+		if(attackType == "basic"){
+			animation = rp->getCombatAnim(animSet, damage);
+		} else if (attackType == "power"){
+			animation = rp->getPowerAnim(animSet);
+		} else if (attackType == "flurry"){
+			animation = rp->getFlurryAnim(animSet);
+		}
+
+		return animation;
 	}
 
 	static String GetDefaultAttackAnimation(TangibleObject* attacker, WeaponObject* weapon, uint8 hitLocation, int damage) {

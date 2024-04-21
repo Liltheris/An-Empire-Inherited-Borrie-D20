@@ -39,6 +39,38 @@ public:
 			return false;
 	}
 
+	static int getAvailableAction(CreatureObject* creature) {
+        if(creature->getHAM(3) == 0)
+            return creature->getHAM(6);
+        else return creature->getHAM(3) + creature->getHAM(6);
+    }
+
+    static int getAvailableForce(CreatureObject* creature) {
+        if(creature->isPlayerCreature()) {
+            return creature->getPlayerObject()->getForcePower();
+        } else {
+            return 99; //TODO: Should be an actual pool on NPCs.
+        }
+    }
+
+	static void drainActionOrWill(CreatureObject* creature, int amount) {
+        if(creature->getHAM(3) >= amount)
+            BorCharacter::ModPool(creature, "action", -amount, true);
+        else {
+            int remainingAction = creature->getHAM(3);
+            BorCharacter::ModPool(creature, "action", -remainingAction, true);
+            BorCharacter::ModPool(creature, "will", -(amount - remainingAction), true);
+        }
+    }
+
+    static void drainForce(CreatureObject* creature, int amount) {
+        if(creature->isPlayerCreature()) {
+            BorCharacter::ModPool(creature, "force", -amount, true);
+        } else {
+            //TODO: Handle NPC force pool.
+        }
+    }
+
 	static bool HasRequiredArmourSkill(CreatureObject* creature, String slot){
 		ManagedReference<ArmorObject*> armour = GetArmorAtSlot(creature, slot);
 		if(armour == nullptr)
@@ -345,13 +377,13 @@ public:
 		if (!suppressMessage)
 			BorrieRPG::BroadcastMessage(creature, report);
 		
-		report += " (Was H=" + String::valueOf(lastHealth);
-		report += ", A=" + String::valueOf(lastAction);
-		report += ", W=" + String::valueOf(lastWill);
+		report += " (Was H:" + String::valueOf(lastHealth);
+		report += ", A:" + String::valueOf(lastAction);
+		report += ", W:" + String::valueOf(lastWill);
 
 		if (creature->isPlayerCreature()) {
 			if (creature->getPlayerObject()->getForcePowerMax() > 0) {
-				report += ", F=" + String::valueOf(lastForce) + ")";
+				report += ", F:" + String::valueOf(lastForce) + ")";
 			} else {
 				report += ")";
 			}

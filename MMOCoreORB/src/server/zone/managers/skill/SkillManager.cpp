@@ -242,6 +242,9 @@ bool SkillManager::awardSkill(const String& skillName, CreatureObject* creature,
 
 	Locker locker(creature);
 
+	if(BorSkill::GetSkillIsForceSkill(skill->getSkillName()) && creature->getStoredInt("force_skill_learned") > 0)
+		return false;
+
 	//Check for required skills.
 	auto requiredSkills = skill->getSkillsRequired();
 	for (int i = 0; i < requiredSkills->size(); ++i) {
@@ -353,25 +356,7 @@ bool SkillManager::awardSkill(const String& skillName, CreatureObject* creature,
 		//if (skill->getSkillName().contains("force_sensitive") && skill->getSkillName().contains("_04"))
 			//JediManager::instance()->onFSTreeCompleted(creature, skill->getSkillName());
 
-		if(!dmOverride) {
-			if(skill->getSkillName().contains("rp_lightsaber") || skill->getSkillName().contains("rp_sense") || skill->getSkillName().contains("rp_lightning")
-			|| skill->getSkillName().contains("rp_telekinesis") || skill->getSkillName().contains("rp_control") || skill->getSkillName().contains("rp_alter")
-			|| skill->getSkillName().contains("rp_inward")) {
-			//Prompt Force Immersion Update Check
-			int fsCount = getForceSkillCount(creature);
-			if(creature->hasSkill("rp_force_prog_rank_03")) {
-				if(fsCount >= 40) {
-						awardSkill("rp_force_prog_rank_04", creature, notifyClient, false, false);
-					}
-				}else if(creature->hasSkill("rp_force_prog_rank_02")) {
-					if(fsCount >= 20) {
-						awardSkill("rp_force_prog_rank_03", creature, notifyClient, false, false);
-					}
-				} else if(creature->hasSkill("rp_force_prog_rank_01")) {
-					awardSkill("rp_force_prog_rank_02", creature, notifyClient, false, false);
-				}  
-			}
-		}
+		BorSkill::updateForceImmersion(creature, notifyClient);
 
 		//Set our cooldown timer to 16 hours if the skill wasn't granted by a DM.
 		if(BorSkill::GetSkillIsForceSkill(skill->getSkillName()) && ghost->getAdminLevel() < 14){

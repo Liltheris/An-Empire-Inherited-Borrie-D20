@@ -54,12 +54,14 @@ function character_creation_convo_handler:runScreenHandlers(conversationTemplate
 	local playerName = CreatureObject(conversingPlayer):getFirstName()
 	local playerFactionTag = SceneObject(conversingPlayer):getStoredString("faction_current")
 
-	local attributePoints = SceneObject(conversingPlayer):getStoredInt("starer_attr_points")
-	local skillPoints = SceneObject(conversingPlayer):getStoredInt("starer_skill_points")
+	local attributePoints = SceneObject(conversingPlayer):getStoredInt("starter_attr_points")
+	local skillPoints = SceneObject(conversingPlayer):getStoredInt("starter_skill_points")
 
 	local homeworld = SceneObject(conversingPlayer):getStoredString("homeworld")
 
-	local isSoldier = CreatureObject(conversingPlayer):hasSkill("rp_bg_military")
+	local isImp = CreatureObject(conversingPlayer):hasSkill("rp_bg_imp_recruit")
+	local isRep = CreatureObject(conversingPlayer):hasSkill("rp_bg_rep_recruit")
+
 	local isMando = CreatureObject(conversingPlayer):hasSkill("rp_bg_mando")
 	
 	clonedConversation:removeAllOptions()
@@ -71,36 +73,23 @@ function character_creation_convo_handler:runScreenHandlers(conversationTemplate
 		readyToLeave = false
 	end
 
-	if (isSoldier and playerFactionTag == "") then
-		readyToLeave = false
-	end
-
 	if (attributePoints ~= 0 or skillPoints ~= 0) then
 		readyToLeave = false
 	end
 
-	--Set logic for which logic to take for the first screen.
-	if(screenID == "greeting") then
-		if(playerFactionTag == "") then
-			traitorLevel = BorFactionManager:getTraitorLevel(conversingPlayer, factionTag)
-			if(traitorLevel == 1) then
-				screenID = "traitor1_greeting"
-			elseif(traitorLevel == 2) then
-				screenID = "traitor2_greeting"
-			else 
-				screenID = "greeting"
-			end			
-		elseif(playerFactionTag == factionTag) then
-			screenID = "greeting_member"
-		elseif(BorFactionManager:getFactionIsEnemy(factionTag, playerFactionTag) == true) then
-			screenID = "enemy_greeting"
-		elseif(BorFactionManager:getFactionIsAlly(factionTag, playerFactionTag) == true) then
-			screenID = "ally_greeting"
-		end
+	--Set player faction for soldiers.
+	if (isImp and playerFactionTag == "") then
+		SceneObject(conversingPlayer):setStoredString("faction_current", "empire")
+		SceneObject(conversingPlayer):setStoredString("rank_empire", 1)
+	end
+
+	if (isRep and playerFactionTag == "") then
+		SceneObject(conversingPlayer):setStoredString("faction_current", "newrepublic")
+		SceneObject(conversingPlayer):setStoredString("rank_newrepublic", 1)
 	end
 
 	--Handle mando helmet distribution.
-	if(string.find(screenID, "mando")) then
+	if(string.find(screenID, "mando_helmet")) then
 		SceneObject(conversingPlayer):setStoredString("faction_current", "mando")
 		SceneObject(conversingPlayer):setStoredString("rank_mando", 1)
 
@@ -128,11 +117,12 @@ function character_creation_convo_handler:runScreenHandlers(conversationTemplate
 		end
 	end
 
+	--Travel to our starting location of choice.
 	if(string.find(screenID, "start_")) then
 		local planet
 		local dest
 		-- Soldiers start at their respective bases.
-		if (isSoldier) then
+		if (isRep or isImp) then
 			if(screenID == "start_carida") then
 				planet = travelSystem:getPlanetFromTag("carida")
 				dest = planet.spaceports[1].public_arrival
@@ -174,16 +164,13 @@ function character_creation_convo_handler:runScreenHandlers(conversationTemplate
 		if (screenID == "greeting") then
 			clonedConversation:setCustomDialogText("Welcome, "..playerName..". Come, let us decide your origins.")
 		else
-			clonedConversation:setCustomDialogText("Please, do continue.")
+			clonedConversation:setCustomDialogText("Let us continue.")
 		end
 
-		--Soldiers choose their starting faction.
-		if(isSoldier) then
-			if (playerFactionTag == "") then
-				clonedConversation:addOption("I would like to choose the faction I fight for.", "faction")
-			else
-				clonedConversation:addOption("I would like to change the faction I fight for.", "faction")
-			end
+		if(readyToLeave) then
+			clonedConversation:addOption("I am ready to begin my adventure.", "leave")
+		else
+			clonedConversation:addOption("What is the next step?", "next_step")
 		end
 
 		--Mandos start with their helmet.
@@ -195,36 +182,8 @@ function character_creation_convo_handler:runScreenHandlers(conversationTemplate
 		--if(homeworld ~= "") then
 		--	clonedConversation:addOption("I would like to choose a home world.", "homeworld")
 		--end
-
-		--The player is ready to leave!
-		if(readyToLeave) then
-			clonedConversation:addOption("I am ready to begin my adventure.", "leave")
-		end
+		
 		clonedConversation:addOption("I should go.", "abort")
-
-	------------------------------------------------------------------------------------------------------
-	--Handling soldiers selecting their starting faction.
-	------------------------------------------------------------------------------------------------------
-	elseif(screenID == "faction") then
-		clonedConversation:SetCustomDialogText("You are a soldier, but who do you fight for? The Empire? Or the Republic?")
-		clonedConversation:addOption("The Empire.", "soldier_empire")
-		clonedConversation:addOption("The Republic.", "soldier_republic")
-
-	elseif(screenID == "soldier_empire") then
-		clonedConversation:SetCustomDialogText("So be it.")
-		clonedConversation:addOption("For the Empire!", "return_menu")
-
-		--Set faction data.
-		SceneObject(conversingPlayer):setStoredString("faction_current", "empire")
-		SceneObject(conversingPlayer):setStoredString("rank_empire", 1)
-
-	elseif(screenID == "soldier_republic") then
-		clonedConversation:SetCustomDialogText("So be it.")
-		clonedConversation:addOption("For the Republic!", "return_menu")
-
-		--Set faction data.
-		SceneObject(conversingPlayer):setStoredString("faction_current", "newrepublic")
-		SceneObject(conversingPlayer):setStoredString("rank_newrepublic", 1)
 	
 	------------------------------------------------------------------------------------------------------
 	--Handling the distribution of the starter helmet for mando players.
@@ -243,15 +202,15 @@ function character_creation_convo_handler:runScreenHandlers(conversationTemplate
 	elseif(screenID == "leave") then
 		clonedConversation:SetCustomDialogText("Very well, "..playerName..", I will not stop you. Choose where you wish to begin your adventure.")
 		--Soldiers can only deploy to planets that their faction controls, or have active bases on.
-		if(isSoldier) then
-			if(playerFactionTag == "empire") then
+		if(isImp or isRep) then
+			if(isImp) then
 				clonedConversation:addOption("Carida.", "start_carida")
 				clonedConversation:addOption("Tatooine.", "start_tatooine")
 				clonedConversation:addOption("Rori.", "start_rori")
 				clonedConversation:addOption("Ord Mantell.", "start_ord_mantell")
 				--clonedConversation:addOption("Sulon.", "start_sulon")
 			end
-			if(playerFactionTag == "newrepublic") then
+			if(isRep) then
 				clonedConversation:addOption("Dantooine.", "start_dantooine")
 				clonedConversation:addOption("Rori.", "start_rori")
 			end
@@ -273,6 +232,29 @@ function character_creation_convo_handler:runScreenHandlers(conversationTemplate
 		clonedConversation:setCustomDialogText("Where you hail from is not insignificant, but it mustn't define you.")
 		clonedConversation:addOption("I am from Tatooine.", "home_tatooine")
 		clonedConversation:addOption("I am from Tatooine.", "home_tatooine")
+
+	------------------------------------------------------------------------------------------------------
+	--Player advice.
+	------------------------------------------------------------------------------------------------------
+	elseif(screenID == "next_step") then
+		if(attributePoints > 0) then
+			clonedConversation:setCustomDialogText("You should consider your attributes. Remember, these attributes define who you are, and are very slow to improve. You start with 30 points to use. Use '/train' to access the training menu, and assign your points.")
+			clonedConversation:addOption("I will do that.", "abort")
+
+		elseif(skillPoints > 0) then
+			clonedConversation:setCustomDialogText("You should consider your skills. Skills are easy to learn, but require a lot of experience to master, especially if the skill's attribute is lower than your skill level. Use '/train' to access the training menu, and assign your points.")
+			clonedConversation:addOption("I will do that.", "abort")
+
+		elseif(isMando and playerFactionTag == "") then
+			clonedConversation:setCustomDialogText("Your attributes and skills are ready, now you must choose your buy'ce.")
+			clonedConversation:addOption("Mandalorian Helmet", "mando_helmet_s01")
+			clonedConversation:addOption("Mandalorian Helmet (feminine)", "mando_helmet_s02")
+			clonedConversation:addOption("Mandalorian Helmet (beta)", "mando_helmet_beta")
+			clonedConversation:addOption("Crusader Mk. III Helmet", "mando_helmet_reb")
+			clonedConversation:addOption("Crusader Mk. IV Helmet", "mando_helmet_imp")
+		end
+
+
 	end
 	
     return pConvScreen

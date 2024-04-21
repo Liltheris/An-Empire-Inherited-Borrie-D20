@@ -38,6 +38,16 @@ public:
         return colour+"(1d20: "+ rollColour(roll, 20, colour) + " + "+ String::valueOf(bonus) + " = " + String::valueOf(result) + " vs DC: "+String::valueOf(dc)+")";
     }
 
+    /*Outputs a skill roll in the following format: (1d20: [roll] + [bonus] + [force] = [result] vs DC: [dc])*/
+    static String skillSpam(int bonus, int roll, int force, int result, int dc, String colour = "\\#DBDBDB"){
+        String output = colour+"(1d20: "+ rollColour(roll, 20, colour) + " + "+ String::valueOf(bonus);
+
+        if (force > 0)
+            output += " + \\#FF00FF"+String::valueOf(force)+colour;
+
+        return output + " = " + String::valueOf(result) + " vs DC: "+String::valueOf(dc)+")";
+    }
+
     /*Outputs a damage roll in the following format: [count]d[type]: [roll] + [bonus] = [result] damage*/
     static String damageSpam(int count, int type, int bonus, int roll, int result, String colour = "\\#FFFFFF"){
         return String::valueOf(count)+"d"+String::valueOf(type)+": "+String::valueOf(roll)+" + "+String::valueOf(bonus) +" = \\#FF9999"+String::valueOf(result)+colour+" damage";

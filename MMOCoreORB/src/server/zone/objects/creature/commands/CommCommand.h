@@ -33,7 +33,7 @@ public:
 			return GENERALERROR;
 
 		ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
-		ManagedReference<CreatureObject*> targetCreature;
+		ManagedReference<CreatureObject*> targetCreature = nullptr;
 
 		if (ghost == nullptr)
 			return GENERALERROR;
@@ -46,8 +46,9 @@ public:
 		// Obtain the target, if we have one.
 		if (target != 0) {
 			ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target, false);
-			if (object->isCreatureObject() && target == creature->getTargetID()){
+			if (object->isCreatureObject() && target != creature->getTargetID()){
 				targetCreature = object->asCreatureObject();
+				targetName = targetCreature->getFirstName();
 			}
 		}
 
@@ -72,14 +73,14 @@ public:
 			}
 		}
 
-		String message = arguments.toString().subString(1 + targetName.length(), arguments.toString().length());
+		String message = args.getRemainingString();
 		int chatType = 0;
 		String chatTypeString = "";
 
 		if (args.hasMoreTokens()){
 			chatTypeString = args.getStringToken().toLowerCase();
 
-			if (BorrieRPG::GetChatTypeID(chatTypeString) != -1 && BorrieRPG::GetChatTypeID(chatTypeString) != 38){
+			if (BorrieRPG::GetChatTypeID(chatTypeString) != -1 && chatTypeString != "emote" && chatTypeString != "think" && chatTypeString != "say"){
 				//Set our chatType and remove the tag from our command.
 				chatType = BorrieRPG::GetChatTypeID(chatTypeString);
 				message = message.subString(1+ chatTypeString.length(), message.length());

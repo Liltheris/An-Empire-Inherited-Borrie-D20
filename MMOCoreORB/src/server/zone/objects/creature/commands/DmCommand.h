@@ -819,6 +819,24 @@ public:
 					} else {
 						creature->sendSystemMessage("Invalid Target.");
 					}	
+				} else if (command == "printstoredint") {
+					if(object != nullptr) {
+						if (object->isCreatureObject() && object->isPlayerCreature()) {
+							String intName;
+							if ((args.hasMoreTokens())) {
+								args.getStringToken(intName);
+							} else {
+								creature->sendSystemMessage("Incorrect usage. /dm getstoredint [IntName]");
+								return SUCCESS;
+							}
+							if (object->isCreatureObject()) {
+								creo = object->asCreatureObject();
+								creature->sendSystemMessage("Stored Int: "+intName+": "+String::valueOf(creo->getStoredInt(intName)));
+							}	
+						}
+					} else {
+						creature->sendSystemMessage("Invalid Target.");
+					}
 				}
 			}
 		} catch (Exception& e) {
