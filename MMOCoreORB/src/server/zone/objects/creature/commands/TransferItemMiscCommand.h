@@ -14,6 +14,7 @@
 #include "server/zone/objects/transaction/TransactionLog.h"
 #include "server/zone/managers/collision/CollisionManager.h"
 #include "server/zone/objects/scene/TransferErrorCode.h"
+#include "server/zone/managers/crafting/CraftingManager.h"
 #include "QueueCommand.h"
 
 class TransferItemMiscCommand : public QueueCommand {
