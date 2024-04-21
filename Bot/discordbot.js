@@ -148,6 +148,7 @@ setInterval(() => SWG.sendTell(config.SWG.Character, "getwho"), 3000);
 
 function parseMood(moodString){
     switch (moodString){
+        case "": return "";
         case "default": return "";
         case "angry": return " angrily";
         case "bloodthirsty": return " bloodthirstily";
