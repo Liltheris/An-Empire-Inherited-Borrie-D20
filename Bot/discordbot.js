@@ -35,7 +35,7 @@ function discordBot() {
 
     client.login(config.Discord.BotToken)
         .then(t => {
-            client.user.setPresence({ status: "online", game: {name: "Facilitating OOC Chat"}});
+            client.user.setPresence({ status: "online", game: {name: "Bot initialising..."}});
             server = client.guilds.find("name", config.Discord.ServerName);
             notif = server.channels.find("name", config.Discord.NotificationChannel);
             chat = server.channels.find("name", config.Discord.ChatChannel);
@@ -51,7 +51,7 @@ function discordBot() {
 discordBot();
 
 SWG.serverDown = function() {
-    if (notif) notif.send(notifRole + " server DOWN");
+    if (notif) notif.send(notifRole + " server DOWN!");
 }
 
 SWG.serverUp = function() {
@@ -85,8 +85,8 @@ SWG.recvSpatialChat = function(message, player) {
 		spatialMsg = "**-"+player+"-**\n```ini\n[" + messageContent + "]\n```";
 	} else if(dataArray[0] == "emote") {
 		spatialMsg = "**" + player + " " + messageContent + "**";
-	} else if(dataArray[0] == "whisper") {
-		spatialMsg = "**" + player + " whispers something unintelligible.**";
+	//} else if(dataArray[0] == "whisper") {
+	//	spatialMsg = "**" + player + " whispers something unintelligible.**";
 	} else if(messageContent[0] !== '(') {
 		spatialMsg = "**" + player + " " + dataArray[0] + "s"+parseMood(mood)+",** \"" + messageContent + "\"" + parseLanguage(languageID); 
 	} else {
