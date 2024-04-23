@@ -118,7 +118,7 @@ public:
         ChatManager* chatManager = target->getZoneServer()->getChatManager();
         ChatRoom* obsvRoom = chatManager->getChatRoomByFullPath("SWG.An Empire Inherited.Chat.global");
 
-        obsvRoom->broadcastMessage(new ChatRoomMessage("DM " + target->getFirstName(), target->getZoneServer()->getGalaxyName(), "DM|" + message, obsvRoom->getRoomID(), false));
+        obsvRoom->broadcastMessage(new ChatRoomMessage("DM " + target->getFirstName(), target->getZoneServer()->getGalaxyName(), "DM::" + message, obsvRoom->getRoomID(), false));
     }
 };
 
