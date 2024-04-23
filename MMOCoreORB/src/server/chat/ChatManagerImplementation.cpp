@@ -1102,8 +1102,7 @@ void ChatManagerImplementation::broadcastChatMessage(CreatureObject* sourceCreat
 
 	String spatialChatTypeName = spatialChatTypeNames.get(spatialChatType);
 
-	if(spatialChatTypeName != "whisper")
-		BorChat::RateOutgoingMessage(sourceCreature, message,  spatialChatType);
+	BorChat::RateOutgoingMessage(sourceCreature, message,  spatialChatType);
 
 	BorChat::PrintSpatialChatToDMs(sourceCreature, message);
 	BorChat::PrintSpatialChatToDiscord(sourceCreature, message, spatialChatTypeName, languageID, moodType);
