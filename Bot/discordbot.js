@@ -82,7 +82,7 @@ SWG.recvSpatialChat = function(message, player) {
 	var spatialMsg = "msg.";
 	
 	if(dataArray[0] == "DM") {
-		spatialMsg = "**-"+player+"-**\n```ini\n[" + messageContent + "]\n```";
+		spatialMsg = "**-"+player+"-**\n```ini\n[" + dataArray[2] + "]\n```";
 	} else if(dataArray[0] == "emote") {
 		spatialMsg = "**" + player + " " + messageContent + "**";
 	//} else if(dataArray[0] == "whisper") {
