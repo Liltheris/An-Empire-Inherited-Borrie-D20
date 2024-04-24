@@ -1,8 +1,8 @@
-arbineobject_draft_schematic_roleplay_utility_computer_spike = object_draft_schematic_roleplay_utility_shared_computer_spike:new {
+arbineobject_draft_schematic_roleplay_item_security_spike = object_draft_schematic_roleplay_item_shared_security_spike:new {
 
 	templateType = DRAFTSCHEMATIC,
 
-	customObjectName = "Computer Spike",
+	customObjectName = "Security Spike",
 
 	craftingToolTab = 1, -- (See DraftSchematicObjectTemplate.h)
 	complexity = 12,
@@ -22,14 +22,14 @@ arbineobject_draft_schematic_roleplay_utility_computer_spike = object_draft_sche
 	customizationDefaults = {},
 
 	ingredientTemplateNames = {"craft_weapon_ingredients_n","craft_weapon_ingredients_n"},
-	ingredientTitleNames = {"electronic_scrap","circuit_board"},
+	ingredientTitleNames = {"computer_spike","circuit_board"},
 	ingredientSlotType = {1,1},
-	resourceTypes = {"object/tangible/borrp/crafting/shared_comp_electronic_scrap.iff","object/tangible/borrp/crafting/shared_comp_circuit_board.iff"},
+	resourceTypes = {"object/tangible/borrp/item/computer_spike.iff","object/tangible/borrp/crafting/shared_comp_circuit_board.iff"},
 	resourceQuantities = {1,1},
 	contribution = {100,100},
 
-	targetTemplate = "object/borrp/item/computer_spike.iff",
+	targetTemplate = "object/borrp/item/security_spike.iff",
 
 	additionalTemplates = {}
 
-}ObjectTemplates:addTemplate(object_draft_schematic_roleplay_utility_computer_spike, "object/draft_schematic/roleplay/utility/computer_spike.iff")
+}ObjectTemplates:addTemplate(object_draft_schematic_roleplay_item_security_spike, "object/draft_schematic/roleplay/item/security_spike.iff")
