@@ -757,3 +757,7 @@ includeFile("borrie/droid/screenplays.lua")
 
 --Borrie's Mando System
 includeFile("borrie/mando/screenplays.lua")
+
+--AEI
+--Roleplay Utilities
+includeFile("roleplay/screenplays.lua")

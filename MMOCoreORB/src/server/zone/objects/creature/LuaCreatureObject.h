@@ -131,6 +131,8 @@ namespace creature {
 		int getShockWounds(lua_State* L);
 		int doCombatAnimation(lua_State* L);
 		int slotPassenger(lua_State* L);
+
+		int clearState(lua_State* L);
 	private:
 		// The pointer to the 'real object' defined in object.cc
 		CreatureObject* realObject;
