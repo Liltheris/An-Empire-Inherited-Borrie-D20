@@ -31,7 +31,7 @@ function BorRpItemComputerSpikeMenuComponent:handleObjectMenuSelect(pObject, pPl
 		end
 
 		-- Message output
-		local msg = CreatureObject(pPlayer):getFirstName().." uses a computer spike! Slicing check: 1d20: "..rollString.." + Modifier: "..skillValue
+		local msg = CreatureObject(pPlayer):getFirstName().." uses a computer spike! Computers check: 1d20: "..rollString.." + Modifier: "..skillValue
 		msg = msg.." + Item: \\#59FFCD"..itemMod.."\\#FFFFFF"
 		msg = msg.." Result: "..result
 

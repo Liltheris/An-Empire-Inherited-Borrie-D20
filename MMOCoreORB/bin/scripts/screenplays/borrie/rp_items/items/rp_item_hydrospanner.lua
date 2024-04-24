@@ -31,7 +31,7 @@ function BorRpItemHydrospannerMenuComponent:handleObjectMenuSelect(pObject, pPla
 		end
 
 		-- Message output
-		local msg = CreatureObject(pPlayer):getFirstName().." uses a hydrospanner! Slicing check: 1d20: "..rollString.." + Modifier: "..skillValue
+		local msg = CreatureObject(pPlayer):getFirstName().." uses a hydrospanner! Mechanics check: 1d20: "..rollString.." + Modifier: "..skillValue
 		msg = msg.." + Item: \\#59FFCD"..itemMod.."\\#FFFFFF"
 		msg = msg.." Result: "..result
 
