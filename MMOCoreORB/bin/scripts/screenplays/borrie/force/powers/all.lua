@@ -1,3 +1,6 @@
+require("screenplays.roleplay.rp_utility")
+require("screenplays.roleplay.rp_combat")
+
 BorForceUtility = {
 
 }
