@@ -369,6 +369,7 @@ function BorForceUtility:getMaxFPI(pPlayer)
 	local forcePower = PlayerObject(pGhost):getForcePower()
 	local forcePowerMax = PlayerObject(pGhost):getForcePowerMax()
 
+	-- Default to 0 for non-FS / unawakened.
 	local usableForce = 0
 
 	if(CreatureObject(pPlayer):hasSkill("rp_force_prog_master")) then
@@ -389,9 +390,6 @@ function BorForceUtility:getMaxFPI(pPlayer)
 	elseif(CreatureObject(pPlayer):hasSkill("rp_force_prog_rank_01")) then 
 		-- Aware Force users can use up to 2 FPI.
 		usableForce = 2
-	else 
-		-- Can't use the Force at all, so max FPI is 0.
-		return 0
 	end
 
 	-- Return either the usable Force, or the available Force if lower.
@@ -419,9 +417,7 @@ function BorForceUtility:promptForcePointInput(pPlayer, power, screenplay, callb
 		fpiMin = power.fpiMin
 	end
 
-	local usableForcePower = self:getMaxFPI(pPlayer)
-
-	usableForcePower = math.min(fpiMax, usableForcePower)
+	local usableForcePower = math.min(fpiMax, BorForceUtility:getMaxFPI(pPlayer))
 	
 	local suiManager = LuaSuiManager()
 	local optionsTo = {"Force Pool", usableForcePower, 1}
