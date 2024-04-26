@@ -378,11 +378,11 @@ function BorForceUtility:getMaxFPI(pPlayer)
 
 	elseif(CreatureObject(pPlayer):hasSkill("rp_force_prog_rank_04")) then
 		-- Journeyman Force users can use half of their Force bar.
-		usableForce = forcePowerMax / 2
+		usableForce = forcePowerMax * 0.5
 
 	elseif(CreatureObject(pPlayer):hasSkill("rp_force_prog_rank_03")) then
 		-- Adept Force users can use a quarter of their Force bar.
-		usableForce = forcePowerMax / 4
+		usableForce = forcePowerMax * 0.25
 
 	elseif(CreatureObject(pPlayer):hasSkill("rp_force_prog_rank_02")) then
 		-- Initiated Force users can use up to 5 FPI.
@@ -417,7 +417,7 @@ function BorForceUtility:promptForcePointInput(pPlayer, power, screenplay, callb
 		fpiMin = power.fpiMin
 	end
 
-	local usableForcePower = math.min(fpiMax, BorForceUtility:getMaxFPI(pPlayer))
+	local usableForcePower = math.min(fpiMax, BorForceUtility:getMaxFPI(pPlayer)) - fpiMin
 	
 	local suiManager = LuaSuiManager()
 	local optionsTo = {"Force Pool", usableForcePower, 1}
