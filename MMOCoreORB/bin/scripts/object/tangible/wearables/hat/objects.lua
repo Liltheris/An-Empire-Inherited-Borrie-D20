@@ -1226,3 +1226,8 @@ object_tangible_wearables_hat_shared_hat_imp_veers_s01 = SharedTangibleObjectTem
 }
 ObjectTemplates:addClientTemplate(object_tangible_wearables_hat_shared_hat_imp_veers_s01, "object/tangible/wearables/hat/shared_hat_imp_veers_s01.iff")
 --********************************************************************************************************************************************************
+object_tangible_wearables_hat_shared_hat_twilek_s06 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/hat/shared_hat_twilek_s06.iff"
+}
+ObjectTemplates:addClientTemplate(object_tangible_wearables_hat_shared_hat_twilek_s06, "object/tangible/wearables/hat/shared_hat_twilek_s06.iff")
+--********************************************************************************************************************************************************

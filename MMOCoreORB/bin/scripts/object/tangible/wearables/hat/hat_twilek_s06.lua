@@ -41,30 +41,21 @@
 --this exception also makes it possible to release a modified version 
 
 
+object_tangible_wearables_hat_hat_twilek_s05 = object_tangible_wearables_hat_shared_hat_twilek_s05:new {
+	playerRaces = { "object/creature/player/twilek_male.iff",
+				"object/creature/player/twilek_female.iff",
+				"object/mobile/vendor/twilek_female.iff",
+				"object/mobile/vendor/twilek_male.iff" },
 
---Children folder includes
+	numberExperimentalProperties = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+	experimentalProperties = {"XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX"},
+	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+	experimentalGroupTitles = {"null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null"},
+	experimentalSubGroupTitles = {"null", "null", "sockets", "hitpoints", "mod_idx_one", "mod_val_one", "mod_idx_two", "mod_val_two", "mod_idx_three", "mod_val_three", "mod_idx_four", "mod_val_four", "mod_idx_five", "mod_val_five", "mod_idx_six", "mod_val_six"},
+	experimentalMin = {0, 0, 0, 1000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+	experimentalMax = {0, 0, 0, 1000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 4, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+}
 
--- Server Objects
-includeFile("tangible/wearables/hat/hat_chef_s01.lua")
-includeFile("tangible/wearables/hat/hat_chef_s02.lua")
-includeFile("tangible/wearables/hat/hat_imp_s01.lua")
-includeFile("tangible/wearables/hat/hat_s02.lua")
-includeFile("tangible/wearables/hat/hat_s04.lua")
-includeFile("tangible/wearables/hat/hat_s10.lua")
-includeFile("tangible/wearables/hat/hat_s12.lua")
-includeFile("tangible/wearables/hat/hat_s13.lua")
-includeFile("tangible/wearables/hat/hat_s14.lua")
-includeFile("tangible/wearables/hat/hat_twilek_s01.lua")
-includeFile("tangible/wearables/hat/hat_twilek_s02.lua")
-includeFile("tangible/wearables/hat/hat_twilek_s03.lua")
-includeFile("tangible/wearables/hat/hat_twilek_s04.lua")
-includeFile("tangible/wearables/hat/hat_twilek_s05.lua")
-includeFile("tangible/wearables/hat/hat_twilek_s06.lua")
-includeFile("tangible/wearables/hat/nightsister_hat_s01.lua")
-includeFile("tangible/wearables/hat/nightsister_hat_s02.lua")
-includeFile("tangible/wearables/hat/nightsister_hat_s03.lua")
-includeFile("tangible/wearables/hat/singing_mountain_clan_hat_s01.lua")
-includeFile("tangible/wearables/hat/singing_mountain_clan_hat_s02.lua")
-includeFile("tangible/wearables/hat/singing_mountain_clan_mask_s01.lua")
-includeFile("tangible/wearables/hat/hat_imp_veers_s01.lua")
-
+ObjectTemplates:addTemplate(object_tangible_wearables_hat_hat_twilek_s05, "object/tangible/wearables/hat/hat_twilek_s05.iff")
