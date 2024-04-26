@@ -97,12 +97,12 @@ public:
 			} else if(command == "flurry") {
 				BorCombat::FlurryAttackTarget(storedTargetCreature, targetCreature, creature, noLos);
 			} else if(command == "aimed") {
-				creature->sendSystemMessage("Not yet implemented, sorry. Complain to Borrie.");
+
 			} else if(command == "nolos") {
-				BorCombat::AttackTarget(storedTargetCreature, targetCreature, creature, -1, false, true);
+				BorCombat::standardAttack(creature, storedTargetCreature, targetCreature, true);
 			}
 		} else {
-			BorCombat::AttackTarget(storedTargetCreature, targetCreature, creature, -1, false);
+			BorCombat::standardAttack(creature, storedTargetCreature, targetCreature, false);
 		}
 
 		return SUCCESS;

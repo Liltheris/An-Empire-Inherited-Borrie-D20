@@ -442,7 +442,7 @@ public:
         if(powerAttack)
             damageDieCount++;
 
-        int bonusDamage = getWeaponBonusDamage(attacker, weapon);
+        int bonusDamage = weapon->getBonusDamage() + getWeaponBonusDamage(attacker, weapon);
 
         int totalDamage = GetDamageRoll(damageDieType, damageDieCount, bonusDamage);
 
@@ -844,7 +844,7 @@ public:
         
         int damageDieCount = weapon->getMinDamage();
         int damageDieType = weapon->getMaxDamage();
-        int bonusDamage = getWeaponBonusDamage(attacker, weapon);
+        int bonusDamage = weapon->getBonusDamage() + getWeaponBonusDamage(attacker, weapon);
 
         int damage1 = GetDamageRoll(damageDieType, damageDieCount, bonusDamage) / 2;
         int damage2 = GetDamageRoll(damageDieType, damageDieCount, bonusDamage) / 2;
