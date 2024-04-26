@@ -41,7 +41,7 @@
 --this exception also makes it possible to release a modified version 
 
 
-object_tangible_wearables_hat_hat_twilek_s05 = object_tangible_wearables_hat_shared_hat_twilek_s05:new {
+object_tangible_wearables_hat_hat_twilek_s06 = object_tangible_wearables_hat_shared_hat_twilek_s06:new {
 	playerRaces = { "object/creature/player/twilek_male.iff",
 				"object/creature/player/twilek_female.iff",
 				"object/mobile/vendor/twilek_female.iff",
@@ -58,4 +58,4 @@ object_tangible_wearables_hat_hat_twilek_s05 = object_tangible_wearables_hat_sha
 	experimentalCombineType = {0, 0, 4, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_hat_hat_twilek_s05, "object/tangible/wearables/hat/hat_twilek_s05.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_hat_hat_twilek_s06, "object/tangible/wearables/hat/hat_twilek_s06.iff")
