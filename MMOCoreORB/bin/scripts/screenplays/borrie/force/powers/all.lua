@@ -378,11 +378,11 @@ function BorForceUtility:getMaxFPI(pPlayer)
 
 	elseif(CreatureObject(pPlayer):hasSkill("rp_force_prog_rank_04")) then
 		-- Journeyman Force users can use half of their Force bar.
-		usableForce = forcePowerMax * 0.5
+		usableForce = math.floor(forcePowerMax * 0.5)
 
 	elseif(CreatureObject(pPlayer):hasSkill("rp_force_prog_rank_03")) then
 		-- Adept Force users can use a quarter of their Force bar.
-		usableForce = forcePowerMax * 0.25
+		usableForce = math.floor(forcePowerMax * 0.25)
 
 	elseif(CreatureObject(pPlayer):hasSkill("rp_force_prog_rank_02")) then
 		-- Initiated Force users can use up to 5 FPI.
