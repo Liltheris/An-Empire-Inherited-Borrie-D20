@@ -417,7 +417,7 @@ function BorForceUtility:promptForcePointInput(pPlayer, power, screenplay, callb
 		fpiMin = power.fpiMin
 	end
 
-	local usableForcePower = math.min(fpiMax, BorForceUtility:getMaxFPI(pPlayer)) - fpiMin
+	local usableForcePower = math.floor(math.min(fpiMax, BorForceUtility:getMaxFPI(pPlayer)) - fpiMin)
 	
 	local suiManager = LuaSuiManager()
 	local optionsTo = {"Force Pool", usableForcePower, 1}
