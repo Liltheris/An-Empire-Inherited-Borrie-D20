@@ -1,14 +1,5 @@
-function table.copy(t)
-	local t2 = {};
-	for k,v in pairs(t) do
-		if type(v) == "table" then
-			t2[k] = table.copy(v);
-		else
-			t2[k] = v;
-		end
-	end
-	return t2;
-end
+require("screenplays.roleplay.rp_utility")
+require("screenplays.roleplay.rp_combat")
 
 BorForceUtility = {
 
@@ -360,30 +351,50 @@ function BorForceUtility:capMaximumAllowedForcePoints(pPlayer, inputPoints)
 		return 0
 	end
 	
+	return math.min(self:getMaxFPI(pPlayer), inputPoints)
+	
+end
+
+function BorForceUtility:getMaxFPI(pPlayer)
+	if (pPlayer == nil) then
+		return 0
+	end
+
 	local pGhost = CreatureObject(pPlayer):getPlayerObject()
 	
 	if (pGhost == nil) then
 		return 0
 	end
-	
-	local forcePowerMax = PlayerObject(pGhost):getForcePowerMax()	
-	
-	if(CreatureObject(pPlayer):hasSkill("rp_force_prog_master")) then -- Master of the Force
-		return math.min(PlayerObject(pGhost):getForcePowerMax(), inputPoints)
-	elseif(CreatureObject(pPlayer):hasSkill("rp_force_prog_rank_04")) then -- Journeyman
-		return math.min(PlayerObject(pGhost):getForcePowerMax() / 2, inputPoints)
-	elseif(CreatureObject(pPlayer):hasSkill("rp_force_prog_rank_03")) then -- Adept
-		return math.min(PlayerObject(pGhost):getForcePowerMax() / 4, inputPoints)
-	elseif(CreatureObject(pPlayer):hasSkill("rp_force_prog_rank_02")) then -- Initiated
-		return math.min(5, inputPoints)
-	elseif(CreatureObject(pPlayer):hasSkill("rp_force_prog_rank_01")) then -- Aware
-		return math.min(2, inputPoints)
-	elseif(CreatureObject(pPlayer):hasSkill("rp_force_prog_novice")) then -- Force Sensitive
-		return 0
-	else 
-		return 0
+
+	local forcePower = PlayerObject(pGhost):getForcePower()
+	local forcePowerMax = PlayerObject(pGhost):getForcePowerMax()
+
+	-- Default to 0 for non-FS / unawakened.
+	local usableForce = 0
+
+	if(CreatureObject(pPlayer):hasSkill("rp_force_prog_master")) then
+		-- Master of the Force can use their entire Force bar.
+		usableForce = forcePowerMax
+
+	elseif(CreatureObject(pPlayer):hasSkill("rp_force_prog_rank_04")) then
+		-- Journeyman Force users can use half of their Force bar.
+		usableForce = math.floor(forcePowerMax * 0.5)
+
+	elseif(CreatureObject(pPlayer):hasSkill("rp_force_prog_rank_03")) then
+		-- Adept Force users can use a quarter of their Force bar.
+		usableForce = math.floor(forcePowerMax * 0.25)
+
+	elseif(CreatureObject(pPlayer):hasSkill("rp_force_prog_rank_02")) then
+		-- Initiated Force users can use up to 5 FPI.
+		usableForce = 5
+	elseif(CreatureObject(pPlayer):hasSkill("rp_force_prog_rank_01")) then 
+		-- Aware Force users can use up to 2 FPI.
+		usableForce = 2
 	end
-	
+
+	-- Return either the usable Force, or the available Force if lower.
+	return math.min(usableForce, forcePower)
+
 end
 
 function BorForceUtility:promptForcePointInput(pPlayer, power, screenplay, callback)
@@ -406,7 +417,7 @@ function BorForceUtility:promptForcePointInput(pPlayer, power, screenplay, callb
 		fpiMin = power.fpiMin
 	end
 
-	local usableForcePower = math.floor(math.min(self:capMaximumAllowedForcePoints(pPlayer, forcePower), fpiMax))
+	local usableForcePower = math.floor(math.min(fpiMax, BorForceUtility:getMaxFPI(pPlayer)) - fpiMin)
 	
 	local suiManager = LuaSuiManager()
 	local optionsTo = {"Force Pool", usableForcePower, 1}

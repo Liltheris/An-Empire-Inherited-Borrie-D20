@@ -155,6 +155,7 @@ Luna<LuaCreatureObject>::RegType LuaCreatureObject::Register[] = {
 		{ "getShockWounds", &LuaCreatureObject::getShockWounds },
 		{ "doCombatAnimation", &LuaCreatureObject::doCombatAnimation },
 		{ "slotPassenger", &LuaCreatureObject::slotPassenger },
+		{ "clearState", &LuaCreatureObject::clearState},
 		{ 0, 0 }
 };
 
@@ -267,6 +268,16 @@ int LuaCreatureObject::setState(lua_State* L) {
 	Locker locker(realObject);
 
 	realObject->setState(state, true);
+
+	return 0;
+}
+
+int LuaCreatureObject::clearState(lua_State* L) {
+	uint32 state = (uint32) lua_tonumber(L, -1);
+
+	Locker locker(realObject);
+
+	realObject->clearState(state, true);
 
 	return 0;
 }

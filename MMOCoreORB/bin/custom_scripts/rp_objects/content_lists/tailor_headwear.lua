@@ -12,6 +12,7 @@ content = {
 	{"object/tangible/wearables/hat/shared_hat_twilek_s03.iff", },
 	{"object/tangible/wearables/hat/shared_hat_twilek_s04.iff", },
 	{"object/tangible/wearables/hat/shared_hat_twilek_s05.iff", },
+	{"object/tangible/wearables/hat/shared_hat_twilek_s06.iff", },
 	{"object/tangible/wearables/helmet/shared_helmet_s06.iff", },
 	{"object/tangible/wearables/helmet/shared_helmet_fighter_privateer_ace.iff", },
 	{"object/tangible/wearables/helmet/shared_helmet_fighter_blacksun_ace.iff", },
