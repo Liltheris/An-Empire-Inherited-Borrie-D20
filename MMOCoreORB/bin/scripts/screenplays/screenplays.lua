@@ -759,5 +759,8 @@ includeFile("borrie/droid/screenplays.lua")
 includeFile("borrie/mando/screenplays.lua")
 
 --AEI
+includeFile("borrie/conv_handlers/character_creation_convo_handler.lua")
+
+
 --Roleplay Utilities
 includeFile("roleplay/screenplays.lua")
