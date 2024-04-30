@@ -56,6 +56,7 @@ function character_creation_convo_handler:runScreenHandlers(conversationTemplate
 
 	local attributePoints = SceneObject(conversingPlayer):getStoredInt("starter_attr_points")
 	local skillPoints = SceneObject(conversingPlayer):getStoredInt("starter_skill_points")
+	local wasToldofClothing = SceneObject(conversingPlayer):getStoredInt("cc_clothes") > 0
 
 	local homeworld = SceneObject(conversingPlayer):getStoredString("homeworld")
 
@@ -91,7 +92,7 @@ function character_creation_convo_handler:runScreenHandlers(conversationTemplate
 	end
 
 	--Checking conditions for enabling the leave option.
-	local readyToLeave = true
+	local readyToLeave = wasToldofClothing
 
 	if (isMando and playerFactionTag == "") then
 		readyToLeave = false
@@ -103,19 +104,22 @@ function character_creation_convo_handler:runScreenHandlers(conversationTemplate
 
 	--Set player faction for soldiers.
 	if (isImp and playerFactionTag == "") then
-		SceneObject(conversingPlayer):setStoredString("faction_current", "empire")
-		SceneObject(conversingPlayer):setStoredString("rank_empire", 1)
+		playerFactionTag = "empire"
+		SceneObject(conversingPlayer):setStoredString("faction_current", playerFactionTag)
+		SceneObject(conversingPlayer):setStoredInt("rank_empire", 1)
 	end
 
 	if (isRep and playerFactionTag == "") then
-		SceneObject(conversingPlayer):setStoredString("faction_current", "newrepublic")
-		SceneObject(conversingPlayer):setStoredString("rank_newrepublic", 1)
+		playerFactionTag = "newrepublic"
+		SceneObject(conversingPlayer):setStoredString("faction_current", playerFactionTag)
+		SceneObject(conversingPlayer):setStoredInt("rank_newrepublic", 1)
 	end
 
 	--Handle mando helmet distribution.
 	if(string.find(screenID, "mando_helmet")) then
-		SceneObject(conversingPlayer):setStoredString("faction_current", "mando")
-		SceneObject(conversingPlayer):setStoredString("rank_mando", 1)
+		playerFactionTag = "mando"
+		SceneObject(conversingPlayer):setStoredString("faction_current", playerFactionTag)
+		SceneObject(conversingPlayer):setStoredInt("rank_mando", 1)
 
 		local inventory = SceneObject(conversingPlayer):getSlottedObject("inventory")
 
@@ -276,6 +280,11 @@ function character_creation_convo_handler:runScreenHandlers(conversationTemplate
 			clonedConversation:addOption("Mandalorian Helmet (beta)", "mando_helmet_beta")
 			clonedConversation:addOption("Crusader Mk. III Helmet", "mando_helmet_reb")
 			clonedConversation:addOption("Crusader Mk. IV Helmet", "mando_helmet_imp")
+
+		elseif(wasToldofClothing == false) then
+			clonedConversation:setCustomDialogText("Before you go into the Galaxy, you should spend some time getting dressed. You will find several chests of clothing to my left, and vendors selling you arms and armour to my right. Find what you need, but do not worry, clothing and weapons are available at tailors and vendors in most large cities.")
+			clonedConversation:addOption("I will do that.", "abort")
+			SceneObject(conversingPlayer):setStoredInt("cc_clothes", 1)
 		end
 
 
