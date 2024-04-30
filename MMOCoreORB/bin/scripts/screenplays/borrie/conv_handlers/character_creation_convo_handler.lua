@@ -52,7 +52,7 @@ function character_creation_convo_handler:runScreenHandlers(conversationTemplate
 	
 	--Get personal data about the Player
 	local playerName = CreatureObject(conversingPlayer):getFirstName()
-	local playerFactionTag = SceneObject(conversingPlayer):getStoredString("faction_current")
+	local playerFactionTag = SceneObject(conversingPlayer):getStoredString("faction_current") or ""
 
 	local attributePoints = SceneObject(conversingPlayer):getStoredInt("starter_attr_points")
 	local skillPoints = SceneObject(conversingPlayer):getStoredInt("starter_skill_points")
@@ -62,10 +62,34 @@ function character_creation_convo_handler:runScreenHandlers(conversationTemplate
 	local isImp = CreatureObject(conversingPlayer):hasSkill("rp_bg_imp_recruit")
 	local isRep = CreatureObject(conversingPlayer):hasSkill("rp_bg_rep_recruit")
 
+	local isCriminal = CreatureObject(conversingPlayer):hasSkill("rp_bg_criminal")
+	local isMedical = CreatureObject(conversingPlayer):hasSkill("rp_bg_medical")
+	local isEngineer = CreatureObject(conversingPlayer):hasSkill("rp_bg_engineer")
+
 	local isMando = CreatureObject(conversingPlayer):hasSkill("rp_bg_mando")
-	
+
 	clonedConversation:removeAllOptions()
 		
+	if (isImp or isRep and CreatureObject(conversingPlayer):hasSkill("rp_training_military_novice") == false) then
+		awardSkill(conversingPlayer, "rp_training_military_novice")
+	end
+
+	if (isMando and CreatureObject(conversingPlayer):hasSkill("rp_training_mando_novice") == false) then
+		awardSkill(conversingPlayer, "rp_training_mando_novice")
+	end
+
+	if (isCriminal and CreatureObject(conversingPlayer):hasSkill("rp_training_criminal_novice") == false) then
+		awardSkill(conversingPlayer, "rp_training_criminal_novice")
+	end
+
+	if (isMedical and CreatureObject(conversingPlayer):hasSkill("rp_training_medical_novice") == false) then
+		awardSkill(conversingPlayer, "rp_training_medical_novice")
+	end
+
+	if (isEngineer and CreatureObject(conversingPlayer):hasSkill("rp_training_engineer_novice") == false) then
+		awardSkill(conversingPlayer, "rp_training_engineer_novice")
+	end
+
 	--Checking conditions for enabling the leave option.
 	local readyToLeave = true
 
@@ -113,7 +137,7 @@ function character_creation_convo_handler:runScreenHandlers(conversationTemplate
 			end
 
 			CreatureObject(conversingPlayer):sendSystemMessage("You have been given your helmet!")
-			screenID = "return_menu"
+			screenID = "abort"
 		end
 	end
 
@@ -189,7 +213,7 @@ function character_creation_convo_handler:runScreenHandlers(conversationTemplate
 	--Handling the distribution of the starter helmet for mando players.
 	------------------------------------------------------------------------------------------------------
 	elseif(screenID == "mando") then
-		clonedConversation:SetCustomDialogText("Ah, yes. It is not much of your beskar'gam, but it will make you mandalorian enough.")
+		clonedConversation:setCustomDialogText("Ah, yes. It is not much of your beskar'gam, but it will make you mandalorian enough.")
 		clonedConversation:addOption("Mandalorian Helmet", "mando_helmet_s01")
 		clonedConversation:addOption("Mandalorian Helmet (feminine)", "mando_helmet_s02")
 		clonedConversation:addOption("Mandalorian Helmet (beta)", "mando_helmet_beta")
@@ -200,7 +224,7 @@ function character_creation_convo_handler:runScreenHandlers(conversationTemplate
 	--Handle leaving the starter zone!
 	------------------------------------------------------------------------------------------------------
 	elseif(screenID == "leave") then
-		clonedConversation:SetCustomDialogText("Very well, "..playerName..", I will not stop you. Choose where you wish to begin your adventure.")
+		clonedConversation:setCustomDialogText("Very well, "..playerName..", I will not stop you. Choose where you wish to begin your adventure.")
 		--Soldiers can only deploy to planets that their faction controls, or have active bases on.
 		if(isImp or isRep) then
 			if(isImp) then
