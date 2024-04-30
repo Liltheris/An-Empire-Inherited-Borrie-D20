@@ -967,7 +967,8 @@ String PlayerManagerImplementation::setLastName(CreatureObject* creature, const 
 }
 
 void PlayerManagerImplementation::createTutorialBuilding(CreatureObject* player) {
-	Zone* zone = server->getZone("tutorial");
+	createSkippedTutorialBuilding(player);
+	/*Zone* zone = server->getZone("tutorial");
 
 	if (zone == nullptr) {
 		error("Character creation failed, tutorial zone disabled.");
@@ -1003,7 +1004,7 @@ void PlayerManagerImplementation::createTutorialBuilding(CreatureObject* player)
 	ghost->setSavedTerrainName(zone->getZoneName());
 	ghost->setSavedParentID(cellTutPlayer->getObjectID());
 
-	tutorial->updateToDatabase();
+	tutorial->updateToDatabase();*/
 }
 
 void PlayerManagerImplementation::createSkippedTutorialBuilding(CreatureObject* player) {
