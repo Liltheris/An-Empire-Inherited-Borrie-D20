@@ -137,7 +137,7 @@ function character_creation_convo_handler:runScreenHandlers(conversationTemplate
 			end
 
 			CreatureObject(conversingPlayer):sendSystemMessage("You have been given your helmet!")
-			screenID = "abort"
+			screenID = "return_menu"
 		end
 	end
 
@@ -177,7 +177,7 @@ function character_creation_convo_handler:runScreenHandlers(conversationTemplate
 			dest = planet.spaceports[1].public_arrival
 		end
 
-		SceneObject(pPlayer):switchZone(dest[1], dest[2],dest[3],dest[4], dest[6]) 
+		SceneObject(conversingPlayer):switchZone(dest[1], dest[2],dest[3],dest[4], dest[6]) 
 		screenID = "abort"
 	end
 	
