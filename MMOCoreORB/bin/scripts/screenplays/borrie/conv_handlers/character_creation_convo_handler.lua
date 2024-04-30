@@ -91,8 +91,15 @@ function character_creation_convo_handler:runScreenHandlers(conversationTemplate
 		awardSkill(conversingPlayer, "rp_training_engineer_novice")
 	end
 
+	
+
 	--Checking conditions for enabling the leave option.
 	local readyToLeave = wasToldofClothing
+
+	if (isImp and CreatureObject(conversingPlayer):hasSkill("species_human") == false) then
+		readyToLeave = false
+		screenID = "invalid"
+	end
 
 	if (isMando and playerFactionTag == "") then
 		readyToLeave = false
@@ -288,6 +295,11 @@ function character_creation_convo_handler:runScreenHandlers(conversationTemplate
 		end
 
 
+	elseif(screenID == "invalid") then
+		if(isImp) then
+			clonedConversation:setCustomDialogText("You must be human to be a part of the Empire. I am afraid that your character is not valid for roleplay, and must be recreated.")
+		end
+		clonedConversation:addOption("I see.", "abort")
 	end
 	
     return pConvScreen
