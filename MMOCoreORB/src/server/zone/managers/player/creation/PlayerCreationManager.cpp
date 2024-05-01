@@ -734,7 +734,7 @@ void PlayerCreationManager::addProfessionStartingItems(CreatureObject* creature,
 		creature->setMaxHAM(i, mod, false);
 	}
 
-	auto itemTemplates = professionData->getProfessionItems(
+	auto itemTemplates = professionDefaultsInfo.get("rp_bg_roleplayer")->getProfessionItems(
 			clientTemplate);
 
 	if (itemTemplates == nullptr)

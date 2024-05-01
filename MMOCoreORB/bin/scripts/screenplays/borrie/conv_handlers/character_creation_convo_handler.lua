@@ -52,22 +52,57 @@ function character_creation_convo_handler:runScreenHandlers(conversationTemplate
 	
 	--Get personal data about the Player
 	local playerName = CreatureObject(conversingPlayer):getFirstName()
-	local playerFactionTag = SceneObject(conversingPlayer):getStoredString("faction_current")
+	local playerFactionTag = SceneObject(conversingPlayer):getStoredString("faction_current") or ""
 
 	local attributePoints = SceneObject(conversingPlayer):getStoredInt("starter_attr_points")
 	local skillPoints = SceneObject(conversingPlayer):getStoredInt("starter_skill_points")
+	local wasToldofClothing = SceneObject(conversingPlayer):getStoredInt("cc_clothes") > 0
 
 	local homeworld = SceneObject(conversingPlayer):getStoredString("homeworld")
 
 	local isImp = CreatureObject(conversingPlayer):hasSkill("rp_bg_imp_recruit")
 	local isRep = CreatureObject(conversingPlayer):hasSkill("rp_bg_rep_recruit")
 
+	local isCriminal = CreatureObject(conversingPlayer):hasSkill("rp_bg_criminal")
+	local isMedical = CreatureObject(conversingPlayer):hasSkill("rp_bg_medical")
+	local isEngineer = CreatureObject(conversingPlayer):hasSkill("rp_bg_engineer")
+
 	local isMando = CreatureObject(conversingPlayer):hasSkill("rp_bg_mando")
-	
+
 	clonedConversation:removeAllOptions()
-		
+	
+	--Awarding skills for each starting backgroud.
+
+	if (isImp or isRep and CreatureObject(conversingPlayer):hasSkill("rp_training_military_novice") == false) then
+		awardSkill(conversingPlayer, "rp_training_military_novice")
+	end
+
+	if (isMando and CreatureObject(conversingPlayer):hasSkill("rp_training_mando_novice") == false) then
+		awardSkill(conversingPlayer, "rp_training_mando_novice")
+	end
+
+	if (isCriminal and CreatureObject(conversingPlayer):hasSkill("rp_training_criminal_novice") == false) then
+		awardSkill(conversingPlayer, "rp_training_criminal_novice")
+		awardSkill(conversingPlayer, "social_language_hutt_comprehend")
+	end
+
+	if (isMedical and CreatureObject(conversingPlayer):hasSkill("rp_training_medical_novice") == false) then
+		awardSkill(conversingPlayer, "rp_training_medical_novice")
+	end
+
+	if (isEngineer and CreatureObject(conversingPlayer):hasSkill("rp_training_engineer_novice") == false) then
+		awardSkill(conversingPlayer, "rp_training_engineer_novice")
+	end
+
+	
+
 	--Checking conditions for enabling the leave option.
-	local readyToLeave = true
+	local readyToLeave = wasToldofClothing
+
+	if (isImp and CreatureObject(conversingPlayer):hasSkill("species_human") == false) then
+		readyToLeave = false
+		screenID = "invalid"
+	end
 
 	if (isMando and playerFactionTag == "") then
 		readyToLeave = false
@@ -79,19 +114,22 @@ function character_creation_convo_handler:runScreenHandlers(conversationTemplate
 
 	--Set player faction for soldiers.
 	if (isImp and playerFactionTag == "") then
-		SceneObject(conversingPlayer):setStoredString("faction_current", "empire")
-		SceneObject(conversingPlayer):setStoredString("rank_empire", 1)
+		playerFactionTag = "empire"
+		SceneObject(conversingPlayer):setStoredString("faction_current", playerFactionTag)
+		SceneObject(conversingPlayer):setStoredInt("rank_empire", 1)
 	end
 
 	if (isRep and playerFactionTag == "") then
-		SceneObject(conversingPlayer):setStoredString("faction_current", "newrepublic")
-		SceneObject(conversingPlayer):setStoredString("rank_newrepublic", 1)
+		playerFactionTag = "newrepublic"
+		SceneObject(conversingPlayer):setStoredString("faction_current", playerFactionTag)
+		SceneObject(conversingPlayer):setStoredInt("rank_newrepublic", 1)
 	end
 
 	--Handle mando helmet distribution.
 	if(string.find(screenID, "mando_helmet")) then
-		SceneObject(conversingPlayer):setStoredString("faction_current", "mando")
-		SceneObject(conversingPlayer):setStoredString("rank_mando", 1)
+		playerFactionTag = "mando"
+		SceneObject(conversingPlayer):setStoredString("faction_current", playerFactionTag)
+		SceneObject(conversingPlayer):setStoredInt("rank_mando", 1)
 
 		local inventory = SceneObject(conversingPlayer):getSlottedObject("inventory")
 
@@ -153,7 +191,7 @@ function character_creation_convo_handler:runScreenHandlers(conversationTemplate
 			dest = planet.spaceports[1].public_arrival
 		end
 
-		SceneObject(pPlayer):switchZone(dest[1], dest[2],dest[3],dest[4], dest[6]) 
+		SceneObject(conversingPlayer):switchZone(dest[1], dest[2],dest[3],dest[4], dest[6]) 
 		screenID = "abort"
 	end
 	
@@ -189,7 +227,7 @@ function character_creation_convo_handler:runScreenHandlers(conversationTemplate
 	--Handling the distribution of the starter helmet for mando players.
 	------------------------------------------------------------------------------------------------------
 	elseif(screenID == "mando") then
-		clonedConversation:SetCustomDialogText("Ah, yes. It is not much of your beskar'gam, but it will make you mandalorian enough.")
+		clonedConversation:setCustomDialogText("Ah, yes. It is not much of your beskar'gam, but it will make you mandalorian enough.")
 		clonedConversation:addOption("Mandalorian Helmet", "mando_helmet_s01")
 		clonedConversation:addOption("Mandalorian Helmet (feminine)", "mando_helmet_s02")
 		clonedConversation:addOption("Mandalorian Helmet (beta)", "mando_helmet_beta")
@@ -200,7 +238,7 @@ function character_creation_convo_handler:runScreenHandlers(conversationTemplate
 	--Handle leaving the starter zone!
 	------------------------------------------------------------------------------------------------------
 	elseif(screenID == "leave") then
-		clonedConversation:SetCustomDialogText("Very well, "..playerName..", I will not stop you. Choose where you wish to begin your adventure.")
+		clonedConversation:setCustomDialogText("Very well, "..playerName..", I will not stop you. Choose where you wish to begin your adventure.")
 		--Soldiers can only deploy to planets that their faction controls, or have active bases on.
 		if(isImp or isRep) then
 			if(isImp) then
@@ -230,8 +268,7 @@ function character_creation_convo_handler:runScreenHandlers(conversationTemplate
 	------------------------------------------------------------------------------------------------------
 	elseif(screenID == "homeworld") then
 		clonedConversation:setCustomDialogText("Where you hail from is not insignificant, but it mustn't define you.")
-		clonedConversation:addOption("I am from Tatooine.", "home_tatooine")
-		clonedConversation:addOption("I am from Tatooine.", "home_tatooine")
+		clonedConversation:addOption("I am from Tatooine. (Languages: Huttese, Jawa Trade)", "home_tatooine")
 
 	------------------------------------------------------------------------------------------------------
 	--Player advice.
@@ -252,9 +289,19 @@ function character_creation_convo_handler:runScreenHandlers(conversationTemplate
 			clonedConversation:addOption("Mandalorian Helmet (beta)", "mando_helmet_beta")
 			clonedConversation:addOption("Crusader Mk. III Helmet", "mando_helmet_reb")
 			clonedConversation:addOption("Crusader Mk. IV Helmet", "mando_helmet_imp")
+
+		elseif(wasToldofClothing == false) then
+			clonedConversation:setCustomDialogText("Before you go into the Galaxy, you should spend some time getting dressed. You will find several chests of clothing to my left, and vendors selling you arms and armour to my right. Find what you need, but do not worry, clothing and weapons are available at tailors and vendors in most large cities.")
+			clonedConversation:addOption("I will do that.", "abort")
+			SceneObject(conversingPlayer):setStoredInt("cc_clothes", 1)
 		end
 
 
+	elseif(screenID == "invalid") then
+		if(isImp) then
+			clonedConversation:setCustomDialogText("You must be human to be a part of the Empire. I am afraid that your character is not valid for roleplay, and must be recreated.")
+		end
+		clonedConversation:addOption("I see.", "abort")
 	end
 	
     return pConvScreen

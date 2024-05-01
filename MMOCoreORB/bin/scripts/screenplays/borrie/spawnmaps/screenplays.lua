@@ -28,3 +28,5 @@ includeFile("borrie/spawnmaps/rori_new_restuss.lua")
 
 --Mandalore
 includeFile("borrie/spawnmaps/mandalore_keldabe.lua")
+
+includeFile("borrie/spawnmaps/tutorial.lua")
