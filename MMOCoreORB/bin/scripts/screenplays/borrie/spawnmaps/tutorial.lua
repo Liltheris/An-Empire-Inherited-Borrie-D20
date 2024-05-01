@@ -19,9 +19,16 @@ registerScreenPlay("TutorialZoneScreenPlay",  true)
 
 function TutorialZoneScreenPlay:spawnSceneObjects() 
 	
+	--SIGNS--
+	local sObj = spawnSceneObject("tutorial", "object/tangible/sign/all_sign_city_s03.iff", 26.0151, -4.2, -152.784, 694200001, 1, 0, 0, 0)
+	SceneObject(sObj):setCustomObjectName("<- Clothing")
+
+	sObj = spawnSceneObject("tutorial", "object/tangible/sign/all_sign_city_s03.iff", 28.9283, -4.2, -152.784, 694200001, 1, 0, 0, 0)
+	SceneObject(sObj):setCustomObjectName("Weapons & Armour ->")
+
 	--TAILOR--
 	--Ithorian 1
-	local sObj = spawnSceneObject("tutorial", "object/tangible/furniture/modern/chest_modern_style_01.iff", 12.2602, -3.7, -162.442, 694200001, 0.5, 0.5, 0.5, -0.5)
+	sObj = spawnSceneObject("tutorial", "object/tangible/furniture/modern/chest_modern_style_01.iff", 12.2602, -3.7, -162.442, 694200001, 0.5, 0.5, 0.5, -0.5)
 	SceneObject(sObj):setCustomObjectName("Ithorian Wear I")
 	SceneObject(sObj):setPublicContainer(true)
 	SceneObject(sObj):setDispenserContainer(true)
