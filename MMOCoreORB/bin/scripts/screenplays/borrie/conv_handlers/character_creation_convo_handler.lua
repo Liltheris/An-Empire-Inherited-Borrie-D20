@@ -70,7 +70,9 @@ function character_creation_convo_handler:runScreenHandlers(conversationTemplate
 	local isMando = CreatureObject(conversingPlayer):hasSkill("rp_bg_mando")
 
 	clonedConversation:removeAllOptions()
-		
+	
+	--Awarding skills for each starting backgroud.
+
 	if (isImp or isRep and CreatureObject(conversingPlayer):hasSkill("rp_training_military_novice") == false) then
 		awardSkill(conversingPlayer, "rp_training_military_novice")
 	end
@@ -81,6 +83,7 @@ function character_creation_convo_handler:runScreenHandlers(conversationTemplate
 
 	if (isCriminal and CreatureObject(conversingPlayer):hasSkill("rp_training_criminal_novice") == false) then
 		awardSkill(conversingPlayer, "rp_training_criminal_novice")
+		awardSkill(conversingPlayer, "social_language_hutt_comprehend")
 	end
 
 	if (isMedical and CreatureObject(conversingPlayer):hasSkill("rp_training_medical_novice") == false) then
@@ -265,8 +268,7 @@ function character_creation_convo_handler:runScreenHandlers(conversationTemplate
 	------------------------------------------------------------------------------------------------------
 	elseif(screenID == "homeworld") then
 		clonedConversation:setCustomDialogText("Where you hail from is not insignificant, but it mustn't define you.")
-		clonedConversation:addOption("I am from Tatooine.", "home_tatooine")
-		clonedConversation:addOption("I am from Tatooine.", "home_tatooine")
+		clonedConversation:addOption("I am from Tatooine. (Languages: Huttese, Jawa Trade)", "home_tatooine")
 
 	------------------------------------------------------------------------------------------------------
 	--Player advice.
