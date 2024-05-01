@@ -29,6 +29,14 @@ screen = ConvoScreen:new {
 }
 character_creation:addScreen(screen)
 
+screen = ConvoScreen:new {
+  id = "invalid",
+  customDialogText = "It appears that your character is invalid. Please contact Adminstration if you believe this is in error.",
+  stopConversation = "false",
+  options = {}
+}
+character_creation:addScreen(screen)
+
 --Starting planets
 screen = ConvoScreen:new {
   id = "start_carida",
