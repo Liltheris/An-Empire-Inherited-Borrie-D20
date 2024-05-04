@@ -1,47 +1,14 @@
-BorForce_Body = BorForce_BasePower:new({
+BorForce_Body = BorForce_BasePower:new {
 	name = "Force Body",
+	tag = "BorForce_Body",
+
 	requiredSkills = {"rp_ability_forcebody", "rp_training_jedi_guardian_01"},
 	selfEffect = "clienteffect/pl_force_heal_self.cef",
 
 	targetSelf = true,
 
 	helpString = "Roll Alter, DC 10. On success, restores 1 Action Point for every Force Point invested."
-})
-
-function BorForce_Body:showHelp(pPlayer)
-	BorForceUtility:displayHelp(self, pPlayer)
-end
-
-function BorForce_Body:execute(pPlayer)	
-	local fpi = BorForceUtility:getForcePointInput(pPlayer, self)
-	
-	if(BorForceUtility:canUseForcePower(pPlayer, pPlayer, self) == false) then
-		return
-	end
-
-	if(fpi < self.fpiMin) then
-		BorForceUtility:promptForcePointInput(pPlayer, self, "BorForce_Body", "onFPICallback")
-	else 
-		self:performAbility(pPlayer, fpi)
-	end
-end
-
-function BorForce_Body:onFPICallback(pPlayer, pSui, eventIndex, remaining, spent) 
-	local cancelPressed = (eventIndex == 1)
-
-	if (cancelPressed) then
-		return
-	end
-	
-	spent = tonumber(spent)
-	
-	if(spent < 1) then
-		CreatureObject(pPlayer):sendSystemMessage("You need to commit at least one force point to use this ability.")
-		return
-	end
-	
-	self:performAbility(pPlayer, spent)
-end
+}
 
 function BorForce_Body:performAbility(pPlayer, fpi)
 	if(BorForceUtility:canUseForcePower(pPlayer, pPlayer, self) == false) then

@@ -7,6 +7,7 @@ BorForceUtility = {
 
 BorForce_BasePower = {
 	name = "",
+	tag = "",
 	requiredSkills = {},
 
 	action = "Minor",
@@ -33,78 +34,47 @@ BorForce_BasePower = {
 	helpString = "",
 }
 
-function BorForce_BasePower:new(newData)
-	local outData = table.copy(self)
+function BorForce_BasePower:new(o)
+	o = o or {}
 
-	if(newData.name ~= nil) then
-		outData.name = newData.name
+	setmetatable(o, self)
+	
+	return o
+end
+
+function BorForce_BasePower:showHelp(pPlayer)
+	BorForceUtility:displayHelp(self, pPlayer)
+end
+
+function BorForce_BasePower:execute(pPlayer)	
+	local fpi = BorForceUtility:getForcePointInput(pPlayer, self)
+	
+	if(BorForceUtility:canUseForcePower(pPlayer, pPlayer, self) == false) then
+		return
 	end
 
-	if(newData.requiredSkills ~= nil) then
-		outData.requiredSkills = newData.requiredSkills
+	if(fpi < self.fpiMin) then
+		BorForceUtility:promptForcePointInput(pPlayer, self, self.tag, "onFPICallback")
+	else 
+		self:performAbility(pPlayer, fpi)
 	end
+end
 
-	if(newData.action ~= nil) then
-		outData.action = newData.action
+function BorForce_BasePower:onFPICallback(pPlayer, pSui, eventIndex, remaining, spent) 
+	local cancelPressed = (eventIndex == 1)
+
+	if (cancelPressed) then
+		return
 	end
-
-	if(newData.selfEffect ~= nil) then
-		outData.selfEffect = newData.selfEffect
+	
+	spent = tonumber(spent)
+	
+	if(spent < 1) then
+		CreatureObject(pPlayer):sendSystemMessage("You need to commit at least one force point to use this ability.")
+		return
 	end
-
-	if(newData.selfAnim ~= nil) then
-		outData.selfAnim = newData.selfAnim
-	end
-
-	if(newData.targetAnim ~= nil) then
-		outData.targetAnim = newData.targetAnim
-	end
-
-	if(newData.combatAnim ~= nil) then
-		outData.combatAnim = newData.combatAnim
-	end
-
-	if(newData.minRange ~= nil) then
-		outData.minRange = newData.minRange
-	end
-
-	if(newData.idealRange ~= nil) then
-		outData.idealRange = newData.idealRange
-	end
-
-	if(newData.farRange ~= nil) then
-		outData.farRange = newData.farRange
-	end
-
-	if(newData.maxRange ~= nil) then
-		outData.maxRange = newData.maxRange
-	end
-
-	if(newData.targetSelf ~= nil) then
-		outData.targetSelf = newData.targetSelf
-	end
-
-	if(newData.targetCount ~= nil) then
-		outData.targetCount = newData.targetCount
-	end
-
-	if(newData.fpiMin ~= nil) then
-		outData.fpiMin = newData.fpiMin
-	end
-
-	if(newData.fpiMax ~= nil) then
-		outData.fpiMax = newData.fpiMax
-	end
-
-	if(newData.corruptionPoints ~= nil) then
-		outData.corruptionPoints = newData.corruptionPoints
-	end
-
-	if(newData.helpString ~= nil) then
-		outData.helpString = newData.helpString
-	end
-
-	return outData
+	
+	self:performAbility(pPlayer, spent)
 end
 
 function BorForceUtility:displayHelp(power, pPlayer)
