@@ -1355,6 +1355,22 @@ public:
     }
 
     static String ApplyAdjustedHealthDamage(CreatureObject* creature, String damageType, int damage, int slot) {
+        // Get the target's Force Defense value and deduct it from the incoming damage.
+        int forceDefense = creature->getStoredInt("force_defense");
+
+        if (forceDefense > 0){
+            int newDamage = damage - forceDefense;
+
+            creature->setStoredInt("force_defense", forceDefense - damage);
+
+            if (newDamage < 1){
+                //We've fully defended!
+                return damageNumber(0) + "(\\#FF00FF"+damage+"\\#FFFFFF)";
+            }
+
+            damage = newDamage;
+        }
+
         // Use equipped armour if the creature is a player.
         if(creature->isPlayerCreature()) {
             ManagedReference<ArmorObject*> armour = BorCharacter::GetArmorAtSlot(creature, GetSlotName(slot));
@@ -1420,6 +1436,9 @@ public:
 
                     String output = damageNumber(healthDamage);
                     output = output +"(\\#FFFF00"+String::valueOf(damage - healthDamage)+"\\#FFFFFF)";
+                    if (forceDefense > 0){
+                        output = output + "(\\#FF00FF"+forceDefense+"\\#FFFFFF)";
+                    }
                     return output;
                 }
             }
@@ -1477,6 +1496,9 @@ public:
 
                                 String output = damageNumber(healthDamage);
                                 output = output +"(\\#FFFF00"+String::valueOf(damage - healthDamage)+"\\#FFFFFF)";
+                                if (forceDefense > 0){
+                                    output = output + "(\\#FF00FF"+forceDefense+"\\#FFFFFF)";
+                                }
 
                                 armourObject.pop();
                                 armourSlotObject.pop();
