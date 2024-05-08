@@ -21,11 +21,16 @@ function DathomirLandingZoneScreenPlay:start()
 end
 
 function DathomirLandingZoneScreenPlay:spawnCivilians() 
-	local waypointList = {
+	local waypointList_smc = {
+		
+	}
+
+	local waypointList_nightsisters = {
 		
 	}
 	
-	CivillianGenerator:spawnCivillians(self.screenplayName, "rp_dathomir", waypointList, self.walkpointList, "spacer", "spacer")
+	CivillianGenerator:spawnCivillians(self.screenplayName, "rp_dathomir", waypointList_smc, self.walkpointList, "singing_mountain", "singing_mountain")
+	CivillianGenerator:spawnCivillians(self.screenplayName, "rp_dathomir", waypointList_nightsisters, self.walkpointList, "nightsister", "nightsister")
 end
 
 function DathomirLandingZoneScreenPlay:spawnSceneObjects() 
