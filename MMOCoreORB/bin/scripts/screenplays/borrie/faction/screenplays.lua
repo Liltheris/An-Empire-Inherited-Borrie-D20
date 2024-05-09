@@ -14,6 +14,8 @@ includeFile("borrie/faction/factions/faction_science.lua")
 includeFile("borrie/faction/factions/faction_worker.lua")
 
 includeFile("borrie/faction/factions/faction_newrepublic.lua")
+includeFile("borrie/faction/factions/faction_nightsister.lua")
+includeFile("borrie/faction/factions/faction_smc.lua")
 
 --Recruiter Themes
 includeFile("borrie/faction/recruiter_themes/rt_adventure.lua")
@@ -46,3 +48,5 @@ includeFile("borrie/faction/unit_groups/science.lua")
 includeFile("borrie/faction/unit_groups/worker.lua")
 
 includeFile("borrie/faction/unit_groups/newrepublic.lua")
+includeFile("borrie/faction/unit_groups/nightsister.lua")
+includeFile("borrie/faction/unit_groups/smc.lua")
