@@ -77,7 +77,11 @@ function BorPlanetManager:spawnBaseContents(planet, base)
 					end
 				else
 					--Spawn normal NPC
-					createTemplatedRoleplayNPC(mobTemplate, base.spawns[i][3], base.spawns[i][4], base.spawns[i][5], base.spawns[i][6], base.spawns[i][7], base.spawns[i][2])
+					local pNpc = createTemplatedRoleplayNPC(mobTemplate, base.spawns[i][3], base.spawns[i][4], base.spawns[i][5], base.spawns[i][6], base.spawns[i][7], base.spawns[i][2])
+					-- Set an anim on the base NPC.
+					if (base.spawns[i][8] ~= nil and pNpc ~= nil) then
+						CreatureObject(pNpc):setMoodString(base.spawns[i][8])
+					end
 				end
 			else 
 				print("ERROR: Could not spawn unit from unit group")
