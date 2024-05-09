@@ -7,7 +7,7 @@ npc_template = {
 	skillTemplates = {"narestra/force/adept"},
 	
 	equipmentTemplates = {
-		{"rp_smc_female", {"faction/smc/matriarch"}},
+		{"rp_smc_female", {"faction/dathomiri/matriarch"}},
 	},	
 	
 	customizationTemplates = {

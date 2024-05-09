@@ -8,11 +8,11 @@ npc_template = {
 	
 	equipmentTemplates = {
 		{"rp_smc_female", {
-			"faction/smc/witch_01", 
-			"faction/smc/witch_02", 
-			"faction/smc/witch_03", 
-			"faction/smc/witch_04", 
-			"faction/smc/witch_05"
+			"faction/dathomiri/witch_01", 
+			"faction/dathomiri/witch_02", 
+			"faction/dathomiri/witch_03", 
+			"faction/dathomiri/witch_04", 
+			"faction/dathomiri/witch_05"
 		}},
 	},	
 	

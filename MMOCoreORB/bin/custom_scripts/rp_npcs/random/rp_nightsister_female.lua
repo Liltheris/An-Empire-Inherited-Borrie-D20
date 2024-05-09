@@ -27,7 +27,7 @@ rp_nightsister_female_random = {
 		{"/shared_owner/blend_flat_chest", 0, 255},
 		{"/private/index_age", 0, 20},
 		--Colours
-		{"/shared_owner/index_color_skin", 0, 47},
+		{"/private/index_color_skin", 0, 47},
 		{"/private/index_color_2", 0, 31},
 		{"/private/index_color_facial_hair", 0, 19},
 		{"/private/index_color_eyeshadow", 0, 255},
