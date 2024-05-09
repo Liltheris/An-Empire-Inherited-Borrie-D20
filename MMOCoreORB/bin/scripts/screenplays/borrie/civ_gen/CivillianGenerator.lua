@@ -65,7 +65,7 @@ function CivillianGenerator:spawnCivillians(screenplayName, zoneName, waypointLi
 			elseif(tags[j] == "tech") then
 				self:setMoodString(pNpc, "npc_use_terminal_high")
 			elseif(tags[j] == "meditating") then
-				self:setMoodString(pNpc, "meditating")
+				self:setMoodString(pNpc, "npc_meditate")
 			elseif(string.find(tags[j], "walker")) then 
 				--Check to see if we're a walker.
 				local walkpointTag = string.sub(tags[j], 8, string.len(tags[j]))

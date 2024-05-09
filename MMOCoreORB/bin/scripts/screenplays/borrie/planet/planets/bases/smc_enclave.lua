@@ -9,30 +9,6 @@ base = {
 	
 	spawns = {
 		--Type, Zone, x, z, y, angle, cell
-		{"trooper","rp_dathomir", 154.531, 430, 4578.79, 4, 0,},
-		{"trooper","rp_dathomir", 148.54, 430, 4578.44, 10, 0,},
-		{"trooper","rp_dathomir", 160.094, 432.015, 4517.1, 339, 0,},
-		{"trooper","rp_dathomir", 156.155, 432.016, 4516.35, 346, 0,},
-		{"trooper","rp_dathomir", -3.40761, 2.01, 6.95283, 56, 2665879,},
-		{"elite","rp_dathomir", 2.93397, 3.01, -4.97753, 174, 2665884,},
-		{"trooper","rp_dathomir", 6.04498, 2.01, -9.8915, 171, 2665884,},
-		{"trooper","rp_dathomir", -2.3782, 2.01, -9.35803, 113, 2665884,},
-		{"trooper","rp_dathomir", 276.828, 340.467, 4744.81, 30, 0,},
-		{"trooper","rp_dathomir", 506.185, 275.038, 4739.39, 94, 0,},
-		{"trooper","rp_dathomir", 506.462, 274.074, 4744.67, 120, 0,},
-		{"elite","rp_dathomir", 533.907, 273.841, 4736.64, 31, 0,},
-		{"trooper","rp_dathomir", 630.337, 260, 4539.38, 68, 0,},
-		{"elite","rp_dathomir", 611.656, 260, 4513.21, 289, 0,},
-		{"trooper","rp_dathomir", 611.822, 276.773, 4331.31, 195, 0,},
-		{"elite","rp_dathomir", 506.86, 229.5, 4188.87, 325, 0,},
-		{"trooper","rp_dathomir", 586.085, 229.5, 4208.85, 179, 0,},
-		{"trooper","rp_dathomir", 424.717, 214.331, 4108.88, 181, 0,},
-		{"trooper","rp_dathomir", 423.153, 213.889, 4108.62, 154, 0,},
-		{"trooper","rp_dathomir", 178.319, 150.717, 4035.34, 257, 0,},
-		{"trooper","rp_dathomir", 176.261, 150.85, 4041.01, 247, 0,},
-		{"trooper","rp_dathomir", -438.697, 121, 4173.73, 307, 0,},
-		{"trooper","rp_dathomir", -824.83, 121, 4173.52, 294, 0,},
-		{"trooper","rp_dathomir", -824.501, 121, 4178.32, 236, 0,},
 	}
 }
 

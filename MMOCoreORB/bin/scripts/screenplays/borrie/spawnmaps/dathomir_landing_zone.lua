@@ -180,8 +180,45 @@ function DathomirLandingZoneScreenPlay:spawnSceneObjects()
 end
 
 function DathomirLandingZoneScreenPlay:spawnMobiles()
-	local pNpc = createTemplatedRoleplayNPC("faction/nightsister/matriarch", -4165.09, 121, -90.2837, 298, 0, "rp_dathomir")
-	CreatureObject(pNpc):setMoodString("meditating")
+	
+	local pNpc = createTemplatedRoleplayNPC("faction/nightsister/matriarch", -4151.37, 121, -107.367, 341, 0, "rp_dathomir")
+	CreatureObject(pNpc):setMoodString("npc_meditate")
+
+	-- Nightsister spawns
+	createTemplatedRoleplayNPC("faction/nightsister/matriarch", -3976.73, 131.5, -170.364, 181, 0, "rp_dathomir")
+	createTemplatedRoleplayNPC("faction/nightsister/warrior", -4057.89, 122.841, -277.704, 234, 0, "rp_dathomir")
+	createTemplatedRoleplayNPC("faction/nightsister/warrior", -4125.83, 120.951, -45.5268, 7, 0, "rp_dathomir")
+	createTemplatedRoleplayNPC("faction/nightsister/warrior", -4066.04, 130.5, -107.068, 47, 0, "rp_dathomir")
+	createTemplatedRoleplayNPC("faction/nightsister/warrior", -4061.77, 130.5, -110.799, 27, 0, "rp_dathomir")
+	createTemplatedRoleplayNPC("faction/nightsister/warrior", -4003.67, 123.875, -77.8944, 10, 0, "rp_dathomir")
+	createTemplatedRoleplayNPC("faction/nightsister/warrior", -4009.19, 123.273, -76.2536, 13, 0, "rp_dathomir")
+
+	-- Singing Mountain Clan spawns
+	createTemplatedRoleplayNPC("faction/smc/matriarch", 2.93397, 3.01, -4.97753, 174, 2665884, "rp_dathomir")
+	createTemplatedRoleplayNPC("faction/smc/matriarch", 533.907, 273.841, 4736.64, 31, 0, "rp_dathomir")
+	createTemplatedRoleplayNPC("faction/smc/matriarch", 611.656, 260, 4513.21, 289, 0, "rp_dathomir")
+	createTemplatedRoleplayNPC("faction/smc/matriarch", 506.86, 229.5, 4188.87, 325, 0, "rp_dathomir")
+	createTemplatedRoleplayNPC("faction/smc/warrior", 154.531, 430, 4578.79, 4, 0, "rp_dathomir")
+	createTemplatedRoleplayNPC("faction/smc/warrior", 148.54, 430, 4578.44, 10, 0, "rp_dathomir")
+	createTemplatedRoleplayNPC("faction/smc/warrior", 160.094, 432.015, 4517.1, 339, 0, "rp_dathomir")
+	createTemplatedRoleplayNPC("faction/smc/warrior", 156.155, 432.016, 4516.35, 346, 0, "rp_dathomir")
+	createTemplatedRoleplayNPC("faction/smc/warrior", -3.40761, 2.01, 6.95283, 56, 2665879, "rp_dathomir")
+	createTemplatedRoleplayNPC("faction/smc/warrior", 6.04498, 2.01, -9.8915, 171, 2665884, "rp_dathomir")
+	createTemplatedRoleplayNPC("faction/smc/warrior", -2.3782, 2.01, -9.35803, 113, 2665884, "rp_dathomir")
+	createTemplatedRoleplayNPC("faction/smc/warrior", 276.828, 340.467, 4744.81, 30, 0, "rp_dathomir")
+	createTemplatedRoleplayNPC("faction/smc/warrior", 506.185, 275.038, 4739.39, 94, 0, "rp_dathomir")
+	createTemplatedRoleplayNPC("faction/smc/warrior", 506.462, 274.074, 4744.67, 120, 0, "rp_dathomir")
+	createTemplatedRoleplayNPC("faction/smc/warrior", 630.337, 260, 4539.38, 68, 0, "rp_dathomir")
+	createTemplatedRoleplayNPC("faction/smc/warrior", 611.822, 276.773, 4331.31, 195, 0, "rp_dathomir")
+	createTemplatedRoleplayNPC("faction/smc/warrior", 586.085, 229.5, 4208.85, 179, 0, "rp_dathomir")
+	createTemplatedRoleplayNPC("faction/smc/warrior", 424.717, 214.331, 4108.88, 181, 0, "rp_dathomir")
+	createTemplatedRoleplayNPC("faction/smc/warrior", 423.153, 213.889, 4108.62, 154, 0, "rp_dathomir")
+	createTemplatedRoleplayNPC("faction/smc/warrior", 178.319, 150.717, 4035.34, 257, 0, "rp_dathomir")
+	createTemplatedRoleplayNPC("faction/smc/warrior", 176.261, 150.85, 4041.01, 247, 0, "rp_dathomir")
+	createTemplatedRoleplayNPC("faction/smc/warrior", -438.697, 121, 4173.73, 307, 0, "rp_dathomir")
+	createTemplatedRoleplayNPC("faction/smc/warrior", -824.83, 121, 4173.52, 294, 0, "rp_dathomir")
+	createTemplatedRoleplayNPC("faction/smc/warrior", -824.501, 121, 4178.32, 236, 0, "rp_dathomir")
+
 
 	--Species, Equipment, Skills, Customization
 	pNpc = spawnRoleplayMobile("rp_dathomir", "rp_base_npc", 1, 612.922, 260, 4534.88, 0, 0, "rancor", "default", "creature/predator_large", "default") --Equip, Skill, Customization
