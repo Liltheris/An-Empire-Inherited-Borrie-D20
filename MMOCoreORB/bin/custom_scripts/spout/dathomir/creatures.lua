@@ -1,0 +1,13 @@
+spawnRoleplayMobile("rp_dathomir", "rp_base_npc", 1, 612.922, 260, 4534.88, 0, 0, "object/mobile/rancor.iff", "default", "default", "default") --Equip, Skill, Customization
+spawnRoleplayMobile("rp_dathomir", "rp_base_npc", 1, 556.19, 229.5, 4196.77, 0, 0, "object/mobile/rancor.iff", "default", "default", "default") --Equip, Skill, Customization
+spawnRoleplayMobile("rp_dathomir", "rp_base_npc", 1, -6146.9, 127.865, 989.37, 82, 0, "object/mobile/atst.iff", "default", "default", "default") --Equip, Skill, Customization
+spawnRoleplayMobile("rp_dathomir", "rp_base_npc", 1, -6144.43, 128.595, 956.88, 88, 0, "object/mobile/atst.iff", "default", "default", "default") --Equip, Skill, Customization
+spawnRoleplayMobile("rp_dathomir", "rp_base_npc", 1, -6153.89, 126.156, 1001.76, 71, 0, "object/mobile/atst.iff", "default", "default", "default") --Equip, Skill, Customization
+spawnRoleplayMobile("rp_dathomir", "rp_base_npc", 1, -6145.82, 130.054, 941.853, 96, 0, "object/mobile/atst.iff", "default", "default", "default") --Equip, Skill, Customization
+spawnRoleplayMobile("rp_dathomir", "rp_base_npc", 1, -6136.29, 130.004, 949.792, 90, 0, "object/mobile/atst.iff", "default", "default", "default") --Equip, Skill, Customization
+spawnRoleplayMobile("rp_dathomir", "rp_base_npc", 1, -6141.55, 124.899, 999.338, 76, 0, "object/mobile/atst.iff", "default", "default", "default") --Equip, Skill, Customization
+spawnRoleplayMobile("rp_dathomir", "rp_base_npc", 1, -4120.51, 122.109, -30.4637, 319, 0, "object/mobile/rancor.iff", "default", "default", "default") --Equip, Skill, Customization
+spawnRoleplayMobile("rp_dathomir", "rp_base_npc", 1, -4032.47, 118.666, -232.993, 188, 0, "object/mobile/rancor.iff", "default", "default", "default") --Equip, Skill, Customization
+spawnRoleplayMobile("rp_dathomir", "rp_base_npc", 1, -4044.14, 121.114, -272.768, 357, 0, "object/mobile/rancor.iff", "default", "default", "default") --Equip, Skill, Customization
+spawnRoleplayMobile("rp_dathomir", "rp_base_npc", 1, -4060.26, 123.42, -306.155, 294, 0, "object/mobile/rancor.iff", "default", "default", "default") --Equip, Skill, Customization
+spawnRoleplayMobile("rp_dathomir", "rp_base_npc", 1, -4054.74, 127.961, -142.923, 105, 0, "object/mobile/rancor.iff", "default", "default", "default") --Equip, Skill, Customization
