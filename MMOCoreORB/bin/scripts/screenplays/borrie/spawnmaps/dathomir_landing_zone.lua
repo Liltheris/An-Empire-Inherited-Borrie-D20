@@ -124,7 +124,6 @@ function DathomirLandingZoneScreenPlay:spawnCivilians()
 		{-3999.25, 121, -262.619, 205, 0,{"meditating"}},
 		{-4009.9, 121, -259.976, 156, 0,{"meditating"}},
 		{-4165.09, 121, -90.2837, 298, 0,{"meditating"}},
-		{-4151.37, 121, -107.367, 341, 0,{"MATRIACH"}},
 		{-4150.31, 121, -105.602, 205, 0,{"meditating"}},
 		{-4151.97, 121, -105.119, 165, 0,{"meditating"}},
 		{-4153.05, 121, -106.194, 106, 0,{"meditating"}},
@@ -181,6 +180,8 @@ function DathomirLandingZoneScreenPlay:spawnSceneObjects()
 end
 
 function DathomirLandingZoneScreenPlay:spawnMobiles()
+	createTemplatedRoleplayNPC("faction/nightsister/matriarch", -4165.09, 121, -90.2837, 298, 0, "rp_dathomir")
+
 	--Species, Equipment, Skills, Customization
 	local pNpc = spawnRoleplayMobile("rp_dathomir", "rp_base_npc", 1, 612.922, 260, 4534.88, 0, 0, "object/mobile/rancor.iff", "default", "creature/predator_large", "default") --Equip, Skill, Customization
 	SceneObject(pNpc):setCustomObjectName("a Rancor")
