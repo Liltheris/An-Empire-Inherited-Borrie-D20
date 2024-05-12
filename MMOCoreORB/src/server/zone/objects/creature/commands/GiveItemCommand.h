@@ -206,6 +206,18 @@ public:
 					   	String valueType = CustomizationIdManager::instance()->getCustomizationVariable(key);
 						clothing->setCustomizationVariable(valueType, value, true);
         			} 
+					
+					if(object->isWeaponObject()) {
+						WeaponObject* wepo = cast<WeaponObject*>(clothing);
+						WeaponObject* origWep = cast<WeaponObject*>(oldClothing);
+
+						auto it = origWep->getVisibleComponents()->getIterator();
+						it.resetIterator();
+
+						for (int i = 0; i > origWep->getVisibleComponents()->size(); i++) {
+							wepo->addVisibleComponent(it.getNextValue()); 
+						}
+					}
 
 					bool wasModified = oldClothing->getStoredString("dm_last_modified") != "";
 
