@@ -207,33 +207,17 @@ public:
 						clothing->setCustomizationVariable(valueType, value, true);
         			} 
 					
-					if(clothing->isWeaponObject()) {
-						WeaponObject* wepo = cast<WeaponObject*>(clothing);
-						WeaponObject* origWep = cast<WeaponObject*>(oldClothing);
+					if(oldClothing->isWeaponObject()) {
 
-						auto it = origWep->getVisibleComponents()->getIterator();
+						auto it = oldClothing->getVisibleComponents()->getIterator();
 						it.resetIterator();
 
-						for (int i = 0; i > origWep->getVisibleComponents()->size(); i++) {
-							wepo->addVisibleComponent(it.getNextValue()); 
+						for (int i = 0; i > oldClothing->getVisibleComponents()->size(); i++) {
+							clothing->addVisibleComponent(it.getNextValue()); 
 						}
 					}
 
-					bool wasModified = oldClothing->getStoredString("dm_last_modified") != "";
-
-					if(wasModified) {
-						if(oldClothing->isWeaponObject()) {
-							WeaponObject* wepo = cast<WeaponObject*>(clothing);
-							WeaponObject* origWep = cast<WeaponObject*>(oldClothing);
-							wepo->setMinDamage(origWep->getMinDamage());
-        					wepo->setMaxDamage(origWep->getMaxDamage());
-							wepo->setBonusDamage(origWep->getBonusDamage());
-        					wepo->setStoredString("dm_last_modified", creature->getFirstName());
-						} else if(oldClothing->isArmorObject()) {
-							ArmorObject* armo = cast<ArmorObject*>(clothing);
-							armo->setStoredString("dm_last_modified", creature->getFirstName());
-						}
-					}	
+					bool wasModified = oldClothing->getStoredString("dm_last_modified") != "";	
 
 					if (inventory->transferObject(clothing, -1, true)) {
 						inventory->broadcastObject(clothing, true);
