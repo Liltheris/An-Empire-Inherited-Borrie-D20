@@ -21,13 +21,13 @@ object_draft_schematic_roleplay_weapon_rifle_rifle_dlt20a = object_draft_schemat
 	customizationStringNames = {},
 	customizationDefaults = {},
 
-	ingredientTemplateNames = {"craft_weapon_ingredients_n","craft_weapon_ingredients_n","craft_weapon_ingredients_n"},
-	ingredientTitleNames = {"receiver","operating_system","scope"},
-	ingredientSlotType = {1,1,3},
-	resourceTypes = {"object/tangible/borrp/crafting/shared_comp_weapon_receiver_sniper_common.iff","object/tangible/borrp/crafting/shared_comp_op_system_base.iff","object/tangible/component/weapon/shared_scope_weapon.iff"},
-	resourceQuantities = {1,1,1},
-	contribution = {100,100,100},
-	ingredientAppearance = {"", "", "scope"},
+	ingredientTemplateNames = {"craft_weapon_ingredients_n","craft_weapon_ingredients_n","craft_weapon_ingredients_n","craft_weapon_ingredients_n"},
+	ingredientTitleNames = {"receiver","operating_system","scope", "muzzle"},
+	ingredientSlotType = {1,1,3,3},
+	resourceTypes = {"object/tangible/borrp/crafting/shared_comp_weapon_receiver_sniper_common.iff","object/tangible/borrp/crafting/shared_comp_op_system_base.iff","object/tangible/component/weapon/shared_scope_weapon.iff","object/tangible/component/weapon/shared_blaster_pistol_barrel.iff"},
+	resourceQuantities = {1,1,1,1},
+	contribution = {100,100,100,100},
+	ingredientAppearance = {"", "", "scope","muzzle"},
 	targetTemplate = "object/weapon/roleplay/ranged/rifle/dlt20a_heavy_blaster_rifle.iff",
 
 	additionalTemplates = {}
