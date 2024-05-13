@@ -207,7 +207,7 @@ public:
 						clothing->setCustomizationVariable(valueType, value, true);
         			} 
 					
-					if(object->isWeaponObject()) {
+					if(clothing->isWeaponObject()) {
 						WeaponObject* wepo = cast<WeaponObject*>(clothing);
 						WeaponObject* origWep = cast<WeaponObject*>(oldClothing);
 
