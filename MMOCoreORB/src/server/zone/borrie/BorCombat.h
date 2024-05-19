@@ -1055,6 +1055,14 @@ public:
         
         int rollResult = dodgeRoll + maneuverabilitySkill;
 
+        if (!defender->isStanding()){
+            if (defender->getPosture() == CreaturePosture::CROUCHED) {
+                toHit += 3;
+            } else {
+                toHit += 6;
+            }
+        }
+
         // Determine the cost to dodge, based on the armour class.
         int dodgeCost = 1 + GetCharacterArmourClass(defender);
         int armourPenalty = 0;
@@ -1072,10 +1080,10 @@ public:
             dmgString = ApplyAdjustedHealthDamage(defender, attackerWeapon, incomingDamage / 2, slot);
             BorEffect::PerformReactiveAnimation(defender, attacker, "dodge", GetSlotHitlocation(slot), true, incomingDamage, "basic");
             
-            defender->setPosture(CreaturePosture::CROUCHED, true, true);
+            //defender->setPosture(CreaturePosture::CROUCHED, true, true);
 
             reactionSpam += ", " + BorString::getNiceName(defender) + " struggles to dodge out of the way! " + rollSpam(dodgeRoll, maneuverabilitySkill, toHit) + "\\#FFFFFF ";
-            reactionSpam += BorString::getNiceName(defender) + " stumbles, but only takes "+ dmgString +" damage.";
+            reactionSpam += BorString::getNiceName(defender) + " only takes "+ dmgString +" damage.";
 
         } else {
             // Failed to dodge entirely!
