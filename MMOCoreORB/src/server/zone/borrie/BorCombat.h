@@ -666,9 +666,6 @@ public:
 
         WeaponObject* attackerWeapon = attacker->getWeapon();
         WeaponObject* defenderWeapon = defender->getWeapon();
-        
-        if (!defender->isStanding())
-            return false;
             
         if (defenderWeapon->getDodgeIsRestricted()){
             defender->sendSystemMessage("You cannot dodge with your currently equipped weapon!");
@@ -687,6 +684,14 @@ public:
         
         int result = roll + skillMod;
 
+        if (!defender->isStanding()){
+            if (defender->getPosture() == CreaturePosture::CROUCHED) {
+                hitRoll += 3;
+            } else {
+                hitRoll += 6;
+            }
+        }
+
         // Determine the cost to dodge, based on the armour class.
         int dodgeCost = 1 + GetCharacterArmourClass(defender);
         int armourPenalty = 0;
@@ -704,10 +709,10 @@ public:
             dmgString = ApplyAdjustedHealthDamage(defender, attackerWeapon, damage / 2, slot);
             BorEffect::PerformReactiveAnimation(defender, attacker, "dodge", GetSlotHitlocation(slot), true, damage, "basic");
             
-            defender->setPosture(CreaturePosture::CROUCHED, true, true);
+            //defender->setPosture(CreaturePosture::CROUCHED, true, true);
 
             spam += ", " + BorString::getNiceName(defender) + " struggles to dodge out of the way! " + BorString::skillSpam(skillMod, roll, result, hitRoll) + "\\#FFFFFF ";
-            spam += BorString::getNiceName(defender) + " stumbles, but only takes "+ dmgString +" damage.";
+            spam += BorString::getNiceName(defender) + " only takes "+ dmgString +" damage.";
 
         } else {
             // Failed to dodge entirely!
@@ -1668,7 +1673,7 @@ public:
         //Parry
         else if(reactionType == 2 && defenderWeapon->isMeleeWeapon() && attackerWeapon->isMeleeWeapon() && defenderAction > 1 && GetWeaponCondition(defenderWeapon) >= incomingDamage && !defenderWeapon->getParryIsRestricted()) return true;
         //Dodge
-        else if(reactionType == 3 && defender->isStanding() && defenderAction > 0 && !defenderWeapon->getDodgeIsRestricted() && !BorCharacter::IsWearingArmourUnskilled(defender) && GetCharacterArmourClass(defender) < 3) return true;
+        else if(reactionType == 3 && defenderAction > 0 && !defenderWeapon->getDodgeIsRestricted() && !BorCharacter::IsWearingArmourUnskilled(defender) && GetCharacterArmourClass(defender) < 3) return true;
         //Special Force
         else if(reactionType == 4 || reactionType == 5 || reactionType == 6 ) {
             int defenderForce = GetAvailableForcePoints(defender);
