@@ -1082,8 +1082,8 @@ public:
             
             //defender->setPosture(CreaturePosture::CROUCHED, true, true);
 
-            reactionSpam += ", " + BorString::getNiceName(defender) + " struggles to dodge out of the way! " + rollSpam(dodgeRoll, maneuverabilitySkill, toHit) + "\\#FFFFFF ";
-            reactionSpam += BorString::getNiceName(defender) + " only takes "+ dmgString +" damage.";
+            reactionSpam += ", " + BorString::getNiceName(defender) + " struggles to dodge out of the way " + rollSpam(dodgeRoll, maneuverabilitySkill, toHit) + "\\#FFFFFF ";
+            reactionSpam += BorString::getNiceName(defender) + " and only takes "+ dmgString +" damage.";
 
         } else {
             // Failed to dodge entirely!

@@ -92,6 +92,14 @@ travel_destinations = {
 					{"rp_tatooine", 4579.0, 0.0, 5524.0, 0, 0},
 				}
 			},
+			{
+				tag = "ramgers",
+				name = "Antarian Ranger Base",
+				skill = "rp_travel_tatooine_rangers",
+				landing_spots = {
+					{"rp_tatooine", -14.2141, -22.99, 172.045, 0, 880032654},
+				}
+			},
 		}
 	},
 
