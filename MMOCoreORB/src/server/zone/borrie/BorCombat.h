@@ -666,9 +666,6 @@ public:
 
         WeaponObject* attackerWeapon = attacker->getWeapon();
         WeaponObject* defenderWeapon = defender->getWeapon();
-        
-        if (!defender->isStanding())
-            return false;
             
         if (defenderWeapon->getDodgeIsRestricted()){
             defender->sendSystemMessage("You cannot dodge with your currently equipped weapon!");
@@ -687,6 +684,14 @@ public:
         
         int result = roll + skillMod;
 
+        if (!defender->isStanding()){
+            if (defender->getPosture() == CreaturePosture::CROUCHED) {
+                hitRoll += 3;
+            } else {
+                hitRoll += 6;
+            }
+        }
+
         // Determine the cost to dodge, based on the armour class.
         int dodgeCost = 1 + GetCharacterArmourClass(defender);
         int armourPenalty = 0;
@@ -704,10 +709,10 @@ public:
             dmgString = ApplyAdjustedHealthDamage(defender, attackerWeapon, damage / 2, slot);
             BorEffect::PerformReactiveAnimation(defender, attacker, "dodge", GetSlotHitlocation(slot), true, damage, "basic");
             
-            defender->setPosture(CreaturePosture::CROUCHED, true, true);
+            //defender->setPosture(CreaturePosture::CROUCHED, true, true);
 
             spam += ", " + BorString::getNiceName(defender) + " struggles to dodge out of the way! " + BorString::skillSpam(skillMod, roll, result, hitRoll) + "\\#FFFFFF ";
-            spam += BorString::getNiceName(defender) + " stumbles, but only takes "+ dmgString +" damage.";
+            spam += BorString::getNiceName(defender) + " only takes "+ dmgString +" damage.";
 
         } else {
             // Failed to dodge entirely!
@@ -1050,6 +1055,14 @@ public:
         
         int rollResult = dodgeRoll + maneuverabilitySkill;
 
+        if (!defender->isStanding()){
+            if (defender->getPosture() == CreaturePosture::CROUCHED) {
+                toHit += 3;
+            } else {
+                toHit += 6;
+            }
+        }
+
         // Determine the cost to dodge, based on the armour class.
         int dodgeCost = 1 + GetCharacterArmourClass(defender);
         int armourPenalty = 0;
@@ -1067,10 +1080,10 @@ public:
             dmgString = ApplyAdjustedHealthDamage(defender, attackerWeapon, incomingDamage / 2, slot);
             BorEffect::PerformReactiveAnimation(defender, attacker, "dodge", GetSlotHitlocation(slot), true, incomingDamage, "basic");
             
-            defender->setPosture(CreaturePosture::CROUCHED, true, true);
+            //defender->setPosture(CreaturePosture::CROUCHED, true, true);
 
-            reactionSpam += ", " + BorString::getNiceName(defender) + " struggles to dodge out of the way! " + rollSpam(dodgeRoll, maneuverabilitySkill, toHit) + "\\#FFFFFF ";
-            reactionSpam += BorString::getNiceName(defender) + " stumbles, but only takes "+ dmgString +" damage.";
+            reactionSpam += ", " + BorString::getNiceName(defender) + " struggles to dodge out of the way " + rollSpam(dodgeRoll, maneuverabilitySkill, toHit) + "\\#FFFFFF ";
+            reactionSpam += BorString::getNiceName(defender) + " and only takes "+ dmgString +" damage.";
 
         } else {
             // Failed to dodge entirely!
@@ -1355,6 +1368,22 @@ public:
     }
 
     static String ApplyAdjustedHealthDamage(CreatureObject* creature, String damageType, int damage, int slot) {
+        // Get the target's Force Defense value and deduct it from the incoming damage.
+        int forceDefense = creature->getStoredInt("force_defense");
+
+        if (forceDefense > 0){
+            int newDamage = damage - forceDefense;
+
+            creature->setStoredInt("force_defense", forceDefense - damage);
+
+            if (newDamage < 1){
+                //We've fully defended!
+                return damageNumber(0) + "(\\#FF00FF"+damage+"\\#FFFFFF)";
+            }
+
+            damage = newDamage;
+        }
+
         // Use equipped armour if the creature is a player.
         if(creature->isPlayerCreature()) {
             ManagedReference<ArmorObject*> armour = BorCharacter::GetArmorAtSlot(creature, GetSlotName(slot));
@@ -1420,6 +1449,9 @@ public:
 
                     String output = damageNumber(healthDamage);
                     output = output +"(\\#FFFF00"+String::valueOf(damage - healthDamage)+"\\#FFFFFF)";
+                    if (forceDefense > 0){
+                        output = output + "(\\#FF00FF"+forceDefense+"\\#FFFFFF)";
+                    }
                     return output;
                 }
             }
@@ -1477,6 +1509,9 @@ public:
 
                                 String output = damageNumber(healthDamage);
                                 output = output +"(\\#FFFF00"+String::valueOf(damage - healthDamage)+"\\#FFFFFF)";
+                                if (forceDefense > 0){
+                                    output = output + "(\\#FF00FF"+forceDefense+"\\#FFFFFF)";
+                                }
 
                                 armourObject.pop();
                                 armourSlotObject.pop();
@@ -1646,7 +1681,7 @@ public:
         //Parry
         else if(reactionType == 2 && defenderWeapon->isMeleeWeapon() && attackerWeapon->isMeleeWeapon() && defenderAction > 1 && GetWeaponCondition(defenderWeapon) >= incomingDamage && !defenderWeapon->getParryIsRestricted()) return true;
         //Dodge
-        else if(reactionType == 3 && defender->isStanding() && defenderAction > 0 && !defenderWeapon->getDodgeIsRestricted() && !BorCharacter::IsWearingArmourUnskilled(defender) && GetCharacterArmourClass(defender) < 3) return true;
+        else if(reactionType == 3 && defenderAction > 0 && !defenderWeapon->getDodgeIsRestricted() && !BorCharacter::IsWearingArmourUnskilled(defender) && GetCharacterArmourClass(defender) < 3) return true;
         //Special Force
         else if(reactionType == 4 || reactionType == 5 || reactionType == 6 ) {
             int defenderForce = GetAvailableForcePoints(defender);

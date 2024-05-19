@@ -206,22 +206,18 @@ public:
 					   	String valueType = CustomizationIdManager::instance()->getCustomizationVariable(key);
 						clothing->setCustomizationVariable(valueType, value, true);
         			} 
+					
+					if(oldClothing->isWeaponObject()) {
 
-					bool wasModified = oldClothing->getStoredString("dm_last_modified") != "";
+						auto it = oldClothing->getVisibleComponents()->getIterator();
+						it.resetIterator();
 
-					if(wasModified) {
-						if(oldClothing->isWeaponObject()) {
-							WeaponObject* wepo = cast<WeaponObject*>(clothing);
-							WeaponObject* origWep = cast<WeaponObject*>(oldClothing);
-							wepo->setMinDamage(origWep->getMinDamage());
-        					wepo->setMaxDamage(origWep->getMaxDamage());
-							wepo->setBonusDamage(origWep->getBonusDamage());
-        					wepo->setStoredString("dm_last_modified", creature->getFirstName());
-						} else if(oldClothing->isArmorObject()) {
-							ArmorObject* armo = cast<ArmorObject*>(clothing);
-							armo->setStoredString("dm_last_modified", creature->getFirstName());
+						for (int i = 0; i > oldClothing->getVisibleComponents()->size(); i++) {
+							clothing->addVisibleComponent(it.getNextValue()); 
 						}
-					}	
+					}
+
+					bool wasModified = oldClothing->getStoredString("dm_last_modified") != "";	
 
 					if (inventory->transferObject(clothing, -1, true)) {
 						inventory->broadcastObject(clothing, true);

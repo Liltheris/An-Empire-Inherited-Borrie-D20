@@ -1452,6 +1452,7 @@ public:
 		creature->setStoredInt("power_attack_count", 0);
 		creature->setStoredInt("is_vulnerable", 0);
 		creature->setStoredInt("force_skill_learned", 0);
+		creature->setStoredInt("force_defense", 0);
 		creature->setStoredInt("rp_heropoint", 1);
 
 		//18 hour cooldown.

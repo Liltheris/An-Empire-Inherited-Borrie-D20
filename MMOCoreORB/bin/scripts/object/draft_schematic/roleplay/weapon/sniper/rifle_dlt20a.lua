@@ -23,7 +23,7 @@ object_draft_schematic_roleplay_weapon_rifle_rifle_dlt20a = object_draft_schemat
 
 	ingredientTemplateNames = {"craft_weapon_ingredients_n","craft_weapon_ingredients_n","craft_weapon_ingredients_n"},
 	ingredientTitleNames = {"receiver","operating_system","scope"},
-	ingredientSlotType = {1,1,3},
+	ingredientSlotType = {1,1,3,3},
 	resourceTypes = {"object/tangible/borrp/crafting/shared_comp_weapon_receiver_sniper_common.iff","object/tangible/borrp/crafting/shared_comp_op_system_base.iff","object/tangible/component/weapon/shared_scope_weapon.iff"},
 	resourceQuantities = {1,1,1},
 	contribution = {100,100,100},

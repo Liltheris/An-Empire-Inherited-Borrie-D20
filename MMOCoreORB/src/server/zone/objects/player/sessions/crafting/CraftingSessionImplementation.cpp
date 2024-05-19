@@ -74,9 +74,9 @@ int CraftingSessionImplementation::startSession() {
 	///////////////////////////////////////////////////////////////////
 	// D20 System - Check will
 	///////////////////////////////////////////////////////////////////
-	if (crafter->getHAM(6) == 0){
+	if (crafter->getHAM(6) <= 1){
 		// Cancel crafting due to lacking will!
-		crafter->sendSystemMessage("You do not have enough will to craft right now!");
+		crafter->sendSystemMessage("Crafting now would lead to your character falling unconscious!");
 		cancelSession();
 		return false;
 	}
