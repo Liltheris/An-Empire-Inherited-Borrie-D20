@@ -38,8 +38,9 @@ function BorForce_BasePower:new(o)
 	o = o or {}
 
 	setmetatable(o, self)
-	
-	return o
+    self.__index = self
+    
+    return o
 end
 
 function BorForce_BasePower:showHelp(pPlayer)
