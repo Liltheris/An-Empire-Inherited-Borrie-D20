@@ -32,7 +32,7 @@ public:
 
 		// Player must have sufficient funds including surcharge
 		int cash = player->getBankCredits();
-		int surcharge = amount < 21 ? 1 : round(amount * 0.05); // minimum surcharge is 1c as per Live.
+		int surcharge = amount < 21 ? 1 : round(amount * 0.00); // minimum surcharge is 1c as per Live.
 		if ((amount + surcharge) > cash) {
 			StringIdChatParameter ptnsfw("base_player", "prose_tip_nsf_wire"); // You do not have %DI credits (surcharge included) to tip the desired amount to %TT.
 			ptnsfw.setDI(amount + surcharge);
