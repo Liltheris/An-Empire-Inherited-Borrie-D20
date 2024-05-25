@@ -44,7 +44,7 @@ public:
 		Locker clocker(targetPlayer, player);
 
 		TransactionLog trx(player, targetPlayer, TrxCode::PLAYERTIP, amount, false);
-		trxFee.groupWith(trx);
+
 
 		player->subtractBankCredits(amount);
 		targetPlayer->addBankCredits(amount, true);
