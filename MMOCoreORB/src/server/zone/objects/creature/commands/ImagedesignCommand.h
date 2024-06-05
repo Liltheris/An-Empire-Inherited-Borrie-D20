@@ -55,11 +55,13 @@ public:
 			return GENERALERROR;
 		}
 
+		/* D20 System - Start
 		if (playerTarget->isInvisible()) {
 			designer->sendSystemMessage("You can't image design an invisible player.");
 			return GENERALERROR;
 		}
-
+		D20 System - End  */
+		
 		// --- GROUP CHECKING
 		if (designer != playerTarget) {
 			StringIdChatParameter stringIdNotGrp;
