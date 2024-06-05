@@ -60,7 +60,7 @@ object_weapon_roleplay_ranged_rifle_a280_blaster_rifle = object_weapon_ranged_ri
 	--Damage (minDamage[d]maxDamage) i.e. (2d20)
 	minDamage = 1, --Amount of Die used in Damage
 	maxDamage = 8, --Type of Die used in Damage
-	bonusDamage = 2,
+	bonusDamage = 4,
 
 	rarity="Uncommon",
 
