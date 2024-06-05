@@ -28,7 +28,7 @@ object_draft_schematic_roleplay_weapon_pistol_pistol_bryar = object_draft_schema
 	resourceQuantities = {1,1,1,1},
 	contribution = {100,100,100,100},
 	ingredientAppearance = {"", "", "muzzle", "scope"},
-	targetTemplate = "object/weapon/roleplay/ranged/pistol/bryar_pistol.iff",
+	targetTemplate = "object/weapon/roleplay/ranged/pistol/pistol_bryar.iff",
 
 	additionalTemplates = {}
 

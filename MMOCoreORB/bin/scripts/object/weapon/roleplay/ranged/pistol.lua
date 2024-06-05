@@ -1196,7 +1196,7 @@ ObjectTemplates:addTemplate(object_weapon_roleplay_ranged_pistol_westar34_blaste
 ObjectTemplates:addTemplate(object_weapon_roleplay_ranged_pistol_wookiee_pistol, "object/weapon/roleplay/ranged/pistol/wookiee_pistol.iff")
 ObjectTemplates:addTemplate(object_weapon_roleplay_ranged_pistol_westar35_blaster_pistol, "object/weapon/roleplay/ranged/pistol/westar35_blaster_pistol.iff")
 ObjectTemplates:addTemplate(object_weapon_roleplay_ranged_pistol_cdef_pistol, "object/weapon/roleplay/ranged/pistol/cdef_pistol.iff")
-ObjectTemplates:addTemplate(object_weapon_roleplay_ranged_pistol_bryar_pistol, "object/weapon/roleplay/ranged/pistol/bryar_pistol.iff")
+ObjectTemplates:addTemplate(object_weapon_roleplay_ranged_pistol_bryar_pistol, "object/weapon/roleplay/ranged/pistol/pistol_bryar.iff")
 
 
 

@@ -173,8 +173,8 @@ object_weapon_roleplay_ranged_pistol_cdef_pistol = SharedWeaponObjectTemplate:ne
 }
 ObjectTemplates:addClientTemplate(object_weapon_roleplay_ranged_pistol_cdef_pistol, "object/weapon/roleplay/ranged/pistol/cdef_pistol.iff")
 --************************************************************************************************************************************************************
-object_weapon_roleplay_ranged_pistol_bryar = SharedWeaponObjectTemplate:new {
-	clientTemplateFileName = "object/weapon/roleplay/ranged/pistol/bryar_pistol.iff"
+object_weapon_roleplay_ranged_pistol_pistol_bryar = SharedWeaponObjectTemplate:new {
+	clientTemplateFileName = "object/weapon/roleplay/ranged/pistol/pistol_bryar.iff"
 }
-ObjectTemplates:addClientTemplate(object_weapon_roleplay_ranged_pistol_bryar_pistol, "object/weapon/roleplay/ranged/pistol/bryar_pistol.iff")
+ObjectTemplates:addClientTemplate(object_weapon_roleplay_ranged_pistol_pistol_bryar, "object/weapon/roleplay/ranged/pistol/pistol_bryar.iff")
 --************************************************************************************************************************************************************

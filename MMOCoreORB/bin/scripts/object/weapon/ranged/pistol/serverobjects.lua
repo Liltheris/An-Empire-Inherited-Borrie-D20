@@ -72,3 +72,4 @@ includeFile("weapon/ranged/pistol/pistol_striker_noob.lua")
 includeFile("weapon/ranged/pistol/pistol_tangle.lua")
 
 includeFile("weapon/ranged/pistol/pistol_westar35.lua")
+includeFile("weapon/ranged/pistol/pistol_bryar.lua")
