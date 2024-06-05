@@ -1122,7 +1122,38 @@ object_weapon_roleplay_ranged_pistol_cdef_pistol = object_weapon_ranged_pistol_s
 	maxRangeAccuracy = _maxRangeAccuracy,
 	price = 200,
 }
+--Bryar Pistol
+object_weapon_roleplay_ranged_pistol_bryar_pistol = object_weapon_ranged_pistol_shared_pistol_bryar:new {
 
+	--[Info]
+	customName = "Bryar Pistol",
+
+	--[Stats]
+	damageType = ENERGY,
+	armorPiercing = NONE,
+
+	--Damage (minDamage[d]maxDamage) i.e. (2d20)
+	minDamage = 1, --Amount of Die used in Damage
+	maxDamage = 4, --Type of Die used in Damage
+	bonusDamage = 2,
+	
+	noPowerAttack = true,
+	
+	rarity="Rare",
+
+	ammoPack = _ammoPack,
+	maxAmmo = _maxAmmo,
+	
+	--[Stats]
+	attackType = _attackType,
+	pointBlankRange = _pointBlankRange,
+	pointBlankAccuracy = _pointBlankAccuracy,
+	idealRange = _idealRange,
+	idealAccuracy = _idealAccuracy,
+	maxRange = _maxRange,
+	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 200,
+}
 
 
 
@@ -1165,7 +1196,7 @@ ObjectTemplates:addTemplate(object_weapon_roleplay_ranged_pistol_westar34_blaste
 ObjectTemplates:addTemplate(object_weapon_roleplay_ranged_pistol_wookiee_pistol, "object/weapon/roleplay/ranged/pistol/wookiee_pistol.iff")
 ObjectTemplates:addTemplate(object_weapon_roleplay_ranged_pistol_westar35_blaster_pistol, "object/weapon/roleplay/ranged/pistol/westar35_blaster_pistol.iff")
 ObjectTemplates:addTemplate(object_weapon_roleplay_ranged_pistol_cdef_pistol, "object/weapon/roleplay/ranged/pistol/cdef_pistol.iff")
-
+ObjectTemplates:addTemplate(object_weapon_roleplay_ranged_pistol_bryar_pistol, "object/weapon/roleplay/ranged/pistol/bryar_pistol.iff")
 
 
 

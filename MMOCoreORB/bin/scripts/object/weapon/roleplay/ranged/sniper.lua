@@ -94,7 +94,7 @@ object_weapon_roleplay_ranged_rifle_dlt20a_heavy_blaster_rifle = object_weapon_r
 	--Damage (minDamage[d]maxDamage) i.e. (2d20)
 	minDamage = 1, --Amount of Die used in Damage
 	maxDamage = 8, --Type of Die used in Damage
-	bonusDamage = 4,
+	bonusDamage = 2,
 	
 	noDodgeReaction = true,
 	primaryAttributeOnly = true,
