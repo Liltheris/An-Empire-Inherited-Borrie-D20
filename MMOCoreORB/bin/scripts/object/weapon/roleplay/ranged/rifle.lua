@@ -302,6 +302,9 @@ object_weapon_roleplay_ranged_rifle_dlt19_heavy_blaster_rifle = object_weapon_ra
 
 	ammoPack = _ammoPack,
 	maxAmmo = _maxAmmo,
+
+	requiredSkill = "strength",
+	requiredLevel = 5,
 	
 	--[Stats]
 	attackType = _attackType,
@@ -505,6 +508,9 @@ object_weapon_roleplay_ranged_rifle_t21_light_repeating_rifle = object_weapon_ra
 
 	ammoPack = _ammoPack,
 	maxAmmo = _maxAmmo,
+
+	requiredSkill = "strength",
+	requiredLevel = 5,
 	
 	--[Stats]
 	attackType = _attackType,
