@@ -48,4 +48,14 @@ object_draft_schematic_roleplay_weapon_pistol_shared_pistol_de10 = SharedDraftSc
 }
 ObjectTemplates:addClientTemplate(object_draft_schematic_roleplay_weapon_pistol_shared_pistol_de10, "object/draft_schematic/roleplay/weapon/pistol/shared_pistol_de10.iff")
 --********************************************************************************************************************************
+object_draft_schematic_roleplay_weapon_pistol_shared_pistol_bryar = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/roleplay/weapon/pistol/shared_pistol_bryar.iff"
+}
+ObjectTemplates:addClientTemplate(object_draft_schematic_roleplay_weapon_pistol_shared_pistol_bryar, "object/draft_schematic/roleplay/weapon/pistol/shared_pistol_bryar.iff")
+--********************************************************************************************************************************
+object_draft_schematic_roleplay_weapon_pistol_shared_pistol_blurrg = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/roleplay/weapon/pistol/shared_pistol_blurrg.iff"
+}
+ObjectTemplates:addClientTemplate(object_draft_schematic_roleplay_weapon_pistol_shared_pistol_blurrg, "object/draft_schematic/roleplay/weapon/pistol/shared_pistol_blurrg.iff")
+--********************************************************************************************************************************
 
