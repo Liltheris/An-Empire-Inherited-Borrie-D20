@@ -2,10 +2,10 @@ object_draft_schematic_roleplay_weapon_pistol_pistol_bryar = object_draft_schema
 
 	templateType = DRAFTSCHEMATIC,
 
-	customObjectName = "D-18 Blaster Pistol",
+	customObjectName = "Bryar Blaster Pistol",
 
 	craftingToolTab = 1, -- (See DraftSchematicObjectTemplate.h)
-	complexity = 8,
+	complexity = 10,
 	size = 1,
 	factoryCrateType = "object/factory/factory_crate_weapon.iff",
 

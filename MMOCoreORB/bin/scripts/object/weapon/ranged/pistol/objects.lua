@@ -1557,9 +1557,16 @@ object_weapon_ranged_pistol_shared_pistol_westar35 = SharedWeaponObjectTemplate:
 	clientTemplateFileName = "object/weapon/ranged/pistol/shared_pistol_westar_35.iff"
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_ranged_pistol_shared_pistol_bryar, "object/weapon/ranged/pistol/shared_pistol_bryar.iff")
+ObjectTemplates:addClientTemplate(object_weapon_ranged_pistol_shared_pistol_westar35, "object/weapon/ranged/pistol/shared_pistol_westar_35.iff")
+------------------------------------------------------------------------------------------------------------------------------------------------------
 object_weapon_ranged_pistol_shared_pistol_bryar = SharedWeaponObjectTemplate:new {
 	clientTemplateFileName = "object/weapon/ranged/pistol/shared_pistol_bryar.iff"
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_ranged_pistol_shared_pistol_bryar, "object/weapon/ranged/pistol/shared_pistol_bryar.iff")
+------------------------------------------------------------------------------------------------------------------------------------------------------
+object_weapon_ranged_pistol_shared_pistol_blurrg = SharedWeaponObjectTemplate:new {
+	clientTemplateFileName = "object/weapon/ranged/pistol/shared_pistol_blurrg.iff"
+}
+
+ObjectTemplates:addClientTemplate(object_weapon_ranged_pistol_shared_pistol_blurrg, "object/weapon/ranged/pistol/shared_pistol_blurrg.iff")
