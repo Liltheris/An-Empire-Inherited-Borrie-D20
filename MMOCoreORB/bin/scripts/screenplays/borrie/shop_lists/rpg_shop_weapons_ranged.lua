@@ -12,6 +12,8 @@ shop_weapons_ranged = {
 				{template = "object/weapon/roleplay/ranged/pistol/dl44_blaster_pistol.iff", cost = 400, max = 10, chance = 100 },
 				{template = "object/weapon/roleplay/ranged/pistol/dl44_metal_blaster_pistol.iff", cost = 450, max = 10, chance = 100 },
 				{template = "object/weapon/roleplay/ranged/pistol/power_5_heavy_blaster_pistol.iff", cost = 900, max = 10, chance = 100 },
+				{template = "object/weapon/roleplay/ranged/pistol/pistol_bryar.iff", cost = 500, max = 10, chance = 100 },
+				{template = "object/weapon/roleplay/ranged/pistol/pistol_blurrg.iff", cost = 500, max = 10, chance = 100 }
 			}
 		},
 		{
