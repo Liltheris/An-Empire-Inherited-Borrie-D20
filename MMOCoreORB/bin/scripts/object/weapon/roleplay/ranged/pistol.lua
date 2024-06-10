@@ -1137,7 +1137,7 @@ object_weapon_roleplay_ranged_pistol_bryar_pistol = object_weapon_ranged_pistol_
 	maxDamage = 4, --Type of Die used in Damage
 	bonusDamage = 2,
 	
-	noPowerAttack = true,
+	noPowerAttack = false,
 	
 	rarity="Rare",
 
@@ -1170,7 +1170,7 @@ object_weapon_roleplay_ranged_pistol_blurrg_pistol = object_weapon_ranged_pistol
 	maxDamage = 3, --Type of Die used in Damage
 	bonusDamage = 2,
 	
-	noPowerAttack = true,
+	noPowerAttack = false,
 	
 	rarity="Rare",
 
