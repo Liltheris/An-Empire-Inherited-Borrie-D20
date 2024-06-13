@@ -119,7 +119,7 @@ function TatooineAnchorheadScreenPlay:spawnMobiles()
 	SceneObject(sObj):setCustomObjectName("a Target Dummy")
 	sObj =	spawnRoleplayMobile("rp_tatooine", "rp_base_npc", 1, -711.743, 0, -1727.98, 183, 0, "tcg_target_dummy", "default", "default", "default") --Equip, Skill, Customization
 	SceneObject(sObj):setCustomObjectName("a Target Dummy")
-	sObj =	spawnRoleplayMobile("rp_tatooine", "rp_base_npc", 1, -715.256, 9.64358, -1650.42, 168, 0, "object/mobile/halloween_skeleton_tusken.iff", "default", "default", "default") --Equip, Skill, Customization
+	sObj =	spawnRoleplayMobile("rp_tatooine", "rp_base_npc", 1, -715.256, 9.64358, -1650.42, 168, 0, "halloween_skeleton_tusken", "default", "default", "default") --Equip, Skill, Customization
 	SceneObject(sObj):setCustomObjectName("\"Spike\"")
 
 	--Cheap Stimpack Vendor
