@@ -175,6 +175,8 @@ schematics = {
 	{path="object/draft_schematic/roleplay/weapon/pistol/pistol_striker.iff"},
 	{path="object/draft_schematic/roleplay/weapon/pistol/pistol_westar_34.iff"},
 	{path="object/draft_schematic/roleplay/weapon/pistol/pistol_westar_35.iff"},
+	{path="object/draft_schematic/roleplay/weapon/pistol/pistol_bryar.iff"},
+	{path="object/draft_schematic/roleplay/weapon/pistol/pistol_blurrg.iff"},
 
 	{path="object/draft_schematic/roleplay/weapon/carbine/carbine_bothan.iff"},
 	{path="object/draft_schematic/roleplay/weapon/carbine/carbine_charric.iff"},
