@@ -107,23 +107,23 @@ end
 
 function TatooineAnchorheadScreenPlay:spawnMobiles()
 	-- Range
-	local sObj =spawnRoleplayMobile("rp_tatooine", "rp_base_npc", 1, -724.928, 0, -1727.9, 179, 0, "tcg_target_dummy", "default", "default", "default") --Equip, Skill, Customization
-	SceneObject(sObj):setCustomObjectName("a Target Dummy")
-	sObj =	spawnRoleplayMobile("rp_tatooine", "rp_base_npc", 1, -722.247, 0, -1727.93, 181, 0, "tcg_target_dummy", "default", "default", "default") --Equip, Skill, Customization
-	SceneObject(sObj):setCustomObjectName("a Target Dummy")
-	sObj =	spawnRoleplayMobile("rp_tatooine", "rp_base_npc", 1, -719.624, 0, -1727.91, 180, 0, "tcg_target_dummy", "default", "default", "default") --Equip, Skill, Customization
-	SceneObject(sObj):setCustomObjectName("a Target Dummy")
-	sObj =	spawnRoleplayMobile("rp_tatooine", "rp_base_npc", 1, -717.095, 0, -1728.08, 164, 0, "tcg_target_dummy", "default", "default", "default") --Equip, Skill, Customization
-	SceneObject(sObj):setCustomObjectName("a Target Dummy")
-	sObj =	spawnRoleplayMobile("rp_tatooine", "rp_base_npc", 1, -714.273, 0, -1727.89, 180, 0, "tcg_target_dummy", "default", "default", "default") --Equip, Skill, Customization
-	SceneObject(sObj):setCustomObjectName("a Target Dummy")
-	sObj =	spawnRoleplayMobile("rp_tatooine", "rp_base_npc", 1, -711.743, 0, -1727.98, 183, 0, "tcg_target_dummy", "default", "default", "default") --Equip, Skill, Customization
-	SceneObject(sObj):setCustomObjectName("a Target Dummy")
-	sObj =	spawnRoleplayMobile("rp_tatooine", "rp_base_npc", 1, -715.256, 9.64358, -1650.42, 168, 0, "halloween_skeleton_tusken", "default", "default", "default") --Equip, Skill, Customization
-	SceneObject(sObj):setCustomObjectName("\"Spike\"")
+	local pNpc = spawnRoleplayMobile("rp_tatooine", "rp_base_npc", 1, -724.928, 0, -1727.9, 179, 0, "tcg_target_dummy", "default", "default", "default") --Equip, Skill, Customization
+	SceneObject(pNpc):setCustomObjectName("a Target Dummy")
+	pNpc = spawnRoleplayMobile("rp_tatooine", "rp_base_npc", 1, -722.247, 0, -1727.93, 181, 0, "tcg_target_dummy", "default", "default", "default") --Equip, Skill, Customization
+	SceneObject(pNpc):setCustomObjectName("a Target Dummy")
+	pNpc = spawnRoleplayMobile("rp_tatooine", "rp_base_npc", 1, -719.624, 0, -1727.91, 180, 0, "tcg_target_dummy", "default", "default", "default") --Equip, Skill, Customization
+	SceneObject(pNpc):setCustomObjectName("a Target Dummy")
+	pNpc = spawnRoleplayMobile("rp_tatooine", "rp_base_npc", 1, -717.095, 0, -1728.08, 164, 0, "tcg_target_dummy", "default", "default", "default") --Equip, Skill, Customization
+	SceneObject(pNpc):setCustomObjectName("a Target Dummy")
+	pNpc = spawnRoleplayMobile("rp_tatooine", "rp_base_npc", 1, -714.273, 0, -1727.89, 180, 0, "tcg_target_dummy", "default", "default", "default") --Equip, Skill, Customization
+	SceneObject(pNpc):setCustomObjectName("a Target Dummy")
+	pNpc = spawnRoleplayMobile("rp_tatooine", "rp_base_npc", 1, -711.743, 0, -1727.98, 183, 0, "tcg_target_dummy", "default", "default", "default") --Equip, Skill, Customization
+	SceneObject(pNpc):setCustomObjectName("a Target Dummy")
+	pNpc = spawnRoleplayMobile("rp_tatooine", "rp_base_npc", 1, -715.256, 9.64358, -1650.42, 168, 0, "halloween_skeleton_tusken", "default", "default", "default") --Equip, Skill, Customization
+	SceneObject(pNpc):setCustomObjectName("\"Spike\"")
 
 	--Cheap Stimpack Vendor
-	local pNpc = spawnRoleplayMobile("rp_tatooine", "rp_base_npc", 1, 4.37506, 0.184067, 0.223115, 180, 610013840, "rp_twilek_female", "tatooine/anchorhead/wicha", "", "tatooine/anchorhead/wicha") --Equip, Skill, Customization
+	pNpc = spawnRoleplayMobile("rp_tatooine", "rp_base_npc", 1, 4.37506, 0.184067, 0.223115, 180, 610013840, "rp_twilek_female", "tatooine/anchorhead/wicha", "common/doctor", "tatooine/anchorhead/wicha") --Equip, Skill, Customization
 	SceneObject(pNpc):setCustomObjectName("Wicha (a Stimpack Vendor)")
 	SceneObject(pNpc):setStoredString("vendor:theme", "medicine")
 	SceneObject(pNpc):setStoredString("vendor:shopList", "shop_medicine_novice")
