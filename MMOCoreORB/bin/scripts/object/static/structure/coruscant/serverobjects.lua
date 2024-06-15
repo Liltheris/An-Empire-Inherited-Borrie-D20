@@ -46,4 +46,4 @@
 
 -- Server Objects
 includeFile("static/structure/coruscant/coruscant_filler_s01.lua")
-includeFile("static/structure/tatooine/coruscant_jedi_temple_distant.lua")
+includeFile("static/structure/coruscant/coruscant_jedi_temple_distant.lua")
