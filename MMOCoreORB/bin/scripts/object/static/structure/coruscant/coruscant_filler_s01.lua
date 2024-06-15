@@ -1,0 +1,5 @@
+object_static_structure_coruscant_coruscant_filler_s01 = object_static_structure_coruscant_shared_coruscant_filler_s01:new {
+
+}
+
+ObjectTemplates:addTemplate(object_static_structure_coruscant_coruscant_filler_s01, "object/static/structure/coruscant/coruscant_filler_s01.iff")

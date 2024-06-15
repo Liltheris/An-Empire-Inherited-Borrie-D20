@@ -1388,3 +1388,5 @@ includeFile("draft_schematic/roleplay/weapon/sniper/objects.lua")
 includeFile("draft_schematic/roleplay/weapon/shotgun/objects.lua")
 
 includeFile("draft_schematic/roleplay/component/objects.lua")
+
+includeFile("static/structure/coruscant/objects.lua")
