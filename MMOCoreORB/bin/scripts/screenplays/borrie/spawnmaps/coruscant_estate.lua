@@ -182,7 +182,7 @@ function CoruscantEstateScreenPlay:spawnCivilians()
 		{30.4123, 0, -142.791, 264, 0,{"drinker"}},
 	}
 	
-	CivillianGenerator:spawnCivillians(self.screenplayName, "rp_coruscant", waypointList, self.walkpointList, "carida", "carida")
+	CivillianGenerator:spawnCivillians(self.screenplayName, "rp_coruscant", waypointList, self.walkpointList, "carida", "imp_party")
 end
 
 function CoruscantEstateScreenPlay:spawnSceneObjects() 
