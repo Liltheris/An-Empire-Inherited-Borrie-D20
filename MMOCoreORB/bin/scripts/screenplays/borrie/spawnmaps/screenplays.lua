@@ -29,4 +29,7 @@ includeFile("borrie/spawnmaps/rori_new_restuss.lua")
 --Mandalore
 includeFile("borrie/spawnmaps/mandalore_keldabe.lua")
 
+--Coruscant
+includeFile("borrie/spawnmaps/coruscant_estate.lua")
+
 includeFile("borrie/spawnmaps/tutorial.lua")
