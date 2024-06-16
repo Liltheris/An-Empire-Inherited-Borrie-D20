@@ -360,4 +360,22 @@ travel_destinations = {
 			},
 		}
 	},
+
+	--Coruscant
+	{
+		tag = "coruscant",
+		name = "Coruscant",
+		zone = "rp_coruscant",
+		skill = "rp_travel_coruscant",
+		landing_sites = {
+			{
+				tag = "estate",
+				name = "Moff Zarane's Estate",
+				skill = "rp_travel_coruscant_heist",
+				landing_spots = {
+					{"rp_coruscant", 7.14891, 7.9418, 22.6309, 176, 880033076},
+				}
+			}
+		}
+	},
 }
