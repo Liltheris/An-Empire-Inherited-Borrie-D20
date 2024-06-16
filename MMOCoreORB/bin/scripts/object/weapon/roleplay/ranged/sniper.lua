@@ -217,7 +217,39 @@ object_weapon_roleplay_ranged_rifle_czerka_adventurer = object_weapon_ranged_rif
 	
 }
 
+--Valken 38X Sniper Rifle
+object_weapon_roleplay_ranged_rifle_valken38x_sniper_rifle = object_weapon_ranged_rifle_shared_rifle_valken38x:new {
 
+	--[Info]
+	customName = "Valken 38X Sniper Rifle",
+
+	--[Stats]
+	damageType = ENERGY,
+	armorPiercing = NONE,
+
+	--Damage (minDamage[d]maxDamage) i.e. (2d20)
+	minDamage = 1, --Amount of Die used in Damage
+	maxDamage = 10, --Type of Die used in Damage
+	bonusDamage = 4,
+	
+	noDodgeReaction = true,
+	primaryAttributeOnly = true,
+
+	rarity="Epic",
+
+	ammoPack = _ammoPack,
+	maxAmmo = _maxAmmo,
+	
+	--[Stats]
+	attackType = _attackType,
+	pointBlankRange = _pointBlankRange,
+	pointBlankAccuracy = _pointBlankAccuracy,
+	idealRange = _idealRange,
+	idealAccuracy = _idealAccuracy,
+	maxRange = _maxRange,
+	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 1800,
+}
 
 
 
@@ -234,6 +266,7 @@ ObjectTemplates:addTemplate(object_weapon_roleplay_ranged_rifle_dlt20a_heavy_bla
 ObjectTemplates:addTemplate(object_weapon_roleplay_ranged_rifle_ld1_target_blaster_rifle, "object/weapon/roleplay/ranged/rifle/ld1_target_blaster_rifle.iff")
 ObjectTemplates:addTemplate(object_weapon_roleplay_ranged_rifle_tusken_elite_rifle, "object/weapon/roleplay/ranged/rifle/tusken_elite_rifle.iff")
 ObjectTemplates:addTemplate(object_weapon_roleplay_ranged_rifle_czerka_adventurer, "object/weapon/roleplay/ranged/rifle/czerka_adventurer.iff")
+ObjectTemplates:addTemplate(object_weapon_roleplay_ranged_rifle_valken38x_sniper_rifle, "object/weapon/roleplay/ranged/rifle/valken38x_sniper_rifle.iff")
 
 
 
