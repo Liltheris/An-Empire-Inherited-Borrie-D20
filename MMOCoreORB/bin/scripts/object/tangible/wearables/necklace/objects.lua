@@ -2465,4 +2465,8 @@ object_tangible_wearables_necklace_shared_necklace_wampum = SharedTangibleObject
 }
 ObjectTemplates:addClientTemplate(object_tangible_wearables_necklace_shared_necklace_wampum, "object/tangible/wearables/necklace/shared_necklace_wampum.iff")
 --******************************************************************************************************************************************
-
+object_tangible_wearables_necklace_shared_necklace_gcw_imperial= SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/necklace/shared_necklace_gcw_imperial.iff"
+}
+ObjectTemplates:addClientTemplate(object_tangible_wearables_necklace_shared_necklace_gcw_imperial, "object/tangible/wearables/necklace/shared_necklace_gcw_imperial.iff")
+--******************************************************************************************************************************************
