@@ -41,7 +41,7 @@
 --this exception also makes it possible to release a modified version 
 
 
-object_tangible_wearables_necklace_necklace_s12 = object_tangible_wearables_necklace_shared_necklace_gcw_imperial:new {
+object_tangible_wearables_necklace_necklace_gcw_imperial = object_tangible_wearables_necklace_shared_necklace_gcw_imperial:new {
 	playerRaces = { "object/creature/player/bothan_male.iff",
 				"object/creature/player/bothan_female.iff",
 				"object/creature/player/human_male.iff",
