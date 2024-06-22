@@ -1461,3 +1461,15 @@ object_static_structure_military_shared_military_wall_weak_rebl_style_01 = Share
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_military_shared_military_wall_weak_rebl_style_01, "object/static/structure/military/shared_military_wall_weak_rebl_style_01.iff")
+
+object_static_structure_military_shared_military_barbed_wire_s01 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/structure/military/shared_military_barbed_wire_s01.iff"
+}
+
+ObjectTemplates:addClientTemplate(object_static_structure_military_shared_military_barbed_wire_s01, "object/static/structure/military/shared_military_barbed_wire_s01.iff")
+
+object_static_structure_military_shared_military_sandbags_s01 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/structure/military/shared_military_sandbags_s01.iff"
+}
+
+ObjectTemplates:addClientTemplate(object_static_structure_military_shared_military_sandbags_s01, "object/static/structure/military/shared_military_sandbags_s01.iff")

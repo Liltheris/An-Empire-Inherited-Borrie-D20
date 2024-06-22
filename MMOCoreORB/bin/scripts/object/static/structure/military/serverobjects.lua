@@ -74,3 +74,6 @@ includeFile("static/structure/military/military_wall_weak_imperial_style_01.lua"
 includeFile("static/structure/military/military_wall_weak_rebl_16_style_01.lua")
 includeFile("static/structure/military/military_wall_weak_rebl_32_style_01.lua")
 includeFile("static/structure/military/military_wall_weak_rebl_style_01.lua")
+
+includeFile("static/structure/military/military_barbed_wire_s01.lua")
+includeFile("static/structure/military/military_sandbags_s01.lua")

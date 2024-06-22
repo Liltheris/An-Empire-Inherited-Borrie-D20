@@ -1,0 +1,5 @@
+object_static_structure_military_military_barbed_wire_s01 = object_static_structure_military_shared_military_barbed_wire_s01:new {
+
+}
+
+ObjectTemplates:addTemplate(object_static_structure_military_military_barbed_wire_s01, "object/static/structure/military/military_barbed_wire_s01.iff")
