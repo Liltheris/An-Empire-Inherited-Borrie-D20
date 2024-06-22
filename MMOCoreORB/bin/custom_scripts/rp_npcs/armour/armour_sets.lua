@@ -168,6 +168,16 @@ armour_vehicle = {
 	acid = 1000,
 }
 
+armour_krayt = {
+    rating = 3,
+    kinetic = 2,
+    energy = 4,
+    electricity = 1,
+    stun = 1,
+    acid = 4,
+    heat = 8,
+}
+
 armourset_scouttrooper = {
     {"hat", armour_scouttrooper},
     {"chest2", armour_scouttrooper},
@@ -243,4 +253,16 @@ armourset_vehicle = {
     {"bicep_l", armour_vehicle},
     {"bicep_r", armour_vehicle},
     {"gloves", armour_vehicle},
+}
+
+armourset_krayt = {
+    {"hat", armour_krayt},
+    {"chest2", armour_krayt},
+    {"pants1", armour_krayt},
+    {"shoes", armour_krayt},
+    {"bracer_upper_l", armour_krayt},
+    {"bracer_upper_r", armour_krayt},
+    {"bicep_l", armour_krayt},
+    {"bicep_r", armour_krayt},
+    {"gloves", armour_krayt},
 }
