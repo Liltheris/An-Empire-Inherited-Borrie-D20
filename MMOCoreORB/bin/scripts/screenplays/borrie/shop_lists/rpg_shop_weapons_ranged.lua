@@ -59,6 +59,7 @@ shop_weapons_ranged = {
 			items = {
 				{template = "object/weapon/roleplay/ranged/rifle/tusken_elite_rifle.iff", cost = 400, max = 10, chance = 100 },
 				{template = "object/weapon/roleplay/ranged/rifle/cm_sniper_rifle.iff", cost = 2000, max = 10, chance = 100 },
+				{template = "object/weapon/roleplay/ranged/rifle/valken38x_sniper_rifle.iff", max = 10, chance = 100},
 			}
 		},
 		{
