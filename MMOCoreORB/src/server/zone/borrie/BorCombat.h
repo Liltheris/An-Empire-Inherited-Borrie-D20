@@ -679,7 +679,7 @@ public:
 
         String dmgString = "";
 
-        int skillMod = defender->getSkillMod("rp_maneuverability");
+        int skillMod = Math::min(defender->getSkillMod("rp_maneuverability") + defender->getSkillMod("rp_sense"), 12);
         int roll = BorDice::Roll(1, 20);
         
         int result = roll + skillMod;
@@ -1050,7 +1050,7 @@ public:
         String reactionSpam = "";
         String dmgString = "";
 
-        int maneuverabilitySkill = defender->getSkillMod("rp_maneuverability");
+        int maneuverabilitySkill = Math::min(defender->getSkillMod("rp_maneuverability") + defender->getSkillMod("rp_sense"), 12);
         int dodgeRoll = BorDice::Roll(1, 20);
         
         int rollResult = dodgeRoll + maneuverabilitySkill;
@@ -1922,7 +1922,7 @@ public:
         spam +=BorString::getNiceName(creature)+" is caught in the blast!";
         // Attempt to dodge the grenade!
         if (creature->getStoredInt("reaction_stance") == RpReactionStance::DODGE && CanPerformReaction(creature, RpReactionStance::DODGE, damageRoll, grenade, creature->getWeapon())){
-            int dodgeSkill = creature->getSkillMod("rp_maneuverability");
+            int dodgeSkill = Math::min(creature->getSkillMod("rp_maneuverability") + creature->getSkillMod("rp_sense"), 12);
             int dodgeRoll = BorDice::Roll(1, 20);
 
             int dodgeCost = 1 + GetCharacterArmourClass(creature);
