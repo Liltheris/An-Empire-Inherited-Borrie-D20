@@ -81,3 +81,5 @@ includeFile("tangible/wearables/shirt/singing_mountain_clan_shirt_s03.lua")
 includeFile("tangible/wearables/shirt/shirt_underwear_s01.lua")
 includeFile("tangible/wearables/shirt/shirt_underwear_s02.lua")
 includeFile("tangible/wearables/shirt/shirt_s43.lua")
+
+includeFile("tangible/wearables/shirt/shirt_jedi_s01.lua")

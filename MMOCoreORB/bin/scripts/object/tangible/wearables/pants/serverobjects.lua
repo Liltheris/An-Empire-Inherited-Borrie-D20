@@ -77,3 +77,5 @@ includeFile("tangible/wearables/pants/pants_s32.lua")
 includeFile("tangible/wearables/pants/pants_s33.lua")
 includeFile("tangible/wearables/pants/pants_s34.lua")
 includeFile("tangible/wearables/pants/pants_underwear_s01.lua")
+
+includeFile("tangible/wearables/pants/pants_jedi_s01.lua")
