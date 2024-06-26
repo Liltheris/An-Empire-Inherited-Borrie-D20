@@ -1231,7 +1231,7 @@ public:
 	static int GetTargetDistance(CreatureObject* creature, SceneObject* object) {
 		if (object == nullptr)
 			return -1;
-		return (int)(creature->getDistanceTo(object));
+		return (int)(creature->getDistanceTo(object) + 0.5f);
 	}
 
 	static void LowerPosture(CreatureObject* creature) {
