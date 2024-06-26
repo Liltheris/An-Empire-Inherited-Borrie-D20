@@ -15,6 +15,7 @@ content = {
 	{"object/tangible/wearables/shoes/shared_shoes_s07.iff", },
 	{"object/tangible/wearables/shoes/shared_shoes_s08.iff", },
 	{"object/tangible/wearables/shoes/shared_shoes_s09.iff", },
+	{"object/tangible/wearables/boots/shared_boots_jedi_s01.iff"},
 	{"object/tangible/wearables/boots/shared_boots_tusken_raider.iff",},
 	{"object/tangible/wearables/boots/shared_nightsister_boots.iff",},
 }
