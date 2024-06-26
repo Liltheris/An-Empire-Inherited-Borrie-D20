@@ -111,7 +111,7 @@ object_weapon_melee_unarmed_unarmed_default_player = object_weapon_melee_unarmed
 	pointBlankAccuracy = 0,
 	pointBlankRange = 0,
 	
-	idealRange = 5,
+	idealRange = 0,
 	idealAccuracy = 3,
 	
 	maxRange = 1,
