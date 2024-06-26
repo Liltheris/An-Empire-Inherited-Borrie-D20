@@ -1882,6 +1882,7 @@ public:
             } else {
                 // We hit nobody, womp womp.
                 spam += "and goes wide, hitting nobody!";
+                BorrieRPG::BroadcastMessage(attacker, spam);
                 return;
             }
             // Check return to sender!
