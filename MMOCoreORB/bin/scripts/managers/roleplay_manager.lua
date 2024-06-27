@@ -96,6 +96,81 @@ forceSkills = {
     {"telekinesis", "", ""},    
 }
 
+trainingTrees = {
+    ["jedi"] = {
+        branches = {
+            "guardian",
+            "sentinel",
+            "consular",
+        },
+        exclusive = {
+            "rp_training_sith",
+            "rp_training_lukasene",
+        }
+    },
+    ["sith"] = {
+        branches = {
+            "warrior",
+            "sorcerer",
+        },
+        exclusive = {
+            "rp_training_jedi",
+            "rp_training_lukasene",
+        }
+    },
+    ["lukasene"] = {
+        branches = {
+            "seneseeker",
+            "scholar",
+        },
+        exclusive = {
+            "rp_training_jedi",
+            "rp_training_sith",
+        }
+    },
+    ["criminal"] = {
+        branches = {
+            "thief",
+            "smuggler",
+            "conartist",
+            "enforcer",
+        },
+    },
+    ["engineer"] = {
+        branches = {
+            "ship",
+            "weapon",
+            "droid",
+        },
+    },
+    ["spy"] = {
+        branches = {
+            "spy",
+            "assassin",
+            "saboteur",
+        },
+    },
+    ["mando"] = {
+        branches = {
+            "kandosii",
+            "goran",
+        },
+    },
+    ["medical"] = {
+        branches = {
+            "surgeon",
+            "medic",
+            "researcher",
+        },
+    },
+    ["military"] = {
+        branches = {
+            "trooper",
+            "officer",
+        },
+    },
+}
+
 -- The number of force skill boxes that need to be learned to level up the Force immersion.
 forceTiers = {5, 15, 40, 70}
 
