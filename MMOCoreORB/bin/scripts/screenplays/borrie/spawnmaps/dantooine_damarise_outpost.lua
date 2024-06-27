@@ -109,13 +109,13 @@ function DantooineDamariseOutpostScreenPlay:spawnMobiles()
 
 	--Species, Equipment, Skills, Customization
 	--Mount
-	local pNpc = spawnRoleplayMobile("rp_dantooine", "rp_convo_npc", 1, 1467.62, 3.9947, 3476.23, 308, 0, "rp_twilek_female", "dantooine_mount_vendor", "default", "random", "rpg_shopkeeper") 
+	local pNpc = spawnRoleplayMobile("rp_dantooine", "rp_convo_npc", 1, 1467.62, 3.9947, 3476.23, 308, 0, "rp_twilek_female", "civ/dantooine/civilian_female_s04", "default", "random", "rpg_shopkeeper") 
 	SceneObject(pNpc):setCustomObjectName("Shawa'ebo (a Mount Vendor)")
 	SceneObject(pNpc):setStoredString("vendor:theme", "mount")
 	SceneObject(pNpc):setStoredString("vendor:shopList", "shop_mounts_dantooine")
 	
 	--Vehicle
-	pNpc = spawnRoleplayMobile("rp_dantooine", "rp_convo_npc", 1, 1427.99, 4, 3392.24, 0, 0, "rp_zabrak_female", "dantooine_vehicle_vendor", "default", "random", "rpg_shopkeeper") 
+	pNpc = spawnRoleplayMobile("rp_dantooine", "rp_convo_npc", 1, 1427.99, 4, 3392.24, 0, 0, "rp_zabrak_female", "civ/dantooine/civilian_female_s03", "default", "random", "rpg_shopkeeper") 
 	SceneObject(pNpc):setCustomObjectName("Leika Failakeu (a Vehicle Vendor)")
 	SceneObject(pNpc):setStoredString("vendor:theme", "vehicle")
 	SceneObject(pNpc):setStoredString("vendor:shopList", "shop_vehicles")
