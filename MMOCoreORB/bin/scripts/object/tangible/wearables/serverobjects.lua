@@ -81,5 +81,5 @@ includeFile("tangible/wearables/cape/serverobjects.lua")
 includeFile("tangible/wearables/mask/serverobjects.lua")
 includeFile("tangible/wearables/alien/serverobjects.lua")
 
-
+includeFile("tangible/wearables/pauldron/serverobjects.lua")
 -- Server Objects
