@@ -1,7 +1,5 @@
 object_weapon_roleplay_thrown_heavy_rocket_launcher = object_weapon_ranged_heavy_shared_heavy_rocket_launcher:new {
 
-	objectMenuComponent = "ThrowGrenadeMenuComponent",
-
 	--[Info]
 	customName = "Rocket Launcher",
 
