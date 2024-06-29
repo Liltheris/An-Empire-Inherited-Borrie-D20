@@ -38,8 +38,10 @@ public:
 			if (targetObject == nullptr)
 				return GENERALERROR;
 
+			/* D20 System - Start
 			if (!(targetObject->isAttackableBy(creature)))
 				return GENERALERROR;
+			D20 System - End*/
 
 			SharedObjectTemplate* templateData = TemplateManager::instance()->getTemplate(weapon->getServerObjectCRC());
 
@@ -55,13 +57,21 @@ public:
 
 			int result = doCombatAction(creature, target, args, weapon);
 
-			if (result == SUCCESS) {
-				// We need to give some time for the combat animation to start playing before destroying the tano
-				Core::getTaskManager()->scheduleTask([weapon] {
-					Locker lock(weapon);
-					weapon->decreaseUseCount();
-				}, "FireHeavyWeaponTanoDecrementTask", 100);
-			}
+			String animName = getAnimation(creature, targetObject, weapon, 0x01, 0x00);
+			uint32 animCRC = animName.hashCode();
+
+			CombatAction* combatAction = new CombatAction(creature, targetObject, animCRC, 0x01, CombatManager::DEFAULTTRAIL, weapon->getObjectID());
+			creature->broadcastMessage(combatAction,true);
+
+			ManagedReference<CreatureObject*> targetCreature = targetObject->asCreatureObject();
+
+			BorCombat::fireHeavyWeapon(creature, targetCreature, creature, weapon);
+
+			// We need to give some time for the combat animation to start playing before destroying the tano
+			Core::getTaskManager()->scheduleTask([weapon] {
+				Locker lock(weapon);
+				weapon->decreaseUseCount();
+			}, "FireHeavyWeaponTanoDecrementTask", 100);
 
 			return result;
 
@@ -80,7 +90,7 @@ public:
 			return "";
 		}
 
-		return "fire_heavy_" + weaponData->getAnimationType() + getIntensity(weapon->getMaxDamage() / 2.0f, damage);
+		return "fire_heavy_" + weaponData->getAnimationType() + getIntensity(weapon->getMinDamage() * weapon->getMaxDamage() + weapon->getBonusDamage()/ 2.0f, damage);
 	}
 
 	float getCommandDuration(CreatureObject *object, const UnicodeString& arguments) const {

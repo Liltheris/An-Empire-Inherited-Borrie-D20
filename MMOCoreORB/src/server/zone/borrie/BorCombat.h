@@ -1920,6 +1920,98 @@ public:
         }
     }
 
+    static void fireHeavyWeapon(CreatureObject* attacker, CreatureObject* defender, CreatureObject* commander, WeaponObject* weapon) {
+        //Get our basic roll information
+
+        int toHitDC = GetToHitModifier(attacker, defender, weapon) + 10;
+
+        int demoSkill = attacker->getSkillMod("rp_demolitions");
+        int rangedSkill = attacker->getSkillMod("rp_ranged");
+
+        int demoRoll = BorDice::Roll(1, 20);
+        int rangedRoll = BorDice::Roll(1, 20);
+
+        SharedObjectTemplate* templateData = TemplateManager::instance()->getTemplate(weapon->getServerObjectCRC());
+
+		if (templateData == nullptr) {
+            commander->sendSystemMessage("ERROR: Unable to find weapon template data!");
+			return;
+        }
+
+		SharedWeaponObjectTemplate* weaponData = cast<SharedWeaponObjectTemplate*>(templateData);
+
+		if (weaponData == nullptr) {
+            commander->sendSystemMessage("ERROR: Unable to cast weapon template data!");
+            return;
+        }
+
+        int skillLevel = weaponData->getRpSkillLevel();
+        int radius = weapon->getDamageRadius();
+
+        int damageRoll = BorDice::Roll(weaponData->getMinDamage(), weaponData->getMaxDamage());
+        int damage = damageRoll + weaponData->getBonusDamage();
+
+        SortedVector<SceneObject*> closeObjects = getCreaturesInRange(defender, radius);
+        CreatureObject* primaryTarget = defender;
+
+        String spam = BorString::getNiceName(attacker)+" aims their "+weapon->getDisplayedName()+" at "+BorString::getNiceName(defender)+" and fires "+BorString::skillSpam(rangedSkill, rangedRoll, rangedSkill+rangedRoll);
+
+        // Check if we blow ourselves up!
+        if (demoSkill < skillLevel && demoRoll == 1) {
+            // oof
+            primaryTarget = attacker;
+            closeObjects = getCreaturesInRange(primaryTarget, radius);
+
+            spam += ". However, they fail to arm the weapon properly, causing it to explode on top of them!";
+        } else {
+            // Check if we hit our target properly
+            if (rangedRoll + rangedSkill >= toHitDC) {
+                spam += " and hits!";
+            } else if (rangedRoll + rangedSkill >= toHitDC / 2 ) {
+                // retarget the weapon to a random person in range of the weapon!
+                primaryTarget = static_cast<CreatureObject*>(closeObjects.get(System::random(closeObjects.size())));
+                closeObjects = getCreaturesInRange(primaryTarget, radius);
+
+                spam += " and misses, hitting "+BorString::getNiceName(primaryTarget)+" instead!";
+            } else {
+                // We hit nobody, womp womp.
+                spam += "and aims wide, hitting nobody!";
+                BorrieRPG::BroadcastMessage(attacker, spam);
+                return;
+            }
+            // Check return to sender!
+            if (primaryTarget->getStoredInt("reaction_stance") == RpReactionStance::FORCEDEFLECT && CanPerformReaction(primaryTarget, RpReactionStance::FORCEDEFLECT, damage, weapon, primaryTarget->getWeapon())) {
+                int teleRoll = BorDice::Roll(1, 20);
+                int teleSkill = primaryTarget->getSkillMod("rp_telekinesis");
+
+                int forceCost = 11-teleSkill;
+                if (forceCost < 1)
+                    forceCost = 1; 
+
+                BorCharacter::ModPool(primaryTarget, "force", -forceCost, true);
+
+                if (teleRoll + teleSkill > demoRoll + demoSkill) {
+                    // We've beaten the roll, returning to sender!
+                    spam += " However, "+BorString::getNiceName(primaryTarget)+" raises their hand, and the "+weapon->getDisplayedName()+" is returned to sender!";
+                    primaryTarget = attacker;
+                    closeObjects = getCreaturesInRange(attacker, radius);
+                } else {
+                    // At least we tried...
+                    spam += BorString::getNiceName(primaryTarget)+" raises their hand at it, but nothing happens!";
+                }
+            }
+        }
+
+        spam += " The following explosion deals "+BorString::damageSpam(weaponData->getMinDamage(), weaponData->getMaxDamage(), weaponData->getBonusDamage(), damageRoll, damage)+", and effects "+String::valueOf(closeObjects.size())+" targets!";
+        //Output the spam before the reaction spam!
+        BorrieRPG::BroadcastMessage(attacker, spam);
+
+        for (int i = 0; i < closeObjects.size(); i++){
+            CreatureObject* targetCreature = static_cast<CreatureObject*>(closeObjects.get(i));
+            handleGrenadeReaction(targetCreature, weapon, demoRoll+demoSkill, damage);
+        }
+    }
+
     static void handleGrenadeReaction(CreatureObject* creature, WeaponObject* grenade, int dodgeDC, int damageRoll){
         String spam = "";
         spam +=BorString::getNiceName(creature)+" is caught in the blast!";
