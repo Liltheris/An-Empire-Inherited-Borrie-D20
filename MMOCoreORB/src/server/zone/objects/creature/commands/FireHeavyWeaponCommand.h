@@ -55,7 +55,7 @@ public:
 
 			UnicodeString args = "combatSpam=" + weaponData->getCombatSpam() + ";";
 
-			int result = doCombatAction(creature, target, args, weapon);
+			//int result = doCombatAction(creature, target, args, weapon);
 
 			String animName = getAnimation(creature, targetObject, weapon, 0x01, 0x00);
 			uint32 animCRC = animName.hashCode();
@@ -73,7 +73,7 @@ public:
 				weapon->decreaseUseCount();
 			}, "FireHeavyWeaponTanoDecrementTask", 100);
 
-			return result;
+			return SUCCESS;
 
 		} catch (Exception& e) {
 
