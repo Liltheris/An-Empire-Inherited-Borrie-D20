@@ -30,9 +30,18 @@ object_tangible_wearables_cape_shared_poncho_s01 = SharedTangibleObjectTemplate:
 }
 ObjectTemplates:addClientTemplate(object_tangible_wearables_cape_shared_poncho_s01, "object/tangible/wearables/cape/shared_poncho_s01.iff")
 --**************************************************************************************************************************************************
-
 object_tangible_wearables_cape_shared_cape_jedi_s01 = SharedTangibleObjectTemplate:new {
 	clientTemplateFileName = "object/tangible/wearables/cape/shared_cape_jedi_s01.iff"
 }
 ObjectTemplates:addClientTemplate(object_tangible_wearables_cape_shared_cape_jedi_s01, "object/tangible/wearables/cape/shared_cape_jedi_s01.iff")
+--**************************************************************************************************************************************************
+object_tangible_wearables_cape_shared_cape_jedi_s02 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/cape/shared_cape_jedi_s02.iff"
+}
+ObjectTemplates:addClientTemplate(object_tangible_wearables_cape_shared_cape_jedi_s02, "object/tangible/wearables/cape/shared_cape_jedi_s02.iff")
+--**************************************************************************************************************************************************
+object_tangible_wearables_cape_shared_cape_jedi_s03 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/cape/shared_cape_jedi_s03.iff"
+}
+ObjectTemplates:addClientTemplate(object_tangible_wearables_cape_shared_cape_jedi_s03, "object/tangible/wearables/cape/shared_cape_jedi_s03.iff")
 --**************************************************************************************************************************************************
