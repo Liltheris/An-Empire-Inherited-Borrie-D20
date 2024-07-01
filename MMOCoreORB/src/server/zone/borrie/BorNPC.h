@@ -50,6 +50,9 @@ public:
 	}
 
 	static void ToggleAlwaysOnAI(CreatureObject* target, CreatureObject* commander) {
+		if (target == nullptr) {
+			return;
+		}
 		ManagedReference<AiAgent*> agent = target->asAiAgent();
 		Locker alock(agent);
 		if (agent->getCreatureBitmask() & CreatureFlag::ALWAYSON) {
@@ -62,6 +65,9 @@ public:
 	}
 
 	static void SetAlwaysOnAI(CreatureObject* target, CreatureObject* commander, bool isOn, bool showMessage = false) {
+		if (target == nullptr) {
+			return;
+		}
 		ManagedReference<AiAgent*> agent = target->asAiAgent();
 		Locker alock(agent);
 		if (isOn) {
@@ -76,6 +82,9 @@ public:
 	}
 
 	static void ToggleAIWalks(CreatureObject* target, CreatureObject* commander) {
+		if (target == nullptr) {
+			return;
+		}
 		ManagedReference<AiAgent*> agent = target->asAiAgent();
 		Locker alock(agent);
 		if (agent->getCreatureBitmask() & CreatureFlag::TOGGLEWALK) {
@@ -88,6 +97,9 @@ public:
 	}
 
 	static void SetAIAlwaysWalks(CreatureObject* target, CreatureObject* commander, bool isOn, bool showMessage = false) {
+		if (target == nullptr) {
+			return;
+		}
 		ManagedReference<AiAgent*> agent = target->asAiAgent();
 		Locker alock(agent);
 		if (isOn) {
@@ -102,6 +114,9 @@ public:
 	}
 
 	static void SetNPCPosture(CreatureObject* target, int posture) {
+		if (target == nullptr) {
+			return;
+		}
 		Locker clock(target);
 		if (posture == 0)
 			target->setPosture(CreaturePosture::UPRIGHT, true, true);
@@ -124,6 +139,9 @@ public:
 	}
 
 	static void SetNPCPosture(CreatureObject* target, String posture) {
+		if (target == nullptr) {
+			return;
+		}
 		if(posture == "upright" || posture == "standing" || posture == "stand") {
 			target->setPosture(CreaturePosture::UPRIGHT, true, true);
 		} else if(posture == "kneeling" || posture == "kneel" || posture == "crouched") {
@@ -142,6 +160,9 @@ public:
 	}
 
 	static void ToggleForceAICombat(CreatureObject* target, CreatureObject* commander) {
+		if (target == nullptr) {
+			return;
+		}
 		ManagedReference<AiAgent*> agent = target->asAiAgent();
 		Locker alock(agent);
 		if (agent->getCreatureBitmask() & CreatureFlag::FORCECOMBAT) {
@@ -154,6 +175,9 @@ public:
 	}
 
 	static void ToggleDirectFollow(CreatureObject* target, CreatureObject* commander) {
+		if (target == nullptr) {
+			return;
+		}
 		ManagedReference<AiAgent*> agent = target->asAiAgent();
 		Locker alock(agent);
 		if (agent->getCreatureBitmask() & CreatureFlag::DIRECTFOLLOW) {
@@ -166,6 +190,9 @@ public:
 	}
 
 	static void SendCreatureToPosition(CreatureObject* master, CreatureObject* targetCreature) {
+		if (targetCreature == nullptr) {
+			return;
+		}
 		//Logger::console.info("Starting send creature to position procedure", true);
 		Locker nlocker(master);
 		float x = master->getPositionX();
@@ -194,12 +221,18 @@ public:
 	}
 
 	static void SetCreaturePosition(CreatureObject* creature, CreatureObject* master) {
+		if (creature == nullptr) {
+			return;
+		}
 		Locker nlocker(master, creature);
 		creature->setPosition(master->getPositionX(), master->getPositionZ(), master->getPositionY());
 		creature->updateZone(false, false);
 	}
 
 	static void SetCreatureFollow(CreatureObject* follower, CreatureObject* leader) {
+		if (follower == nullptr) {
+			return;
+		}
 		Locker nlocker(follower, leader);
 		follower->asAiAgent()->setFollowObject(leader);
 		follower->asAiAgent()->storeFollowObject();
@@ -210,6 +243,9 @@ public:
 	}
 
 	static void SetCreatureStay(CreatureObject* creature, CreatureObject* parent) {
+		if (creature == nullptr) {
+			return;
+		}
 		Locker nlocker(creature, parent);
 		creature->asAiAgent()->setOblivious();
 		creature->asAiAgent()->setFollowState(AiAgent::OBLIVIOUS);
@@ -222,10 +258,16 @@ public:
 	}
 
 	static void FaceCreature(CreatureObject* looker, CreatureObject* target) {
+		if (looker == nullptr) {
+			return;
+		}
 		looker->faceObject(target, true);
 	}
 
 	static void EquipNPCWeapon(SceneObject* target, bool forceRanged) {
+		if (target == nullptr) {
+			return;
+		}
 		if (target->isCreatureObject()) {
 			if (target->asCreatureObject()->asAiAgent() != nullptr) {
 				Locker nlocker(target);
