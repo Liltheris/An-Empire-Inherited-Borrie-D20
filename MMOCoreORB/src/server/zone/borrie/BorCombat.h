@@ -1862,7 +1862,7 @@ public:
         SortedVector<SceneObject*> closeObjects = getCreaturesInRange(defender, radius);
         CreatureObject* primaryTarget = defender;
 
-        String spam = BorString::getNiceName(attacker)+" attempts to throw a "+grenade->getDisplayedName()+" at "+BorString::getNiceName(defender)+" "+BorString::skillSpam(throwSkill, throwRoll, throwSkill+throwRoll);
+        String spam = BorString::getNiceName(attacker)+" attempts to throw a "+grenade->getDisplayedName()+" at "+BorString::getNiceName(defender)+" "+BorString::skillSpam(throwSkill, throwRoll, throwSkill+throwRoll, toHitDC) +"\\#FFFFFF";
 
         // Check if we blow ourselves up!
         if (demoSkill < skillLevel && demoRoll == 1) {
@@ -1883,7 +1883,7 @@ public:
                 spam += " and misses, hitting "+BorString::getNiceName(primaryTarget)+" instead!";
             } else {
                 // We hit nobody, womp womp.
-                spam += "and goes wide, hitting nobody!";
+                spam += " and goes wide, hitting nobody!";
                 BorrieRPG::BroadcastMessage(attacker, spam);
                 return;
             }
@@ -1954,7 +1954,7 @@ public:
         SortedVector<SceneObject*> closeObjects = getCreaturesInRange(defender, radius);
         CreatureObject* primaryTarget = defender;
 
-        String spam = BorString::getNiceName(attacker)+" aims their "+weapon->getDisplayedName()+" at "+BorString::getNiceName(defender)+" and fires "+BorString::skillSpam(rangedSkill, rangedRoll, rangedSkill+rangedRoll);
+        String spam = BorString::getNiceName(attacker)+" aims their "+weapon->getDisplayedName()+" at "+BorString::getNiceName(defender)+" and fires "+BorString::skillSpam(rangedSkill, rangedRoll, rangedSkill+rangedRoll, toHitDC) +"\\#FFFFFF";
 
         // Check if we blow ourselves up!
         if (demoSkill < skillLevel && demoRoll == 1) {
@@ -1975,7 +1975,7 @@ public:
                 spam += " and misses, hitting "+BorString::getNiceName(primaryTarget)+" instead!";
             } else {
                 // We hit nobody, womp womp.
-                spam += "and aims wide, hitting nobody!";
+                spam += " and aims wide, hitting nobody!";
                 BorrieRPG::BroadcastMessage(attacker, spam);
                 return;
             }

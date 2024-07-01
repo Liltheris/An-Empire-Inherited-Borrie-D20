@@ -55,7 +55,7 @@ object_weapon_ranged_heavy_heavy_rocket_launcher = object_weapon_ranged_heavy_sh
 	-- NONE, LIGHT, MEDIUM, HEAVY
 	armorPiercing = HEAVY,
 
-	useCount = 1,
+	useCount = 5,
 
 	combatSpam = "rocket_launcher",
 	animationType = "rocket_launcher",
@@ -78,8 +78,6 @@ object_weapon_ranged_heavy_heavy_rocket_launcher = object_weapon_ranged_heavy_sh
 	rpSkillLevel = 5,
 	
 	rarity="Uncommon",
-
-	attackSpeed = 10,
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_heavy_heavy_rocket_launcher, "object/weapon/ranged/heavy/heavy_rocket_launcher.iff")
