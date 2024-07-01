@@ -44,27 +44,6 @@
 object_weapon_ranged_heavy_heavy_rocket_launcher = object_weapon_ranged_heavy_shared_heavy_rocket_launcher:new {
 
 	objectMenuComponent = "FireHeavyWeaponMenuComponent",
-	
-	playerRaces = { "object/creature/player/bothan_male.iff",
-				"object/creature/player/bothan_female.iff",
-				"object/creature/player/human_male.iff",
-				"object/creature/player/human_female.iff",
-				"object/creature/player/ithorian_male.iff",
-				"object/creature/player/ithorian_female.iff",
-				"object/creature/player/moncal_male.iff",
-				"object/creature/player/moncal_female.iff",
-				"object/creature/player/rodian_male.iff",
-				"object/creature/player/rodian_female.iff",
-				"object/creature/player/sullustan_male.iff",
-				"object/creature/player/sullustan_female.iff",
-				"object/creature/player/trandoshan_male.iff",
-				"object/creature/player/trandoshan_female.iff",
-				"object/creature/player/twilek_male.iff",
-				"object/creature/player/twilek_female.iff",
-				"object/creature/player/wookiee_male.iff",
-				"object/creature/player/wookiee_female.iff",
-				"object/creature/player/zabrak_male.iff",
-				"object/creature/player/zabrak_female.iff" },
 
 	-- RANGEDATTACK, MELEEATTACK, FORCEATTACK, TRAPATTACK, GRENADEATTACK, HEAVYACIDBEAMATTACK,
 	-- HEAVYLIGHTNINGBEAMATTACK, HEAVYPARTICLEBEAMATTACK, HEAVYROCKETLAUNCHERATTACK, HEAVYLAUNCHERATTACK
@@ -76,62 +55,31 @@ object_weapon_ranged_heavy_heavy_rocket_launcher = object_weapon_ranged_heavy_sh
 	-- NONE, LIGHT, MEDIUM, HEAVY
 	armorPiercing = HEAVY,
 
-	-- combat_rangedspecialize_bactarifle, combat_rangedspecialize_rifle, combat_rangedspecialize_pistol, combat_rangedspecialize_heavy, combat_rangedspecialize_carbine
-	-- combat_meleespecialize_unarmed, combat_meleespecialize_twohand, combat_meleespecialize_polearm, combat_meleespecialize_onehand, combat_general,
-	-- combat_meleespecialize_twohandlightsaber, combat_meleespecialize_polearmlightsaber, combat_meleespecialize_onehandlightsaber
-	xpType = "combat_rangedspecialize_heavy",
-
-	-- See http://www.ocdsoft.com/files/certifications.xls
-	certificationsRequired = { "cert_rocket_launcher" },
-	-- See http://www.ocdsoft.com/files/accuracy.xls
-	creatureAccuracyModifiers = { "heavy_rocket_launcher_accuracy" },
-
-	creatureAimModifiers = { },
-
-	-- See http://www.ocdsoft.com/files/defense.xls
-	defenderDefenseModifiers = { "ranged_defense" },
-
-	-- Leave as "dodge" for now, may have additions later
-	defenderSecondaryDefenseModifiers = { },
-
-	-- See http://www.ocdsoft.com/files/speed.xls
-	speedModifiers = { "heavy_rocket_launcher_speed" },
-
-	useCount = 40,
+	useCount = 1,
 
 	combatSpam = "rocket_launcher",
 	animationType = "rocket_launcher",
 
-	healthAttackCost = 95,
-	actionAttackCost = 42,
-	mindAttackCost = 23,
-	forceCost = 0,
+	--Damage (minDamage[d]maxDamage) i.e. (2d20)
+	minDamage = 4, --Amount of Die used in Damage
+	maxDamage = 8, --Type of Die used in Damage
+	bonusDamage = 0,
 
-	pointBlankRange = 0,
-	pointBlankAccuracy = -30,
+	pointBlankRange = 40,
+	pointBlankAccuracy = 5,
+	price = 100,
+	idealRange = 80,
+	idealAccuracy = 10,
+	maxRange = 120,
+	maxRangeAccuracy = 99,
+	
+	area = 10,
 
-	idealRange = 10,
-	idealAccuracy = 50,
-
-	maxRange = 64,
-	maxRangeAccuracy = -80,
-
-	minDamage = 100,
-	maxDamage = 500,
+	rpSkillLevel = 5,
+	
+	rarity="Uncommon",
 
 	attackSpeed = 10,
-
-	woundsRatio = 24,
-
-	numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 2, 2, 1, 1, 1, 2, 2, 2, 2, 2},
-	experimentalProperties = {"XX", "XX", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "XX", "XX", "XX", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ"},
-	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-	experimentalGroupTitles = {"null", "null", "expDamage", "expDamage", "expDamage", "expDamage", "expEffeciency", "exp_durability", "null", "null", "null", "expRange", "expEffeciency", "expEffeciency", "expEffeciency", "expEffeciency"},
-	experimentalSubGroupTitles = {"null", "null", "mindamage", "maxdamage", "attackspeed", "woundchance", "roundsused", "hitpoints", "zerorangemod", "maxrangemod", "midrange", "midrangemod", "charges", "attackhealthcost", "attackactioncost", "attackmindcost"},
-	experimentalMin = {0, 0, 900, 1550, 12, 17, 30, 750, -120, 20, 48, 0, 25, 124, 85, 60},
-	experimentalMax = {0, 0, 1350, 4500, 7, 31, 65, 1500, -90, 60, 48, 35, 50, 67, 40, 36},
-	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_heavy_heavy_rocket_launcher, "object/weapon/ranged/heavy/heavy_rocket_launcher.iff")
