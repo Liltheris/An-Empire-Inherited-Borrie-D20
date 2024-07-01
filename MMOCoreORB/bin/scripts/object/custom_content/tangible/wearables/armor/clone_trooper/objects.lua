@@ -222,6 +222,15 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_clone_trooper_
 
 --****************************************************************************************************************************************************************************
 
+object_tangible_wearables_armor_clone_trooper_shared_armor_clone_trooper_neutral_s02_helmet = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/armor/clone_trooper/shared_armor_clone_trooper_neutral_s02_helmet.iff"
+
+}
+
+ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_clone_trooper_shared_armor_clone_trooper_neutral_s02_helmet, "object/tangible/wearables/armor/clone_trooper/shared_armor_clone_trooper_neutral_s02_helmet.iff")
+
+--****************************************************************************************************************************************************************************
+
 
 
 

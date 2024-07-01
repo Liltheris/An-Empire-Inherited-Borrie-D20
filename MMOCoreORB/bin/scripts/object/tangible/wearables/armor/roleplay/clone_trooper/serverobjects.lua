@@ -6,4 +6,5 @@ includeFile("tangible/wearables/armor/roleplay/clone_trooper/armor_clone_trooper
 includeFile("tangible/wearables/armor/roleplay/clone_trooper/armor_clone_trooper_neutral_s01_chest_plate.lua")
 includeFile("tangible/wearables/armor/roleplay/clone_trooper/armor_clone_trooper_neutral_s01_gloves.lua")
 includeFile("tangible/wearables/armor/roleplay/clone_trooper/armor_clone_trooper_neutral_s01_helmet.lua")
+includeFile("tangible/wearables/armor/roleplay/clone_trooper/armor_clone_trooper_neutral_s02_helmet.lua")
 includeFile("tangible/wearables/armor/roleplay/clone_trooper/armor_clone_trooper_neutral_s01_leggings.lua")

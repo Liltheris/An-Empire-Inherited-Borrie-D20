@@ -55,7 +55,7 @@ object_weapon_ranged_heavy_heavy_rocket_launcher = object_weapon_ranged_heavy_sh
 	-- NONE, LIGHT, MEDIUM, HEAVY
 	armorPiercing = HEAVY,
 
-	useCount = 5,
+	useCount = 1,
 
 	combatSpam = "rocket_launcher",
 	animationType = "rocket_launcher",
@@ -67,7 +67,6 @@ object_weapon_ranged_heavy_heavy_rocket_launcher = object_weapon_ranged_heavy_sh
 
 	pointBlankRange = 40,
 	pointBlankAccuracy = 5,
-	price = 100,
 	idealRange = 80,
 	idealAccuracy = 10,
 	maxRange = 120,
@@ -78,6 +77,8 @@ object_weapon_ranged_heavy_heavy_rocket_launcher = object_weapon_ranged_heavy_sh
 	rpSkillLevel = 5,
 	
 	rarity="Uncommon",
+
+	price = 2000,
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_heavy_heavy_rocket_launcher, "object/weapon/ranged/heavy/heavy_rocket_launcher.iff")

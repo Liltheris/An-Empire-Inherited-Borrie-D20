@@ -43,3 +43,8 @@ object_tangible_wearables_armor_roleplay_clone_trooper_shared_armor_clone_troope
 }
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_roleplay_clone_trooper_shared_armor_clone_trooper_neutral_s01_leggings, "object/tangible/wearables/armor/roleplay/clone_trooper/shared_armor_clone_trooper_neutral_s01_leggings.iff")
 --********************************************************************************************************************************************************************************************************************************************************
+object_tangible_wearables_armor_roleplay_clone_trooper_shared_armor_clone_trooper_neutral_s02_helmet = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/armor/roleplay/clone_trooper/shared_armor_clone_trooper_neutral_s02_helmet.iff"
+}
+ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_roleplay_clone_trooper_shared_armor_clone_trooper_neutral_s02_helmet, "object/tangible/wearables/armor/roleplay/clone_trooper/shared_armor_clone_trooper_neutral_s02_helmet.iff")
+--****************************************************************************************************************************************************************************************************************************************************
