@@ -73,10 +73,11 @@ function BorForce_Shock:performAbility(pPlayer, fpi)
 
 	local msg = CreatureObject(pPlayer):getFirstName() .. " uses " .. self.name
 
-	if((skillValue + roll >= dc and roll > 1) or roll == 20) then
+	if((skillValue + roll + fpi >= dc and roll > 1) or roll == 20) then
 		msg = msg .. "! A flash of lightning extends from their fingertips and strikes "..targetName.." "..BorForceUtility:rollSpamFPI(roll, skillValue, fpi, dc)
 		msg = msg .. ", leaving them stunned!"
 		BorForceUtility:playAbilityEffects(pPlayer, pTarget, self)
+		BorForceUtility:applyStatusEffect(pPlayer, pTarget, "stunned", 1)
 	else
 		msg = msg .. " but fails!" .. BorForceUtility:rollSpamFPI(roll, skillValue, fpi, dc)
 	end
