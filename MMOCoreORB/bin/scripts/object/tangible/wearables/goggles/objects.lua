@@ -453,13 +453,47 @@ object_tangible_wearables_goggles_shared_rebreather = SharedTangibleObjectTempla
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_goggles_shared_rebreather, "object/tangible/wearables/goggles/shared_rebreather.iff")
-
+--****************************************************************************************************************************************************************
 object_tangible_wearables_goggles_shared_blindfold_s01 = SharedTangibleObjectTemplate:new {
 	clientTemplateFileName = "object/tangible/wearables/goggles/shared_blindfold_s01.iff"
 }
-
 ObjectTemplates:addClientTemplate(object_tangible_wearables_goggles_shared_blindfold_s01, "object/tangible/wearables/goggles/shared_blindfold_s01.iff")
-
+--****************************************************************************************************************************************************************
+object_tangible_wearables_goggles_shared_blindfold_s02 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/goggles/shared_blindfold_s02.iff"
+}
+ObjectTemplates:addClientTemplate(object_tangible_wearables_goggles_shared_blindfold_s02, "object/tangible/wearables/goggles/shared_blindfold_s02.iff")
+--****************************************************************************************************************************************************************
+object_tangible_wearables_goggles_shared_blindfold_s03 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/goggles/shared_blindfold_s03.iff"
+}
+ObjectTemplates:addClientTemplate(object_tangible_wearables_goggles_shared_blindfold_s03, "object/tangible/wearables/goggles/shared_blindfold_s03.iff")
+--****************************************************************************************************************************************************************
+object_tangible_wearables_goggles_shared_blindfold_s04 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/goggles/shared_blindfold_s04.iff"
+}
+ObjectTemplates:addClientTemplate(object_tangible_wearables_goggles_shared_blindfold_s04, "object/tangible/wearables/goggles/shared_blindfold_s04.iff")
+--****************************************************************************************************************************************************************
+object_tangible_wearables_goggles_shared_blindfold_s05 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/goggles/shared_blindfold_s05.iff"
+}
+ObjectTemplates:addClientTemplate(object_tangible_wearables_goggles_shared_blindfold_s05, "object/tangible/wearables/goggles/shared_blindfold_s05.iff")
+--****************************************************************************************************************************************************************
+object_tangible_wearables_goggles_shared_blindfold_s06 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/goggles/shared_blindfold_s06.iff"
+}
+ObjectTemplates:addClientTemplate(object_tangible_wearables_goggles_shared_blindfold_s06, "object/tangible/wearables/goggles/shared_blindfold_s06.iff")
+--****************************************************************************************************************************************************************
+object_tangible_wearables_goggles_shared_blindfold_s07 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/goggles/shared_blindfold_s07.iff"
+}
+ObjectTemplates:addClientTemplate(object_tangible_wearables_goggles_shared_blindfold_s07, "object/tangible/wearables/goggles/shared_blindfold_s07.iff")
+--****************************************************************************************************************************************************************
+object_tangible_wearables_goggles_shared_blindfold_jerec = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/goggles/shared_blindfold_jerec.iff"
+}
+ObjectTemplates:addClientTemplate(object_tangible_wearables_goggles_shared_blindfold_jerec, "object/tangible/wearables/goggles/shared_blindfold_jerec.iff")
+--****************************************************************************************************************************************************************
 object_tangible_wearables_goggles_shared_goggles_kubaz_s01 = SharedTangibleObjectTemplate:new {
 	clientTemplateFileName = "object/tangible/wearables/goggles/shared_goggles_kubaz_s01.iff"
 }
