@@ -725,32 +725,47 @@ public:
     static void SaveEquipmentToTemplate(CreatureObject* creature, const uint64& target, String name) {
         ManagedReference<SceneObject*> object = creature->getZoneServer()->getObject(target, false);
 
+        // Sanitise our name input.
+        if(name.isEmpty())
+			    throw Exception();     
+
+        name = name.toLowerCase();
+
 		CreatureObject* targetMob = creature;
 
+        // If we have a valid NPC or player targeted, we want to save their equipment, not ours.
 		if (object != nullptr) {
 			if (object->isCreatureObject()) {
 				targetMob = cast<CreatureObject*>(object.get());
 			}
 		}
 
-        const WearablesDeltaVector* wearablesVector = targetMob->getWearablesDeltaVector();
-		int size = wearablesVector->size();
-
-		//int gender = targetMob->getGender();
+		int size = targetMob->getSlottedObjectsSize();
 
 		StringBuffer text;
         text << "equipment = {" << endl;
 
         for (int i = 0; i < size; i++) {
-            TangibleObject* item = wearablesVector->get(i);
-			CustomizationVariables* itemCustomVars = item->getCustomizationVariables();
-			String templ = item->getObjectTemplate()->getFullTemplateString();
+            // Get our item from the creature, and cast it to WearableObject, that way we avoid adding weapons and other junk.
+            SceneObject* sceo = targetMob->getSlottedObject(i);
+            WearableObject* item = cast<WearableObject*>(sceo);
+
+            if (item == nullptr)
+                continue;
+            
+            String templ = item->getObjectTemplate()->getFullTemplateString();
+
+            // Filter our return list for items we don't want in our equipment templates.
             if(templ.contains("hair") || templ.contains("datapad") || templ.contains("inventory")) {
                 continue;
             }
+
+			CustomizationVariables* itemCustomVars = item->getCustomizationVariables();
+            
             int itemVarSize = itemCustomVars->getSize();
             text << "\t{\"" << templ << "\", "; 
 
+            // Find and add the item's customisations to the equipment template
             for(int j = 0;j<itemVarSize; j++) {
                 uint8 key = itemCustomVars->elementAt(j).getKey();
 				int16 value = itemCustomVars->elementAt(j).getValue();
@@ -762,11 +777,6 @@ public:
             text << "}," << endl;
         }
         text << "}";
-
-        if(name.isEmpty())
-			    throw Exception();     
-
-        name = name.toLowerCase();
             
         File* file = new File("custom_scripts/rp_npcs/equipment/" + name + ".lua");
 		FileWriter* writer = new FileWriter(file, false); // true for appending new lines
