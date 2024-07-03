@@ -32,4 +32,7 @@ includeFile("borrie/spawnmaps/mandalore_keldabe.lua")
 --Coruscant
 includeFile("borrie/spawnmaps/coruscant_estate.lua")
 
+--Alpheridies
+includeFile("borrie/spawnmaps/alpheridies_stenadar.lua")
+
 includeFile("borrie/spawnmaps/tutorial.lua")

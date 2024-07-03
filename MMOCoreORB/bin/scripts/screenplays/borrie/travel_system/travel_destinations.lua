@@ -103,6 +103,29 @@ travel_destinations = {
 		}
 	},
 
+	--Alpheridies
+	{
+		tag = "alpheridies",
+		name = "Alpheridies",
+		zone = "rp_alpheridies",
+		skill = "rp_travel_alpheridies",
+		spaceports = {
+			{
+				tag = "stenadar",
+				name = "Stenadar",
+				skill = "rp_travel_alpheridies_stenadar",
+				landing_spots = {
+					{"rp_alpheridies", 1263.87, 10, -6555.93, 270, 0},
+					{"rp_alpheridies", 1263.87, 10, -6605.24, 270, 0},
+					{"rp_alpheridies", 1118.48, 10, -6558.48, 270, 0},
+					{"rp_alpheridies", 1026.05, 10, -6558.48, 90, 0},
+					{"rp_alpheridies", 915.09,  10, -6556.05, 0, 0},
+				},
+				public_arrival = {"rp_alpheridies", 1233, 10, -6536, 270, 0},
+			},
+		}
+	},
+
 	--Carida
 	{
 		tag = "carida",

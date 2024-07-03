@@ -18,6 +18,7 @@ includeFile("borrie/civ_gen/spawn_groups/spawn_group_dantooine.lua")
 includeFile("borrie/civ_gen/spawn_groups/spawn_group_mandalore.lua")
 includeFile("borrie/civ_gen/spawn_groups/spawn_group_nightsister.lua")
 includeFile("borrie/civ_gen/spawn_groups/spawn_group_singing_mountain.lua")
+includeFile("borrie/civ_gen/spawn_groups/spawn_group_miraluka.lua")
 
 --Outfit Groups
 includeFile("borrie/civ_gen/outfit_groups/outfit_group_generic.lua")
@@ -32,3 +33,4 @@ includeFile("borrie/civ_gen/outfit_groups/outfit_group_mandalore.lua")
 includeFile("borrie/civ_gen/outfit_groups/outfit_group_nightsister.lua")
 includeFile("borrie/civ_gen/outfit_groups/outfit_group_singing_mountain.lua")
 includeFile("borrie/civ_gen/outfit_groups/outfit_group_imp_party.lua")
+includeFile("borrie/civ_gen/outfit_groups/outfit_group_alpheridies.lua")
