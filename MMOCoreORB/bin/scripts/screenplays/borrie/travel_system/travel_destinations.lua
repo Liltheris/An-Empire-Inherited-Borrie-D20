@@ -108,12 +108,12 @@ travel_destinations = {
 		tag = "alpheridies",
 		name = "Alpheridies",
 		zone = "rp_alpheridies",
-		skill = "rp_travel_alpheridies",
+		skill = "species_miraluka",
 		spaceports = {
 			{
 				tag = "stenadar",
 				name = "Stenadar",
-				skill = "rp_travel_alpheridies_stenadar",
+				skill = "species_miraluka",
 				landing_spots = {
 					{"rp_alpheridies", 1263.87, 10, -6555.93, 270, 0},
 					{"rp_alpheridies", 1263.87, 10, -6605.24, 270, 0},
