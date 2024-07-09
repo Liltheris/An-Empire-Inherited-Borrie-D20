@@ -140,7 +140,7 @@ public:
 	static void PromptForceQuestion(CreatureObject* creature) {
 		int hasDecided = creature->getStoredInt("fs_chosen");
 
-		if (hasDecided =! 1 && (creature->hasSkill("species_miraluka") || creature->hasSkill("always_force_sensitive"))) {
+		if (hasDecided != 1 && (creature->hasSkill("species_miraluka") || creature->hasSkill("always_force_sensitive"))) {
 			//Miraluka are always Force Sensitive.
 			hasDecided = 1;
 
