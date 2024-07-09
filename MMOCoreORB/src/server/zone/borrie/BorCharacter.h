@@ -1333,6 +1333,7 @@ public:
 		}	
 
 		creature->setStoredInt("remaining_move_distance",  maxDistance);
+		creature->setStoredInt("distance_moved",  0);
 		creature->sendSystemMessage("Move to your desired destination, using the Last Position waypoint to keep track of your distance. Use the move (rpmove) ability to confirm your movement.");
 	}
 
@@ -1352,33 +1353,21 @@ public:
 			int remainingDistance = creature->getStoredInt("remaining_move_distance") - distance;
 
 			if (remainingDistance <= 0) {
+				creature->deleteStoredInt("remaining_move_distance");
 				ConfirmRoleplayMove(creature);
 				return;
 			}
 
-			BorrieRPG::BroadcastMessage(creature, creature->getFirstName() +" moved "+String::valueOf(distance)+" meters. They have "+String::valueOf(remainingDistance)+" meters left.");
+			creature->setStoredInt("remaining_move_distance",  remainingDistance);
+			creature->setStoredInt("distance_moved",  creature->getStoredInt("distance_moved") + distance);
+
+			BorrieRPG::BroadcastMessage(creature, creature->getFirstName() +" moved "+String::valueOf(distance)+" meters. They have "+String::valueOf(remainingDistance)+" meters left to move.");
 
 			// Reset the waypoint.
-			ghost->removeWaypoint(waypoint->getObjectID(), true, false);
-			waypoint = waypoint.get();
-
-			ManagedReference<WaypointObject*> newwaypoint = nullptr;
-
-			ghost->removeWaypoint(waypoint->getObjectID(), true, false);
-			newwaypoint = waypoint.get();
-
-			if(newwaypoint != nullptr) {
-				Locker locker(newwaypoint);
+			if(waypoint != nullptr) {
 				auto worldPosition = creature->getWorldPosition();
-				
-				newwaypoint->setCustomObjectName(UnicodeString("Last Position"), false);
-				newwaypoint->setPlanetCRC(creature->getZone()->getZoneCRC());
-				newwaypoint->setPosition(worldPosition.getX(), worldPosition.getZ(), worldPosition.getY());
-				newwaypoint->setColor(WaypointObject::COLOR_PURPLE);
-				newwaypoint->setSpecialTypeID(WaypointObject::SPECIALTYPE_RESOURCE);
-				newwaypoint->setActive(true);
 
-				ghost->addWaypoint(newwaypoint, false, true); 
+				waypoint.get()->setPosition(worldPosition.getX(), worldPosition.getZ(), worldPosition.getY());
 			}
 		}
 	}
@@ -1395,7 +1384,7 @@ public:
 		} else {
 			Locker locker(waypoint);
 			auto worldPosition = waypoint->getWorldPosition();
-			int distance = GetDistance(creature, worldPosition.getX(), worldPosition.getZ(), worldPosition.getY());
+			int distance = GetDistance(creature, worldPosition.getX(), worldPosition.getZ(), worldPosition.getY()) + creature->getStoredInt("distance_moved");
 			BorrieRPG::BroadcastMessage(creature, creature->getFirstName() + " moved " + String::valueOf(distance) + " meters from their last position.");
 		// Remove the waypoint after move.
 			ghost->removeWaypoint(waypoint->getObjectID(), true, false);
