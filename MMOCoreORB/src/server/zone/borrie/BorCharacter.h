@@ -153,7 +153,7 @@ public:
 
 				ghost->setJediState(1);
 				skillManager->awardSkill("rp_force_prog_novice", creature, true, true, true);
-				ghost->setStoredInt("fs_chosen", 1);
+				creature->setStoredInt("fs_chosen", 1);
 
 			} else {
 				ManagedReference<SuiListBox*> box = new SuiListBox(creature, SuiWindowType::JUKEBOX_SELECTION);
