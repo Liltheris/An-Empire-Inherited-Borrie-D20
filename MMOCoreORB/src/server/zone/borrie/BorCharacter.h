@@ -1332,8 +1332,56 @@ public:
 				}
 			}
 		}	
-									
+
+		creature->setStoredInt("remaining_move_distance",  maxDistance);
 		creature->sendSystemMessage("Move to your desired destination, using the Last Position waypoint to keep track of your distance. Use the move (rpmove) ability to confirm your movement.");
+	}
+
+	static void moveWaypoint(CreatureObject* creature) {
+		PlayerObject* ghost = creature->getPlayerObject();
+		if (ghost == nullptr)
+			return;
+
+		ManagedReference<WaypointObject*> waypoint = ghost->getSurveyWaypoint();
+		if(waypoint == nullptr) {
+			BorrieRPG::BroadcastMessage(creature, creature->getFirstName() + " has moved.");
+		} else {
+			Locker locker(waypoint);
+			auto worldPosition = waypoint->getWorldPosition();
+			int distance = GetDistance(creature, worldPosition.getX(), worldPosition.getZ(), worldPosition.getY());
+
+			int remainingDistance = creature->getStoredInt("remaining_move_distance") - distance;
+
+			if (remainingDistance <= 0) {
+				ConfirmRoleplayMove(creature);
+				return;
+			}
+
+			BorrieRPG::BroadcastMessage(creature, creature->getFirstName() +" moved "+String::valueOf(distance)+" meters. They have "+String::valueOf(remainingDistance)+" meters left.");
+
+			// Reset the waypoint.
+			ghost->removeWaypoint(waypoint->getObjectID(), true, false);
+			waypoint = waypoint.get();
+
+			ManagedReference<WaypointObject*> newwaypoint = nullptr;
+
+			ghost->removeWaypoint(waypoint->getObjectID(), true, false);
+			newwaypoint = waypoint.get();
+
+			if(newwaypoint != nullptr) {
+				Locker locker(newwaypoint);
+				auto worldPosition = creature->getWorldPosition();
+				
+				newwaypoint->setCustomObjectName(UnicodeString("Last Position"), false);
+				newwaypoint->setPlanetCRC(creature->getZone()->getZoneCRC());
+				newwaypoint->setPosition(worldPosition.getX(), worldPosition.getZ(), worldPosition.getY());
+				newwaypoint->setColor(WaypointObject::COLOR_PURPLE);
+				newwaypoint->setSpecialTypeID(WaypointObject::SPECIALTYPE_RESOURCE);
+				newwaypoint->setActive(true);
+
+				ghost->addWaypoint(newwaypoint, false, true); 
+			}
+		}
 	}
 
 	static void ConfirmRoleplayMove(CreatureObject* creature) {
