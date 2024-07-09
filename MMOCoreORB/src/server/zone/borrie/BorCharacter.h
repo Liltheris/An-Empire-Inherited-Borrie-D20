@@ -1370,6 +1370,7 @@ public:
 			if (remainingDistance <= 0) {
 				creature->deleteStoredInt("remaining_move_distance");
 				ConfirmRoleplayMove(creature);
+				creature->deleteStoredInt("rp_moving");
 				return;
 			}
 
@@ -1383,6 +1384,8 @@ public:
 				auto worldPosition = creature->getWorldPosition();
 
 				waypoint.get()->setPosition(worldPosition.getX(), worldPosition.getZ(), worldPosition.getY());
+
+				ghost->addWaypoint(waypoint, false, true); 
 			}
 		}
 	}

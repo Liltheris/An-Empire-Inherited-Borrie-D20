@@ -50,47 +50,19 @@ function rp_trainer_convo_handler:runScreenHandlers(conversationTemplate, conver
     local pConvScreen = screen:cloneScreen()
     local clonedConversation = LuaConversationScreen(pConvScreen)
 	
-
-
-	
 	--Get personal data about this nPC.
-	local factionTag = SceneObject(conversingNPC):getStoredString("rp_faction")
-	local faction = BorFactionManager.factions[factionTag]
-	local themeTag = SceneObject(conversingNPC):getStoredString("rp_fac_recruiter_theme")
-	local theme = BorFactionManager.recruiterThemes[themeTag]
+	local trainingTree = trainingTrees[SceneObject(conversingNPC):getStoredString("training_tree")]
+	local trainingNovice = "rp_training_"..trainingTree.name.."_novice"
+	local branch = SceneObject(conversingNPC):getStoredString("training_branch")
 	
+
 	--Get personal data about the Player
 	local playerFactionTag = SceneObject(conversingPlayer):getStoredString("faction_current")
-	
-	--DEBUG
-	--playerFactionTag = "empire"
-	
-	--CreatureObject(conversingPlayer):sendSystemMessage(factionTag .. " " .. themeTag .. " " .. screenID .. "!")
-	
+	local isValid = skillManager:canLearnSkill(conversingPlayer, trainingNovice, true) or CreatureObject(conversingPlayer):hasSkill(trainingNovice)
 	
 	clonedConversation:removeAllOptions()
 		
-	--Set logic for which logic to take for the first screen.
-	if(screenID == "greeting") then
-		if(playerFactionTag == "") then
-			traitorLevel = BorFactionManager:getTraitorLevel(conversingPlayer, factionTag)
-			if(traitorLevel == 1) then
-				screenID = "traitor1_greeting"
-			elseif(traitorLevel == 2) then
-				screenID = "traitor2_greeting"
-			else 
-				screenID = "greeting"
-			end			
-		elseif(playerFactionTag == factionTag) then
-			screenID = "greeting_member"
-		elseif(BorFactionManager:getFactionIsEnemy(factionTag, playerFactionTag) == true) then
-			screenID = "enemy_greeting"
-		elseif(BorFactionManager:getFactionIsAlly(factionTag, playerFactionTag) == true) then
-			screenID = "ally_greeting"
-		end
-	end
-	
-	
+	--Set logic for which logic to take for the first screen.	
 	if(screenID == "greeting") then
 		clonedConversation:setCustomDialogText(theme.greeting)
 		clonedConversation:addOption("I'd like to join the " .. faction.name, "join")
