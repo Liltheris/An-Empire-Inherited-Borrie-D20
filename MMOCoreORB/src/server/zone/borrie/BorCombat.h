@@ -1386,82 +1386,83 @@ public:
             damage = newDamage;
         }
 
-        // Use equipped armour if the creature is a player.
-        if(creature->isPlayerCreature()) {
-            ManagedReference<ArmorObject*> armour = BorCharacter::GetArmorAtSlot(creature, GetSlotName(slot));
-            if(armour != nullptr) {
-                if(!armour->isBroken()) {
-                    int armourDamage = 0;
-                    int healthDamage = 0;
-                    int armourProtection = GetArmorProtection(armour, damageType);
+        ManagedReference<ArmorObject*> armour = BorCharacter::GetArmorAtSlot(creature, GetSlotName(slot));
+        
+        if(armour != nullptr) {
+            if(!armour->isBroken()) {
+                int armourDamage = 0;
+                int healthDamage = 0;
+                int armourProtection = GetArmorProtection(armour, damageType);
 
-                    if(damageType == "Lightsaber") { 
-                        // Special Lightsaber Rules
-                        if(armour->getLightSaber() > 0) {
-                            // Armour takes x5 damage, health damage is one quarter.
-                            armourDamage = damage * 5;
-                            healthDamage = damage * 0.25;
-                        } else {
-                            // Armour is destroyed, damage taken in full.
-                            armourDamage = armour->getMaxCondition();
-                            healthDamage = damage;
-                        }
+                if(damageType == "Lightsaber") { 
+                    // Special Lightsaber Rules
+                    if(armour->getLightSaber() > 0) {
+                        // Armour takes x5 damage, health damage is one quarter.
+                        armourDamage = damage * 5;
+                        healthDamage = damage * 0.25;
                     } else {
-                        // Standard damage calculation
-                        if(armourProtection <= 0){
-                            //Armour is weak to damage type. Allow all damage through, and increase damage done to the armour itself.
-                            armourDamage = damage - armourProtection;
-                            healthDamage = damage;
-                        } else {
-                            //Armour resists damage, or ignores damage type.
-                            armourDamage = damage;
-                            healthDamage = damage - armourProtection;
-                            if (healthDamage < 1) 
-                                healthDamage = 1;
-                        }
+                        // Armour is destroyed, damage taken in full.
+                        armourDamage = armour->getMaxCondition();
+                        healthDamage = damage;
                     }
-
-                    if (!BorCharacter::HasRequiredArmourSkill(creature, GetSlotName(slot))){
-                        // Lacking armour skill reduces effectiveness to 1.
-                        if(armourProtection > 0){
-                            healthDamage = damage - 1;
-                            if (healthDamage < 1) 
-                                healthDamage = 1;
-                        }
-                        armourDamage = armourDamage * 2;
-                    }
-
-                    //Apply damage to creature and armour.
-                    armour->setConditionDamage(armour->getConditionDamage() + armourDamage);
-                    BorCharacter::ModPool(creature, "health", -healthDamage, true);
-
-                    // Output spam.
-                    StringIdChatParameter msg;
-                    msg.setStringId("@rp_spam:armour_dmg_report");
-                    
-                    String armourName = armour->getCustomObjectName().toString();
-                    if(armourName == "") {
-                        msg.setTO(armour->getObjectID());
+                } else {
+                    // Standard damage calculation
+                    if(armourProtection <= 0){
+                        //Armour is weak to damage type. Allow all damage through, and increase damage done to the armour itself.
+                        armourDamage = damage - armourProtection;
+                        healthDamage = damage;
                     } else {
-                        msg.setTO(armourName);
+                        //Armour resists damage, or ignores damage type.
+                        armourDamage = damage;
+                        healthDamage = damage - armourProtection;
+                        if (healthDamage < 1) 
+                            healthDamage = 1;
                     }
-                    
-                    msg.setDI(armourDamage);
-                    creature->sendSystemMessage(msg);
-
-                    String output = damageNumber(healthDamage);
-                    output = output +"(\\#FFFF00"+String::valueOf(damage - healthDamage)+"\\#FFFFFF)";
-                    if (forceDefense > 0){
-                        output = output + defenseResult;
-                    }
-                    return output;
                 }
+
+                if (!BorCharacter::HasRequiredArmourSkill(creature, GetSlotName(slot))){
+                    // Lacking armour skill reduces effectiveness to 1.
+                    if(armourProtection > 0){
+                        healthDamage = damage - 1;
+                        if (healthDamage < 1) 
+                            healthDamage = 1;
+                    }
+                    armourDamage = armourDamage * 2;
+                }
+
+                //Apply damage to creature and armour.
+                armour->setConditionDamage(armour->getConditionDamage() + armourDamage);
+                BorCharacter::ModPool(creature, "health", -healthDamage, true);
+
+                // Output spam.
+                StringIdChatParameter msg;
+                msg.setStringId("@rp_spam:armour_dmg_report");
+                
+                String armourName = armour->getCustomObjectName().toString();
+                if(armourName == "") {
+                    msg.setTO(armour->getObjectID());
+                } else {
+                    msg.setTO(armourName);
+                }
+                
+                msg.setDI(armourDamage);
+                creature->sendSystemMessage(msg);
+
+                String output = damageNumber(healthDamage);
+                output = output +"(\\#FFFF00"+String::valueOf(damage - healthDamage)+"\\#FFFFFF)";
+                if (forceDefense > 0){
+                    output = output + defenseResult;
+                }
+                return output;
             }
-            // No armour is equipped in hit slot, apply damage normally.
-            BorCharacter::ModPool(creature, "health", -damage, true);
-            return damageNumber(damage);
-        // NPC handling.
-        } else {
+        }
+
+        // No armour is equipped in hit slot, apply damage normally.
+        BorCharacter::ModPool(creature, "health", -damage, true);
+        return damageNumber(damage);
+
+        // Old NPC handling.
+        /*} else {
             String armourName = creature->getStoredString("armour_set");
             if (armourName != ""){
                 Lua* lua = DirectorManager::instance()->getLuaInstance();
@@ -1530,7 +1531,7 @@ public:
 
             BorCharacter::ModPool(creature, "health", -damage, true);
             return damageNumber(damage);
-        }
+        }*/
     }
 
     static String ApplyAdjustedHealthDamage(CreatureObject* creature, WeaponObject* attackerWeapon, int damage, int slot) {

@@ -771,7 +771,8 @@ public:
 				int16 value = itemCustomVars->elementAt(j).getValue();
 				String valueType = CustomizationIdManager::instance()->getCustomizationVariable(key);
 
-                text << "\"" << valueType << "\", " << value << ", ";
+                if (!valueType.contains("/shared_owner/"))
+                    text << "\"" << valueType << "\", " << value << ", ";
             } 
 
             text << "}," << endl;

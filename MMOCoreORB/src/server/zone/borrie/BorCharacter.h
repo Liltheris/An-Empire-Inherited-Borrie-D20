@@ -75,7 +75,8 @@ public:
 		ManagedReference<ArmorObject*> armour = GetArmorAtSlot(creature, slot);
 		if(armour == nullptr)
 			return true;
-		return creature->getSkillMod("rp_armor") >= armour->getRpSkillLevel();
+		// Bypass this check for NPCs to simplify setup.
+		return creature->getSkillMod("rp_armor") >= armour->getRpSkillLevel() || !creature->isPlayerCreature();
 	}
 
 	static bool IsWearingArmourUnskilled(CreatureObject* creature){
@@ -102,7 +103,21 @@ public:
 	}
 
 	static ManagedReference<ArmorObject*> GetArmorAtSlot(CreatureObject* creature, String slot) {
-		return creature->getWearablesDeltaVector()->getArmorAtSlot(slot);
+		if (creature->isPlayerCreature()){
+			// Easy way to quickly retrive from a player!
+			return creature->getWearablesDeltaVector()->getArmorAtSlot(slot);
+		} else {
+			int size = creature->getSlottedObjectsSize();
+
+			for (int i = 0; i < size; i++) {
+				SceneObject* sceo = creature->getSlottedObject(slot);
+				ManagedReference<ArmorObject*> item = cast<ArmorObject*>(sceo);
+
+				if (item != nullptr)
+					return item;
+			}
+		}
+		return nullptr;
 	}
 
 	static void SetChatPrefix(CreatureObject* creature, String prefix) {
