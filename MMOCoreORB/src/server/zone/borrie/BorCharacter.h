@@ -140,39 +140,38 @@ public:
 	static void PromptForceQuestion(CreatureObject* creature) {
 		int hasDecided = creature->getStoredInt("fs_chosen");
 
-		if (hasDecided != 1 && (creature->hasSkill("species_miraluka") || creature->hasSkill("always_force_sensitive"))) {
-			//Miraluka are always Force Sensitive.
-			hasDecided = 1;
-
-			SkillManager* skillManager = SkillManager::instance();
-
-			ManagedReference<PlayerObject*> targetGhost = creature->getPlayerObject();
-			if(targetGhost == nullptr)
-				return;
-			targetGhost->setJediState(1);
-
-			skillManager->awardSkill("rp_force_prog_novice", creature, true, true, true);
-
-			targetGhost->setStoredInt("fs_chosen", 1);
-		}
-
 		if(hasDecided != 1) {
-			//Prompt them
-			ManagedReference<SuiListBox*> box = new SuiListBox(creature, SuiWindowType::JUKEBOX_SELECTION);
-			box->setCancelButton(true, "Decide Later");
-			box->setCallback(new ForceSensitivePromptSuiCallback(creature->getZoneServer()));
-			box->setPromptTitle("Force Sensitivity");
-			String message = "You must choose whether or not this character is sensitive to the Force. ";
-			message += "If you choose to be Force Sensitive, you will have the option to train your ability in the Force, becoming Jedi, Sith, or something else. ";
-			message += "If you opt not to be Force Sensitive, you will not be able to train in the Force, but are safe from persecution by the Inquisitorius. ";
-			message += "WARNING: Once you've made this decision, it is final. So choose carefully.";
-			box->setPromptText(message);
-			box->setOkButton(false, "@");
-			box->addMenuItem("I am Force Sensitive");
-			box->addMenuItem("I am NOT Force Sensitive");
-			box->addMenuItem("Surprise me!");
-			creature->getPlayerObject()->addSuiBox(box);
-			creature->sendMessage(box->generateMessage());
+			if (creature->hasSkill("species_miraluka") || creature->hasSkill("always_force_sensitive")) {
+				//Miraluka are always Force Sensitive.
+				hasDecided = 1;
+
+				SkillManager* skillManager = SkillManager::instance();
+
+				ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
+				if(ghost == nullptr)
+					return;
+
+				ghost->setJediState(1);
+				skillManager->awardSkill("rp_force_prog_novice", creature, true, true, true);
+				ghost->setStoredInt("fs_chosen", 1);
+
+			} else {
+				ManagedReference<SuiListBox*> box = new SuiListBox(creature, SuiWindowType::JUKEBOX_SELECTION);
+				box->setCancelButton(true, "Decide Later");
+				box->setCallback(new ForceSensitivePromptSuiCallback(creature->getZoneServer()));
+				box->setPromptTitle("Force Sensitivity");
+				String message = "You must choose whether or not this character is sensitive to the Force. ";
+				message += "If you choose to be Force Sensitive, you will have the option to train your ability in the Force, becoming Jedi, Sith, or something else. ";
+				message += "If you opt not to be Force Sensitive, you will not be able to train in the Force, but are safe from persecution by the Inquisitorius. ";
+				message += "WARNING: Once you've made this decision, it is final. So choose carefully.";
+				box->setPromptText(message);
+				box->setOkButton(false, "@");
+				box->addMenuItem("I am Force Sensitive");
+				box->addMenuItem("I am NOT Force Sensitive");
+				box->addMenuItem("Surprise me!");
+				creature->getPlayerObject()->addSuiBox(box);
+				creature->sendMessage(box->generateMessage());
+			}
 		}
 	}
 
