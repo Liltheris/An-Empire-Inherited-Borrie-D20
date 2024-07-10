@@ -1074,25 +1074,29 @@ public:
         text << "\t{\"height\", " << height << "}," << endl; 
 
         //Add Hair
-        SceneObject* sceo = creature->getSlottedObject("hair");
-			ManagedReference<WearableObject*> hairObject = cast<WearableObject*>(sceo);
+		int size = targetMob->getSlottedObjectsSize();
 
-        if (hairObject != nullptr) {
-            CustomizationVariables* itemCustomVars = hairObject->getCustomizationVariables();
-            String templ = hairObject->getObjectTemplate()->getClientTemplateFileName();
+        for (int i = 0; i < size; i++) {
+            SceneObject* sceo = targetMob->getSlottedObject(i);
+            TangibleObject* item = cast<TangibleObject*>(sceo);
+            if (sceo != nullptr) {
+                CustomizationVariables* itemCustomVars = item->getCustomizationVariables();
+                String templ = item->getObjectTemplate()->getClientTemplateFileName();
+                if(templ.contains("hair")) {
+                    text << "\t{\"hair_object\", \"" << templ << "\",";
+                    int itemVarSize = itemCustomVars->getSize();
 
-            text << "\t{\"hair_object\", \"" << templ << "\",";
-            int itemVarSize = itemCustomVars->getSize();
+                    for(int j = 0;j<itemVarSize; j++) {
+                        uint8 key = itemCustomVars->elementAt(j).getKey();
+                        int16 value = itemCustomVars->elementAt(j).getValue();
+                        String valueType = CustomizationIdManager::instance()->getCustomizationVariable(key);
 
-            for(int j = 0; j < itemVarSize; j++) {
-                uint8 key = itemCustomVars->elementAt(j).getKey();
-                int16 value = itemCustomVars->elementAt(j).getValue();
-                String valueType = CustomizationIdManager::instance()->getCustomizationVariable(key);
-
-                text << "\"" << valueType << "\", " << value << ", ";
-            } 
-
-            text << "}," << endl;
+                        text << "\"" << valueType << "\", " << value << ", ";
+                    } 
+                    text << "}," << endl;
+                }
+                break;
+            }
         }
 
         text << "}";
