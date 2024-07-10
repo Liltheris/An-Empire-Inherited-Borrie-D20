@@ -107,17 +107,11 @@ public:
 			// Easy way to quickly retrive from a player!
 			return creature->getWearablesDeltaVector()->getArmorAtSlot(slot);
 		} else {
-			int size = creature->getSlottedObjectsSize();
+			SceneObject* sceo = creature->getSlottedObject(slot);
+			ManagedReference<ArmorObject*> item = cast<ArmorObject*>(sceo);
 
-			for (int i = 0; i < size; i++) {
-				SceneObject* sceo = creature->getSlottedObject(slot);
-				ManagedReference<ArmorObject*> item = cast<ArmorObject*>(sceo);
-
-				if (item != nullptr)
-					return item;
-			}
+			return item;
 		}
-		return nullptr;
 	}
 
 	static void SetChatPrefix(CreatureObject* creature, String prefix) {

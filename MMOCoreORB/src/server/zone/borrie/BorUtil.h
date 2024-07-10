@@ -1074,27 +1074,25 @@ public:
         text << "\t{\"height\", " << height << "}," << endl; 
 
         //Add Hair
-        const WearablesDeltaVector* wearablesVector = targetMob->getWearablesDeltaVector();
-		int size = wearablesVector->size();
+        SceneObject* sceo = creature->getSlottedObject("hair");
+			ManagedReference<WearableObject*> hairObject = cast<WearableObject*>(sceo);
 
-        for (int i = 0; i < size; i++) {
-            TangibleObject* item = wearablesVector->get(i);
-			CustomizationVariables* itemCustomVars = item->getCustomizationVariables();
-			String templ = item->getObjectTemplate()->getClientTemplateFileName();
-            if(templ.contains("hair")) {
-                text << "\t{\"hair_object\", \"" << templ << "\",";
-                int itemVarSize = itemCustomVars->getSize();
+        if (hairObject != nullptr) {
+            CustomizationVariables* itemCustomVars = hairObject->getCustomizationVariables();
+            String templ = hairObject->getObjectTemplate()->getClientTemplateFileName();
 
-                for(int j = 0;j<itemVarSize; j++) {
-                    uint8 key = itemCustomVars->elementAt(j).getKey();
-			    	int16 value = itemCustomVars->elementAt(j).getValue();
-			    	String valueType = CustomizationIdManager::instance()->getCustomizationVariable(key);
+            text << "\t{\"hair_object\", \"" << templ << "\",";
+            int itemVarSize = itemCustomVars->getSize();
 
-                    text << "\"" << valueType << "\", " << value << ", ";
-                } 
+            for(int j = 0; j < itemVarSize; j++) {
+                uint8 key = itemCustomVars->elementAt(j).getKey();
+                int16 value = itemCustomVars->elementAt(j).getValue();
+                String valueType = CustomizationIdManager::instance()->getCustomizationVariable(key);
 
-                text << "}," << endl;
-            }
+                text << "\"" << valueType << "\", " << value << ", ";
+            } 
+
+            text << "}," << endl;
         }
 
         text << "}";
