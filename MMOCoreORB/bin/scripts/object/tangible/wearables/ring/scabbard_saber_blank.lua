@@ -1,0 +1,4 @@
+object_tangible_wearables_ring_scabbard_saber_blank = object_tangible_wearables_ring_shared_scabbard_saber_blank:new {
+
+}
+ObjectTemplates:addTemplate(object_tangible_wearables_ring_scabbard_saber_blank, "object/tangible/wearables/ring/scabbard_saber_blank.iff")

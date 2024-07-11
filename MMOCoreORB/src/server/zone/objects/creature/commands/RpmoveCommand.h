@@ -35,9 +35,16 @@ public:
 		try {
 			bool isMoving = creature->getStoredInt("rp_moving") == 1;
 			if (isMoving) {
-				//Confirm
-				BorCharacter::ConfirmRoleplayMove(creature);
-				creature->deleteStoredInt("rp_moving");
+				String argument = "";
+				if (args.hasMoreTokens())
+					argument = args.getStringToken();
+
+				if (argument == "waypoint" || argument == "checkpoint" || argument == "way" || argument == "check") {
+					BorCharacter::moveWaypoint(creature);
+				} else {
+					BorCharacter::ConfirmRoleplayMove(creature);
+					creature->deleteStoredInt("rp_moving");
+				}
 			} else {
 				//Initialize
 				BorCharacter::InitializeRoleplayMove(creature);

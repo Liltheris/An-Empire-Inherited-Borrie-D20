@@ -43,4 +43,6 @@ content = {
 	{"object/tangible/wearables/cape/cape_kama_s02.iff", },
 	{"object/tangible/wearables/cape/cape_short.iff",},
 	{"object/tangible/wearables/cape/poncho_s01.iff", },
+	{"object/tangible/wearables/ring/scabbard_blank.iff", },
+	{"object/tangible/wearables/ring/scabbard_sword.iff", },
 }
