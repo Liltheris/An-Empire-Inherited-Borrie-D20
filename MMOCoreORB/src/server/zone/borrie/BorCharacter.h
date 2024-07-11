@@ -75,7 +75,8 @@ public:
 		ManagedReference<ArmorObject*> armour = GetArmorAtSlot(creature, slot);
 		if(armour == nullptr)
 			return true;
-		return creature->getSkillMod("rp_armor") >= armour->getRpSkillLevel();
+		// Bypass this check for NPCs to simplify setup.
+		return creature->getSkillMod("rp_armor") >= armour->getRpSkillLevel() || !creature->isPlayerCreature();
 	}
 
 	static bool IsWearingArmourUnskilled(CreatureObject* creature){
@@ -102,7 +103,15 @@ public:
 	}
 
 	static ManagedReference<ArmorObject*> GetArmorAtSlot(CreatureObject* creature, String slot) {
-		return creature->getWearablesDeltaVector()->getArmorAtSlot(slot);
+		if (creature->isPlayerCreature()){
+			// Easy way to quickly retrive from a player!
+			return creature->getWearablesDeltaVector()->getArmorAtSlot(slot);
+		} else {
+			SceneObject* sceo = creature->getSlottedObject(slot);
+			ManagedReference<ArmorObject*> item = cast<ArmorObject*>(sceo);
+
+			return item;
+		}
 	}
 
 	static void SetChatPrefix(CreatureObject* creature, String prefix) {
@@ -140,39 +149,38 @@ public:
 	static void PromptForceQuestion(CreatureObject* creature) {
 		int hasDecided = creature->getStoredInt("fs_chosen");
 
-		if (creature->hasSkill("species_miraluka") || creature->hasSkill("always_force_sensitive")) {
-			//Miraluka are always Force Sensitive.
-			hasDecided = 1;
-
-			SkillManager* skillManager = SkillManager::instance();
-
-			ManagedReference<PlayerObject*> targetGhost = creature->getPlayerObject();
-			if(targetGhost == nullptr)
-				return;
-			targetGhost->setJediState(1);
-
-			skillManager->awardSkill("rp_force_prog_novice", creature, true, true, true);
-
-			targetGhost->setStoredInt("fs_chosen", 1);
-		}
-
 		if(hasDecided != 1) {
-			//Prompt them
-			ManagedReference<SuiListBox*> box = new SuiListBox(creature, SuiWindowType::JUKEBOX_SELECTION);
-			box->setCancelButton(true, "Decide Later");
-			box->setCallback(new ForceSensitivePromptSuiCallback(creature->getZoneServer()));
-			box->setPromptTitle("Force Sensitivity");
-			String message = "You must choose whether or not this character is sensitive to the Force. ";
-			message += "If you choose to be Force Sensitive, you will have the option to train your ability in the Force, becoming Jedi, Sith, or something else. ";
-			message += "If you opt not to be Force Sensitive, you will not be able to train in the Force, but are safe from persecution by the Inquisitorius. ";
-			message += "WARNING: Once you've made this decision, it is final. So choose carefully.";
-			box->setPromptText(message);
-			box->setOkButton(false, "@");
-			box->addMenuItem("I am Force Sensitive");
-			box->addMenuItem("I am NOT Force Sensitive");
-			box->addMenuItem("Surprise me!");
-			creature->getPlayerObject()->addSuiBox(box);
-			creature->sendMessage(box->generateMessage());
+			if (creature->hasSkill("species_miraluka") || creature->hasSkill("always_force_sensitive")) {
+				//Miraluka are always Force Sensitive.
+				hasDecided = 1;
+
+				SkillManager* skillManager = SkillManager::instance();
+
+				ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
+				if(ghost == nullptr)
+					return;
+
+				ghost->setJediState(1);
+				skillManager->awardSkill("rp_force_prog_novice", creature, true, true, true);
+				creature->setStoredInt("fs_chosen", 1);
+
+			} else {
+				ManagedReference<SuiListBox*> box = new SuiListBox(creature, SuiWindowType::JUKEBOX_SELECTION);
+				box->setCancelButton(true, "Decide Later");
+				box->setCallback(new ForceSensitivePromptSuiCallback(creature->getZoneServer()));
+				box->setPromptTitle("Force Sensitivity");
+				String message = "You must choose whether or not this character is sensitive to the Force. ";
+				message += "If you choose to be Force Sensitive, you will have the option to train your ability in the Force, becoming Jedi, Sith, or something else. ";
+				message += "If you opt not to be Force Sensitive, you will not be able to train in the Force, but are safe from persecution by the Inquisitorius. ";
+				message += "WARNING: Once you've made this decision, it is final. So choose carefully.";
+				box->setPromptText(message);
+				box->setOkButton(false, "@");
+				box->addMenuItem("I am Force Sensitive");
+				box->addMenuItem("I am NOT Force Sensitive");
+				box->addMenuItem("Surprise me!");
+				creature->getPlayerObject()->addSuiBox(box);
+				creature->sendMessage(box->generateMessage());
+			}
 		}
 	}
 
@@ -1332,8 +1340,48 @@ public:
 				}
 			}
 		}	
-									
+
+		creature->setStoredInt("remaining_move_distance",  maxDistance);
+		creature->setStoredInt("distance_moved",  0);
 		creature->sendSystemMessage("Move to your desired destination, using the Last Position waypoint to keep track of your distance. Use the move (rpmove) ability to confirm your movement.");
+	}
+
+	static void moveWaypoint(CreatureObject* creature) {
+		PlayerObject* ghost = creature->getPlayerObject();
+		if (ghost == nullptr)
+			return;
+
+		ManagedReference<WaypointObject*> waypoint = ghost->getSurveyWaypoint();
+		if(waypoint == nullptr) {
+			BorrieRPG::BroadcastMessage(creature, creature->getFirstName() + " has moved.");
+		} else {
+			Locker locker(waypoint);
+			auto worldPosition = waypoint->getWorldPosition();
+			int distance = GetDistance(creature, worldPosition.getX(), worldPosition.getZ(), worldPosition.getY());
+
+			int remainingDistance = creature->getStoredInt("remaining_move_distance") - distance;
+
+			if (remainingDistance <= 0) {
+				creature->deleteStoredInt("remaining_move_distance");
+				ConfirmRoleplayMove(creature);
+				creature->deleteStoredInt("rp_moving");
+				return;
+			}
+
+			creature->setStoredInt("remaining_move_distance",  remainingDistance);
+			creature->setStoredInt("distance_moved",  creature->getStoredInt("distance_moved") + distance);
+
+			BorrieRPG::BroadcastMessage(creature, creature->getFirstName() +" moved "+String::valueOf(distance)+" meters. They have "+String::valueOf(remainingDistance)+" meters left to move.");
+
+			// Reset the waypoint.
+			if(waypoint != nullptr) {
+				auto worldPosition = creature->getWorldPosition();
+
+				waypoint.get()->setPosition(worldPosition.getX(), worldPosition.getZ(), worldPosition.getY());
+
+				ghost->addWaypoint(waypoint, false, true); 
+			}
+		}
 	}
 
 	static void ConfirmRoleplayMove(CreatureObject* creature) {
@@ -1348,7 +1396,7 @@ public:
 		} else {
 			Locker locker(waypoint);
 			auto worldPosition = waypoint->getWorldPosition();
-			int distance = GetDistance(creature, worldPosition.getX(), worldPosition.getZ(), worldPosition.getY());
+			int distance = GetDistance(creature, worldPosition.getX(), worldPosition.getZ(), worldPosition.getY()) + creature->getStoredInt("distance_moved");
 			BorrieRPG::BroadcastMessage(creature, creature->getFirstName() + " moved " + String::valueOf(distance) + " meters from their last position.");
 		// Remove the waypoint after move.
 			ghost->removeWaypoint(waypoint->getObjectID(), true, false);
