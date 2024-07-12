@@ -864,7 +864,7 @@ class TangibleObject extends SceneObject {
 
 	@read
 	protected float getConditionReduction(float value) {
-		return 0
+		return 0;
 	}
 
 	@read
