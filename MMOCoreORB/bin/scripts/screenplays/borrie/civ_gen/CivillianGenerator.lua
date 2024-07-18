@@ -33,7 +33,7 @@ function CivillianGenerator:spawnCivillians(screenplayName, zoneName, waypointLi
 			outfit = self:getRandomOutfit(outfitGroupTag, isFemale)
 		end
 		
-		local pNpc = spawnRoleplayMobile(zoneName, "rp_base_npc", 1, x, z, y, angle, parent, template, outfit, "default", "random")
+		local pNpc = spawnRoleplayMobile(zoneName, "rp_base_npc", 1, x, z, y, angle, parent, template, outfit, "civilian", "random")
 		
 		local nameType = civNameTypeList[template]
 		if(nameType ~= nil) then
