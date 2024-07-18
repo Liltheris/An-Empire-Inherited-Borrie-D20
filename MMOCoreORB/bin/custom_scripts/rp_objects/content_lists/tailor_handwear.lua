@@ -9,4 +9,6 @@ content = {
 	{"object/tangible/wearables/gloves/shared_gloves_s13.iff", },
 	{"object/tangible/wearables/gloves/shared_gloves_s14.iff", },
 	{"object/tangible/wearables/gloves/shared_gloves_tusken_raider.iff", },
+	{"object/tangible/wearables/bracer/bracer_s01_l.iff"},
+	{"object/tangible/wearables/bracer/bracer_s01_r.iff"},
 }
