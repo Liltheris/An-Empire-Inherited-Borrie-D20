@@ -1382,6 +1382,7 @@ includeFile("tangible/deed/rp_pet_deed/objects.lua")
 includeFile("tangible/wearables/armor/imp_army/objects.lua")
 includeFile("tangible/wearables/pauldron/objects.lua")
 includeFile("tangible/wearables/tabard/objects.lua")
+includeFile("tangible/wearables/bracer/objects.lua")
 
 includeFile("draft_schematic/roleplay/weapon/pistol/objects.lua")
 includeFile("draft_schematic/roleplay/weapon/carbine/objects.lua")

@@ -1,0 +1,3 @@
+object_tangible_wearables_bracer_bracer_s01_r = object_tangible_wearables_bracer_shared_bracer_s01_r:new {}
+
+ObjectTemplates:addTemplate(object_tangible_wearables_bracer_bracer_s01_r, "object/tangible/wearables/bracer/bracer_s01_r.iff")
