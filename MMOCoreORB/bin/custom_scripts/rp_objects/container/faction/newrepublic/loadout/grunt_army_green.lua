@@ -9,5 +9,5 @@ containerManifest = {
 	{"object/tangible/wearables/pants/shared_pants_s07.iff", "/private/index_color_2", 130, "/private/index_color_1", 26, },
 	
 	{"object/weapon/roleplay/ranged/rifle/a280_blaster_rifle.iff",},
-	{"object/weapon/roleplay/ranged/pistol/scout_blaster_pistol.iff",},
+	{"object/weapon/roleplay/ranged/pistol/dl44_blaster_pistol.iff",},
 }

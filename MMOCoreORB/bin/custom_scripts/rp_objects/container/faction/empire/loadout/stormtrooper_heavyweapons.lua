@@ -9,6 +9,6 @@ containerManifest = {
 	{"object/tangible/wearables/armor/roleplay/stormtrooper/shared_armor_stormtrooper_leggings.iff", },
 	{"object/tangible/wearables/armor/roleplay/stormtrooper/shared_armor_stormtrooper_helmet.iff", },
 	{"object/tangible/wearables/armor/stormtrooper/shared_armor_stormtrooper_utility_belt.iff",},
-	{"object/tangible/wearables/backpack/shared_backpack_sandtrooper.iff"}
+	{"object/tangible/wearables/backpack/shared_backpack_sandtrooper.iff"},
 	{"object/weapon/roleplay/ranged/rifle/dlt19_heavy_blaster_rifle.iff",},	
 }
