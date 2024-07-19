@@ -23,6 +23,8 @@
 #include "templates/params/creature/CreatureAttribute.h"
 #include "templates/params/creature/CreaturePosture.h"
 
+#include "server/zone/objects/building/BuildingObject.h"
+
 
 class BorCharacter : public Logger {
 public:
