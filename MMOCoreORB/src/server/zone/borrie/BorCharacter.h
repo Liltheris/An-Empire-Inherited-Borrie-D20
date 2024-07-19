@@ -23,6 +23,8 @@
 #include "templates/params/creature/CreatureAttribute.h"
 #include "templates/params/creature/CreaturePosture.h"
 
+#include "server/zone/objects/building/BuildingObject.h"
+
 
 class BorCharacter : public Logger {
 public:
@@ -1477,11 +1479,34 @@ public:
 
 		bool isCamping = false;
 		// Check if we are within 20m of a camp.
-		if(creature->getCurrentCamp() != nullptr){
-			// Make sure our camp is in the same zone before testing for distance.
-			if (creature->getCurrentCamp()->getZone() == creature->getZone()){
-				int distance = creature->getDistanceTo(creature->getCurrentCamp()->getCamp());
+
+		CloseObjectsVector* closeObjs = (CloseObjectsVector*)creature->getCloseObjects();
+        SortedVector<QuadTreeEntry*> closeObjects;
+        closeObjs->safeCopyReceiversTo(closeObjects, CloseObjectsVector::STRUCTURETYPE);
+
+        for (int i = 0; i < closeObjects.size(); ++i) {
+            ManagedReference<StructureObject*> structure = cast<StructureObject*>( closeObjects.get(i));
+
+			if (structure == nullptr)
+				continue;
+
+			if (structure->isCampStructure()) {
+				int distance = creature->getDistanceTo(structure);
 				isCamping = distance < 20;
+			}
+
+			if (isCamping)
+				break;
+        }
+
+		bool isHome = false;
+		ManagedReference<SceneObject*> rootParent = creature->getRootParent();
+
+		if(rootParent != nullptr){
+			if(rootParent->isBuildingObject()) {
+            	BuildingObject* building = cast<BuildingObject*>( rootParent.get());
+
+				isHome = building->isOnAdminList(creature);
 			}
 		}
 
@@ -1489,7 +1514,7 @@ public:
 		if(creature->getActiveRegion() == nullptr){
 			String zoneName = creature->getZone()->getZoneName();
 
-			if (zoneName != "tutorial" && zoneName != "rp_space" && zoneName != "rp_ship_a" && !isCamping){
+			if (zoneName != "tutorial" && zoneName != "rp_space" && zoneName != "rp_ship_a" && !isCamping && !isHome){
 				creature->sendSystemMessage("You must be in a safe location to rest.");
 				return;
 			}
