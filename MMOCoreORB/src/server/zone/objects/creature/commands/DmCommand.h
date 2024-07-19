@@ -345,6 +345,14 @@ public:
 						BorEffect::PlayCEF(creature, object, true, subCommand);
 					} else
 						creature->sendSystemMessage("ERROR: Effect command requires that you specify an effect name.");
+				} else if(command == "lootbox") {
+					String contents = "";
+
+					if (args.hasMoreTokens()){
+						contents = args.getStringToken();
+					}
+
+					BorUtil::CreateLootbox(creature, "object/tangible/item/roleplay/loot_box_s01.iff", contents);
 				} else if(command == "createcreature") {
 						if(args.hasMoreTokens()) {
 							//Template
@@ -873,6 +881,7 @@ public:
 		text << "/dm mood <mood> - Set the mood of the target to whatever value you give it. " << endl;
 		text << "/dm anim <anim> - Plays the animation on the target" << endl;
 		text << "/dm effect <effect> - Plays an effect on the target." << endl;
+		text << "/dm lootbox <contents> - Creates a lootbox with the specified contents list. " << endl;
 		text << "/dm createcreature <template> [skill] [equipment] [customization] - Creates an NPC with the template, and other parameters. " << endl;
 		text << "/dm createnpc <template> - Creates an NPC based on a preset template. " << endl;
 		text << "/dm say <message> - Makes an NPC say something. \"say\" can be replaced with any spatial type, like yell, retort, whisper, and emote." << endl;
