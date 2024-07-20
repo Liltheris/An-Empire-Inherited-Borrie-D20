@@ -5,6 +5,13 @@ object_tangible_wearables_armor_imp_army_shared_armor_imp_army_chest_plate = Sha
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_imp_army_shared_armor_imp_army_chest_plate, "object/tangible/wearables/armor/imp_army/shared_armor_imp_army_chest_plate.iff")
 
+object_tangible_wearables_armor_imp_army_shared_armor_imp_army_chest_plate_s02 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/armor/imp_army/shared_armor_imp_army_chest_plate_s02.iff"
+
+}
+
+ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_imp_army_shared_armor_imp_army_chest_plate_s02, "object/tangible/wearables/armor/imp_army/shared_armor_imp_army_chest_plate_s02.iff")
+
 object_tangible_wearables_armor_imp_army_shared_armor_imp_army_bicep_l = SharedTangibleObjectTemplate:new {
 	clientTemplateFileName = "object/tangible/wearables/armor/imp_army/shared_armor_imp_army_bicep_l.iff"
 
