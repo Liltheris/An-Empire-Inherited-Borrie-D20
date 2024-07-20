@@ -107,3 +107,44 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_rank_shared_rank_imp
 
 ----[End Batch: 'rank']----------------------------------
 
+object_tangible_wearables_rank_shared_rank_imp_armour_admiral = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/rank/shared_rank_imp_armour_admiral.iff"
+}
+
+ObjectTemplates:addClientTemplate(object_tangible_wearables_rank_shared_rank_imp_armour_admiral, "object/tangible/wearables/rank/shared_rank_imp_armour_admiral.iff")
+--------------------------------------------------------------------------------------------------------------------------
+
+object_tangible_wearables_rank_shared_rank_imp_armour_captain = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/rank/shared_rank_imp_armour_captain.iff"
+}
+
+ObjectTemplates:addClientTemplate(object_tangible_wearables_rank_shared_rank_imp_armour_captain, "object/tangible/wearables/rank/shared_rank_imp_armour_captain.iff")
+--------------------------------------------------------------------------------------------------------------------------
+
+object_tangible_wearables_rank_shared_rank_imp_armour_general = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/rank/shared_rank_imp_armour_general.iff"
+}
+
+ObjectTemplates:addClientTemplate(object_tangible_wearables_rank_shared_rank_imp_armour_general, "object/tangible/wearables/rank/shared_rank_imp_armour_general.iff")
+--------------------------------------------------------------------------------------------------------------------------
+
+object_tangible_wearables_rank_shared_rank_imp_armour_grandadmiral = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/rank/shared_rank_imp_armour_grandadmiral.iff"
+}
+
+ObjectTemplates:addClientTemplate(object_tangible_wearables_rank_shared_rank_imp_armour_grandadmiral, "object/tangible/wearables/rank/shared_rank_imp_armour_grandadmiral.iff")
+--------------------------------------------------------------------------------------------------------------------------
+
+object_tangible_wearables_rank_shared_rank_imp_armour_lieutenant = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/rank/shared_rank_imp_armour_lieutenant.iff"
+}
+
+ObjectTemplates:addClientTemplate(object_tangible_wearables_rank_shared_rank_imp_armour_lieutenant, "object/tangible/wearables/rank/shared_rank_imp_armour_lieutenant.iff")
+--------------------------------------------------------------------------------------------------------------------------
+
+object_tangible_wearables_rank_shared_rank_imp_armour_moff = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/rank/shared_rank_imp_armour_moff.iff"
+}
+
+ObjectTemplates:addClientTemplate(object_tangible_wearables_rank_shared_rank_imp_armour_moff, "object/tangible/wearables/rank/shared_rank_imp_armour_moff.iff")
+--------------------------------------------------------------------------------------------------------------------------
