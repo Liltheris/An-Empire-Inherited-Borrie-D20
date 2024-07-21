@@ -99,7 +99,7 @@ function character_creation_convo_handler:runScreenHandlers(conversationTemplate
 	--Checking conditions for enabling the leave option.
 	local readyToLeave = wasToldofClothing
 
-	if (creatureObject(conversingPlayer):getHAM(0) ~= creatureObject(conversingPlayer):getMaxHAM(0)) then
+	if (CreatureObject(conversingPlayer):getHAM(0) ~= CreatureObject(conversingPlayer):getMaxHAM(0)) then
 		readyToLeave = false
 	end
 
@@ -299,7 +299,7 @@ function character_creation_convo_handler:runScreenHandlers(conversationTemplate
 			clonedConversation:addOption("I will do that.", "abort")
 			SceneObject(conversingPlayer):setStoredInt("cc_clothes", 1)
 
-		elseif(creatureObject(conversingPlayer):getHAM(0) ~= creatureObject(conversingPlayer):getMaxHAM(0)) then
+		elseif(CreatureObject(conversingPlayer):getHAM(0) ~= CreatureObject(conversingPlayer):getMaxHAM(0)) then
 			clonedConversation:setCustomDialogText("You are almost ready to begin your adventure. Resting allows you to restore your health, action and will. As you have only now begun, your pools are empty. Go now, and refill them by using the '/rest' command to perform a 'Long Rest.' After that, you may begin your adventure.")
 			clonedConversation:addOption("I will do that.", "abort")
 		end
