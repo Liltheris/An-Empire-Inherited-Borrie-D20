@@ -48,3 +48,5 @@ includeFile("custom_content/building/mustafar/structures/must_smuggler_watchtowe
 includeFile("custom_content/building/mustafar/structures/must_uplink_bunker_entrance.lua")
 includeFile("custom_content/building/mustafar/structures/must_uplink_bunker_entrance_door.lua")
 includeFile("custom_content/building/mustafar/structures/old_republic_facility_door_exterior.lua")
+
+includeFile("custom_content/building/mustafar/structures/must_crashed_republic_ship_empty.lua")

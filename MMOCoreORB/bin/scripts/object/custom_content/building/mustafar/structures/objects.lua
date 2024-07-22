@@ -53,6 +53,11 @@ object_building_mustafar_structures_shared_must_crashed_republic_ship = SharedBu
 }
 ObjectTemplates:addClientTemplate(object_building_mustafar_structures_shared_must_crashed_republic_ship, "object/building/mustafar/structures/shared_must_crashed_republic_ship.iff")
 --**********************************************************************************************************
+object_building_mustafar_structures_shared_must_crashed_republic_ship_empty = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/mustafar/structures/shared_must_crashed_republic_ship_empty.iff"
+}
+ObjectTemplates:addClientTemplate(object_building_mustafar_structures_shared_must_crashed_republic_ship_empty, "object/building/mustafar/structures/shared_must_crashed_republic_ship_empty.iff")
+--**********************************************************************************************************
 object_building_mustafar_structures_shared_must_crashed_republic_ship_door = SharedStaticObjectTemplate:new {
 	clientTemplateFileName = "object/building/mustafar/structures/shared_must_crashed_republic_ship_door.iff"
 }
