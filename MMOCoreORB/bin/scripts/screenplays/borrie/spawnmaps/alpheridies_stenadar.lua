@@ -91,7 +91,7 @@ function AlpheridiesStenadarScreenPlay:spawnSceneObjects()
 	
 	--Signs
 	sObj = spawnSceneObject("rp_alpheridies", "object/tangible/sign/all_sign_city_s03.iff", 1172.76, 10.499, -6511.01, 0, 1, 0, 0, 0) --Tailor & Arms shop
-	SceneObject(sObj):setCustomObjectName("Clothing & Armaments")
+	SceneObject(sObj):setCustomObjectName("Clothing")
 	
 	--TAILOR--
 	sObj = spawnSceneObject("rp_alpheridies", "object/tangible/furniture/elegant/armoire_elegant_s01.iff", -7.19999, 0.7, -3.96204, 880034577, 0.707107, 0, 0.707107, 0)
