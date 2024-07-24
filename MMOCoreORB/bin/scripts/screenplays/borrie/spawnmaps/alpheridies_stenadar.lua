@@ -83,13 +83,14 @@ function AlpheridiesStenadarScreenPlay:spawnCivilians()
 	CivillianGenerator:spawnCivillians(self.screenplayName, "rp_alpheridies", waypointList, self.walkpointList, "miraluka", "alpheridies")
 end
 
+
 function AlpheridiesStenadarScreenPlay:spawnSceneObjects() 
 	--Travel Terminals
 	spawnSceneObject("rp_alpheridies", "object/tangible/terminal/terminal_travel_rp.iff", -799.243, 83, 1599.14, 0, 0.707107, 0, 0.707107, 0)
 
 	
 	--Signs
-	sObj = spawnSceneObject("rp_rori", "object/tangible/sign/all_sign_city_s03.iff", -757.044, 83.5, 1483.39, 0, 0.707107, 0, 0.707107, 0) --Tailor
+	sObj = spawnSceneObject("rp_alpheridies", "object/tangible/sign/all_sign_city_s03.iff", 1172.76, 10.499, -6511.01, 0, 1, 0, 0, 0) --Tailor & Arms shop
 	SceneObject(sObj):setCustomObjectName("Clothing & Armaments")
 	
 	--TAILOR--
