@@ -86,11 +86,11 @@ end
 
 function AlpheridiesStenadarScreenPlay:spawnSceneObjects() 
 	--Travel Terminals
-	spawnSceneObject("rp_alpheridies", "object/tangible/terminal/terminal_travel_rp.iff", -799.243, 83, 1599.14, 0, 0.707107, 0, 0.707107, 0)
+	spawnSceneObject("rp_alpheridies", "object/tangible/terminal/terminal_travel_rp.iff", 1226.5, 10, -6531.92, 0, 1, 0, 0, 0)
 
 	
 	--Signs
-	sObj = spawnSceneObject("rp_alpheridies", "object/tangible/sign/all_sign_city_s03.iff", 1172.76, 10.499, -6511.01, 0, 1, 0, 0, 0) --Tailor & Arms shop
+	local sObj = spawnSceneObject("rp_alpheridies", "object/tangible/sign/all_sign_city_s03.iff", 1172.76, 10.499, -6511.01, 0, 1, 0, 0, 0) --Tailor & Arms shop
 	SceneObject(sObj):setCustomObjectName("Clothing")
 	
 	--TAILOR--
@@ -174,7 +174,31 @@ function AlpheridiesStenadarScreenPlay:spawnMobiles()
 	--Vendors
 	local pNpc
 	
-	--Special
-	pNpc = spawnRoleplayMobile("rp_alpheridies", "rp_base_npc", 1, 8.09042, 0.749981, 2.36658, 235, 610014332,	"le_repair_droid", "default", "default", "default") --Ignitor
-	SceneObject(pNpc):setCustomObjectName("IG-N1-T0R")
+	--Bartender
+	pNpc = spawnRoleplayMobile("rp_alpheridies", "rp_base_npc", 1, -0.641677, 0.750001, 4.29969, 184, 880034623, "rp_miraluka_male", "civ/alpheridies/male_s02", "civilian", "random") --Equip, Skill, Customization
+	SceneObject(pNpc):setCustomObjectName("Ternor")
+
+	--Ranged Weapon Vendor
+	pNpc = spawnRoleplayMobile("rp_alpheridies", "rp_convo_npc", 1, -1.81448, 0.7, 0.317721, 178, 880034631, "rp_miraluka_male", "unique/stenadar/weaponsmith2", "civilian", "random", "rpg_shopkeeper") --Equip, Skill, Customization
+	SceneObject(pNpc):setCustomObjectName("Aeden Terekan (a Ranged Weapon Vendor)")
+	SceneObject(pNpc):setStoredString("vendor:theme", "novice_ranged")
+	SceneObject(pNpc):setStoredString("vendor:shopList", "shop_weaponsmith_ranged_tier1")
+
+	--Melee Weapon Vendor
+	pNpc = spawnRoleplayMobile("rp_alpheridies", "rp_convo_npc", 1, -2.88472, 0.7, 0.335283, 179, 880034631, "rp_miraluka_female", "unique/stenadar/weaponsmith1", "civilian", "unique/stenadar/weaponsmith1", "rpg_shopkeeper") --Equip, Skill, Customization
+	SceneObject(pNpc):setCustomObjectName("Ana Terekan (a Melee Weapon Vendor)")
+	SceneObject(pNpc):setStoredString("vendor:theme", "novice_melee")
+	SceneObject(pNpc):setStoredString("vendor:shopList", "shop_weaponsmith_melee_tier1")
+
+	--Armourer
+	pNpc = spawnRoleplayMobile("rp_alpheridies", "rp_convo_npc", 1, 3.75616, 0.7, -2.82687, 176, 880034630, "rp_miraluka_female", "unique/stenadar/armourer", "civilian", "unique/stenadar/armourer", "rpg_shopkeeper") --Equip, Skill, Customization
+	SceneObject(pNpc):setCustomObjectName("Tetena Opnes (an Armoursmith)")
+	SceneObject(pNpc):setStoredString("vendor:theme", "armorsmith")
+	SceneObject(pNpc):setStoredString("vendor:shopList", "shop_armor_tier1")
+
+	--Doctor
+	pNpc = spawnRoleplayMobile("rp_alpheridies", "rp_convo_npc", 1, -2.52381, 0.7, -7.98513, 41, 880034471, "rp_miraluka_female", "civ/alpheridies/female_s06", "civilian", "random", "rpg_shopkeeper") --Equip, Skill, Customization
+	SceneObject(pNpc):setCustomObjectName("Mahralen Astrin (a Stimpack Vendor)")
+	SceneObject(pNpc):setStoredString("vendor:theme", "medicine")
+	SceneObject(pNpc):setStoredString("vendor:shopList", "shop_medicine_novice")
 end
