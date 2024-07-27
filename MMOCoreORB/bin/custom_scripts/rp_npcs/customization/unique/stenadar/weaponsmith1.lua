@@ -29,5 +29,5 @@ customization = {
 	{"/shared_owner/blend_flat_chest", 119},
 	{"/private/index_color_lips", 0},
 	{"height", 0.8975},
-	{"hair_object", "object/tangible/hair/human/shared_hair_human_female_s34.iff","/private/index_color_2", 205, "/private/index_color_1", 9, },
+	{"hair_object", "object/tangible/hair/human/shared_hair_human_female_s34.iff", "/private/index_color_1", 9, },
 }

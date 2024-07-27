@@ -60,12 +60,12 @@ function BorForce_Speed:performAbility(pPlayer, fpi)
 		
 	local msg = CreatureObject(pPlayer):getFirstName() .. " uses " .. self.name .. "!"
 	msg = msg .. " They can go up to \\#FF00FF" .. fpi * 2 .. "\\#FFFFFF extra meters on their next move action"
-	if((skillValue + roll >= dc and roll > 1) or roll == 20) then
+	if((skillValue + roll + fpi >= dc and roll > 1) or roll == 20) then
 		msg = msg .. " or they can perform a second major action! "..BorForceUtility:rollSpamFPI(roll, skillValue, fpi, dc)
 	else 
 		msg = msg .. "! They cannot perform a second major action. "..BorForceUtility:rollSpamFPI(roll, skillValue, fpi, dc)
 	end
-	
+		
 	broadcastMessageWithName(pPlayer, msg)
 	
 	BorForceUtility:playAbilityEffects(pPlayer, pPlayer, self)
