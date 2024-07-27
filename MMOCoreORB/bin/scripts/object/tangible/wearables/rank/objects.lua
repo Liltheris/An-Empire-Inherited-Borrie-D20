@@ -148,3 +148,77 @@ object_tangible_wearables_rank_shared_rank_imp_armour_moff = SharedTangibleObjec
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_rank_shared_rank_imp_armour_moff, "object/tangible/wearables/rank/shared_rank_imp_armour_moff.iff")
 --------------------------------------------------------------------------------------------------------------------------
+
+
+object_tangible_wearables_rank_shared_rank_reb_captain_navy = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/rank/shared_rank_reb_captain_navy.iff"
+}
+ObjectTemplates:addClientTemplate(object_tangible_wearables_rank_shared_rank_reb_captain_navy, "object/tangible/wearables/rank/shared_rank_reb_captain_navy.iff")
+--------------------------------------------------------------------------------------------------------------------------
+
+object_tangible_wearables_rank_shared_rank_reb_colonel_navy = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/rank/shared_rank_reb_colonel_navy.iff"
+}
+ObjectTemplates:addClientTemplate(object_tangible_wearables_rank_shared_rank_reb_colonel_navy, "object/tangible/wearables/rank/shared_rank_reb_colonel_navy.iff")
+--------------------------------------------------------------------------------------------------------------------------
+
+object_tangible_wearables_rank_shared_rank_reb_commander_navy = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/rank/shared_rank_reb_commander_navy.iff"
+}
+ObjectTemplates:addClientTemplate(object_tangible_wearables_rank_shared_rank_reb_commander_navy, "object/tangible/wearables/rank/shared_rank_reb_commander_navy.iff")
+--------------------------------------------------------------------------------------------------------------------------
+
+object_tangible_wearables_rank_shared_rank_reb_admiral = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/rank/shared_rank_reb_admiral.iff"
+}
+ObjectTemplates:addClientTemplate(object_tangible_wearables_rank_shared_rank_reb_admiral, "object/tangible/wearables/rank/shared_rank_reb_admiral.iff")
+--------------------------------------------------------------------------------------------------------------------------
+
+object_tangible_wearables_rank_shared_rank_reb_lieutenant_navy = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/rank/shared_rank_reb_lieutenant_navy.iff"
+}
+ObjectTemplates:addClientTemplate(object_tangible_wearables_rank_shared_rank_reb_lieutenant_navy, "object/tangible/wearables/rank/shared_rank_reb_lieutenant_navy.iff")
+--------------------------------------------------------------------------------------------------------------------------
+
+object_tangible_wearables_rank_shared_rank_reb_major_navy = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/rank/shared_rank_reb_major_navy.iff"
+}
+ObjectTemplates:addClientTemplate(object_tangible_wearables_rank_shared_rank_reb_major_navy, "object/tangible/wearables/rank/shared_rank_reb_major_navy.iff")
+--------------------------------------------------------------------------------------------------------------------------
+
+
+object_tangible_wearables_rank_shared_rank_reb_captain_intel = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/rank/shared_rank_reb_captain_intel.iff"
+}
+ObjectTemplates:addClientTemplate(object_tangible_wearables_rank_shared_rank_reb_captain_intel, "object/tangible/wearables/rank/shared_rank_reb_captain_intel.iff")
+--------------------------------------------------------------------------------------------------------------------------
+
+object_tangible_wearables_rank_shared_rank_reb_colonel_intel = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/rank/shared_rank_reb_colonel_intel.iff"
+}
+ObjectTemplates:addClientTemplate(object_tangible_wearables_rank_shared_rank_reb_colonel_intel, "object/tangible/wearables/rank/shared_rank_reb_colonel_intel.iff")
+--------------------------------------------------------------------------------------------------------------------------
+
+object_tangible_wearables_rank_shared_rank_reb_commander_intel = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/rank/shared_rank_reb_commander_intel.iff"
+}
+ObjectTemplates:addClientTemplate(object_tangible_wearables_rank_shared_rank_reb_commander_intel, "object/tangible/wearables/rank/shared_rank_reb_commander_intel.iff")
+--------------------------------------------------------------------------------------------------------------------------
+
+object_tangible_wearables_rank_shared_rank_reb_general_intel = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/rank/shared_rank_reb_general_intel.iff"
+}
+ObjectTemplates:addClientTemplate(object_tangible_wearables_rank_shared_rank_reb_general_intel, "object/tangible/wearables/rank/shared_rank_reb_general_intel.iff")
+--------------------------------------------------------------------------------------------------------------------------
+
+object_tangible_wearables_rank_shared_rank_reb_lieutenant_intel = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/rank/shared_rank_reb_lieutenant_intel.iff"
+}
+ObjectTemplates:addClientTemplate(object_tangible_wearables_rank_shared_rank_reb_lieutenant_intel, "object/tangible/wearables/rank/shared_rank_reb_lieutenant_intel.iff")
+--------------------------------------------------------------------------------------------------------------------------
+
+object_tangible_wearables_rank_shared_rank_reb_major_intel = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/rank/shared_rank_reb_major_intel.iff"
+}
+ObjectTemplates:addClientTemplate(object_tangible_wearables_rank_shared_rank_reb_major_intel, "object/tangible/wearables/rank/shared_rank_reb_major_intel.iff")
+--------------------------------------------------------------------------------------------------------------------------
