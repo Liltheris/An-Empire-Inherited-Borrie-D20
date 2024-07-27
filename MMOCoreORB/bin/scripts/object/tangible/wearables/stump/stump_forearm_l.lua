@@ -1,0 +1,3 @@
+object_tangible_wearables_stump_stump_forearm_l = object_tangible_wearables_stump_shared_stump_forearm_l:new {}
+
+ObjectTemplates:addTemplate(object_tangible_wearables_stump_stump_forearm_l, "object/tangible/wearables/stump/stump_forearm_l.iff")
