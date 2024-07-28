@@ -82,6 +82,7 @@ includeFile("tangible/wearables/mask/serverobjects.lua")
 includeFile("tangible/wearables/alien/serverobjects.lua")
 
 includeFile("tangible/wearables/pauldron/serverobjects.lua")
+includeFile("tangible/wearables/cybernetic/serverobjects.lua")
 includeFile("tangible/wearables/tabard/serverobjects.lua")
 includeFile("tangible/wearables/bracer/serverobjects.lua")
 includeFile("tangible/wearables/stump/serverobjects.lua")
