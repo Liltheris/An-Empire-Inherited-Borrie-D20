@@ -1,0 +1,4 @@
+object_tangible_wearables_cybernetic_forearm_cyber_anakin_l = object_tangible_wearables_cybernetic_shared_forearm_cyber_anakin_l:new {
+
+}
+ObjectTemplates:addTemplate(object_tangible_wearables_cybernetic_forearm_cyber_anakin_l, "object/tangible/wearables/cybernetic/forearm_cyber_anakin_l.iff")
