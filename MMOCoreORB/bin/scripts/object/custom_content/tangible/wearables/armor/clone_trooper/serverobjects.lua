@@ -66,6 +66,7 @@ includeFile("custom_content/tangible/wearables/armor/clone_trooper/armor_clone_t
 includeFile("custom_content/tangible/wearables/armor/clone_trooper/armor_clone_trooper_neutral_s01_helmet.lua")
 includeFile("custom_content/tangible/wearables/armor/clone_trooper/armor_clone_trooper_neutral_s02_helmet.lua")
 includeFile("custom_content/tangible/wearables/armor/clone_trooper/armor_clone_trooper_neutral_s03_helmet.lua")
+includeFile("custom_content/tangible/wearables/armor/clone_trooper/armor_clone_trooper_neutral_s04_helmet.lua")
 includeFile("custom_content/tangible/wearables/armor/clone_trooper/armor_clone_trooper_neutral_s01_leggings.lua")
 includeFile("custom_content/tangible/wearables/armor/clone_trooper/armor_clone_trooper_rebel_s01_belt.lua")
 includeFile("custom_content/tangible/wearables/armor/clone_trooper/armor_clone_trooper_rebel_s01_bicep_l.lua")
