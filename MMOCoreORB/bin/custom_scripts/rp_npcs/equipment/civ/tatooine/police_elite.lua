@@ -1,0 +1,18 @@
+equipment = {
+	{"object/tangible/wearables/armor/padded/armor_padded_s01_bicep_l.iff", "/private/index_color_2", 62, "/private/index_color_1", 60, },
+	{"object/tangible/wearables/armor/padded/armor_padded_s01_bicep_r.iff", "/private/index_color_2", 62, "/private/index_color_1", 60, },
+	{"object/tangible/wearables/armor/padded/armor_padded_s01_bracer_l.iff", "/private/index_color_2", 62, "/private/index_color_1", 60, },
+	{"object/tangible/wearables/armor/padded/armor_padded_s01_bracer_r.iff", "/private/index_color_2", 62, "/private/index_color_1", 60, },
+	{"object/tangible/wearables/armor/padded/armor_padded_s01_bracer_l.iff", "/private/index_color_2", 62, "/private/index_color_1", 60, },
+	{"object/tangible/wearables/armor/padded/armor_padded_s01_bracer_r.iff", "/private/index_color_2", 62, "/private/index_color_1", 60, },
+	{"object/tangible/wearables/shirt/shirt_s14.iff", "/private/index_color_2", 222, "/private/index_color_1", 222, },
+	{"object/tangible/wearables/armor/padded/armor_padded_s01_chest_plate.iff", "/private/index_color_2", 62, "/private/index_color_1", 60, },
+	{"object/tangible/wearables/helmet/helmet_s06.iff", "/private/index_color_2", 62, "/private/index_color_1", 60, },
+	{"object/tangible/wearables/armor/padded/armor_padded_s01_gloves.iff", "/private/index_color_2", 62, "/private/index_color_1", 60, },
+	{"object/tangible/wearables/helmet/helmet_s06.iff", "/private/index_color_2", 62, "/private/index_color_1", 60, },
+	{"object/tangible/wearables/helmet/helmet_s06.iff", "/private/index_color_2", 62, "/private/index_color_1", 60, },
+	{"object/tangible/wearables/armor/padded/armor_padded_s01_leggings.iff", "/private/index_color_2", 62, "/private/index_color_1", 60, },
+	{"object/tangible/wearables/armor/padded/armor_padded_s01_leggings.iff", "/private/index_color_2", 62, "/private/index_color_1", 60, },
+	{"object/tangible/wearables/armor/padded/armor_padded_s01_boots.iff", "/private/index_color_2", 6, "/private/index_color_1", 62, },
+	{"object/tangible/wearables/armor/galactic_marine/armor_galactic_marine_belt.iff", },
+}
