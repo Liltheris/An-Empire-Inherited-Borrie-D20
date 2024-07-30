@@ -525,26 +525,33 @@ public:
             case RpReactionStance::DEFEND:
                 if (performDefend(attacker, defender, damage, hitRoll, slot, apMod, spam, meleeAttack))
                     return spam;
+                break;
             case RpReactionStance::PARRY:
                  if (performParry(attacker, defender, damage, hitRoll, slot, apMod, spam, meleeAttack))
                     return spam;
+                break;
             case RpReactionStance::DODGE:
                 if (performDodge(attacker, defender, damage, hitRoll, slot, apMod, spam))
                     return spam;
+                break;
             case RpReactionStance::LIGHTSABERDEFLECT:
                 if (performLightsaberDeflect(attacker, defender, damage, hitRoll, slot, apMod, spam))
                     return spam;
+                break;
             case RpReactionStance::FORCEDEFLECT:
                 if (CanPerformReaction(defender, defender->getStoredInt("reaction_stance"), damage, attacker->getWeapon(), defender->getWeapon()))
                     return DoForceDeflectReaction(attacker, defender, damage, hitRoll, slot, apMod);
+                break;
             case RpReactionStance::FORCEABSORB:
                 if (CanPerformReaction(defender, defender->getStoredInt("reaction_stance"), damage, attacker->getWeapon(), defender->getWeapon()))
                     return DoForceAbsorbReaction(attacker, defender, damage, hitRoll, slot, apMod);
-            default:
-                String dmgString = ApplyAdjustedHealthDamage(defender, attacker->getWeapon(), damage, slot);
-                BorEffect::PerformReactiveAnimation(defender, attacker, "hit", GetSlotHitlocation(slot), true, damage, "basic");
-                return ", doing (" + GetWeaponDamageString(attacker, attacker->getWeapon()) + ") = "+ dmgString +" damage.";
+                break;
         }
+        // Fallback to applying the damage if none of the reactions work!
+        
+        String dmgString = ApplyAdjustedHealthDamage(defender, attacker->getWeapon(), damage, slot);
+        BorEffect::PerformReactiveAnimation(defender, attacker, "hit", GetSlotHitlocation(slot), true, damage, "basic");
+        return ", doing (" + GetWeaponDamageString(attacker, attacker->getWeapon()) + ") = "+ dmgString +" damage.";
     }
 
     /*Checks for validity, and performs the defend reaction from the given context.*/
@@ -744,7 +751,7 @@ public:
             return false;
         }
 
-        bool defIsLightsaber = defenderWeapon->isJediWeapon() || defenderWeapon->getStoredInt("lightsaberResist") == 1;
+        bool atkIsLightsaber = attackerWeapon->isJediWeapon() || attackerWeapon->getStoredInt("lightsaberResist") == 1;
         int deflectionCount = Math::max(defender->getStoredInt("deflection_count"), 0);
         int lightsaberSkill = defender->getSkillMod("rp_lightsaber");
 
@@ -825,7 +832,7 @@ public:
         } else {
             // All other weapon handling
             if (result >= dc) {
-                if (defIsLightsaber) {
+                if (atkIsLightsaber) {
                     spam += BorString::getNiceName(defender)+ " blocks the attack! "+BorString::skillSpam(lightsaberSkill, roll, result, dc);
                 } else {
                     spam += BorString::getNiceName(defender)+ " blocks the attack, "+BorString::skillSpam(lightsaberSkill, roll, result, dc)+", destroying"+BorString::getNiceName(attacker)+"'s weapon in the process!";
@@ -835,7 +842,7 @@ public:
                 BorEffect::PerformReactiveAnimation(defender, attacker, "parry", GetSlotHitlocation(slot), false, damage, "basic");
                 return true;
             } else {
-                if (defIsLightsaber) {
+                if (atkIsLightsaber) {
                     spam += BorString::getNiceName(defender)+ " partially blocks the attack! "+BorString::skillSpam(lightsaberSkill, roll, result, dc);
                 } else {
                     spam += BorString::getNiceName(defender)+ " partially blocks the attack, "+BorString::skillSpam(lightsaberSkill, roll, result, dc)+", taking "+ApplyAdjustedHealthDamage(defender, attackerWeapon, damage / 2, slot)+" damage, and severely damaging "+BorString::getNiceName(attacker)+"'s weapon in the process!";
