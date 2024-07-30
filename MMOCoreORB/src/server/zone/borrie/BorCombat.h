@@ -548,7 +548,7 @@ public:
                 break;
         }
         // Fallback to applying the damage if none of the reactions work!
-        
+
         String dmgString = ApplyAdjustedHealthDamage(defender, attacker->getWeapon(), damage, slot);
         BorEffect::PerformReactiveAnimation(defender, attacker, "hit", GetSlotHitlocation(slot), true, damage, "basic");
         return ", doing (" + GetWeaponDamageString(attacker, attacker->getWeapon()) + ") = "+ dmgString +" damage.";
@@ -793,6 +793,8 @@ public:
 
         BorCharacter::drainActionOrWill(defender, actionCost);
 
+        defender->setStoredInt("deflection_count", Math::max(defender->getStoredInt("deflection_count"), 0) + 1);
+        
         if (result < dc/2){
             //Apply full damage and output the spam!
             spam += BorString::getNiceName(defender)+" fails to deflect the attack "+BorString::skillSpam(lightsaberSkill, roll, result, dc)+", recieving ";
