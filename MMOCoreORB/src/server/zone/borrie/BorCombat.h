@@ -1314,7 +1314,6 @@ public:
                 }
 
                 BorEffect::PerformReactiveAnimation(attacker, defender, "parry", GetSlotHitlocation(slot), true, incomingDamage, "basic");
-                
 
                 return reactionSpam;
             }
@@ -1459,33 +1458,11 @@ public:
         WeaponObject* defenderWeapon = defender->getWeapon();
         int defenderReactionType = defender->getStoredInt("reaction_stance");
 
-        String reactionSpam = "";
-
         int actionPointMod = 1;
         if(flurryAttacked)
             actionPointMod = 2;
 
-        if(CanPerformReaction(defender, defenderReactionType, incomingDamage, attackerWeapon, defenderWeapon)) {
-            switch(defenderReactionType) {
-                case RpReactionStance::DEFEND:
-                    return DoDefendReaction(attacker, defender, incomingDamage, toHit, slot, actionPointMod);
-                case RpReactionStance::PARRY:
-                    return DoParryReaction(attacker, defender, incomingDamage, toHit, slot, actionPointMod);
-                case RpReactionStance::DODGE:
-                    return DoDodgeReaction(attacker, defender, incomingDamage, toHit, slot, actionPointMod);
-                case RpReactionStance::LIGHTSABERDEFLECT:
-                    return DoLightsaberDeflectReaction(attacker, defender, incomingDamage, toHit, slot, actionPointMod);
-                case RpReactionStance::FORCEDEFLECT:
-                    return DoForceDeflectReaction(attacker, defender, incomingDamage, toHit, slot, actionPointMod);
-                case RpReactionStance::FORCEABSORB:
-                    return DoForceAbsorbReaction(attacker, defender, incomingDamage, toHit, slot, actionPointMod);
-            }
-        } 
-        
-        //Simply accept the damage. 
-        String dmgString = ApplyAdjustedHealthDamage(defender, attackerWeapon, incomingDamage, slot);
-        BorEffect::PerformReactiveAnimation(defender, attacker, "hit", GetSlotHitlocation(slot), true, incomingDamage, "basic");
-        return ", doing (" + GetWeaponDamageString(attacker, attackerWeapon) + ") = "+ dmgString +" damage.";
+        return attemptReaction(attacker, defender, incomingDamage, toHit, slot, actionPointMod, !attackerWeapon->isRangedWeapon());
     }
 
     static String ApplyAdjustedHealthDamage(CreatureObject* creature, String damageType, int damage, int slot) {
