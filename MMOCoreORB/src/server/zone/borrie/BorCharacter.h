@@ -543,7 +543,7 @@ public:
 		int forceImmersionLevel = GetForceImmersionLevel(target);
 
 		infoText << "\\#FF7000[INFO]\\#." << endl;
-		if (target->getStoredString("original_first_name") != target->getFirstName()){
+		if (target->getStoredString("original_name") != target->getDisplayedName()){
 			infoText << "Original Name: " << target->getStoredString("original_name") << endl;
 		}
 		infoText << "Account: " << BorrieRPG::GetPlayerAccountName(target) << endl;
@@ -584,7 +584,28 @@ public:
 				infoText << " Tier V (Insane)" << endl;
 		}		
 
-		infoText << "Experience: " << ghost->getExperience("rp_general") << endl;
+		infoText << "\\#FF7000[EXPERIENCE]\\#." << endl;
+
+		infoText << "Roleplay: " << ghost->getExperience("rp_general") << endl;
+
+		if (ghost->getExperience("rp_jedi") > 0)
+			infoText << "Jedi: " << ghost->getExperience("rp_jedi") << endl;
+		if (ghost->getExperience("rp_sith") > 0)
+			infoText << "Sith: " << ghost->getExperience("rp_sith") << endl;
+		if (ghost->getExperience("rp_lukasene") > 0)
+			infoText << "Lukasene: " << ghost->getExperience("rp_lukasene") << endl;
+		if (ghost->getExperience("rp_military") > 0)
+			infoText << "Military: " << ghost->getExperience("rp_military") << endl;
+		if (ghost->getExperience("rp_mando") > 0)
+			infoText << "Mandalorian: " << ghost->getExperience("rp_mando") << endl;
+		if (ghost->getExperience("rp_medical") > 0)
+			infoText << "Medical: " << ghost->getExperience("rp_medical") << endl;
+		if (ghost->getExperience("rp_engineer") > 0)
+			infoText << "Engineering: " << ghost->getExperience("rp_engineer") << endl;
+		if (ghost->getExperience("rp_spy") > 0)
+			infoText << "Espionage: " << ghost->getExperience("rp_spy") << endl;
+		if (ghost->getExperience("rp_criminal") > 0)
+			infoText << "Criminal: " << ghost->getExperience("rp_criminal") << endl;
 
 		if(factionTag != "") {
 			infoText << "\\#FF7000[FACTION]\\#." << endl;
