@@ -2,7 +2,7 @@ customization = {
 	{"/private/index_color_2", 15},
 	{"/shared_owner/blend_skinny", 0},
 	{"/shared_owner/blend_muscle", 0},
-	{"/shared_owner/blend_fat", 255},
+	{"/shared_owner/blend_fat", 200},
 	{"/shared_owner/blend_nosedepth_1", 0},
 	{"/shared_owner/blend_eyesize_0", 0},
 	{"/shared_owner/blend_nosedepth_0", 31},

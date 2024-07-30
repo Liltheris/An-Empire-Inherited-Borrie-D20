@@ -525,26 +525,33 @@ public:
             case RpReactionStance::DEFEND:
                 if (performDefend(attacker, defender, damage, hitRoll, slot, apMod, spam, meleeAttack))
                     return spam;
+                break;
             case RpReactionStance::PARRY:
                  if (performParry(attacker, defender, damage, hitRoll, slot, apMod, spam, meleeAttack))
                     return spam;
+                break;
             case RpReactionStance::DODGE:
                 if (performDodge(attacker, defender, damage, hitRoll, slot, apMod, spam))
                     return spam;
+                break;
             case RpReactionStance::LIGHTSABERDEFLECT:
-                if (CanPerformReaction(defender, defender->getStoredInt("reaction_stance"), damage, attacker->getWeapon(), defender->getWeapon()))
-                    return DoLightsaberDeflectReaction(attacker, defender, damage, hitRoll, slot, apMod);
+                if (performLightsaberDeflect(attacker, defender, damage, hitRoll, slot, apMod, spam))
+                    return spam;
+                break;
             case RpReactionStance::FORCEDEFLECT:
                 if (CanPerformReaction(defender, defender->getStoredInt("reaction_stance"), damage, attacker->getWeapon(), defender->getWeapon()))
                     return DoForceDeflectReaction(attacker, defender, damage, hitRoll, slot, apMod);
+                break;
             case RpReactionStance::FORCEABSORB:
                 if (CanPerformReaction(defender, defender->getStoredInt("reaction_stance"), damage, attacker->getWeapon(), defender->getWeapon()))
                     return DoForceAbsorbReaction(attacker, defender, damage, hitRoll, slot, apMod);
-            default:
-                String dmgString = ApplyAdjustedHealthDamage(defender, attacker->getWeapon(), damage, slot);
-                BorEffect::PerformReactiveAnimation(defender, attacker, "hit", GetSlotHitlocation(slot), true, damage, "basic");
-                return ", doing (" + GetWeaponDamageString(attacker, attacker->getWeapon()) + ") = "+ dmgString +" damage.";
+                break;
         }
+        // Fallback to applying the damage if none of the reactions work!
+
+        String dmgString = ApplyAdjustedHealthDamage(defender, attacker->getWeapon(), damage, slot);
+        BorEffect::PerformReactiveAnimation(defender, attacker, "hit", GetSlotHitlocation(slot), true, damage, "basic");
+        return ", doing (" + GetWeaponDamageString(attacker, attacker->getWeapon()) + ") = "+ dmgString +" damage.";
     }
 
     /*Checks for validity, and performs the defend reaction from the given context.*/
@@ -576,6 +583,9 @@ public:
 
         BorCharacter::drainActionOrWill(defender, apCost);
 
+        bool atkIsLightsaber = attackerWeapon->isJediWeapon() || attackerWeapon->getStoredInt("lightsaberResist") == 1;
+        bool defIsLightsaber = defenderWeapon->isJediWeapon() || defenderWeapon->getStoredInt("lightsaberResist") == 1;
+
         if (result >= hitRoll) {
             // Success!
             spam += BorString::getNiceName(defender) + " successfully defends against the attack "+ BorString::skillSpam(skillMod, roll, result, hitRoll) +"\\#FFFFFF ";
@@ -586,14 +596,14 @@ public:
 
                 spam += ", however, they're unarmed, taking " + dmgString + "damage to their hands!";
 
-            } else if (defenderWeapon->isJediWeapon() && !attackerWeapon->isJediWeapon()){
+            } else if (defIsLightsaber && !atkIsLightsaber){
                 //We've defended, and our lightsaber destroys the attacker's weapon!
                 attackerWeapon->setConditionDamage(attackerWeapon->getMaxCondition());
                 BorEffect::PerformReactiveAnimation(defender, attacker, "defend", GetSlotHitlocation(slot), true, damage, "basic");
 
                 spam += ", destroying "+ BorString::getNiceName(attacker) +"'s weapon in the process!";
 
-            } else if (!defenderWeapon->isJediWeapon() && attackerWeapon->isJediWeapon()){
+            } else if (!defIsLightsaber && atkIsLightsaber){
                 //We've defended, but our weapon is destroyed because, y'know, lightsaber.
                 defenderWeapon->setConditionDamage(defenderWeapon->getMaxCondition());
                 BorEffect::PerformReactiveAnimation(defender, attacker, "defend", GetSlotHitlocation(slot), true, damage, "basic");
@@ -725,7 +735,127 @@ public:
         return true;
     }
 
+    static bool performLightsaberDeflect(CreatureObject* attacker, CreatureObject* defender, int damage,int hitRoll, int slot, int apMod, String &spam){
+        RoleplayManager* rp = RoleplayManager::instance();
 
+        WeaponObject* attackerWeapon = attacker->getWeapon();
+        WeaponObject* defenderWeapon = defender->getWeapon();
+
+        if (!defenderWeapon->isJediWeapon()){
+            defender->sendSystemMessage("You require a lightsaber in order to use 'lightsaber deflect'!");
+            return false;
+        }
+
+        if (!defender->hasSkill("rp_lightsaber_novice")) {
+            defender->sendSystemMessage("You must have lightsaber training in order to use 'lightsaber deflect'!");
+            return false;
+        }
+
+        bool atkIsLightsaber = attackerWeapon->isJediWeapon() || attackerWeapon->getStoredInt("lightsaberResist") == 1;
+        int deflectionCount = Math::max(defender->getStoredInt("deflection_count"), 0);
+        int lightsaberSkill = defender->getSkillMod("rp_lightsaber");
+
+        int actionCost = 3;
+        if (lightsaberSkill >=7)
+            actionCost = 1;
+        else if (lightsaberSkill >=5)
+            actionCost = 2;
+
+        actionCost = actionCost * apMod;
+
+        if (BorCharacter::getAvailableAction(defender) < actionCost)
+            return false;
+
+        // Perform the reaction!
+
+        // Check if crystal belongs to deflector? Deflecter? Defender? Who the fuck knows.
+        int crystalMod = 0;
+        ManagedReference<SceneObject*> saberInv = defenderWeapon->getSlottedObject("saber_inv");
+
+        if(saberInv != nullptr) {
+            int containerSize = saberInv->getContainerObjectsSize();
+
+            for (int j = containerSize - 1; j >= 0; --j) {
+                ManagedReference<SceneObject*> crystal = saberInv->getContainerObject(j);
+
+                if (crystal != nullptr){
+                    if (crystal->getStoredString("attuned_id") == String::valueOf(attacker->getObjectID()))
+                        crystalMod -= 2;
+                    j = 0;
+                }        
+            }
+        }
+
+        int dc = hitRoll + crystalMod + Math::max(deflectionCount*2 - lightsaberSkill, 0);
+
+        int roll = BorDice::Roll(1, 20);
+        int result = roll + lightsaberSkill;
+
+        BorCharacter::drainActionOrWill(defender, actionCost);
+
+        defender->setStoredInt("deflection_count", Math::max(defender->getStoredInt("deflection_count"), 0) + 1);
+        
+        if (result < dc/2){
+            //Apply full damage and output the spam!
+            spam += BorString::getNiceName(defender)+" fails to deflect the attack "+BorString::skillSpam(lightsaberSkill, roll, result, dc)+", recieving ";
+            spam += ApplyAdjustedHealthDamage(defender, attackerWeapon, damage, slot)+" damage!";
+
+            BorEffect::PerformReactiveAnimation(attacker, defender, "hit", GetSlotHitlocation(slot), true, damage, "basic");
+            return true;
+        }
+        
+        if (attackerWeapon->isRangedWeapon()) {
+            // Ranged weapon handling
+            if (result >= dc) {
+                // Full reflect!
+                spam += BorString::getNiceName(defender)+ " deflects the attack "+BorString::skillSpam(lightsaberSkill, roll, result, dc);
+
+                if (attackerWeapon->getDamageType() == SharedWeaponObjectTemplate::KINETIC) {
+                    spam += ", evaporating the projectile against their blade!";
+                } else {
+                    spam += ", sending it back at "+BorString::getNiceName(attacker)+", doing "+ApplyAdjustedHealthDamage(attacker, attackerWeapon, damage / 2, slot)+" damage!";
+                }
+
+                BorEffect::PerformReactiveAnimation(defender, attacker, "parry", GetSlotHitlocation(slot), false, damage, "basic");
+                return true;
+            } else {
+                // Partial reflect!
+                spam += BorString::getNiceName(defender)+ " deflects the attack "+BorString::skillSpam(lightsaberSkill, roll, result, dc);
+
+                if (attackerWeapon->getDamageType() == SharedWeaponObjectTemplate::KINETIC) {
+                    spam += ", evaporating the projectile against their blade!";
+                } else {
+                    spam += ", sending it harmlessly away!";
+                }
+
+                BorEffect::PerformReactiveAnimation(defender, attacker, "parry", GetSlotHitlocation(slot), false, damage, "basic");
+                return true;
+            }
+        } else {
+            // All other weapon handling
+            if (result >= dc) {
+                if (atkIsLightsaber) {
+                    spam += BorString::getNiceName(defender)+ " blocks the attack! "+BorString::skillSpam(lightsaberSkill, roll, result, dc);
+                } else {
+                    spam += BorString::getNiceName(defender)+ " blocks the attack, "+BorString::skillSpam(lightsaberSkill, roll, result, dc)+", destroying"+BorString::getNiceName(attacker)+"'s weapon in the process!";
+                    attackerWeapon->setConditionDamage(attackerWeapon->getMaxCondition());
+                }
+
+                BorEffect::PerformReactiveAnimation(defender, attacker, "parry", GetSlotHitlocation(slot), false, damage, "basic");
+                return true;
+            } else {
+                if (atkIsLightsaber) {
+                    spam += BorString::getNiceName(defender)+ " partially blocks the attack! "+BorString::skillSpam(lightsaberSkill, roll, result, dc);
+                } else {
+                    spam += BorString::getNiceName(defender)+ " partially blocks the attack, "+BorString::skillSpam(lightsaberSkill, roll, result, dc)+", taking "+ApplyAdjustedHealthDamage(defender, attackerWeapon, damage / 2, slot)+" damage, and severely damaging "+BorString::getNiceName(attacker)+"'s weapon in the process!";
+                    attackerWeapon->setConditionDamage(Math::min(attackerWeapon->getConditionDamage() + attackerWeapon->getMaxCondition()/2, attackerWeapon->getMaxCondition()));
+                }
+
+                BorEffect::PerformReactiveAnimation(defender, attacker, "parry", GetSlotHitlocation(slot), false, damage, "basic");
+                return true;
+            }
+        }
+    }
 
     //TO DO: When full refactor is done, this either needs to be folded into the main attack command, or sections of the attack command need to be compartmentalised into functions, to be reused here.
     static void FlurryAttackTarget(CreatureObject* attacker, CreatureObject* defender, CreatureObject* commander, bool ignoreLOS = false) {
@@ -1193,7 +1323,6 @@ public:
                 }
 
                 BorEffect::PerformReactiveAnimation(attacker, defender, "parry", GetSlotHitlocation(slot), true, incomingDamage, "basic");
-                
 
                 return reactionSpam;
             }
@@ -1338,33 +1467,11 @@ public:
         WeaponObject* defenderWeapon = defender->getWeapon();
         int defenderReactionType = defender->getStoredInt("reaction_stance");
 
-        String reactionSpam = "";
-
         int actionPointMod = 1;
         if(flurryAttacked)
             actionPointMod = 2;
 
-        if(CanPerformReaction(defender, defenderReactionType, incomingDamage, attackerWeapon, defenderWeapon)) {
-            switch(defenderReactionType) {
-                case RpReactionStance::DEFEND:
-                    return DoDefendReaction(attacker, defender, incomingDamage, toHit, slot, actionPointMod);
-                case RpReactionStance::PARRY:
-                    return DoParryReaction(attacker, defender, incomingDamage, toHit, slot, actionPointMod);
-                case RpReactionStance::DODGE:
-                    return DoDodgeReaction(attacker, defender, incomingDamage, toHit, slot, actionPointMod);
-                case RpReactionStance::LIGHTSABERDEFLECT:
-                    return DoLightsaberDeflectReaction(attacker, defender, incomingDamage, toHit, slot, actionPointMod);
-                case RpReactionStance::FORCEDEFLECT:
-                    return DoForceDeflectReaction(attacker, defender, incomingDamage, toHit, slot, actionPointMod);
-                case RpReactionStance::FORCEABSORB:
-                    return DoForceAbsorbReaction(attacker, defender, incomingDamage, toHit, slot, actionPointMod);
-            }
-        } 
-        
-        //Simply accept the damage. 
-        String dmgString = ApplyAdjustedHealthDamage(defender, attackerWeapon, incomingDamage, slot);
-        BorEffect::PerformReactiveAnimation(defender, attacker, "hit", GetSlotHitlocation(slot), true, incomingDamage, "basic");
-        return ", doing (" + GetWeaponDamageString(attacker, attackerWeapon) + ") = "+ dmgString +" damage.";
+        return attemptReaction(attacker, defender, incomingDamage, toHit, slot, actionPointMod, !attackerWeapon->isRangedWeapon());
     }
 
     static String ApplyAdjustedHealthDamage(CreatureObject* creature, String damageType, int damage, int slot) {
