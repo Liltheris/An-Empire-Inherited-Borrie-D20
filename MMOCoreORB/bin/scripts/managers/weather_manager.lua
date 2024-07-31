@@ -354,3 +354,15 @@ rp_truska = {
 
 	weatherStability = 95, -- Range 0 - 100, Higher = Less weather changes, Overall better weather
 }
+
+-----------------
+--    Hoth
+-----------------
+rp_hoth = {
+
+	defaultWeather = 0, -- Sunny
+
+	averageWeatherDuration = 3600, -- In seconds
+
+	weatherStability = 45, -- Range 0 - 100, Higher = Less weather changes, Overall better weather
+}
