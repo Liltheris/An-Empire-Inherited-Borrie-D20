@@ -255,11 +255,11 @@ travel_destinations = {
 				tag = "zephyr",
 				name = "Fort Zephyr",
 				access = "newrepublic",
-				land_ship = false,
+				land_ship = true,
 				landing_spots = {
-					{"rp_rori", -3688, 96, -6403, 0, 0,},
+					{"rp_rori", -3607, 96, -6470, 180, 0,},
 				},
-				public_arrival = {"rp_rori", -3688, 96, -6403, 0, 0,},
+				public_arrival = {"rp_rori", -3665, 96, -6502, 0, 0,},
 			},
 		}
 	
