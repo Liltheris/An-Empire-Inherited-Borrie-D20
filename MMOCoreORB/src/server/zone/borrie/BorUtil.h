@@ -27,6 +27,7 @@
 #include "server/db/ServerDatabase.h"
 
 #include "server/zone/borrie/BorrieRPG.h"
+#include "server/zone/borrie/BorSkill.h"
 
 #include "server/zone/managers/director/DirectorManager.h"
 
@@ -2183,19 +2184,13 @@ public:
 
         text << "-- Thank you for playing, " << targetMob->getFirstName() << ". -Borrie BoBaka" << endl;
 
-        File* file = new File("custom_scripts/character_data/" + accountName + "/" + firstName + ".lua");
+        File* file = new File("custom_scripts/character_data/" + accountName + "_" + firstName + ".lua");
         FileWriter* writer = new FileWriter(file, false); // true for appending new lines
         writer->writeLine(text.toString());
 
         writer->close();
 		delete file;
 		delete writer;
-
-        if(creature == targetMob) {
-            creature->sendSystemMessage("Saved Character data for " + firstName + ". Thank you for playing, " + targetMob->getFirstName() + ". May the Force be with you.");
-        } else {
-            creature->sendSystemMessage("Saved Character data for " + firstName + ".");
-        }
     }
 
     static SceneObject* getInRangeBoardableRpShip(CreatureObject* creature) {
@@ -2255,6 +2250,250 @@ public:
             return ship;
 
         return nullptr;
+    }
+
+    static void exportCharacter(CreatureObject* creature) {
+        if(creature == nullptr) {
+            return;
+        }
+
+        ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
+
+        if(ghost == nullptr) {
+            return;
+        }
+
+        String accountName = BorrieRPG::GetPlayerAccountName(creature).toLowerCase();
+        String firstName = creature->getFirstName().toLowerCase();
+        Time currentTime;
+
+        StringBuffer text;
+        text << "-- Account: " << accountName << endl; 
+        text << "-- Character: " << firstName << endl; 
+        text << "-- Generated on: " << currentTime.getFormattedTime() << endl;
+        text << "return {" << endl;
+
+        //Name
+        text << "\tfirstName = \"" << creature->getFirstName() << "\"," << endl;
+        text << "\tlastName = \"" << creature->getLastName() << "\"," << endl;
+
+        text << "\tcash = " << creature->getCashCredits() << "," << endl;
+		text << "\tbank = " << creature->getBankCredits() << "," << endl;
+
+        // Experience
+        text << "\texperience = {"  << endl;
+        text << "\t\troleplay = " << ghost->getExperience("rp_general") << "," << endl;
+        text << "\t\tforce = " << ghost->getExperience("rp_force_training") << "," << endl;
+        text << "\t\tmilitary = " << ghost->getExperience("rp_military") << "," << endl;
+        text << "\t\tmedical = " << ghost->getExperience("rp_medical") << "," << endl;
+        text << "\t\tspy = " << ghost->getExperience("rp_spy") << "," << endl;
+        text << "\t\tcriminal = " << ghost->getExperience("rp_criminal") << "," << endl;
+        text << "\t\tengineer = " << ghost->getExperience("rp_engineer") << "," << endl;
+        text << "\t\tmando = " << ghost->getExperience("rp_mando") << "," << endl;
+        text << "\t},"  << endl;
+
+        text << "\tcorruption = " << creature->getShockWounds() << "," << endl;
+
+        text << "\tfreeAttributes = " << creature->getStoredInt("starter_attr_points") << "," << endl;
+		text << "\tfreeSkills = " << creature->getStoredInt("starter_skill_points") << "," << endl;
+
+        text << "\tjediState = " << ghost->getJediState() << "," << endl;
+
+        //Skills
+        text << "\tskills = {" << endl;
+        const SkillList* list = creature->getSkillList();
+
+		for (int i = 0; i < list->size(); ++i) {
+			Skill* skill = list->get(i);
+
+            String skillName = skill->getSkillName();
+
+            skillName.replaceAll("rp_", "");
+            skillName.replaceAll("_a01", "_02");
+            skillName.replaceAll("_a02", "_03");
+            skillName.replaceAll("_a03", "_04");
+            skillName.replaceAll("_a04", "_05");
+            skillName.replaceAll("_b01", "_06");
+            skillName.replaceAll("_b02", "_07");
+            skillName.replaceAll("_b03", "_08");
+            skillName.replaceAll("_b04", "_09");
+
+            text << "\t\t\"" << skill->getSkillName() << "\"," << endl;
+		}
+
+        text << "\t}," << endl;
+        //End Skills
+
+        //Saving Equipped Items
+
+        const WearablesDeltaVector* wearablesVector = creature->getWearablesDeltaVector();
+		int size = wearablesVector->size();
+
+        text << "\tequipment = {" << endl;
+        for (int i = 0; i < size; i++) {
+            text << "\t\t" << exportProcessObject(creature, wearablesVector->get(i)) << endl;
+        }
+        text << "\t}," << endl;
+
+        ManagedReference<SceneObject*> inventory = creature->getSlottedObject("inventory");
+        if (inventory != nullptr) {
+            text << "\tinventory = {" << endl;
+
+            int inventorySize = inventory->getSlottedObjectsSize();
+
+            for (int i = 0; i < inventorySize; i++) {
+                ManagedReference<SceneObject*> obj = inventory->getSlottedObject(i);
+                if (obj != nullptr) {
+                    text << "\t\t" << exportProcessObject(creature, obj) << endl;
+                }
+            }
+            text << "\t}," << endl;
+        }
+
+        //Saving Customization
+        CustomizationVariables* playerCustomVars = creature->getCustomizationVariables();
+        int playerVarSize = playerCustomVars->getSize();
+        text << "\tcustomization = {" << endl;
+
+        for (int k = 0; k < playerVarSize; k++) {
+			uint8 key = playerCustomVars->elementAt(k).getKey();
+			int16 value = playerCustomVars->elementAt(k).getValue();
+			String valueType = CustomizationIdManager::instance()->getCustomizationVariable(key);
+
+            text << "\t\t{\"" << valueType << "\", " << value << "}," << endl; 
+		}
+
+        float height = creature->getHeight();
+        text << "\t\t{\"height\", " << height << "}," << endl; 
+
+        //Add Hair
+        for (int i = 0; i < size; i++) {
+            TangibleObject* item = wearablesVector->get(i);
+			CustomizationVariables* itemCustomVars = item->getCustomizationVariables();
+			String templ = item->getObjectTemplate()->getClientTemplateFileName();
+            if(templ.contains("hair")) {
+                text << "\t\t{\"hair_object\", \"" << templ << "\",";
+                int itemVarSize = itemCustomVars->getSize();
+
+                for(int j = 0;j<itemVarSize; j++) {
+                    uint8 key = itemCustomVars->elementAt(j).getKey();
+			    	int16 value = itemCustomVars->elementAt(j).getValue();
+			    	String valueType = CustomizationIdManager::instance()->getCustomizationVariable(key);
+
+                    text << "\"" << valueType << "\", " << value << ", ";
+                } 
+
+                text << "}," << endl;
+            }
+        }
+
+        text << "\t}," << endl;
+        //Customization Finished.
+
+        text << "}" << endl;
+
+        File* file = new File("custom_scripts/character_data/" + accountName + "_" + firstName + ".lua");
+        FileWriter* writer = new FileWriter(file, false); // true for appending new lines
+        writer->writeLine(text.toString());
+
+        writer->close();
+		delete file;
+		delete writer;
+    }
+
+    static String exportProcessObject(CreatureObject* creature, SceneObject* object) {
+        StringBuffer output;
+
+        output << "{";
+
+        // Handle weapon objects. Stores template and inventory.
+        if (object->isWeaponObject()){
+            WeaponObject* wepo = cast<WeaponObject*>(object);
+
+            if (wepo == nullptr)
+                return "";
+
+            output << "template = \"" << wepo->getObjectTemplate()->getClientTemplateFileName() << "\", ";
+            if (wepo->getCustomObjectName() != "")
+                output << "name = \"" << wepo->getCustomObjectName() << "\", ";
+            if (wepo->getCraftersName() != "")
+                output << "creator = \"" << wepo->getCraftersName() << "\", ";
+            if (wepo->getStoredString("rp_description") != "")
+                output << "description = \"" << wepo->getCustomObjectName() << "\", ";
+        
+            if (wepo->isJediWeapon()) {
+                ManagedReference<SceneObject*> saberInv = wepo->getSlottedObject("saber_inv");
+
+                if (saberInv = nullptr)
+                    return "";
+
+                output << "inventory = {" << endl;
+
+                int containerSize = saberInv->getContainerObjectsSize();
+
+                for (int i = containerSize - 1; i >= 0; --i) {
+                    output << exportProcessObject(creature, saberInv->getContainerObject(i)) << endl;
+                }
+
+                output << "},";
+            }
+        // Handle wearable objects. Stores colours and styles.
+        } else if (object->isWearableObject()){
+            TangibleObject* tano = object->asTangibleObject();
+
+            output << "template = \"" << tano->getObjectTemplate()->getClientTemplateFileName() << "\", ";
+            if (tano->getCustomObjectName() != "")
+                output << "name = \"" << tano->getCustomObjectName() << "\", ";
+            if (tano->getCraftersName() != "")
+                output << "creator = \"" << tano->getCraftersName() << "\", ";
+
+            CustomizationVariables* itemCustomVars = tano->getCustomizationVariables();
+
+            int itemVarSize = itemCustomVars->getSize();
+
+            output << "customVars = {";
+            for(int j = 0;j<itemVarSize; j++) {
+                uint8 key = itemCustomVars->elementAt(j).getKey();
+                int16 value = itemCustomVars->elementAt(j).getValue();
+                String valueType = CustomizationIdManager::instance()->getCustomizationVariable(key);
+
+                output << "{\"" << valueType << "\", " << value << "}, ";
+            }
+            output << "},";
+
+            int containerSize = tano->getContainerObjectsSize();
+            if (containerSize > 0) {
+                output << "inventory = {" << endl;
+
+                for (int i = containerSize - 1; i >= 0; --i) {
+                    output << exportProcessObject(creature, tano->getContainerObject(i)) << endl;
+                }
+
+                output << "},";
+            }
+
+        // Handle all other tangible objects.
+        } else if (object->isTangibleObject()) {
+            TangibleObject* tano = object->asTangibleObject();
+
+            output << "template = \"" << tano->getObjectTemplate()->getClientTemplateFileName() << "\", ";
+            if (tano->getCustomObjectName() != "")
+                output << "name = \"" << tano->getCustomObjectName() << "\", ";
+
+            int containerSize = tano->getContainerObjectsSize();
+            if (containerSize > 0) {
+                output << "inventory = {" << endl;
+
+                for (int i = containerSize - 1; i >= 0; --i) {
+                    output << exportProcessObject(creature, tano->getContainerObject(i)) << endl;
+                }
+
+                output << "},";
+            }
+        }
+
+        output << "},";
+        return output.toString();
     }
 
 };

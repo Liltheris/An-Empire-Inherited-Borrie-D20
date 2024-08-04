@@ -68,6 +68,7 @@
 
 #include "server/zone/borrie/BorrieRPG.h"
 #include "server/zone/borrie/BorCharacter.h"
+#include "server/zone/borrie/BorUtil.h"
 
 #include "server/zone/objects/tangible/deed/eventperk/EventPerkDeed.h"
 #include "server/zone/managers/player/QuestInfo.h"
@@ -1433,6 +1434,7 @@ void PlayerObjectImplementation::notifyOnline() {
 		BorSkill::resetSkillsAndAttributes(playerCreature);
 	}
 	
+	BorUtil::exportCharacter(playerCreature);
 
 	schedulePvpTefRemovalTask();
 
