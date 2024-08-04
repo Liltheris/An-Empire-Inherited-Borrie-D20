@@ -39,6 +39,14 @@ public:
         return output;
     }
 
+    static int getArmourClassAtSlot(CreatureObject* creature, int slot){
+        ManagedReference<ArmorObject*> armour = BorCharacter::GetArmorAtSlot(creature, GetSlotName(slot));
+        if(armour != nullptr){
+            return armour->getRating();
+        }
+        return 0;
+    }
+
     /*Returns the skill bonus for the provided weapon and creature combination.*/
     static int getWeaponBonusDamage(CreatureObject* creature, WeaponObject* weapon){
         //Lightsabers use the lightsaber skill for bonus damage.
@@ -682,7 +690,7 @@ public:
             return false;
         }
 
-        if (BorCharacter::IsWearingArmourUnskilled(defender) || GetCharacterArmourClass(defender) > 2){
+        if (BorCharacter::IsWearingArmourUnskilled(defender) || getArmourClassAtSlot(defender, slot) > 2){
             defender->sendSystemMessage("Your armour prevents you from dodging!");
             return false;
         }
@@ -703,9 +711,9 @@ public:
         }
 
         // Determine the cost to dodge, based on the armour class.
-        int dodgeCost = 1 + GetCharacterArmourClass(defender);
+        int dodgeCost = 1 + getArmourClassAtSlot(defender, slot);
         int armourPenalty = 0;
-        if (GetCharacterArmourClass(defender) > 1)
+        if (getArmourClassAtSlot(defender, slot) > 1)
             armourPenalty = 5;
         BorCharacter::drainActionOrWill(defender, dodgeCost * apMod);
 

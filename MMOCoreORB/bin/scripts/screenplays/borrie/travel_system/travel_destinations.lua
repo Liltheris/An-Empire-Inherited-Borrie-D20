@@ -257,9 +257,9 @@ travel_destinations = {
 				access = "newrepublic",
 				land_ship = true,
 				landing_spots = {
-					{"rp_rori", -3607, 96, -6470, 180, 0,},
+					{"rp_rori", 3607, 96, -6470, 180, 0,},
 				},
-				public_arrival = {"rp_rori", -3665, 96, -6502, 0, 0,},
+				public_arrival = {"rp_rori", 3665, 96, -6502, 0, 0,},
 			},
 		}
 	
