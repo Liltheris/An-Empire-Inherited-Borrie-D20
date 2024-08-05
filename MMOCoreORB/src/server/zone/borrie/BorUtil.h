@@ -2318,7 +2318,7 @@ public:
             skillName = skillName.replaceAll("_b03", "_08");
             skillName = skillName.replaceAll("_b04", "_09");
 
-            text << "\t\t\"" << skill->getSkillName() << "\"," << endl;
+            text << "\t\t\"" << skillName << "\"," << endl;
 		}
 
         text << "\t}," << endl;
