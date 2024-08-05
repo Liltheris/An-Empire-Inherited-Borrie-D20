@@ -2420,7 +2420,7 @@ public:
                 output << "creator = \"" << wepo->getCraftersName() << "\", ";
             if (wepo->getStoredString("rp_description") != "")
                 output << "description = \"" << wepo->getCustomObjectName() << "\", ";
-            }
+                
         // Handle wearable objects. Stores colours and styles.
         } else if (object->isWearableObject()){
             TangibleObject* tano = object->asTangibleObject();
