@@ -2420,22 +2420,6 @@ public:
                 output << "creator = \"" << wepo->getCraftersName() << "\", ";
             if (wepo->getStoredString("rp_description") != "")
                 output << "description = \"" << wepo->getCustomObjectName() << "\", ";
-        
-            if (wepo->isJediWeapon()) {
-                ManagedReference<SceneObject*> saberInv = wepo->getSlottedObject("saber_inv");
-
-                if (saberInv = nullptr)
-                    return "";
-
-                output << "inventory = {" << endl;
-
-                int containerSize = saberInv->getContainerObjectsSize();
-
-                for (int i = containerSize - 1; i >= 0; --i) {
-                    output << "\t\t\t" << exportProcessObject(creature, saberInv->getContainerObject(i)) << endl;
-                }
-
-                output << "\t\t},";
             }
         // Handle wearable objects. Stores colours and styles.
         } else if (object->isWearableObject()){
