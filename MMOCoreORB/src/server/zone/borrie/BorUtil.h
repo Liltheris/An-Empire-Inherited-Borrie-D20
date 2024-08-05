@@ -2308,15 +2308,15 @@ public:
 
             String skillName = skill->getSkillName();
 
-            skillName.replaceAll("rp_", "");
-            skillName.replaceAll("_a01", "_02");
-            skillName.replaceAll("_a02", "_03");
-            skillName.replaceAll("_a03", "_04");
-            skillName.replaceAll("_a04", "_05");
-            skillName.replaceAll("_b01", "_06");
-            skillName.replaceAll("_b02", "_07");
-            skillName.replaceAll("_b03", "_08");
-            skillName.replaceAll("_b04", "_09");
+            skillName = skillName.replaceAll("rp_", "");
+            skillName = skillName.replaceAll("_a01", "_02");
+            skillName = skillName.replaceAll("_a02", "_03");
+            skillName = skillName.replaceAll("_a03", "_04");
+            skillName = skillName.replaceAll("_a04", "_05");
+            skillName = skillName.replaceAll("_b01", "_06");
+            skillName = skillName.replaceAll("_b02", "_07");
+            skillName = skillName.replaceAll("_b03", "_08");
+            skillName = skillName.replaceAll("_b04", "_09");
 
             text << "\t\t\"" << skill->getSkillName() << "\"," << endl;
 		}
@@ -2432,10 +2432,10 @@ public:
                 int containerSize = saberInv->getContainerObjectsSize();
 
                 for (int i = containerSize - 1; i >= 0; --i) {
-                    output << exportProcessObject(creature, saberInv->getContainerObject(i)) << endl;
+                    output << "\t\t\t" << exportProcessObject(creature, saberInv->getContainerObject(i)) << endl;
                 }
 
-                output << "},";
+                output << "\t\t},";
             }
         // Handle wearable objects. Stores colours and styles.
         } else if (object->isWearableObject()){
@@ -2466,10 +2466,10 @@ public:
                 output << "inventory = {" << endl;
 
                 for (int i = containerSize - 1; i >= 0; --i) {
-                    output << exportProcessObject(creature, tano->getContainerObject(i)) << endl;
+                    output << "\t\t\t" << exportProcessObject(creature, tano->getContainerObject(i)) << endl;
                 }
 
-                output << "},";
+                output << "\t\t},";
             }
 
         // Handle all other tangible objects.
@@ -2485,10 +2485,10 @@ public:
                 output << "inventory = {" << endl;
 
                 for (int i = containerSize - 1; i >= 0; --i) {
-                    output << exportProcessObject(creature, tano->getContainerObject(i)) << endl;
+                    output << "\t\t\t" << exportProcessObject(creature, tano->getContainerObject(i)) << endl;
                 }
 
-                output << "},";
+                output << "\t\t},";
             }
         }
 
