@@ -626,6 +626,11 @@ function NabooTheedScreenPlay:spawnCivilians()
 		{-4629.61, 6, 4080.63, 66, 0,{"social"}},
 		{-4683.32, 6, 4045.24, 217, 0,{"none"}},
 		{-4684.83, 6, 4043.84, 56, 0,{"social"}},
+		-- Bank
+		{-6.66765, 1.1, 2.84234, 292, 980037760,{"none"}},
+		{2.01953, 1.1, -5.41895, 324, 980037760,{"sitchair"}},
+		{-4.4713, 1.1, -2.44153, 206, 980037760,{"none"}},
+		{-5.2793, 1.1, -2.3478, 181, 980037760,{"social"}},
 	}
 	
 	CivillianGenerator:spawnCivillians(self.screenplayName, "rp_naboo", waypointList, self.walkpointList, "human_only", "naboo")
@@ -639,9 +644,111 @@ function NabooTheedScreenPlay:spawnSceneObjects()
 	
 	--TAILOR--
 
+
+	-- TO DO 
+	-- Tailor spouts
+	-- Signs for:
+	--  Armourer
+	--  Bank
+	--  Weaponsmith
+	--  Specialty goods
+	-- Weapon parts box
 end
 
 function NabooTheedScreenPlay:spawnMobiles()
 	--Species, Equipment, Skills, Customization
 	local pNpc
+
+	--Speeder vendor
+	pNpc = spawnRoleplayMobile("rp_naboo", "rp_convo_npc", 1, -5672.66, 6, 4125.55, 215, 0, "rp_human_male", "xovros_refugee_male2", "default", "random", "rpg_shopkeeper") --Vehicle
+	SceneObject(pNpc):setCustomObjectName("Merkus Ashtok (a Speeder Vendor)")
+	SceneObject(pNpc):setStoredString("vendor:theme", "vehicle")
+	SceneObject(pNpc):setStoredString("vendor:shopList", "shop_vehicles")
+	--Armor Vendor
+	pNpc = spawnRoleplayMobile("rp_naboo", "rp_convo_npc", 1, 1.96866, 1.1, 2.23774, 179, 980036271, "rp_human_female", "naboo/theed/armour_sales", "default", "naboo/theed/armour_sales", "rpg_shopkeeper") --Armor
+	SceneObject(pNpc):setCustomObjectName("Sera Ark'ona (an Armour Vendor)")
+	SceneObject(pNpc):setStoredString("vendor:theme", "armorsmith")
+	SceneObject(pNpc):setStoredString("vendor:shopList", "shop_armor_tier1")
+	--Armourer
+	spawnRoleplayMobile("rp_naboo", "rp_base_npc", 1, -6.33851, 1.1, -7.19712, 91, 980036273, "rp_bothan_male", "naboo/theed/armourer", "default", "naboo/theed/armourer") --Equip, Skill, Customization
+	SceneObject(pNpc):setCustomObjectName("Tojin Ark'ona (a Master Armoursmith)")
+	--Weaponsmith, Ranged
+	pNpc = spawnRoleplayMobile("rp_naboo", "rp_convo_npc", 1, -2.73356, 0.7, 3.93734, 181, 980037310,	"rp_human_male", "naboo/theed/weapon_ranged", "default", "naboo/theed/weapon_ranged", "rpg_shopkeeper") -- Wep Ranged
+	SceneObject(pNpc):setCustomObjectName("Aaron Kust (a Ranged Weaponsmith)")
+	SceneObject(pNpc):setStoredString("vendor:theme", "novice_ranged")
+	SceneObject(pNpc):setStoredString("vendor:shopList", "shop_weaponsmith_ranged_tier1")
+	--Weaponsmith, Melee
+	pNpc = spawnRoleplayMobile("rp_naboo", "rp_convo_npc", 1, -6.92792, 0.7, -2.18084, 91, 980037310,	"rp_human_female", "naboo/theed/weapon_melee", "default", "naboo/theed/weapon_melee", "rpg_shopkeeper") -- Wep Melee
+	SceneObject(pNpc):setCustomObjectName("Bekka Rind (a Melee Weaponsmith)")
+	SceneObject(pNpc):setStoredString("vendor:theme", "novice_melee")
+	SceneObject(pNpc):setStoredString("vendor:shopList", "shop_weaponsmith_melee_tier1")
+	--Stimpack Vendor
+	pNpc = spawnRoleplayMobile("rp_naboo", "rp_convo_npc", 1, -21.897, 0.26, 1.38216, 0, 1697364, "rp_human_male", "naboo/theed/stim", "default", "naboo/theed/stim", "rpg_shopkeeper") --Stims
+	SceneObject(pNpc):setCustomObjectName("Gon Verran (a Stimpack Vendor)")
+	SceneObject(pNpc):setStoredString("vendor:theme", "medicine")
+	SceneObject(pNpc):setStoredString("vendor:shopList", "shop_medicine_novice")
+	--Specialty Vendor
+	pNpc = spawnRoleplayMobile("rp_naboo", "rp_convo_npc", 1, -2.33464, 0.7, -0.793827, 212, 980037613, "rp_human_female", "naboo/theed/specialty", "default", "naboo/theed/specialty", "rpg_shopkeeper") --Specialty
+	SceneObject(pNpc):setCustomObjectName("Tali (a Specialty Vendor)")
+	SceneObject(pNpc):setStoredString("vendor:theme", "specialty")
+	SceneObject(pNpc):setStoredString("vendor:shopList", "shop_specialty")
+	--Ship Vendor
+	pNpc = spawnRoleplayMobile("rp_naboo", "rp_convo_npc", 1, -4593.37, 6, 4026.87, 301, 0,"rp_human_female", "naboo/theed/ship", "default", "naboo/theed/ship", "rpg_shopkeeper") --Ship
+	SceneObject(pNpc):setCustomObjectName("Lila Tack (a Ship Vendor)")
+	SceneObject(pNpc):setStoredString("vendor:theme", "ship")
+	SceneObject(pNpc):setStoredString("vendor:shopList", "shop_ship")
+	--Junk Vendor
+	pNpc = spawnRoleplayMobile("rp_naboo", "rp_convo_npc", 1, -4709.27, 6, 3988.17, 47, 0, "rp_human_male", "naboo/theed/junk", "default", "naboo/theed/junk", "rpg_shopkeeper") --Junk
+	SceneObject(pNpc):setCustomObjectName("Hern (a Junk Dealer)")
+	SceneObject(pNpc):setStoredString("vendor:theme", "junkdealer")
+	SceneObject(pNpc):setStoredString("vendor:shopList", "shop_junkdealer")
+	--Instrument Vendor
+	pNpc = spawnRoleplayMobile("rp_naboo", "rp_convo_npc", 1, -5800.04, 6.59961, 4159.48, 137, 0, "rp_human_female", "naboo/theed/instrument", "default", "naboo/theed/instrument", "rpg_shopkeeper") --Instrument
+	SceneObject(pNpc):setCustomObjectName("Amila Camila (an Instrument Vendor)")
+	SceneObject(pNpc):setStoredString("vendor:theme", "music")
+	SceneObject(pNpc):setStoredString("vendor:shopList", "shop_instruments")
+	--Backpack Vendor
+	--pNpc = spawnRoleplayMobile("rp_rori", "rp_convo_npc", 1, -904.266, 83, 1479.51, 87, 0,			"rp_moncal_female", "xovros_refugee_male9", "default", "random", "rpg_shopkeeper") --Backpack
+	--SceneObject(pNpc):setCustomObjectName("Ibbsakar Mist (a Backpack Vendor)")
+	--SceneObject(pNpc):setStoredString("vendor:theme", "backpacks")
+	--SceneObject(pNpc):setStoredString("vendor:shopList", "shop_backpacks")
+	--Disguise Vendor
+	--pNpc = spawnRoleplayMobile("rp_rori", "rp_convo_npc", 1, -979.093, 83, 1715.85, 228, 0,			"rp_zabrak_male", "vendor_transmog", "default", "random", "rpg_shopkeeper") --Disguise
+	--SceneObject(pNpc):setCustomObjectName("Mel (a Disguise Vendor)")
+	--SceneObject(pNpc):setStoredString("vendor:theme", "transmog")
+	--SceneObject(pNpc):setStoredString("vendor:shopList", "shop_transmog")
+	--Camping Vendor
+	--pNpc = spawnRoleplayMobile("rp_rori", "rp_convo_npc", 1, -810.856, 79.8538, 1797.08, 193, 0,		"rp_human_female", "xovros_refugee_male6", "default", "random", "rpg_shopkeeper") --Camp
+	--SceneObject(pNpc):setCustomObjectName("Mathala Wildeth (a Camping Vendor)")
+	--SceneObject(pNpc):setStoredString("vendor:theme", "camping")
+	--SceneObject(pNpc):setStoredString("vendor:shopList", "shop_camping")
+	--Luxury Vehicle Vendor
+	--pNpc = spawnRoleplayMobile("rp_rori", "rp_convo_npc", 1, -833.546, 83, 1547.87, 0, 0,			"rp_human_male", "tatooine_luxury_speeder_vendor", "default", "random", "rpg_shopkeeper") --Luxury Vehicle
+	--SceneObject(pNpc):setCustomObjectName("Galen Dravenmere (a Luxury Speeder Vendor)")
+	--SceneObject(pNpc):setStoredString("vendor:theme", "vehicle_luxury")
+	--SceneObject(pNpc):setStoredString("vendor:shopList", "shop_vehicles_luxury")
+	--Mount Vendor
+	--pNpc = spawnRoleplayMobile("rp_rori", "rp_convo_npc", 1, -891.383, 83, 1308.04, 141, 0,			"rp_human_female", "xovros_refugee_male8", "default", "random", "rpg_shopkeeper") --Mount
+	--SceneObject(pNpc):setCustomObjectName("Anjil Jace (a Mount Vendor)")
+	--SceneObject(pNpc):setStoredString("vendor:theme", "mount")
+	--SceneObject(pNpc):setStoredString("vendor:shopList", "shop_mounts_naboo")
+
+	--Tailor
+	spawnRoleplayMobile("rp_naboo", "rp_base_npc", 1, -6.77017, 0.7, -4.71928, 42, 980037315, "rp_human_male", "naboo/theed/tailor", "default", "naboo/theed/tailor")
+	SceneObject(pNpc):setCustomObjectName("Geoff (a Tailor)")
+
+	--Bartender
+	spawnRoleplayMobile("rp_naboo", "rp_base_npc", 1, 8.62285, -0.894992, 0.447493, 99, 91, "rp_human_female", "naboo/theed/bartender_spaceport", "default", "naboo/theed/bartender_spaceport") --Equip, Skill, Customization
+	SceneObject(pNpc):setCustomObjectName("Yuila Ortogal")
+
+	-- TO DO:
+	-- Bank teller template (and spawns)
+	-- Instrument vendor visuals
+	-- Junk dealer visuals
+	-- Ship dealer visuals
+	-- Specialty vendor visuals
+	-- Speeder vendor visuals
+	-- Bartender visuals
+	-- All above commented vendors
+	
 end

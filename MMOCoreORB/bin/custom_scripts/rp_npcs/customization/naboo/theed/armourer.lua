@@ -28,4 +28,5 @@ customization = {
 	{"/shared_owner/blend_chinsize_0", 0},
 	{"/private/index_color_0", 0},
 	{"height", 0.8124},
+	{"hair_object", "object/tangible/hair/bothan/shared_hair_bothan_male_s02.iff","/private/index_color_1", 7, },
 }
