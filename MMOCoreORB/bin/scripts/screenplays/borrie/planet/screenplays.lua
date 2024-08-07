@@ -22,6 +22,9 @@ includeFile("borrie/planet/planets/bases/smc_enclave.lua")
 includeFile("borrie/planet/planets/bases/barons_hed_customs.lua")
 includeFile("borrie/planet/planets/bases/keldabe.lua")
 includeFile("borrie/planet/planets/bases/space_stardestroyer.lua")
+includeFile("borrie/planet/planets/bases/theed_base.lua")
+includeFile("borrie/planet/planets/bases/kaadara_base.lua")
+includeFile("borrie/planet/planets/bases/emperor_base.lua")
 
 --Planets
 
@@ -36,6 +39,7 @@ includeFile("borrie/planet/planets/rp_yavin4.lua")
 
 includeFile("borrie/planet/planets/rp_mandalore.lua")
 includeFile("borrie/planet/planets/rp_alpheridies.lua")
+includeFile("borrie/planet/planets/rp_naboo.lua")
 
 
 

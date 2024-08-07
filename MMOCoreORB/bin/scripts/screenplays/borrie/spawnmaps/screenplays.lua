@@ -35,4 +35,12 @@ includeFile("borrie/spawnmaps/coruscant_estate.lua")
 --Alpheridies
 includeFile("borrie/spawnmaps/alpheridies_stenadar.lua")
 
+--Naboo
+includeFile("borrie/spawnmaps/naboo_theed.lua")
+includeFile("borrie/spawnmaps/naboo_deeja_peak.lua")
+includeFile("borrie/spawnmaps/naboo_kaadara.lua")
+includeFile("borrie/spawnmaps/naboo_keren.lua")
+includeFile("borrie/spawnmaps/naboo_moenia.lua")
+
+--Spawn
 includeFile("borrie/spawnmaps/tutorial.lua")

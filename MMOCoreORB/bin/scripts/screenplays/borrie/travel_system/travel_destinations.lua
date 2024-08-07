@@ -103,17 +103,72 @@ travel_destinations = {
 		}
 	},
 
+	--Naboo
+	{
+		tag = "naboo",
+		name = "Naboo",
+		zone = "rp_naboo",
+		spaceports = {
+			{
+				tag = "theed_spaceport",
+				name = "Theed Spaceport",
+				access = "public",
+				land_ship = true,
+				landing_spots = {
+					{"rp_naboo", -4657.31, 6, 3972.09, 310, 0,},
+					{"rp_naboo", -4581.05, 6, 4093.46, 305, 0,},
+				},
+				public_arrival = {"rp_naboo", 0.0952217, 7.9418, -30.172, 154, 980036356,},
+			},
+			{
+				tag = "kaadara_spaceport",
+				name = "Kaadara Spaceport",
+				land_ship = true,
+				landing_spots = {
+					{"rp_naboo", 5295.24, -192, 6664.44, 98, 0,},
+				},
+				public_arrival = {"rp_naboo", -0.159824, 0.639421, 51.9605, 2, 1741539},
+			},
+		},
+		landing_sites = {
+			{
+				tag = "keren",
+				name = "Keren",
+				landing_spots = {
+					{"rp_naboo", 1278.3, 12.3889, 2830.02, 119, 0},
+					{"rp_naboo", 1380.25, 10.9623, 2665.12, 347, 0},
+					{"rp_naboo", 1922.27, 12.9403, 2023.95, 24, 0},
+					{"rp_naboo", 2092.01, 7.35639, 2063.07, 329, 0},
+					{"rp_naboo", 2100.65, 10.6647, 2174.57, 258, 0},
+				}
+			},
+			{
+				tag = "deeja_peak",
+				name = "Deeja Peak",
+				landing_spots = {
+					{"rp_naboo", 5355.11, 327, -1577.32, 276, 0,},
+				}
+			},
+			{
+				tag = "moenia",
+				name = "Moenia",
+				landing_spots = {
+					{"rp_naboo", 4897.79, 3.75, -4779.65, 280, 0},
+					{"rp_naboo", 4785.58, 7.87206, -4604.62, 92, 0},
+				}
+			},
+		}
+	},
+
 	--Alpheridies
 	{
 		tag = "alpheridies",
 		name = "Alpheridies",
 		zone = "rp_alpheridies",
-		skill = "rp_travel_alpheridies",
 		spaceports = {
 			{
 				tag = "stenadar",
 				name = "Stenadar",
-				skill = "rp_travel_alpheridies_stenadar",
 				landing_spots = {
 					{"rp_alpheridies", 1263.87, 10, -6555.93, 270, 0},
 					{"rp_alpheridies", 1263.87, 10, -6605.24, 270, 0},
