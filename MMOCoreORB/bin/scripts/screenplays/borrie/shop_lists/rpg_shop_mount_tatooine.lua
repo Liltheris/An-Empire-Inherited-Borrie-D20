@@ -8,7 +8,7 @@ rpg_shop_mount_tatooine = {
 			items = {
 				{template = "object/tangible/deed/pet_deed/bantha_deed.iff", cost = 450, max = 10, chance = 100, overridePrice = true, isMount = true},
 				{template = "object/tangible/deed/pet_deed/dewback_deed.iff", cost = 500, max = 10, chance = 100, overridePrice = true, isMount = true},
-				{template = "object/tangible/deed/pet_deed/cu_pa_deed.iff", cost = 3000, max = 10, chance = 100, overridePrice = true, isMount = true},
+				{template = "object/tangible/deed/pet_deed/cu_pa_deed.iff", cost = 800, max = 10, chance = 100, overridePrice = true, isMount = true},
 			}
 		},
 	}	
