@@ -4156,3 +4156,15 @@ object_static_creature_shared_yavin4_tybis = SharedStaticObjectTemplate:new {
 }
 
 ObjectTemplates:addClientTemplate(object_static_creature_shared_yavin4_tybis, "object/static/creature/shared_yavin4_tybis.iff")
+
+object_static_creature_shared_imperial_tx_130 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/creature/shared_imperial_tx_130.iff"
+}
+
+ObjectTemplates:addClientTemplate(object_static_creature_shared_imperial_tx_130, "object/static/creature/shared_imperial_tx_130.iff")
+
+object_static_creature_shared_republic_tx_130 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/creature/shared_republic_tx_130.iff"
+}
+
+ObjectTemplates:addClientTemplate(object_static_creature_shared_republic_tx_130, "object/static/creature/shared_republic_tx_130.iff")

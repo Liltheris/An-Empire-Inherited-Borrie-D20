@@ -129,3 +129,6 @@ includeFile("static/creature/yavin4_mamien.lua")
 includeFile("static/creature/yavin4_mawgax.lua")
 includeFile("static/creature/yavin4_skreeg.lua")
 includeFile("static/creature/yavin4_tybis.lua")
+
+includeFile("static/creature/imperial_tx_130.lua")
+includeFile("static/creature/republic_tx_130.lua")
