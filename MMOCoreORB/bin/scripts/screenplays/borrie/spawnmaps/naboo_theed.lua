@@ -742,9 +742,9 @@ function NabooTheedScreenPlay:spawnMobiles()
 	SceneObject(pNpc):setCustomObjectName("a Kaadu")
 
 	-- Bank tellers and Security
-	createTemplatedRoleplayNPC("planet/naboo/bank_teller", 1, -8.24603, 1.1, 4.09514, 134, 980037760, "rp_naboo")
-	createTemplatedRoleplayNPC("planet/naboo/bank_teller", 1, -9.24728, 1.1, 1.01175, 89, 980037760, "rp_naboo")
-	createTemplatedRoleplayNPC("planet/naboo/bank_teller", 1, -8.46524, 1.1, -2.28186, 45, 980037760, "rp_naboo")
-	createTemplatedRoleplayNPC("planet/naboo/bank_teller", 1, -5.75038, 1.1, -4.09924, 6, 980037760, "rp_naboo")
-	createTemplatedRoleplayNPC("planet/rori/savsec_officer", 1, -1.35294, 1.1, 5.51776, 177, 980037760, "rp_naboo")
+	createTemplatedRoleplayNPC("planet/naboo/bank_teller", -8.24603, 1.1, 4.09514, 134, 980037760, "rp_naboo")
+	createTemplatedRoleplayNPC("planet/naboo/bank_teller", -9.24728, 1.1, 1.01175, 89, 980037760, "rp_naboo")
+	createTemplatedRoleplayNPC("planet/naboo/bank_teller", -8.46524, 1.1, -2.28186, 45, 980037760, "rp_naboo")
+	createTemplatedRoleplayNPC("planet/naboo/bank_teller", -5.75038, 1.1, -4.09924, 6, 980037760, "rp_naboo")
+	createTemplatedRoleplayNPC("planet/rori/savsec_officer", -1.35294, 1.1, 5.51776, 177, 980037760, "rp_naboo")
 end
