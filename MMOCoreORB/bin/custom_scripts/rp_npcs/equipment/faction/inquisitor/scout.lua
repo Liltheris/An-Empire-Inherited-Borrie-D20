@@ -9,5 +9,5 @@ equipment = {
 	{"object/tangible/wearables/armor/roleplay/scout_trooper/armor_scout_trooper_bicep_l.iff", "/private/index_color_2", 2, "/private/index_color_1", 2, },
 	{"object/tangible/wearables/armor/roleplay/scout_trooper/armor_scout_trooper_bracer_r.iff", "/private/index_color_2", 10, "/private/index_color_1", 2, },
 	{"object/tangible/wearables/armor/roleplay/scout_trooper/armor_scout_trooper_bicep_r.iff", "/private/index_color_2", 10, "/private/index_color_1", 2, },
-	{"object/tangible/wearables/armor/scout_trooper/shared_armor_scout_trooper_utility_belt.iff", "/private/index_color_1", 16, },
+	{"object/tangible/wearables/armor/scout_trooper/shared_armor_scout_trooper_utility_belt.iff", "/private/index_color_1", 2, },
 }

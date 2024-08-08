@@ -641,17 +641,27 @@ function NabooTheedScreenPlay:spawnSceneObjects()
 	--Travel Terminals
 	
 	--Signs
-	
+	-- Armourer
+	sObj = spawnSceneObject("rp_naboo", "object/tangible/sign/all_sign_city_s03.iff", -5459.44, 6, 4374.47, 0, 1, 0, 0, 0)
+	SceneObject(sObj):setCustomObjectName("Mastersmiths Armourer & Co.")
+	-- Specialty Goods
+	sObj = spawnSceneObject("rp_naboo", "object/tangible/sign/streetsign_wall_style_01.iff", -5281.54, 9, 4333.7, 0, 0.707107, 0, -0.707107, 0)
+	SceneObject(sObj):setCustomObjectName("Theed Fantastical Goods")
+	-- Bank
+	sObj = spawnSceneObject("rp_naboo", "object/tangible/sign/all_sign_city_s03.iff", -5454.65, 9, 4277.07, 0, 0.707107, 0, 0, 0.707107)
+	SceneObject(sObj):setCustomObjectName("Royal Bank of Naboo")
+	-- Tailor
+	sObj = spawnSceneObject("rp_naboo", "object/tangible/sign/all_sign_city_s03.iff", -4910.82, 6, 4012.89, 0, 0.406737, 0, 0.913545, 0)
+	SceneObject(sObj):setCustomObjectName("Exquisite Tailoring")
+	-- Weapons
+	sObj = spawnSceneObject("rp_naboo", "object/tangible/sign/streetsign_wall_style_01.iff", -5540.83, 9, 4279.16, 0, -4.37114e-08, 0, 1, 0)
+	SceneObject(sObj):setCustomObjectName("Kust & Rind Armouries")
+
 	--TAILOR--
 
 
 	-- TO DO 
 	-- Tailor spouts
-	-- Signs for:
-	--  Armourer
-	--  Bank
-	--  Weaponsmith
-	--  Specialty goods
 	-- Weapon parts box
 end
 
@@ -670,7 +680,7 @@ function NabooTheedScreenPlay:spawnMobiles()
 	SceneObject(pNpc):setStoredString("vendor:theme", "armorsmith")
 	SceneObject(pNpc):setStoredString("vendor:shopList", "shop_armor_tier1")
 	--Armourer
-	spawnRoleplayMobile("rp_naboo", "rp_base_npc", 1, -6.33851, 1.1, -7.19712, 91, 980036273, "rp_bothan_male", "naboo/theed/armourer", "default", "naboo/theed/armourer") --Equip, Skill, Customization
+	pNpc = spawnRoleplayMobile("rp_naboo", "rp_base_npc", 1, -6.33851, 1.1, -7.19712, 91, 980036273, "rp_bothan_male", "naboo/theed/armourer", "default", "naboo/theed/armourer") --Equip, Skill, Customization
 	SceneObject(pNpc):setCustomObjectName("Tojin Ark'ona (a Master Armoursmith)")
 	--Weaponsmith, Ranged
 	pNpc = spawnRoleplayMobile("rp_naboo", "rp_convo_npc", 1, -2.73356, 0.7, 3.93734, 181, 980037310,	"rp_human_male", "naboo/theed/weapon_ranged", "default", "naboo/theed/weapon_ranged", "rpg_shopkeeper") -- Wep Ranged
