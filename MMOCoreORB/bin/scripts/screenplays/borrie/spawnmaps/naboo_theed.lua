@@ -660,7 +660,7 @@ function NabooTheedScreenPlay:spawnMobiles()
 	local pNpc
 
 	--Speeder vendor
-	pNpc = spawnRoleplayMobile("rp_naboo", "rp_convo_npc", 1, -5672.66, 6, 4125.55, 215, 0, "rp_human_male", "xovros_refugee_male2", "default", "random", "rpg_shopkeeper") --Vehicle
+	pNpc = spawnRoleplayMobile("rp_naboo", "rp_convo_npc", 1, -5672.66, 6, 4125.55, 215, 0, "rp_human_male", "naboo/theed/speeder", "default", "naboo/theed/speeder", "rpg_shopkeeper") --Vehicle
 	SceneObject(pNpc):setCustomObjectName("Merkus Ashtok (a Speeder Vendor)")
 	SceneObject(pNpc):setStoredString("vendor:theme", "vehicle")
 	SceneObject(pNpc):setStoredString("vendor:shopList", "shop_vehicles")
@@ -713,7 +713,7 @@ function NabooTheedScreenPlay:spawnMobiles()
 	SceneObject(pNpc):setStoredString("vendor:theme", "backpacks")
 	SceneObject(pNpc):setStoredString("vendor:shopList", "shop_backpacks")
 	--Camping Vendor
-	pNpc = spawnRoleplayMobile("rp_naboo", "rp_convo_npc", 1, 1, -5503.06, 6, 3843.66, 287, 0, "rp_human_female", "naboo/theed/camping", "default", "naboo/theed/camping", "rpg_shopkeeper") --Camp
+	pNpc = spawnRoleplayMobile("rp_naboo", "rp_convo_npc", 1, -5503.06, 6, 3843.66, 287, 0, "rp_human_female", "naboo/theed/camping", "default", "naboo/theed/camping", "rpg_shopkeeper") --Camp
 	SceneObject(pNpc):setCustomObjectName("Hala Timur (a Camping Vendor)")
 	SceneObject(pNpc):setStoredString("vendor:theme", "camping")
 	SceneObject(pNpc):setStoredString("vendor:shopList", "shop_camping")
