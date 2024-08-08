@@ -723,7 +723,7 @@ function NabooTheedScreenPlay:spawnMobiles()
 	SceneObject(pNpc):setStoredString("vendor:theme", "vehicle_luxury")
 	SceneObject(pNpc):setStoredString("vendor:shopList", "shop_vehicles_luxury")
 	--Mount Vendor
-	pNpc = spawnRoleplayMobile("rp_naboo", "rp_convo_npc", 1, 1, -5508.02, 6, 3849.04, 242, 0, "rp_human_female", "naboo/theed/mount", "default", "naboo/theed/mount", "rpg_shopkeeper") --Mount
+	pNpc = spawnRoleplayMobile("rp_naboo", "rp_convo_npc", 1, -5508.02, 6, 3849.04, 242, 0, "rp_human_female", "naboo/theed/mount", "default", "naboo/theed/mount", "rpg_shopkeeper") --Mount
 	SceneObject(pNpc):setCustomObjectName("Tamara Timur (a Mount Vendor)")
 	SceneObject(pNpc):setStoredString("vendor:theme", "mount")
 	SceneObject(pNpc):setStoredString("vendor:shopList", "shop_mounts_naboo")
