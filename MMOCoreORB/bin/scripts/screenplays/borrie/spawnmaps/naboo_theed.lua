@@ -708,47 +708,43 @@ function NabooTheedScreenPlay:spawnMobiles()
 	SceneObject(pNpc):setStoredString("vendor:theme", "music")
 	SceneObject(pNpc):setStoredString("vendor:shopList", "shop_instruments")
 	--Backpack Vendor
-	--pNpc = spawnRoleplayMobile("rp_rori", "rp_convo_npc", 1, -904.266, 83, 1479.51, 87, 0,			"rp_moncal_female", "xovros_refugee_male9", "default", "random", "rpg_shopkeeper") --Backpack
-	--SceneObject(pNpc):setCustomObjectName("Ibbsakar Mist (a Backpack Vendor)")
-	--SceneObject(pNpc):setStoredString("vendor:theme", "backpacks")
-	--SceneObject(pNpc):setStoredString("vendor:shopList", "shop_backpacks")
-	--Disguise Vendor
-	--pNpc = spawnRoleplayMobile("rp_rori", "rp_convo_npc", 1, -979.093, 83, 1715.85, 228, 0,			"rp_zabrak_male", "vendor_transmog", "default", "random", "rpg_shopkeeper") --Disguise
-	--SceneObject(pNpc):setCustomObjectName("Mel (a Disguise Vendor)")
-	--SceneObject(pNpc):setStoredString("vendor:theme", "transmog")
-	--SceneObject(pNpc):setStoredString("vendor:shopList", "shop_transmog")
+	pNpc = spawnRoleplayMobile("rp_naboo", "rp_convo_npc", 1, -4878.91, 6, 4083.17, 267, 0, "rp_human_male", "xovros_refugee_male9", "default", "naboo/theed/backpack", "rpg_shopkeeper") --Backpack
+	SceneObject(pNpc):setCustomObjectName("Anton Gurr (a Backpack Vendor)")
+	SceneObject(pNpc):setStoredString("vendor:theme", "backpacks")
+	SceneObject(pNpc):setStoredString("vendor:shopList", "shop_backpacks")
 	--Camping Vendor
-	--pNpc = spawnRoleplayMobile("rp_rori", "rp_convo_npc", 1, -810.856, 79.8538, 1797.08, 193, 0,		"rp_human_female", "xovros_refugee_male6", "default", "random", "rpg_shopkeeper") --Camp
-	--SceneObject(pNpc):setCustomObjectName("Mathala Wildeth (a Camping Vendor)")
-	--SceneObject(pNpc):setStoredString("vendor:theme", "camping")
-	--SceneObject(pNpc):setStoredString("vendor:shopList", "shop_camping")
+	pNpc = spawnRoleplayMobile("rp_naboo", "rp_convo_npc", 1, 1, -5503.06, 6, 3843.66, 287, 0, "rp_human_female", "naboo/theed/camping", "default", "naboo/theed/camping", "rpg_shopkeeper") --Camp
+	SceneObject(pNpc):setCustomObjectName("Hala Timur (a Camping Vendor)")
+	SceneObject(pNpc):setStoredString("vendor:theme", "camping")
+	SceneObject(pNpc):setStoredString("vendor:shopList", "shop_camping")
 	--Luxury Vehicle Vendor
-	--pNpc = spawnRoleplayMobile("rp_rori", "rp_convo_npc", 1, -833.546, 83, 1547.87, 0, 0,			"rp_human_male", "tatooine_luxury_speeder_vendor", "default", "random", "rpg_shopkeeper") --Luxury Vehicle
-	--SceneObject(pNpc):setCustomObjectName("Galen Dravenmere (a Luxury Speeder Vendor)")
-	--SceneObject(pNpc):setStoredString("vendor:theme", "vehicle_luxury")
-	--SceneObject(pNpc):setStoredString("vendor:shopList", "shop_vehicles_luxury")
+	pNpc = spawnRoleplayMobile("rp_naboo", "rp_convo_npc", 1, -4971.72, 6, 4099, 134, 0, "rp_human_male", "tatooine_luxury_speeder_vendor", "default", "random", "rpg_shopkeeper") --Luxury Vehicle
+	SceneObject(pNpc):setCustomObjectName("Kors Turaan (a Luxury Speeder Vendor)")
+	SceneObject(pNpc):setStoredString("vendor:theme", "vehicle_luxury")
+	SceneObject(pNpc):setStoredString("vendor:shopList", "shop_vehicles_luxury")
 	--Mount Vendor
-	--pNpc = spawnRoleplayMobile("rp_rori", "rp_convo_npc", 1, -891.383, 83, 1308.04, 141, 0,			"rp_human_female", "xovros_refugee_male8", "default", "random", "rpg_shopkeeper") --Mount
-	--SceneObject(pNpc):setCustomObjectName("Anjil Jace (a Mount Vendor)")
-	--SceneObject(pNpc):setStoredString("vendor:theme", "mount")
-	--SceneObject(pNpc):setStoredString("vendor:shopList", "shop_mounts_naboo")
+	pNpc = spawnRoleplayMobile("rp_naboo", "rp_convo_npc", 1, 1, -5508.02, 6, 3849.04, 242, 0, "rp_human_female", "naboo/theed/mount", "default", "naboo/theed/mount", "rpg_shopkeeper") --Mount
+	SceneObject(pNpc):setCustomObjectName("Tamara Timur (a Mount Vendor)")
+	SceneObject(pNpc):setStoredString("vendor:theme", "mount")
+	SceneObject(pNpc):setStoredString("vendor:shopList", "shop_mounts_naboo")
 
 	--Tailor
-	spawnRoleplayMobile("rp_naboo", "rp_base_npc", 1, -6.77017, 0.7, -4.71928, 42, 980037315, "rp_human_male", "naboo/theed/tailor", "default", "naboo/theed/tailor")
+	pNpc = spawnRoleplayMobile("rp_naboo", "rp_base_npc", 1, -6.77017, 0.7, -4.71928, 42, 980037315, "rp_human_male", "naboo/theed/tailor", "default", "naboo/theed/tailor")
 	SceneObject(pNpc):setCustomObjectName("Geoff (a Tailor)")
 
 	--Bartender
-	spawnRoleplayMobile("rp_naboo", "rp_base_npc", 1, 8.62285, -0.894992, 0.447493, 99, 91, "rp_human_female", "naboo/theed/bartender_spaceport", "default", "naboo/theed/bartender_spaceport") --Equip, Skill, Customization
+	pNpc = spawnRoleplayMobile("rp_naboo", "rp_base_npc", 1, 8.62285, -0.894992, 0.447493, 99, 91, "rp_human_female", "naboo/theed/bartender_spaceport", "default", "naboo/theed/bartender_spaceport") --Equip, Skill, Customization
 	SceneObject(pNpc):setCustomObjectName("Yuila Ortogal")
 
-	-- TO DO:
-	-- Bank teller template (and spawns)
-	-- Instrument vendor visuals
-	-- Junk dealer visuals
-	-- Ship dealer visuals
-	-- Specialty vendor visuals
-	-- Speeder vendor visuals
-	-- Bartender visuals
-	-- All above commented vendors
-	
+	pNpc = spawnRoleplayMobile("rp_naboo", "rp_base_npc", 1, -5506.7, 6, 3852.95, 251, 0, "kaadu", "default", "default", "default") --Equip, Skill, Customization
+	SceneObject(pNpc):setCustomObjectName("a Kaadu")
+	pNpc = spawnRoleplayMobile("rp_naboo", "rp_base_npc", 1, -5507.2, 6, 3851.72, 271, 0, "kaadu", "default", "default", "default") --Equip, Skill, Customization
+	SceneObject(pNpc):setCustomObjectName("a Kaadu")
+
+	-- Bank tellers and Security
+	createTemplatedRoleplayNPC("planet/naboo/bank_teller", 1, -8.24603, 1.1, 4.09514, 134, 980037760, "rp_naboo")
+	createTemplatedRoleplayNPC("planet/naboo/bank_teller", 1, -9.24728, 1.1, 1.01175, 89, 980037760, "rp_naboo")
+	createTemplatedRoleplayNPC("planet/naboo/bank_teller", 1, -8.46524, 1.1, -2.28186, 45, 980037760, "rp_naboo")
+	createTemplatedRoleplayNPC("planet/naboo/bank_teller", 1, -5.75038, 1.1, -4.09924, 6, 980037760, "rp_naboo")
+	createTemplatedRoleplayNPC("planet/rori/savsec_officer", 1, -1.35294, 1.1, 5.51776, 177, 980037760, "rp_naboo")
 end

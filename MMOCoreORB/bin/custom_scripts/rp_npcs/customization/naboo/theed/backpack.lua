@@ -35,4 +35,5 @@ customization = {
 	{"/private/index_age", 0},
 	{"/private/index_style_freckles", 3},
 	{"height", 1.0154},
+	{"hair_object", "object/tangible/hair/human/shared_hair_human_male_s09.iff","/private/index_color_1", 10, },
 }
