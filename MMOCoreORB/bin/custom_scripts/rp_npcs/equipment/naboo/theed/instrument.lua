@@ -1,0 +1,17 @@
+equipment = {
+	{"object/tangible/wearables/dress/dress_s35.iff", "/private/index_color_2", 195, "/private/index_color_1", 193, },
+	{"object/tangible/wearables/dress/dress_s35.iff", "/private/index_color_2", 195, "/private/index_color_1", 193, },
+	{"object/tangible/wearables/dress/dress_s35.iff", "/private/index_color_2", 195, "/private/index_color_1", 193, },
+	{"object/tangible/wearables/dress/dress_s35.iff", "/private/index_color_2", 195, "/private/index_color_1", 193, },
+	{"object/tangible/wearables/dress/dress_s35.iff", "/private/index_color_2", 195, "/private/index_color_1", 193, },
+	{"object/tangible/wearables/dress/dress_s35.iff", "/private/index_color_2", 195, "/private/index_color_1", 193, },
+	{"object/tangible/wearables/dress/dress_s35.iff", "/private/index_color_2", 195, "/private/index_color_1", 193, },
+	{"object/tangible/wearables/dress/dress_s35.iff", "/private/index_color_2", 195, "/private/index_color_1", 193, },
+	{"object/tangible/wearables/dress/dress_s35.iff", "/private/index_color_2", 195, "/private/index_color_1", 193, },
+	{"object/tangible/wearables/gloves/gloves_s12.iff", "/private/index_color_1", 34, },
+	{"object/tangible/wearables/dress/dress_s35.iff", "/private/index_color_2", 195, "/private/index_color_1", 193, },
+	{"object/tangible/wearables/dress/dress_s35.iff", "/private/index_color_2", 195, "/private/index_color_1", 193, },
+	{"object/tangible/wearables/dress/dress_s35.iff", "/private/index_color_2", 195, "/private/index_color_1", 193, },
+	{"object/tangible/wearables/shoes/shoes_s09.iff", "/private/index_color_2", 44, "/private/index_color_1", 0, },
+	{"object/tangible/wearables/dress/dress_s35.iff", "/private/index_color_2", 195, "/private/index_color_1", 193, },
+}
