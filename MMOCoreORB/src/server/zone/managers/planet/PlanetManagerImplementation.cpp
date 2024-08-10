@@ -498,7 +498,8 @@ Reference<SceneObject*> PlanetManagerImplementation::loadSnapshotObject(WorldSna
 	object = zoneServer->createClientObject(serverTemplate.hashCode(), objectID);
 
 	if(object == nullptr) {
-		info("Could not load snapshot objectID " + String::valueOf(objectID) + " located at X: " + String::valueOf(position.getX()) + " Z: " + String::valueOf(position.getZ()) + " Y: " + String::valueOf(position.getY()), true);
+		info("Could not load snapshot objectID " + String::valueOf(objectID) + " located at X: " + String::valueOf(position.getX()) + " Z: " + String::valueOf(position.getZ()) + " Y: " + String::valueOf(position.getY()) + " Cell: " + String::valueOf(node->getCellID()), true);
+		return nullptr;
 	}
 
 	Locker locker(object);
