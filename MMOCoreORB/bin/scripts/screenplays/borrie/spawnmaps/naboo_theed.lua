@@ -631,6 +631,10 @@ function NabooTheedScreenPlay:spawnCivilians()
 		{2.01953, 1.1, -5.41895, 324, 980037760,{"sitchair"}},
 		{-4.4713, 1.1, -2.44153, 206, 980037760,{"none"}},
 		{-5.2793, 1.1, -2.3478, 181, 980037760,{"social"}},
+		-- Market
+		{-4891.81, 6, 4073.47, 36, 0,{"none"}},
+		{-4890.02, 6, 4074.99, 239, 0,{"social"}},
+		{-4887.49, 6, 4076.79, 133, 0,{"none"}},
 	}
 	
 	CivillianGenerator:spawnCivillians(self.screenplayName, "rp_naboo", waypointList, self.walkpointList, "human_only", "naboo")
@@ -737,6 +741,16 @@ function NabooTheedScreenPlay:spawnMobiles()
 	SceneObject(pNpc):setCustomObjectName("Tamara Timur (a Mount Vendor)")
 	SceneObject(pNpc):setStoredString("vendor:theme", "mount")
 	SceneObject(pNpc):setStoredString("vendor:shopList", "shop_mounts_naboo")
+	--Melee Vendor Light
+	pNpc = spawnRoleplayMobile("rp_naboo", "rp_convo_npc", 1, -4900.56, 6, 4082.91, 136, 0, "rp_human_male", "naboo/theed/melee_cheap", "default", "naboo/theed/melee_cheap", "rpg_shopkeeper")
+	SceneObject(pNpc):setCustomObjectName("Coren Dahrk (a Melee Weapons Vendor)")
+	SceneObject(pNpc):setStoredString("vendor:theme", "novice_melee")
+	SceneObject(pNpc):setStoredString("vendor:shopList", "shop_weapons_melee_novice")
+	--Ranged Vendor Light
+	pNpc = spawnRoleplayMobile("rp_naboo", "rp_convo_npc", 1, -4900.56, 6, 4082.91, 136, 0, "rp_human_female", "naboo/theed/ranged_cheap", "default", "naboo/theed/ranged_cheap", "rpg_shopkeeper")
+	SceneObject(pNpc):setCustomObjectName("Hilia Veeten (a Ranged Weapon Vendor)")
+	SceneObject(pNpc):setStoredString("vendor:theme", "novice_ranged")
+	SceneObject(pNpc):setStoredString("vendor:shopList", "shop_weapons_ranged_novice")
 
 	--Tailor
 	pNpc = spawnRoleplayMobile("rp_naboo", "rp_base_npc", 1, -6.77017, 0.7, -4.71928, 42, 980037315, "rp_human_male", "naboo/theed/tailor", "default", "naboo/theed/tailor")

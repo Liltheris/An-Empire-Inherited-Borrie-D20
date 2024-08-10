@@ -89,4 +89,4 @@ object_weapon_ranged_pistol_pistol_westar35 = object_weapon_ranged_pistol_shared
 	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 }
 
-ObjectTemplates:addTemplate(object_weapon_ranged_pistol_pistol_westar35, "object/weapon/ranged/pistol/pistol_westar35.iff")
+ObjectTemplates:addTemplate(object_weapon_ranged_pistol_pistol_westar35, "object/weapon/ranged/pistol/pistol_westar_35.iff")

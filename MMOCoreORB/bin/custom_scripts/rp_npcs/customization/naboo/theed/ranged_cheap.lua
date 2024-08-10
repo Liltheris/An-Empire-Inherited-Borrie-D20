@@ -37,4 +37,5 @@ customization = {
 	{"/private/index_style_eyeshadow", 0},
 	{"/private/index_color_lips", 38},
 	{"height", 1.00554},
+	{"hair_object", "object/tangible/hair/human/shared_hair_human_female_s32.iff","/private/index_color_1", 10, },
 }
