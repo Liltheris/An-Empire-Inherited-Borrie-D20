@@ -747,7 +747,7 @@ function NabooTheedScreenPlay:spawnMobiles()
 	SceneObject(pNpc):setStoredString("vendor:theme", "novice_melee")
 	SceneObject(pNpc):setStoredString("vendor:shopList", "shop_weapons_melee_novice")
 	--Ranged Vendor Light
-	pNpc = spawnRoleplayMobile("rp_naboo", "rp_convo_npc", 1, -4900.56, 6, 4082.91, 136, 0, "rp_human_female", "naboo/theed/ranged_cheap", "default", "naboo/theed/ranged_cheap", "rpg_shopkeeper")
+	pNpc = spawnRoleplayMobile("rp_naboo", "rp_convo_npc", 1, -4892.35, 6, 4068.29, 309, 0, "rp_human_female", "naboo/theed/ranged_cheap", "default", "naboo/theed/ranged_cheap", "rpg_shopkeeper")
 	SceneObject(pNpc):setCustomObjectName("Hilia Veeten (a Ranged Weapon Vendor)")
 	SceneObject(pNpc):setStoredString("vendor:theme", "novice_ranged")
 	SceneObject(pNpc):setStoredString("vendor:shopList", "shop_weapons_ranged_novice")
