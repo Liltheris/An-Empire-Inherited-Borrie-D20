@@ -75,7 +75,7 @@ end
 
 function SulonSaltaloStationScreenPlay:spawnSceneObjects() 
 	--Travel Terminals
-	spawnSceneObject("rp_sulon", "object/tangible/terminal/terminal_travel_rp.iff", 4316.23, 6, -5390.87, 0, 0, 0, 1, 0)
+	--spawnSceneObject("rp_sulon", "object/tangible/terminal/terminal_travel_rp.iff", 4316.23, 6, -5390.87, 0, 0, 0, 1, 0)
 	
 	--Signs
 	local sObj = spawnSceneObject("rp_sulon", "object/tangible/sign/player/shop_sign_s01.iff", 4244.06, 6, -5392.05, 0, 1, 0, 0, 0) -- Plainswalker Guns
