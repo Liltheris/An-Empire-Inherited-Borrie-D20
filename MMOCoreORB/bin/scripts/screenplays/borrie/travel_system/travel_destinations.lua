@@ -326,7 +326,7 @@ travel_destinations = {
 		name = "Sulon",
 		zone = "rp_sulon",
 		spaceports = {
-			{
+			--[[{
 				tag = "saltalo",
 				name = "Saltalo Station",
 				access = "public",
@@ -336,7 +336,7 @@ travel_destinations = {
 					{"rp_sulon", 4452.26, 13.8534, -5358.66, 242, 0},
 				},
 				public_arrival = {"rp_sulon", 4343.12, 6, -5382.47, 218, 0}
-			},
+			},]]
 			{
 				tag = "barons_hed",
 				name = "Barons Hed Spaceport",
@@ -356,6 +356,15 @@ travel_destinations = {
 				landing_spots = {
 					{"rp_sulon", 5367.0, 0.0, -5743.0, 0, 0},
 				}
+			},
+			{
+				tag = "saltalo",
+				name = "Saltalo Station",
+				landing_spots = {
+					{"rp_sulon", 4452.29, 13.5625, -5401.87, 273, 0},
+					{"rp_sulon", 4438.71, 11.4128, -5459.28, 289, 0},
+					{"rp_sulon", 4452.26, 13.8534, -5358.66, 242, 0},
+				},
 			},
 		}
 	},
