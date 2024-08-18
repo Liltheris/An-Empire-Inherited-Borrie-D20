@@ -22,7 +22,7 @@ end
 
 function SulonSaltaloStationScreenPlay:spawnCivilians() 
 	local waypointList = {
-		{4240.97, 6, -5398.66, 305, 0,{"tech"},""},
+--[[		{4240.97, 6, -5398.66, 305, 0,{"tech"},""},
 		{4249.54, 6, -5386.5, 224, 0,{"social"},""},
 		{4248.48, 6, -5387.2, 68, 0,{"social"},""},
 		{4258.2, 6, -5385.92, 91, 0,{"social"},""},
@@ -67,7 +67,7 @@ function SulonSaltaloStationScreenPlay:spawnCivilians()
 		{4350.24, 6, -5384.26, 230, 0,{"none"},""},
 		{4323.24, 6, -5389, 311, 0,{"tech"},""},
 		{4323.06, 6, -5413.87, 179, 0,{"social"},""},
-		{4322.18, 6, -5414.75, 89, 0,{"social"},""},
+		{4322.18, 6, -5414.75, 89, 0,{"social"},""},]]
 	}
 	
 	CivillianGenerator:spawnCivillians(self.screenplayName, "rp_sulon", waypointList, self.walkpointList, "sulon", "sulon")
@@ -75,7 +75,7 @@ end
 
 function SulonSaltaloStationScreenPlay:spawnSceneObjects() 
 	--Travel Terminals
-	spawnSceneObject("rp_sulon", "object/tangible/terminal/terminal_travel_rp.iff", 4316.23, 6, -5390.87, 0, 0, 0, 1, 0)
+	--spawnSceneObject("rp_sulon", "object/tangible/terminal/terminal_travel_rp.iff", 4316.23, 6, -5390.87, 0, 0, 0, 1, 0)
 	
 	--Signs
 	local sObj = spawnSceneObject("rp_sulon", "object/tangible/sign/player/shop_sign_s01.iff", 4244.06, 6, -5392.05, 0, 1, 0, 0, 0) -- Plainswalker Guns
@@ -183,7 +183,7 @@ end
 
 function SulonSaltaloStationScreenPlay:spawnMobiles()
 	--Species, Equipment, Skills, Customization
-	local pNpc = spawnRoleplayMobile("rp_sulon", "rp_convo_npc", 1, 4178.07, 6, -5382.97, 180, 0, "rp_sullustan_male", "sulon_vendor_melee_01", "default", "random", "rpg_shopkeeper") --Melee Vendor
+--[[	local pNpc = spawnRoleplayMobile("rp_sulon", "rp_convo_npc", 1, 4178.07, 6, -5382.97, 180, 0, "rp_sullustan_male", "sulon_vendor_melee_01", "default", "random", "rpg_shopkeeper") --Melee Vendor
 	SceneObject(pNpc):setCustomObjectName("Targo Lien (a Melee Weapons Vendor)")
 	SceneObject(pNpc):setStoredString("vendor:theme", "novice_melee")
     SceneObject(pNpc):setStoredString("vendor:shopList", "shop_weapons_melee_novice")
@@ -237,5 +237,5 @@ function SulonSaltaloStationScreenPlay:spawnMobiles()
 	pNpc = 		 spawnRoleplayMobile("rp_sulon", "rp_base_npc", 1, 4203.86, 9.20122, -5319.23, 0, 0, "rp_human_male", "sulon_station_guard", "default", "random") --Guard
 	SceneObject(pNpc):setCustomObjectName("a Saltalo Station Militaman")
 	pNpc = 		 spawnRoleplayMobile("rp_sulon", "rp_base_npc", 1, 4187.8, 6, -5383.05, 226, 0, "rp_sullustan_male", "sulon_station_guard", "default", "random") --Guard
-	SceneObject(pNpc):setCustomObjectName("a Saltalo Station Militaman")
+	SceneObject(pNpc):setCustomObjectName("a Saltalo Station Militaman")]]
 end
