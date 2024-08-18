@@ -30,7 +30,7 @@ skillSet = {
     {"rp_resolve",          5, 5},
     {"rp_science",          0, 0},
     {"rp_slicing",          0, 0},
-    {"rp_stealth",          0, 0},
+    {"rp_stealth",          4, 4},
     {"rp_survival",         5, 5},
     {"rp_throwing",         4, 4},
     {"rp_unarmed",          2, 2},

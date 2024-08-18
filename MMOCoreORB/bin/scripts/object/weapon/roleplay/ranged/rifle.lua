@@ -224,7 +224,7 @@ object_weapon_roleplay_ranged_rifle_dc15a_rifle = object_weapon_ranged_rifle_ep3
 
 	--Damage (minDamage[d]maxDamage) i.e. (2d20)
 	minDamage = 1, --Amount of Die used in Damage
-	maxDamage = 10, --Type of Die used in Damage
+	maxDamage = 6, --Type of Die used in Damage
 	bonusDamage = 4,
 	
 	noDodgeReaction = true,	
