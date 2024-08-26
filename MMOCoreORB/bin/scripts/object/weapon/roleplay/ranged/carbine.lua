@@ -9,7 +9,7 @@ _armorPiercing = NONE
 
 _pointBlankRange = 16	--Start of ideal range
 _idealRange = 64		--End of ideal range
-_maxRange = 86			--Total max range
+_maxRange = 100			--Total max range
 
 _pointBlankAccuracy = 5	--DC under point blank range
 _idealAccuracy = 10		--DC within ideal range
