@@ -106,7 +106,7 @@ public:
 		if (ghost == nullptr)
 			return false;
 
-		String language = getLanguageNameSkills().get(ghost->getLanguageID());
+		String language = getLanguageNameSkills().get(languageID);
 
 		return creature->getSkillMod(language) > 0;
 	}
