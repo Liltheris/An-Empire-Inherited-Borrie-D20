@@ -74,6 +74,8 @@ public:
 		}
 
 		String message = args.getRemainingString();
+		// Reset the args for chat type parsing.
+		args = StringTokenizer(message);
 		int chatType = 0;
 		String chatTypeString = "";
 
