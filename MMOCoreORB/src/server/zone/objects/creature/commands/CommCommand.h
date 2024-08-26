@@ -81,8 +81,10 @@ public:
 			chatTypeString = args.getStringToken().toLowerCase();
 
 			if (BorrieRPG::GetChatTypeID(chatTypeString) != -1 && chatTypeString != "emote" && chatTypeString != "think" && chatTypeString != "say"){
+				ChatManager* chatManager = ServerCore::getZoneServer()->getChatManager();
+
 				//Set our chatType and remove the tag from our command.
-				chatType = BorrieRPG::GetChatTypeID(chatTypeString);
+				chatType = chatManager->getSpatialChatType(chatTypeString);
 				message = args.getRemainingString();
 			}
 		}
