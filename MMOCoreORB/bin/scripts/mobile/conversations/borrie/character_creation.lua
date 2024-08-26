@@ -87,6 +87,14 @@ screen = ConvoScreen:new {
 character_creation:addScreen(screen)
 
 screen = ConvoScreen:new {
+  id = "start_naboo",
+  customDialogText = "ERROR",
+  stopConversation = "false",
+  options = {}
+}
+character_creation:addScreen(screen)
+
+screen = ConvoScreen:new {
   id = "start_mandalore",
   customDialogText = "ERROR",
   stopConversation = "false",
