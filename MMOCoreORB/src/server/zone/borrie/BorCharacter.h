@@ -41,6 +41,76 @@ public:
 			return false;
 	}
 
+	static Vector<String> getLanguageNames() {
+		Vector<String> out;
+
+		//Adding basic twice since languages are indexed at 1.
+		out.add("Basic");
+		out.add("Basic");
+		out.add("Rodian");
+		out.add("Dosh");
+		out.add("Mon Calamari");
+		out.add("Shyriiwook");
+		out.add("Bothese");
+		out.add("Ryl");
+		out.add("Zabrak");
+		out.add("Lekku");
+		out.add("Ithorian");
+		out.add("Sullustan");
+		out.add("Cheunh");
+		out.add("Mando'a");
+		out.add("Miralukese");
+		out.add("Huttese");
+		out.add("Mirialan");
+		out.add("Jawaese");
+		out.add("Jawa Trade");
+		out.add("Sith");
+
+		return out;
+	}
+
+	static Vector<String> getLanguageNameSkills() {
+		Vector<String> out;
+
+		//Adding basic twice since languages are indexed at 1.
+		out.add("language_basic_comprehend");
+		out.add("language_basic_comprehend");
+		out.add("language_rodian_comprehend");
+		out.add("language_trandoshan_comprehend");
+		out.add("language_moncalamari_comprehend");
+		out.add("language_wookiee_comprehend");
+		out.add("language_bothan_comprehend");
+		out.add("language_twilek_comprehend");
+		out.add("language_zabrak_comprehend");
+		out.add("language_lekku_comprehend");
+		out.add("language_ithorian_comprehend");
+		out.add("language_sullustan_comprehend");
+		out.add("language_chiss_comprehend");
+		out.add("language_mandoa_comprehend");
+		out.add("language_miraluka_comprehend");
+		out.add("language_hutt_comprehend");
+		out.add("language_mirialan_comprehend");
+		out.add("language_jawa_comprehend");
+		out.add("language_jawatrade_comprehend");
+		out.add("language_sith_comprehend");
+
+		return out;
+	}
+
+	static bool understandsLanguage(CreatureObject* creature, int languageID) {
+		if (creature == nullptr)
+			return false;
+
+		ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
+
+		if (ghost == nullptr)
+			return false;
+
+		String language = getLanguageNameSkills().get(ghost->getLanguageID());
+
+		return creature->getSkillMod(language) > 0;
+	}
+
 	static int getAvailableAction(CreatureObject* creature) {
         if(creature->getHAM(3) == 0)
             return creature->getHAM(6);
