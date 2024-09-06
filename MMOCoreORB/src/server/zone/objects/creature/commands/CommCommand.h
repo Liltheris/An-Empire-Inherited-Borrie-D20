@@ -74,6 +74,8 @@ public:
 		}
 
 		String message = args.getRemainingString();
+		// Reset the args for chat type parsing.
+		args = StringTokenizer(message);
 		int chatType = 0;
 		String chatTypeString = "";
 
@@ -81,17 +83,40 @@ public:
 			chatTypeString = args.getStringToken().toLowerCase();
 
 			if (BorrieRPG::GetChatTypeID(chatTypeString) != -1 && chatTypeString != "emote" && chatTypeString != "think" && chatTypeString != "say"){
+				ChatManager* chatManager = ServerCore::getZoneServer()->getChatManager();
+
 				//Set our chatType and remove the tag from our command.
-				chatType = BorrieRPG::GetChatTypeID(chatTypeString);
-				message = message.subString(1+ chatTypeString.length(), message.length());
+				chatType = chatManager->getSpatialChatType(chatTypeString);
+				message = args.getRemainingString();
 			}
 		}
 
-		creature->getZoneServer()->getChatManager()->broadcastChatMessage(creature, "<C> " + message, 0, chatType, creature->getMoodID(), ghost->getLanguageID());
-		//Finally, add our chatType into the comm message.
+		if (ghost->getLanguageID() == 9) {
+			creature->sendSystemMessage("You must use a verbal language to use /comm.");
+			return SUCCESS;
+		}
+
+		creature->getZoneServer()->getChatManager()->broadcastChatMessage(creature, "<C> " + message, 0, chatType, creature->getMoodID(), 0U, ghost->getLanguageID());
+		
+		if (!BorCharacter::understandsLanguage(targetCreature, ghost->getLanguageID())){
+			message = creature->getDisplayedName()+" speaks in a language you do not understand.";
+		}
+
+		// Add our mood if it's not 0.
+		if (creature->getMoodID() != 0){
+			message = "("+BorrieRPG::Capitalize(creature->getMoodString())+") "+message;
+		}
+
+		// Add our chatType if it's not 0.
 		if (chatType != 0){
 			message = "("+ BorrieRPG::Capitalize(chatTypeString) +") " + message;
 		}
+
+		// Add our language when not speaking Basic.
+		if (ghost->getLanguageID() != 1 && BorCharacter::understandsLanguage(targetCreature, ghost->getLanguageID())) {
+			message = "("+BorCharacter::getLanguageNames().get(ghost->getLanguageID())+") "+message;
+		}
+
 		targetCreature->sendSystemMessage("[Comm, " + creature->getFirstName() +"]: " + message);
 		targetCreature->playMusicMessage("sound/ui_incoming_im.snd");
 

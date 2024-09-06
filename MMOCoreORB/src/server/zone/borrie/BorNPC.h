@@ -302,7 +302,7 @@ public:
 				prefix = "[" + creature->getFirstName() + "] ";
 
 			Locker locker(targetCreature);
-			creature->getZoneServer()->getChatManager()->broadcastChatMessage(targetCreature, prefix + speech, 0, chatType, creature->getMoodID(), ghost->getLanguageID());
+			creature->getZoneServer()->getChatManager()->broadcastChatMessage(targetCreature, prefix + speech, 0, chatType, creature->getMoodID(), 0U, ghost->getLanguageID());
 		} else {
 			creature->sendSystemMessage("ERROR: Only creatures and characters can speak.");
 			throw Exception();

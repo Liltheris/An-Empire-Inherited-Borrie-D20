@@ -189,6 +189,10 @@ function character_creation_convo_handler:runScreenHandlers(conversationTemplate
 				planet = travelSystem:getPlanetFromTag("ord_mantell")
 				dest = planet.spaceports[1].public_arrival
 			end
+			if(screenID == "start_naboo") then
+				planet = travelSystem:getPlanetFromTag("naboo")
+				dest = planet.spaceports[1].public_arrival
+			end
 		else
 			local destTag = string.gsub(screenID, "start_", "")
 			planet = travelSystem:getPlanetFromTag(destTag)
@@ -248,6 +252,7 @@ function character_creation_convo_handler:runScreenHandlers(conversationTemplate
 			if(isImp) then
 				clonedConversation:addOption("Carida.", "start_carida")
 				clonedConversation:addOption("Tatooine.", "start_tatooine")
+				clonedConversation:addOption("Naboo.", "start_naboo")
 				clonedConversation:addOption("Rori.", "start_rori")
 				clonedConversation:addOption("Ord Mantell.", "start_ord_mantell")
 				--clonedConversation:addOption("Sulon.", "start_sulon")
@@ -262,6 +267,7 @@ function character_creation_convo_handler:runScreenHandlers(conversationTemplate
 				clonedConversation:addOption("Mandalore.", "start_mandalore")
 			end
 			clonedConversation:addOption("Tatooine.", "start_tatooine")
+			clonedConversation:addOption("Naboo.", "start_naboo")
 			clonedConversation:addOption("Rori.", "start_rori")
 			clonedConversation:addOption("Dantooine.", "start_dantooine")
 			clonedConversation:addOption("Ord Mantell.", "start_ord_mantell")
