@@ -67,9 +67,9 @@ object_weapon_ranged_heavy_heavy_rocket_launcher = object_weapon_ranged_heavy_sh
 
 	pointBlankRange = 40,
 	pointBlankAccuracy = 5,
-	idealRange = 80,
+	idealRange = 150,
 	idealAccuracy = 10,
-	maxRange = 120,
+	maxRange = 250,
 	maxRangeAccuracy = 99,
 	
 	area = 10,
