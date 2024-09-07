@@ -239,6 +239,14 @@ function NabooKerenScreenPlay:spawnCivilians()
 		{1796.07, 12.5234, 2614, 270, 0,{"none"}},
 		{-14.7087, 1.00064, 5.20773, 231, 1393866,{"sad"}},
 		{-16.8431, 1.00093, 3.44571, 47, 1393866,{"happy"}},
+		-- imps
+		{-9.82201, 1.30312, 8.63911, 245, 980039026,{"none"}},
+		{-10.4608, 1.30262, 9.19796, 209, 980039026,{"none"}},
+		{-3.58858, 3.18179, 23.6932, 180, 980039025,{"sitchair"}},
+		{-4.08614, 3.14133, 22.758, 26, 980039025,{"none"}},
+		{22.3222, 1.29987, -6.32728, 308, 980039026,{"none"}},
+		{-23.0159, 1.29892, -6.78131, 45, 980039026,{"none"}},
+		{-22.0146, 1.30034, -6.04334, 220, 980039026,{"none"}},
 	}
 	
 	CivillianGenerator:spawnCivillians(self.screenplayName, "rp_naboo", waypointList, self.walkpointList, "human_only", "naboo")
@@ -257,4 +265,16 @@ end
 function NabooKerenScreenPlay:spawnMobiles()
 	--Species, Equipment, Skills, Customization
 	local pNpc
+
+	createTemplatedRoleplayNPC("faction/imperial/trooper", 2159.89, 60.1973, 2799.89, 179, 0, "rp_naboo")
+	createTemplatedRoleplayNPC("faction/imperial/trooper", 2170.2, 60.1973, 2799.78, 177, 0, "rp_naboo")
+	createTemplatedRoleplayNPC("faction/imperial/trooper", 2084.51, 60.1064, 2794.87, 272, 0, "rp_naboo")
+	createTemplatedRoleplayNPC("faction/imperial/trooper", 2084.31, 60.1064, 2791.38, 272, 0, "rp_naboo")
+
+	createTemplatedRoleplayNPC("faction/imperial/officer", -11.0607, 1.30281, 8.13289, 45, 980039026, "rp_naboo")
+	createTemplatedRoleplayNPC("faction/imperial/officer", -6.31616, 0.3, -7.00788, 88, 980039026, "rp_naboo")
+	createTemplatedRoleplayNPC("faction/imperial/officer", -5.05815, 0.3, -6.94169, 264, 980039026, "rp_naboo")
+	createTemplatedRoleplayNPC("faction/imperial/officer", 20.9468, 1.3018, -5.43105, 123, 980039026, "rp_naboo")
+	createTemplatedRoleplayNPC("faction/imperial/officer", 21.869, 1.30099, -4.77647, 172, 980039026, "rp_naboo")
+	createTemplatedRoleplayNPC("faction/imperial/officer", 12.4838, 1.30066, 11.8502, 205, 980039026, "rp_naboo")
 end

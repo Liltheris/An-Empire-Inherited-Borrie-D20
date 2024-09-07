@@ -156,5 +156,22 @@ end
 function NabooMoeniaScreenPlay:spawnMobiles()
 	--Species, Equipment, Skills, Customization
 	local pNpc
-	
+
+	createTemplatedRoleplayNPC("planet/naboo/borhek_scout", 5027, 3.75, -4905.7, 223, 0, "rp_naboo")
+	createTemplatedRoleplayNPC("planet/naboo/borhek_scout", 5025.84, 3.75, -4905.68, 101, 0, "rp_naboo")
+	createTemplatedRoleplayNPC("planet/naboo/borhek_scout", 4987.19, 3.75, -4954.83, 170, 0, "rp_naboo")
+	createTemplatedRoleplayNPC("planet/naboo/borhek_scout", 4987.29, 3.75, -4956.65, 0, 0, "rp_naboo")
+
+	createTemplatedRoleplayNPC("planet/naboo/borhek_goon", 5012.29, 3.75, -4921.42, 268, 0, "rp_naboo")
+	createTemplatedRoleplayNPC("planet/naboo/borhek_goon", 5012.25, 3.75, -4931.3, 269, 0, "rp_naboo")
+	createTemplatedRoleplayNPC("planet/naboo/borhek_goon", 5000.05, 3.75, -4955.67, 232, 0, "rp_naboo")
+	createTemplatedRoleplayNPC("planet/naboo/borhek_goon", 5000.43, 3.75, -4957.07, 323, 0, "rp_naboo")
+	createTemplatedRoleplayNPC("planet/naboo/borhek_goon", 4983.7, 3.75, -4972.32, 274, 0, "rp_naboo")
+	createTemplatedRoleplayNPC("planet/naboo/borhek_goon", 4989.51, 3.75, -4919.26, 104, 0, "rp_naboo")
+	createTemplatedRoleplayNPC("planet/naboo/borhek_goon", 5049.43, 3.75, -4898.82, 89, 0, "rp_naboo")
+	createTemplatedRoleplayNPC("planet/naboo/borhek_goon", 5049.78, 3.75, -4894.43, 98, 0, "rp_naboo")
+	createTemplatedRoleplayNPC("planet/naboo/borhek_goon", 5026.47, 3.75, -4907.04, 0, 0, "rp_naboo")
+
+	createTemplatedRoleplayNPC("planet/naboo/borhek_enforcer", 4998.81, 3.75, -4955.97, 91, 0, "rp_naboo")
+
 end

@@ -304,6 +304,19 @@ function NabooKaadaraScreenPlay:spawnCivilians()
 		{-25.0581, -0.894992, -15.0002, 354, 75,{"sit"}},
 		{-47.7539, 0.105009, -22.9471, 33, 76,{"sitchair"}},
 		{-47.7976, 0.10279, -13.945, 359, 76,{"tech"}},
+		--Brothel
+		{6.67808, 1.1, -1.2788, 268, 1741360,{"sitchair"}},
+		{-5.16213, 1.1, 5.065, 160, 1741360,{"sitchair"}},
+		{-5.41026, 1.1, -3.01978, 6, 1741360,{"sitchair"}},
+		{-2.33153, 1.1, -3.3183, 266, 1741360,{"drinker"}},
+		{-2.69442, 1.1, -2.81591, 227, 1741360,{"drinker"}},
+		{0.0377354, 1.1, -5.5, 349, 1741360,{"drinker"}},
+		{-4.45798, 1.1, 3.93988, 314, 1741360,{"social"}},
+		{-10.8753, -4.9, 0.476411, 186, 1741361,{"drinker"}},
+		{-1.9049, 6.1, 5.86832, 235, 1741360,{"drinker"}},
+		{-7.67739, 6.1, -2.17565, 85, 1741360,{"drinker"}},
+		{-5.37833, 6.1, -10.0523, 207, 1741363,{"social"}},
+		{-9.68302, 6.1, -5.63661, 294, 1741363,{"drinker"}},
 	}
 	
 	CivillianGenerator:spawnCivillians(self.screenplayName, "rp_naboo", waypointList, self.walkpointList, "humanocentric", "naboo")
@@ -322,4 +335,19 @@ end
 function NabooKaadaraScreenPlay:spawnMobiles()
 	--Species, Equipment, Skills, Customization
 	local pNpc
+	
+	createTemplatedRoleplayNPC("planet/naboo/workinggirl", 1.71594, 1.1, 1.13482, 306, 1741360, "rp_naboo")
+	createTemplatedRoleplayNPC("planet/naboo/workinggirl", 0.28059, 1.1, 2.26861, 131, 1741360, "rp_naboo")
+	createTemplatedRoleplayNPC("planet/naboo/workinggirl", -3.30001, 1.1, -3.31542, 57, 1741360, "rp_naboo")
+	createTemplatedRoleplayNPC("planet/naboo/workinggirl", -7.40324, 1.1, 2.17575, 93, 1741360, "rp_naboo")
+	createTemplatedRoleplayNPC("planet/naboo/workinggirl", -11, -4.9, -0.55973, 0, 1741361, "rp_naboo")
+	createTemplatedRoleplayNPC("planet/naboo/workinggirl", -1.89759, 1.1, -10.6341, 0, 1741362, "rp_naboo")
+	createTemplatedRoleplayNPC("planet/naboo/workinggirl", -1.91488, 1.1, -9.60765, 179, 1741362, "rp_naboo")
+	createTemplatedRoleplayNPC("planet/naboo/workinggirl", -2.63849, 6.1, 5.86832, 177, 1741360, "rp_naboo")
+	createTemplatedRoleplayNPC("planet/naboo/workinggirl", 1.02756, 6.1, -3.87494, 0, 1741360, "rp_naboo")
+	createTemplatedRoleplayNPC("planet/naboo/workinggirl", 1.66081, 6.1, -3.87494, 0, 1741360, "rp_naboo")
+	createTemplatedRoleplayNPC("planet/naboo/workinggirl", -5.90449, 6.1, -10.7673, 43, 1741363, "rp_naboo")
+	createTemplatedRoleplayNPC("planet/naboo/workinggirl", -10.6659, 6.1, -5.10273, 106, 1741363, "rp_naboo")
+	createTemplatedRoleplayNPC("planet/naboo/workinggirl", -10.2404, 6.1, -10.1572, 90, 1741363, "rp_naboo")
+	
 end
