@@ -1,0 +1,13 @@
+spawnRoleplayMobile("rp_naboo", "rp_base_npc", 1, 1.71594, 1.1, 1.13482, 306, 1741360, "object/mobile/rp_twilek_female.iff", "default", "default", "default") --Equip, Skill, Customization
+spawnRoleplayMobile("rp_naboo", "rp_base_npc", 1, 0.28059, 1.1, 2.26861, 131, 1741360, "object/mobile/rp_twilek_female.iff", "default", "default", "default") --Equip, Skill, Customization
+spawnRoleplayMobile("rp_naboo", "rp_base_npc", 1, -3.30001, 1.1, -3.31542, 57, 1741360, "object/mobile/rp_twilek_female.iff", "default", "default", "default") --Equip, Skill, Customization
+spawnRoleplayMobile("rp_naboo", "rp_base_npc", 1, -7.40324, 1.1, 2.17575, 93, 1741360, "object/mobile/rp_mirialan_female.iff", "default", "default", "default") --Equip, Skill, Customization
+spawnRoleplayMobile("rp_naboo", "rp_base_npc", 1, -11, -4.9, -0.55973, 0, 1741361, "object/mobile/rp_mirialan_female.iff", "default", "default", "default") --Equip, Skill, Customization
+spawnRoleplayMobile("rp_naboo", "rp_base_npc", 1, -1.89759, 1.1, -10.6341, 0, 1741362, "object/mobile/rp_twilek_female.iff", "default", "default", "default") --Equip, Skill, Customization
+spawnRoleplayMobile("rp_naboo", "rp_base_npc", 1, -1.91488, 1.1, -9.60765, 179, 1741362, "object/mobile/rp_human_female.iff", "default", "default", "default") --Equip, Skill, Customization
+spawnRoleplayMobile("rp_naboo", "rp_base_npc", 1, -2.63849, 6.1, 5.86832, 177, 1741360, "object/mobile/rp_human_female.iff", "default", "default", "default") --Equip, Skill, Customization
+spawnRoleplayMobile("rp_naboo", "rp_base_npc", 1, 1.02756, 6.1, -3.87494, 0, 1741360, "object/mobile/rp_twilek_female.iff", "default", "default", "default") --Equip, Skill, Customization
+spawnRoleplayMobile("rp_naboo", "rp_base_npc", 1, 1.66081, 6.1, -3.87494, 0, 1741360, "object/mobile/rp_twilek_female.iff", "default", "default", "default") --Equip, Skill, Customization
+spawnRoleplayMobile("rp_naboo", "rp_base_npc", 1, -5.90449, 6.1, -10.7673, 43, 1741363, "object/mobile/rp_mirialan_female.iff", "default", "default", "default") --Equip, Skill, Customization
+spawnRoleplayMobile("rp_naboo", "rp_base_npc", 1, -10.6659, 6.1, -5.10273, 106, 1741363, "object/mobile/rp_zabrak_female.iff", "default", "default", "default") --Equip, Skill, Customization
+spawnRoleplayMobile("rp_naboo", "rp_base_npc", 1, -10.2404, 6.1, -10.1572, 90, 1741363, "object/mobile/rp_human_female.iff", "default", "default", "default") --Equip, Skill, Customization

@@ -1,0 +1,9 @@
+spawnRoleplayMobile("rp_naboo", "rp_base_npc", 1, 5012.29, 3.75, -4921.42, 268, 0, "object/mobile/rp_weequay_male.iff", "default", "default", "default") --Equip, Skill, Customization
+spawnRoleplayMobile("rp_naboo", "rp_base_npc", 1, 5012.25, 3.75, -4931.3, 269, 0, "object/mobile/rp_human_female.iff", "default", "default", "default") --Equip, Skill, Customization
+spawnRoleplayMobile("rp_naboo", "rp_base_npc", 1, 5000.05, 3.75, -4955.67, 232, 0, "object/mobile/rp_nikto_male.iff", "default", "default", "default") --Equip, Skill, Customization
+spawnRoleplayMobile("rp_naboo", "rp_base_npc", 1, 5000.43, 3.75, -4957.07, 323, 0, "object/mobile/rp_twilek_male.iff", "default", "default", "default") --Equip, Skill, Customization
+spawnRoleplayMobile("rp_naboo", "rp_base_npc", 1, 4983.7, 3.75, -4972.32, 274, 0, "object/mobile/rp_nikto_male.iff", "default", "default", "default") --Equip, Skill, Customization
+spawnRoleplayMobile("rp_naboo", "rp_base_npc", 1, 4989.51, 3.75, -4919.26, 104, 0, "object/mobile/rp_nikto_male.iff", "default", "default", "default") --Equip, Skill, Customization
+spawnRoleplayMobile("rp_naboo", "rp_base_npc", 1, 5049.43, 3.75, -4898.82, 89, 0, "object/mobile/rp_rodian_female.iff", "default", "default", "default") --Equip, Skill, Customization
+spawnRoleplayMobile("rp_naboo", "rp_base_npc", 1, 5049.78, 3.75, -4894.43, 98, 0, "object/mobile/rp_weequay_male.iff", "default", "default", "default") --Equip, Skill, Customization
+spawnRoleplayMobile("rp_naboo", "rp_base_npc", 1, 5026.47, 3.75, -4907.04, 0, 0, "object/mobile/rp_human_male.iff", "default", "default", "default") --Equip, Skill, Customization
