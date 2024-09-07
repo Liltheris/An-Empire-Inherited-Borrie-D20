@@ -398,8 +398,8 @@ function RoriNewRestussScreenPlay:spawnMobiles()
 	SceneObject(pNpc):setCustomObjectName("TC-29")
 	pNpc = spawnRoleplayMobile("rp_rori", "rp_base_npc", 1, 19.7848, 1.56616, 12.2854, 182, 610014474,	"rp_zabrak_male", "tatooine_luxury_speeder_vendor", "default", "default") --Hotel Bartender
 	SceneObject(pNpc):setCustomObjectName("Rork Spune")
-	pNpc = spawnRoleplayMobile("rp_rori", "rp_base_npc", 1, -807.38, 87.8477, 1597.4, 0, 0,				"rp_twilek_male", "faction/imperial/officer_navy", "default", "default") --Dockmaster
-	SceneObject(pNpc):setCustomObjectName("Taralor Me'ern (a Dockmaster)")
+--	pNpc = spawnRoleplayMobile("rp_rori", "rp_base_npc", 1, -807.38, 87.8477, 1597.4, 0, 0,				"rp_twilek_male", "faction/imperial/officer_navy", "default", "default") --Dockmaster
+--	SceneObject(pNpc):setCustomObjectName("Taralor Me'ern (a Dockmaster)")
 	
 	--Animals
 	pNpc = spawnRoleplayMobile("rp_rori", "rp_base_npc", 1, -815.919, 83, 1323.5, 312, 0,		"chuba_hue", "default", "default", "default") --Chuba
