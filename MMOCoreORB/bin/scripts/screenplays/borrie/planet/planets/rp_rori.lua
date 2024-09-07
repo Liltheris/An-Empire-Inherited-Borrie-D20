@@ -1,7 +1,7 @@
 planet = {
 	name = "Rori",
 	zone = "rp_rori",
-	startingFaction = "empire",
+	startingFaction = "newrepublic",
 	startingFactionControl = 70,
 	bases = {
 		"new_restuss_primary",
