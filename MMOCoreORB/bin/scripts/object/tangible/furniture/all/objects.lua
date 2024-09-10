@@ -7652,3 +7652,8 @@ object_tangible_furniture_all_shared_frn_all_light_lamp_tatt_yellow_s01 = Shared
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_light_lamp_tatt_yellow_s01, "object/tangible/furniture/all/shared_frn_all_light_lamp_tatt_yellow_s01.iff")
 ------------------------------------------------------------------------------------------------------------------------------------
+--******************************************************************************************************************************************************************************
+object_tangible_furniture_all_shared_frn_all_feather_pillow_hue_s01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/furniture/all/shared_frn_all_feather_pillow_hue_s01.iff"
+}
+ObjectTemplates:addClientTemplate(object_tangible_furniture_all_shared_frn_all_feather_pillow_hue_s01, "object/tangible/furniture/all/shared_frn_all_feather_pillow_hue_s01.iff")

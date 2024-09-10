@@ -246,3 +246,4 @@ includeFile("tangible/furniture/all/frn_all_light_lamp_tatt_purple_s01.lua")
 includeFile("tangible/furniture/all/frn_all_light_lamp_tatt_red_s01.lua")
 includeFile("tangible/furniture/all/frn_all_light_lamp_tatt_yellow_s01.lua")
 
+includeFile("tangible/furniture/all/frn_all_feather_pillow_hue_s01.lua")
