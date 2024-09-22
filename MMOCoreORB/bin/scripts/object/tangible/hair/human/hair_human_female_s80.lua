@@ -1,0 +1,5 @@
+object_tangible_hair_human_hair_human_female_s80 = object_tangible_hair_human_shared_hair_human_female_s80:new {
+
+}
+
+ObjectTemplates:addTemplate(object_tangible_hair_human_hair_human_female_s80, "object/tangible/hair/human/hair_human_female_s80.iff")

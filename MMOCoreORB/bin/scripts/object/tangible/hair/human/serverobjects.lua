@@ -87,6 +87,7 @@ includeFile("tangible/hair/human/hair_human_female_s42.lua")
 
 includeFile("tangible/hair/human/hair_human_female_s78.lua")
 includeFile("tangible/hair/human/hair_human_female_s79.lua")
+includeFile("tangible/hair/human/hair_human_female_s80.lua")
 
 includeFile("tangible/hair/human/hair_human_male_s01.lua")
 includeFile("tangible/hair/human/hair_human_male_s02.lua")

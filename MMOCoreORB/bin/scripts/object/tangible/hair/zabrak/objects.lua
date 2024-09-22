@@ -2481,3 +2481,7 @@ object_tangible_hair_zabrak_shared_hair_zabrak_female_s51 = SharedTangibleObject
 
 ObjectTemplates:addClientTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_female_s51, "object/tangible/hair/zabrak/shared_hair_zabrak_female_s51.iff")
 
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+object_tangible_hair_zabrak_shared_hair_zabrak_female_s52 = SharedTangibleObjectTemplate:new { clientTemplateFileName = "object/tangible/hair/zabrak/shared_hair_zabrak_female_s52.iff"}
+
+ObjectTemplates:addClientTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_female_s52, "object/tangible/hair/zabrak/shared_hair_zabrak_female_s52.iff")
