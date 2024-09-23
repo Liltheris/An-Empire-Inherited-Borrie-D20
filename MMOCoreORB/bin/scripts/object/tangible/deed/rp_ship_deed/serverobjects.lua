@@ -36,3 +36,5 @@ includeFile("tangible/deed/rp_ship_deed/rp_eta2_deed.lua")
 includeFile("tangible/deed/rp_ship_deed/rp_firespray_deed.lua")
 includeFile("tangible/deed/rp_ship_deed/rp_havoc_deed.lua")
 includeFile("tangible/deed/rp_ship_deed/rp_n1_deed.lua")
+
+includeFile("tangible/deed/rp_ship_deed/rp_g9_deed.lua")

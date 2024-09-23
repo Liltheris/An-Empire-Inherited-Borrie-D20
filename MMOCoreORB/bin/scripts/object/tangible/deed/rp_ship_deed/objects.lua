@@ -188,3 +188,8 @@ object_tangible_deed_rp_ship_deed_shared_rp_n1_deed = SharedTangibleObjectTempla
 }
 ObjectTemplates:addClientTemplate(object_tangible_deed_rp_ship_deed_shared_rp_n1_deed, "object/tangible/deed/rp_ship_deed/shared_rp_n1_deed.iff")
 --**************************************************************************************************************************************************
+object_tangible_deed_rp_ship_deed_shared_rp_g9_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/rp_ship_deed/shared_rp_g9_deed.iff"
+}
+ObjectTemplates:addClientTemplate(object_tangible_deed_rp_ship_deed_shared_rp_g9_deed, "object/tangible/deed/rp_ship_deed/shared_rp_g9_deed.iff")
+--**************************************************************************************************************************************************

@@ -36,3 +36,5 @@ includeFile("intangible/ship/roleplay/rp_eta2_pcd.lua")
 includeFile("intangible/ship/roleplay/rp_firespray_pcd.lua")
 includeFile("intangible/ship/roleplay/rp_havoc_pcd.lua")
 includeFile("intangible/ship/roleplay/rp_n1_pcd.lua")
+
+includeFile("intangible/ship/roleplay/rp_g9_pcd.lua")

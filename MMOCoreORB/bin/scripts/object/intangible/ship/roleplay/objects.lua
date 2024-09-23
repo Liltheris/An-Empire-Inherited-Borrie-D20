@@ -188,3 +188,8 @@ object_intangible_ship_roleplay_shared_rp_n1_pcd = SharedIntangibleObjectTemplat
 }
 ObjectTemplates:addClientTemplate(object_intangible_ship_roleplay_shared_rp_n1_pcd, "object/intangible/ship/roleplay/shared_rp_n1_pcd.iff")
 --********************************************************************************************************************************************
+object_intangible_ship_roleplay_shared_rp_g9_pcd = SharedIntangibleObjectTemplate:new {
+	clientTemplateFileName = "object/intangible/ship/roleplay/shared_rp_g9_pcd.iff"
+}
+ObjectTemplates:addClientTemplate(object_intangible_ship_roleplay_shared_rp_g9_pcd, "object/intangible/ship/roleplay/shared_rp_g9_pcd.iff")
+--********************************************************************************************************************************************

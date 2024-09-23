@@ -44,3 +44,8 @@ object_building_ship_rp_shared_blacksun_transport = SharedBuildingObjectTemplate
 }
 ObjectTemplates:addClientTemplate(object_building_ship_rp_shared_blacksun_transport, "object/building/ship_rp/shared_blacksun_transport.iff")
 --**************************************************************************************************************************************************
+object_building_ship_rp_shared_g9 = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/ship_rp/shared_g9.iff"
+}
+ObjectTemplates:addClientTemplate(object_building_ship_rp_shared_g9, "object/building/ship_rp/shared_g9.iff")
+--**************************************************************************************************************

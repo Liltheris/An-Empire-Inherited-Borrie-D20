@@ -7,3 +7,5 @@ includeFile("building/ship_rp/ykl37r.lua")
 includeFile("building/ship_rp/yt1300.lua")
 includeFile("building/ship_rp/yt2400.lua")
 includeFile("building/ship_rp/blacksun_transport.lua")
+
+includeFile("building/ship_rp/g9.lua")
