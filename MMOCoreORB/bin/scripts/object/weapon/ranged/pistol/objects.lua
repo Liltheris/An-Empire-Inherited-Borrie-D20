@@ -1570,3 +1570,9 @@ object_weapon_ranged_pistol_shared_pistol_blurrg = SharedWeaponObjectTemplate:ne
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_ranged_pistol_shared_pistol_blurrg, "object/weapon/ranged/pistol/shared_pistol_blurrg.iff")
+------------------------------------------------------------------------------------------------------------------------------------------------------
+object_weapon_ranged_pistol_shared_pistol_rk3 = SharedWeaponObjectTemplate:new {
+	clientTemplateFileName = "object/weapon/ranged/pistol/shared_pistol_rk3.iff"
+}
+
+ObjectTemplates:addClientTemplate(object_weapon_ranged_pistol_shared_pistol_rk3, "object/weapon/ranged/pistol/shared_pistol_rk3.iff")

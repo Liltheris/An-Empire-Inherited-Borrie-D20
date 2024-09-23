@@ -1188,7 +1188,38 @@ object_weapon_roleplay_ranged_pistol_blurrg_pistol = object_weapon_ranged_pistol
 	price = 350,
 }
 
+--Blurrg Pistol
+object_weapon_roleplay_ranged_pistol_rk3_pistol = object_weapon_ranged_pistol_shared_pistol_rk3:new {
 
+	--[Info]
+	customName = "RK-3 Pistol",
+
+	--[Stats]
+	damageType = ENERGY,
+	armorPiercing = NONE,
+
+	--Damage (minDamage[d]maxDamage) i.e. (2d20)
+	minDamage = 1, --Amount of Die used in Damage
+	maxDamage = 4, --Type of Die used in Damage
+	bonusDamage = 2,
+	
+	noPowerAttack = false,
+	
+	rarity="Common",
+
+	ammoPack = _ammoPack,
+	maxAmmo = _maxAmmo,
+	
+	--[Stats]
+	attackType = _attackType,
+	pointBlankRange = _pointBlankRange,
+	pointBlankAccuracy = _pointBlankAccuracy,
+	idealRange = _idealRange,
+	idealAccuracy = _idealAccuracy,
+	maxRange = _maxRange,
+	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 350,
+}
 
 -------------------------------------------
 -- Templates
@@ -1229,6 +1260,6 @@ ObjectTemplates:addTemplate(object_weapon_roleplay_ranged_pistol_westar35_blaste
 ObjectTemplates:addTemplate(object_weapon_roleplay_ranged_pistol_cdef_pistol, "object/weapon/roleplay/ranged/pistol/cdef_pistol.iff")
 ObjectTemplates:addTemplate(object_weapon_roleplay_ranged_pistol_bryar_pistol, "object/weapon/roleplay/ranged/pistol/pistol_bryar.iff")
 ObjectTemplates:addTemplate(object_weapon_roleplay_ranged_pistol_blurrg_pistol, "object/weapon/roleplay/ranged/pistol/pistol_blurrg.iff")
-
+ObjectTemplates:addTemplate(object_weapon_roleplay_ranged_pistol_rk3_pistol, "object/weapon/roleplay/ranged/pistol/pistol_rk3.iff")
 
 

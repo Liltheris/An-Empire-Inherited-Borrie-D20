@@ -183,3 +183,8 @@ object_weapon_roleplay_ranged_pistol_pistol_blurrg = SharedWeaponObjectTemplate:
 }
 ObjectTemplates:addClientTemplate(object_weapon_roleplay_ranged_pistol_pistol_blurrg, "object/weapon/roleplay/ranged/pistol/pistol_blurrg.iff")
 --************************************************************************************************************************************************************
+object_weapon_roleplay_ranged_pistol_pistol_rk3 = SharedWeaponObjectTemplate:new {
+	clientTemplateFileName = "object/weapon/roleplay/ranged/pistol/pistol_rk3.iff"
+}
+ObjectTemplates:addClientTemplate(object_weapon_roleplay_ranged_pistol_pistol_rk3, "object/weapon/roleplay/ranged/pistol/pistol_rk3.iff")
+--************************************************************************************************************************************************************
