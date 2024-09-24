@@ -108,11 +108,11 @@ object_weapon_melee_unarmed_unarmed_default_player = object_weapon_melee_unarmed
         mindAttackCost = 10,
 	forceCost = 0,
 	
-	pointBlankAccuracy = 0,
+	pointBlankAccuracy = 5,
 	pointBlankRange = 0,
 	
 	idealRange = 0,
-	idealAccuracy = 3,
+	idealAccuracy = 0,
 	
 	maxRange = 1,
 	maxRangeAccuracy = 99,
