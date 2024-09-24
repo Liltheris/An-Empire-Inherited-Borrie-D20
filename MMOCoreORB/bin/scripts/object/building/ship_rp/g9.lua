@@ -1,5 +1,5 @@
 object_building_ship_rp_g9 = object_building_ship_rp_shared_g9:new {
-	entrancePoint = {0,0},
+	entrancePoint = {-0.0127138,-1.57489},
 	entranceCell = 2,
 
 	childObjects = {
