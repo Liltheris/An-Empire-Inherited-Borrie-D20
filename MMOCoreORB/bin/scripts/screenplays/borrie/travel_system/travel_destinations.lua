@@ -123,11 +123,45 @@ travel_destinations = {
 			{
 				tag = "kaadara_spaceport",
 				name = "Kaadara Spaceport",
+				access = "public",
 				land_ship = true,
 				landing_spots = {
 					{"rp_naboo", 5295.24, -192, 6664.44, 98, 0,},
 				},
 				public_arrival = {"rp_naboo", -0.159824, 0.639421, 51.9605, 2, 1741539},
+			},
+			{
+				tag = "keren_local",
+				name = "Keren",
+				access = "public",
+				land_ship = false,
+				local_only = true,
+				landing_spots = {
+					{"rp_naboo", 2028.0, 0.0, 2525.0, 0, 0},
+				},
+				public_arrival = {"rp_naboo", 2028.0, 0.0, 2525.0, 0, 0}
+			},
+			{
+				tag = "deeja_peak_local",
+				name = "Deeja Peak",
+				access = "public",
+				land_ship = false,
+				local_only = true,
+				landing_spots = {
+					{"rp_naboo", 5384.0, 0.0, -1554.0, 0.0871558, 0},
+				},
+				public_arrival = {"rp_naboo", 5384.0, 0.0, -1554.0, 0.0871558, 0}
+			},
+			{
+				tag = "moenia_local",
+				name = "Moenia",
+				access = "public",
+				land_ship = false,
+				local_only = true,
+				landing_spots = {
+					{"rp_naboo", 4951.0, 0.0, -4938.0, 0.707107, 0},
+				},
+				public_arrival = {"rp_naboo", 4951.0, 0.0, -4938.0, 0.707107, 0}
 			},
 		},
 		landing_sites = {

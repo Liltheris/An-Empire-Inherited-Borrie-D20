@@ -146,7 +146,10 @@ end
 function NabooMoeniaScreenPlay:spawnSceneObjects()
 	local sObj
 	--Travel Terminals
-	
+	sObj = spawnSceneObject("rp_naboo", "object/tangible/terminal/terminal_travel_rp.iff", 4952.3, 4.34863, -4929.29, 0, 0.707107, 0, 0.707107, 0)
+	SceneObject(sObj):setStoredString("local_planet", "naboo")
+	SceneObject(sObj):setCustomObjectName("Local Travel Terminal")
+
 	--Signs
 	
 	--TAILOR--

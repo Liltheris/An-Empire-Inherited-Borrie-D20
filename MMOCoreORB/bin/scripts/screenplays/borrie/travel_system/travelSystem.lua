@@ -137,16 +137,16 @@ function travelSystem:populateLandingSiteList(pPlayer, planet, isPublic)
 	local site_available = false
 	local player_faction = SceneObject(pPlayer):getStoredString("faction_current")
 	local pGhost = CreatureObject(pPlayer):getPlayerObject()
-	local isDM = false
+	local player_zone = SceneObject(pPlayer):getZoneName()
 	local site = {}
 	
 	if (pGhost == nil) then
 		return
 	end
-	
-	if(PlayerObject(pGhost):isPrivileged()) then
-		isDm = true
-	end
+
+	local isDM = PlayerObject(pGhost):isPrivileged()
+	local showLocal = player_zone == planet.zone
+
 	if (planet.spaceports ~= nil) then
 			for i = 1, #planet.spaceports, 1 do
 			site_available = false
@@ -154,6 +154,10 @@ function travelSystem:populateLandingSiteList(pPlayer, planet, isPublic)
 			-- Check if the spaceport is public, or the player is of the same faction.
 			if (site.access == "public" or site.access == player_faction or site.access == nil) then
 				site_available = true
+			end
+			-- Check if the landing site is only available via local transit.
+			if (site.local_only == true) then
+				site_available = site_available and showLocal
 			end
 			-- Add the spaceport if it is available.
 			if(site_available or isDM) then

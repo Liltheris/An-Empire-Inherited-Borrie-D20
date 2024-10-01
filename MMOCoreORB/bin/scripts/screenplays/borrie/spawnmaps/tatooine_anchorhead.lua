@@ -83,7 +83,9 @@ end
 
 function TatooineAnchorheadScreenPlay:spawnSceneObjects() 
 	--Travel Terminals
-spawnSceneObject("rp_tatooine", "object/tangible/terminal/terminal_travel_rp.iff", -552.436, 0, -1784.65, 0, 0.992546, 0, -0.121869, 0)
+	local sObj = spawnSceneObject("rp_tatooine", "object/tangible/terminal/terminal_travel_rp.iff", -552.436, 0, -1784.65, 0, 0.992546, 0, -0.121869, 0)
+	SceneObject(sObj):setStoredString("local_planet", "tatooine")
+	SceneObject(sObj):setCustomObjectName("Local Travel Terminal")
 
 	--local sObj =spawnSceneObject("rp_tatooine", "object/tangible/sign/all_sign_city_s03.iff", -728.883, 0, -1728, 0, 1, 0, 0, 0)
 	--SceneObject(sObj):setCustomObjectName("0m")

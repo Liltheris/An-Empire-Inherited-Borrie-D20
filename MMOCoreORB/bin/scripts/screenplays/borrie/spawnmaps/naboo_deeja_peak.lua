@@ -169,7 +169,10 @@ end
 function NabooDeejaPeakScreenPlay:spawnSceneObjects()
 	local sObj
 	--Travel Terminals
-	
+	sObj = spawnSceneObject("rp_naboo", "object/tangible/terminal/terminal_travel_rp.iff", 5348.21, 326.984, -1552.06, 0, 0.0871558, 0, 0.996195, 0)
+	SceneObject(sObj):setStoredString("local_planet", "naboo")
+	SceneObject(sObj):setCustomObjectName("Local Travel Terminal")
+
 	--Signs
 	
 	--TAILOR--
