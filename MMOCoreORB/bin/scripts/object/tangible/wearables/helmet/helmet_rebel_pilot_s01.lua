@@ -41,18 +41,44 @@
 --this exception also makes it possible to release a modified version 
 
 
+object_tangible_wearables_helmet_helmet_rebel_pilot_s01 = object_tangible_wearables_helmet_shared_helmet_rebel_pilot_s01:new {
+	playerRaces = { "object/creature/player/bothan_male.iff",
+				"object/creature/player/bothan_female.iff",
+				"object/creature/player/human_male.iff",
+				"object/creature/player/human_female.iff",
+				"object/creature/player/moncal_male.iff",
+				"object/creature/player/moncal_female.iff",
+				"object/creature/player/rodian_male.iff",
+				"object/creature/player/rodian_female.iff",
+				"object/creature/player/sullustan_male.iff",
+				"object/creature/player/sullustan_female.iff",
+				"object/creature/player/trandoshan_male.iff",
+				"object/creature/player/trandoshan_female.iff",
+				"object/creature/player/twilek_male.iff",
+				"object/creature/player/twilek_female.iff",
+				"object/creature/player/zabrak_male.iff",
+				"object/creature/player/zabrak_female.iff",
+				"object/mobile/vendor/aqualish_female.iff",
+				"object/mobile/vendor/aqualish_male.iff",
+				"object/mobile/vendor/bothan_female.iff",
+				"object/mobile/vendor/bothan_male.iff",
+				"object/mobile/vendor/devaronian_male.iff",
+				"object/mobile/vendor/human_female.iff",
+				"object/mobile/vendor/human_male.iff",
+				"object/mobile/vendor/moncal_female.iff",
+				"object/mobile/vendor/moncal_male.iff",
+				"object/mobile/vendor/rodian_female.iff",
+				"object/mobile/vendor/rodian_male.iff",
+				"object/mobile/vendor/sullustan_female.iff",
+				"object/mobile/vendor/sullustan_male.iff",
+				"object/mobile/vendor/trandoshan_female.iff",
+				"object/mobile/vendor/trandoshan_male.iff",
+				"object/mobile/vendor/twilek_female.iff",
+				"object/mobile/vendor/twilek_male.iff",
+				"object/mobile/vendor/zabrak_female.iff",
+				"object/mobile/vendor/zabrak_male.iff" },
+				gameObjectType = 16777226,
+        clientGameObjectType = 16777226
+}
 
---Children folder includes
-
--- Server Objects
-includeFile("tangible/wearables/helmet/helmet_atat.lua")
-includeFile("tangible/wearables/helmet/helmet_fighter_blacksun_ace.lua")
-includeFile("tangible/wearables/helmet/helmet_fighter_imperial_ace.lua")
-includeFile("tangible/wearables/helmet/helmet_fighter_privateer_ace.lua")
-includeFile("tangible/wearables/helmet/helmet_fighter_rebel_ace.lua")
-includeFile("tangible/wearables/helmet/helmet_s06.lua")
-includeFile("tangible/wearables/helmet/helmet_tie_fighter.lua")
-includeFile("tangible/wearables/helmet/helmet_tusken_raider_s01.lua")
-includeFile("tangible/wearables/helmet/helmet_tusken_raider_s02.lua")
-
-includeFile("tangible/wearables/helmet/helmet_rebel_pilot_s01.lua")
+ObjectTemplates:addTemplate(object_tangible_wearables_helmet_helmet_rebel_pilot_s01, "object/tangible/wearables/helmet/helmet_rebel_pilot_s01.iff")
