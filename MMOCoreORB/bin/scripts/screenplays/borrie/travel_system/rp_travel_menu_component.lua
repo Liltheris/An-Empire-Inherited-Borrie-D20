@@ -18,12 +18,14 @@ function RpTravelTerminalMenuComponent:handleObjectMenuSelect(pObject, pPlayer, 
 		return 0
 	end
 
+	local suiManager = LuaSuiManager()
+	local options = { }
+
 	-- Hack for local-only travel terminals.
 	if (SceneObject(pObject):getStoredString("local_planet") ~= "") then
 		local planet = travelSystem:getPlanetFromTag(SceneObject(pObject):getStoredString("local_planet"))
 
 		if (planet ~= nil) then
-			local options = {}
 			local sites = travelSystem:populateLandingSiteList(pPlayer, planet, true)
 
 			if(sites == nil) then
@@ -35,11 +37,8 @@ function RpTravelTerminalMenuComponent:handleObjectMenuSelect(pObject, pPlayer, 
 				table.insert(options, {sites[i].name, 0})
 			end
 		
-			local listBox = LuaSuiListBox(pSui)
-			local pNpc = listBox:getUsingObject()
-		
 			if (#options > 0) then
-				suiManager:sendListBox(pNpc, pPlayer, "Instant Travel System", "Select a location you'd like to land at.", 2, "@cancel", "", "@ok", "travelSystemScreenplay", "travelToPoint", 32, options)
+				suiManager:sendListBox(pObject, pPlayer, "Instant Travel System", "Select a location you'd like to land at.", 2, "@cancel", "", "@ok", "travelSystemScreenplay", "travelToPoint", 32, options)
 			else
 				CreatureObject(pPlayer):sendSystemMessage("Unfortunately, no travel destinations could be found for this planet. Please inform administration.")
 			end
@@ -48,9 +47,7 @@ function RpTravelTerminalMenuComponent:handleObjectMenuSelect(pObject, pPlayer, 
 		end
 	end
 
-	local suiManager = LuaSuiManager()
 	local planets = travelSystem:populatePlanetList(pPlayer, true)
-	local options = { }
 	
 	if (planets == nil) then
 		CreatureObject(pPlayer):sendSystemMessage("ERROR: travelSystem:populatePlanetList() returned nil!")
