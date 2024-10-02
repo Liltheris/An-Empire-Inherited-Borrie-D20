@@ -28,6 +28,8 @@ function RpTravelTerminalMenuComponent:handleObjectMenuSelect(pObject, pPlayer, 
 		if (planet ~= nil) then
 			local sites = travelSystem:populateLandingSiteList(pPlayer, planet, true)
 
+			SceneObject(pPlayer):setStoredString("travel_planet", planet.tag)
+
 			if(sites == nil) then
 				CreatureObject(pPlayer):sendSystemMessage("ERROR: travelSystem:populateLandingSiteList() returned nil!")
 				return
