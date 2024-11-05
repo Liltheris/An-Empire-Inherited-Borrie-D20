@@ -589,3 +589,9 @@ object_tangible_wearables_ring_shared_scabbard_blank = SharedTangibleObjectTempl
 }
 ObjectTemplates:addClientTemplate(object_tangible_wearables_ring_shared_scabbard_blank, "object/tangible/wearables/ring/shared_scabbard_blank.iff")
 --******************************************************************************************************************************************
+
+object_tangible_wearables_ring_shared_scabbard_saber_blank = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/ring/shared_scabbard_saber_blank.iff"
+}
+ObjectTemplates:addClientTemplate(object_tangible_wearables_ring_shared_scabbard_saber_blank, "object/tangible/wearables/ring/shared_scabbard_saber_blank.iff")
+--******************************************************************************************************************************************
