@@ -8,8 +8,8 @@ _damageType = KINETIC
 _armorPiercing = NONE
 
 _pointBlankRange = 1	--Start of ideal range
-_idealRange = 2			--End of ideal range
-_maxRange = 3			--Total max range
+_idealRange = 3			--End of ideal range
+_maxRange = 4			--Total max range
 
 _pointBlankAccuracy = 5	--DC under point blank range
 _idealAccuracy = 10		--DC within ideal range

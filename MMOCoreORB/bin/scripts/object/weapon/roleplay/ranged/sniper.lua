@@ -7,9 +7,9 @@ _damageType = ENERGY
 
 _armorPiercing = NONE
 
-_pointBlankRange = 180	--Start of ideal range
-_idealRange = 1100		--End of ideal range
-_maxRange = 1200			--Total max range
+_pointBlankRange = 100	--Start of ideal range
+_idealRange = 256		--End of ideal range
+_maxRange = 260			--Total max range
 
 _pointBlankAccuracy = 5	--DC under point blank range
 _idealAccuracy = 10		--DC within ideal range

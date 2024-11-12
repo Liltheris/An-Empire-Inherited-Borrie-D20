@@ -8,8 +8,8 @@ _damageType = LIGHTSABER
 _armorPiercing = HEAVY
 
 _pointBlankRange = 0	--Start of ideal range
-_idealRange = 1			--End of ideal range
-_maxRange = 2			--Total max range
+_idealRange = 2			--End of ideal range
+_maxRange = 3			--Total max range
 
 _minDamage = 1
 _maxDamage = 10
