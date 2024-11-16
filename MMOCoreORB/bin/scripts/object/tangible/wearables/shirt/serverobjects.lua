@@ -83,3 +83,4 @@ includeFile("tangible/wearables/shirt/shirt_underwear_s02.lua")
 includeFile("tangible/wearables/shirt/shirt_s43.lua")
 
 includeFile("tangible/wearables/shirt/shirt_jedi_s01.lua")
+includeFile("tangible/wearables/shirt/shirt_undershirt.lua")
