@@ -41,7 +41,7 @@
 --this exception also makes it possible to release a modified version 
 
 
-object_tangible_wearables_shirt_undershirt = object_tangible_wearables_shirt_shared_undershirt:new {
+object_tangible_wearables_shirt_undershirt = object_tangible_wearables_shirt_shared_shirt_undershirt:new {
 
 }
 
