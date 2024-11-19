@@ -67,4 +67,5 @@ includeFile("tangible/wearables/hat/singing_mountain_clan_hat_s01.lua")
 includeFile("tangible/wearables/hat/singing_mountain_clan_hat_s02.lua")
 includeFile("tangible/wearables/hat/singing_mountain_clan_mask_s01.lua")
 includeFile("tangible/wearables/hat/hat_imp_veers_s01.lua")
+includeFile("tangible/wearables/hat_cowboy_s01.lua")
 
