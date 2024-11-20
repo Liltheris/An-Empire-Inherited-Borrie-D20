@@ -31,4 +31,5 @@ content = {
 	{"object/tangible/wearables/hood/shared_sithcloak_h00.iff",},
 	{"object/tangible/wearables/hood/shared_sithcloak_h01.iff",},
 	{"object/tangible/wearables/hood/shared_hood_helmet_s01.iff", },
+	{"object/tangible/wearables/hat/shared_hat_cowboy_s01.iff",},
 }
