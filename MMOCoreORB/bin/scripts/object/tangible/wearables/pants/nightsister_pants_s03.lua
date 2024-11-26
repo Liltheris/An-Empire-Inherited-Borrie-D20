@@ -41,7 +41,7 @@
 --this exception also makes it possible to release a modified version 
 
 
-object_tangible_wearables_pants_nightsister_pants_s02 = object_tangible_wearables_pants_shared_nightsister_pants_s02:new {
+object_tangible_wearables_pants_pants_nightsister_s03 = object_tangible_wearables_pants_shared_pants_nightsister_s03:new {
 	playerRaces = { "object/creature/player/bothan_female.iff",
 				"object/creature/player/human_female.iff",
 				"object/creature/player/moncal_female.iff",
@@ -62,4 +62,4 @@ object_tangible_wearables_pants_nightsister_pants_s02 = object_tangible_wearable
 				"object/mobile/vendor/zabrak_female.iff" },
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_pants_nightsister_pants_s02, "object/tangible/wearables/pants/nightsister_pants_s02.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_pants_pants_nightsister_s03, "object/tangible/wearables/pants/pants_nightsister_s03.iff")
