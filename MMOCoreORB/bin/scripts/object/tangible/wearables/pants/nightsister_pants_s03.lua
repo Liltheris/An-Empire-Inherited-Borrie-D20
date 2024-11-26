@@ -41,43 +41,25 @@
 --this exception also makes it possible to release a modified version 
 
 
+object_tangible_wearables_pants_nightsister_pants_s02 = object_tangible_wearables_pants_shared_nightsister_pants_s02:new {
+	playerRaces = { "object/creature/player/bothan_female.iff",
+				"object/creature/player/human_female.iff",
+				"object/creature/player/moncal_female.iff",
+				"object/creature/player/rodian_female.iff",
+				"object/creature/player/sullustan_female.iff",
+				"object/creature/player/trandoshan_female.iff",
+				"object/creature/player/twilek_female.iff",
+				"object/creature/player/zabrak_female.iff",
+				"object/mobile/vendor/aqualish_female.iff",
+				"object/mobile/vendor/bith_female.iff",
+				"object/mobile/vendor/bothan_female.iff",
+				"object/mobile/vendor/human_female.iff",
+				"object/mobile/vendor/moncal_female.iff",
+				"object/mobile/vendor/rodian_female.iff",
+				"object/mobile/vendor/sullustan_female.iff",
+				"object/mobile/vendor/trandoshan_female.iff",
+				"object/mobile/vendor/twilek_female.iff",
+				"object/mobile/vendor/zabrak_female.iff" },
+}
 
---Children folder includes
-
--- Server Objects
-includeFile("tangible/wearables/pants/nightsister_pants_s01.lua")
-includeFile("tangible/wearables/pants/nightsister_pants_s02.lua")
-includeFile("tangible/wearables/pants/pants_s01.lua")
-includeFile("tangible/wearables/pants/pants_s02.lua")
-includeFile("tangible/wearables/pants/pants_s04.lua")
-includeFile("tangible/wearables/pants/pants_s05.lua")
-includeFile("tangible/wearables/pants/pants_s06.lua")
-includeFile("tangible/wearables/pants/pants_s07.lua")
-includeFile("tangible/wearables/pants/pants_s08.lua")
-includeFile("tangible/wearables/pants/pants_s09.lua")
-includeFile("tangible/wearables/pants/pants_s10.lua")
-includeFile("tangible/wearables/pants/pants_s11.lua")
-includeFile("tangible/wearables/pants/pants_s12.lua")
-includeFile("tangible/wearables/pants/pants_s13.lua")
-includeFile("tangible/wearables/pants/pants_s14.lua")
-includeFile("tangible/wearables/pants/pants_s15.lua")
-includeFile("tangible/wearables/pants/pants_s17.lua")
-includeFile("tangible/wearables/pants/pants_s18.lua")
-includeFile("tangible/wearables/pants/pants_s21.lua")
-includeFile("tangible/wearables/pants/pants_s22.lua")
-includeFile("tangible/wearables/pants/pants_s24.lua")
-includeFile("tangible/wearables/pants/pants_s25.lua")
-includeFile("tangible/wearables/pants/pants_s26.lua")
-includeFile("tangible/wearables/pants/pants_s27.lua")
-includeFile("tangible/wearables/pants/pants_s28.lua")
-includeFile("tangible/wearables/pants/pants_s29.lua")
-includeFile("tangible/wearables/pants/pants_s30.lua")
-includeFile("tangible/wearables/pants/pants_s31.lua")
-includeFile("tangible/wearables/pants/pants_s32.lua")
-includeFile("tangible/wearables/pants/pants_s33.lua")
-includeFile("tangible/wearables/pants/pants_s34.lua")
-includeFile("tangible/wearables/pants/pants_underwear_s01.lua")
-
-includeFile("tangible/wearables/pants/pants_jedi_s01.lua")
-includeFile("tangible/wearables/pants/pants_thermals.lua")
-includeFile("tangible/wearables/pants/nightsister_pants_s03.lua")
+ObjectTemplates:addTemplate(object_tangible_wearables_pants_nightsister_pants_s02, "object/tangible/wearables/pants/nightsister_pants_s02.iff")
