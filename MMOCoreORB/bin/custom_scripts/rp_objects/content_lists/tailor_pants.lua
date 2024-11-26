@@ -31,6 +31,7 @@ content = {
 	{"object/tangible/wearables/pants/shared_pants_jedi_s01.iff"},
 	{"object/tangible/wearables/pants/shared_nightsister_pants_s01.iff", },
 	{"object/tangible/wearables/pants/shared_nightsister_pants_s02.iff", },
+	{"object/tangible/wearables/pants/shared_nightsister_pants_s03.iff", },
 	{"object/tangible/wearables/pants/pants_underwear_s01.iff", },
 	{"object/tangible/wearables/pants/pants_thermals.iff", },
 	
