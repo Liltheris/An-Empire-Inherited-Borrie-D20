@@ -9,7 +9,7 @@ base = {
 	
 	spawns = {
 		--Type, Zone, x, z, y, angle, cell
-		{"recruiter", "rp_space", -16.0541, -1, 2.93524, 105, 808246},--{"space_tansarii_main"}},
+		--{"recruiter", "rp_space", -16.0541, -1, 2.93524, 105, 808246},--{"space_tansarii_main"}},
 		{"navy/trooper","rp_space", 33.313, 0.8, 22.3513, 52, 808251,},
 		{"navy/trooper","rp_space", 34.5004, -0.993132, -1.39064, 271, 808249,},
 		{"navy/trooper","rp_space", 33.2424, 0.8, -22.2979, 126, 808253,},
