@@ -524,7 +524,7 @@ function NabooTheedScreenPlay:spawnCivilians()
 		{-5759.3, 6, 4092.97, 262, 0,{"none"}},
 		{-5762.76, 6, 4092.97, 83, 0,{"none"}},
 		-- Theed Spaceport
-		--[[{-4625.6, 6, 4063.96, 241, 0,{"none"}},
+		{-4625.6, 6, 4063.96, 241, 0,{"none"}},
 		{-4626.97, 6, 4063.48, 60, 0,{"none"}},
 		{-4668.29, 6, 4022.82, 30, 0,{"none"}},
 		{-4666.96, 6, 4023.75, 236, 0,{"social"}},
@@ -576,10 +576,8 @@ function NabooTheedScreenPlay:spawnCivilians()
 		{-4891.81, 6, 4073.47, 36, 0,{"none"}},
 		{-4890.02, 6, 4074.99, 239, 0,{"social"}},
 		{-4887.49, 6, 4076.79, 133, 0,{"none"}},
-		]]
 	}
 	CivillianGenerator:spawnCivillians(self.screenplayName, "rp_naboo", waypointList, self.walkpointList, "human_only", "naboo")
-	--[[
 	waypointList = {
 		-- Theed Cantina
 		{-6.64444, -0.894992, -4.768, 44, 91,{"drinker"}},
@@ -643,8 +641,9 @@ function NabooTheedScreenPlay:spawnCivilians()
 	}
 
 	CivillianGenerator:spawnCivillians(self.screenplayName, "rp_naboo", waypointList, self.walkpointList, "humanocentric", "spacer")
-	]]
 
+	-- Party guests
+	--[[
 	waypointList = {
 		{3.80142, 19, 1.44633, 247, 1688859,{"drinker"}},
 		{2.58406, 18.9998, 1.54353, 95, 1688859,{"drinker"}},
@@ -728,6 +727,7 @@ function NabooTheedScreenPlay:spawnCivilians()
 	}
 
 	CivillianGenerator:spawnCivillians(self.screenplayName, "rp_naboo", waypointList, self.walkpointList, "human_only", "naboo")
+	]]
 end
 
 function NabooTheedScreenPlay:spawnSceneObjects()
