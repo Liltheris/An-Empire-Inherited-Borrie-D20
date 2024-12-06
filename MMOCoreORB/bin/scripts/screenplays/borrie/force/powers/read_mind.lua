@@ -11,7 +11,7 @@ BorForce_ReadMind = BorForce_BasePower:new({
 
 	targetSelf = false,
 
-	helpString = "Roll sense + half FPI vs the target's Mindfulness roll to read the mind of the target. The use of this ability requires a present DM.\nForce-sensitives resist with Mindfulness * 2, and roll sense to detect."
+	helpString = "Roll sense + half FPI vs the target's Mindfulness roll to read the mind of the target. \nThe use of this ability requires a present DM. The result of which is contextual to the situation or current events, decided by the overseeing DM. \nForce-sensitives resist with Mindfulness * 2, and roll sense to detect."
 })
 
 function BorForce_ReadMind:showHelp(pPlayer)
@@ -104,8 +104,15 @@ function BorForce_ReadMind:performAbility(pPlayer, fpi)
 		local targetSenseTotal = math.floor(targetSenseRoll + targetSenseValue)
 
 		if (total < targetSenseTotal or targetSenseRoll == 20) then
-			CreatureObject(pPlayer):sendSystemMessage("Your intrusion has not gone unnoticed..")
-			CreatureObject(pTarget):sendSystemMessage("You feel the reaches of "..CreatureObject2(pPlayer):getFirstName().." upon your mind!")
+			msg = "Your intrusion has not gone unnoticed... " ..BorForceUtility:rollSpam(targetSenseRoll, targetSenseValue, total)
+			CreatureObject(pPlayer):sendSystemMessage(msg)
+			msg = "You feel the encroachment of "..CreatureObject(pPlayer):getFirstName().." upon your mind. Your thoughts are laid bare. " ..BorForceUtility:rollSpam(targetSenseRoll, targetSenseValue, total)
+			CreatureObject(pTarget):sendSystemMessage(msg)
+		else
+			msg = "Your intrusion has gone unnoticed... " ..BorForceUtility:rollSpam(targetSenseRoll, targetSenseValue, total)
+			CreatureObject(pPlayer):sendSystemMessage(msg)
+			msg = "You do not feel the intrusion of "..CreatureObject(pPlayer):getFirstName().." upon your mind. " ..BorForceUtility:rollSpam(targetSenseRoll, targetSenseValue, total)
+			CreatureObject(pTarget):sendSystemMessage(msg)
 		end
 	end
 
