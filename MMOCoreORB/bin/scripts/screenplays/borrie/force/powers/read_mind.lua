@@ -11,7 +11,7 @@ BorForce_ReadMind = BorForce_BasePower:new({
 
 	targetSelf = false,
 
-	helpString = "Roll sense + FPI vs the target's Mindfulness roll to read the mind of the target. The use of this ability is contextual.\nForce-sensitives resist with Mindfulness * 2."
+	helpString = "Roll sense + half FPI vs the target's Mindfulness roll to read the mind of the target. The use of this ability is contextual.\nForce-sensitives resist with Mindfulness * 2, and roll sense to detect."
 })
 
 function BorForce_ReadMind:showHelp(pPlayer)
@@ -64,7 +64,7 @@ function BorForce_ReadMind:performAbility(pPlayer, fpi)
 		return
 	end
 
-	fpi = math.floor(fpi)
+	fpi = math.floor(fpi/2)
 
 	local targetSkillValue = math.floor(CreatureObject(pTarget):getSkillMod("rp_mindfulness"))
 	local targetRoll = math.floor(math.random(1,20))
@@ -98,5 +98,16 @@ function BorForce_ReadMind:performAbility(pPlayer, fpi)
 
 	broadcastMessageWithName(pPlayer, msg)
 	
+	if(CreatureObject(pTarget):hasSkill("rp_force_prog_novice")) then
+		local targetSenseValue = math.floor(CreatureObject(pTarget):getSkillMod("rp_sense"))
+		local targetSenseRoll = math.floor(math.random(1,20))
+		local targetSenseTotal = math.floor(targetSenseRoll + targetSenseValue)
+
+		if (total < targetSenseTotal or targetSenseRoll == 20) then
+			CreatureObject(pPlayer):sendSystemMessage("Your intrusion has not gone unnoticed..")
+			CreatureObject(pTarget):sendSystemMessage("You feel the reaches of" ..CreatureObject(pPlayer):getFirstName().. "upon your mind!")
+		end
+	end
+
 	BorForceUtility:playAbilityEffects(pPlayer, pPlayer, self)
 end
