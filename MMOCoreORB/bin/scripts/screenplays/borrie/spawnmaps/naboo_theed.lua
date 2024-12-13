@@ -750,7 +750,10 @@ function NabooTheedScreenPlay:spawnSceneObjects()
 	-- Weapons
 	sObj = spawnSceneObject("rp_naboo", "object/tangible/sign/streetsign_wall_style_01.iff", -5540.83, 9, 4279.16, 0, -4.37114e-08, 0, 1, 0)
 	SceneObject(sObj):setCustomObjectName("Kust & Rind Armouries")
-
+	
+	sObj = spawnSceneObject("rp_naboo", "object/tangible/sign/streetsign_wall_style_01.iff", -5359, 10.873, 4426.37, 0, -4.37114e-08, 0, 1, 0)
+	SceneObject(sObj):setCustomObjectName("ZerosCorp Headquarters")
+	
 	--TAILOR--
 	sObj = spawnSceneObject("rp_naboo", "object/tangible/furniture/elegant/armoire_elegant_s01.iff", -1.02836, 0.7, 3.4166, 980037315, 0.707107, 0, -0.707107, 0)
 	SceneObject(sObj):setCustomObjectName("Shirts")
