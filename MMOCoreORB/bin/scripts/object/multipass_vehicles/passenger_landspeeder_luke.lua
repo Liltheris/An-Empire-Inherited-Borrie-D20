@@ -1,0 +1,3 @@
+object_mobile_passenger_landspeeder_luke = object_mobile_shared_passenger_landspeeder_luke:new {}
+
+ObjectTemplates:addTemplate(object_mobile_passenger_landspeeder_luke, "object/mobile/passenger_landspeeder_luke.iff")

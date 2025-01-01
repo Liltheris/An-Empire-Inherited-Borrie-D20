@@ -46,7 +46,7 @@ object_mobile_vehicle_landspeeder_x34 = object_mobile_vehicle_shared_landspeeder
 	decayRate = 15, -- Damage tick per decay cycle
 	decayCycle = 600, -- Time in seconds per cycle
 	passengerCapacity = 1, --How many passengers a vehicle can carry aside from the driver; default is 0
-	passengerSeatString = "flash_speeder", --Used for generating appropriate seating in the vehicle
+	passengerSeatString = "landspeeder_luke", --Used for generating appropriate seating in the vehicle
 }
 
 ObjectTemplates:addTemplate(object_mobile_vehicle_landspeeder_x34, "object/mobile/vehicle/landspeeder_x34.iff")
