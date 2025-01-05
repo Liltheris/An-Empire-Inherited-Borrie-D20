@@ -1,1 +1,2 @@
 includeFile("multipass_vehicles/passenger_flash_speeder_1.lua")
+includeFile("multipass_vehicles/passenger_landspeeder_luke_1.lua")
