@@ -18,7 +18,7 @@ object_tangible_wearables_armor_roleplay_ubese_armor_ubese_pants = object_tangib
 	maxCondition = 100,
 
 
-	rating = NONE,
+	rating = LIGHT,
 	rpskill = 6,
 
 	price = 1000,
