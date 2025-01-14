@@ -79,6 +79,8 @@ function character_creation_convo_handler:runScreenHandlers(conversationTemplate
 
 	if (isMando and CreatureObject(conversingPlayer):hasSkill("rp_training_mando_novice") == false) then
 		awardSkill(conversingPlayer, "rp_training_mando_novice")
+		awardSkill(conversingPlayer, "social_language_mandoa_speak")
+		awardSkill(conversingPlayer, "social_language_mandoa_comprehend")
 	end
 
 	if (isCriminal and CreatureObject(conversingPlayer):hasSkill("rp_training_criminal_novice") == false) then
