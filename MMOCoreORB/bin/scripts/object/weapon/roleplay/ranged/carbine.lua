@@ -139,13 +139,13 @@ object_weapon_roleplay_ranged_carbine_bothan_bola_carbine = object_weapon_ranged
 }
 
 --Charric Carbine
-object_weapon_roleplay_ranged_carbine_charric_carbine = object_weapon_ranged_carbine_shared_som_carbine_republic_sfor:new {
+object_weapon_roleplay_ranged_carbine_charric_carbine = object_weapon_ranged_carbine_shared_charric_carbine:new {
 
 	--[Info]
 	customName = "Charric Carbine",
 
 	--[Stats]
-	damageType = KINETIC,
+	damageType = ENERGY,
 	armorPiercing = NONE,
 
 	--Damage (minDamage[d]maxDamage) i.e. (2d20)
@@ -155,7 +155,7 @@ object_weapon_roleplay_ranged_carbine_charric_carbine = object_weapon_ranged_car
 	
 	noPowerAttack = true,
 
-	rarity="Legendary",
+	rarity="Rare",
 
 	ammoPack = _ammoPack,
 	maxAmmo = _maxAmmo,
