@@ -207,7 +207,7 @@ function BorRpShip:promptLandShipMenu(pPlayer, pObject)
 		return 0
 	end
 	
-	local sites = travelSystem:populateLandingSiteList(pPlayer, planet, false)
+	local sites = travelSystem:populateLandingSiteList(pPlayer, planet, false, true)
 
 	if(sites == nil) then
 		CreatureObject(pPlayer):sendSystemMessage("Error occured. Could not find landing sites for planet ["..currentPlanetTag.."]")
@@ -248,7 +248,7 @@ function BorRpShip:landShipCallback(pPlayer, pSui, eventIndex, rowIndex)
 		return 0
 	end
 
-	local sites = travelSystem:populateLandingSiteList(pPlayer, planet, false)
+	local sites = travelSystem:populateLandingSiteList(pPlayer, planet, false, true)
 
 	if(sites == nil) then
 		CreatureObject(pPlayer):sendSystemMessage("Error occured. Could not find landing sites for planet ["..currentPlanetTag.."]")
@@ -646,7 +646,7 @@ function BorRpShip:handleInstantTravelSelectPlanet(pPlayer, pSui, eventIndex, ar
 		return 0
 	end
 	
-	local sites = travelSystem:populateLandingSiteList(pPlayer, planet, false)
+	local sites = travelSystem:populateLandingSiteList(pPlayer, planet, false, true)
 
 	if (sites == nil) then
 		return 0
@@ -670,7 +670,7 @@ function BorRpShip:personalShipTravel(pPlayer, pSui, eventIndex, arg0)
 	local planetTag = SceneObject(pPlayer):getStoredString("travel_planet")
 	local planet = travelSystem:getPlanetFromTag(planetTag)
 	
-	local sites = travelSystem:populateLandingSiteList(pPlayer, planet, false)
+	local sites = travelSystem:populateLandingSiteList(pPlayer, planet, false, true)
 
 	if (sites == nil) then
 		return 0

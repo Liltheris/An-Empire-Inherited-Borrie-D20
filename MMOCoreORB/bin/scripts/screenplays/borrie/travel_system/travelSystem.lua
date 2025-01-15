@@ -128,10 +128,12 @@ function travelSystem:populatePlanetList(pPlayer, isPublic)
 end
 
 -- Returns a list of the landing sites available to pPlayer
-function travelSystem:populateLandingSiteList(pPlayer, planet, isPublic)
+function travelSystem:populateLandingSiteList(pPlayer, planet, isPublic, ignoreLocal)
 	if (pPlayer == nil) then
 		return
 	end
+
+	ignoreLocal = ignoreLocal or false
 
 	local sites = {}
 	local site_available = false
@@ -145,7 +147,7 @@ function travelSystem:populateLandingSiteList(pPlayer, planet, isPublic)
 	end
 
 	local isDM = PlayerObject(pGhost):isPrivileged()
-	local showLocal = player_zone == planet.zone
+	local showLocal = player_zone == planet.zone or ignoreLocal
 
 	if (planet.spaceports ~= nil) then
 			for i = 1, #planet.spaceports, 1 do
