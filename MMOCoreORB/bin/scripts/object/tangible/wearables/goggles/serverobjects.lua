@@ -61,6 +61,7 @@ includeFile("tangible/wearables/goggles/blindfold_s06.lua")
 includeFile("tangible/wearables/goggles/blindfold_s07.lua")
 includeFile("tangible/wearables/goggles/blindfold_jerec.lua")
 includeFile("tangible/wearables/goggles/goggles_kubaz_s01.lua")
+includeFile("tangible/wearables/goggles/goggles_kubaz_s02.lua")
 includeFile("tangible/wearables/goggles/goggles_eyepatch_l_s01.lua")
 includeFile("tangible/wearables/goggles/goggles_eyepatch_r_s01.lua")
 
