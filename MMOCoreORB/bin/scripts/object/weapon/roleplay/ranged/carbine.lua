@@ -139,7 +139,7 @@ object_weapon_roleplay_ranged_carbine_bothan_bola_carbine = object_weapon_ranged
 }
 
 --Charric Carbine
-object_weapon_roleplay_ranged_carbine_charric_carbine = object_weapon_ranged_carbine_shared_charric_carbine:new {
+object_weapon_roleplay_ranged_carbine_charric_carbine = object_weapon_ranged_carbine_shared_carbine_charric:new {
 
 	--[Info]
 	customName = "Charric Carbine",
