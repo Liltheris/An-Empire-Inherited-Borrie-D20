@@ -11,7 +11,7 @@ npc_template = {
 		"rp_nikto_male", 40,
 		"rp_weequay_male", 20,
 	},
-	skillTemplates = {"factional/common/elite"},
+	skillTemplates = {"common/elite/soldier_strong"},
 	
 	equipmentTemplates = {
 		{"rp_human_male", {"faction/hutt/elite"}},

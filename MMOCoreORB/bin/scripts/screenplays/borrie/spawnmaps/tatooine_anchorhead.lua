@@ -125,7 +125,7 @@ function TatooineAnchorheadScreenPlay:spawnMobiles()
 	SceneObject(pNpc):setCustomObjectName("\"Spike\"")
 	]]
 	--Wicha 
-	local pNpc = spawnRoleplayMobile("rp_tatooine", "rp_convo_npc", 1, 4.37506, 0.184067, 0.223115, 180, 610013840, "rp_twilek_female", "tatooine/anchorhead/wicha", "common/doctor", "tatooine/anchorhead/wicha", "rpg_shopkeeper") --Equip, Skill, Customization
+	local pNpc = spawnRoleplayMobile("rp_tatooine", "rp_convo_npc", 1, 4.37506, 0.184067, 0.223115, 180, 610013840, "rp_twilek_female", "planet/tatooine/anchorhead/wicha", "common/doctor", "tatooine/anchorhead/wicha", "rpg_shopkeeper") --Equip, Skill, Customization
 	SceneObject(pNpc):setCustomObjectName("Wicha (a Stimpack Vendor)")
 	SceneObject(pNpc):setStoredString("vendor:theme", "medicine")
 	SceneObject(pNpc):setStoredString("vendor:shopList", "shop_medicine_novice")
