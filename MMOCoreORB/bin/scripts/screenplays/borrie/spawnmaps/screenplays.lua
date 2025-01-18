@@ -6,6 +6,7 @@ includeFile("borrie/spawnmaps/sulon_barons_hed.lua")
 includeFile("borrie/spawnmaps/tatooine_mos_eisley.lua")
 includeFile("borrie/spawnmaps/tatooine_anchorhead.lua")
 includeFile("borrie/spawnmaps/tatooine_wayfar.lua")
+includeFile("borrie/spawnmaps/tatooine_sosos_palace.lua")
 
 --Dathomir
 includeFile("borrie/spawnmaps/dathomir_landing_zone.lua")
