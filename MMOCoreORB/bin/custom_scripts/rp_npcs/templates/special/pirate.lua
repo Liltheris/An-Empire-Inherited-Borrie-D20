@@ -1,0 +1,61 @@
+local outfits = {
+	"themed/pirate1",
+	"themed/pirate2",
+	"themed/pirate3",
+	"themed/pirate4",
+	"themed/pirate5",
+	"themed/pirate6",
+	"themed/pirate7",
+	"themed/pirate8",
+	"themed/pirate9",
+	"themed/pirate10",
+	"themed/pirate11",
+	"themed/pirate12",
+	"themed/pirate13",
+	"themed/pirate14",
+	"themed/pirate15",
+	"themed/pirate16",
+	"themed/pirate17",
+	"themed/pirate18",
+	"themed/pirate19",
+	"themed/pirate20",
+	"themed/pirate21",
+}
+
+npc_template = {
+
+	randomName = "zabrak",
+	baseTemplates = {
+		"rp_human_male", 60,
+		"rp_human_female", 40,
+		"rp_twilek_male", 15,
+		"rp_twilek_female", 10,
+		"rp_rodian_male", 15,
+		"rp_rodian_female", 15,
+		"rp_nikto_male", 10,
+		"rp_weequay_male", 10,
+	},
+	skillTemplates = {"common/soldier"},
+	
+	equipmentTemplates = {
+		{"rp_human_male", outfits},
+		{"rp_human_female", outfits},
+		{"rp_twilek_male", outfits},
+		{"rp_twilek_female", outfits},
+		{"rp_rodian_male", outfits},
+		{"rp_rodian_female", outfits},
+		{"rp_nikto_male", outfits},
+		{"rp_weequay_male", outfits},
+	},	
+	
+	customizationTemplates = {
+		{"rp_human_male", {"random_military"}},
+		{"rp_human_female", {"random_military"}},
+		{"rp_twilek_male", {"random"}},
+		{"rp_twilek_female", {"random"}},
+		{"rp_rodian_male", {"random"}},
+		{"rp_rodian_female", {"random"}},
+		{"rp_nikto_male", {"random"}},
+		{"rp_weequay_male", {"random"}},
+	},	
+}
