@@ -568,4 +568,10 @@ function RoriNewRestussScreenPlay:spawnMobiles()
 	pNpc = spawnRoleplayMobile("rp_rori", "rp_base_npc", 1, -1412.28, 81.2582, 1558.16, 0, 0, "probot", "default", "default", "random") --Equip, Skill, Customization
 	SceneObject(pNpc):setCustomObjectName("a Probot")
 	
+	-- Uniques
+	pNpc = spawnRoleplayMobile("rp_rori", "rp_base_npc", 1, -911.137, 83, 1594.52, 125, 0, "rp_human_male", "themed/tatgrunt4", "common/soldier_wear", "tatooine/greba") --Equip, Skill, Customization
+	SceneObject(pNpc):setCustomObjectName("Greba Oni")
+
+	pNpc = spawnRoleplayMobile("rp_rori", "rp_base_npc", 1, -910.294, 83, 1593.96, 290, 0, "rp_human_female", "civ/tatooine/civilian_female_s02", "common/civilian", "tatooine/greba_wife") --Equip, Skill, Customization
+	SceneObject(pNpc):setCustomObjectName("Theena Oni")
 end
