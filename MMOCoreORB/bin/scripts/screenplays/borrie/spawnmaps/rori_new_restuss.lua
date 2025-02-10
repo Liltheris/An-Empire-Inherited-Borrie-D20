@@ -517,8 +517,6 @@ function RoriNewRestussScreenPlay:spawnMobiles()
 	setRandomCreatureName(pNpc, "3po")
 	pNpc = spawnRoleplayMobile("rp_rori", "rp_base_npc", 1, -850.673, 83.5986, 1419.64, 0, 0, "3po_protocol_droid_red", "default", "default", "random") --Equip, Skill, Customization
 	setRandomCreatureName(pNpc, "3po")
-	pNpc = spawnRoleplayMobile("rp_rori", "rp_base_npc", 1, -860.237, 83, 1303.43, 0, 0, "dz70_fugitive_tracker_droid", "default", "default", "random") --Equip, Skill, Customization
-	SceneObject(pNpc):setCustomObjectName("DZ-70-621")
 	pNpc = spawnRoleplayMobile("rp_rori", "rp_base_npc", 1, -1019.79, 83, 1356.93, 188, 0, "eg6_power_droid", "default", "default", "random") --Equip, Skill, Customization
 	setRandomCreatureName(pNpc, "eg6")
 	pNpc = spawnRoleplayMobile("rp_rori", "rp_base_npc", 1, -804.393, 83, 1374.38, 249, 0, "eg6_power_droid", "default", "default", "random") --Equip, Skill, Customization
@@ -565,8 +563,6 @@ function RoriNewRestussScreenPlay:spawnMobiles()
 	setRandomCreatureName(pNpc, "ra7")
 	pNpc = spawnRoleplayMobile("rp_rori", "rp_base_npc", 1, -1203.26, 83, 1317.88, 232, 0, "r4", "default", "default", "default") --Equip, Skill, Customization
 	setRandomCreatureName(pNpc, "r4")
-	pNpc = spawnRoleplayMobile("rp_rori", "rp_base_npc", 1, -1412.28, 81.2582, 1558.16, 0, 0, "probot", "default", "default", "random") --Equip, Skill, Customization
-	SceneObject(pNpc):setCustomObjectName("a Probot")
 	
 	-- Uniques
 	pNpc = spawnRoleplayMobile("rp_rori", "rp_base_npc", 1, -911.137, 83, 1594.52, 125, 0, "rp_human_male", "themed/tatgrunt4", "common/soldier_wear", "tatooine/greba") --Equip, Skill, Customization
