@@ -1582,3 +1582,9 @@ object_weapon_ranged_pistol_shared_pistol_dc17 = SharedWeaponObjectTemplate:new 
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_ranged_pistol_shared_pistol_dc17, "object/weapon/ranged/pistol/shared_pistol_dc17.iff")
+------------------------------------------------------------------------------------------------------------------------------------------------------
+object_weapon_ranged_pistol_shared_pistol_s5 = SharedWeaponObjectTemplate:new {
+	clientTemplateFileName = "object/weapon/ranged/pistol/shared_pistol_s5.iff"
+}
+
+ObjectTemplates:addClientTemplate(object_weapon_ranged_pistol_shared_pistol_s5, "object/weapon/ranged/pistol/shared_pistol_s5.iff")
