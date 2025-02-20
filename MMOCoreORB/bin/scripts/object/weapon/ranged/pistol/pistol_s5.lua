@@ -1,4 +1,4 @@
-object_weapon_ranged_pistol_pistol_s5 = object_weapon_ranged_pistol_shared_pistol_s5:new {
+object_weapon_ranged_pistol_pistol_s5_combined = object_weapon_ranged_pistol_shared_pistol_s5_combined:new {
 
 	playerRaces = { "object/creature/player/bothan_male.iff",
 				"object/creature/player/bothan_female.iff",
@@ -37,7 +37,7 @@ object_weapon_ranged_pistol_pistol_s5 = object_weapon_ranged_pistol_shared_pisto
 	xpType = "combat_rangedspecialize_pistol",
 
 	-- See http://www.ocdsoft.com/files/certifications.xls
-	certificationsRequired = { "cert_pistol_s5" },
+	certificationsRequired = { "cert_pistol_s5_combined" },
 	-- See http://www.ocdsoft.com/files/accuracy.xls
 	creatureAccuracyModifiers = { "pistol_accuracy" },
 
@@ -89,4 +89,4 @@ object_weapon_ranged_pistol_pistol_s5 = object_weapon_ranged_pistol_shared_pisto
 	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 }
 
-ObjectTemplates:addTemplate(object_weapon_ranged_pistol_pistol_s5, "object/weapon/ranged/pistol/pistol_s5.iff")
+ObjectTemplates:addTemplate(object_weapon_ranged_pistol_pistol_s5_combined, "object/weapon/ranged/pistol/pistol_s5_combined.iff")

@@ -1255,7 +1255,7 @@ object_weapon_roleplay_ranged_pistol_dc17_pistol = object_weapon_ranged_pistol_s
 }
 
 --S-5 Heavy Blaster Pistol
-object_weapon_roleplay_ranged_pistol_s5_pistol = object_weapon_ranged_pistol_shared_pistol_s5:new {
+object_weapon_roleplay_ranged_pistol_s5_pistol = object_weapon_ranged_pistol_shared_pistol_s5_combined:new {
 
 	--[Info]
 	customName = "S-5 Heavy Blaster Pistol",
@@ -1274,7 +1274,7 @@ object_weapon_roleplay_ranged_pistol_s5_pistol = object_weapon_ranged_pistol_sha
 	rarity = "Uncommon",
 
 	ammoPack = _ammoPack,
-	maxAmmo = _maxAmmo,
+	maxAmmo = 6,
 	
 	--[Stats]
 	attackType = _attackType,
@@ -1284,7 +1284,7 @@ object_weapon_roleplay_ranged_pistol_s5_pistol = object_weapon_ranged_pistol_sha
 	idealAccuracy = _idealAccuracy,
 	maxRange = _maxRange,
 	maxRangeAccuracy = _maxRangeAccuracy,
-	price = 350,
+	price = 600,
 }
 
 -------------------------------------------
