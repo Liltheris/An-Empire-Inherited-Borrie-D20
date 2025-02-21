@@ -188,3 +188,13 @@ object_weapon_roleplay_ranged_pistol_pistol_rk3 = SharedWeaponObjectTemplate:new
 }
 ObjectTemplates:addClientTemplate(object_weapon_roleplay_ranged_pistol_pistol_rk3, "object/weapon/roleplay/ranged/pistol/pistol_rk3.iff")
 --************************************************************************************************************************************************************
+object_weapon_roleplay_ranged_pistol_pistol_dc17 = SharedWeaponObjectTemplate:new {
+	clientTemplateFileName = "object/weapon/roleplay/ranged/pistol/pistol_dc17.iff"
+}
+ObjectTemplates:addClientTemplate(object_weapon_roleplay_ranged_pistol_pistol_dc17, "object/weapon/roleplay/ranged/pistol/pistol_dc17.iff")
+--************************************************************************************************************************************************************
+object_weapon_roleplay_ranged_pistol_pistol_s5 = SharedWeaponObjectTemplate:new {
+	clientTemplateFileName = "object/weapon/roleplay/ranged/pistol/pistol_s5.iff"
+}
+ObjectTemplates:addClientTemplate(object_weapon_roleplay_ranged_pistol_pistol_s5, "object/weapon/roleplay/ranged/pistol/pistol_s5.iff")
+--************************************************************************************************************************************************************

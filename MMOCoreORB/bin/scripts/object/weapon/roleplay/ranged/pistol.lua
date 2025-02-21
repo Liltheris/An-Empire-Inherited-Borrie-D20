@@ -1221,6 +1221,72 @@ object_weapon_roleplay_ranged_pistol_rk3_pistol = object_weapon_ranged_pistol_sh
 	price = 350,
 }
 
+--DC-17 Pistol
+object_weapon_roleplay_ranged_pistol_dc17_pistol = object_weapon_ranged_pistol_shared_pistol_dc17:new {
+
+	--[Info]
+	customName = "DC-17 Pistol",
+
+	--[Stats]
+	damageType = ENERGY,
+	armorPiercing = NONE,
+
+	--Damage (minDamage[d]maxDamage) i.e. (2d20)
+	minDamage = 1, --Amount of Die used in Damage
+	maxDamage = 4, --Type of Die used in Damage
+	bonusDamage = 2,
+	
+	noPowerAttack = false,
+	
+	rarity = "Uncommon",
+
+	ammoPack = _ammoPack,
+	maxAmmo = _maxAmmo,
+	
+	--[Stats]
+	attackType = _attackType,
+	pointBlankRange = _pointBlankRange,
+	pointBlankAccuracy = _pointBlankAccuracy,
+	idealRange = _idealRange,
+	idealAccuracy = _idealAccuracy,
+	maxRange = _maxRange,
+	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 350,
+}
+
+--S-5 Heavy Blaster Pistol
+object_weapon_roleplay_ranged_pistol_s5_pistol = object_weapon_ranged_pistol_shared_pistol_s5_combined:new {
+
+	--[Info]
+	customName = "S-5 Heavy Blaster Pistol",
+
+	--[Stats]
+	damageType = ENERGY,
+	armorPiercing = NONE,
+
+	--Damage (minDamage[d]maxDamage) i.e. (2d20)
+	minDamage = 1, --Amount of Die used in Damage
+	maxDamage = 5, --Type of Die used in Damage
+	bonusDamage = 3,
+	
+	noPowerAttack = false,
+	
+	rarity = "Uncommon",
+
+	ammoPack = _ammoPack,
+	maxAmmo = 6,
+	
+	--[Stats]
+	attackType = _attackType,
+	pointBlankRange = _pointBlankRange,
+	pointBlankAccuracy = _pointBlankAccuracy,
+	idealRange = _idealRange,
+	idealAccuracy = _idealAccuracy,
+	maxRange = _maxRange,
+	maxRangeAccuracy = _maxRangeAccuracy,
+	price = 600,
+}
+
 -------------------------------------------
 -- Templates
 -------------------------------------------
@@ -1261,5 +1327,6 @@ ObjectTemplates:addTemplate(object_weapon_roleplay_ranged_pistol_cdef_pistol, "o
 ObjectTemplates:addTemplate(object_weapon_roleplay_ranged_pistol_bryar_pistol, "object/weapon/roleplay/ranged/pistol/pistol_bryar.iff")
 ObjectTemplates:addTemplate(object_weapon_roleplay_ranged_pistol_blurrg_pistol, "object/weapon/roleplay/ranged/pistol/pistol_blurrg.iff")
 ObjectTemplates:addTemplate(object_weapon_roleplay_ranged_pistol_rk3_pistol, "object/weapon/roleplay/ranged/pistol/pistol_rk3.iff")
-
+ObjectTemplates:addTemplate(object_weapon_roleplay_ranged_pistol_dc17_pistol, "object/weapon/roleplay/ranged/pistol/pistol_dc17.iff")
+ObjectTemplates:addTemplate(object_weapon_roleplay_ranged_pistol_s5_pistol, "object/weapon/roleplay/ranged/pistol/pistol_s5.iff")
 
