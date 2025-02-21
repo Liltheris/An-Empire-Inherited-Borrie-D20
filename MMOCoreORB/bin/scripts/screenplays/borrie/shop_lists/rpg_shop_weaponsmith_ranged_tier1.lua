@@ -15,6 +15,7 @@ shop_weapons_ranged = {
 				{template = "object/weapon/roleplay/ranged/pistol/model_q2_holdout_blaster_pistol.iff", cost = 900, max = 10, chance = 100 },
 				{template = "object/weapon/roleplay/ranged/pistol/se14_blaster_pistol.iff", cost = 900, max = 10, chance = 100 },
 				{template = "object/weapon/roleplay/ranged/pistol/fwg5_flechette_smart_pistol.iff", cost = 900, max = 10, chance = 100 },
+				{template = "object/weapon/roleplay/ranged/pistol/pistol_s5.iff", cost = 600, max = 10, chance = 100 },
 			}
 		},
 		{
