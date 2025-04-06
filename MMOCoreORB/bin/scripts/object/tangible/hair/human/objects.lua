@@ -4660,3 +4660,63 @@ object_tangible_hair_human_shared_hair_human_male_s41 = SharedTangibleObjectTemp
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hair_human_shared_hair_human_male_s41, "object/tangible/hair/human/shared_hair_human_male_s41.iff")
+
+object_tangible_hair_human_shared_hair_human_male_s42 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/hair/human/shared_hair_human_male_s42.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
+	appearanceFilename = "appearance/hum_m_hair_s41.sat",
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
+
+	certificationsRequired = {},
+	clearFloraRadius = 0,
+	clientDataFile = "",
+	clientGameObjectType = 8211,
+	collisionActionBlockFlags = 0,
+	collisionActionFlags = 51,
+	collisionActionPassFlags = 1,
+	collisionMaterialBlockFlags = 0,
+	collisionMaterialFlags = 1,
+	collisionMaterialPassFlags = 0,
+	containerType = 0,
+	containerVolumeLimit = 1,
+	customizationVariableMapping = {},
+
+	detailedDescription = "@hair_detail:hair",
+
+	gameObjectType = 8211,
+
+	locationReservationRadius = 0,
+	lookAtText = "@hair_lookat:hair",
+
+	noBuildRadius = 0,
+
+	objectName = "@hair_name:hair",
+	onlyVisibleInTools = 0,
+
+	paletteColorCustomizationVariables = {},
+	portalLayoutFilename = "",
+
+	rangedIntCustomizationVariables = {},
+
+	scale = 1,
+	scaleThresholdBeforeExtentTest = 0.5,
+	sendToClient = 1,
+	slotDescriptorFilename = "",
+	snapToTerrain = 1,
+	socketDestinations = {},
+	structureFootprintFileName = "",
+	surfaceType = 0,
+
+	targetable = 1,
+	totalCellNumber = 0,
+
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3776120680,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/hair/base/shared_hair_base.iff", "object/tangible/hair/human/base/shared_hair_human_base.iff", "object/tangible/hair/human/base/shared_hair_human_male_base.iff"}
+]]
+}
+
+ObjectTemplates:addClientTemplate(object_tangible_hair_human_shared_hair_human_male_s42, "object/tangible/hair/human/shared_hair_human_male_s42.iff")
+
