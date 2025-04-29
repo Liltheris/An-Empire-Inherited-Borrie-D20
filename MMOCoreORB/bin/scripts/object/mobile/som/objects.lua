@@ -118,15 +118,7 @@ object_mobile_som_shared_doc_lu = SharedCreatureObjectTemplate:new {
 }
 ObjectTemplates:addClientTemplate(object_mobile_som_shared_doc_lu, "object/mobile/som/shared_doc_lu.iff")
 --***********************************************************************************************************************************************************************
-object_mobile_som_shared_hk47 = SharedCreatureObjectTemplate:new {
-	clientTemplateFileName = "object/mobile/som/shared_hk47.iff"
-}
-ObjectTemplates:addClientTemplate(object_mobile_som_shared_hk47, "object/mobile/som/shared_hk47.iff")
---***********************************************************************************************************************************************************************
-object_mobile_som_shared_hk77 = SharedCreatureObjectTemplate:new {
-	clientTemplateFileName = "object/mobile/som/shared_hk77.iff"
-}
-ObjectTemplates:addClientTemplate(object_mobile_som_shared_hk77, "object/mobile/som/shared_hk77.iff")
+
 --***********************************************************************************************************************************************************************
 object_mobile_som_shared_ig106 = SharedCreatureObjectTemplate:new {
 	clientTemplateFileName = "object/mobile/som/shared_ig106.iff"

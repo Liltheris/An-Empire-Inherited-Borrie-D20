@@ -2657,6 +2657,8 @@ includeFile("mobile/zabrak_female.lua")
 includeFile("mobile/zabrak_male.lua")
 includeFile("mobile/zucca_boar.lua")
 includeFile("mobile/zucca_boar_hue.lua")
+includeFile("custom_content/mobile/som/hk47.lua")
+includeFile("custom_content/mobile/som/hk77.lua")
 
 -- RP templates
 includeFile("mobile/rp_aqualish_female.lua")
